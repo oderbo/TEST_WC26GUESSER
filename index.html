@@ -34,8 +34,8 @@ body {
     position: relative;
 }
 
-/* --- LOGO WRAPPER --- */
-.logo-container {
+/* --- HEADER WRAPPER --- */
+.header-container {
     width: 100%;
     display: flex;
     justify-content: center;
@@ -43,7 +43,7 @@ body {
     z-index: 5;
 }
 
-.logo-mask {
+.header-mask {
     width: 100%;
     -webkit-mask-size: contain;
     mask-size: contain;
@@ -73,8 +73,8 @@ body {
         justify-content: flex-start; 
     }
 
-    /* Zentrales Icon nur für Desktop separat */
-    .center-bg-icon-desktop {
+    /* Zentrales Icon im Hintergrund */
+    .center-bg-icon {
         position: fixed;
         top: 50%;
         left: 50%;
@@ -90,11 +90,11 @@ body {
         opacity: 0.8;
     }
 
-    .logo-container {
+    .header-container {
         margin-top: 3vh; 
     }
 
-    .logo-desktop {
+    .header-desktop {
         display: block;
         max-width: 900px; 
         width: 70vw;
@@ -103,7 +103,7 @@ body {
         mask-image: url('assets/WC26Guesser.svg');
     }
     
-    .logo-mobile {
+    .header-mobile {
         display: none; 
     }
 
@@ -149,28 +149,28 @@ body {
     }
 }
 
-/* --- MOBILE LAYOUT (Komplett korrigiert nach deinen Screenshots) --- */
+/* --- MOBILE LAYOUT --- */
 @media (max-width: 767px) {
     body {
         justify-content: flex-start; 
         padding: 0 15px;
     }
 
-    .center-bg-icon-desktop {
+    .center-bg-icon {
         display: none; /* Auf Mobile deaktiviert, da jetzt direkt in der Booster-Zone */
     }
 
-    /* Das obere Logo */
-    .logo-container {
+    /* Der obere Header */
+    .header-container {
         margin-top: calc(env(safe-area-inset-top, 0px) + 15px);
         flex-shrink: 0;
     }
     
-    .logo-desktop {
+    .header-desktop {
         display: none; 
     }
     
-    .logo-mobile {
+    .header-mobile {
         display: block;
         max-width: 220px; 
         width: 55vw;
@@ -179,14 +179,14 @@ body {
         mask-image: url('assets/WC_26_GUESSER.svg');
     }
 
-    /* Die beiden flexiblen Abstandshalter verteilen das Menü nun perfekt in der Mitte */
+    /* Die beiden flexiblen Abstandshalter (Basis auf 0% gesetzt für 50/50-Aufteilung) */
     .mobile-spacer {
         display: block;
-        flex-grow: 1;
+        flex: 1 1 0%;
         width: 100%;
     }
 
-    /* Der Button-Block rückt wieder weiter nach oben ins obere Drittel */
+    /* Der Button-Block */
     .menu-container {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
@@ -205,7 +205,7 @@ body {
         max-width: 105px;
     }
 
-    /* Die Booster-Zone steht im normalen Textfluss, hält aber strikt 2vw Abstand nach unten */
+    /* Die Booster-Zone */
     .booster-zone {
         display: none; /* Wird via JS auf 'flex' gesetzt, wenn Packs > 0 */
         flex-direction: column;
@@ -604,11 +604,11 @@ body {
 </head>
 <body>
 
-<div class="center-bg-icon-desktop"></div>
+<div class="center-bg-icon"></div>
 
-<div class="logo-container">
-    <div class="logo-mask logo-desktop"></div>
-    <div class="logo-mask logo-mobile"></div>
+<div class="header-container">
+    <div class="header-mask header-desktop"></div>
+    <div class="header-mask header-mobile"></div>
 </div>
 
 <div class="mobile-spacer"></div>
