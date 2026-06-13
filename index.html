@@ -179,11 +179,12 @@ body {
         mask-image: url('assets/WC_26_GUESSER.svg');
     }
 
-    /* Die beiden flexiblen Abstandshalter (Basis auf 0% gesetzt für 50/50-Aufteilung) */
+	/* Feste Abstandshalter auf Mobile */
     .mobile-spacer {
         display: block;
-        flex: 1 1 0%;
+        height: 8vh; /* Nutze z.B. 8vh für die Höhe. Alternativ: 12vw */
         width: 100%;
+        flex-shrink: 0; /* Wichtig, damit die Box nicht zusammengedrückt wird */
     }
 
     /* Der Button-Block */
