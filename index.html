@@ -266,7 +266,7 @@ body {
 /* Desktop-Spezifisch: Pakete weiter nach unten schieben, um das Logo nicht zu verdecken */
 @media (min-width: 768px) {
     .booster-zone {
-        margin-top: 16vh; 
+        margin-top: 18vh; 
     }
 }
 
@@ -357,7 +357,7 @@ body {
 }
 
 /* =========================================================================
-   STICKER OVERLAY DISPLAY SYSTEM (Transparenter Hintergrund & Einzel-Flug-Animation)
+   STICKER OVERLAY DISPLAY SYSTEM (Volle Transparenz oberhalb des Menüs)
    ========================================================================= */
 .sticker-overlay-layer {
     position: fixed;
@@ -365,17 +365,15 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    /* GEÄNDERT: Hintergrund ist jetzt transparent schwarz, Menü bleibt im Hintergrund sichtbar! */
-    background: rgba(0, 0, 0, 0.6); 
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
+    background: transparent; /* Absolut unsichtbare Layer, blockiert Klicks nach unten */
     z-index: 99999; 
     display: none;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     padding: 20px;
-    overflow-y: auto;
+    overflow: hidden;
+    pointer-events: auto; 
 }
 
 .sticker-display-grid {
@@ -388,7 +386,7 @@ body {
     position: relative;
 }
 
-/* Desktop: 6x1 Reihe */
+/* --- DESKTOP LAYOUT (6x1 Reihe) --- */
 @media (min-width: 768px) {
     .sticker-display-grid {
         flex-direction: row;
@@ -400,19 +398,20 @@ body {
     }
 }
 
-/* Mobile: 2x3 Grid */
+/* --- MOBILE & iOS LAYOUT (2x3 Grid perfekt skaliert) --- */
 @media (max-width: 767px) {
     .sticker-display-grid {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
-        max-width: 360px;
+        max-width: 330px; /* Begrenzung verhindert Übergröße auf iOS */
+        gap: 15px;
     }
     .sticker-card-container {
         width: 100%;
+        max-height: 180px; /* Schützt iPhones vor gestreckten Riesen-Stickern */
     }
 }
 
-/* Startposition der Sticker: Unsichtbar aus der Bildschirmmitte (wo das Pack lag) */
 .sticker-card-container {
     position: relative;
     aspect-ratio: 1 / 1.38;
@@ -420,25 +419,31 @@ body {
     border-radius: 10px;
     box-shadow: 0 10px 30px rgba(0,0,0,0.5);
     overflow: hidden;
-    
     opacity: 0;
-    /* Jede Karte fängt zentriert an und fliegt über die Keyframe-Animation an ihre echte Position */
     animation-fill-mode: forwards !important;
 }
 
-/* DIE NEUE FLY-IN ANIMATION: Fliegt von der Mitte an die feste Position im Grid */
-@keyframes flyFromPackToGrid {
-    0% {
-        opacity: 0;
-        transform: scale(0.2) translate(0, 150px) rotate(15deg);
-    }
-    30% {
-        opacity: 1;
-    }
-    100% {
-        opacity: 1;
-        transform: scale(1) translate(0, 0) rotate(0deg);
-    }
+/* =========================================================================
+   DYNAMIC FLIGHT PATH ANIMATIONS (Drawn from Pack center to grid cells)
+   ========================================================================= */
+@media (min-width: 768px) {
+    /* Desktop-Flugbahnen: Aus der Mitte (Pack-Position) nach links/rechts fächern */
+    @keyframes flyToPos1 { 0% { opacity: 0; transform: translate(370px, 150px) scale(0.1); } 100% { opacity: 1; transform: translate(0, 0) scale(1); } }
+    @keyframes flyToPos2 { 0% { opacity: 0; transform: translate(170px, 150px) scale(0.1); } 100% { opacity: 1; transform: translate(0, 0) scale(1); } }
+    @keyframes flyToPos3 { 0% { opacity: 0; transform: translate(20px, 150px) scale(0.1); } 100% { opacity: 1; transform: translate(0, 0) scale(1); } }
+    @keyframes flyToPos4 { 0% { opacity: 0; transform: translate(-20px, 150px) scale(0.1); } 100% { opacity: 1; transform: translate(0, 0) scale(1); } }
+    @keyframes flyToPos5 { 0% { opacity: 0; transform: translate(-170px, 150px) scale(0.1); } 100% { opacity: 1; transform: translate(0, 0) scale(1); } }
+    @keyframes flyToPos6 { 0% { opacity: 0; transform: translate(-370px, 150px) scale(0.1); } 100% { opacity: 1; transform: translate(0, 0) scale(1); } }
+}
+
+@media (max-width: 767px) {
+    /* Mobile/iOS-Flugbahnen: Strukturierte 3 Ebenen (Ebene 1 top, Ebene 2 mid, Ebene 3 bot) */
+    @keyframes flyToPos1 { 0% { opacity: 0; transform: translate(80px, 360px) scale(0.1); } 100% { opacity: 1; transform: translate(0, 0) scale(1); } }
+    @keyframes flyToPos2 { 0% { opacity: 0; transform: translate(-80px, 360px) scale(0.1); } 100% { opacity: 1; transform: translate(0, 0) scale(1); } }
+    @keyframes flyToPos3 { 0% { opacity: 0; transform: translate(80px, 200px) scale(0.1); } 100% { opacity: 1; transform: translate(0, 0) scale(1); } }
+    @keyframes flyToPos4 { 0% { opacity: 0; transform: translate(-80px, 200px) scale(0.1); } 100% { opacity: 1; transform: translate(0, 0) scale(1); } }
+    @keyframes flyToPos5 { 0% { opacity: 0; transform: translate(80px, 40px) scale(0.1); } 100% { opacity: 1; transform: translate(0, 0) scale(1); } }
+    @keyframes flyToPos6 { 0% { opacity: 0; transform: translate(-80px, 40px) scale(0.1); } 100% { opacity: 1; transform: translate(0, 0) scale(1); } }
 }
 
 .sticker-img {
@@ -459,7 +464,6 @@ body {
     transition: opacity 0.4s ease;
 }
 
-/* SCHRÄGES DUPLICATE BADGE OBEN LINKS */
 .duplicate-ribbon {
     position: absolute;
     top: 12px;
@@ -477,31 +481,57 @@ body {
     letter-spacing: 0.5px;
 }
 
+/* =========================================================================
+   NEW ROUND ICON ACTION BUTTONS
+   ========================================================================= */
 .action-panel {
     display: none;
-    gap: 15px;
-    margin-top: 35px;
+    gap: 30px;
+    margin-top: 30px;
+    justify-content: center;
+    align-items: center;
     width: 100%;
-    max-width: 500px;
     z-index: 100000;
 }
 
-.action-btn {
-    flex: 1;
-    padding: 16px;
-    font-size: 16px;
-    font-weight: bold;
-    border: none;
-    border-radius: 12px;
+.action-btn-round {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    background-color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     cursor: pointer;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.4);
-    transition: transform 0.2s, background-color 0.2s;
+    box-shadow: 0 6px 16px rgba(0,0,0,0.3);
+    transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.2s;
+    padding: 0;
 }
-.action-btn:active { transform: scale(0.97); }
-.btn-market { background: #ffaa00; color: #111111; }
-.btn-market:hover { background: #e09600; }
-.btn-send-album { background: #00cc44; color: white; }
-.btn-send-album:hover { background: #00ab38; }
+
+.action-btn-round:hover {
+    transform: scale(1.1);
+    box-shadow: 0 8px 22px rgba(0,0,0,0.4);
+}
+
+.action-btn-round:active {
+    transform: scale(0.95);
+}
+
+.action-btn-round img {
+    width: 60%;
+    height: 60%;
+    object-fit: contain;
+    display: block;
+}
+
+/* Spezifische Ränder */
+.btn-market-round {
+    border: 2px solid #ffbb04;
+}
+
+.btn-send-album-round {
+    border: 2px solid #28a745; /* Kräftiges Rasengrün */
+}
 </style>
 </head>
 <body>
@@ -545,8 +575,12 @@ body {
     <div class="sticker-display-grid" id="stickerGrid"></div>
 
     <div class="action-panel" id="actionPanel">
-        <button class="action-btn btn-market" onclick="processDuplicatesToMarket()">Duplicate to Market</button>
-        <button class="action-btn btn-send-album" onclick="sendNewToAlbumStapel()">Send to Album</button>
+        <button class="action-btn-round btn-market-round" onclick="processDuplicatesToMarket()" title="Duplicate to Market">
+            <img src="assets/market_icon.png" alt="Market">
+        </button>
+        <button class="action-btn-round btn-send-album-round" onclick="sendNewToAlbumStapel()" title="Send to Album">
+            <img src="assets/panini_album.png" alt="Album">
+        </button>
     </div>
 </div>
 
@@ -683,7 +717,6 @@ function startUserSync(uid) {
         const packs = currentUserData.packs_available;
         document.getElementById("packCounterCircle").innerText = packs;
         
-        // GEÄNDERT: Blende die Booster-Zone komplett aus, wenn 0 Packs verfügbar sind!
         if (packs > 0) {
             bZone.style.display = "flex";
         } else {
@@ -724,9 +757,6 @@ function checkAndGeneratePacks(uid) {
     }
 }
 
-/* =========================================================================
-   PACK OPENING LOGIC & ANIMATIONS
-   ========================================================================= */
 function openBoosterPack() {
     if (!currentUserData || currentUserData.packs_available <= 0) {
         alert("You have no packs available right now!");
@@ -775,15 +805,14 @@ function renderDrawnStickersGrid() {
     const currentAlbum = currentUserData.album || {};
     grid.innerHTML = "";
 
-    // Steuert die Verzögerung, damit die Karten nacheinander eingeflogen kommen
     currentOpenedStickers.forEach((sticker, idx) => {
         const container = document.createElement("div");
         container.className = "sticker-card-container";
         
-        // GEÄNDERT: Nutzt die neue Einzel-Weg-Animation mit ansteigendem Delay (0.2s Schritte)
-        container.style.animation = `flyFromPackToGrid 0.6s cubic-bezier(0.25, 1, 0.5, 1) ${idx * 0.2}s forwards`;
+        // Jede ID (1 bis 6) bekommt ihre eigene CSS-Flugbahn-Animation zugewiesen
+        const animationNumber = idx + 1;
+        container.style.animation = `flyToPos${animationNumber} 0.6s cubic-bezier(0.25, 1, 0.5, 1) ${idx * 0.18}s forwards`;
 
-        // DOPPELTE STICKER PRÜFEN
         if (currentAlbum[sticker.id] === "pasted") {
             const ribbon = document.createElement("div");
             ribbon.className = "duplicate-ribbon";
@@ -806,15 +835,12 @@ function renderDrawnStickersGrid() {
         grid.appendChild(container);
     });
 
-    // Das Action Panel erscheint erst, wenn die letzte Karte fertig geflogen ist (6 * 0.2s + Animation)
+    // Das kreisrunde Action-Panel fadet zeitlich abgestimmt nach dem letzten Sticker-Flug rein
     setTimeout(() => {
         document.getElementById("actionPanel").style.display = "flex";
-    }, 1800);
+    }, 1600);
 }
 
-/* =========================================================================
-   CANVAS RUBBEL-EFFEKT (GRÖSSERER WISCHER)
-   ========================================================================= */
 function setupScratchEffect(canvas) {
     const ctx = canvas.getContext("2d");
     let isDrawing = false;
@@ -870,9 +896,6 @@ function setupScratchEffect(canvas) {
     canvas.addEventListener("touchmove", scratch);
 }
 
-/* =========================================================================
-   BUTTON ACTIONS
-   ========================================================================= */
 function processDuplicatesToMarket() {
     const uid = firebase.auth().currentUser.uid;
     const currentAlbum = currentUserData.album || {};
@@ -920,9 +943,6 @@ function resetBoosterDashboardView() {
     currentOpenedStickers = [];
 }
 
-/* =========================================================================
-   AUTH MODAL CONTROLS
-   ========================================================================= */
 function openLoginModal() { document.getElementById('loginModal').style.display = 'flex'; }
 function closeLoginModal() { document.getElementById('loginModal').style.display = 'none'; }
 
