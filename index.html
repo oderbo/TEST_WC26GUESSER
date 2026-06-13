@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>WC26 Guesser</title>
+<title>WC26 Guesser & Album</title>
 <link rel="icon" type="image/png" href="assets/favicon.png">
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
 <style>
@@ -27,7 +27,7 @@ body {
     background-color: #3f57f5; 
     background-image: url('assets/main_background.png?v=1');
     background-repeat: no-repeat;
-    overflow-x: hidden; /* Prevents horizontal scrolling caused by the side tab */
+    overflow-x: hidden;
 }
 
 /* --- LOGO WRAPPER & RESPONSIVE DESIGN --- */
@@ -58,7 +58,6 @@ body {
     animation: goldGlow 8s ease infinite;
 }
 
-/* Center space for desktop layout (hidden on mobile) */
 .center-space {
     display: none;
 }
@@ -74,7 +73,6 @@ body {
 
     .logo-container {
         margin-top: 5vh; 
-        margin-bottom: 0;
     }
 
     .logo-desktop {
@@ -89,10 +87,9 @@ body {
         display: none; 
     }
 
-    /* FORCES BUTTONS TO REMAIN EXACTLY AT 50% VERTICAL HEIGHT */
     .menu-container {
         position: absolute;
-        top: 50%;
+        top: 45%;
         left: 50%;
         transform: translate(-50%, -50%);
         
@@ -109,7 +106,6 @@ body {
         width: 14%; 
     }
 
-    /* Generates an exact 20% transparent gap in the desktop layout center */
     .center-space {
         display: block;
         width: 20%;
@@ -118,7 +114,7 @@ body {
     }
 }
 
-/* --- MOBILE LAYOUT (Guaranteed 2x2 Grid) --- */
+/* --- MOBILE LAYOUT --- */
 @media (max-width: 767px) {
     body {
         justify-content: space-between; 
@@ -144,7 +140,6 @@ body {
         mask-image: url('assets/WC_26_GUESSER.svg');
     }
 
-    /* 2x2 Grid for Mobile screens */
     .menu-container {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
@@ -153,7 +148,7 @@ body {
         align-items: center;
         max-width: 280px;
         margin-top: auto;
-        margin-bottom: calc(env(safe-area-inset-bottom, 0px) + 20px); 
+        margin-bottom: 20px; 
     }
 
     .image-btn {
@@ -191,14 +186,6 @@ body {
     transform: translateY(1px);
 }
 
-.image-btn:disabled { 
-    filter: grayscale(80%) brightness(60%);
-    cursor: not-allowed; 
-    box-shadow: none;
-    transform: none;
-    border-color: rgba(255, 255, 255, 0.05);
-}
-
 .btn-random-nation { background-image: url('assets/country_random_button.jpg'); }
 .btn-pick-nation { background-image: url('assets/country_pick_button.jpg'); }
 
@@ -206,21 +193,19 @@ body {
     background-image: url('assets/player_random_button.png'); 
     position: relative;
 }
-.btn-multiplayer { background-image: url('assets/multiplayer.png'); }
+/* Geänderter Name für das neue Album Icon */
+.btn-album { background-image: url('assets/album_button.png'); }
 
 /* --- TOP 10 BADGE STYLE --- */
 .top10-badge {
     position: absolute;
     top: 0;    
     right: 0;  
-    
     background-color: #ffffff; 
     border-left: 1px solid rgba(0, 0, 0, 0.1);
     border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-    
     border-top-right-radius: inherit; 
     border-bottom-left-radius: 8px; 
-    
     padding: 6px 8px;
     display: flex;
     flex-direction: column;
@@ -231,221 +216,200 @@ body {
     transition: background-color 0.2s ease;
 }
 
-.top10-badge:hover {
-    background-color: #f0f2ff; 
-}
+.top10-badge:hover { background-color: #f0f2ff; }
+.top10-badge span { font-size: clamp(8px, 1.2vw, 10px); font-weight: bold; color: #3f57f5; letter-spacing: 0.5px; }
+.status-dot { width: 6px; height: 6px; border-radius: 50%; background-color: #cccccc; transition: all 0.3s ease; }
+.top10-badge.active .status-dot { background-color: #00cc44; box-shadow: 0 0 6px #00cc44, 0 0 12px #00cc44; }
 
-.top10-badge span {
-    font-size: clamp(8px, 1.2vw, 10px);
-    font-weight: bold;
-    color: #3f57f5; 
-    letter-spacing: 0.5px;
-}
-
-.status-dot {
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    background-color: #cccccc; 
-    transition: all 0.3s ease;
-}
-
-.top10-badge.active .status-dot {
-    background-color: #00cc44;
-    box-shadow: 0 0 6px #00cc44, 0 0 12px #00cc44;
-}
-
-/* --- VERTICAL & DYNAMIC SIDE TAB (RESPONSIVE) --- */
+/* --- VERTICAL SIDE TAB --- */
 .login-side-tab {
-    position: fixed;
-    right: 0;
-    top: 50%;
-    transform: translateY(-50%);
-    
-    /* WIDTH & RADIUS: Fully responsive matching viewport width (vw) */
-    width: 2.2vw;               
-    border-top-left-radius: 2.2vw;    
-    border-bottom-left-radius: 2.2vw; 
-    border-top-right-radius: 0;
-    border-bottom-right-radius: 0;
-    
-    /* BOUNDARIES: Protects item proportions across extreme screen setups */
-    min-width: 25px;
-    max-width: 45px;
-    
-    height: auto; 
-    background-color: #f5f5f5; 
-    
-    display: flex;
+    position: fixed; right: 0; top: 50%; transform: translateY(-50%);
+    width: 2.2vw; border-top-left-radius: 2.2vw; border-bottom-left-radius: 2.2vw;
+    min-width: 25px; max-width: 45px; height: auto; background-color: #f5f5f5; 
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    cursor: pointer; box-shadow: -3px 3px 10px rgba(0, 0, 0, 0.2); z-index: 999;
+    transition: all 0.2s ease; user-select: none; padding: 22px 0; 
+}
+@media (max-width: 767px) { .login-side-tab { width: 6vw; border-top-left-radius: 6vw; border-bottom-left-radius: 6vw; min-width: 24px; padding: 16px 0; } }
+.login-side-tab:hover { background-color: #ffffff; box-shadow: -4px 4px 12px rgba(0, 162, 255, 0.3); }
+.login-led { width: 6px; height: 6px; border-radius: 50%; background-color: #d0d0d0; margin-bottom: 5px; transition: all 0.3s ease; }
+.login-led.online { background-color: #00cc44; box-shadow: 0 0 6px #00cc44, 0 0 12px #00cc44; }
+.login-tab-text { writing-mode: vertical-rl; transform: rotate(180deg); white-space: nowrap; color: #333333; font-weight: bold; font-size: 11px; text-transform: uppercase; letter-spacing: 0.5px; text-align: center; }
+
+/* --- LOGIN MODAL --- */
+.login-modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.4); display: none; justify-content: center; align-items: center; z-index: 10000; padding: 20px; }
+.login-modal-content { background: rgba(255, 255, 255, 0.7); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); padding: 30px; border-radius: 16px; border: 1px solid rgba(255, 255, 255, 0.6); text-align: center; max-width: 360px; width: 100%; box-shadow: 0 15px 35px rgba(0,0,0,0.2); position: relative; color: #222222; }
+.login-modal-content h2 { margin-top: 0; font-size: 22px; color: #111111; }
+.login-modal-content p { font-size: 16px; font-weight: bold; color: #3f57f5; margin-bottom: 20px; word-break: break-word; }
+.login-input { width: 100%; margin: 8px 0; padding: 12px; background: rgba(255, 255, 255, 0.8); border: 1px solid rgba(0,0,0,0.15); border-radius: 8px; color: #111111; font-size: 16px; outline: none; }
+.login-input:focus { border-color: #3f57f5; background: #ffffff; }
+.login-btn-group { display: flex; gap: 10px; margin-top: 15px; }
+.login-btn { flex: 1; padding: 12px; font-weight: bold; border: none; border-radius: 8px; cursor: pointer; font-size: 14px; transition: all 0.2s; }
+.btn-primary { background: #3f57f5; color: white; }
+.btn-primary:hover { background: #253ed9; }
+.btn-secondary { background: rgba(0, 0, 0, 0.08); color: #333333; border: 1px solid rgba(0, 0, 0, 0.1); }
+.btn-secondary:hover { background: rgba(0, 0, 0, 0.15); }
+.close-modal-btn { position: absolute; top: 10px; right: 12px; background: none; border: none; font-size: 18px; cursor: pointer; color: #555555; font-weight: bold; }
+
+/* =========================================================================
+   BOOSTER OPENING SECTION
+   ========================================================================= */
+.booster-zone {
+    width: 100%;
+    max-width: 800px;
+    margin: 40px auto;
+    display: none; 
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    
-    cursor: pointer;
-    box-shadow: -3px 3px 10px rgba(0, 0, 0, 0.2);
-    z-index: 999;
-    transition: all 0.2s ease;
-    user-select: none;
-    
-    /* SPACING: Height padding for clean start and end spacing elements */
-    padding: 22px 0; 
+    position: relative;
+    z-index: 10;
 }
 
-/* Mobile responsive modifications */
-@media (max-width: 767px) {
-    .login-side-tab {
-        width: 6vw; 
-        border-top-left-radius: 6vw;
-        border-bottom-left-radius: 6vw;
-        min-width: 24px;
-        padding: 16px 0; 
-    }
-}
-
-.login-side-tab:hover {
-    background-color: #ffffff;
-    box-shadow: -4px 4px 12px rgba(0, 162, 255, 0.3);
-}
-
-/* Stable placement indicators */
-.login-led {
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    background-color: #d0d0d0; 
-    margin-bottom: 5px; 
-    transition: all 0.3s ease;
-    flex-shrink: 0;
-}
-
-.login-led.online {
-    background-color: #00cc44;
-    box-shadow: 0 0 6px #00cc44, 0 0 12px #00cc44;
-}
-
-/* Enforces specific vertical typography formatting rules */
-.login-tab-text {
-    writing-mode: vertical-rl;
-    transform: rotate(180deg); 
-    white-space: nowrap;
-    color: #333333;
+.pack-counter {
+    font-size: 18px;
     font-weight: bold;
-    font-size: 11px; 
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    line-height: 1;
-    text-align: center;
+    background: rgba(0, 0, 0, 0.5);
+    padding: 8px 16px;
+    border-radius: 20px;
+    margin-bottom: 25px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.pack-pile {
+    position: relative;
+    width: 200px;
+    height: 280px;
+    margin-bottom: 20px;
+    cursor: pointer;
+}
+
+.pack-layer {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    transition: all 0.3s ease;
+}
+
+.pack-layer.back2 { transform: scale(0.9) translateY(-15px) rotate(-5deg); opacity: 0.5; z-index: 1; }
+.pack-layer.back1 { transform: scale(0.95) translateY(-8px) rotate(3deg); opacity: 0.8; z-index: 2; }
+.pack-layer.front { 
+    background-image: url('assets/booster_pack_front.png'); 
+    z-index: 3; 
+    transform: translateY(-25px); /* Ein paar Pixel höher gesetzt wie gewünscht */
+}
+
+.pack-pile:hover .pack-layer.front {
+    transform: scale(1.05) translateY(-32px);
+    box-shadow: 0 10px 25px rgba(0, 255, 204, 0.5);
+}
+
+.ripped-pack-wrapper {
+    position: relative;
+    width: 200px;
+    height: 280px;
+    display: none;
+    margin-bottom: 20px;
+}
+
+.pack-part {
+    position: absolute;
+    width: 100%;
+    background-size: cover;
+    background-position: center;
+}
+
+.pack-part.bottom-half {
+    bottom: 0;
+    height: 80%;
+    background-image: url('assets/booster_pack_ripped_bottom.png');
+    z-index: 5;
+}
+
+.pack-part.top-half {
+    top: 0;
+    height: 20%;
+    background-image: url('assets/booster_pack_ripped_top.png');
+    z-index: 6;
+    transform-origin: left bottom;
+    transition: transform 0.6s ease-in, opacity 0.6s ease-in;
+}
+
+.pack-part.top-half.torn {
+    transform: translateY(-150%) rotate(-20deg);
+    opacity: 0;
+}
+
+/* 2 Breit x 3 Hoch Grid */
+.sticker-display-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    max-width: 420px;
+    width: 100%;
+    margin-top: 20px;
+    display: none;
+}
+
+.sticker-card-container {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1 / 1.38;
+    background: #2a3bb0;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    opacity: 0;
+    transform: translateY(100px) scale(0.5);
+    overflow: hidden;
+}
+
+@keyframes flyInSticker {
+    to { transform: translateY(0) scale(1); opacity: 1; }
+}
+
+.sticker-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
     display: block;
 }
 
-/* --- TRANSLUCENT WHITE LOGIN MODAL --- */
-.login-modal-overlay {
-    position: fixed; 
-    top: 0; 
-    left: 0; 
-    width: 100%; 
-    height: 100%; 
-    background: rgba(0, 0, 0, 0.4); 
-    display: none; 
-    justify-content: center; 
-    align-items: center; 
-    z-index: 10000; 
-    padding: 20px;
-}
-
-.login-modal-content {
-    background: rgba(255, 255, 255, 0.7); 
-    backdrop-filter: blur(10px); 
-    -webkit-backdrop-filter: blur(10px);
-    padding: 30px; 
-    border-radius: 16px; 
-    border: 1px solid rgba(255, 255, 255, 0.6); 
-    text-align: center; 
-    max-width: 360px; 
-    width: 100%; 
-    box-shadow: 0 15px 35px rgba(0,0,0,0.2);
-    position: relative;
-    color: #222222; 
-}
-
-.login-modal-content h2 {
-    margin-top: 0;
-    font-size: 22px;
-    color: #111111;
-}
-
-.login-modal-content p {
-    font-size: 16px;
-    font-weight: bold;
-    color: #3f57f5;
-    margin-bottom: 20px;
-    word-break: break-word;
-}
-
-.login-input {
-    width: 100%; 
-    margin: 8px 0; 
-    padding: 12px; 
-    background: rgba(255, 255, 255, 0.8); 
-    border: 1px solid rgba(0,0,0,0.15); 
-    border-radius: 8px; 
-    color: #111111; 
-    font-size: 16px;
-    outline: none;
-}
-
-.login-input:focus {
-    border-color: #3f57f5;
-    background: #ffffff;
-}
-
-.login-btn-group {
-    display: flex;
-    gap: 10px;
-    margin-top: 15px;
-}
-
-.login-btn {
-    flex: 1;
-    padding: 12px; 
-    font-weight: bold; 
-    border: none; 
-    border-radius: 8px; 
-    cursor: pointer; 
-    font-size: 14px; 
-    transition: all 0.2s;
-}
-
-.btn-primary {
-    background: #3f57f5; 
-    color: white;
-}
-
-.btn-primary:hover {
-    background: #253ed9;
-}
-
-.btn-secondary {
-    background: rgba(0, 0, 0, 0.08);
-    color: #333333;
-    border: 1px solid rgba(0, 0, 0, 0.1);
-}
-
-.btn-secondary:hover {
-    background: rgba(0, 0, 0, 0.15);
-}
-
-.close-modal-btn {
+.scratch-overlay {
     position: absolute;
-    top: 10px;
-    right: 12px;
-    background: none;
-    border: none;
-    font-size: 18px;
-    cursor: pointer;
-    color: #555555;
-    font-weight: bold;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 8;
+    cursor: crosshair;
+    transition: opacity 0.4s ease;
 }
+
+.action-panel {
+    display: none;
+    gap: 15px;
+    margin-top: 25px;
+    width: 100%;
+    max-width: 420px;
+}
+
+.action-btn {
+    flex: 1;
+    padding: 14px;
+    font-size: 15px;
+    font-weight: bold;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    transition: transform 0.2s;
+}
+.action-btn:active { transform: scale(0.98); }
+.btn-market { background: #ffaa00; color: #111111; }
+.btn-send-album { background: #00cc44; color: white; }
 </style>
 </head>
 <body>
@@ -468,16 +432,36 @@ body {
         </div>
     </button>
     
-    <button class="image-btn btn-multiplayer" onclick="openMultiplayer()"></button>
+    <button class="image-btn btn-album" onclick="window.location.href='album.html'"></button>
 </div>
 
-<!-- SIDE REITER -->
+<div class="booster-zone" id="boosterZone">
+    <div class="pack-counter" id="packCounter">Packs Available: 0</div>
+    
+    <div class="pack-pile" id="packPile" onclick="openBoosterPack()">
+        <div class="pack-layer back2" style="background-image: url('assets/booster_pack_front.png');"></div>
+        <div class="pack-layer back1" style="background-image: url('assets/booster_pack_front.png');"></div>
+        <div class="pack-layer front"></div>
+    </div>
+
+    <div class="ripped-pack-wrapper" id="rippedWrapper">
+        <div class="pack-part top-half" id="packTop"></div>
+        <div class="pack-part bottom-half"></div>
+    </div>
+
+    <div class="sticker-display-grid" id="stickerGrid"></div>
+
+    <div class="action-panel" id="actionPanel">
+        <button class="action-btn btn-market" onclick="processDuplicatesToMarket()">Duplicate to Market</button>
+        <button class="action-btn btn-send-album" onclick="sendNewToAlbumStapel()">Send to Album</button>
+    </div>
+</div>
+
 <div class="login-side-tab" id="loginSideTab" onclick="openLoginModal()">
     <div class="login-led" id="loginLed"></div>
     <div class="login-tab-text" id="loginTabText">Login</div>
 </div>
 
-<!-- CONTAINER TARGET MODAL -->
 <div class="login-modal-overlay" id="loginModal">
     <div class="login-modal-content">
         <button class="close-modal-btn" onclick="closeLoginModal()">✕</button>
@@ -503,7 +487,6 @@ body {
 <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
 
 <script>
-// Firebase Config
 const firebaseConfig = {
   apiKey: "AIzaSyD2KXF4jwbym0ghwMrSPFCiD-pgajGIopE",
   authDomain: "wc26guesser-db.firebaseapp.com",
@@ -516,15 +499,25 @@ const firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 const db = firebase.firestore();
 
+let globalStickerDatabase = null;
+let currentOpenedStickers = []; 
+let currentUserData = null;
+let packTimerInterval = null;
+
 document.addEventListener("DOMContentLoaded", () => {
     const isTop10Active = localStorage.getItem("random_player_top10") === "true";
     const badge = document.getElementById("top10Badge");
     if (isTop10Active) {
         badge.classList.add("active");
     }
+
+    fetch("./data/sticker_database.json")
+        .then(res => res.json())
+        .then(data => { globalStickerDatabase = data; })
+        .catch(err => console.error("Database reading aborted: ", err));
 });
 
-// MONITOR STATE CHANGES
+// AUTH STATE LISTENER
 firebase.auth().onAuthStateChanged((user) => {
     const led = document.getElementById('loginLed');
     const tabText = document.getElementById('loginTabText');
@@ -533,6 +526,7 @@ firebase.auth().onAuthStateChanged((user) => {
     const inputUser = document.getElementById('loginUser');
     const inputPass = document.getElementById('loginPass');
     const modalDesc = document.getElementById('modalDesc');
+    const bZone = document.getElementById('boosterZone');
 
     if (user) {
         led.classList.add('online'); 
@@ -540,15 +534,16 @@ firebase.auth().onAuthStateChanged((user) => {
         const formattedName = username.charAt(0).toUpperCase() + username.slice(1);
         
         tabText.innerText = formattedName; 
-        
         inputUser.style.display = 'none';
         inputPass.style.display = 'none';
         authButtons.style.display = 'none';
         logoutBtn.style.display = 'block';
         
-        // Displays ONLY the pristine username inside the descriptor area
         modalDesc.innerText = formattedName;
         document.getElementById('modalTitle').innerText = "Account Connected";
+        
+        bZone.style.display = "flex";
+        startUserSync(user.uid);
     } else {
         led.classList.remove('online'); 
         tabText.innerText = "Login"; 
@@ -559,16 +554,279 @@ firebase.auth().onAuthStateChanged((user) => {
         logoutBtn.style.display = 'none';
         modalDesc.innerText = "Create an account to save progress and collect stickers!";
         document.getElementById('modalTitle').innerText = "User Profile";
+        
+        bZone.style.display = "none";
+        if(packTimerInterval) clearInterval(packTimerInterval);
     }
 });
 
-function openLoginModal() {
-    document.getElementById('loginModal').style.display = 'flex';
+/* =========================================================================
+   FIRESTORE SNAPSHOT TIMERS & ROBUSTER FALLBACK FÜR NEUE USER
+   ========================================================================= */
+function startUserSync(uid) {
+    db.collection("users").doc(uid).onSnapshot((doc) => {
+        // FALL 1: Dokument existiert noch überhaupt nicht -> Neu registriert!
+        if (!doc.exists) {
+            db.collection("users").doc(uid).set({
+                packs_available: 7,
+                last_pack_claimed: firebase.firestore.FieldValue.serverTimestamp(),
+                album: {},
+                stapel: []
+            }).then(() => {
+                console.log("Neues Profil mit 7 Packs erfolgreich angelegt.");
+            }).catch(err => console.error("Fehler beim Erstellen des Profils:", err));
+            return;
+        }
+        
+        currentUserData = doc.data();
+
+        // FALL 2: Dokument existiert (z.B. durch Highscore erstellt), aber Packs fehlen noch!
+        if (currentUserData.packs_available === undefined) {
+            db.collection("users").doc(uid).update({
+                packs_available: 7,
+                last_pack_claimed: firebase.firestore.FieldValue.serverTimestamp(),
+                album: currentUserData.album || {},
+                stapel: currentUserData.stapel || []
+            });
+            return;
+        }
+        
+        const packs = currentUserData.packs_available;
+        document.getElementById("packCounter").innerText = `Packs Available: ${packs}`;
+        
+        if(!packTimerInterval) {
+            checkAndGeneratePacks(uid);
+            packTimerInterval = setInterval(() => checkAndGeneratePacks(uid), 60000);
+        }
+    });
 }
 
-function closeLoginModal() {
-    document.getElementById('loginModal').style.display = 'none';
+function checkAndGeneratePacks(uid) {
+    if (!currentUserData || currentUserData.packs_available === undefined) return;
+    const now = new Date();
+    let lastClaimed = now;
+    
+    if (currentUserData.last_pack_claimed) {
+        lastClaimed = currentUserData.last_pack_claimed.toDate();
+    }
+
+    const diffMs = now - lastClaimed;
+    const fourHoursMs = 4 * 60 * 60 * 1000;
+    
+    if (diffMs >= fourHoursMs) {
+        const earnedPacks = Math.floor(diffMs / fourHoursMs);
+        let newPackTotal = (currentUserData.packs_available || 0) + earnedPacks;
+        
+        if (newPackTotal > 100) newPackTotal = 100;
+
+        const nextClaimTimestamp = new Date(lastClaimed.getTime() + (earnedPacks * fourHoursMs));
+
+        db.collection("users").doc(uid).update({
+            packs_available: newPackTotal,
+            last_pack_claimed: firebase.firestore.Timestamp.fromDate(nextClaimTimestamp)
+        });
+    }
 }
+
+/* =========================================================================
+   PACK OPENING LOGIC & ANIMATIONS
+   ========================================================================= */
+function openBoosterPack() {
+    if (!currentUserData || currentUserData.packs_available <= 0) {
+        alert("You have no packs available right now!");
+        return;
+    }
+    if (!globalStickerDatabase) {
+        alert("Sticker database loading, please wait a second.");
+        return;
+    }
+
+    const uid = firebase.auth().currentUser.uid;
+    document.getElementById("packPile").style.display = "none";
+    
+    const rippedWrapper = document.getElementById("rippedWrapper");
+    const packTop = document.getElementById("packTop");
+    rippedWrapper.style.display = "block";
+    packTop.classList.remove("torn");
+
+    // Sucht 6 absolut unterschiedliche Sticker-IDs heraus
+    const allIds = Object.keys(globalStickerDatabase);
+    const chosenStickers = [];
+    while (chosenStickers.length < 6) {
+        const randomId = allIds[Math.floor(Math.random() * allIds.length)];
+        if (!chosenStickers.some(s => s.id === randomId)) {
+            chosenStickers.push(globalStickerDatabase[randomId]);
+        }
+    }
+    currentOpenedStickers = chosenStickers;
+
+    // Aufreiß-Animation
+    setTimeout(() => {
+        packTop.classList.add("torn");
+        
+        setTimeout(() => {
+            rippedWrapper.style.display = "none";
+            renderDrawnStickersGrid();
+        }, 600);
+    }, 400);
+
+    // Pack in der DB abziehen
+    db.collection("users").doc(uid).update({
+        packs_available: currentUserData.packs_available - 1
+    });
+}
+
+function renderDrawnStickersGrid() {
+    const grid = document.getElementById("stickerGrid");
+    grid.innerHTML = "";
+    grid.style.display = "grid";
+
+    currentOpenedStickers.forEach((sticker, idx) => {
+        const container = document.createElement("div");
+        container.className = "sticker-card-container";
+        container.style.animation = `flyInSticker 0.5s ease-out ${idx * 0.15}s forwards`;
+
+        const img = document.createElement("img");
+        img.className = "sticker-img";
+        img.src = sticker.image;
+        container.appendChild(img);
+
+        // Canvas Rubbel-Effekt bei Shinies (Gold / Silber)
+        if (sticker.shiny === "gold" || sticker.shiny === "silver") {
+            const canvas = document.createElement("canvas");
+            canvas.className = "scratch-overlay";
+            container.appendChild(canvas);
+            setupScratchEffect(canvas);
+        }
+
+        grid.appendChild(container);
+    });
+
+    setTimeout(() => {
+        document.getElementById("actionPanel").style.display = "flex";
+    }, 1200);
+}
+
+/* =========================================================================
+   CANVAS RUBBEL-EFFEKT FÜR SHINIES
+   ========================================================================= */
+function setupScratchEffect(canvas) {
+    const ctx = canvas.getContext("2d");
+    let isDrawing = false;
+    
+    const width = canvas.clientWidth || 180;
+    const height = canvas.clientHeight || 248;
+    canvas.width = width;
+    canvas.height = height;
+
+    // Dunkelgraue Fläche drüberlegen
+    ctx.fillStyle = "#333333";
+    ctx.fillRect(0, 0, width, height);
+
+    ctx.fillStyle = "#ffaa00";
+    ctx.font = "bold 14px Arial";
+    ctx.textAlign = "center";
+    ctx.fillText("SCRATCH SHINY!", width / 2, height / 2);
+
+    function scratch(e) {
+        if (!isDrawing) return;
+        const rect = canvas.getBoundingClientRect();
+        const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+        const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+        const x = clientX - rect.left;
+        const y = clientY - rect.top;
+
+        ctx.globalCompositeOperation = "destination-out";
+        ctx.beginPath();
+        ctx.arc(x, y, 22, 0, Math.PI * 2);
+        ctx.fill();
+        
+        checkScratchPercentage();
+    }
+
+    function checkScratchPercentage() {
+        const imgData = ctx.getImageData(0, 0, width, height);
+        let pixelsCleared = 0;
+        for (let i = 3; i < imgData.data.length; i += 4) {
+            if (imgData.data[i] === 0) pixelsCleared++;
+        }
+        const totalPixels = width * height;
+        
+        // Wenn 80% weggewischt sind, löst sich der Rest schnell auf
+        if ((pixelsCleared / totalPixels) >= 0.8) {
+            canvas.style.opacity = "0";
+            setTimeout(() => canvas.remove(), 400);
+        }
+    }
+
+    canvas.addEventListener("mousedown", () => isDrawing = true);
+    canvas.addEventListener("touchstart", () => isDrawing = true);
+    window.addEventListener("mouseup", () => isDrawing = false);
+    window.addEventListener("touchend", () => isDrawing = false);
+    canvas.addEventListener("mousemove", scratch);
+    canvas.addEventListener("touchmove", scratch);
+}
+
+/* =========================================================================
+   BUTTON ACTIONS
+   ========================================================================= */
+function processDuplicatesToMarket() {
+    const uid = firebase.auth().currentUser.uid;
+    const currentAlbum = currentUserData.album || {};
+    
+    let duplicatesSentCount = 0;
+    let itemsToKeep = [];
+
+    currentOpenedStickers.forEach(sticker => {
+        // Nur wenn Status exakt "pasted" ist, geht es auf den Markt
+        if (currentAlbum[sticker.id] === "pasted") {
+            duplicatesSentCount++;
+            db.collection("market").add({
+                sticker_id: sticker.id,
+                owner_uid: uid,
+                owner_name: firebase.auth().currentUser.email.split('@')[0],
+                timestamp: firebase.firestore.FieldValue.serverTimestamp(),
+                status: "available"
+            });
+        } else {
+            itemsToKeep.push(sticker.id);
+        }
+    });
+
+    if (itemsToKeep.length > 0) {
+        const updatedStapel = [...(currentUserData.stapel || []), ...itemsToKeep];
+        db.collection("users").doc(uid).update({ stapel: updatedStapel });
+    }
+
+    alert(`Completed! ${duplicatesSentCount} duplicate sticker(s) sent to Market. New items saved to your album stack.`);
+    resetBoosterDashboardView();
+}
+
+function sendNewToAlbumStapel() {
+    const uid = firebase.auth().currentUser.uid;
+    const openedIds = currentOpenedStickers.map(s => s.id);
+    const updatedStapel = [...(currentUserData.stapel || []), ...openedIds];
+
+    db.collection("users").doc(uid).update({
+        stapel: updatedStapel
+    }).then(() => {
+        alert("All stickers successfully sent to your album stack!");
+        resetBoosterDashboardView();
+    });
+}
+
+function resetBoosterDashboardView() {
+    document.getElementById("stickerGrid").style.display = "none";
+    document.getElementById("actionPanel").style.display = "none";
+    document.getElementById("packPile").style.display = "block";
+    currentOpenedStickers = [];
+}
+
+/* =========================================================================
+   AUTH MODAL CONTROLS
+   ========================================================================= */
+function openLoginModal() { document.getElementById('loginModal').style.display = 'flex'; }
+function closeLoginModal() { document.getElementById('loginModal').style.display = 'none'; }
 
 function handleAuth(type) {
     const user = document.getElementById('loginUser').value.trim();
@@ -579,7 +837,7 @@ function handleAuth(type) {
         return;
     }
     if (pass.length < 6) {
-        alert("Password must be at least 6 characters long for security reasons!");
+        alert("Password must be at least 6 characters long!");
         return;
     }
 
@@ -605,7 +863,7 @@ function handleAuth(type) {
                 if (error.code === 'auth/email-already-in-use') {
                     firebase.auth().signInWithEmailAndPassword(fakeEmail, pass)
                         .then(() => closeLoginModal())
-                        .catch(() => alert("This username is already taken, and the password provided is incorrect!"));
+                        .catch(() => alert("This username is already taken!"));
                 } else {
                     alert("Registration failed: " + error.message);
                 }
@@ -637,25 +895,9 @@ function startRandom() {
             window.location.href = `game.html?team=${random}`;
         });
 }
-
-function openSelect() {
-    window.location.href = "select.html";
-}
-
-function openRandomPlayer() {
-    window.location.href = "game_random_player.html";
-}
-
-function openMultiplayer() {
-    window.location.href = "select_multiplayer.html";
-}
-
-function toggleTop10(event) {
-    event.stopPropagation(); 
-    const badge = document.getElementById("top10Badge");
-    const isActive = badge.classList.toggle("active");
-    localStorage.setItem("random_player_top10", isActive);
-}
+function openSelect() { window.location.href = "select.html"; }
+function openRandomPlayer() { window.location.href = "game_random_player.html"; }
+function toggleTop10(event) { event.stopPropagation(); const badge = document.getElementById("top10Badge"); const isActive = badge.classList.toggle("active"); localStorage.setItem("random_player_top10", isActive); }
 </script>
 </body>
 </html>
