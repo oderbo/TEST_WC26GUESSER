@@ -23,13 +23,11 @@ body {
     
     min-height: 100dvh;
     width: 100%;
-    
-    background-color: #3f57f5; 
     overflow-x: hidden;
     position: relative;
 }
 
-/* --- HINTERGRUND SYSTEM --- */
+/* --- DYNAMISCHES HINTERGRUND SYSTEM --- */
 body::before {
     content: "";
     position: fixed;
@@ -37,11 +35,24 @@ body::before {
     left: 0;
     width: 100%;
     height: 100%;
-    background-image: url('assets/main_background.png?v=1');
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
     z-index: -2;
+}
+
+/* Desktop & Tablet Standard-Hintergrund */
+@media (min-width: 768px) {
+    body::before {
+        background-image: url('assets/main_background.png?v=2');
+    }
+}
+
+/* Smartphone-Hintergrund */
+@media (max-width: 767px) {
+    body::before {
+        background-image: url('assets/main_background2.png?v=2');
+    }
 }
 
 /* Zentrales Icon auf dem Desktop */
@@ -61,7 +72,7 @@ body::before {
     opacity: 0.8;
 }
 
-/* --- LOGO WRAPPER & RESPONSIVE DESIGN --- */
+/* --- LOGO WRAPPER --- */
 .logo-container {
     width: 100%;
     display: flex;
@@ -94,7 +105,7 @@ body::before {
     display: none;
 }
 
-/* --- DESKTOP & TABLET LAYOUT (iPad inkludiert) --- */
+/* --- DESKTOP & TABLET LAYOUT --- */
 @media (min-width: 768px) {
     body {
         justify-content: flex-start; 
@@ -117,7 +128,6 @@ body::before {
         display: none; 
     }
 
-    /* Alle Hauptelemente liegen auf der exakten horizontalen Mittellinie */
     .menu-container {
         position: absolute;
         top: 55%;
@@ -140,7 +150,6 @@ body::before {
         max-width: 160px;
     }
 
-    /* Platzhalter in der Mitte für die Booster-Zone auf derselben Linie */
     .center-space {
         display: block;
         width: 18vw;
@@ -166,7 +175,6 @@ body::before {
     }
 
     .center-bg-icon {
-        /* Im Mobile-Modus unterhalb der Buttons platziert */
         top: auto;
         bottom: 5vh;
         transform: translateX(-50%);
@@ -210,7 +218,6 @@ body::before {
         max-width: 120px;
     }
 
-    /* Booster-Zone überlagert das zentrierte Icon im unteren Bereich */
     .booster-zone {
         margin-top: auto;
         margin-bottom: 40px;
@@ -438,7 +445,6 @@ body::before {
     width: 100%;
     justify-content: center;
     align-items: center;
-    margin-top: 10px;
     position: relative;
 }
 
@@ -446,6 +452,7 @@ body::before {
     .sticker-display-grid {
         flex-direction: row;
         max-width: 1400px;
+        margin-top: -60px; /* Perfekte Zentrierung auf Desktops */
     }
     .sticker-card-container {
         width: 15%;
@@ -456,13 +463,13 @@ body::before {
 @media (max-width: 767px) {
     .sticker-display-grid {
         display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        max-width: 330px; 
-        gap: 15px;
+        grid-template-columns: repeat(3, 1fr); /* 3 Spalten nebeneinander, damit es flacher ist */
+        max-width: 350px; 
+        gap: 10px;
+        margin-top: -80px; /* Schiebt Sticker auf Mobile leicht hoch */
     }
     .sticker-card-container {
         width: 100%;
-        max-height: 180px; 
     }
 }
 
@@ -488,12 +495,12 @@ body::before {
 }
 
 @media (max-width: 767px) {
-    @keyframes flyToPos1 { 0% { opacity: 0; transform: translate(80px, 360px) scale(0.1); } 100% { opacity: 1; transform: translate(0, 0) scale(1); } }
-    @keyframes flyToPos2 { 0% { opacity: 0; transform: translate(-80px, 360px) scale(0.1); } 100% { opacity: 1; transform: translate(0, 0) scale(1); } }
-    @keyframes flyToPos3 { 0% { opacity: 0; transform: translate(80px, 200px) scale(0.1); } 100% { opacity: 1; transform: translate(0, 0) scale(1); } }
-    @keyframes flyToPos4 { 0% { opacity: 0; transform: translate(-80px, 200px) scale(0.1); } 100% { opacity: 1; transform: translate(0, 0) scale(1); } }
-    @keyframes flyToPos5 { 0% { opacity: 0; transform: translate(80px, 40px) scale(0.1); } 100% { opacity: 1; transform: translate(0, 0) scale(1); } }
-    @keyframes flyToPos6 { 0% { opacity: 0; transform: translate(-80px, 40px) scale(0.1); } 100% { opacity: 1; transform: translate(0, 0) scale(1); } }
+    @keyframes flyToPos1 { 0% { opacity: 0; transform: translate(100px, 250px) scale(0.1); } 100% { opacity: 1; transform: translate(0, 0) scale(1); } }
+    @keyframes flyToPos2 { 0% { opacity: 0; transform: translate(0px, 250px) scale(0.1); } 100% { opacity: 1; transform: translate(0, 0) scale(1); } }
+    @keyframes flyToPos3 { 0% { opacity: 0; transform: translate(-100px, 250px) scale(0.1); } 100% { opacity: 1; transform: translate(0, 0) scale(1); } }
+    @keyframes flyToPos4 { 0% { opacity: 0; transform: translate(100px, 120px) scale(0.1); } 100% { opacity: 1; transform: translate(0, 0) scale(1); } }
+    @keyframes flyToPos5 { 0% { opacity: 0; transform: translate(0px, 120px) scale(0.1); } 100% { opacity: 1; transform: translate(0, 0) scale(1); } }
+    @keyframes flyToPos6 { 0% { opacity: 0; transform: translate(-100px, 120px) scale(0.1); } 100% { opacity: 1; transform: translate(0, 0) scale(1); } }
 }
 
 .sticker-img {
@@ -535,11 +542,28 @@ body::before {
 .action-panel {
     display: none;
     gap: 30px;
-    margin-top: 30px;
     justify-content: center;
     align-items: center;
-    width: 100%;
     z-index: 100000;
+}
+
+@media (min-width: 768px) {
+    .action-panel {
+        position: absolute;
+        bottom: 12vh; /* Fixiert unterhalb der Stickerzeile, ohne das Layout zu verschieben */
+        left: 50%;
+        transform: translateX(-50%);
+        width: auto;
+    }
+}
+
+@media (max-width: 767px) {
+    .action-panel {
+        position: absolute;
+        bottom: 8vh; /* Platziert die Buttons sicher im freien Bereich unten am Screen */
+        left: 0;
+        width: 100%;
+    }
 }
 
 .action-btn-round {
@@ -677,7 +701,6 @@ let currentOpenedStickers = [];
 let currentUserData = null;
 let packTimerInterval = null;
 
-// Tracking-Variablen für die Freirubbel-Sperre
 let totalShinyCount = 0;
 let scratchedShinyCount = 0;
 
@@ -694,7 +717,6 @@ document.addEventListener("DOMContentLoaded", () => {
         .catch(err => console.error("Database reading aborted: ", err));
 });
 
-// AUTH STATE LISTENER
 firebase.auth().onAuthStateChanged((user) => {
     const led = document.getElementById('loginLed');
     const tabText = document.getElementById('loginTabText');
@@ -855,9 +877,8 @@ function renderDrawnStickersGrid() {
         container.className = "sticker-card-container";
         
         const animationNumber = idx + 1;
-        container.style.animation = `flyToPos${animationNumber} 0.6s cubic-bezier(0.25, 1, 0.5, 1) ${idx * 0.18}s forwards`;
+        container.style.animation = `flyToPos${animationNumber} 0.6s cubic-bezier(0.25, 1, 0.5, 1) ${idx * 0.15}s forwards`;
 
-        // Ein Sticker gilt als doppelt, wenn er bereits eingeklebt (album) ODER im Stapel (Inventar) ist
         const isDuplicate = currentAlbum[sticker.id] === "pasted" || currentStapel.includes(sticker.id);
 
         if (isDuplicate) {
@@ -884,18 +905,16 @@ function renderDrawnStickersGrid() {
         grid.appendChild(container);
     });
 
-    // Ist kein einziges Duplikat im Pack, wird der Market-Button ausgegraut
     if (!duplicateFound) {
         marketBtn.disabled = true;
     } else {
         marketBtn.disabled = false;
     }
 
-    // Wenn keine Shiny-Sticker vorhanden sind, blenden wir die Buttons nach dem Flug sofort ein
     if (totalShinyCount === 0) {
         setTimeout(() => {
             document.getElementById("actionPanel").style.display = "flex";
-        }, 1600);
+        }, 1200);
     } else {
         document.getElementById("actionPanel").style.display = "none";
     }
@@ -910,14 +929,9 @@ function setupScratchEffect(canvas) {
     canvas.width = width;
     canvas.height = height;
 
-    ctx.fillStyle = "#4a5ed4";
+    // Schlichtes Dunkelgrau statt knallblau
+    ctx.fillStyle = "#2a2a2a";
     ctx.fillRect(0, 0, width, height);
-
-    // Schicker Rubbel-Effekt Text
-    ctx.fillStyle = "#ffbb04";
-    ctx.font = "bold 13px Arial";
-    ctx.textAlign = "center";
-    ctx.fillText("✨ SCRATCH SHINY ✨", width / 2, height / 2);
 
     function scratch(e) {
         if (!isDrawing) return;
@@ -949,9 +963,10 @@ function setupScratchEffect(canvas) {
             canvas.dataset.cleared = "true";
             canvas.style.opacity = "0";
             setTimeout(() => {
+                // Das Canvas-Element wird komplett gelöscht -> 100% transparent, kein Abdunkeln
                 canvas.remove();
                 handleShinyScratchedNotification();
-            }, 400);
+            }, 300);
         }
     }
 
@@ -965,7 +980,6 @@ function setupScratchEffect(canvas) {
 
 function handleShinyScratchedNotification() {
     scratchedShinyCount++;
-    // Erst wenn alle im Pack versteckten Shinys aufgedeckt wurden, schalten wir die Buttons frei!
     if (scratchedShinyCount >= totalShinyCount) {
         document.getElementById("actionPanel").style.display = "flex";
     }
@@ -977,13 +991,11 @@ function processDuplicatesToMarket() {
     const currentStapel = currentUserData.stapel || [];
     
     let itemsToKeep = [];
-    let duplicatesCount = 0;
 
     currentOpenedStickers.forEach(sticker => {
         const isDuplicate = currentAlbum[sticker.id] === "pasted" || currentStapel.includes(sticker.id);
         
         if (isDuplicate) {
-            duplicatesCount++;
             db.collection("market").add({
                 sticker_id: sticker.id,
                 owner_uid: uid,
@@ -992,7 +1004,6 @@ function processDuplicatesToMarket() {
                 status: "available"
             });
         } else {
-            // Nur echte neue Sticker behalten wir im Inventar
             itemsToKeep.push(sticker.id);
         }
     });
@@ -1002,23 +1013,21 @@ function processDuplicatesToMarket() {
         db.collection("users").doc(uid).update({ stapel: updatedStapel });
     }
 
-    alert(`${duplicatesCount} Duplikate erfolgreich auf dem Markt platziert! Neue Sticker wurden auf den Stapel gelegt.`);
+    // Info-Alert komplett entfernt
     resetBoosterDashboardView();
 }
 
 function sendNewToAlbumStapel() {
     const uid = firebase.auth().currentUser.uid;
-    const currentAlbum = currentUserData.album || {};
     const currentStapel = currentUserData.stapel || [];
     
-    // Es werden alle geöffneten Sticker in den Stapel (das Inventar zum Einkleben) geschickt
     const openedIds = currentOpenedStickers.map(s => s.id);
     const updatedStapel = [...currentStapel, ...openedIds];
 
     db.collection("users").doc(uid).update({
         stapel: updatedStapel
     }).then(() => {
-        alert("Alle Sticker wurden in deinen Stapel sortiert.");
+        // Info-Alert komplett entfernt
         resetBoosterDashboardView();
     });
 }
