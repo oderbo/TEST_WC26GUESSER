@@ -312,7 +312,7 @@ body {
 .login-modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.4); display: none; justify-content: center; align-items: center; z-index: 10000; padding: 20px; }
 .login-modal-content { background: rgba(255, 255, 255, 0.7); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); padding: 30px; border-radius: 16px; border: 1px solid rgba(255, 255, 255, 0.6); text-align: center; max-width: 360px; width: 100%; box-shadow: 0 15px 35px rgba(0,0,0,0.2); position: relative; color: #222222; }
 .login-modal-content h2 { margin-top: 0; font-size: 22px; color: #111111; }
-.login-modal-content p { font-size: 16px; font-weight: bold; color: #3f57f5; margin-bottom: 20px; word-break: break-word; }
+.login-modal-content p { font-size: 16px; font-weight: bold; color: #3f57f5; margin-bottom: 20px; word-break: break-word; transition: color 0.3s ease; }
 .login-input { width: 100%; margin: 8px 0; padding: 12px; background: rgba(255, 255, 255, 0.8); border: 1px solid rgba(0,0,0,0.15); border-radius: 8px; color: #111111; font-size: 16px; outline: none; }
 .login-input:focus { border-color: #3f57f5; background: #ffffff; }
 .login-btn-group { display: flex; gap: 10px; margin-top: 15px; }
@@ -375,11 +375,17 @@ body {
     box-shadow: 0 10px 25px rgba(0, 255, 204, 0.5);
 }
 
+/* Matcht die Hover-Skalierung, damit es beim Aufreißen groß bleibt */
 .ripped-pack-wrapper {
     position: relative;
     width: 100%;
     height: 100%;
     display: none;
+    transition: transform 0.2s ease;
+}
+
+.ripped-pack-wrapper.scale-up {
+    transform: scale(1.05) translateY(-6px);
 }
 
 .pack-part {
@@ -752,6 +758,7 @@ firebase.auth().onAuthStateChanged((user) => {
         logoutBtn.style.display = 'block';
         
         modalDesc.innerText = formattedName;
+        modalDesc.style.color = "#3f57f5"; // Zurücksetzen der Farbe auf Standard
         document.getElementById('modalTitle').innerText = "Account Connected";
         
         startUserSync(user.uid);
@@ -764,6 +771,7 @@ firebase.auth().onAuthStateChanged((user) => {
         authButtons.style.display = 'flex';
         logoutBtn.style.display = 'none';
         modalDesc.innerText = "Create an account to save progress and collect stickers!";
+        modalDesc.style.color = "#3f57f5";
         document.getElementById('modalTitle').innerText = "User Profile";
         
         bZone.style.display = "none";
@@ -845,6 +853,9 @@ function openBoosterPack() {
     
     const rippedWrapper = document.getElementById("rippedWrapper");
     const packTop = document.getElementById("packTop");
+    
+    // Scale-Up Klasse mit übergeben, damit das zerrissene Pack groß bleibt
+    rippedWrapper.className = "ripped-pack-wrapper scale-up";
     rippedWrapper.style.display = "block";
     packTop.classList.remove("torn");
 
@@ -878,6 +889,7 @@ function openBoosterPack() {
         
         setTimeout(() => {
             rippedWrapper.style.display = "none";
+            rippedWrapper.className = "ripped-pack-wrapper"; // Zurücksetzen für das nächste Pack
             document.getElementById("stickerOverlay").style.display = "flex";
             renderDrawnStickersGrid();
         }, 600);
@@ -1012,6 +1024,9 @@ function handleShinyScratchedNotification() {
 function processDuplicatesToMarket() {
     if (remainingDuplicates.length === 0) return;
     
+    // Panel/Buttons SOFORT unsichtbar schalten
+    document.getElementById("actionPanel").style.display = "none";
+    
     const uid = firebase.auth().currentUser.uid;
     
     remainingDuplicates.forEach(sticker => {
@@ -1038,6 +1053,9 @@ function processDuplicatesToMarket() {
 
 function sendNewToAlbumStapel() {
     if (remainingNewStickers.length === 0) return;
+
+    // Panel/Buttons SOFORT unsichtbar schalten
+    document.getElementById("actionPanel").style.display = "none";
 
     const uid = firebase.auth().currentUser.uid;
     const currentStapel = currentUserData.stapel || [];
@@ -1078,6 +1096,7 @@ function closeLoginModal() { document.getElementById('loginModal').style.display
 function handleAuth(type) {
     const user = document.getElementById('loginUser').value.trim();
     const pass = document.getElementById('loginPass').value;
+    const modalDesc = document.getElementById('modalDesc');
 
     if (user === "" || pass === "") {
         alert("Please enter both username and password!");
@@ -1103,8 +1122,12 @@ function handleAuth(type) {
     } else if (type === 'register') {
         firebase.auth().createUserWithEmailAndPassword(fakeEmail, pass)
             .then(() => {
-                alert(`Account for "${user}" successfully created!`);
-                closeLoginModal();
+                // Text ändern auf grün, kein Alert mehr, Modal schließt nach 2 Sek.
+                modalDesc.innerText = "Account created";
+                modalDesc.style.color = "#00cc44";
+                setTimeout(() => {
+                    closeLoginModal();
+                }, 2000);
             })
             .catch((error) => {
                 if (error.code === 'auth/email-already-in-use') {
@@ -1119,10 +1142,15 @@ function handleAuth(type) {
 }
 
 function autoRegister(email, pass, originalName) {
+    const modalDesc = document.getElementById('modalDesc');
     firebase.auth().createUserWithEmailAndPassword(email, pass)
         .then(() => {
-            alert(`Welcome! Your new account "${originalName}" has been automatically created.`);
-            closeLoginModal();
+            // Text ändern auf grün, kein Alert mehr, Modal schließt nach 2 Sek.
+            modalDesc.innerText = "Account created";
+            modalDesc.style.color = "#00cc44";
+            setTimeout(() => {
+                closeLoginModal();
+            }, 2000);
         })
         .catch(err => alert("Automatic registration failed: " + err.message));
 }
