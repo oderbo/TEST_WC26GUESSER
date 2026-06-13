@@ -41,9 +41,10 @@ body {
     justify-content: center;
     align-items: center;
     z-index: 5;
+    flex-shrink: 0;
 }
 
-.header-mask {
+.logo-mask {
     width: 100%;
     -webkit-mask-size: contain;
     mask-size: contain;
@@ -73,13 +74,12 @@ body {
         justify-content: flex-start; 
     }
 
-    /* Zentrales Icon im Hintergrund */
-    .center-bg-icon {
+    .center-bg-icon-desktop {
         position: fixed;
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
-        width: 25vw;
+        width: 35vw;
         max-width: 500px;
         aspect-ratio: 1 / 1;
         background-image: url('assets/Icon.png');
@@ -94,7 +94,7 @@ body {
         margin-top: 3vh; 
     }
 
-    .header-desktop {
+    .logo-desktop {
         display: block;
         max-width: 900px; 
         width: 70vw;
@@ -103,13 +103,13 @@ body {
         mask-image: url('assets/WC26Guesser.svg');
     }
     
-    .header-mobile {
+    .logo-mobile {
         display: none; 
     }
 
-	.menu-container {
+    .menu-container {
         position: absolute;
-        top: 50%; /* <-- Von 55% auf 50% ändern */
+        top: 55%;
         left: 50%;
         transform: translate(-50%, -50%);
         
@@ -139,7 +139,7 @@ body {
 
     .booster-zone {
         position: absolute;
-        top: 50%;
+        top: 55%;
         left: 50%;
         transform: translate(-50%, -50%);
         margin: 0;
@@ -156,21 +156,19 @@ body {
         padding: 0 15px;
     }
 
-    .center-bg-icon {
-        display: none; /* Auf Mobile deaktiviert, da jetzt direkt in der Booster-Zone */
+    .center-bg-icon-desktop {
+        display: none; 
     }
 
-    /* Der obere Header */
     .header-container {
         margin-top: calc(env(safe-area-inset-top, 0px) + 15px);
-        flex-shrink: 0;
     }
     
-    .header-desktop {
+    .logo-desktop {
         display: none; 
     }
     
-    .header-mobile {
+    .logo-mobile {
         display: block;
         max-width: 220px; 
         width: 55vw;
@@ -179,15 +177,12 @@ body {
         mask-image: url('assets/WC_26_GUESSER.svg');
     }
 
-	/* Feste Abstandshalter auf Mobile */
     .mobile-spacer {
         display: block;
-        height: 8vh; /* Nutze z.B. 8vh für die Höhe. Alternativ: 12vw */
+        flex-grow: 1;
         width: 100%;
-        flex-shrink: 0; /* Wichtig, damit die Box nicht zusammengedrückt wird */
     }
 
-    /* Der Button-Block */
     .menu-container {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
@@ -206,9 +201,8 @@ body {
         max-width: 105px;
     }
 
-    /* Die Booster-Zone */
     .booster-zone {
-        display: none; /* Wird via JS auf 'flex' gesetzt, wenn Packs > 0 */
+        display: none; 
         flex-direction: column;
         align-items: center;
         justify-content: center;
@@ -218,11 +212,9 @@ body {
         margin-top: 0;
         margin-bottom: calc(env(safe-area-inset-bottom, 0px) + 2vw);
         
-        /* Feste Maße für das Pack auf Mobile */
         width: 140px;
         height: 196px;
         
-        /* Das HINTERGRUND-BILD klebt jetzt direkt auf den Pixel genau auf dieser Box! */
         background-image: url('assets/Icon.png');
         background-size: contain;
         background-repeat: no-repeat;
@@ -313,7 +305,7 @@ body {
 .login-modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.4); display: none; justify-content: center; align-items: center; z-index: 10000; padding: 20px; }
 .login-modal-content { background: rgba(255, 255, 255, 0.7); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); padding: 30px; border-radius: 16px; border: 1px solid rgba(255, 255, 255, 0.6); text-align: center; max-width: 360px; width: 100%; box-shadow: 0 15px 35px rgba(0,0,0,0.2); position: relative; color: #222222; }
 .login-modal-content h2 { margin-top: 0; font-size: 22px; color: #111111; }
-.login-modal-content p { font-size: 16px; font-weight: bold; color: #3f57f5; margin-bottom: 20px; word-break: break-word; transition: color 0.3s ease; }
+.login-modal-content p { font-size: 16px; font-weight: bold; color: #3f57f5; margin-bottom: 20px; word-break: break-word; }
 .login-input { width: 100%; margin: 8px 0; padding: 12px; background: rgba(255, 255, 255, 0.8); border: 1px solid rgba(0,0,0,0.15); border-radius: 8px; color: #111111; font-size: 16px; outline: none; }
 .login-input:focus { border-color: #3f57f5; background: #ffffff; }
 .login-btn-group { display: flex; gap: 10px; margin-top: 15px; }
@@ -376,17 +368,11 @@ body {
     box-shadow: 0 10px 25px rgba(0, 255, 204, 0.5);
 }
 
-/* Matcht die Hover-Skalierung, damit es beim Aufreißen groß bleibt */
 .ripped-pack-wrapper {
     position: relative;
     width: 100%;
     height: 100%;
     display: none;
-    transition: transform 0.2s ease;
-}
-
-.ripped-pack-wrapper.scale-up {
-    transform: scale(1.05) translateY(-18px);
 }
 
 .pack-part {
@@ -611,11 +597,11 @@ body {
 </head>
 <body>
 
-<div class="center-bg-icon"></div>
+<div class="center-bg-icon-desktop"></div>
 
 <div class="header-container">
-    <div class="header-mask header-desktop"></div>
-    <div class="header-mask header-mobile"></div>
+    <div class="logo-mask logo-desktop"></div>
+    <div class="logo-mask logo-mobile"></div>
 </div>
 
 <div class="mobile-spacer"></div>
@@ -759,7 +745,6 @@ firebase.auth().onAuthStateChanged((user) => {
         logoutBtn.style.display = 'block';
         
         modalDesc.innerText = formattedName;
-        modalDesc.style.color = "#3f57f5"; // Zurücksetzen der Farbe auf Standard
         document.getElementById('modalTitle').innerText = "Account Connected";
         
         startUserSync(user.uid);
@@ -772,7 +757,6 @@ firebase.auth().onAuthStateChanged((user) => {
         authButtons.style.display = 'flex';
         logoutBtn.style.display = 'none';
         modalDesc.innerText = "Create an account to save progress and collect stickers!";
-        modalDesc.style.color = "#3f57f5";
         document.getElementById('modalTitle').innerText = "User Profile";
         
         bZone.style.display = "none";
@@ -854,9 +838,6 @@ function openBoosterPack() {
     
     const rippedWrapper = document.getElementById("rippedWrapper");
     const packTop = document.getElementById("packTop");
-    
-    // Scale-Up Klasse mit übergeben, damit das zerrissene Pack groß bleibt
-    rippedWrapper.className = "ripped-pack-wrapper scale-up";
     rippedWrapper.style.display = "block";
     packTop.classList.remove("torn");
 
@@ -890,7 +871,6 @@ function openBoosterPack() {
         
         setTimeout(() => {
             rippedWrapper.style.display = "none";
-            rippedWrapper.className = "ripped-pack-wrapper"; // Zurücksetzen für das nächste Pack
             document.getElementById("stickerOverlay").style.display = "flex";
             renderDrawnStickersGrid();
         }, 600);
@@ -971,17 +951,31 @@ function setupScratchEffect(canvas) {
 
     function scratch(e) {
         if (!isDrawing) return;
-        e.preventDefault(); 
+        
+        // Verhindert iOS Elastic-Scrolling am Bildschirmrand absolut zuverlässig
+        if (e.cancelable) e.preventDefault(); 
         
         const rect = canvas.getBoundingClientRect();
-        const clientX = e.touches ? e.touches[0].clientX : e.clientX;
-        const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+        
+        let clientX, clientY;
+        if (e.touches && e.touches.length > 0) {
+            clientX = e.touches[0].clientX;
+            clientY = e.touches[0].clientY;
+        } else if (e.changedTouches && e.changedTouches.length > 0) {
+            // Extrem wichtig für iOS-Ränder, falls der Finger das Canvas verlässt
+            clientX = e.changedTouches[0].clientX;
+            clientY = e.changedTouches[0].clientY;
+        } else {
+            clientX = e.clientX;
+            clientY = e.clientY;
+        }
+
         const x = clientX - rect.left;
         const y = clientY - rect.top;
 
         ctx.globalCompositeOperation = "destination-out";
         ctx.beginPath();
-        ctx.arc(x, y, 50, 0, Math.PI * 2);
+        ctx.arc(x, y, 40, 0, Math.PI * 2); // Radius optimiert für präziseres Freiwischen
         ctx.fill();
         
         checkScratchPercentage();
@@ -997,7 +991,8 @@ function setupScratchEffect(canvas) {
         }
         const totalPixels = width * height;
         
-        if ((pixelsCleared / totalPixels) >= 0.8) {
+        // Sobald 75% freigerubbelt sind, decken wir das Canvas automatisch auf (verhindert Frust bei Resten am Rand)
+        if ((pixelsCleared / totalPixels) >= 0.75) {
             canvas.dataset.cleared = "true";
             canvas.style.opacity = "0";
             setTimeout(() => {
@@ -1007,12 +1002,21 @@ function setupScratchEffect(canvas) {
         }
     }
 
-    canvas.addEventListener("mousedown", (e) => { isDrawing = true; });
-    canvas.addEventListener("touchstart", (e) => { isDrawing = true; e.preventDefault(); }, { passive: false });
-    window.addEventListener("mouseup", () => isDrawing = false);
-    window.addEventListener("touchend", () => isDrawing = false);
+    // Maus-Events (Desktop)
+    canvas.addEventListener("mousedown", (e) => { isDrawing = true; scratch(e); });
     canvas.addEventListener("mousemove", scratch);
+    window.addEventListener("mouseup", () => isDrawing = false);
+
+    // Touch-Events (iOS / Android)
+    canvas.addEventListener("touchstart", (e) => { 
+        isDrawing = true; 
+        scratch(e); 
+    }, { passive: false });
+    
     canvas.addEventListener("touchmove", scratch, { passive: false });
+    
+    window.addEventListener("touchend", () => { isDrawing = false; });
+    window.addEventListener("touchcancel", () => { isDrawing = false; });
 }
 
 function handleShinyScratchedNotification() {
@@ -1024,9 +1028,6 @@ function handleShinyScratchedNotification() {
 
 function processDuplicatesToMarket() {
     if (remainingDuplicates.length === 0) return;
-    
-    // Panel/Buttons SOFORT unsichtbar schalten
-    document.getElementById("actionPanel").style.display = "none";
     
     const uid = firebase.auth().currentUser.uid;
     
@@ -1054,9 +1055,6 @@ function processDuplicatesToMarket() {
 
 function sendNewToAlbumStapel() {
     if (remainingNewStickers.length === 0) return;
-
-    // Panel/Buttons SOFORT unsichtbar schalten
-    document.getElementById("actionPanel").style.display = "none";
 
     const uid = firebase.auth().currentUser.uid;
     const currentStapel = currentUserData.stapel || [];
@@ -1097,7 +1095,6 @@ function closeLoginModal() { document.getElementById('loginModal').style.display
 function handleAuth(type) {
     const user = document.getElementById('loginUser').value.trim();
     const pass = document.getElementById('loginPass').value;
-    const modalDesc = document.getElementById('modalDesc');
 
     if (user === "" || pass === "") {
         alert("Please enter both username and password!");
@@ -1123,12 +1120,8 @@ function handleAuth(type) {
     } else if (type === 'register') {
         firebase.auth().createUserWithEmailAndPassword(fakeEmail, pass)
             .then(() => {
-                // Text ändern auf grün, kein Alert mehr, Modal schließt nach 2 Sek.
-                modalDesc.innerText = "Account created";
-                modalDesc.style.color = "#00cc44";
-                setTimeout(() => {
-                    closeLoginModal();
-                }, 2000);
+                alert(`Account for "${user}" successfully created!`);
+                closeLoginModal();
             })
             .catch((error) => {
                 if (error.code === 'auth/email-already-in-use') {
@@ -1146,7 +1139,6 @@ function autoRegister(email, pass, originalName) {
     const modalDesc = document.getElementById('modalDesc');
     firebase.auth().createUserWithEmailAndPassword(email, pass)
         .then(() => {
-            // Text ändern auf grün, kein Alert mehr, Modal schließt nach 2 Sek.
             modalDesc.innerText = "Account created";
             modalDesc.style.color = "#00cc44";
             setTimeout(() => {
