@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="de">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
@@ -25,9 +25,40 @@ body {
     width: 100%;
     
     background-color: #3f57f5; 
+    overflow-x: hidden;
+    position: relative;
+}
+
+/* --- HINTERGRUND SYSTEM --- */
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
     background-image: url('assets/main_background.png?v=1');
     background-repeat: no-repeat;
-    overflow-x: hidden;
+    background-size: cover;
+    background-position: center;
+    z-index: -2;
+}
+
+/* Zentrales Icon auf dem Desktop */
+.center-bg-icon {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 35vw;
+    max-width: 500px;
+    aspect-ratio: 1 / 1;
+    background-image: url('assets/Icon.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    z-index: -1;
+    opacity: 0.8;
 }
 
 /* --- LOGO WRAPPER & RESPONSIVE DESIGN --- */
@@ -36,6 +67,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    z-index: 5;
 }
 
 .logo-mask {
@@ -62,22 +94,20 @@ body {
     display: none;
 }
 
-/* --- DESKTOP LAYOUT --- */
+/* --- DESKTOP & TABLET LAYOUT (iPad inkludiert) --- */
 @media (min-width: 768px) {
     body {
         justify-content: flex-start; 
-        background-position: center;
-        background-size: contain; 
-        position: relative;
     }
 
     .logo-container {
-        margin-top: 5vh; 
+        margin-top: 3vh; 
     }
 
     .logo-desktop {
         display: block;
-        max-width: 1200px; 
+        max-width: 900px; 
+        width: 70vw;
         aspect-ratio: 3 / 1; 
         -webkit-mask-image: url('assets/WC26Guesser.svg');
         mask-image: url('assets/WC26Guesser.svg');
@@ -87,9 +117,10 @@ body {
         display: none; 
     }
 
+    /* Alle Hauptelemente liegen auf der exakten horizontalen Mittellinie */
     .menu-container {
         position: absolute;
-        top: 45%;
+        top: 55%;
         left: 50%;
         transform: translate(-50%, -50%);
         
@@ -98,33 +129,55 @@ body {
         justify-content: center;
         align-items: center;
         width: 100%;
-        max-width: 1600px; 
-        gap: 35px; 
+        max-width: 1400px; 
+        gap: 2.5vw; 
+        z-index: 10;
+        padding: 0 20px;
     }
 
     .image-btn {
-        width: 14%; 
+        width: 13vw; 
+        max-width: 160px;
     }
 
+    /* Platzhalter in der Mitte für die Booster-Zone auf derselben Linie */
     .center-space {
         display: block;
-        width: 20%;
+        width: 18vw;
+        max-width: 220px;
         aspect-ratio: 1 / 1;
         visibility: hidden; 
+    }
+
+    .booster-zone {
+        position: absolute;
+        top: 55%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        margin: 0;
+        z-index: 11;
     }
 }
 
 /* --- MOBILE LAYOUT --- */
 @media (max-width: 767px) {
     body {
-        justify-content: space-between; 
-        background-size: cover; 
-        background-position: center -90px; 
+        justify-content: flex-start; 
+    }
+
+    .center-bg-icon {
+        /* Im Mobile-Modus unterhalb der Buttons platziert */
+        top: auto;
+        bottom: 5vh;
+        transform: translateX(-50%);
+        width: 60vw;
+        max-width: 280px;
+        height: auto;
     }
 
     .logo-container {
-        margin-top: calc(env(safe-area-inset-top, 0px) + 0vh);
-        margin-bottom: 30px;
+        margin-top: calc(env(safe-area-inset-top, 0px) + 10px);
+        margin-bottom: 20px;
         padding: 0 15px;
     }
     
@@ -134,7 +187,8 @@ body {
     
     .logo-mobile {
         display: block;
-        max-width: 320px; 
+        max-width: 260px; 
+        width: 65vw;
         aspect-ratio: 1.2 / 1; 
         -webkit-mask-image: url('assets/WC_26_GUESSER.svg');
         mask-image: url('assets/WC_26_GUESSER.svg');
@@ -143,16 +197,24 @@ body {
     .menu-container {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
-        gap: 20px; 
+        gap: 15px; 
         justify-items: center;
         align-items: center;
         max-width: 280px;
-        margin-top: auto;
-        margin-bottom: 20px; 
+        margin: 10px auto; 
+        z-index: 10;
     }
 
     .image-btn {
-        width: 30vw; 
+        width: 32vw; 
+        max-width: 120px;
+    }
+
+    /* Booster-Zone überlagert das zentrierte Icon im unteren Bereich */
+    .booster-zone {
+        margin-top: auto;
+        margin-bottom: 40px;
+        z-index: 12;
     }
 }
 
@@ -251,23 +313,12 @@ body {
 .close-modal-btn { position: absolute; top: 10px; right: 12px; background: none; border: none; font-size: 18px; cursor: pointer; color: #555555; font-weight: bold; }
 
 /* =========================================================================
-   BOOSTER OPENING SECTION (Zentriertes Interface auf dem Main Screen)
+   BOOSTER OPENING SECTION
    ========================================================================= */
 .booster-zone {
-    width: auto;
-    margin: 40px auto;
     display: none; 
     flex-direction: column;
     align-items: center;
-    position: relative;
-    z-index: 10;
-}
-
-/* Desktop-Spezifisch: Pakete weiter nach unten schieben, um das Logo nicht zu verdecken */
-@media (min-width: 768px) {
-    .booster-zone {
-        margin-top: 18vh; 
-    }
 }
 
 .pack-counter-circle {
@@ -290,10 +341,16 @@ body {
 
 .pack-pile {
     position: relative;
-    width: 200px;
-    height: 280px;
-    margin-bottom: 20px;
+    width: 160px;
+    height: 224px;
     cursor: pointer;
+}
+
+@media (min-width: 768px) {
+    .pack-pile {
+        width: 180px;
+        height: 252px;
+    }
 }
 
 .pack-layer {
@@ -312,20 +369,19 @@ body {
 .pack-layer.front { 
     background-image: url('assets/booster_pack_front.png'); 
     z-index: 3; 
-    transform: translateY(-25px);
+    transform: translateY(-12px);
 }
 
 .pack-pile:hover .pack-layer.front {
-    transform: scale(1.05) translateY(-32px);
+    transform: scale(1.05) translateY(-18px);
     box-shadow: 0 10px 25px rgba(0, 255, 204, 0.5);
 }
 
 .ripped-pack-wrapper {
     position: relative;
-    width: 200px;
-    height: 280px;
+    width: 180px;
+    height: 252px;
     display: none;
-    margin-bottom: 20px;
 }
 
 .pack-part {
@@ -357,7 +413,7 @@ body {
 }
 
 /* =========================================================================
-   STICKER OVERLAY DISPLAY SYSTEM (Volle Transparenz oberhalb des Menüs)
+   STICKER OVERLAY DISPLAY SYSTEM
    ========================================================================= */
 .sticker-overlay-layer {
     position: fixed;
@@ -365,7 +421,7 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background: transparent; /* Absolut unsichtbare Layer, blockiert Klicks nach unten */
+    background: rgba(0, 0, 0, 0.85); 
     z-index: 99999; 
     display: none;
     flex-direction: column;
@@ -386,7 +442,6 @@ body {
     position: relative;
 }
 
-/* --- DESKTOP LAYOUT (6x1 Reihe) --- */
 @media (min-width: 768px) {
     .sticker-display-grid {
         flex-direction: row;
@@ -398,17 +453,16 @@ body {
     }
 }
 
-/* --- MOBILE & iOS LAYOUT (2x3 Grid perfekt skaliert) --- */
 @media (max-width: 767px) {
     .sticker-display-grid {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
-        max-width: 330px; /* Begrenzung verhindert Übergröße auf iOS */
+        max-width: 330px; 
         gap: 15px;
     }
     .sticker-card-container {
         width: 100%;
-        max-height: 180px; /* Schützt iPhones vor gestreckten Riesen-Stickern */
+        max-height: 180px; 
     }
 }
 
@@ -423,11 +477,8 @@ body {
     animation-fill-mode: forwards !important;
 }
 
-/* =========================================================================
-   DYNAMIC FLIGHT PATH ANIMATIONS (Drawn from Pack center to grid cells)
-   ========================================================================= */
+/* FLUGANIMATIONEN */
 @media (min-width: 768px) {
-    /* Desktop-Flugbahnen: Aus der Mitte (Pack-Position) nach links/rechts fächern */
     @keyframes flyToPos1 { 0% { opacity: 0; transform: translate(370px, 150px) scale(0.1); } 100% { opacity: 1; transform: translate(0, 0) scale(1); } }
     @keyframes flyToPos2 { 0% { opacity: 0; transform: translate(170px, 150px) scale(0.1); } 100% { opacity: 1; transform: translate(0, 0) scale(1); } }
     @keyframes flyToPos3 { 0% { opacity: 0; transform: translate(20px, 150px) scale(0.1); } 100% { opacity: 1; transform: translate(0, 0) scale(1); } }
@@ -437,7 +488,6 @@ body {
 }
 
 @media (max-width: 767px) {
-    /* Mobile/iOS-Flugbahnen: Strukturierte 3 Ebenen (Ebene 1 top, Ebene 2 mid, Ebene 3 bot) */
     @keyframes flyToPos1 { 0% { opacity: 0; transform: translate(80px, 360px) scale(0.1); } 100% { opacity: 1; transform: translate(0, 0) scale(1); } }
     @keyframes flyToPos2 { 0% { opacity: 0; transform: translate(-80px, 360px) scale(0.1); } 100% { opacity: 1; transform: translate(0, 0) scale(1); } }
     @keyframes flyToPos3 { 0% { opacity: 0; transform: translate(80px, 200px) scale(0.1); } 100% { opacity: 1; transform: translate(0, 0) scale(1); } }
@@ -470,7 +520,7 @@ body {
     left: -25px;
     background: #ffffff;
     color: #ff0000;
-    font-weight: 200;
+    font-weight: bold;
     font-family: 'Arial Black', sans-serif;
     font-size: 9px;
     text-transform: uppercase;
@@ -481,9 +531,7 @@ body {
     letter-spacing: 0.5px;
 }
 
-/* =========================================================================
-   NEW ROUND ICON ACTION BUTTONS
-   ========================================================================= */
+/* --- ACTION PANEL --- */
 .action-panel {
     display: none;
     gap: 30px;
@@ -504,17 +552,19 @@ body {
     justify-content: center;
     cursor: pointer;
     box-shadow: 0 6px 16px rgba(0,0,0,0.3);
-    transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.2s;
+    transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.2s, opacity 0.2s;
     padding: 0;
 }
 
-.action-btn-round:hover {
+.action-btn-round:hover:not(:disabled) {
     transform: scale(1.1);
     box-shadow: 0 8px 22px rgba(0,0,0,0.4);
 }
 
-.action-btn-round:active {
-    transform: scale(0.95);
+.action-btn-round:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+    filter: grayscale(1);
 }
 
 .action-btn-round img {
@@ -524,17 +574,13 @@ body {
     display: block;
 }
 
-/* Spezifische Ränder */
-.btn-market-round {
-    border: 2px solid #ffbb04;
-}
-
-.btn-send-album-round {
-    border: 2px solid #28a745; /* Kräftiges Rasengrün */
-}
+.btn-market-round { border: 2px solid #ffbb04; }
+.btn-send-album-round { border: 2px solid #28a745; }
 </style>
 </head>
 <body>
+
+<div class="center-bg-icon"></div>
 
 <div class="logo-container">
     <div class="logo-mask logo-desktop"></div>
@@ -575,10 +621,10 @@ body {
     <div class="sticker-display-grid" id="stickerGrid"></div>
 
     <div class="action-panel" id="actionPanel">
-        <button class="action-btn-round btn-market-round" onclick="processDuplicatesToMarket()" title="Duplicate to Market">
+        <button class="action-btn-round btn-market-round" id="marketBtn" onclick="processDuplicatesToMarket()" title="Duplikate auf den Markt schicken">
             <img src="assets/market_icon.png" alt="Market">
         </button>
-        <button class="action-btn-round btn-send-album-round" onclick="sendNewToAlbumStapel()" title="Send to Album">
+        <button class="action-btn-round btn-send-album-round" onclick="sendNewToAlbumStapel()" title="Neue Sticker zum Stapel schicken">
             <img src="assets/panini_album.png" alt="Album">
         </button>
     </div>
@@ -630,6 +676,10 @@ let globalStickerDatabase = null;
 let currentOpenedStickers = []; 
 let currentUserData = null;
 let packTimerInterval = null;
+
+// Tracking-Variablen für die Freirubbel-Sperre
+let totalShinyCount = 0;
+let scratchedShinyCount = 0;
 
 document.addEventListener("DOMContentLoaded", () => {
     const isTop10Active = localStorage.getItem("random_player_top10") === "true";
@@ -697,24 +747,13 @@ function startUserSync(uid) {
                 album: {},
                 stapel: []
             }).then(() => {
-                console.log("Neues Profil mit 7 Packs erfolgreich angelegt.");
+                console.log("Neues Profil erfolgreich angelegt.");
             }).catch(err => console.error("Fehler beim Erstellen des Profils:", err));
             return;
         }
         
         currentUserData = doc.data();
-
-        if (currentUserData.packs_available === undefined) {
-            db.collection("users").doc(uid).update({
-                packs_available: 7,
-                last_pack_claimed: firebase.firestore.FieldValue.serverTimestamp(),
-                album: currentUserData.album || {},
-                stapel: currentUserData.stapel || []
-            });
-            return;
-        }
-        
-        const packs = currentUserData.packs_available;
+        const packs = currentUserData.packs_available || 0;
         document.getElementById("packCounterCircle").innerText = packs;
         
         if (packs > 0) {
@@ -747,7 +786,6 @@ function checkAndGeneratePacks(uid) {
         let newPackTotal = (currentUserData.packs_available || 0) + earnedPacks;
         
         if (newPackTotal > 100) newPackTotal = 100;
-
         const nextClaimTimestamp = new Date(lastClaimed.getTime() + (earnedPacks * fourHoursMs));
 
         db.collection("users").doc(uid).update({
@@ -803,17 +841,27 @@ function openBoosterPack() {
 function renderDrawnStickersGrid() {
     const grid = document.getElementById("stickerGrid");
     const currentAlbum = currentUserData.album || {};
+    const currentStapel = currentUserData.stapel || [];
+    const marketBtn = document.getElementById("marketBtn");
+    
     grid.innerHTML = "";
+    totalShinyCount = 0;
+    scratchedShinyCount = 0;
+
+    let duplicateFound = false;
 
     currentOpenedStickers.forEach((sticker, idx) => {
         const container = document.createElement("div");
         container.className = "sticker-card-container";
         
-        // Jede ID (1 bis 6) bekommt ihre eigene CSS-Flugbahn-Animation zugewiesen
         const animationNumber = idx + 1;
         container.style.animation = `flyToPos${animationNumber} 0.6s cubic-bezier(0.25, 1, 0.5, 1) ${idx * 0.18}s forwards`;
 
-        if (currentAlbum[sticker.id] === "pasted") {
+        // Ein Sticker gilt als doppelt, wenn er bereits eingeklebt (album) ODER im Stapel (Inventar) ist
+        const isDuplicate = currentAlbum[sticker.id] === "pasted" || currentStapel.includes(sticker.id);
+
+        if (isDuplicate) {
+            duplicateFound = true;
             const ribbon = document.createElement("div");
             ribbon.className = "duplicate-ribbon";
             ribbon.innerText = "Duplicate";
@@ -826,6 +874,7 @@ function renderDrawnStickersGrid() {
         container.appendChild(img);
 
         if (sticker.shiny === "gold" || sticker.shiny === "silver") {
+            totalShinyCount++;
             const canvas = document.createElement("canvas");
             canvas.className = "scratch-overlay";
             container.appendChild(canvas);
@@ -835,10 +884,21 @@ function renderDrawnStickersGrid() {
         grid.appendChild(container);
     });
 
-    // Das kreisrunde Action-Panel fadet zeitlich abgestimmt nach dem letzten Sticker-Flug rein
-    setTimeout(() => {
-        document.getElementById("actionPanel").style.display = "flex";
-    }, 1600);
+    // Ist kein einziges Duplikat im Pack, wird der Market-Button ausgegraut
+    if (!duplicateFound) {
+        marketBtn.disabled = true;
+    } else {
+        marketBtn.disabled = false;
+    }
+
+    // Wenn keine Shiny-Sticker vorhanden sind, blenden wir die Buttons nach dem Flug sofort ein
+    if (totalShinyCount === 0) {
+        setTimeout(() => {
+            document.getElementById("actionPanel").style.display = "flex";
+        }, 1600);
+    } else {
+        document.getElementById("actionPanel").style.display = "none";
+    }
 }
 
 function setupScratchEffect(canvas) {
@@ -850,13 +910,14 @@ function setupScratchEffect(canvas) {
     canvas.width = width;
     canvas.height = height;
 
-    ctx.fillStyle = "#333333";
+    ctx.fillStyle = "#4a5ed4";
     ctx.fillRect(0, 0, width, height);
 
-    ctx.fillStyle = "#ffaa00";
-    ctx.font = "bold 14px Arial";
+    // Schicker Rubbel-Effekt Text
+    ctx.fillStyle = "#ffbb04";
+    ctx.font = "bold 13px Arial";
     ctx.textAlign = "center";
-    ctx.fillText("SCRATCH SHINY!", width / 2, height / 2);
+    ctx.fillText("✨ SCRATCH SHINY ✨", width / 2, height / 2);
 
     function scratch(e) {
         if (!isDrawing) return;
@@ -868,13 +929,15 @@ function setupScratchEffect(canvas) {
 
         ctx.globalCompositeOperation = "destination-out";
         ctx.beginPath();
-        ctx.arc(x, y, 35, 0, Math.PI * 2);
+        ctx.arc(x, y, 30, 0, Math.PI * 2);
         ctx.fill();
         
         checkScratchPercentage();
     }
 
     function checkScratchPercentage() {
+        if (canvas.dataset.cleared === "true") return;
+        
         const imgData = ctx.getImageData(0, 0, width, height);
         let pixelsCleared = 0;
         for (let i = 3; i < imgData.data.length; i += 4) {
@@ -883,8 +946,12 @@ function setupScratchEffect(canvas) {
         const totalPixels = width * height;
         
         if ((pixelsCleared / totalPixels) >= 0.8) {
+            canvas.dataset.cleared = "true";
             canvas.style.opacity = "0";
-            setTimeout(() => canvas.remove(), 400);
+            setTimeout(() => {
+                canvas.remove();
+                handleShinyScratchedNotification();
+            }, 400);
         }
     }
 
@@ -896,14 +963,27 @@ function setupScratchEffect(canvas) {
     canvas.addEventListener("touchmove", scratch);
 }
 
+function handleShinyScratchedNotification() {
+    scratchedShinyCount++;
+    // Erst wenn alle im Pack versteckten Shinys aufgedeckt wurden, schalten wir die Buttons frei!
+    if (scratchedShinyCount >= totalShinyCount) {
+        document.getElementById("actionPanel").style.display = "flex";
+    }
+}
+
 function processDuplicatesToMarket() {
     const uid = firebase.auth().currentUser.uid;
     const currentAlbum = currentUserData.album || {};
+    const currentStapel = currentUserData.stapel || [];
     
     let itemsToKeep = [];
+    let duplicatesCount = 0;
 
     currentOpenedStickers.forEach(sticker => {
-        if (currentAlbum[sticker.id] === "pasted") {
+        const isDuplicate = currentAlbum[sticker.id] === "pasted" || currentStapel.includes(sticker.id);
+        
+        if (isDuplicate) {
+            duplicatesCount++;
             db.collection("market").add({
                 sticker_id: sticker.id,
                 owner_uid: uid,
@@ -912,26 +992,33 @@ function processDuplicatesToMarket() {
                 status: "available"
             });
         } else {
+            // Nur echte neue Sticker behalten wir im Inventar
             itemsToKeep.push(sticker.id);
         }
     });
 
     if (itemsToKeep.length > 0) {
-        const updatedStapel = [...(currentUserData.stapel || []), ...itemsToKeep];
+        const updatedStapel = [...currentStapel, ...itemsToKeep];
         db.collection("users").doc(uid).update({ stapel: updatedStapel });
     }
 
+    alert(`${duplicatesCount} Duplikate erfolgreich auf dem Markt platziert! Neue Sticker wurden auf den Stapel gelegt.`);
     resetBoosterDashboardView();
 }
 
 function sendNewToAlbumStapel() {
     const uid = firebase.auth().currentUser.uid;
+    const currentAlbum = currentUserData.album || {};
+    const currentStapel = currentUserData.stapel || [];
+    
+    // Es werden alle geöffneten Sticker in den Stapel (das Inventar zum Einkleben) geschickt
     const openedIds = currentOpenedStickers.map(s => s.id);
-    const updatedStapel = [...(currentUserData.stapel || []), ...openedIds];
+    const updatedStapel = [...currentStapel, ...openedIds];
 
     db.collection("users").doc(uid).update({
         stapel: updatedStapel
     }).then(() => {
+        alert("Alle Sticker wurden in deinen Stapel sortiert.");
         resetBoosterDashboardView();
     });
 }
