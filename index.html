@@ -147,17 +147,19 @@ body {
     }
 }
 
-/* --- MOBILE LAYOUT --- */
+/* --- MOBILE LAYOUT (Komplett überarbeitet nach deinen Wünschen) --- */
 @media (max-width: 767px) {
     body {
         justify-content: flex-start; 
         padding: 0 15px;
     }
 
+    /* Der obere Logo Container */
     .logo-container {
-        margin-top: calc(env(safe-area-inset-top, 0px) + 0vh);
-        margin-bottom: 30px;
+        margin-top: calc(env(safe-area-inset-top, 0px) + 10px);
+        margin-bottom: 0; /* Abstände werden jetzt dynamisch über Flexbox berechnet */
         padding: 0 15px;
+        flex-shrink: 0;
     }
     
     .logo-desktop {
@@ -166,52 +168,61 @@ body {
     
     .logo-mobile {
         display: block;
-        max-width: 260px; 
-        width: 65vw;
+        max-width: 240px; 
+        width: 60vw;
         aspect-ratio: 1.2 / 1; 
         -webkit-mask-image: url('assets/WC_26_GUESSER.svg');
         mask-image: url('assets/WC_26_GUESSER.svg');
     }
 
+    /* Dynamische Abstands-Kästen für exakt gleiche Zwischenräume */
+    .mobile-spacer {
+        display: block;
+        flex-grow: 1; /* Beide Spacer nehmen exakt gleich viel freien Platz ein */
+        width: 100%;
+    }
+
+    /* Der Button-Container */
     .menu-container {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
-        gap: 12px; /* Wirklich kleiner Zwischenraum */
+        gap: 12px; 
         justify-items: center;
         align-items: center;
-        max-width: 280px;
+        max-width: 260px;
+        width: 100%;
         margin: 0 auto; 
         z-index: 10;
+        flex-shrink: 0;
     }
 
     .image-btn {
-        width: 32vw; 
-        max-width: 120px;
+        width: 30vw; 
+        max-width: 110px;
     }
 
-    /* Exakte vertikale Ausrichtung auf derselben Center-Achse wie das Icon */
-    .center-bg-icon {
-        top: 62%;
+    /* Die feste Unterkanten-Definition für die Booster-Zone und das Icon (2vw von unten) */
+    .booster-zone, .center-bg-icon {
+        position: fixed;
+        bottom: calc(env(safe-area-inset-bottom, 0px) + 2vw);
         left: 50%;
-        transform: translate(-50%, -50%);
-        width: 55vw;
-        max-width: 240px;
-        height: auto;
+        transform: translateX(-50%); /* Nur noch auf der X-Achse verschieben, da bottom fest ist */
+        top: auto; /* Deaktiviert die alte prozentuale Positionierung */
+        margin: 0;
+    }
+
+    /* Exakte Größengleichheit: Ober- und Unterkante von Icon und Booster-Zone sind nun absolut identisch */
+    .center-bg-icon {
+        width: 140px;  /* Gleiche Breite wie .pack-pile auf Mobile */
+        height: 196px; /* Gleiche Höhe wie .pack-pile auf Mobile */
+        max-width: none;
+        z-index: -1;
     }
 
     .booster-zone {
-        position: fixed;
-        top: 62%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        margin: 0;
         z-index: 12;
-    }
-}
-
-@media (max-width: 767px) and (max-height: 680px) {
-    .center-bg-icon, .booster-zone {
-        top: 66%;
+        width: 140px;
+        height: 196px;
     }
 }
 
@@ -483,7 +494,6 @@ body {
     transition: opacity 0.4s ease, transform 0.4s ease;
 }
 
-/* Animation zum sanften Ausblenden weggeschickter Karten */
 .sticker-card-container.removed-card {
     opacity: 0 !important;
     transform: scale(0.6) translateY(-100px) !important;
@@ -618,6 +628,8 @@ body {
     <div class="logo-mask logo-mobile"></div>
 </div>
 
+<div class="mobile-spacer"></div>
+
 <div class="menu-container">
     <button class="image-btn btn-random-nation" onclick="startRandom()"></button>
     <button class="image-btn btn-pick-nation" onclick="openSelect()"></button>
@@ -633,6 +645,8 @@ body {
     
     <button class="image-btn btn-album" onclick="window.location.href='album.html'"></button>
 </div>
+
+<div class="mobile-spacer"></div>
 
 <div class="booster-zone" id="boosterZone">
     <div class="pack-pile" id="packPile" onclick="openBoosterPack()">
@@ -711,7 +725,6 @@ let packTimerInterval = null;
 let totalShinyCount = 0;
 let scratchedShinyCount = 0;
 
-// Exakte Tracking-Listen für die Aufteilung nach deiner Logik
 let remainingDuplicates = [];
 let remainingNewStickers = [];
 
@@ -862,7 +875,6 @@ function openBoosterPack() {
     }
     currentOpenedStickers = chosenStickers;
 
-    // Listen für die Logik-Trennung füllen
     const currentAlbum = currentUserData.album || {};
     const currentStapel = currentUserData.stapel || [];
     
@@ -907,7 +919,6 @@ function renderDrawnStickersGrid() {
         const animationNumber = idx + 1;
         container.style.animation = `flyToPos${animationNumber} 0.6s cubic-bezier(0.25, 1, 0.5, 1) ${idx * 0.15}s forwards`;
 
-        // Prüfen, ob dieser Sticker in der Duplikate-Liste liegt
         const isDuplicate = remainingDuplicates.some(s => s.id === sticker.id);
 
         if (isDuplicate) {
@@ -940,10 +951,7 @@ function updateActionButtonsState() {
     const marketBtn = document.getElementById("marketBtn");
     const albumBtn = document.getElementById("albumBtn");
 
-    // Markt-Button ist aktiv, wenn noch Duplikate da sind
     marketBtn.disabled = (remainingDuplicates.length === 0);
-    
-    // Album-Button ist aktiv, wenn noch neue Sticker da sind
     albumBtn.disabled = (remainingNewStickers.length === 0);
 
     if (totalShinyCount === 0 || scratchedShinyCount >= totalShinyCount) {
@@ -1018,18 +1026,15 @@ function handleShinyScratchedNotification() {
     }
 }
 
-// 1. DUPLIKATE AUF DEN MARKT SCHICKEN
 function processDuplicatesToMarket() {
     if (remainingDuplicates.length === 0) return;
     
     const uid = firebase.auth().currentUser.uid;
     
     remainingDuplicates.forEach(sticker => {
-        // Karte im UI visuell ausblenden
         const cardEl = document.getElementById(`sticker-card-${sticker.id}`);
         if (cardEl) cardEl.classList.add("removed-card");
 
-        // Ab in die weltweite Firestore Markt-Sammlung
         db.collection("market").add({
             sticker_id: sticker.id,
             owner_uid: uid,
@@ -1039,10 +1044,8 @@ function processDuplicatesToMarket() {
         });
     });
 
-    // Liste leeren (da alle verarbeitet wurden)
     remainingDuplicates = [];
     
-    // Prüfen, ob jetzt auch keine neuen Sticker mehr offen sind
     if (remainingNewStickers.length === 0) {
         setTimeout(() => { resetBoosterDashboardView(); }, 400);
     } else {
@@ -1050,14 +1053,12 @@ function processDuplicatesToMarket() {
     }
 }
 
-// 2. NEUE STICKER ZUM ALBUM-STAPEL SCHICKEN
 function sendNewToAlbumStapel() {
     if (remainingNewStickers.length === 0) return;
 
     const uid = firebase.auth().currentUser.uid;
     const currentStapel = currentUserData.stapel || [];
     
-    // IDs extrahieren und im UI visuell entfernen
     const newIds = remainingNewStickers.map(s => {
         const cardEl = document.getElementById(`sticker-card-${s.id}`);
         if (cardEl) cardEl.classList.add("removed-card");
@@ -1069,10 +1070,8 @@ function sendNewToAlbumStapel() {
     db.collection("users").doc(uid).update({
         stapel: updatedStapel
     }).then(() => {
-        // Liste leeren
         remainingNewStickers = [];
 
-        // Prüfen, ob noch Duplikate übrig sind
         if (remainingDuplicates.length === 0) {
             setTimeout(() => { resetBoosterDashboardView(); }, 400);
         } else {
