@@ -189,11 +189,11 @@ body {
         max-width: 120px;
     }
 
-    /* Exakte Boxen-Positionierung für Icon und Booster-Pakete auf Mobile */
+    /* Exakte vertikale Ausrichtung auf derselben Center-Achse wie das Icon */
     .center-bg-icon {
-        top: auto;
-        bottom: 12vh;
-        transform: translateX(-50%);
+        top: 62%;
+        left: 50%;
+        transform: translate(-50%, -50%);
         width: 55vw;
         max-width: 240px;
         height: auto;
@@ -201,11 +201,17 @@ body {
 
     .booster-zone {
         position: fixed;
-        bottom: 12vh;
+        top: 62%;
         left: 50%;
-        transform: translateX(-50%);
+        transform: translate(-50%, -50%);
         margin: 0;
         z-index: 12;
+    }
+}
+
+@media (max-width: 767px) and (max-height: 680px) {
+    .center-bg-icon, .booster-zone {
+        top: 66%;
     }
 }
 
@@ -419,7 +425,7 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background: transparent; /* 100% transparent: Keine Abdunklung des blauen Hauptscreens */
+    background: transparent; 
     z-index: 99999; 
     display: none;
     flex-direction: column;
@@ -428,7 +434,7 @@ body {
     padding: 20px;
     overflow: hidden;
     pointer-events: auto; 
-    touch-action: none; /* Verhindert das Scrollen/Verschieben auf Mobile im gesamten Overlay */
+    touch-action: none; 
 }
 
 .sticker-display-grid {
@@ -474,6 +480,14 @@ body {
     overflow: hidden;
     opacity: 0;
     animation-fill-mode: forwards !important;
+    transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+/* Animation zum sanften Ausblenden weggeschickter Karten */
+.sticker-card-container.removed-card {
+    opacity: 0 !important;
+    transform: scale(0.6) translateY(-100px) !important;
+    pointer-events: none;
 }
 
 /* FLUGANIMATIONEN */
@@ -511,7 +525,7 @@ body {
     z-index: 8;
     cursor: crosshair;
     transition: opacity 0.4s ease;
-    touch-action: none; /* Verhindert Gesten-Scrolling beim Wischen auf dem Canvas */
+    touch-action: none; 
 }
 
 .duplicate-ribbon {
@@ -579,7 +593,7 @@ body {
 }
 
 .action-btn-round:disabled {
-    opacity: 0.3;
+    opacity: 0.2;
     cursor: not-allowed;
     filter: grayscale(1);
 }
@@ -641,7 +655,7 @@ body {
         <button class="action-btn-round btn-market-round" id="marketBtn" onclick="processDuplicatesToMarket()" title="Duplikate auf den Markt schicken">
             <img src="assets/market_icon.png" alt="Market">
         </button>
-        <button class="action-btn-round btn-send-album-round" onclick="sendNewToAlbumStapel()" title="Neue Sticker zum Stapel schicken">
+        <button class="action-btn-round btn-send-album-round" id="albumBtn" onclick="sendNewToAlbumStapel()" title="Neue Sticker zum Stapel schicken">
             <img src="assets/panini_album.png" alt="Album">
         </button>
     </div>
@@ -697,7 +711,10 @@ let packTimerInterval = null;
 let totalShinyCount = 0;
 let scratchedShinyCount = 0;
 
-// Verhindert das "Elastic Band"-Scrolling / Ziehen der gesamten Website auf iOS Safari
+// Exakte Tracking-Listen für die Aufteilung nach deiner Logik
+let remainingDuplicates = [];
+let remainingNewStickers = [];
+
 document.addEventListener('touchmove', (e) => {
     if (document.getElementById('stickerOverlay').style.display === 'flex') {
         e.preventDefault();
@@ -769,7 +786,7 @@ function startUserSync(uid) {
                 album: {},
                 stapel: []
             }).then(() => {
-                console.log("Neues Profil erfolgreich angelegt.");
+                console.log("Neues Profil angelegt.");
             }).catch(err => console.error("Fehler beim Erstellen des Profils:", err));
             return;
         }
@@ -845,6 +862,22 @@ function openBoosterPack() {
     }
     currentOpenedStickers = chosenStickers;
 
+    // Listen für die Logik-Trennung füllen
+    const currentAlbum = currentUserData.album || {};
+    const currentStapel = currentUserData.stapel || [];
+    
+    remainingDuplicates = [];
+    remainingNewStickers = [];
+
+    currentOpenedStickers.forEach(sticker => {
+        const isDuplicate = currentAlbum[sticker.id] === "pasted" || currentStapel.includes(sticker.id);
+        if (isDuplicate) {
+            remainingDuplicates.push(sticker);
+        } else {
+            remainingNewStickers.push(sticker);
+        }
+    });
+
     setTimeout(() => {
         packTop.classList.add("torn");
         
@@ -862,27 +895,22 @@ function openBoosterPack() {
 
 function renderDrawnStickersGrid() {
     const grid = document.getElementById("stickerGrid");
-    const currentAlbum = currentUserData.album || {};
-    const currentStapel = currentUserData.stapel || [];
-    const marketBtn = document.getElementById("marketBtn");
-    
     grid.innerHTML = "";
     totalShinyCount = 0;
     scratchedShinyCount = 0;
 
-    let duplicateFound = false;
-
     currentOpenedStickers.forEach((sticker, idx) => {
         const container = document.createElement("div");
         container.className = "sticker-card-container";
+        container.id = `sticker-card-${sticker.id}`;
         
         const animationNumber = idx + 1;
         container.style.animation = `flyToPos${animationNumber} 0.6s cubic-bezier(0.25, 1, 0.5, 1) ${idx * 0.15}s forwards`;
 
-        const isDuplicate = currentAlbum[sticker.id] === "pasted" || currentStapel.includes(sticker.id);
+        // Prüfen, ob dieser Sticker in der Duplikate-Liste liegt
+        const isDuplicate = remainingDuplicates.some(s => s.id === sticker.id);
 
         if (isDuplicate) {
-            duplicateFound = true;
             const ribbon = document.createElement("div");
             ribbon.className = "duplicate-ribbon";
             ribbon.innerText = "Duplicate";
@@ -905,16 +933,21 @@ function renderDrawnStickersGrid() {
         grid.appendChild(container);
     });
 
-    if (!duplicateFound) {
-        marketBtn.disabled = true;
-    } else {
-        marketBtn.disabled = false;
-    }
+    updateActionButtonsState();
+}
 
-    if (totalShinyCount === 0) {
-        setTimeout(() => {
-            document.getElementById("actionPanel").style.display = "flex";
-        }, 1200);
+function updateActionButtonsState() {
+    const marketBtn = document.getElementById("marketBtn");
+    const albumBtn = document.getElementById("albumBtn");
+
+    // Markt-Button ist aktiv, wenn noch Duplikate da sind
+    marketBtn.disabled = (remainingDuplicates.length === 0);
+    
+    // Album-Button ist aktiv, wenn noch neue Sticker da sind
+    albumBtn.disabled = (remainingNewStickers.length === 0);
+
+    if (totalShinyCount === 0 || scratchedShinyCount >= totalShinyCount) {
+        document.getElementById("actionPanel").style.display = "flex";
     } else {
         document.getElementById("actionPanel").style.display = "none";
     }
@@ -934,7 +967,7 @@ function setupScratchEffect(canvas) {
 
     function scratch(e) {
         if (!isDrawing) return;
-        e.preventDefault(); // Absolut kritisch: Verhindert jegliche Screen-Bewegung / Viewport-Verschiebung beim Ziehen
+        e.preventDefault(); 
         
         const rect = canvas.getBoundingClientRect();
         const clientX = e.touches ? e.touches[0].clientX : e.clientX;
@@ -985,48 +1018,66 @@ function handleShinyScratchedNotification() {
     }
 }
 
+// 1. DUPLIKATE AUF DEN MARKT SCHICKEN
 function processDuplicatesToMarket() {
-    const uid = firebase.auth().currentUser.uid;
-    const currentAlbum = currentUserData.album || {};
-    const currentStapel = currentUserData.stapel || [];
+    if (remainingDuplicates.length === 0) return;
     
-    let itemsToKeep = [];
+    const uid = firebase.auth().currentUser.uid;
+    
+    remainingDuplicates.forEach(sticker => {
+        // Karte im UI visuell ausblenden
+        const cardEl = document.getElementById(`sticker-card-${sticker.id}`);
+        if (cardEl) cardEl.classList.add("removed-card");
 
-    currentOpenedStickers.forEach(sticker => {
-        const isDuplicate = currentAlbum[sticker.id] === "pasted" || currentStapel.includes(sticker.id);
-        
-        if (isDuplicate) {
-            db.collection("market").add({
-                sticker_id: sticker.id,
-                owner_uid: uid,
-                owner_name: firebase.auth().currentUser.email.split('@')[0],
-                timestamp: firebase.firestore.FieldValue.serverTimestamp(),
-                status: "available"
-            });
-        } else {
-            itemsToKeep.push(sticker.id);
-        }
+        // Ab in die weltweite Firestore Markt-Sammlung
+        db.collection("market").add({
+            sticker_id: sticker.id,
+            owner_uid: uid,
+            owner_name: firebase.auth().currentUser.email.split('@')[0],
+            timestamp: firebase.firestore.FieldValue.serverTimestamp(),
+            status: "available"
+        });
     });
 
-    if (itemsToKeep.length > 0) {
-        const updatedStapel = [...currentStapel, ...itemsToKeep];
-        db.collection("users").doc(uid).update({ stapel: updatedStapel });
+    // Liste leeren (da alle verarbeitet wurden)
+    remainingDuplicates = [];
+    
+    // Prüfen, ob jetzt auch keine neuen Sticker mehr offen sind
+    if (remainingNewStickers.length === 0) {
+        setTimeout(() => { resetBoosterDashboardView(); }, 400);
+    } else {
+        updateActionButtonsState();
     }
-
-    resetBoosterDashboardView();
 }
 
+// 2. NEUE STICKER ZUM ALBUM-STAPEL SCHICKEN
 function sendNewToAlbumStapel() {
+    if (remainingNewStickers.length === 0) return;
+
     const uid = firebase.auth().currentUser.uid;
     const currentStapel = currentUserData.stapel || [];
     
-    const openedIds = currentOpenedStickers.map(s => s.id);
-    const updatedStapel = [...currentStapel, ...openedIds];
+    // IDs extrahieren und im UI visuell entfernen
+    const newIds = remainingNewStickers.map(s => {
+        const cardEl = document.getElementById(`sticker-card-${s.id}`);
+        if (cardEl) cardEl.classList.add("removed-card");
+        return s.id;
+    });
+
+    const updatedStapel = [...currentStapel, ...newIds];
 
     db.collection("users").doc(uid).update({
         stapel: updatedStapel
     }).then(() => {
-        resetBoosterDashboardView();
+        // Liste leeren
+        remainingNewStickers = [];
+
+        // Prüfen, ob noch Duplikate übrig sind
+        if (remainingDuplicates.length === 0) {
+            setTimeout(() => { resetBoosterDashboardView(); }, 400);
+        } else {
+            updateActionButtonsState();
+        }
     });
 }
 
@@ -1035,6 +1086,8 @@ function resetBoosterDashboardView() {
     document.getElementById("actionPanel").style.display = "none";
     document.getElementById("packPile").style.display = "block";
     currentOpenedStickers = [];
+    remainingDuplicates = [];
+    remainingNewStickers = [];
 }
 
 function openLoginModal() { document.getElementById('loginModal').style.display = 'flex'; }
