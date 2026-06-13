@@ -263,7 +263,13 @@ body {
     z-index: 10;
 }
 
-/* NEUER PACK COUNTER: Blauer Farbton (#3f57f5) in einem weißen Kreis oben rechts auf dem Pack */
+/* Desktop-Spezifisch: Pakete weiter nach unten schieben, um das Logo nicht zu verdecken */
+@media (min-width: 768px) {
+    .booster-zone {
+        margin-top: 16vh; 
+    }
+}
+
 .pack-counter-circle {
     position: absolute;
     top: -12px;
@@ -351,7 +357,7 @@ body {
 }
 
 /* =========================================================================
-   STICKER OVERLAY DISPLAY SYSTEM (Zwei komplett unabhängige Ebenen)
+   STICKER OVERLAY DISPLAY SYSTEM (Transparenter Hintergrund & Einzel-Flug-Animation)
    ========================================================================= */
 .sticker-overlay-layer {
     position: fixed;
@@ -359,10 +365,11 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(10, 18, 55, 0.92); /* Dunkler, blickdichter Hintergrund blockiert Interaktion */
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
-    z-index: 99999; /* Über allen anderen Buttons und Elementen */
+    /* GEÄNDERT: Hintergrund ist jetzt transparent schwarz, Menü bleibt im Hintergrund sichtbar! */
+    background: rgba(0, 0, 0, 0.6); 
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    z-index: 99999; 
     display: none;
     flex-direction: column;
     align-items: center;
@@ -371,7 +378,6 @@ body {
     overflow-y: auto;
 }
 
-/* RESPONSIVE DISPLAY GRID & ROWS */
 .sticker-display-grid {
     display: flex;
     gap: 20px;
@@ -379,9 +385,10 @@ body {
     justify-content: center;
     align-items: center;
     margin-top: 10px;
+    position: relative;
 }
 
-/* Desktop: Alle mittig sauber nebeneinander in einer Reihe */
+/* Desktop: 6x1 Reihe */
 @media (min-width: 768px) {
     .sticker-display-grid {
         flex-direction: row;
@@ -393,7 +400,7 @@ body {
     }
 }
 
-/* Mobile: Exakt das gewünschte ordentliche 2x3 Grid */
+/* Mobile: 2x3 Grid */
 @media (max-width: 767px) {
     .sticker-display-grid {
         display: grid;
@@ -405,19 +412,33 @@ body {
     }
 }
 
+/* Startposition der Sticker: Unsichtbar aus der Bildschirmmitte (wo das Pack lag) */
 .sticker-card-container {
     position: relative;
     aspect-ratio: 1 / 1.38;
     background: #2a3bb0;
     border-radius: 10px;
     box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-    opacity: 0;
-    transform: translateY(80px) scale(0.6);
     overflow: hidden;
+    
+    opacity: 0;
+    /* Jede Karte fängt zentriert an und fliegt über die Keyframe-Animation an ihre echte Position */
+    animation-fill-mode: forwards !important;
 }
 
-@keyframes flyInSticker {
-    to { transform: translateY(0) scale(1); opacity: 1; }
+/* DIE NEUE FLY-IN ANIMATION: Fliegt von der Mitte an die feste Position im Grid */
+@keyframes flyFromPackToGrid {
+    0% {
+        opacity: 0;
+        transform: scale(0.2) translate(0, 150px) rotate(15deg);
+    }
+    30% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1) translate(0, 0) rotate(0deg);
+    }
 }
 
 .sticker-img {
@@ -506,10 +527,8 @@ body {
     <button class="image-btn btn-album" onclick="window.location.href='album.html'"></button>
 </div>
 
-<!-- Booster Zone auf dem Hauptscreen hält den Pack-Stapel -->
 <div class="booster-zone" id="boosterZone">
     <div class="pack-pile" id="packPile" onclick="openBoosterPack()">
-        <!-- Neuer Pack Counter im Kreis oben rechts auf der obersten Karte -->
         <div class="pack-counter-circle" id="packCounterCircle">0</div>
         <div class="pack-layer back2" style="background-image: url('assets/booster_pack_front.png');"></div>
         <div class="pack-layer back1" style="background-image: url('assets/booster_pack_front.png');"></div>
@@ -522,7 +541,6 @@ body {
     </div>
 </div>
 
-<!-- DIE NEUE, UNABHÄNGIGE EBENE (ÜBERLAGERUNG FÜR GEÖFFNETE STICKER) -->
 <div class="sticker-overlay-layer" id="stickerOverlay">
     <div class="sticker-display-grid" id="stickerGrid"></div>
 
@@ -617,7 +635,6 @@ firebase.auth().onAuthStateChanged((user) => {
         modalDesc.innerText = formattedName;
         document.getElementById('modalTitle').innerText = "Account Connected";
         
-        bZone.style.display = "flex";
         startUserSync(user.uid);
     } else {
         led.classList.remove('online'); 
@@ -637,6 +654,8 @@ firebase.auth().onAuthStateChanged((user) => {
 
 function startUserSync(uid) {
     db.collection("users").doc(uid).onSnapshot((doc) => {
+        const bZone = document.getElementById('boosterZone');
+        
         if (!doc.exists) {
             db.collection("users").doc(uid).set({
                 packs_available: 7,
@@ -662,8 +681,14 @@ function startUserSync(uid) {
         }
         
         const packs = currentUserData.packs_available;
-        // Aktualisiere das neue Kreis-Banner
         document.getElementById("packCounterCircle").innerText = packs;
+        
+        // GEÄNDERT: Blende die Booster-Zone komplett aus, wenn 0 Packs verfügbar sind!
+        if (packs > 0) {
+            bZone.style.display = "flex";
+        } else {
+            bZone.style.display = "none";
+        }
         
         if(!packTimerInterval) {
             checkAndGeneratePacks(uid);
@@ -735,7 +760,6 @@ function openBoosterPack() {
         
         setTimeout(() => {
             rippedWrapper.style.display = "none";
-            // Blendet die unabhängige Overlay-Ebene ein[cite: 3]
             document.getElementById("stickerOverlay").style.display = "flex";
             renderDrawnStickersGrid();
         }, 600);
@@ -751,12 +775,15 @@ function renderDrawnStickersGrid() {
     const currentAlbum = currentUserData.album || {};
     grid.innerHTML = "";
 
+    // Steuert die Verzögerung, damit die Karten nacheinander eingeflogen kommen
     currentOpenedStickers.forEach((sticker, idx) => {
         const container = document.createElement("div");
         container.className = "sticker-card-container";
-        container.style.animation = `flyInSticker 0.5s ease-out ${idx * 0.15}s forwards`;
+        
+        // GEÄNDERT: Nutzt die neue Einzel-Weg-Animation mit ansteigendem Delay (0.2s Schritte)
+        container.style.animation = `flyFromPackToGrid 0.6s cubic-bezier(0.25, 1, 0.5, 1) ${idx * 0.2}s forwards`;
 
-        // DOPPELTE STICKER PRÜFEN: Wenn Status im Album bereits "pasted" ist[cite: 3]
+        // DOPPELTE STICKER PRÜFEN
         if (currentAlbum[sticker.id] === "pasted") {
             const ribbon = document.createElement("div");
             ribbon.className = "duplicate-ribbon";
@@ -769,7 +796,6 @@ function renderDrawnStickersGrid() {
         img.src = sticker.image;
         container.appendChild(img);
 
-        // Canvas Rubbel-Effekt für Shinies
         if (sticker.shiny === "gold" || sticker.shiny === "silver") {
             const canvas = document.createElement("canvas");
             canvas.className = "scratch-overlay";
@@ -780,13 +806,14 @@ function renderDrawnStickersGrid() {
         grid.appendChild(container);
     });
 
+    // Das Action Panel erscheint erst, wenn die letzte Karte fertig geflogen ist (6 * 0.2s + Animation)
     setTimeout(() => {
         document.getElementById("actionPanel").style.display = "flex";
-    }, 1200);
+    }, 1800);
 }
 
 /* =========================================================================
-   CANVAS RUBBEL-EFFEKT (GRÖSSERER WISCHER)[cite: 3]
+   CANVAS RUBBEL-EFFEKT (GRÖSSERER WISCHER)
    ========================================================================= */
 function setupScratchEffect(canvas) {
     const ctx = canvas.getContext("2d");
@@ -815,7 +842,6 @@ function setupScratchEffect(canvas) {
 
         ctx.globalCompositeOperation = "destination-out";
         ctx.beginPath();
-        // Radius von 22 auf 35 erhöht -> deutlich größerer Wischer![cite: 3]
         ctx.arc(x, y, 35, 0, Math.PI * 2);
         ctx.fill();
         
@@ -845,7 +871,7 @@ function setupScratchEffect(canvas) {
 }
 
 /* =========================================================================
-   BUTTON ACTIONS (Textboxes/Alerts entfernt wie gewünscht!)[cite: 3]
+   BUTTON ACTIONS
    ========================================================================= */
 function processDuplicatesToMarket() {
     const uid = firebase.auth().currentUser.uid;
@@ -872,7 +898,6 @@ function processDuplicatesToMarket() {
         db.collection("users").doc(uid).update({ stapel: updatedStapel });
     }
 
-    // Keine störende Alert-Textbox mehr – Ansicht schließt sich direkt geräuschlos[cite: 3]
     resetBoosterDashboardView();
 }
 
@@ -884,13 +909,11 @@ function sendNewToAlbumStapel() {
     db.collection("users").doc(uid).update({
         stapel: updatedStapel
     }).then(() => {
-        // Textbox komplett entfernt! Schließt das Fenster sofort nahtlos[cite: 3]
         resetBoosterDashboardView();
     });
 }
 
 function resetBoosterDashboardView() {
-    // Schließt das vollflächige Overlay und bringt den Stapel zurück[cite: 3]
     document.getElementById("stickerOverlay").style.display = "none";
     document.getElementById("actionPanel").style.display = "none";
     document.getElementById("packPile").style.display = "block";
