@@ -1,0 +1,306 @@
+{
+  "teamName": "Germany",
+  "group": "E",
+  "ranking": 10,
+  "color_1": "#FFFFFF",
+  "color_2": "#A9936F",
+  "color_3": "#000000",
+  "players": [
+    {
+      "nation": "Germany",
+      "first_name": "Alexander",
+      "last_name": "Nübel",
+      "jersey_number": 21,
+      "birthdate": "30.09.1996",
+      "club": "VfB Stuttgart",
+      "position": "GK",
+      "height": "1,93m",
+      "aliases": [
+        "Nubel"
+      ]
+    },
+    {
+      "nation": "Germany",
+      "first_name": "Manuel",
+      "last_name": "Neuer",
+      "jersey_number": 1,
+      "birthdate": "27.03.1986",
+      "club": "Bayern Munich",
+      "position": "GK",
+      "height": "1,93m",
+      "aliases": []
+    },
+    {
+      "nation": "Germany",
+      "first_name": "Oliver",
+      "last_name": "Baumann",
+      "jersey_number": 12,
+      "birthdate": "02.06.1990",
+      "club": "TSG 1899 Hoffenheim",
+      "position": "GK",
+      "height": "1,87m",
+      "aliases": []
+    },
+    {
+      "nation": "Germany",
+      "first_name": "Nico",
+      "last_name": "Schlotterbeck",
+      "jersey_number": 15,
+      "birthdate": "01.12.1999",
+      "club": "Borussia Dortmund",
+      "position": "CB",
+      "height": "1,91m",
+      "aliases": []
+    },
+    {
+      "nation": "Germany",
+      "first_name": "Malick",
+      "last_name": "Thiaw",
+      "jersey_number": 24,
+      "birthdate": "08.08.2001",
+      "club": "Newcastle United",
+      "position": "CB",
+      "height": "1,94m",
+      "aliases": []
+    },
+    {
+      "nation": "Germany",
+      "first_name": "Jonathan",
+      "last_name": "Tah",
+      "jersey_number": 4,
+      "birthdate": "11.02.1996",
+      "club": "Bayern Munich",
+      "position": "CB",
+      "height": "1,95m",
+      "aliases": []
+    },
+    {
+      "nation": "Germany",
+      "first_name": "Waldemar",
+      "last_name": "Anton",
+      "jersey_number": 3,
+      "birthdate": "20.07.1996",
+      "club": "Borussia Dortmund",
+      "position": "CB",
+      "height": "1,89m",
+      "aliases": []
+    },
+    {
+      "nation": "Germany",
+      "first_name": "Antonio",
+      "last_name": "Rüdiger",
+      "jersey_number": 2,
+      "birthdate": "03.03.1993",
+      "club": "Real Madrid",
+      "position": "CB",
+      "height": "1,90m",
+      "aliases": [
+        "Rudiger"
+      ]
+    },
+    {
+      "nation": "Germany",
+      "first_name": "Nathaniel",
+      "last_name": "Brown",
+      "jersey_number": 18,
+      "birthdate": "16.06.2003",
+      "club": "Eintracht Frankfurt",
+      "position": "LB",
+      "height": "1,76m",
+      "aliases": []
+    },
+    {
+      "nation": "Germany",
+      "first_name": "David",
+      "last_name": "Raum",
+      "jersey_number": 22,
+      "birthdate": "22.04.1998",
+      "club": "RB Leipzig",
+      "position": "LB",
+      "height": "1,81m",
+      "aliases": []
+    },
+    {
+      "nation": "Germany",
+      "first_name": "Aleksandar",
+      "last_name": "Pavlovic",
+      "jersey_number": 5,
+      "birthdate": "03.05.2004",
+      "club": "Bayern Munich",
+      "position": "DM",
+      "height": "1,88m",
+      "aliases": []
+    },
+    {
+      "nation": "Germany",
+      "first_name": "Angelo",
+      "last_name": "Stiller",
+      "jersey_number": 16,
+      "birthdate": "04.04.2001",
+      "club": "VfB Stuttgart",
+      "position": "DM",
+      "height": "1,83m",
+      "aliases": []
+    },
+    {
+      "nation": "Germany",
+      "first_name": "Joshua",
+      "last_name": "Kimmich",
+      "jersey_number": 6,
+      "birthdate": "08.02.1995",
+      "club": "Bayern Munich",
+      "position": "RB",
+      "height": "1,77m",
+      "aliases": []
+    },
+    {
+      "nation": "Germany",
+      "first_name": "Felix",
+      "last_name": "Nmecha",
+      "jersey_number": 23,
+      "birthdate": "10.10.2000",
+      "club": "Borussia Dortmund",
+      "position": "CM",
+      "height": "1,90m",
+      "aliases": []
+    },
+    {
+      "nation": "Germany",
+      "first_name": "Assan",
+      "last_name": "Ouédraogo",
+      "jersey_number": 25,
+      "birthdate": "09.05.2006",
+      "club": "RB Leipzig",
+      "position": "AM",
+      "height": "1,91m",
+      "aliases": [
+        "Ouedraogo"
+      ]
+    },
+    {
+      "nation": "Germany",
+      "first_name": "Nadiem",
+      "last_name": "Amiri",
+      "jersey_number": 20,
+      "birthdate": "27.10.1996",
+      "club": "1.FSV Mainz 05",
+      "position": "CM",
+      "height": "1,80m",
+      "aliases": []
+    },
+    {
+      "nation": "Germany",
+      "first_name": "Leon",
+      "last_name": "Goretzka",
+      "jersey_number": 8,
+      "birthdate": "06.02.1995",
+      "club": "Bayern Munich",
+      "position": "CM",
+      "height": "1,89m",
+      "aliases": []
+    },
+    {
+      "nation": "Germany",
+      "first_name": "Pascal",
+      "last_name": "Groß",
+      "jersey_number": 13,
+      "birthdate": "15.06.1991",
+      "club": "Brighton & Hove Albion",
+      "position": "CM",
+      "height": "1,81m",
+      "aliases": [
+        "Gross"
+      ]
+    },
+    {
+      "nation": "Germany",
+      "first_name": "Jamal",
+      "last_name": "Musiala",
+      "jersey_number": 10,
+      "birthdate": "26.02.2003",
+      "club": "Bayern Munich",
+      "position": "AM",
+      "height": "1,84m",
+      "aliases": []
+    },
+    {
+      "nation": "Germany",
+      "first_name": "Florian",
+      "last_name": "Wirtz",
+      "jersey_number": 17,
+      "birthdate": "03.05.2003",
+      "club": "Liverpool FC",
+      "position": "AM",
+      "height": "1,77m",
+      "aliases": []
+    },
+    {
+      "nation": "Germany",
+      "first_name": "Jamie",
+      "last_name": "Leweling",
+      "jersey_number": 9,
+      "birthdate": "26.02.2001",
+      "club": "VfB Stuttgart",
+      "position": "RW",
+      "height": "1,85m",
+      "aliases": []
+    },
+    {
+      "nation": "Germany",
+      "first_name": "Leroy",
+      "last_name": "Sané",
+      "jersey_number": 19,
+      "birthdate": "11.01.1996",
+      "club": "Galatasaray",
+      "position": "RW",
+      "height": "1,83m",
+      "aliases": [
+        "Sane"
+      ]
+    },
+    {
+      "nation": "Germany",
+      "first_name": "Kai",
+      "last_name": "Havertz",
+      "jersey_number": 7,
+      "birthdate": "11.06.1999",
+      "club": "Arsenal FC",
+      "position": "ST",
+      "height": "1,93m",
+      "aliases": []
+    },
+    {
+      "nation": "Germany",
+      "first_name": "Nick",
+      "last_name": "Woltemade",
+      "jersey_number": 11,
+      "birthdate": "14.02.2002",
+      "club": "Newcastle United",
+      "position": "ST",
+      "height": "1,98m",
+      "aliases": []
+    },
+    {
+      "nation": "Germany",
+      "first_name": "Maximilian",
+      "last_name": "Beier",
+      "jersey_number": 14,
+      "birthdate": "17.10.2002",
+      "club": "Borussia Dortmund",
+      "position": "LW",
+      "height": "1,85m",
+      "aliases": []
+    },
+    {
+      "nation": "Germany",
+      "first_name": "Deniz",
+      "last_name": "Undav",
+      "jersey_number": 26,
+      "birthdate": "19.07.1996",
+      "club": "VfB Stuttgart",
+      "position": "ST",
+      "height": "1,79m",
+      "aliases": []
+    }
+  ]
+}

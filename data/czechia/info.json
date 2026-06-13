@@ -1,0 +1,306 @@
+{
+  "teamName": "Czechia",
+  "group": "A",
+  "ranking": 41,
+  "color_1": "#00267A",
+  "color_2": "#96172E",
+  "color_3": "#C9C9C9",
+  "players": [
+    {
+      "nation": "Czechia",
+      "first_name": "Lukas",
+      "last_name": "Hornicek",
+      "jersey_number": 23,
+      "birthdate": "13.07.2002",
+      "club": "SC Braga",
+      "position": "GK",
+      "height": "1,98m",
+      "aliases": []
+    },
+    {
+      "nation": "Czechia",
+      "first_name": "Matej",
+      "last_name": "Kovar",
+      "jersey_number": 1,
+      "birthdate": "17.05.2000",
+      "club": "PSV Eindhoven",
+      "position": "GK",
+      "height": "1,96m",
+      "aliases": []
+    },
+    {
+      "nation": "Czechia",
+      "first_name": "Jindrich",
+      "last_name": "Stanek",
+      "jersey_number": 16,
+      "birthdate": "27.04.1996",
+      "club": "SK Slavia Prague",
+      "position": "GK",
+      "height": "1,92m",
+      "aliases": []
+    },
+    {
+      "nation": "Czechia",
+      "first_name": "Ladislav",
+      "last_name": "Krejčí",
+      "jersey_number": 7,
+      "birthdate": "20.04.1999",
+      "club": "Wolverhampton Wanderers",
+      "position": "CB",
+      "height": "1,91m",
+      "aliases": [
+        "Krejci"
+      ]
+    },
+    {
+      "nation": "Czechia",
+      "first_name": "Robin",
+      "last_name": "Hranac",
+      "jersey_number": 4,
+      "birthdate": "29.01.2000",
+      "club": "TSG 1899 Hoffenheim",
+      "position": "CB",
+      "height": "1,89m",
+      "aliases": []
+    },
+    {
+      "nation": "Czechia",
+      "first_name": "Stepan",
+      "last_name": "Chaloupek",
+      "jersey_number": 6,
+      "birthdate": "08.03.2003",
+      "club": "SK Slavia Prague",
+      "position": "CB",
+      "height": "1,88m",
+      "aliases": []
+    },
+    {
+      "nation": "Czechia",
+      "first_name": "David",
+      "last_name": "Zima",
+      "jersey_number": 2,
+      "birthdate": "08.11.2000",
+      "club": "SK Slavia Prague",
+      "position": "CB",
+      "height": "1,90m",
+      "aliases": []
+    },
+    {
+      "nation": "Czechia",
+      "first_name": "Tomas",
+      "last_name": "Holes",
+      "jersey_number": 3,
+      "birthdate": "31.03.1993",
+      "club": "SK Slavia Prague",
+      "position": "CB",
+      "height": "1,80m",
+      "aliases": []
+    },
+    {
+      "nation": "Czechia",
+      "first_name": "Jaroslav",
+      "last_name": "Zelený",
+      "jersey_number": 20,
+      "birthdate": "20.08.1992",
+      "club": "AC Sparta Prague",
+      "position": "CB",
+      "height": "1,90m",
+      "aliases": [
+        "Zeleny"
+      ]
+    },
+    {
+      "nation": "Czechia",
+      "first_name": "David",
+      "last_name": "Jurásek",
+      "jersey_number": 14,
+      "birthdate": "07.08.2000",
+      "club": "SK Slavia Prague",
+      "position": "LB",
+      "height": "1,83m",
+      "aliases": [
+        "Jurasek"
+      ]
+    },
+    {
+      "nation": "Czechia",
+      "first_name": "Vladimír",
+      "last_name": "Coufal",
+      "jersey_number": 5,
+      "birthdate": "22.08.1992",
+      "club": "TSG 1899 Hoffenheim",
+      "position": "RB",
+      "height": "1,75m",
+      "aliases": []
+    },
+    {
+      "nation": "Czechia",
+      "first_name": "Tomáš",
+      "last_name": "Souček",
+      "jersey_number": 22,
+      "birthdate": "27.02.1995",
+      "club": "West Ham United",
+      "position": "DM",
+      "height": "1,92m",
+      "aliases": [
+        "Soucek"
+      ]
+    },
+    {
+      "nation": "Czechia",
+      "first_name": "Michal",
+      "last_name": "Sadílek",
+      "jersey_number": 18,
+      "birthdate": "31.05.1999",
+      "club": "SK Slavia Prague",
+      "position": "CM",
+      "height": "1,69m",
+      "aliases": [
+        "Sadilek"
+      ]
+    },
+    {
+      "nation": "Czechia",
+      "first_name": "Lukas",
+      "last_name": "Cerv",
+      "jersey_number": 12,
+      "birthdate": "10.04.2001",
+      "club": "FC Viktoria Plzen",
+      "position": "CM",
+      "height": "1,82m",
+      "aliases": []
+    },
+    {
+      "nation": "Czechia",
+      "first_name": "Hugo",
+      "last_name": "Sochurek",
+      "jersey_number": 25,
+      "birthdate": "07.06.2008",
+      "club": "AC Sparta Prague",
+      "position": "CM",
+      "height": "1,83m",
+      "aliases": []
+    },
+    {
+      "nation": "Czechia",
+      "first_name": "Alexandr",
+      "last_name": "Sojka",
+      "jersey_number": 24,
+      "birthdate": "02.04.2003",
+      "club": "FC Viktoria Plzen",
+      "position": "CM",
+      "height": "1,88m",
+      "aliases": []
+    },
+    {
+      "nation": "Czechia",
+      "first_name": "Vladimír",
+      "last_name": "Darida",
+      "jersey_number": 8,
+      "birthdate": "08.08.1990",
+      "club": "FC Hradec Kralove",
+      "position": "CM",
+      "height": "1,72m",
+      "aliases": []
+    },
+    {
+      "nation": "Czechia",
+      "first_name": "David",
+      "last_name": "Doudera",
+      "jersey_number": 21,
+      "birthdate": "31.05.1998",
+      "club": "SK Slavia Prague",
+      "position": "RW",
+      "height": "1,75m",
+      "aliases": []
+    },
+    {
+      "nation": "Czechia",
+      "first_name": "Pavel",
+      "last_name": "Sulc",
+      "jersey_number": 15,
+      "birthdate": "29.12.2000",
+      "club": "Olympique Lyon",
+      "position": "AM",
+      "height": "1,77m",
+      "aliases": []
+    },
+    {
+      "nation": "Czechia",
+      "first_name": "Denis",
+      "last_name": "Visinsky",
+      "jersey_number": 26,
+      "birthdate": "21.03.2003",
+      "club": "FC Viktoria Plzen",
+      "position": "AM",
+      "height": "1,78m",
+      "aliases": []
+    },
+    {
+      "nation": "Czechia",
+      "first_name": "Lukas",
+      "last_name": "Provod",
+      "jersey_number": 17,
+      "birthdate": "23.10.1996",
+      "club": "SK Slavia Prague",
+      "position": "LW",
+      "height": "1,91m",
+      "aliases": []
+    },
+    {
+      "nation": "Czechia",
+      "first_name": "Patrik",
+      "last_name": "Schick",
+      "jersey_number": 10,
+      "birthdate": "24.01.1996",
+      "club": "Bayer 04 Leverkusen",
+      "position": "ST",
+      "height": "1,91m",
+      "aliases": []
+    },
+    {
+      "nation": "Czechia",
+      "first_name": "Adam",
+      "last_name": "Hlozek",
+      "jersey_number": 9,
+      "birthdate": "25.07.2002",
+      "club": "TSG 1899 Hoffenheim",
+      "position": "ST",
+      "height": "1,88m",
+      "aliases": []
+    },
+    {
+      "nation": "Czechia",
+      "first_name": "Mojmír",
+      "last_name": "Chytil",
+      "jersey_number": 13,
+      "birthdate": "29.04.1999",
+      "club": "SK Slavia Prague",
+      "position": "ST",
+      "height": "1,87m",
+      "aliases": []
+    },
+    {
+      "nation": "Czechia",
+      "first_name": "Jan",
+      "last_name": "Kuchta",
+      "jersey_number": 11,
+      "birthdate": "08.01.1997",
+      "club": "AC Sparta Prague",
+      "position": "ST",
+      "height": "1,85m",
+      "aliases": []
+    },
+    {
+      "nation": "Czechia",
+      "first_name": "Tomas",
+      "last_name": "Chory",
+      "jersey_number": 19,
+      "birthdate": "26.01.1995",
+      "club": "SK Slavia Prague",
+      "position": "ST",
+      "height": "1,99m",
+      "aliases": []
+    }
+  ]
+}

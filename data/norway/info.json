@@ -1,0 +1,306 @@
+{
+  "teamName": "Norway",
+  "group": "I",
+  "ranking": 31,
+  "color_1": "#DC1430",
+  "color_2": "#172B63",
+  "color_3": "#A7814F",
+  "players": [
+    {
+      "nation": "Norway",
+      "first_name": "Sander",
+      "last_name": "Tangvik",
+      "jersey_number": 12,
+      "birthdate": "29.11.2002",
+      "club": "Hamburger SV",
+      "position": "GK",
+      "height": "1,93m",
+      "aliases": []
+    },
+    {
+      "nation": "Norway",
+      "first_name": "Egil",
+      "last_name": "Selvik",
+      "jersey_number": 13,
+      "birthdate": "30.07.1997",
+      "club": "Watford FC",
+      "position": "GK",
+      "height": "1,93m",
+      "aliases": []
+    },
+    {
+      "nation": "Norway",
+      "first_name": "Ørjan",
+      "last_name": "Nyland",
+      "jersey_number": 1,
+      "birthdate": "10.09.1990",
+      "club": "Sevilla FC",
+      "position": "GK",
+      "height": "1,92m",
+      "aliases": []
+    },
+    {
+      "nation": "Norway",
+      "first_name": "Kristoffer",
+      "last_name": "Ajer",
+      "jersey_number": 3,
+      "birthdate": "17.04.1998",
+      "club": "Brentford FC",
+      "position": "CB",
+      "height": "1,98m",
+      "aliases": []
+    },
+    {
+      "nation": "Norway",
+      "first_name": "Leo",
+      "last_name": "Østigård",
+      "jersey_number": 4,
+      "birthdate": "28.11.1999",
+      "club": "Genoa CFC",
+      "position": "CB",
+      "height": "1,83m",
+      "aliases": [
+        "Ostigard"
+      ]
+    },
+    {
+      "nation": "Norway",
+      "first_name": "Torbjørn",
+      "last_name": "Heggem",
+      "jersey_number": 17,
+      "birthdate": "12.01.1999",
+      "club": "Bologna FC 1909",
+      "position": "CB",
+      "height": "1,92m",
+      "aliases": []
+    },
+    {
+      "nation": "Norway",
+      "first_name": "Henrik",
+      "last_name": "Falchener",
+      "jersey_number": 25,
+      "birthdate": "08.05.2003",
+      "club": "Viking FK",
+      "position": "CB",
+      "height": "1,94m",
+      "aliases": []
+    },
+    {
+      "nation": "Norway",
+      "first_name": "Sondre",
+      "last_name": "Langås",
+      "jersey_number": 24,
+      "birthdate": "02.02.2001",
+      "club": "Derby County",
+      "position": "CB",
+      "height": "1,90m",
+      "aliases": [
+        "Langas"
+      ]
+    },
+    {
+      "nation": "Norway",
+      "first_name": "David Møller",
+      "last_name": "Wolfe",
+      "jersey_number": 5,
+      "birthdate": "23.04.2002",
+      "club": "Wolverhampton Wanderers",
+      "position": "LB",
+      "height": "1,85m",
+      "aliases": []
+    },
+    {
+      "nation": "Norway",
+      "first_name": "Fredrik",
+      "last_name": "Bjørkan",
+      "jersey_number": 15,
+      "birthdate": "21.08.1998",
+      "club": "FK Bodø/Glimt",
+      "position": "LB",
+      "height": "1,80m",
+      "aliases": [
+        "Bjorkan"
+      ]
+    },
+    {
+      "nation": "Norway",
+      "first_name": "Julian",
+      "last_name": "Ryerson",
+      "jersey_number": 26,
+      "birthdate": "17.11.1997",
+      "club": "Borussia Dortmund",
+      "position": "RB",
+      "height": "1,86m",
+      "aliases": []
+    },
+    {
+      "nation": "Norway",
+      "first_name": "Marcus",
+      "last_name": "Pedersen",
+      "jersey_number": 16,
+      "birthdate": "16.07.2000",
+      "club": "Torino FC",
+      "position": "RB",
+      "height": "1,84m",
+      "aliases": []
+    },
+    {
+      "nation": "Norway",
+      "first_name": "Sander",
+      "last_name": "Berge",
+      "jersey_number": 8,
+      "birthdate": "14.02.1998",
+      "club": "Fulham FC",
+      "position": "DM",
+      "height": "1,95m",
+      "aliases": []
+    },
+    {
+      "nation": "Norway",
+      "first_name": "Patrick",
+      "last_name": "Berg",
+      "jersey_number": 6,
+      "birthdate": "24.11.1997",
+      "club": "FK Bodø/Glimt",
+      "position": "DM",
+      "height": "1,78m",
+      "aliases": []
+    },
+    {
+      "nation": "Norway",
+      "first_name": "Fredrik",
+      "last_name": "Aursnes",
+      "jersey_number": 14,
+      "birthdate": "10.12.1995",
+      "club": "SL Benfica",
+      "position": "CM",
+      "height": "1,81m",
+      "aliases": []
+    },
+    {
+      "nation": "Norway",
+      "first_name": "Kristian",
+      "last_name": "Thorstvedt",
+      "jersey_number": 18,
+      "birthdate": "13.03.1999",
+      "club": "US Sassuolo",
+      "position": "CM",
+      "height": "1,89m",
+      "aliases": []
+    },
+    {
+      "nation": "Norway",
+      "first_name": "Morten",
+      "last_name": "Thorsby",
+      "jersey_number": 2,
+      "birthdate": "05.05.1996",
+      "club": "US Cremonese",
+      "position": "CM",
+      "height": "1,88m",
+      "aliases": []
+    },
+    {
+      "nation": "Norway",
+      "first_name": "Martin",
+      "last_name": "Ødegaard",
+      "jersey_number": 10,
+      "birthdate": "17.12.1998",
+      "club": "Arsenal FC",
+      "position": "AM",
+      "height": "1,78m",
+      "aliases": [
+        "Odegaard"
+      ]
+    },
+    {
+      "nation": "Norway",
+      "first_name": "Thelo",
+      "last_name": "Aasgaard",
+      "jersey_number": 19,
+      "birthdate": "02.05.2002",
+      "club": "Rangers FC",
+      "position": "AM",
+      "height": "1,88m",
+      "aliases": []
+    },
+    {
+      "nation": "Norway",
+      "first_name": "Antonio",
+      "last_name": "Nusa",
+      "jersey_number": 20,
+      "birthdate": "17.04.2005",
+      "club": "RB Leipzig",
+      "position": "LW",
+      "height": "1,83m",
+      "aliases": []
+    },
+    {
+      "nation": "Norway",
+      "first_name": "Andreas",
+      "last_name": "Schjelderup",
+      "jersey_number": 21,
+      "birthdate": "01.06.2004",
+      "club": "SL Benfica",
+      "position": "LW",
+      "height": "1,77m",
+      "aliases": []
+    },
+    {
+      "nation": "Norway",
+      "first_name": "Jens Petter",
+      "last_name": "Hauge",
+      "jersey_number": 23,
+      "birthdate": "12.10.1999",
+      "club": "FK Bodø/Glimt",
+      "position": "LW",
+      "height": "1,84m",
+      "aliases": []
+    },
+    {
+      "nation": "Norway",
+      "first_name": "Oscar",
+      "last_name": "Bobb",
+      "jersey_number": 22,
+      "birthdate": "12.07.2003",
+      "club": "Fulham FC",
+      "position": "RW",
+      "height": "1,77m",
+      "aliases": []
+    },
+    {
+      "nation": "Norway",
+      "first_name": "Erling",
+      "last_name": "Haaland",
+      "jersey_number": 9,
+      "birthdate": "21.07.2000",
+      "club": "Manchester City",
+      "position": "ST",
+      "height": "1,95m",
+      "aliases": []
+    },
+    {
+      "nation": "Norway",
+      "first_name": "Jørgen Strand",
+      "last_name": "Larsen",
+      "jersey_number": 11,
+      "birthdate": "06.02.2000",
+      "club": "Crystal Palace",
+      "position": "ST",
+      "height": "1,93m",
+      "aliases": []
+    },
+    {
+      "nation": "Norway",
+      "first_name": "Alexander",
+      "last_name": "Sørloth",
+      "jersey_number": 7,
+      "birthdate": "05.12.1995",
+      "club": "Atlético de Madrid",
+      "position": "ST",
+      "height": "1,96m",
+      "aliases": [
+        "Sorloth"
+      ]
+    }
+  ]
+}

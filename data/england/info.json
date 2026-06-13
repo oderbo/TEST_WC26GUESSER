@@ -1,0 +1,298 @@
+{
+  "teamName": "England",
+  "group": "L",
+  "ranking": 4,
+  "color_1": "#FFFFFF",
+  "color_2": "#253B60",
+  "color_3": "#A11A17",
+  "players": [
+    {
+      "nation": "England",
+      "first_name": "Dean",
+      "last_name": "Henderson",
+      "jersey_number": 13,
+      "birthdate": "12.03.1997",
+      "club": "Crystal Palace",
+      "position": "GK",
+      "height": "1,88m",
+      "aliases": []
+    },
+    {
+      "nation": "England",
+      "first_name": "James",
+      "last_name": "Trafford",
+      "jersey_number": 23,
+      "birthdate": "10.10.2002",
+      "club": "Manchester City",
+      "position": "GK",
+      "height": "1,92m",
+      "aliases": []
+    },
+    {
+      "nation": "England",
+      "first_name": "Jordan",
+      "last_name": "Pickford",
+      "jersey_number": 1,
+      "birthdate": "07.03.1994",
+      "club": "Everton FC",
+      "position": "GK",
+      "height": "1,85m",
+      "aliases": []
+    },
+    {
+      "nation": "England",
+      "first_name": "Marc",
+      "last_name": "Guéhi",
+      "jersey_number": 6,
+      "birthdate": "13.07.2000",
+      "club": "Manchester City",
+      "position": "CB",
+      "height": "1,82m",
+      "aliases": [
+        "Guehi"
+      ]
+    },
+    {
+      "nation": "England",
+      "first_name": "Jarell",
+      "last_name": "Quansah",
+      "jersey_number": 26,
+      "birthdate": "29.01.2003",
+      "club": "Bayer 04 Leverkusen",
+      "position": "CB",
+      "height": "1,90m",
+      "aliases": []
+    },
+    {
+      "nation": "England",
+      "first_name": "Ezri",
+      "last_name": "Konsa",
+      "jersey_number": 2,
+      "birthdate": "23.10.1997",
+      "club": "Aston Villa",
+      "position": "CB",
+      "height": "1,80m",
+      "aliases": []
+    },
+    {
+      "nation": "England",
+      "first_name": "John",
+      "last_name": "Stones",
+      "jersey_number": 5,
+      "birthdate": "28.05.1994",
+      "club": "Manchester City",
+      "position": "CB",
+      "height": "1,88m",
+      "aliases": []
+    },
+    {
+      "nation": "England",
+      "first_name": "Dan",
+      "last_name": "Burn",
+      "jersey_number": 15,
+      "birthdate": "09.05.1992",
+      "club": "Newcastle United",
+      "position": "CB",
+      "height": "2,01m",
+      "aliases": []
+    },
+    {
+      "nation": "England",
+      "first_name": "Nico",
+      "last_name": "O'Reilly",
+      "jersey_number": 3,
+      "birthdate": "21.03.2005",
+      "club": "Manchester City",
+      "position": "LB",
+      "height": "1,93m",
+      "aliases": []
+    },
+    {
+      "nation": "England",
+      "first_name": "Djed",
+      "last_name": "Spence",
+      "jersey_number": 25,
+      "birthdate": "09.08.2000",
+      "club": "Tottenham Hotspur",
+      "position": "LB",
+      "height": "1,84m",
+      "aliases": []
+    },
+    {
+      "nation": "England",
+      "first_name": "Reece",
+      "last_name": "James",
+      "jersey_number": 24,
+      "birthdate": "08.12.1999",
+      "club": "Chelsea FC",
+      "position": "RB",
+      "height": "1,80m",
+      "aliases": []
+    },
+    {
+      "nation": "England",
+      "first_name": "Tino",
+      "last_name": "Livramento",
+      "jersey_number": 12,
+      "birthdate": "12.11.2002",
+      "club": "Newcastle United",
+      "position": "RB",
+      "height": "1,82m",
+      "aliases": []
+    },
+    {
+      "nation": "England",
+      "first_name": "Jordan",
+      "last_name": "Henderson",
+      "jersey_number": 14,
+      "birthdate": "17.06.1990",
+      "club": "Brentford FC",
+      "position": "DM",
+      "height": "1,82m",
+      "aliases": []
+    },
+    {
+      "nation": "England",
+      "first_name": "Declan",
+      "last_name": "Rice",
+      "jersey_number": 4,
+      "birthdate": "14.01.1999",
+      "club": "Arsenal FC",
+      "position": "CM",
+      "height": "1,88m",
+      "aliases": []
+    },
+    {
+      "nation": "England",
+      "first_name": "Elliot",
+      "last_name": "Anderson",
+      "jersey_number": 8,
+      "birthdate": "06.11.2002",
+      "club": "Nottingham Forest",
+      "position": "CM",
+      "height": "1,79m",
+      "aliases": []
+    },
+    {
+      "nation": "England",
+      "first_name": "Kobbie",
+      "last_name": "Mainoo",
+      "jersey_number": 16,
+      "birthdate": "19.04.2005",
+      "club": "Manchester United",
+      "position": "CM",
+      "height": "1,84m",
+      "aliases": []
+    },
+    {
+      "nation": "England",
+      "first_name": "Jude",
+      "last_name": "Bellingham",
+      "jersey_number": 10,
+      "birthdate": "29.06.2003",
+      "club": "Real Madrid",
+      "position": "AM",
+      "height": "1,86m",
+      "aliases": []
+    },
+    {
+      "nation": "England",
+      "first_name": "Morgan",
+      "last_name": "Rogers",
+      "jersey_number": 17,
+      "birthdate": "26.07.2002",
+      "club": "Aston Villa",
+      "position": "AM",
+      "height": "1,87m",
+      "aliases": []
+    },
+    {
+      "nation": "England",
+      "first_name": "Eberechi",
+      "last_name": "Eze",
+      "jersey_number": 21,
+      "birthdate": "29.06.1998",
+      "club": "Arsenal FC",
+      "position": "AM",
+      "height": "1,78m",
+      "aliases": []
+    },
+    {
+      "nation": "England",
+      "first_name": "Anthony",
+      "last_name": "Gordon",
+      "jersey_number": 18,
+      "birthdate": "24.02.2001",
+      "club": "Newcastle United",
+      "position": "LW",
+      "height": "1,83m",
+      "aliases": []
+    },
+    {
+      "nation": "England",
+      "first_name": "Marcus",
+      "last_name": "Rashford",
+      "jersey_number": 11,
+      "birthdate": "31.10.1997",
+      "club": "FC Barcelona",
+      "position": "LW",
+      "height": "1,85m",
+      "aliases": []
+    },
+    {
+      "nation": "England",
+      "first_name": "Bukayo",
+      "last_name": "Saka",
+      "jersey_number": 7,
+      "birthdate": "05.09.2001",
+      "club": "Arsenal FC",
+      "position": "RW",
+      "height": "1,78m",
+      "aliases": []
+    },
+    {
+      "nation": "England",
+      "first_name": "Noni",
+      "last_name": "Madueke",
+      "jersey_number": 20,
+      "birthdate": "10.03.2002",
+      "club": "Arsenal FC",
+      "position": "RW",
+      "height": "1,82m",
+      "aliases": []
+    },
+    {
+      "nation": "England",
+      "first_name": "Harry",
+      "last_name": "Kane",
+      "jersey_number": 9,
+      "birthdate": "28.07.1993",
+      "club": "Bayern Munich",
+      "position": "ST",
+      "height": "1,88m",
+      "aliases": []
+    },
+    {
+      "nation": "England",
+      "first_name": "Ollie",
+      "last_name": "Watkins",
+      "jersey_number": 19,
+      "birthdate": "30.12.1995",
+      "club": "Aston Villa",
+      "position": "ST",
+      "height": "1,80m",
+      "aliases": []
+    },
+    {
+      "nation": "England",
+      "first_name": "Ivan",
+      "last_name": "Toney",
+      "jersey_number": 22,
+      "birthdate": "16.03.1996",
+      "club": "Al-Ahli SFC",
+      "position": "ST",
+      "height": "1,85m",
+      "aliases": []
+    }
+  ]
+}

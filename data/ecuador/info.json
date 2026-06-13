@@ -1,0 +1,314 @@
+{
+  "teamName": "Ecuador",
+  "group": "E",
+  "ranking": 23,
+  "color_1": "#D3AA75",
+  "color_2": "#FFCE00",
+  "color_3": "#002255",
+  "players": [
+    {
+      "nation": "Ecuador",
+      "first_name": "Gonzalo",
+      "last_name": "Valle",
+      "jersey_number": 22,
+      "birthdate": "28.02.1996",
+      "club": "LDU Quito",
+      "position": "GK",
+      "height": "1,86m",
+      "aliases": []
+    },
+    {
+      "nation": "Ecuador",
+      "first_name": "Moisés",
+      "last_name": "Ramírez",
+      "jersey_number": 12,
+      "birthdate": "09.09.2000",
+      "club": "AE Kifisia",
+      "position": "GK",
+      "height": "1,85m",
+      "aliases": [
+        "Ramirez"
+      ]
+    },
+    {
+      "nation": "Ecuador",
+      "first_name": "Hernán",
+      "last_name": "Galíndez",
+      "jersey_number": 1,
+      "birthdate": "30.03.1987",
+      "club": "CA Huracán",
+      "position": "GK",
+      "height": "1,89m",
+      "aliases": [
+        "Galindez"
+      ]
+    },
+    {
+      "nation": "Ecuador",
+      "first_name": "Willian",
+      "last_name": "Pacho",
+      "jersey_number": 6,
+      "birthdate": "16.10.2001",
+      "club": "Paris Saint-Germain",
+      "position": "CB",
+      "height": "1,88m",
+      "aliases": []
+    },
+    {
+      "nation": "Ecuador",
+      "first_name": "Piero",
+      "last_name": "Hincapié",
+      "jersey_number": 3,
+      "birthdate": "09.01.2002",
+      "club": "Arsenal FC",
+      "position": "CB",
+      "height": "1,83m",
+      "aliases": [
+        "Hincapie"
+      ]
+    },
+    {
+      "nation": "Ecuador",
+      "first_name": "Joel",
+      "last_name": "Ordóñez",
+      "jersey_number": 4,
+      "birthdate": "21.04.2004",
+      "club": "Club Brugge KV",
+      "position": "CB",
+      "height": "1,88m",
+      "aliases": [
+        "Ordonez"
+      ]
+    },
+    {
+      "nation": "Ecuador",
+      "first_name": "Jackson",
+      "last_name": "Porozo",
+      "jersey_number": 25,
+      "birthdate": "04.08.2000",
+      "club": "Club Tijuana",
+      "position": "CB",
+      "height": "1,92m",
+      "aliases": []
+    },
+    {
+      "nation": "Ecuador",
+      "first_name": "Félix",
+      "last_name": "Torres",
+      "jersey_number": 2,
+      "birthdate": "11.01.1997",
+      "club": "Sport Club Internacional",
+      "position": "CB",
+      "height": "1,87m",
+      "aliases": []
+    },
+    {
+      "nation": "Ecuador",
+      "first_name": "Pervis",
+      "last_name": "Estupiñán",
+      "jersey_number": 7,
+      "birthdate": "21.01.1998",
+      "club": "AC Milan",
+      "position": "LB",
+      "height": "1,75m",
+      "aliases": [
+        "Estupinan"
+      ]
+    },
+    {
+      "nation": "Ecuador",
+      "first_name": "Yaimar",
+      "last_name": "Medina",
+      "jersey_number": 26,
+      "birthdate": "05.11.2004",
+      "club": "KRC Genk",
+      "position": "LB",
+      "height": "1,73m",
+      "aliases": []
+    },
+    {
+      "nation": "Ecuador",
+      "first_name": "Angelo",
+      "last_name": "Preciado",
+      "jersey_number": 17,
+      "birthdate": "18.02.1998",
+      "club": "Clube Atlético Mineiro",
+      "position": "RB",
+      "height": "1,74m",
+      "aliases": []
+    },
+    {
+      "nation": "Ecuador",
+      "first_name": "Moisés",
+      "last_name": "Caicedo",
+      "jersey_number": 23,
+      "birthdate": "02.11.2001",
+      "club": "Chelsea FC",
+      "position": "DM",
+      "height": "1,78m",
+      "aliases": []
+    },
+    {
+      "nation": "Ecuador",
+      "first_name": "Jordy",
+      "last_name": "Alcívar",
+      "jersey_number": 5,
+      "birthdate": "05.08.1999",
+      "club": "Independiente del Valle",
+      "position": "DM",
+      "height": "1,68m",
+      "aliases": [
+        "Alcivar"
+      ]
+    },
+    {
+      "nation": "Ecuador",
+      "first_name": "Denil",
+      "last_name": "Castillo",
+      "jersey_number": 18,
+      "birthdate": "24.03.2004",
+      "club": "FC Midtjylland",
+      "position": "CM",
+      "height": "1,89m",
+      "aliases": []
+    },
+    {
+      "nation": "Ecuador",
+      "first_name": "Alan",
+      "last_name": "Franco",
+      "jersey_number": 21,
+      "birthdate": "21.08.1998",
+      "club": "Clube Atlético Mineiro",
+      "position": "CM",
+      "height": "1,75m",
+      "aliases": []
+    },
+    {
+      "nation": "Ecuador",
+      "first_name": "Kendry",
+      "last_name": "Páez",
+      "jersey_number": 10,
+      "birthdate": "04.05.2007",
+      "club": "CA River Plate",
+      "position": "AM",
+      "height": "1,78m",
+      "aliases": [
+        "Paez"
+      ]
+    },
+    {
+      "nation": "Ecuador",
+      "first_name": "Pedro",
+      "last_name": "Vite",
+      "jersey_number": 15,
+      "birthdate": "09.03.2002",
+      "club": "UNAM Pumas",
+      "position": "AM",
+      "height": "1,72m",
+      "aliases": []
+    },
+    {
+      "nation": "Ecuador",
+      "first_name": "Nilson",
+      "last_name": "Angulo",
+      "jersey_number": 20,
+      "birthdate": "19.06.2003",
+      "club": "Sunderland AFC",
+      "position": "LW",
+      "height": "1,84m",
+      "aliases": []
+    },
+    {
+      "nation": "Ecuador",
+      "first_name": "Gonzalo",
+      "last_name": "Plata",
+      "jersey_number": 19,
+      "birthdate": "01.11.2000",
+      "club": "CR Flamengo",
+      "position": "RW",
+      "height": "1,78m",
+      "aliases": []
+    },
+    {
+      "nation": "Ecuador",
+      "first_name": "Alan",
+      "last_name": "Minda",
+      "jersey_number": 14,
+      "birthdate": "14.05.2003",
+      "club": "Clube Atlético Mineiro",
+      "position": "LW",
+      "height": "1,74m",
+      "aliases": []
+    },
+    {
+      "nation": "Ecuador",
+      "first_name": "Anthony",
+      "last_name": "Valencia",
+      "jersey_number": 8,
+      "birthdate": "21.07.2003",
+      "club": "Royal Antwerp FC",
+      "position": "RW",
+      "height": "1,73m",
+      "aliases": []
+    },
+    {
+      "nation": "Ecuador",
+      "first_name": "John",
+      "last_name": "Yeboah",
+      "jersey_number": 9,
+      "birthdate": "23.06.2000",
+      "club": "Venezia FC",
+      "position": "AM",
+      "height": "1,70m",
+      "aliases": []
+    },
+    {
+      "nation": "Ecuador",
+      "first_name": "Jeremy",
+      "last_name": "Arévalo",
+      "jersey_number": 24,
+      "birthdate": "19.03.2005",
+      "club": "VfB Stuttgart",
+      "position": "ST",
+      "height": "1,82m",
+      "aliases": [
+        "Arevalo"
+      ]
+    },
+    {
+      "nation": "Ecuador",
+      "first_name": "Kevin",
+      "last_name": "Rodríguez",
+      "jersey_number": 11,
+      "birthdate": "04.03.2000",
+      "club": "Union Saint-Gilloise",
+      "position": "ST",
+      "height": "1,90m",
+      "aliases": [
+        "Rodriguez"
+      ]
+    },
+    {
+      "nation": "Ecuador",
+      "first_name": "Jordy",
+      "last_name": "Caicedo",
+      "jersey_number": 16,
+      "birthdate": "18.11.1997",
+      "club": "CA Huracán",
+      "position": "ST",
+      "height": "1,86m",
+      "aliases": []
+    },
+    {
+      "nation": "Ecuador",
+      "first_name": "Enner",
+      "last_name": "Valencia",
+      "jersey_number": 13,
+      "birthdate": "04.11.1989",
+      "club": "CF Pachuca",
+      "position": "ST",
+      "height": "1,77m",
+      "aliases": []
+    }
+  ]
+}

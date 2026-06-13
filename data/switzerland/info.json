@@ -1,0 +1,300 @@
+{
+  "teamName": "Switzerland",
+  "group": "B",
+  "ranking": 19,
+  "color_1": "#FFFFFF",
+  "color_2": "#DA291C",
+  "color_3": "#BCBEC0",
+  "players": [
+    {
+      "nation": "Switzerland",
+      "first_name": "Gregor",
+      "last_name": "Kobel",
+      "jersey_number": 1,
+      "birthdate": "06.12.1997",
+      "club": "Borussia Dortmund",
+      "position": "GK",
+      "height": "1,96m",
+      "aliases": []
+    },
+    {
+      "nation": "Switzerland",
+      "first_name": "Marvin",
+      "last_name": "Keller",
+      "jersey_number": 21,
+      "birthdate": "03.07.2002",
+      "club": "BSC Young Boys",
+      "position": "GK",
+      "height": "1,89m",
+      "aliases": []
+    },
+    {
+      "nation": "Switzerland",
+      "first_name": "Yvon",
+      "last_name": "Mvogo",
+      "jersey_number": 12,
+      "birthdate": "06.06.1994",
+      "club": "FC Lorient",
+      "position": "GK",
+      "height": "1,90m",
+      "aliases": []
+    },
+    {
+      "nation": "Switzerland",
+      "first_name": "Manuel",
+      "last_name": "Akanji",
+      "jersey_number": 5,
+      "birthdate": "19.07.1995",
+      "club": "Inter Milan",
+      "position": "CB",
+      "height": "1,88m",
+      "aliases": []
+    },
+    {
+      "nation": "Switzerland",
+      "first_name": "Aurèle",
+      "last_name": "Amenda",
+      "jersey_number": 24,
+      "birthdate": "31.07.2003",
+      "club": "Eintracht Frankfurt",
+      "position": "CB",
+      "height": "1,94m",
+      "aliases": []
+    },
+    {
+      "nation": "Switzerland",
+      "first_name": "Luca",
+      "last_name": "Jaquez",
+      "jersey_number": 25,
+      "birthdate": "02.06.2003",
+      "club": "VfB Stuttgart",
+      "position": "CB",
+      "height": "1,87m",
+      "aliases": []
+    },
+    {
+      "nation": "Switzerland",
+      "first_name": "Nico",
+      "last_name": "Elvedi",
+      "jersey_number": 4,
+      "birthdate": "30.09.1996",
+      "club": "Borussia Mönchengladbach",
+      "position": "CB",
+      "height": "1,89m",
+      "aliases": []
+    },
+    {
+      "nation": "Switzerland",
+      "first_name": "Eray",
+      "last_name": "Cömert",
+      "jersey_number": 18,
+      "birthdate": "04.02.1998",
+      "club": "Valencia CF",
+      "position": "CB",
+      "height": "1,83m",
+      "aliases": [
+        "Comert"
+      ]
+    },
+    {
+      "nation": "Switzerland",
+      "first_name": "Miro",
+      "last_name": "Muheim",
+      "jersey_number": 2,
+      "birthdate": "24.03.1998",
+      "club": "Hamburger SV",
+      "position": "LB",
+      "height": "1,82m",
+      "aliases": []
+    },
+    {
+      "nation": "Switzerland",
+      "first_name": "Ricardo",
+      "last_name": "Rodríguez",
+      "jersey_number": 13,
+      "birthdate": "25.08.1992",
+      "club": "Real Betis Balompié",
+      "position": "LB",
+      "height": "1,82m",
+      "aliases": [
+        "Rodriguez"
+      ]
+    },
+    {
+      "nation": "Switzerland",
+      "first_name": "Silvan",
+      "last_name": "Widmer",
+      "jersey_number": 3,
+      "birthdate": "05.03.1993",
+      "club": "1.FSV Mainz 05",
+      "position": "RB",
+      "height": "1,83m",
+      "aliases": []
+    },
+    {
+      "nation": "Switzerland",
+      "first_name": "Denis",
+      "last_name": "Zakaria",
+      "jersey_number": 6,
+      "birthdate": "20.11.1996",
+      "club": "AS Monaco",
+      "position": "RB",
+      "height": "1,89m",
+      "aliases": []
+    },
+    {
+      "nation": "Switzerland",
+      "first_name": "Ardon",
+      "last_name": "Jashari",
+      "jersey_number": 14,
+      "birthdate": "30.07.2002",
+      "club": "AC Milan",
+      "position": "DM",
+      "height": "1,81m",
+      "aliases": []
+    },
+    {
+      "nation": "Switzerland",
+      "first_name": "Granit",
+      "last_name": "Xhaka",
+      "jersey_number": 10,
+      "birthdate": "27.09.1992",
+      "club": "Sunderland AFC",
+      "position": "DM",
+      "height": "1,83m",
+      "aliases": []
+    },
+    {
+      "nation": "Switzerland",
+      "first_name": "Johan",
+      "last_name": "Manzambi",
+      "jersey_number": 9,
+      "birthdate": "14.10.2005",
+      "club": "SC Freiburg",
+      "position": "CM",
+      "height": "1,82m",
+      "aliases": []
+    },
+    {
+      "nation": "Switzerland",
+      "first_name": "Djibril",
+      "last_name": "Sow",
+      "jersey_number": 15,
+      "birthdate": "06.02.1997",
+      "club": "Sevilla FC",
+      "position": "CM",
+      "height": "1,83m",
+      "aliases": []
+    },
+    {
+      "nation": "Switzerland",
+      "first_name": "Michel",
+      "last_name": "Aebischer",
+      "jersey_number": 20,
+      "birthdate": "06.01.1997",
+      "club": "Pisa Sporting Club",
+      "position": "CM",
+      "height": "1,83m",
+      "aliases": []
+    },
+    {
+      "nation": "Switzerland",
+      "first_name": "Remo",
+      "last_name": "Freuler",
+      "jersey_number": 8,
+      "birthdate": "15.04.1992",
+      "club": "Bologna FC 1909",
+      "position": "CM",
+      "height": "1,81m",
+      "aliases": []
+    },
+    {
+      "nation": "Switzerland",
+      "first_name": "Fabian",
+      "last_name": "Rieder",
+      "jersey_number": 22,
+      "birthdate": "16.02.2002",
+      "club": "FC Augsburg",
+      "position": "AM",
+      "height": "1,81m",
+      "aliases": []
+    },
+    {
+      "nation": "Switzerland",
+      "first_name": "Christian",
+      "last_name": "Fassnacht",
+      "jersey_number": 16,
+      "birthdate": "11.11.1993",
+      "club": "BSC Young Boys",
+      "position": "AM",
+      "height": "1,85m",
+      "aliases": []
+    },
+    {
+      "nation": "Switzerland",
+      "first_name": "Noah",
+      "last_name": "Okafor",
+      "jersey_number": 19,
+      "birthdate": "24.05.2000",
+      "club": "Leeds United",
+      "position": "LW",
+      "height": "1,85m",
+      "aliases": []
+    },
+    {
+      "nation": "Switzerland",
+      "first_name": "Rubén",
+      "last_name": "Vargas",
+      "jersey_number": 17,
+      "birthdate": "05.08.1998",
+      "club": "Sevilla FC",
+      "position": "LW",
+      "height": "1,79m",
+      "aliases": []
+    },
+    {
+      "nation": "Switzerland",
+      "first_name": "Dan",
+      "last_name": "Ndoye",
+      "jersey_number": 11,
+      "birthdate": "25.10.2000",
+      "club": "Nottingham Forest",
+      "position": "RW",
+      "height": "1,84m",
+      "aliases": []
+    },
+    {
+      "nation": "Switzerland",
+      "first_name": "Breel",
+      "last_name": "Embolo",
+      "jersey_number": 7,
+      "birthdate": "14.02.1997",
+      "club": "Stade Rennais FC",
+      "position": "ST",
+      "height": "1,84m",
+      "aliases": []
+    },
+    {
+      "nation": "Switzerland",
+      "first_name": "Zeki",
+      "last_name": "Amdouni",
+      "jersey_number": 23,
+      "birthdate": "04.12.2000",
+      "club": "Burnley FC",
+      "position": "ST",
+      "height": "1,83m",
+      "aliases": []
+    },
+    {
+      "nation": "Switzerland",
+      "first_name": "Cedric",
+      "last_name": "Itten",
+      "jersey_number": 26,
+      "birthdate": "27.12.1996",
+      "club": "Fortuna Düsseldorf",
+      "position": "ST",
+      "height": "1,90m",
+      "aliases": []
+    }
+  ]
+}

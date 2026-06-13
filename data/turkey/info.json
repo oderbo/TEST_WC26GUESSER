@@ -1,0 +1,336 @@
+{
+  "teamName": "Turkiye",
+  "group": "D",
+  "ranking": 22,
+  "color_1": "#FFFFFF",
+  "color_2": "#E30A17",
+  "color_3": "#BCBEC0",
+  "players": [
+    {
+      "nation": "Turkiye",
+      "first_name": "Uğurcan",
+      "last_name": "Çakır",
+      "jersey_number": 23,
+      "birthdate": "05.04.1996",
+      "club": "Galatasaray",
+      "position": "GK",
+      "height": "1,91m",
+      "aliases": [
+        "Cakir"
+      ]
+    },
+    {
+      "nation": "Turkiye",
+      "first_name": "Altay",
+      "last_name": "Bayındır",
+      "jersey_number": 12,
+      "birthdate": "14.04.1998",
+      "club": "Manchester United",
+      "position": "GK",
+      "height": "1,98m",
+      "aliases": [
+	    "Bayindir"
+	  ]
+    },
+    {
+      "nation": "Turkiye",
+      "first_name": "Mert",
+      "last_name": "Günok",
+      "jersey_number": 1,
+      "birthdate": "01.03.1989",
+      "club": "Fenerbahce",
+      "position": "GK",
+      "height": "1,96m",
+      "aliases": [
+        "Gunok"
+      ]
+    },
+    {
+      "nation": "Turkiye",
+      "first_name": "Ozan",
+      "last_name": "Kabak",
+      "jersey_number": 15,
+      "birthdate": "25.03.2000",
+      "club": "TSG 1899 Hoffenheim",
+      "position": "CB",
+      "height": "1,87m",
+      "aliases": []
+    },
+    {
+      "nation": "Turkiye",
+      "first_name": "Merih",
+      "last_name": "Demiral",
+      "jersey_number": 3,
+      "birthdate": "05.03.1998",
+      "club": "Al-Ahli SFC",
+      "position": "CB",
+      "height": "1,90m",
+      "aliases": []
+    },
+    {
+      "nation": "Turkiye",
+      "first_name": "Abdülkerim",
+      "last_name": "Bardakcı",
+      "jersey_number": 14,
+      "birthdate": "07.09.1994",
+      "club": "Galatasaray",
+      "position": "CB",
+      "height": "1,85m",
+      "aliases": [
+        "Bardakci"
+      ]
+    },
+    {
+      "nation": "Turkiye",
+      "first_name": "Çağlar",
+      "last_name": "Söyüncü",
+      "jersey_number": 4,
+      "birthdate": "23.05.1996",
+      "club": "Fenerbahce",
+      "position": "CB",
+      "height": "1,85m",
+      "aliases": [
+        "Soyuncu"
+      ]
+    },
+    {
+      "nation": "Turkiye",
+      "first_name": "Samet",
+      "last_name": "Akaydin",
+      "jersey_number": 25,
+      "birthdate": "13.03.1994",
+      "club": "Caykur Rizespor",
+      "position": "CB",
+      "height": "1,90m",
+      "aliases": []
+    },
+    {
+      "nation": "Turkiye",
+      "first_name": "Ferdi",
+      "last_name": "Kadıoğlu",
+      "jersey_number": 20,
+      "birthdate": "07.10.1999",
+      "club": "Brighton & Hove Albion",
+      "position": "LB",
+      "height": "1,74m",
+      "aliases": [
+        "Kadioglu"
+      ]
+    },
+    {
+      "nation": "Turkiye",
+      "first_name": "Eren",
+      "last_name": "Elmalı",
+      "jersey_number": 13,
+      "birthdate": "07.07.2000",
+      "club": "Galatasaray",
+      "position": "LB",
+      "height": "1,81m",
+      "aliases": [
+        "Elmali"
+      ]
+    },
+    {
+      "nation": "Turkiye",
+      "first_name": "Zeki",
+      "last_name": "Çelik",
+      "jersey_number": 2,
+      "birthdate": "17.02.1997",
+      "club": "AS Roma",
+      "position": "RB",
+      "height": "1,80m",
+      "aliases": [
+        "Celik"
+      ]
+    },
+    {
+      "nation": "Turkiye",
+      "first_name": "Mert",
+      "last_name": "Müldür",
+      "jersey_number": 18,
+      "birthdate": "03.04.1999",
+      "club": "Fenerbahce",
+      "position": "RB",
+      "height": "1,84m",
+      "aliases": [
+        "Muldur"
+      ]
+    },
+    {
+      "nation": "Turkiye",
+      "first_name": "Hakan",
+      "last_name": "Çalhanoğlu",
+      "jersey_number": 10,
+      "birthdate": "08.02.1994",
+      "club": "Inter Milan",
+      "position": "DM",
+      "height": "1,78m",
+      "aliases": [
+        "Calhanoglu"
+      ]
+    },
+    {
+      "nation": "Turkiye",
+      "first_name": "İsmail",
+      "last_name": "Yüksek",
+      "jersey_number": 16,
+      "birthdate": "26.01.1999",
+      "club": "Fenerbahce",
+      "position": "DM",
+      "height": "1,83m",
+      "aliases": [
+        "Yuksek"
+      ]
+    },
+    {
+      "nation": "Turkiye",
+      "first_name": "Salih",
+      "last_name": "Özcan",
+      "jersey_number": 5,
+      "birthdate": "11.01.1998",
+      "club": "Borussia Dortmund",
+      "position": "DM",
+      "height": "1,82m",
+      "aliases": [
+        "Ozcan"
+      ]
+    },
+    {
+      "nation": "Turkiye",
+      "first_name": "Kaan",
+      "last_name": "Ayhan",
+      "jersey_number": 22,
+      "birthdate": "10.11.1994",
+      "club": "Galatasaray",
+      "position": "DM",
+      "height": "1,85m",
+      "aliases": []
+    },
+    {
+      "nation": "Turkiye",
+      "first_name": "Orkun",
+      "last_name": "Kökçü",
+      "jersey_number": 6,
+      "birthdate": "29.12.2000",
+      "club": "Besiktas JK",
+      "position": "CM",
+      "height": "1,75m",
+      "aliases": [
+        "Kokcu"
+      ]
+    },
+    {
+      "nation": "Turkiye",
+      "first_name": "Arda",
+      "last_name": "Güler",
+      "jersey_number": 8,
+      "birthdate": "25.02.2005",
+      "club": "Real Madrid",
+      "position": "AM",
+      "height": "1,75m",
+      "aliases": [
+        "Guler"
+      ]
+    },
+    {
+      "nation": "Turkiye",
+      "first_name": "Can",
+      "last_name": "Uzun",
+      "jersey_number": 26,
+      "birthdate": "11.11.2005",
+      "club": "Eintracht Frankfurt",
+      "position": "AM",
+      "height": "1,86m",
+      "aliases": []
+    },
+    {
+      "nation": "Turkiye",
+      "first_name": "Kenan",
+      "last_name": "Yıldız",
+      "jersey_number": 11,
+      "birthdate": "04.05.2005",
+      "club": "Juventus FC",
+      "position": "LW",
+      "height": "1,87m",
+      "aliases": [
+        "Yildiz"
+      ]
+    },
+    {
+      "nation": "Turkiye",
+      "first_name": "Barış Alper",
+      "last_name": "Yılmaz",
+      "jersey_number": 21,
+      "birthdate": "23.05.2000",
+      "club": "Galatasaray",
+      "position": "LW",
+      "height": "1,86m",
+      "aliases": [
+        "Yilmaz"
+      ]
+    },
+    {
+      "nation": "Turkiye",
+      "first_name": "Kerem",
+      "last_name": "Aktürkoğlu",
+      "jersey_number": 7,
+      "birthdate": "21.10.1998",
+      "club": "Fenerbahce",
+      "position": "LW",
+      "height": "1,72m",
+      "aliases": [
+        "Akturkoglu"
+      ]
+    },
+    {
+      "nation": "Turkiye",
+      "first_name": "Yunus",
+      "last_name": "Akgün",
+      "jersey_number": 19,
+      "birthdate": "07.07.2000",
+      "club": "Galatasaray",
+      "position": "RW",
+      "height": "1,73m",
+      "aliases": [
+        "Akgun"
+      ]
+    },
+    {
+      "nation": "Turkiye",
+      "first_name": "Oğuz",
+      "last_name": "Aydın",
+      "jersey_number": 24,
+      "birthdate": "27.10.2000",
+      "club": "Fenerbahce",
+      "position": "RW",
+      "height": "1,83m",
+      "aliases": [
+        "Aydin"
+      ]
+    },
+    {
+      "nation": "Turkiye",
+      "first_name": "İrfan Can",
+      "last_name": "Kahveci",
+      "jersey_number": 17,
+      "birthdate": "15.07.1995",
+      "club": "Kasimpasa",
+      "position": "RW",
+      "height": "1,80m",
+      "aliases": []
+    },
+    {
+      "nation": "Turkiye",
+      "first_name": "Deniz",
+      "last_name": "Gül",
+      "jersey_number": 9,
+      "birthdate": "02.07.2004",
+      "club": "FC Porto",
+      "position": "ST",
+      "height": "1,92m",
+      "aliases": [
+        "Gul"
+      ]
+    }
+  ]
+}

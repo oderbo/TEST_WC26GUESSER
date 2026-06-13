@@ -1,0 +1,300 @@
+{
+  "teamName": "Senegal",
+  "group": "I",
+  "ranking": 13,
+  "color_1": "#FFDC00",
+  "color_2": "#006330",
+  "color_3": "#E63F23",
+  "players": [
+    {
+      "nation": "Senegal",
+      "first_name": "Yehvann",
+      "last_name": "Diouf",
+      "jersey_number": 1,
+      "birthdate": "16.11.1999",
+      "club": "OGC Nice",
+      "position": "GK",
+      "height": "1,88m",
+      "aliases": []
+    },
+    {
+      "nation": "Senegal",
+      "first_name": "Edouard",
+      "last_name": "Mendy",
+      "jersey_number": 16,
+      "birthdate": "01.03.1992",
+      "club": "Al-Ahli SFC",
+      "position": "GK",
+      "height": "1,94m",
+      "aliases": []
+    },
+    {
+      "nation": "Senegal",
+      "first_name": "Mory",
+      "last_name": "Diaw",
+      "jersey_number": 23,
+      "birthdate": "22.06.1993",
+      "club": "Le Havre AC",
+      "position": "GK",
+      "height": "1,97m",
+      "aliases": []
+    },
+    {
+      "nation": "Senegal",
+      "first_name": "Mamadou",
+      "last_name": "Sarr",
+      "jersey_number": 2,
+      "birthdate": "29.08.2005",
+      "club": "Chelsea FC",
+      "position": "CB",
+      "height": "1,94m",
+      "aliases": []
+    },
+    {
+      "nation": "Senegal",
+      "first_name": "Moussa",
+      "last_name": "Niakhaté",
+      "jersey_number": 19,
+      "birthdate": "08.03.1996",
+      "club": "Olympique Lyon",
+      "position": "CB",
+      "height": "1,90m",
+      "aliases": [
+        "Niakhate"
+      ]
+    },
+    {
+      "nation": "Senegal",
+      "first_name": "Antoine",
+      "last_name": "Mendy",
+      "jersey_number": 24,
+      "birthdate": "27.05.2004",
+      "club": "OGC Nice",
+      "position": "CB",
+      "height": "1,87m",
+      "aliases": []
+    },
+    {
+      "nation": "Senegal",
+      "first_name": "Kalidou",
+      "last_name": "Koulibaly",
+      "jersey_number": 3,
+      "birthdate": "20.06.1991",
+      "club": "Al-Hilal SFC",
+      "position": "CB",
+      "height": "1,86m",
+      "aliases": []
+    },
+    {
+      "nation": "Senegal",
+      "first_name": "Abdoulaye",
+      "last_name": "Seck",
+      "jersey_number": 4,
+      "birthdate": "04.06.1992",
+      "club": "Maccabi Haifa",
+      "position": "CB",
+      "height": "1,92m",
+      "aliases": []
+    },
+    {
+      "nation": "Senegal",
+      "first_name": "El Hadji Malick",
+      "last_name": "Diouf",
+      "jersey_number": 25,
+      "birthdate": "28.12.2004",
+      "club": "West Ham United",
+      "position": "LB",
+      "height": "1,77m",
+      "aliases": []
+    },
+    {
+      "nation": "Senegal",
+      "first_name": "Ismail",
+      "last_name": "Jakobs",
+      "jersey_number": 14,
+      "birthdate": "17.08.1999",
+      "club": "Galatasaray",
+      "position": "LB",
+      "height": "1,84m",
+      "aliases": []
+    },
+    {
+      "nation": "Senegal",
+      "first_name": "Idrissa",
+      "last_name": "Gueye",
+      "jersey_number": 5,
+      "birthdate": "26.09.1989",
+      "club": "Everton FC",
+      "position": "DM",
+      "height": "1,74m",
+      "aliases": []
+    },
+    {
+      "nation": "Senegal",
+      "first_name": "Lamine",
+      "last_name": "Camara",
+      "jersey_number": 8,
+      "birthdate": "01.01.2004",
+      "club": "AS Monaco",
+      "position": "CM",
+      "height": "1,74m",
+      "aliases": []
+    },
+    {
+      "nation": "Senegal",
+      "first_name": "Pape",
+      "last_name": "Gueye",
+      "jersey_number": 26,
+      "birthdate": "24.01.1999",
+      "club": "Villarreal CF",
+      "position": "CM",
+      "height": "1,89m",
+      "aliases": []
+    },
+    {
+      "nation": "Senegal",
+      "first_name": "Habib",
+      "last_name": "Diarra",
+      "jersey_number": 21,
+      "birthdate": "03.01.2004",
+      "club": "Sunderland AFC",
+      "position": "CM",
+      "height": "1,78m",
+      "aliases": []
+    },
+    {
+      "nation": "Senegal",
+      "first_name": "Pape Matar",
+      "last_name": "Sarr",
+      "jersey_number": 17,
+      "birthdate": "14.09.2002",
+      "club": "Tottenham Hotspur",
+      "position": "CM",
+      "height": "1,85m",
+      "aliases": []
+    },
+    {
+      "nation": "Senegal",
+      "first_name": "Bara Sapoko",
+      "last_name": "Ndiaye",
+      "jersey_number": 22,
+      "birthdate": "31.12.2007",
+      "club": "Bayern Munich",
+      "position": "CM",
+      "height": "1,80m",
+      "aliases": []
+    },
+    {
+      "nation": "Senegal",
+      "first_name": "Pathé",
+      "last_name": "Ciss",
+      "jersey_number": 6,
+      "birthdate": "16.03.1994",
+      "club": "Rayo Vallecano",
+      "position": "CM",
+      "height": "1,86m",
+      "aliases": []
+    },
+    {
+      "nation": "Senegal",
+      "first_name": "Krépin",
+      "last_name": "Diatta",
+      "jersey_number": 15,
+      "birthdate": "25.02.1999",
+      "club": "AS Monaco",
+      "position": "RB",
+      "height": "1,73m",
+      "aliases": []
+    },
+    {
+      "nation": "Senegal",
+      "first_name": "Assane",
+      "last_name": "Diao",
+      "jersey_number": 7,
+      "birthdate": "07.09.2005",
+      "club": "Como 1907",
+      "position": "LW",
+      "height": "1,85m",
+      "aliases": []
+    },
+    {
+      "nation": "Senegal",
+      "first_name": "Sadio",
+      "last_name": "Mané",
+      "jersey_number": 10,
+      "birthdate": "10.04.1992",
+      "club": "Al-Nassr FC",
+      "position": "LW",
+      "height": "1,75m",
+      "aliases": [
+        "Mane"
+      ]
+    },
+    {
+      "nation": "Senegal",
+      "first_name": "Iliman",
+      "last_name": "Ndiaye",
+      "jersey_number": 13,
+      "birthdate": "06.03.2000",
+      "club": "Everton FC",
+      "position": "RW",
+      "height": "1,80m",
+      "aliases": []
+    },
+    {
+      "nation": "Senegal",
+      "first_name": "Ismaïla",
+      "last_name": "Sarr",
+      "jersey_number": 18,
+      "birthdate": "25.02.1998",
+      "club": "Crystal Palace",
+      "position": "AM",
+      "height": "1,85m",
+      "aliases": []
+    },
+    {
+      "nation": "Senegal",
+      "first_name": "Ibrahim",
+      "last_name": "Mbaye",
+      "jersey_number": 20,
+      "birthdate": "24.01.2008",
+      "club": "Paris Saint-Germain",
+      "position": "RW",
+      "height": "1,75m",
+      "aliases": []
+    },
+    {
+      "nation": "Senegal",
+      "first_name": "Nicolas",
+      "last_name": "Jackson",
+      "jersey_number": 11,
+      "birthdate": "20.06.2001",
+      "club": "Bayern Munich",
+      "position": "ST",
+      "height": "1,87m",
+      "aliases": []
+    },
+    {
+      "nation": "Senegal",
+      "first_name": "Bamba",
+      "last_name": "Dieng",
+      "jersey_number": 9,
+      "birthdate": "23.03.2000",
+      "club": "FC Lorient",
+      "position": "ST",
+      "height": "1,78m",
+      "aliases": []
+    },
+    {
+      "nation": "Senegal",
+      "first_name": "Cherif",
+      "last_name": "Ndiaye",
+      "jersey_number": 12,
+      "birthdate": "23.01.1996",
+      "club": "Samsunspor",
+      "position": "ST",
+      "height": "1,90m",
+      "aliases": []
+    }
+  ]
+}

@@ -1,0 +1,310 @@
+{
+  "teamName": "Portugal",
+  "group": "K",
+  "ranking": 5,
+  "color_1": "#E42518",
+  "color_2": "#0F4B3F",
+  "color_3": "#D3C084",
+  "players": [
+    {
+      "nation": "Portugal",
+      "first_name": "Diogo",
+      "last_name": "Costa",
+      "jersey_number": 1,
+      "birthdate": "19.09.1999",
+      "club": "FC Porto",
+      "position": "GK",
+      "height": "1,88m",
+      "aliases": []
+    },
+    {
+      "nation": "Portugal",
+      "first_name": "Rui",
+      "last_name": "Silva",
+      "jersey_number": 22,
+      "birthdate": "07.02.1994",
+      "club": "Sporting CP",
+      "position": "GK",
+      "height": "1,91m",
+      "aliases": []
+    },
+    {
+      "nation": "Portugal",
+      "first_name": "José",
+      "last_name": "Sá",
+      "jersey_number": 12,
+      "birthdate": "17.01.1993",
+      "club": "Wolverhampton Wanderers",
+      "position": "GK",
+      "height": "1,92m",
+      "aliases": [
+        "Sa"
+      ]
+    },
+    {
+      "nation": "Portugal",
+      "first_name": "Rúben",
+      "last_name": "Dias",
+      "jersey_number": 3,
+      "birthdate": "14.05.1997",
+      "club": "Manchester City",
+      "position": "CB",
+      "height": "1,87m",
+      "aliases": []
+    },
+    {
+      "nation": "Portugal",
+      "first_name": "Gonçalo",
+      "last_name": "Inácio",
+      "jersey_number": 14,
+      "birthdate": "25.08.2001",
+      "club": "Sporting CP",
+      "position": "CB",
+      "height": "1,85m",
+      "aliases": [
+        "Inacio"
+      ]
+    },
+    {
+      "nation": "Portugal",
+      "first_name": "Tomás",
+      "last_name": "Araújo",
+      "jersey_number": 4,
+      "birthdate": "16.05.2002",
+      "club": "SL Benfica",
+      "position": "CB",
+      "height": "1,87m",
+      "aliases": [
+        "Araujo"
+      ]
+    },
+    {
+      "nation": "Portugal",
+      "first_name": "Renato",
+      "last_name": "Veiga",
+      "jersey_number": 13,
+      "birthdate": "29.07.2003",
+      "club": "Villarreal CF",
+      "position": "CB",
+      "height": "1,88m",
+      "aliases": []
+    },
+    {
+      "nation": "Portugal",
+      "first_name": "Nuno",
+      "last_name": "Mendes",
+      "jersey_number": 25,
+      "birthdate": "19.06.2002",
+      "club": "Paris Saint-Germain",
+      "position": "LB",
+      "height": "1,77m",
+      "aliases": []
+    },
+    {
+      "nation": "Portugal",
+      "first_name": "Matheus",
+      "last_name": "Nunes",
+      "jersey_number": 6,
+      "birthdate": "27.08.1998",
+      "club": "Manchester City",
+      "position": "RB",
+      "height": "1,83m",
+      "aliases": []
+    },
+    {
+      "nation": "Portugal",
+      "first_name": "Diogo",
+      "last_name": "Dalot",
+      "jersey_number": 5,
+      "birthdate": "18.03.1999",
+      "club": "Manchester United",
+      "position": "RB",
+      "height": "1,84m",
+      "aliases": []
+    },
+    {
+      "nation": "Portugal",
+      "first_name": "João",
+      "last_name": "Cancelo",
+      "jersey_number": 20,
+      "birthdate": "27.05.1994",
+      "club": "FC Barcelona",
+      "position": "LB",
+      "height": "1,82m",
+      "aliases": []
+    },
+    {
+      "nation": "Portugal",
+      "first_name": "Nélson",
+      "last_name": "Semedo",
+      "jersey_number": 2,
+      "birthdate": "16.11.1993",
+      "club": "Fenerbahce",
+      "position": "RB",
+      "height": "1,79m",
+      "aliases": []
+    },
+    {
+      "nation": "Portugal",
+      "first_name": "Vitinha",
+      "last_name": "",
+      "jersey_number": 23,
+      "birthdate": "13.02.2000",
+      "club": "Paris Saint-Germain",
+      "position": "DM",
+      "height": "1,70m",
+      "aliases": []
+    },
+    {
+      "nation": "Portugal",
+      "first_name": "Rúben",
+      "last_name": "Neves",
+      "jersey_number": 21,
+      "birthdate": "13.03.1997",
+      "club": "Al-Hilal SFC",
+      "position": "DM",
+      "height": "1,83m",
+      "aliases": []
+    },
+    {
+      "nation": "Portugal",
+      "first_name": "Samú",
+      "last_name": "Costa",
+      "jersey_number": 24,
+      "birthdate": "27.11.2000",
+      "club": "RCD Mallorca",
+      "position": "DM",
+      "height": "1,85m",
+      "aliases": []
+    },
+    {
+      "nation": "Portugal",
+      "first_name": "João",
+      "last_name": "Neves",
+      "jersey_number": 15,
+      "birthdate": "27.09.2004",
+      "club": "Paris Saint-Germain",
+      "position": "CM",
+      "height": "1,71m",
+      "aliases": []
+    },
+    {
+      "nation": "Portugal",
+      "first_name": "Francisco",
+      "last_name": "Trincão",
+      "jersey_number": 16,
+      "birthdate": "29.12.1999",
+      "club": "Sporting CP",
+      "position": "AM",
+      "height": "1,84m",
+      "aliases": [
+        "Trincao"
+      ]
+    },
+    {
+      "nation": "Portugal",
+      "first_name": "Bruno",
+      "last_name": "Fernandes",
+      "jersey_number": 8,
+      "birthdate": "08.09.1994",
+      "club": "Manchester United",
+      "position": "AM",
+      "height": "1,83m",
+      "aliases": []
+    },
+    {
+      "nation": "Portugal",
+      "first_name": "Bernardo",
+      "last_name": "Silva",
+      "jersey_number": 10,
+      "birthdate": "10.08.1994",
+      "club": "Manchester City",
+      "position": "AM",
+      "height": "1,73m",
+      "aliases": []
+    },
+    {
+      "nation": "Portugal",
+      "first_name": "Rafael",
+      "last_name": "Leão",
+      "jersey_number": 17,
+      "birthdate": "10.06.1999",
+      "club": "AC Milan",
+      "position": "LW",
+      "height": "1,88m",
+      "aliases": [
+        "Leao"
+      ]
+    },
+    {
+      "nation": "Portugal",
+      "first_name": "Gonçalo",
+      "last_name": "Guedes",
+      "jersey_number": 19,
+      "birthdate": "29.11.1996",
+      "club": "Real Sociedad",
+      "position": "LW",
+      "height": "1,79m",
+      "aliases": []
+    },
+    {
+      "nation": "Portugal",
+      "first_name": "Pedro",
+      "last_name": "Neto",
+      "jersey_number": 18,
+      "birthdate": "09.03.2000",
+      "club": "Chelsea FC",
+      "position": "RW",
+      "height": "1,74m",
+      "aliases": []
+    },
+    {
+      "nation": "Portugal",
+      "first_name": "Francisco",
+      "last_name": "Conceição",
+      "jersey_number": 26,
+      "birthdate": "14.12.2002",
+      "club": "Juventus FC",
+      "position": "RW",
+      "height": "1,66m",
+      "aliases": [
+        "Conceicao"
+      ]
+    },
+    {
+      "nation": "Portugal",
+      "first_name": "João",
+      "last_name": "Félix",
+      "jersey_number": 11,
+      "birthdate": "10.11.1999",
+      "club": "Al-Nassr FC",
+      "position": "ST",
+      "height": "1,79m",
+      "aliases": [
+        "Felix"
+      ]
+    },
+    {
+      "nation": "Portugal",
+      "first_name": "Gonçalo",
+      "last_name": "Ramos",
+      "jersey_number": 9,
+      "birthdate": "20.06.2001",
+      "club": "Paris Saint-Germain",
+      "position": "ST",
+      "height": "1,85m",
+      "aliases": []
+    },
+    {
+      "nation": "Portugal",
+      "first_name": "Cristiano",
+      "last_name": "Ronaldo",
+      "jersey_number": 7,
+      "birthdate": "05.02.1985",
+      "club": "Al-Nassr FC",
+      "position": "ST",
+      "height": "1,85m",
+      "aliases": []
+    }
+  ]
+}

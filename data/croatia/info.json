@@ -1,0 +1,310 @@
+{
+  "teamName": "Croatia",
+  "group": "L",
+  "ranking": 11,
+  "color_1": "#FFFFFF",
+  "color_2": "#ED1C24",
+  "color_3": "#0456A0",
+  "players": [
+    {
+      "nation": "Croatia",
+      "first_name": "Dominik",
+      "last_name": "Kotarski",
+      "jersey_number": 23,
+      "birthdate": "10.02.2000",
+      "club": "FC Copenhagen",
+      "position": "GK",
+      "height": "1,90m",
+      "aliases": []
+    },
+    {
+      "nation": "Croatia",
+      "first_name": "Ivor",
+      "last_name": "Pandur",
+      "jersey_number": 12,
+      "birthdate": "25.03.2000",
+      "club": "Hull City",
+      "position": "GK",
+      "height": "1,87m",
+      "aliases": []
+    },
+    {
+      "nation": "Croatia",
+      "first_name": "Dominik",
+      "last_name": "Livakovic",
+      "jersey_number": 1,
+      "birthdate": "09.01.1995",
+      "club": "GNK Dinamo Zagreb",
+      "position": "GK",
+      "height": "1,88m",
+      "aliases": []
+    },
+    {
+      "nation": "Croatia",
+      "first_name": "Josko",
+      "last_name": "Gvardiol",
+      "jersey_number": 4,
+      "birthdate": "23.01.2002",
+      "club": "Manchester City",
+      "position": "LB",
+      "height": "1,85m",
+      "aliases": []
+    },
+    {
+      "nation": "Croatia",
+      "first_name": "Luka",
+      "last_name": "Vuskovic",
+      "jersey_number": 22,
+      "birthdate": "24.02.2007",
+      "club": "Hamburger SV",
+      "position": "CB",
+      "height": "1,93m",
+      "aliases": []
+    },
+    {
+      "nation": "Croatia",
+      "first_name": "Josip",
+      "last_name": "Sutalo",
+      "jersey_number": 6,
+      "birthdate": "28.02.2000",
+      "club": "Ajax Amsterdam",
+      "position": "CB",
+      "height": "1,85m",
+      "aliases": []
+    },
+    {
+      "nation": "Croatia",
+      "first_name": "Marin",
+      "last_name": "Pongracic",
+      "jersey_number": 3,
+      "birthdate": "11.09.1997",
+      "club": "ACF Fiorentina",
+      "position": "CB",
+      "height": "1,93m",
+      "aliases": []
+    },
+    {
+      "nation": "Croatia",
+      "first_name": "Martin",
+      "last_name": "Erlić",
+      "jersey_number": 25,
+      "birthdate": "24.01.1998",
+      "club": "FC Midtjylland",
+      "position": "CB",
+      "height": "1,92m",
+      "aliases": [
+        "Erlic"
+      ]
+    },
+    {
+      "nation": "Croatia",
+      "first_name": "Duje",
+      "last_name": "Caleta-Car",
+      "jersey_number": 5,
+      "birthdate": "17.09.1996",
+      "club": "Real Sociedad",
+      "position": "CB",
+      "height": "1,93m",
+      "aliases": []
+    },
+    {
+      "nation": "Croatia",
+      "first_name": "Josip",
+      "last_name": "Stanisic",
+      "jersey_number": 2,
+      "birthdate": "02.04.2000",
+      "club": "Bayern Munich",
+      "position": "RB",
+      "height": "1,87m",
+      "aliases": []
+    },
+    {
+      "nation": "Croatia",
+      "first_name": "Nikola",
+      "last_name": "Moro",
+      "jersey_number": 7,
+      "birthdate": "12.03.1998",
+      "club": "Bologna FC 1909",
+      "position": "DM",
+      "height": "1,83m",
+      "aliases": []
+    },
+    {
+      "nation": "Croatia",
+      "first_name": "Kristijan",
+      "last_name": "Jakic",
+      "jersey_number": 18,
+      "birthdate": "14.05.1997",
+      "club": "FC Augsburg",
+      "position": "DM",
+      "height": "1,81m",
+      "aliases": []
+    },
+    {
+      "nation": "Croatia",
+      "first_name": "Petar",
+      "last_name": "Sučić",
+      "jersey_number": 17,
+      "birthdate": "25.10.2003",
+      "club": "Inter Milan",
+      "position": "CM",
+      "height": "1,83m",
+      "aliases": [
+        "Sucic"
+      ]
+    },
+    {
+      "nation": "Croatia",
+      "first_name": "Mateo",
+      "last_name": "Kovacic",
+      "jersey_number": 8,
+      "birthdate": "06.05.1994",
+      "club": "Manchester City",
+      "position": "CM",
+      "height": "1,78m",
+      "aliases": []
+    },
+    {
+      "nation": "Croatia",
+      "first_name": "Luka",
+      "last_name": "Sucic",
+      "jersey_number": 21,
+      "birthdate": "08.09.2002",
+      "club": "Real Sociedad",
+      "position": "CM",
+      "height": "1,85m",
+      "aliases": []
+    },
+    {
+      "nation": "Croatia",
+      "first_name": "Mario",
+      "last_name": "Pašalić",
+      "jersey_number": 15,
+      "birthdate": "09.02.1995",
+      "club": "Atalanta BC",
+      "position": "CM",
+      "height": "1,88m",
+      "aliases": [
+        "Pasalic"
+      ]
+    },
+    {
+      "nation": "Croatia",
+      "first_name": "Luka",
+      "last_name": "Modrić",
+      "jersey_number": 10,
+      "birthdate": "09.09.1985",
+      "club": "AC Milan",
+      "position": "CM",
+      "height": "1,72m",
+      "aliases": [
+        "Modric"
+      ]
+    },
+    {
+      "nation": "Croatia",
+      "first_name": "Martin",
+      "last_name": "Baturina",
+      "jersey_number": 16,
+      "birthdate": "16.02.2003",
+      "club": "Como 1907",
+      "position": "LW",
+      "height": "1,72m",
+      "aliases": []
+    },
+    {
+      "nation": "Croatia",
+      "first_name": "Nikola",
+      "last_name": "Vlašić",
+      "jersey_number": 13,
+      "birthdate": "04.10.1997",
+      "club": "Torino FC",
+      "position": "AM",
+      "height": "1,79m",
+      "aliases": [
+        "Vlasic"
+      ]
+    },
+    {
+      "nation": "Croatia",
+      "first_name": "Toni",
+      "last_name": "Fruk",
+      "jersey_number": 19,
+      "birthdate": "09.03.2001",
+      "club": "HNK Rijeka",
+      "position": "AM",
+      "height": "1,77m",
+      "aliases": []
+    },
+    {
+      "nation": "Croatia",
+      "first_name": "Andrej",
+      "last_name": "Kramaric",
+      "jersey_number": 9,
+      "birthdate": "19.06.1991",
+      "club": "TSG 1899 Hoffenheim",
+      "position": "AM",
+      "height": "1,77m",
+      "aliases": []
+    },
+    {
+      "nation": "Croatia",
+      "first_name": "Ivan",
+      "last_name": "Perišić",
+      "jersey_number": 14,
+      "birthdate": "02.02.1989",
+      "club": "PSV Eindhoven",
+      "position": "LW",
+      "height": "1,86m",
+      "aliases": [
+        "Perisic"
+      ]
+    },
+    {
+      "nation": "Croatia",
+      "first_name": "Marco",
+      "last_name": "Pašalić",
+      "jersey_number": 24,
+      "birthdate": "14.09.2000",
+      "club": "Orlando City SC",
+      "position": "RW",
+      "height": "1,77m",
+      "aliases": [
+        "Pasalic"
+      ]
+    },
+    {
+      "nation": "Croatia",
+      "first_name": "Igor",
+      "last_name": "Matanovic",
+      "jersey_number": 20,
+      "birthdate": "31.03.2003",
+      "club": "SC Freiburg",
+      "position": "ST",
+      "height": "1,94m",
+      "aliases": []
+    },
+    {
+      "nation": "Croatia",
+      "first_name": "Petar",
+      "last_name": "Musa",
+      "jersey_number": 26,
+      "birthdate": "04.03.1998",
+      "club": "FC Dallas",
+      "position": "ST",
+      "height": "1,90m",
+      "aliases": []
+    },
+    {
+      "nation": "Croatia",
+      "first_name": "Ante",
+      "last_name": "Budimir",
+      "jersey_number": 11,
+      "birthdate": "22.07.1991",
+      "club": "CA Osasuna",
+      "position": "ST",
+      "height": "1,90m",
+      "aliases": []
+    }
+  ]
+}

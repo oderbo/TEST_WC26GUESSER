@@ -1,0 +1,304 @@
+{
+  "teamName": "Sweden",
+  "group": "F",
+  "ranking": 38,
+  "color_1": "#FFD600",
+  "color_2": "#015794",
+  "color_3": "#FFFFFF",
+  "players": [
+    {
+      "nation": "Sweden",
+      "first_name": "Viktor",
+      "last_name": "Johansson",
+      "jersey_number": 12,
+      "birthdate": "14.09.1998",
+      "club": "Stoke City",
+      "position": "GK",
+      "height": "1,87m",
+      "aliases": []
+    },
+    {
+      "nation": "Sweden",
+      "first_name": "Jacob Widell",
+      "last_name": "Zetterström",
+      "jersey_number": 1,
+      "birthdate": "11.07.1998",
+      "club": "Derby County",
+      "position": "GK",
+      "height": "1,97m",
+      "aliases": [
+        "Zetterstrom"
+      ]
+    },
+    {
+      "nation": "Sweden",
+      "first_name": "Kristoffer",
+      "last_name": "Nordfeldt",
+      "jersey_number": 23,
+      "birthdate": "23.06.1989",
+      "club": "AIK",
+      "position": "GK",
+      "height": "1,90m",
+      "aliases": []
+    },
+    {
+      "nation": "Sweden",
+      "first_name": "Isak",
+      "last_name": "Hien",
+      "jersey_number": 4,
+      "birthdate": "13.01.1999",
+      "club": "Atalanta BC",
+      "position": "CB",
+      "height": "1,91m",
+      "aliases": []
+    },
+    {
+      "nation": "Sweden",
+      "first_name": "Gustaf",
+      "last_name": "Lagerbielke",
+      "jersey_number": 2,
+      "birthdate": "10.04.2000",
+      "club": "SC Braga",
+      "position": "RB",
+      "height": "1,93m",
+      "aliases": []
+    },
+    {
+      "nation": "Sweden",
+      "first_name": "Victor",
+      "last_name": "Lindelöf",
+      "jersey_number": 3,
+      "birthdate": "17.07.1994",
+      "club": "Aston Villa",
+      "position": "CB",
+      "height": "1,87m",
+      "aliases": [
+        "Lindelof"
+      ]
+    },
+    {
+      "nation": "Sweden",
+      "first_name": "Hjalmar",
+      "last_name": "Ekdal",
+      "jersey_number": 14,
+      "birthdate": "21.10.1998",
+      "club": "Burnley FC",
+      "position": "CB",
+      "height": "1,87m",
+      "aliases": []
+    },
+    {
+      "nation": "Sweden",
+      "first_name": "Eric",
+      "last_name": "Smith",
+      "jersey_number": 20,
+      "birthdate": "08.01.1997",
+      "club": "FC St. Pauli",
+      "position": "CB",
+      "height": "1,92m",
+      "aliases": []
+    },
+    {
+      "nation": "Sweden",
+      "first_name": "Carl",
+      "last_name": "Starfelt",
+      "jersey_number": 15,
+      "birthdate": "01.06.1995",
+      "club": "Celta de Vigo",
+      "position": "CB",
+      "height": "1,85m",
+      "aliases": []
+    },
+    {
+      "nation": "Sweden",
+      "first_name": "Daniel",
+      "last_name": "Svensson",
+      "jersey_number": 8,
+      "birthdate": "12.02.2002",
+      "club": "Borussia Dortmund",
+      "position": "LB",
+      "height": "1,83m",
+      "aliases": []
+    },
+    {
+      "nation": "Sweden",
+      "first_name": "Gabriel",
+      "last_name": "Gudmundsson",
+      "jersey_number": 5,
+      "birthdate": "29.04.1999",
+      "club": "Leeds United",
+      "position": "LB",
+      "height": "1,81m",
+      "aliases": []
+    },
+    {
+      "nation": "Sweden",
+      "first_name": "Ken",
+      "last_name": "Sema",
+      "jersey_number": 13,
+      "birthdate": "30.09.1993",
+      "club": "Pafos FC",
+      "position": "LB",
+      "height": "1,80m",
+      "aliases": []
+    },
+    {
+      "nation": "Sweden",
+      "first_name": "Jesper",
+      "last_name": "Karlström",
+      "jersey_number": 16,
+      "birthdate": "21.06.1995",
+      "club": "Udinese Calcio",
+      "position": "DM",
+      "height": "1,82m",
+      "aliases": [
+        "Karlstrom"
+      ]
+    },
+    {
+      "nation": "Sweden",
+      "first_name": "Lucas",
+      "last_name": "Bergvall",
+      "jersey_number": 7,
+      "birthdate": "02.02.2006",
+      "club": "Tottenham Hotspur",
+      "position": "CM",
+      "height": "1,87m",
+      "aliases": []
+    },
+    {
+      "nation": "Sweden",
+      "first_name": "Yasin",
+      "last_name": "Ayari",
+      "jersey_number": 18,
+      "birthdate": "06.10.2003",
+      "club": "Brighton & Hove Albion",
+      "position": "CM",
+      "height": "1,72m",
+      "aliases": []
+    },
+    {
+      "nation": "Sweden",
+      "first_name": "Mattias",
+      "last_name": "Svanberg",
+      "jersey_number": 19,
+      "birthdate": "05.01.1999",
+      "club": "VfL Wolfsburg",
+      "position": "CM",
+      "height": "1,86m",
+      "aliases": []
+    },
+    {
+      "nation": "Sweden",
+      "first_name": "Besfort",
+      "last_name": "Zeneli",
+      "jersey_number": 22,
+      "birthdate": "21.11.2002",
+      "club": "Union Saint-Gilloise",
+      "position": "CM",
+      "height": "1,87m",
+      "aliases": []
+    },
+    {
+      "nation": "Sweden",
+      "first_name": "Herman",
+      "last_name": "Johansson",
+      "jersey_number": 6,
+      "birthdate": "16.10.1997",
+      "club": "FC Dallas",
+      "position": "RW",
+      "height": "1,90m",
+      "aliases": []
+    },
+    {
+      "nation": "Sweden",
+      "first_name": "Elliot",
+      "last_name": "Stroud",
+      "jersey_number": 24,
+      "birthdate": "22.06.2002",
+      "club": "Mjällby AIF",
+      "position": "LW",
+      "height": "1,85m",
+      "aliases": []
+    },
+    {
+      "nation": "Sweden",
+      "first_name": "Benjamin",
+      "last_name": "Nygren",
+      "jersey_number": 10,
+      "birthdate": "08.07.2001",
+      "club": "Celtic FC",
+      "position": "AM",
+      "height": "1,87m",
+      "aliases": []
+    },
+    {
+      "nation": "Sweden",
+      "first_name": "Taha",
+      "last_name": "Ali",
+      "jersey_number": 26,
+      "birthdate": "01.07.1998",
+      "club": "Malmö FF",
+      "position": "LW",
+      "height": "1,74m",
+      "aliases": []
+    },
+    {
+      "nation": "Sweden",
+      "first_name": "Anthony",
+      "last_name": "Elanga",
+      "jersey_number": 11,
+      "birthdate": "27.04.2002",
+      "club": "Newcastle United",
+      "position": "RW",
+      "height": "1,78m",
+      "aliases": []
+    },
+    {
+      "nation": "Sweden",
+      "first_name": "Alexander",
+      "last_name": "Bernhardsson",
+      "jersey_number": 21,
+      "birthdate": "08.09.1998",
+      "club": "Holstein Kiel",
+      "position": "RB",
+      "height": "1,84m",
+      "aliases": []
+    },
+    {
+      "nation": "Sweden",
+      "first_name": "Alexander",
+      "last_name": "Isak",
+      "jersey_number": 9,
+      "birthdate": "21.09.1999",
+      "club": "Liverpool FC",
+      "position": "ST",
+      "height": "1,90m",
+      "aliases": []
+    },
+    {
+      "nation": "Sweden",
+      "first_name": "Viktor",
+      "last_name": "Gyökeres",
+      "jersey_number": 17,
+      "birthdate": "04.06.1998",
+      "club": "Arsenal FC",
+      "position": "ST",
+      "height": "1,89m",
+      "aliases": [
+        "Gyokeres"
+      ]
+    },
+    {
+      "nation": "Sweden",
+      "first_name": "Gustaf",
+      "last_name": "Nilsson",
+      "jersey_number": 25,
+      "birthdate": "23.05.1997",
+      "club": "Club Brugge KV",
+      "position": "ST",
+      "height": "1,97m",
+      "aliases": []
+    }
+  ]
+}

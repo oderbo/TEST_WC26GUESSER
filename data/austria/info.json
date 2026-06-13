@@ -1,0 +1,298 @@
+{
+  "teamName": "Austria",
+  "group": "J",
+  "ranking": 24,
+  "color_1": "#FDFDFD",
+  "color_2": "#000000",
+  "color_3": "#FE0101",
+  "players": [
+    {
+      "nation": "Austria",
+      "first_name": "Florian",
+      "last_name": "Wiegele",
+      "jersey_number": 12,
+      "birthdate": "21.03.2001",
+      "club": "FC Viktoria Plzen",
+      "position": "GK",
+      "height": "2,05m",
+      "aliases": []
+    },
+    {
+      "nation": "Austria",
+      "first_name": "Patrick",
+      "last_name": "Pentz",
+      "jersey_number": 13,
+      "birthdate": "02.01.1997",
+      "club": "Bröndby IF",
+      "position": "GK",
+      "height": "1,83m",
+      "aliases": []
+    },
+    {
+      "nation": "Austria",
+      "first_name": "Alexander",
+      "last_name": "Schlager",
+      "jersey_number": 1,
+      "birthdate": "01.02.1996",
+      "club": "Red Bull Salzburg",
+      "position": "GK",
+      "height": "1,88m",
+      "aliases": []
+    },
+    {
+      "nation": "Austria",
+      "first_name": "David",
+      "last_name": "Affengruber",
+      "jersey_number": 2,
+      "birthdate": "19.03.2001",
+      "club": "Elche CF",
+      "position": "CB",
+      "height": "1,85m",
+      "aliases": []
+    },
+    {
+      "nation": "Austria",
+      "first_name": "Kevin",
+      "last_name": "Danso",
+      "jersey_number": 3,
+      "birthdate": "19.09.1998",
+      "club": "Tottenham Hotspur",
+      "position": "CB",
+      "height": "1,90m",
+      "aliases": []
+    },
+    {
+      "nation": "Austria",
+      "first_name": "Philipp",
+      "last_name": "Lienhart",
+      "jersey_number": 15,
+      "birthdate": "11.07.1996",
+      "club": "SC Freiburg",
+      "position": "CB",
+      "height": "1,89m",
+      "aliases": []
+    },
+    {
+      "nation": "Austria",
+      "first_name": "Marco",
+      "last_name": "Friedl",
+      "jersey_number": 23,
+      "birthdate": "16.03.1998",
+      "club": "SV Werder Bremen",
+      "position": "CB",
+      "height": "1,87m",
+      "aliases": []
+    },
+    {
+      "nation": "Austria",
+      "first_name": "Stefan",
+      "last_name": "Posch",
+      "jersey_number": 5,
+      "birthdate": "14.05.1997",
+      "club": "1.FSV Mainz 05",
+      "position": "RB",
+      "height": "1,88m",
+      "aliases": []
+    },
+    {
+      "nation": "Austria",
+      "first_name": "Michael",
+      "last_name": "Svoboda",
+      "jersey_number": 25,
+      "birthdate": "15.10.1998",
+      "club": "Venezia FC",
+      "position": "CB",
+      "height": "1,95m",
+      "aliases": []
+    },
+    {
+      "nation": "Austria",
+      "first_name": "David",
+      "last_name": "Alaba",
+      "jersey_number": 8,
+      "birthdate": "24.06.1992",
+      "club": "Real Madrid",
+      "position": "CB",
+      "height": "1,80m",
+      "aliases": []
+    },
+    {
+      "nation": "Austria",
+      "first_name": "Phillipp",
+      "last_name": "Mwene",
+      "jersey_number": 16,
+      "birthdate": "29.01.1994",
+      "club": "1.FSV Mainz 05",
+      "position": "LB",
+      "height": "1,70m",
+      "aliases": []
+    },
+    {
+      "nation": "Austria",
+      "first_name": "Konrad",
+      "last_name": "Laimer",
+      "jersey_number": 20,
+      "birthdate": "27.05.1997",
+      "club": "Bayern Munich",
+      "position": "RB",
+      "height": "1,80m",
+      "aliases": []
+    },
+    {
+      "nation": "Austria",
+      "first_name": "Nicolas",
+      "last_name": "Seiwald",
+      "jersey_number": 6,
+      "birthdate": "04.05.2001",
+      "club": "RB Leipzig",
+      "position": "DM",
+      "height": "1,79m",
+      "aliases": []
+    },
+    {
+      "nation": "Austria",
+      "first_name": "Florian",
+      "last_name": "Grillitsch",
+      "jersey_number": 10,
+      "birthdate": "07.08.1995",
+      "club": "SC Braga",
+      "position": "DM",
+      "height": "1,86m",
+      "aliases": []
+    },
+    {
+      "nation": "Austria",
+      "first_name": "Dejan",
+      "last_name": "Ljubicic",
+      "jersey_number": 19,
+      "birthdate": "08.10.1997",
+      "club": "FC Schalke 04",
+      "position": "DM",
+      "height": "1,87m",
+      "aliases": []
+    },
+    {
+      "nation": "Austria",
+      "first_name": "Paul",
+      "last_name": "Wanner",
+      "jersey_number": 24,
+      "birthdate": "23.12.2005",
+      "club": "PSV Eindhoven",
+      "position": "CM",
+      "height": "1,85m",
+      "aliases": []
+    },
+    {
+      "nation": "Austria",
+      "first_name": "Carney",
+      "last_name": "Chukwuemeka",
+      "jersey_number": 17,
+      "birthdate": "20.10.2003",
+      "club": "Borussia Dortmund",
+      "position": "CM",
+      "height": "1,87m",
+      "aliases": []
+    },
+    {
+      "nation": "Austria",
+      "first_name": "Xaver",
+      "last_name": "Schlager",
+      "jersey_number": 4,
+      "birthdate": "28.09.1997",
+      "club": "RB Leipzig",
+      "position": "CM",
+      "height": "1,74m",
+      "aliases": []
+    },
+    {
+      "nation": "Austria",
+      "first_name": "Marcel",
+      "last_name": "Sabitzer",
+      "jersey_number": 9,
+      "birthdate": "17.03.1994",
+      "club": "Borussia Dortmund",
+      "position": "CM",
+      "height": "1,78m",
+      "aliases": []
+    },
+    {
+      "nation": "Austria",
+      "first_name": "Alessandro",
+      "last_name": "Schöpf",
+      "jersey_number": 26,
+      "birthdate": "07.02.1994",
+      "club": "Wolfsberger AC",
+      "position": "CM",
+      "height": "1,78m",
+      "aliases": [
+        "Schopf"
+      ]
+    },
+    {
+      "nation": "Austria",
+      "first_name": "Alexander",
+      "last_name": "Prass",
+      "jersey_number": 22,
+      "birthdate": "26.05.2001",
+      "club": "TSG 1899 Hoffenheim",
+      "position": "LB",
+      "height": "1,80m",
+      "aliases": []
+    },
+    {
+      "nation": "Austria",
+      "first_name": "Romano",
+      "last_name": "Schmid",
+      "jersey_number": 18,
+      "birthdate": "27.01.2000",
+      "club": "SV Werder Bremen",
+      "position": "AM",
+      "height": "1,68m",
+      "aliases": []
+    },
+    {
+      "nation": "Austria",
+      "first_name": "Patrick",
+      "last_name": "Wimmer",
+      "jersey_number": 21,
+      "birthdate": "30.05.2001",
+      "club": "VfL Wolfsburg",
+      "position": "RW",
+      "height": "1,82m",
+      "aliases": []
+    },
+    {
+      "nation": "Austria",
+      "first_name": "Sasa",
+      "last_name": "Kalajdzic",
+      "jersey_number": 14,
+      "birthdate": "07.07.1997",
+      "club": "LASK",
+      "position": "ST",
+      "height": "2,00m",
+      "aliases": []
+    },
+    {
+      "nation": "Austria",
+      "first_name": "Marko",
+      "last_name": "Arnautovic",
+      "jersey_number": 7,
+      "birthdate": "19.04.1989",
+      "club": "Red Star Belgrade",
+      "position": "ST",
+      "height": "1,92m",
+      "aliases": []
+    },
+    {
+      "nation": "Austria",
+      "first_name": "Michael",
+      "last_name": "Gregoritsch",
+      "jersey_number": 11,
+      "birthdate": "18.04.1994",
+      "club": "FC Augsburg",
+      "position": "ST",
+      "height": "1,93m",
+      "aliases": []
+    }
+  ]
+}

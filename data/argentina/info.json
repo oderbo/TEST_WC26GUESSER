@@ -1,0 +1,308 @@
+{
+  "teamName": "Argentina",
+  "group": "J",
+  "ranking": 3,
+  "color_1": "#FFFFFF",
+  "color_2": "#3BA0CB",
+  "color_3": "#CFAB4B",
+  "players": [
+    {
+      "nation": "Argentina",
+      "first_name": "Emiliano",
+      "last_name": "Martínez",
+      "jersey_number": 23,
+      "birthdate": "02.09.1992",
+      "club": "Aston Villa",
+      "position": "GK",
+      "height": "1,95m",
+      "aliases": [
+        "Martinez"
+      ]
+    },
+    {
+      "nation": "Argentina",
+      "first_name": "Gerónimo",
+      "last_name": "Rulli",
+      "jersey_number": 12,
+      "birthdate": "20.05.1992",
+      "club": "Olympique Marseille",
+      "position": "GK",
+      "height": "1,89m",
+      "aliases": []
+    },
+    {
+      "nation": "Argentina",
+      "first_name": "Juan",
+      "last_name": "Musso",
+      "jersey_number": 1,
+      "birthdate": "06.05.1994",
+      "club": "Atlético de Madrid",
+      "position": "GK",
+      "height": "1,93m",
+      "aliases": []
+    },
+    {
+      "nation": "Argentina",
+      "first_name": "Cristian",
+      "last_name": "Romero",
+      "jersey_number": 13,
+      "birthdate": "27.04.1998",
+      "club": "Tottenham Hotspur",
+      "position": "CB",
+      "height": "1,85m",
+      "aliases": []
+    },
+    {
+      "nation": "Argentina",
+      "first_name": "Marcos",
+      "last_name": "Senesi",
+      "jersey_number": 2,
+      "birthdate": "10.05.1997",
+      "club": "Tottenham Hotspur",
+      "position": "CB",
+      "height": "1,84m",
+      "aliases": []
+    },
+    {
+      "nation": "Argentina",
+      "first_name": "Lisandro",
+      "last_name": "Martínez",
+      "jersey_number": 6,
+      "birthdate": "18.01.1998",
+      "club": "Manchester United",
+      "position": "CB",
+      "height": "1,75m",
+      "aliases": [
+        "Martinez"
+      ]
+    },
+    {
+      "nation": "Argentina",
+      "first_name": "Facundo",
+      "last_name": "Medina",
+      "jersey_number": 25,
+      "birthdate": "28.05.1999",
+      "club": "Olympique Marseille",
+      "position": "CB",
+      "height": "1,84m",
+      "aliases": []
+    },
+    {
+      "nation": "Argentina",
+      "first_name": "Nicolás",
+      "last_name": "Otamendi",
+      "jersey_number": 19,
+      "birthdate": "12.02.1988",
+      "club": "SL Benfica",
+      "position": "CB",
+      "height": "1,82m",
+      "aliases": []
+    },
+    {
+      "nation": "Argentina",
+      "first_name": "Nicolás",
+      "last_name": "Tagliafico",
+      "jersey_number": 3,
+      "birthdate": "31.08.1992",
+      "club": "Olympique Lyon",
+      "position": "LB",
+      "height": "1,72m",
+      "aliases": []
+    },
+    {
+      "nation": "Argentina",
+      "first_name": "Nahuel",
+      "last_name": "Molina",
+      "jersey_number": 26,
+      "birthdate": "06.04.1998",
+      "club": "Atlético de Madrid",
+      "position": "RB",
+      "height": "1,79m",
+      "aliases": []
+    },
+    {
+      "nation": "Argentina",
+      "first_name": "Gonzalo",
+      "last_name": "Montiel",
+      "jersey_number": 4,
+      "birthdate": "01.01.1997",
+      "club": "CA River Plate",
+      "position": "RB",
+      "height": "1,75m",
+      "aliases": []
+    },
+    {
+      "nation": "Argentina",
+      "first_name": "Leandro",
+      "last_name": "Paredes",
+      "jersey_number": 5,
+      "birthdate": "29.06.1994",
+      "club": "CA Boca Juniors",
+      "position": "DM",
+      "height": "1,82m",
+      "aliases": []
+    },
+    {
+      "nation": "Argentina",
+      "first_name": "Enzo",
+      "last_name": "Fernández",
+      "jersey_number": 24,
+      "birthdate": "17.01.2001",
+      "club": "Chelsea FC",
+      "position": "CM",
+      "height": "1,78m",
+      "aliases": [
+        "Fernandez"
+      ]
+    },
+    {
+      "nation": "Argentina",
+      "first_name": "Alexis",
+      "last_name": "Mac Allister",
+      "jersey_number": 20,
+      "birthdate": "24.12.1998",
+      "club": "Liverpool FC",
+      "position": "CM",
+      "height": "1,76m",
+      "aliases": []
+    },
+    {
+      "nation": "Argentina",
+      "first_name": "Valentín",
+      "last_name": "Barco",
+      "jersey_number": 8,
+      "birthdate": "23.07.2004",
+      "club": "RC Strasbourg Alsace",
+      "position": "CM",
+      "height": "1,70m",
+      "aliases": []
+    },
+    {
+      "nation": "Argentina",
+      "first_name": "Exequiel",
+      "last_name": "Palacios",
+      "jersey_number": 14,
+      "birthdate": "05.10.1998",
+      "club": "Bayer 04 Leverkusen",
+      "position": "CM",
+      "height": "1,77m",
+      "aliases": []
+    },
+    {
+      "nation": "Argentina",
+      "first_name": "Rodrigo",
+      "last_name": "de Paul",
+      "jersey_number": 7,
+      "birthdate": "24.05.1994",
+      "club": "Inter Miami CF",
+      "position": "CM",
+      "height": "1,78m",
+      "aliases": []
+    },
+    {
+      "nation": "Argentina",
+      "first_name": "Nico",
+      "last_name": "Paz",
+      "jersey_number": 18,
+      "birthdate": "08.09.2004",
+      "club": "Como 1907",
+      "position": "AM",
+      "height": "1,85m",
+      "aliases": []
+    },
+    {
+      "nation": "Argentina",
+      "first_name": "Giovani",
+      "last_name": "lo Celso",
+      "jersey_number": 11,
+      "birthdate": "09.04.1996",
+      "club": "Real Betis Balompié",
+      "position": "AM",
+      "height": "1,77m",
+      "aliases": []
+    },
+    {
+      "nation": "Argentina",
+      "first_name": "Nico",
+      "last_name": "González",
+      "jersey_number": 15,
+      "birthdate": "06.04.1998",
+      "club": "Atlético de Madrid",
+      "position": "LW",
+      "height": "1,80m",
+      "aliases": [
+        "Gonzalez"
+      ]
+    },
+    {
+      "nation": "Argentina",
+      "first_name": "Thiago",
+      "last_name": "Almada",
+      "jersey_number": 16,
+      "birthdate": "26.04.2001",
+      "club": "Atlético de Madrid",
+      "position": "LW",
+      "height": "1,71m",
+      "aliases": []
+    },
+    {
+      "nation": "Argentina",
+      "first_name": "Giuliano",
+      "last_name": "Simeone",
+      "jersey_number": 17,
+      "birthdate": "18.12.2002",
+      "club": "Atlético de Madrid",
+      "position": "RW",
+      "height": "1,74m",
+      "aliases": []
+    },
+    {
+      "nation": "Argentina",
+      "first_name": "Lionel",
+      "last_name": "Messi",
+      "jersey_number": 10,
+      "birthdate": "24.06.1987",
+      "club": "Inter Miami CF",
+      "position": "RW",
+      "height": "1,70m",
+      "aliases": []
+    },
+    {
+      "nation": "Argentina",
+      "first_name": "Julián",
+      "last_name": "Alvarez",
+      "jersey_number": 9,
+      "birthdate": "31.01.2000",
+      "club": "Atlético de Madrid",
+      "position": "ST",
+      "height": "1,70m",
+      "aliases": []
+    },
+    {
+      "nation": "Argentina",
+      "first_name": "Lautaro",
+      "last_name": "Martínez",
+      "jersey_number": 22,
+      "birthdate": "22.08.1997",
+      "club": "Inter Milan",
+      "position": "ST",
+      "height": "1,75m",
+      "aliases": [
+        "Martinez"
+      ]
+    },
+    {
+      "nation": "Argentina",
+      "first_name": "José Manuel",
+      "last_name": "López",
+      "jersey_number": 21,
+      "birthdate": "06.12.2000",
+      "club": "Sociedade Esportiva Palmeiras",
+      "position": "ST",
+      "height": "1,90m",
+      "aliases": [
+        "Lopez"
+      ]
+    }
+  ]
+}

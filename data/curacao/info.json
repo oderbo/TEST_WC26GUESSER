@@ -1,0 +1,298 @@
+{
+  "teamName": "Curaçao",
+  "group": "E",
+  "ranking": 82,
+  "color_1": "#FFFFFF",
+  "color_2": "#E5A92E",
+  "color_3": "#2E2C70",
+  "players": [
+    {
+      "nation": "Curaçao",
+      "first_name": "Eloy",
+      "last_name": "Room",
+      "jersey_number": 1,
+      "birthdate": "06.02.1989",
+      "club": "Miami FC",
+      "position": "GK",
+      "height": "1,90m",
+      "aliases": []
+    },
+    {
+      "nation": "Curaçao",
+      "first_name": "Trevor",
+      "last_name": "Doornbusch",
+      "jersey_number": 26,
+      "birthdate": "06.07.1999",
+      "club": "VVV-Venlo",
+      "position": "GK",
+      "height": "1,88m",
+      "aliases": []
+    },
+    {
+      "nation": "Curaçao",
+      "first_name": "Tyrick",
+      "last_name": "Bodak",
+      "jersey_number": 25,
+      "birthdate": "15.05.2002",
+      "club": "SC Telstar",
+      "position": "GK",
+      "height": "1,90m",
+      "aliases": []
+    },
+    {
+      "nation": "Curaçao",
+      "first_name": "Armando",
+      "last_name": "Obispo",
+      "jersey_number": 18,
+      "birthdate": "05.03.1999",
+      "club": "PSV Eindhoven",
+      "position": "CB",
+      "height": "1,85m",
+      "aliases": []
+    },
+    {
+      "nation": "Curaçao",
+      "first_name": "Riechedly",
+      "last_name": "Bazoer",
+      "jersey_number": 23,
+      "birthdate": "12.10.1996",
+      "club": "Konyaspor",
+      "position": "CB",
+      "height": "1,84m",
+      "aliases": []
+    },
+    {
+      "nation": "Curaçao",
+      "first_name": "Deveron",
+      "last_name": "Fonville",
+      "jersey_number": 24,
+      "birthdate": "16.05.2003",
+      "club": "NEC Nijmegen",
+      "position": "CB",
+      "height": "1,88m",
+      "aliases": []
+    },
+    {
+      "nation": "Curaçao",
+      "first_name": "Roshon van",
+      "last_name": "Eijma",
+      "jersey_number": 4,
+      "birthdate": "09.06.1998",
+      "club": "RKC Waalwijk",
+      "position": "CB",
+      "height": "1,86m",
+      "aliases": []
+    },
+    {
+      "nation": "Curaçao",
+      "first_name": "Juriën",
+      "last_name": "Gaari",
+      "jersey_number": 3,
+      "birthdate": "23.12.1993",
+      "club": "Abha Club",
+      "position": "CB",
+      "height": "1,83m",
+      "aliases": []
+    },
+    {
+      "nation": "Curaçao",
+      "first_name": "Sherel",
+      "last_name": "Floranus",
+      "jersey_number": 5,
+      "birthdate": "23.08.1998",
+      "club": "PEC Zwolle",
+      "position": "LB",
+      "height": "1,81m",
+      "aliases": []
+    },
+    {
+      "nation": "Curaçao",
+      "first_name": "Shurandy",
+      "last_name": "Sambo",
+      "jersey_number": 2,
+      "birthdate": "19.08.2001",
+      "club": "Sparta Rotterdam",
+      "position": "LB",
+      "height": "1,74m",
+      "aliases": []
+    },
+    {
+      "nation": "Curaçao",
+      "first_name": "Joshua",
+      "last_name": "Brenet",
+      "jersey_number": 20,
+      "birthdate": "20.03.1994",
+      "club": "Kayserispor",
+      "position": "RB",
+      "height": "1,81m",
+      "aliases": []
+    },
+    {
+      "nation": "Curaçao",
+      "first_name": "Livano",
+      "last_name": "Comenencia",
+      "jersey_number": 8,
+      "birthdate": "03.02.2004",
+      "club": "FC Zürich",
+      "position": "RB",
+      "height": "1,85m",
+      "aliases": []
+    },
+    {
+      "nation": "Curaçao",
+      "first_name": "Kevin",
+      "last_name": "Felida",
+      "jersey_number": 22,
+      "birthdate": "11.11.1999",
+      "club": "FC Den Bosch",
+      "position": "DM",
+      "height": "1,74m",
+      "aliases": []
+    },
+    {
+      "nation": "Curaçao",
+      "first_name": "Godfried",
+      "last_name": "Roemeratoe",
+      "jersey_number": 6,
+      "birthdate": "19.08.1999",
+      "club": "RKC Waalwijk",
+      "position": "DM",
+      "height": "1,78m",
+      "aliases": []
+    },
+    {
+      "nation": "Curaçao",
+      "first_name": "Juninho",
+      "last_name": "Bacuna",
+      "jersey_number": 7,
+      "birthdate": "07.08.1997",
+      "club": "FC Volendam",
+      "position": "CM",
+      "height": "1,78m",
+      "aliases": []
+    },
+    {
+      "nation": "Curaçao",
+      "first_name": "Leandro",
+      "last_name": "Bacuna",
+      "jersey_number": 10,
+      "birthdate": "21.08.1991",
+      "club": "Igdir FK",
+      "position": "CM",
+      "height": "1,80m",
+      "aliases": []
+    },
+    {
+      "nation": "Curaçao",
+      "first_name": "Tyrese",
+      "last_name": "Noslin",
+      "jersey_number": 13,
+      "birthdate": "11.09.2002",
+      "club": "SC Telstar",
+      "position": "RW",
+      "height": "1,82m",
+      "aliases": []
+    },
+    {
+      "nation": "Curaçao",
+      "first_name": "Tahith",
+      "last_name": "Chong",
+      "jersey_number": 21,
+      "birthdate": "04.12.1999",
+      "club": "Sheffield United",
+      "position": "AM",
+      "height": "1,85m",
+      "aliases": []
+    },
+    {
+      "nation": "Curaçao",
+      "first_name": "Jearl",
+      "last_name": "Margaritha",
+      "jersey_number": 16,
+      "birthdate": "10.04.2000",
+      "club": "SK Beveren",
+      "position": "LW",
+      "height": "1,81m",
+      "aliases": []
+    },
+    {
+      "nation": "Curaçao",
+      "first_name": "Jeremy",
+      "last_name": "Antonisse",
+      "jersey_number": 11,
+      "birthdate": "29.03.2002",
+      "club": "AE Kifisia",
+      "position": "LW",
+      "height": "1,64m",
+      "aliases": []
+    },
+    {
+      "nation": "Curaçao",
+      "first_name": "Kenji",
+      "last_name": "Gorré",
+      "jersey_number": 14,
+      "birthdate": "29.09.1994",
+      "club": "Maccabi Haifa",
+      "position": "LW",
+      "height": "1,74m",
+      "aliases": [
+        "Gorre"
+      ]
+    },
+    {
+      "nation": "Curaçao",
+      "first_name": "Sontje",
+      "last_name": "Hansen",
+      "jersey_number": 12,
+      "birthdate": "18.05.2002",
+      "club": "Middlesbrough FC",
+      "position": "AM",
+      "height": "1,76m",
+      "aliases": []
+    },
+    {
+      "nation": "Curaçao",
+      "first_name": "Ar'jany",
+      "last_name": "Martha",
+      "jersey_number": 15,
+      "birthdate": "04.09.2003",
+      "club": "Rotherham United",
+      "position": "RW",
+      "height": "1,80m",
+      "aliases": []
+    },
+    {
+      "nation": "Curaçao",
+      "first_name": "Brandley",
+      "last_name": "Kuwas",
+      "jersey_number": 17,
+      "birthdate": "19.09.1992",
+      "club": "FC Volendam",
+      "position": "RW",
+      "height": "1,81m",
+      "aliases": []
+    },
+    {
+      "nation": "Curaçao",
+      "first_name": "Gervane",
+      "last_name": "Kastaneer",
+      "jersey_number": 19,
+      "birthdate": "09.06.1996",
+      "club": "Terengganu FC",
+      "position": "ST",
+      "height": "1,89m",
+      "aliases": []
+    },
+    {
+      "nation": "Curaçao",
+      "first_name": "Jürgen",
+      "last_name": "Locadia",
+      "jersey_number": 9,
+      "birthdate": "07.11.1993",
+      "club": "Miami FC",
+      "position": "ST",
+      "height": "1,93m",
+      "aliases": []
+    }
+  ]
+}

@@ -1,0 +1,298 @@
+{
+  "teamName": "New Zealand",
+  "group": "G",
+  "ranking": 85,
+  "color_1": "#FFFFFF",
+  "color_2": "#000000",
+  "color_3": "#00193F",
+  "players": [
+    {
+      "nation": "New Zealand",
+      "first_name": "Max",
+      "last_name": "Crocombe",
+      "jersey_number": 1,
+      "birthdate": "12.08.1993",
+      "club": "Millwall FC",
+      "position": "GK",
+      "height": "1,90m",
+      "aliases": []
+    },
+    {
+      "nation": "New Zealand",
+      "first_name": "Alex",
+      "last_name": "Paulsen",
+      "jersey_number": 12,
+      "birthdate": "04.07.2002",
+      "club": "Lechia Gdansk",
+      "position": "GK",
+      "height": "1,93m",
+      "aliases": []
+    },
+    {
+      "nation": "New Zealand",
+      "first_name": "Michael",
+      "last_name": "Woud",
+      "jersey_number": 22,
+      "birthdate": "16.01.1999",
+      "club": "Auckland FC",
+      "position": "GK",
+      "height": "1,96m",
+      "aliases": []
+    },
+    {
+      "nation": "New Zealand",
+      "first_name": "Tyler",
+      "last_name": "Bindon",
+      "jersey_number": 4,
+      "birthdate": "27.01.2005",
+      "club": "Sheffield United",
+      "position": "CB",
+      "height": "1,90m",
+      "aliases": []
+    },
+    {
+      "nation": "New Zealand",
+      "first_name": "Finn",
+      "last_name": "Surman",
+      "jersey_number": 16,
+      "birthdate": "23.09.2003",
+      "club": "Portland Timbers",
+      "position": "CB",
+      "height": "1,90m",
+      "aliases": []
+    },
+    {
+      "nation": "New Zealand",
+      "first_name": "Nando",
+      "last_name": "Pijnaker",
+      "jersey_number": 15,
+      "birthdate": "25.02.1999",
+      "club": "Auckland FC",
+      "position": "CB",
+      "height": "1,85m",
+      "aliases": []
+    },
+    {
+      "nation": "New Zealand",
+      "first_name": "Michael",
+      "last_name": "Boxall",
+      "jersey_number": 5,
+      "birthdate": "18.08.1988",
+      "club": "Minnesota United FC",
+      "position": "CB",
+      "height": "1,91m",
+      "aliases": []
+    },
+    {
+      "nation": "New Zealand",
+      "first_name": "Tommy",
+      "last_name": "Smith",
+      "jersey_number": 26,
+      "birthdate": "31.03.1990",
+      "club": "Braintree Town",
+      "position": "CB",
+      "height": "1,88m",
+      "aliases": []
+    },
+    {
+      "nation": "New Zealand",
+      "first_name": "Liberato",
+      "last_name": "Cacace",
+      "jersey_number": 13,
+      "birthdate": "27.09.2000",
+      "club": "Wrexham AFC",
+      "position": "LW",
+      "height": "1,82m",
+      "aliases": []
+    },
+    {
+      "nation": "New Zealand",
+      "first_name": "Ben",
+      "last_name": "Old",
+      "jersey_number": 19,
+      "birthdate": "13.08.2002",
+      "club": "AS Saint-Étienne",
+      "position": "LB",
+      "height": "1,73m",
+      "aliases": []
+    },
+    {
+      "nation": "New Zealand",
+      "first_name": "Francis de",
+      "last_name": "Vries",
+      "jersey_number": 3,
+      "birthdate": "28.11.1994",
+      "club": "Auckland FC",
+      "position": "LB",
+      "height": "1,81m",
+      "aliases": []
+    },
+    {
+      "nation": "New Zealand",
+      "first_name": "Callan",
+      "last_name": "Elliot",
+      "jersey_number": 24,
+      "birthdate": "07.07.1999",
+      "club": "Auckland FC",
+      "position": "RB",
+      "height": "1,77m",
+      "aliases": []
+    },
+    {
+      "nation": "New Zealand",
+      "first_name": "Tim",
+      "last_name": "Payne",
+      "jersey_number": 2,
+      "birthdate": "10.01.1994",
+      "club": "Wellington Phoenix",
+      "position": "RB",
+      "height": "1,79m",
+      "aliases": []
+    },
+    {
+      "nation": "New Zealand",
+      "first_name": "Joe",
+      "last_name": "Bell",
+      "jersey_number": 6,
+      "birthdate": "27.04.1999",
+      "club": "Viking FK",
+      "position": "DM",
+      "height": "1,82m",
+      "aliases": []
+    },
+    {
+      "nation": "New Zealand",
+      "first_name": "Ryan",
+      "last_name": "Thomas",
+      "jersey_number": 23,
+      "birthdate": "20.12.1994",
+      "club": "PEC Zwolle",
+      "position": "DM",
+      "height": "1,76m",
+      "aliases": []
+    },
+    {
+      "nation": "New Zealand",
+      "first_name": "Alex",
+      "last_name": "Rufer",
+      "jersey_number": 14,
+      "birthdate": "12.06.1996",
+      "club": "Wellington Phoenix",
+      "position": "DM",
+      "height": "1,80m",
+      "aliases": []
+    },
+    {
+      "nation": "New Zealand",
+      "first_name": "Marko",
+      "last_name": "Stamenić",
+      "jersey_number": 8,
+      "birthdate": "19.02.2002",
+      "club": "Swansea City",
+      "position": "CM",
+      "height": "1,88m",
+      "aliases": [
+        "Stamenic"
+      ]
+    },
+    {
+      "nation": "New Zealand",
+      "first_name": "Lachlan",
+      "last_name": "Bayliss",
+      "jersey_number": 25,
+      "birthdate": "24.07.2002",
+      "club": "Newcastle United Jets",
+      "position": "CM",
+      "height": "1,78m",
+      "aliases": []
+    },
+    {
+      "nation": "New Zealand",
+      "first_name": "Matthew",
+      "last_name": "Garbett",
+      "jersey_number": 7,
+      "birthdate": "13.04.2002",
+      "club": "Peterborough United",
+      "position": "CM",
+      "height": "1,92m",
+      "aliases": []
+    },
+    {
+      "nation": "New Zealand",
+      "first_name": "Callum",
+      "last_name": "McCowatt",
+      "jersey_number": 20,
+      "birthdate": "30.04.1999",
+      "club": "Silkeborg IF",
+      "position": "AM",
+      "height": "1,80m",
+      "aliases": []
+    },
+    {
+      "nation": "New Zealand",
+      "first_name": "Sarpreet",
+      "last_name": "Singh",
+      "jersey_number": 10,
+      "birthdate": "20.02.1999",
+      "club": "Wellington Phoenix",
+      "position": "AM",
+      "height": "1,80m",
+      "aliases": []
+    },
+    {
+      "nation": "New Zealand",
+      "first_name": "Jesse",
+      "last_name": "Randall",
+      "jersey_number": 21,
+      "birthdate": "19.08.2002",
+      "club": "Auckland FC",
+      "position": "LW",
+      "height": "1,76m",
+      "aliases": []
+    },
+    {
+      "nation": "New Zealand",
+      "first_name": "Elijah",
+      "last_name": "Just",
+      "jersey_number": 11,
+      "birthdate": "01.05.2000",
+      "club": "Motherwell FC",
+      "position": "RW",
+      "height": "1,76m",
+      "aliases": []
+    },
+    {
+      "nation": "New Zealand",
+      "first_name": "Chris",
+      "last_name": "Wood",
+      "jersey_number": 9,
+      "birthdate": "07.12.1991",
+      "club": "Nottingham Forest",
+      "position": "ST",
+      "height": "1,91m",
+      "aliases": []
+    },
+    {
+      "nation": "New Zealand",
+      "first_name": "Ben",
+      "last_name": "Waine",
+      "jersey_number": 18,
+      "birthdate": "11.06.2001",
+      "club": "Port Vale FC",
+      "position": "ST",
+      "height": "1,85m",
+      "aliases": []
+    },
+    {
+      "nation": "New Zealand",
+      "first_name": "Kosta",
+      "last_name": "Barbarouses",
+      "jersey_number": 17,
+      "birthdate": "19.02.1990",
+      "club": "Western Sydney Wanderers",
+      "position": "ST",
+      "height": "1,71m",
+      "aliases": []
+    }
+  ]
+}

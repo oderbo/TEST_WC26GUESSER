@@ -1,0 +1,304 @@
+{
+  "teamName": "Haiti",
+  "group": "C",
+  "ranking": 83,
+  "color_1": "#07308E",
+  "color_2": "#E50404",
+  "color_3": "#F2C30C",
+  "players": [
+    {
+      "nation": "Haiti",
+      "first_name": "Alexandre",
+      "last_name": "Pierre",
+      "jersey_number": 12,
+      "birthdate": "25.02.2001",
+      "club": "FC Sochaux-Montbéliard",
+      "position": "GK",
+      "height": "1,90m",
+      "aliases": []
+    },
+    {
+      "nation": "Haiti",
+      "first_name": "Johny",
+      "last_name": "Placide",
+      "jersey_number": 1,
+      "birthdate": "29.01.1988",
+      "club": "SC Bastia",
+      "position": "GK",
+      "height": "1,81m",
+      "aliases": []
+    },
+    {
+      "nation": "Haiti",
+      "first_name": "Josué",
+      "last_name": "Duverger",
+      "jersey_number": 23,
+      "birthdate": "27.04.2000",
+      "club": "FC Cosmos Koblenz",
+      "position": "GK",
+      "height": "1,87m",
+      "aliases": []
+    },
+    {
+      "nation": "Haiti",
+      "first_name": "Hannes",
+      "last_name": "Delcroix",
+      "jersey_number": 5,
+      "birthdate": "28.02.1999",
+      "club": "FC Lugano",
+      "position": "CB",
+      "height": "1,83m",
+      "aliases": []
+    },
+    {
+      "nation": "Haiti",
+      "first_name": "Jean-Kévin",
+      "last_name": "Duverne",
+      "jersey_number": 22,
+      "birthdate": "12.07.1997",
+      "club": "KAA Gent",
+      "position": "CB",
+      "height": "1,84m",
+      "aliases": []
+    },
+    {
+      "nation": "Haiti",
+      "first_name": "Ricardo",
+      "last_name": "Adé",
+      "jersey_number": 4,
+      "birthdate": "21.05.1990",
+      "club": "LDU Quito",
+      "position": "CB",
+      "height": "1,90m",
+      "aliases": [
+        "Ade"
+      ]
+    },
+    {
+      "nation": "Haiti",
+      "first_name": "Keeto",
+      "last_name": "Thermoncy",
+      "jersey_number": 3,
+      "birthdate": "29.03.2006",
+      "club": "BSC Young Boys U21",
+      "position": "CB",
+      "height": "1,79m",
+      "aliases": []
+    },
+    {
+      "nation": "Haiti",
+      "first_name": "Martin",
+      "last_name": "Expérience",
+      "jersey_number": 8,
+      "birthdate": "09.03.1999",
+      "club": "AS Nancy-Lorraine",
+      "position": "LB",
+      "height": "1,78m",
+      "aliases": [
+        "Experience"
+      ]
+    },
+    {
+      "nation": "Haiti",
+      "first_name": "Duke",
+      "last_name": "Lacroix",
+      "jersey_number": 13,
+      "birthdate": "14.10.1993",
+      "club": "Colorado Springs Switchbacks FC",
+      "position": "LB",
+      "height": "1,75m",
+      "aliases": []
+    },
+    {
+      "nation": "Haiti",
+      "first_name": "Carlens",
+      "last_name": "Arcus",
+      "jersey_number": 2,
+      "birthdate": "28.06.1996",
+      "club": "Angers SCO",
+      "position": "RB",
+      "height": "1,80m",
+      "aliases": []
+    },
+    {
+      "nation": "Haiti",
+      "first_name": "Wilguens",
+      "last_name": "Paugain",
+      "jersey_number": 24,
+      "birthdate": "24.08.2001",
+      "club": "Zulte Waregem",
+      "position": "RB",
+      "height": "1,80m",
+      "aliases": []
+    },
+    {
+      "nation": "Haiti",
+      "first_name": "Danley Jean",
+      "last_name": "Jacques",
+      "jersey_number": 17,
+      "birthdate": "20.05.2000",
+      "club": "Philadelphia Union",
+      "position": "DM",
+      "height": "1,82m",
+      "aliases": []
+    },
+    {
+      "nation": "Haiti",
+      "first_name": "Leverton",
+      "last_name": "Pierre",
+      "jersey_number": 14,
+      "birthdate": "09.03.1998",
+      "club": "FC Vizela",
+      "position": "DM",
+      "height": "1,81m",
+      "aliases": []
+    },
+    {
+      "nation": "Haiti",
+      "first_name": "Dominique",
+      "last_name": "Simon",
+      "jersey_number": 25,
+      "birthdate": "29.07.2000",
+      "club": "FC Tatran Presov",
+      "position": "DM",
+      "height": "1,78m",
+      "aliases": []
+    },
+    {
+      "nation": "Haiti",
+      "first_name": "Carl",
+      "last_name": "Sainté",
+      "jersey_number": 6,
+      "birthdate": "09.08.2002",
+      "club": "El Paso Locomotive FC",
+      "position": "DM",
+      "height": "1,82m",
+      "aliases": [
+        "Sainte"
+      ]
+    },
+    {
+      "nation": "Haiti",
+      "first_name": "Woodensky",
+      "last_name": "Pierre",
+      "jersey_number": 26,
+      "birthdate": "30.12.2004",
+      "club": "Violette Athletic Club",
+      "position": "DM",
+      "height": "1,77m",
+      "aliases": []
+    },
+    {
+      "nation": "Haiti",
+      "first_name": "Jean-Ricner",
+      "last_name": "Bellegarde",
+      "jersey_number": 10,
+      "birthdate": "27.06.1998",
+      "club": "Wolverhampton Wanderers",
+      "position": "CM",
+      "height": "1,70m",
+      "aliases": []
+    },
+    {
+      "nation": "Haiti",
+      "first_name": "Derrick Etienne",
+      "last_name": "Jr.",
+      "jersey_number": 7,
+      "birthdate": "25.11.1996",
+      "club": "Toronto FC",
+      "position": "LW",
+      "height": "1,78m",
+      "aliases": []
+    },
+    {
+      "nation": "Haiti",
+      "first_name": "Ruben",
+      "last_name": "Providence",
+      "jersey_number": 15,
+      "birthdate": "07.07.2001",
+      "club": "Almere City FC",
+      "position": "LW",
+      "height": "1,78m",
+      "aliases": []
+    },
+    {
+      "nation": "Haiti",
+      "first_name": "Josué",
+      "last_name": "Casimir",
+      "jersey_number": 21,
+      "birthdate": "24.09.2001",
+      "club": "AJ Auxerre",
+      "position": "RW",
+      "height": "1,78m",
+      "aliases": []
+    },
+    {
+      "nation": "Haiti",
+      "first_name": "Louicius",
+      "last_name": "Deedson",
+      "jersey_number": 11,
+      "birthdate": "11.02.2001",
+      "club": "FC Dallas",
+      "position": "RW",
+      "height": "1,78m",
+      "aliases": []
+    },
+    {
+      "nation": "Haiti",
+      "first_name": "Wilson",
+      "last_name": "Isidor",
+      "jersey_number": 18,
+      "birthdate": "27.08.2000",
+      "club": "Sunderland AFC",
+      "position": "ST",
+      "height": "1,84m",
+      "aliases": []
+    },
+    {
+      "nation": "Haiti",
+      "first_name": "Lenny",
+      "last_name": "Joseph",
+      "jersey_number": 16,
+      "birthdate": "12.10.2000",
+      "club": "Ferencvárosi TC",
+      "position": "ST",
+      "height": "1,82m",
+      "aliases": []
+    },
+    {
+      "nation": "Haiti",
+      "first_name": "Frantzdy",
+      "last_name": "Pierrot",
+      "jersey_number": 20,
+      "birthdate": "29.03.1995",
+      "club": "Caykur Rizespor",
+      "position": "ST",
+      "height": "1,94m",
+      "aliases": []
+    },
+    {
+      "nation": "Haiti",
+      "first_name": "Duckens",
+      "last_name": "Nazon",
+      "jersey_number": 9,
+      "birthdate": "07.04.1994",
+      "club": "Esteghlal FC",
+      "position": "ST",
+      "height": "1,81m",
+      "aliases": []
+    },
+    {
+      "nation": "Haiti",
+      "first_name": "Yassin",
+      "last_name": "Fortuné",
+      "jersey_number": 19,
+      "birthdate": "30.01.1999",
+      "club": "FC Vizela",
+      "position": "ST",
+      "height": "1,86m",
+      "aliases": [
+        "Fortune"
+      ]
+    }
+  ]
+}

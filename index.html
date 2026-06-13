@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>WC26 Guesser</title>
+<link rel="icon" type="image/png" href="assets/favicon.png">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<style>
+* {
+    box-sizing: border-box;
+}
+
+body { 
+    margin: 0; 
+    padding: 20px;
+    font-family: Arial, sans-serif; 
+    color: white; 
+    
+    display: flex; 
+    align-items: center; 
+    flex-direction: column; 
+    
+    min-height: 100dvh;
+    width: 100%;
+    
+    background-color: #3f57f5; 
+    background-image: url('assets/main_background.png?v=1');
+    background-repeat: no-repeat;
+    overflow-x: hidden; /* Prevents horizontal scrolling caused by the side tab */
+}
+
+/* --- LOGO WRAPPER & RESPONSIVE DESIGN --- */
+.logo-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.logo-mask {
+    width: 100%;
+    -webkit-mask-size: contain;
+    mask-size: contain;
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    -webkit-mask-position: top center;
+    
+    background: linear-gradient(
+        135deg, 
+        #bf953f 0%, 
+        #fcf6ba 25%, 
+        #b38728 50%, 
+        #fbf5b7 75%, 
+        #aa771c 100%
+    );
+    background-size: 400% 400%;
+    animation: goldGlow 8s ease infinite;
+}
+
+/* Center space for desktop layout (hidden on mobile) */
+.center-space {
+    display: none;
+}
+
+/* --- DESKTOP LAYOUT --- */
+@media (min-width: 768px) {
+    body {
+        justify-content: flex-start; 
+        background-position: center;
+        background-size: contain; 
+        position: relative;
+    }
+
+    .logo-container {
+        margin-top: 5vh; 
+        margin-bottom: 0;
+    }
+
+    .logo-desktop {
+        display: block;
+        max-width: 1200px; 
+        aspect-ratio: 3 / 1; 
+        -webkit-mask-image: url('assets/WC26Guesser.svg');
+        mask-image: url('assets/WC26Guesser.svg');
+    }
+    
+    .logo-mobile {
+        display: none; 
+    }
+
+    /* FORCES BUTTONS TO REMAIN EXACTLY AT 50% VERTICAL HEIGHT */
+    .menu-container {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        max-width: 1600px; 
+        gap: 35px; 
+    }
+
+    .image-btn {
+        width: 14%; 
+    }
+
+    /* Generates an exact 20% transparent gap in the desktop layout center */
+    .center-space {
+        display: block;
+        width: 20%;
+        aspect-ratio: 1 / 1;
+        visibility: hidden; 
+    }
+}
+
+/* --- MOBILE LAYOUT (Guaranteed 2x2 Grid) --- */
+@media (max-width: 767px) {
+    body {
+        justify-content: space-between; 
+        background-size: cover; 
+        background-position: center -90px; 
+    }
+
+    .logo-container {
+        margin-top: calc(env(safe-area-inset-top, 0px) + 0vh);
+        margin-bottom: 30px;
+        padding: 0 15px;
+    }
+    
+    .logo-desktop {
+        display: none; 
+    }
+    
+    .logo-mobile {
+        display: block;
+        max-width: 320px; 
+        aspect-ratio: 1.2 / 1; 
+        -webkit-mask-image: url('assets/WC_26_GUESSER.svg');
+        mask-image: url('assets/WC_26_GUESSER.svg');
+    }
+
+    /* 2x2 Grid for Mobile screens */
+    .menu-container {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px; 
+        justify-items: center;
+        align-items: center;
+        max-width: 280px;
+        margin-top: auto;
+        margin-bottom: calc(env(safe-area-inset-bottom, 0px) + 20px); 
+    }
+
+    .image-btn {
+        width: 30vw; 
+    }
+}
+
+@keyframes goldGlow {
+    0% { background-position: 0% 50%; filter: drop-shadow(0 0 4px rgba(251, 245, 183, 0.4)); }
+    50% { background-position: 100% 50%; filter: drop-shadow(0 0 12px rgba(251, 245, 183, 0.85)); }
+    100% { background-position: 0% 50%; filter: drop-shadow(0 0 4px rgba(251, 245, 183, 0.4)); }
+}
+
+/* --- IMAGE BUTTON SYSTEM --- */
+.image-btn {
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    border: 1px solid rgba(255, 255, 255, 0.1); 
+    border-radius: 14px; 
+    cursor: pointer; 
+    transition: all 0.2s ease; 
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+    aspect-ratio: 1 / 1; 
+    padding: 0;
+}
+
+.image-btn:hover { 
+    transform: translateY(-4px); 
+    box-shadow: 0 8px 25px rgba(0, 255, 204, 0.4);
+    border-color: #00ffcc;
+}
+
+.image-btn:active {
+    transform: translateY(1px);
+}
+
+.image-btn:disabled { 
+    filter: grayscale(80%) brightness(60%);
+    cursor: not-allowed; 
+    box-shadow: none;
+    transform: none;
+    border-color: rgba(255, 255, 255, 0.05);
+}
+
+.btn-random-nation { background-image: url('assets/country_random_button.jpg'); }
+.btn-pick-nation { background-image: url('assets/country_pick_button.jpg'); }
+
+.btn-player-random { 
+    background-image: url('assets/player_random_button.png'); 
+    position: relative;
+}
+.btn-multiplayer { background-image: url('assets/multiplayer.png'); }
+
+/* --- TOP 10 BADGE STYLE --- */
+.top10-badge {
+    position: absolute;
+    top: 0;    
+    right: 0;  
+    
+    background-color: #ffffff; 
+    border-left: 1px solid rgba(0, 0, 0, 0.1);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    
+    border-top-right-radius: inherit; 
+    border-bottom-left-radius: 8px; 
+    
+    padding: 6px 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+    cursor: pointer;
+    box-shadow: -2px 2px 6px rgba(0,0,0,0.15);
+    transition: background-color 0.2s ease;
+}
+
+.top10-badge:hover {
+    background-color: #f0f2ff; 
+}
+
+.top10-badge span {
+    font-size: clamp(8px, 1.2vw, 10px);
+    font-weight: bold;
+    color: #3f57f5; 
+    letter-spacing: 0.5px;
+}
+
+.status-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background-color: #cccccc; 
+    transition: all 0.3s ease;
+}
+
+.top10-badge.active .status-dot {
+    background-color: #00cc44;
+    box-shadow: 0 0 6px #00cc44, 0 0 12px #00cc44;
+}
+
+/* --- VERTICAL & DYNAMIC SIDE TAB (RESPONSIVE) --- */
+.login-side-tab {
+    position: fixed;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    
+    /* WIDTH & RADIUS: Fully responsive matching viewport width (vw) */
+    width: 2.2vw;               
+    border-top-left-radius: 2.2vw;    
+    border-bottom-left-radius: 2.2vw; 
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    
+    /* BOUNDARIES: Protects item proportions across extreme screen setups */
+    min-width: 25px;
+    max-width: 45px;
+    
+    height: auto; 
+    background-color: #f5f5f5; 
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    
+    cursor: pointer;
+    box-shadow: -3px 3px 10px rgba(0, 0, 0, 0.2);
+    z-index: 999;
+    transition: all 0.2s ease;
+    user-select: none;
+    
+    /* SPACING: Height padding for clean start and end spacing elements */
+    padding: 22px 0; 
+}
+
+/* Mobile responsive modifications */
+@media (max-width: 767px) {
+    .login-side-tab {
+        width: 6vw; 
+        border-top-left-radius: 6vw;
+        border-bottom-left-radius: 6vw;
+        min-width: 24px;
+        padding: 16px 0; 
+    }
+}
+
+.login-side-tab:hover {
+    background-color: #ffffff;
+    box-shadow: -4px 4px 12px rgba(0, 162, 255, 0.3);
+}
+
+/* Stable placement indicators */
+.login-led {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background-color: #d0d0d0; 
+    margin-bottom: 5px; 
+    transition: all 0.3s ease;
+    flex-shrink: 0;
+}
+
+.login-led.online {
+    background-color: #00cc44;
+    box-shadow: 0 0 6px #00cc44, 0 0 12px #00cc44;
+}
+
+/* Enforces specific vertical typography formatting rules */
+.login-tab-text {
+    writing-mode: vertical-rl;
+    transform: rotate(180deg); 
+    white-space: nowrap;
+    color: #333333;
+    font-weight: bold;
+    font-size: 11px; 
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    line-height: 1;
+    text-align: center;
+    display: block;
+}
+
+/* --- TRANSLUCENT WHITE LOGIN MODAL --- */
+.login-modal-overlay {
+    position: fixed; 
+    top: 0; 
+    left: 0; 
+    width: 100%; 
+    height: 100%; 
+    background: rgba(0, 0, 0, 0.4); 
+    display: none; 
+    justify-content: center; 
+    align-items: center; 
+    z-index: 10000; 
+    padding: 20px;
+}
+
+.login-modal-content {
+    background: rgba(255, 255, 255, 0.7); 
+    backdrop-filter: blur(10px); 
+    -webkit-backdrop-filter: blur(10px);
+    padding: 30px; 
+    border-radius: 16px; 
+    border: 1px solid rgba(255, 255, 255, 0.6); 
+    text-align: center; 
+    max-width: 360px; 
+    width: 100%; 
+    box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+    position: relative;
+    color: #222222; 
+}
+
+.login-modal-content h2 {
+    margin-top: 0;
+    font-size: 22px;
+    color: #111111;
+}
+
+.login-modal-content p {
+    font-size: 16px;
+    font-weight: bold;
+    color: #3f57f5;
+    margin-bottom: 20px;
+    word-break: break-word;
+}
+
+.login-input {
+    width: 100%; 
+    margin: 8px 0; 
+    padding: 12px; 
+    background: rgba(255, 255, 255, 0.8); 
+    border: 1px solid rgba(0,0,0,0.15); 
+    border-radius: 8px; 
+    color: #111111; 
+    font-size: 16px;
+    outline: none;
+}
+
+.login-input:focus {
+    border-color: #3f57f5;
+    background: #ffffff;
+}
+
+.login-btn-group {
+    display: flex;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.login-btn {
+    flex: 1;
+    padding: 12px; 
+    font-weight: bold; 
+    border: none; 
+    border-radius: 8px; 
+    cursor: pointer; 
+    font-size: 14px; 
+    transition: all 0.2s;
+}
+
+.btn-primary {
+    background: #3f57f5; 
+    color: white;
+}
+
+.btn-primary:hover {
+    background: #253ed9;
+}
+
+.btn-secondary {
+    background: rgba(0, 0, 0, 0.08);
+    color: #333333;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.btn-secondary:hover {
+    background: rgba(0, 0, 0, 0.15);
+}
+
+.close-modal-btn {
+    position: absolute;
+    top: 10px;
+    right: 12px;
+    background: none;
+    border: none;
+    font-size: 18px;
+    cursor: pointer;
+    color: #555555;
+    font-weight: bold;
+}
+</style>
+</head>
+<body>
+
+<div class="logo-container">
+    <div class="logo-mask logo-desktop"></div>
+    <div class="logo-mask logo-mobile"></div>
+</div>
+
+<div class="menu-container">
+    <button class="image-btn btn-random-nation" onclick="startRandom()"></button>
+    <button class="image-btn btn-pick-nation" onclick="openSelect()"></button>
+    
+    <div class="center-space"></div>
+    
+    <button class="image-btn btn-player-random" onclick="openRandomPlayer()">
+        <div class="top10-badge" id="top10Badge" onclick="toggleTop10(event)">
+            <span>TOP 10</span>
+            <div class="status-dot"></div>
+        </div>
+    </button>
+    
+    <button class="image-btn btn-multiplayer" onclick="openMultiplayer()"></button>
+</div>
+
+<!-- SIDE REITER -->
+<div class="login-side-tab" id="loginSideTab" onclick="openLoginModal()">
+    <div class="login-led" id="loginLed"></div>
+    <div class="login-tab-text" id="loginTabText">Login</div>
+</div>
+
+<!-- CONTAINER TARGET MODAL -->
+<div class="login-modal-overlay" id="loginModal">
+    <div class="login-modal-content">
+        <button class="close-modal-btn" onclick="closeLoginModal()">✕</button>
+        <h2 id="modalTitle">User Profile</h2>
+        <p id="modalDesc">Create an account to save progress and collect stickers!</p>
+        
+        <input type="text" id="loginUser" class="login-input" placeholder="Username">
+        <input type="password" id="loginPass" class="login-input" placeholder="Password (min. 6 characters)">
+        
+        <div class="login-btn-group" id="authButtons">
+            <button class="login-btn btn-primary" onclick="handleAuth('login')">Login</button>
+            <button class="login-btn btn-secondary" onclick="handleAuth('register')">Register</button>
+        </div>
+        
+        <button class="login-btn btn-secondary" id="logoutBtn" style="display:none; width:100%; margin-top:15px; background:#ff4a4a; color:white;" onclick="handleLogout()">
+            Log Out
+        </button>
+    </div>
+</div>
+
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+
+<script>
+// Firebase Config
+const firebaseConfig = {
+  apiKey: "AIzaSyD2KXF4jwbym0ghwMrSPFCiD-pgajGIopE",
+  authDomain: "wc26guesser-db.firebaseapp.com",
+  projectId: "wc26guesser-db",
+  storageBucket: "wc26guesser-db.firebasestorage.app",
+  messagingSenderId: "396925110064",
+  appId: "1:396925110064:web:18d8f40a30e2f0d63deaf5"
+};
+
+firebase.initializeApp(firebaseConfig);
+const db = firebase.firestore();
+
+document.addEventListener("DOMContentLoaded", () => {
+    const isTop10Active = localStorage.getItem("random_player_top10") === "true";
+    const badge = document.getElementById("top10Badge");
+    if (isTop10Active) {
+        badge.classList.add("active");
+    }
+});
+
+// MONITOR STATE CHANGES
+firebase.auth().onAuthStateChanged((user) => {
+    const led = document.getElementById('loginLed');
+    const tabText = document.getElementById('loginTabText');
+    const authButtons = document.getElementById('authButtons');
+    const logoutBtn = document.getElementById('logoutBtn');
+    const inputUser = document.getElementById('loginUser');
+    const inputPass = document.getElementById('loginPass');
+    const modalDesc = document.getElementById('modalDesc');
+
+    if (user) {
+        led.classList.add('online'); 
+        const username = user.email.split('@')[0];
+        const formattedName = username.charAt(0).toUpperCase() + username.slice(1);
+        
+        tabText.innerText = formattedName; 
+        
+        inputUser.style.display = 'none';
+        inputPass.style.display = 'none';
+        authButtons.style.display = 'none';
+        logoutBtn.style.display = 'block';
+        
+        // Displays ONLY the pristine username inside the descriptor area
+        modalDesc.innerText = formattedName;
+        document.getElementById('modalTitle').innerText = "Account Connected";
+    } else {
+        led.classList.remove('online'); 
+        tabText.innerText = "Login"; 
+        
+        inputUser.style.display = 'block';
+        inputPass.style.display = 'block';
+        authButtons.style.display = 'flex';
+        logoutBtn.style.display = 'none';
+        modalDesc.innerText = "Create an account to save progress and collect stickers!";
+        document.getElementById('modalTitle').innerText = "User Profile";
+    }
+});
+
+function openLoginModal() {
+    document.getElementById('loginModal').style.display = 'flex';
+}
+
+function closeLoginModal() {
+    document.getElementById('loginModal').style.display = 'none';
+}
+
+function handleAuth(type) {
+    const user = document.getElementById('loginUser').value.trim();
+    const pass = document.getElementById('loginPass').value;
+
+    if (user === "" || pass === "") {
+        alert("Please enter both username and password!");
+        return;
+    }
+    if (pass.length < 6) {
+        alert("Password must be at least 6 characters long for security reasons!");
+        return;
+    }
+
+    const fakeEmail = user.toLowerCase() + "@wc26guesser.de";
+
+    if (type === 'login') {
+        firebase.auth().signInWithEmailAndPassword(fakeEmail, pass)
+            .then(() => closeLoginModal())
+            .catch((error) => {
+                if (error.code === 'auth/user-not-found' || error.code === 'auth/invalid-credential') {
+                    autoRegister(fakeEmail, pass, user);
+                } else {
+                    alert("Incorrect password or authentication error!");
+                }
+            });
+    } else if (type === 'register') {
+        firebase.auth().createUserWithEmailAndPassword(fakeEmail, pass)
+            .then(() => {
+                alert(`Account for "${user}" successfully created!`);
+                closeLoginModal();
+            })
+            .catch((error) => {
+                if (error.code === 'auth/email-already-in-use') {
+                    firebase.auth().signInWithEmailAndPassword(fakeEmail, pass)
+                        .then(() => closeLoginModal())
+                        .catch(() => alert("This username is already taken, and the password provided is incorrect!"));
+                } else {
+                    alert("Registration failed: " + error.message);
+                }
+            });
+    }
+}
+
+function autoRegister(email, pass, originalName) {
+    firebase.auth().createUserWithEmailAndPassword(email, pass)
+        .then(() => {
+            alert(`Welcome! Your new account "${originalName}" has been automatically created.`);
+            closeLoginModal();
+        })
+        .catch(err => alert("Automatic registration failed: " + err.message));
+}
+
+function handleLogout() {
+    firebase.auth().signOut().then(() => {
+        closeLoginModal();
+    });
+}
+
+function startRandom() {
+    fetch("./data/worldcup_teams.json")
+        .then(r => r.json())
+        .then(data => {
+            const keys = Object.keys(data.teams);
+            const random = keys[Math.floor(Math.random() * keys.length)];
+            window.location.href = `game.html?team=${random}`;
+        });
+}
+
+function openSelect() {
+    window.location.href = "select.html";
+}
+
+function openRandomPlayer() {
+    window.location.href = "game_random_player.html";
+}
+
+function openMultiplayer() {
+    window.location.href = "select_multiplayer.html";
+}
+
+function toggleTop10(event) {
+    event.stopPropagation(); 
+    const badge = document.getElementById("top10Badge");
+    const isActive = badge.classList.toggle("active");
+    localStorage.setItem("random_player_top10", isActive);
+}
+</script>
+</body>
+</html>

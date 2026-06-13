@@ -1,0 +1,318 @@
+{
+  "teamName": "France",
+  "group": "I",
+  "ranking": 1,
+  "color_1": "#FFFFFF",
+  "color_2": "#21304D",
+  "color_3": "#17548C",
+  "players": [
+    {
+      "nation": "France",
+      "first_name": "Robin",
+      "last_name": "Risser",
+      "jersey_number": 23,
+      "birthdate": "02.12.2004",
+      "club": "RC Lens",
+      "position": "GK",
+      "height": "1,93m",
+      "aliases": []
+    },
+    {
+      "nation": "France",
+      "first_name": "Mike",
+      "last_name": "Maignan",
+      "jersey_number": 16,
+      "birthdate": "03.07.1995",
+      "club": "AC Milan",
+      "position": "GK",
+      "height": "1,91m",
+      "aliases": []
+    },
+    {
+      "nation": "France",
+      "first_name": "Brice",
+      "last_name": "Samba",
+      "jersey_number": 1,
+      "birthdate": "25.04.1994",
+      "club": "Stade Rennais FC",
+      "position": "GK",
+      "height": "1,87m",
+      "aliases": []
+    },
+    {
+      "nation": "France",
+      "first_name": "William",
+      "last_name": "Saliba",
+      "jersey_number": 17,
+      "birthdate": "24.03.2001",
+      "club": "Arsenal FC",
+      "position": "CB",
+      "height": "1,92m",
+      "aliases": []
+    },
+    {
+      "nation": "France",
+      "first_name": "Dayot",
+      "last_name": "Upamecano",
+      "jersey_number": 4,
+      "birthdate": "27.10.1998",
+      "club": "Bayern Munich",
+      "position": "CB",
+      "height": "1,86m",
+      "aliases": []
+    },
+    {
+      "nation": "France",
+      "first_name": "Maxence",
+      "last_name": "Lacroix",
+      "jersey_number": 26,
+      "birthdate": "06.04.2000",
+      "club": "Crystal Palace",
+      "position": "CB",
+      "height": "1,90m",
+      "aliases": []
+    },
+    {
+      "nation": "France",
+      "first_name": "Ibrahima",
+      "last_name": "Konaté",
+      "jersey_number": 15,
+      "birthdate": "25.05.1999",
+      "club": "Liverpool FC",
+      "position": "CB",
+      "height": "1,94m",
+      "aliases": [
+        "Konate"
+      ]
+    },
+    {
+      "nation": "France",
+      "first_name": "Theo",
+      "last_name": "Hernández",
+      "jersey_number": 19,
+      "birthdate": "06.10.1997",
+      "club": "Al-Hilal SFC",
+      "position": "LB",
+      "height": "1,84m",
+      "aliases": [
+        "Hernandez"
+      ]
+    },
+    {
+      "nation": "France",
+      "first_name": "Lucas",
+      "last_name": "Hernández",
+      "jersey_number": 21,
+      "birthdate": "14.02.1996",
+      "club": "Paris Saint-Germain",
+      "position": "CB",
+      "height": "1,84m",
+      "aliases": [
+        "Hernandez"
+      ]
+    },
+    {
+      "nation": "France",
+      "first_name": "Lucas",
+      "last_name": "Digne",
+      "jersey_number": 3,
+      "birthdate": "20.07.1993",
+      "club": "Aston Villa",
+      "position": "LB",
+      "height": "1,78m",
+      "aliases": []
+    },
+    {
+      "nation": "France",
+      "first_name": "Jules",
+      "last_name": "Koundé",
+      "jersey_number": 5,
+      "birthdate": "12.11.1998",
+      "club": "FC Barcelona",
+      "position": "RB",
+      "height": "1,80m",
+      "aliases": [
+        "Kounde"
+      ]
+    },
+    {
+      "nation": "France",
+      "first_name": "Malo",
+      "last_name": "Gusto",
+      "jersey_number": 2,
+      "birthdate": "19.05.2003",
+      "club": "Chelsea FC",
+      "position": "RB",
+      "height": "1,78m",
+      "aliases": []
+    },
+    {
+      "nation": "France",
+      "first_name": "Aurélien",
+      "last_name": "Tchouaméni",
+      "jersey_number": 8,
+      "birthdate": "27.01.2000",
+      "club": "Real Madrid",
+      "position": "DM",
+      "height": "1,88m",
+      "aliases": [
+        "Tchouameni"
+      ]
+    },
+    {
+      "nation": "France",
+      "first_name": "N'Golo",
+      "last_name": "Kanté",
+      "jersey_number": 13,
+      "birthdate": "29.03.1991",
+      "club": "Fenerbahce",
+      "position": "DM",
+      "height": "1,68m",
+      "aliases": [
+        "Kante"
+      ]
+    },
+    {
+      "nation": "France",
+      "first_name": "Warren",
+      "last_name": "Zaïre-Emery",
+      "jersey_number": 18,
+      "birthdate": "08.03.2006",
+      "club": "Paris Saint-Germain",
+      "position": "CM",
+      "height": "1,78m",
+      "aliases": [
+        "Zaire-Emery"
+      ]
+    },
+    {
+      "nation": "France",
+      "first_name": "Manu",
+      "last_name": "Koné",
+      "jersey_number": 6,
+      "birthdate": "17.05.2001",
+      "club": "AS Roma",
+      "position": "CM",
+      "height": "1,85m",
+      "aliases": [
+        "Kone"
+      ]
+    },
+    {
+      "nation": "France",
+      "first_name": "Adrien",
+      "last_name": "Rabiot",
+      "jersey_number": 14,
+      "birthdate": "03.04.1995",
+      "club": "AC Milan",
+      "position": "CM",
+      "height": "1,91m",
+      "aliases": []
+    },
+    {
+      "nation": "France",
+      "first_name": "Rayan",
+      "last_name": "Cherki",
+      "jersey_number": 24,
+      "birthdate": "17.08.2003",
+      "club": "Manchester City",
+      "position": "AM",
+      "height": "1,77m",
+      "aliases": []
+    },
+    {
+      "nation": "France",
+      "first_name": "Bradley",
+      "last_name": "Barcola",
+      "jersey_number": 12,
+      "birthdate": "02.09.2002",
+      "club": "Paris Saint-Germain",
+      "position": "LW",
+      "height": "1,82m",
+      "aliases": []
+    },
+    {
+      "nation": "France",
+      "first_name": "Michael",
+      "last_name": "Olise",
+      "jersey_number": 11,
+      "birthdate": "12.12.2001",
+      "club": "Bayern Munich",
+      "position": "RW",
+      "height": "1,84m",
+      "aliases": []
+    },
+    {
+      "nation": "France",
+      "first_name": "Désiré",
+      "last_name": "Doué",
+      "jersey_number": 20,
+      "birthdate": "03.06.2005",
+      "club": "Paris Saint-Germain",
+      "position": "LW",
+      "height": "1,81m",
+      "aliases": [
+        "Doue"
+      ]
+    },
+    {
+      "nation": "France",
+      "first_name": "Maghnes",
+      "last_name": "Akliouche",
+      "jersey_number": 25,
+      "birthdate": "25.02.2002",
+      "club": "AS Monaco",
+      "position": "RW",
+      "height": "1,83m",
+      "aliases": []
+    },
+    {
+      "nation": "France",
+      "first_name": "Kylian",
+      "last_name": "Mbappé",
+      "jersey_number": 10,
+      "birthdate": "20.12.1998",
+      "club": "Real Madrid",
+      "position": "ST",
+      "height": "1,80m",
+      "aliases": [
+        "Mbappe"
+      ]
+    },
+    {
+      "nation": "France",
+      "first_name": "Ousmane",
+      "last_name": "Dembélé",
+      "jersey_number": 7,
+      "birthdate": "15.05.1997",
+      "club": "Paris Saint-Germain",
+      "position": "ST",
+      "height": "1,78m",
+      "aliases": [
+        "Dembele"
+      ]
+    },
+    {
+      "nation": "France",
+      "first_name": "Marcus",
+      "last_name": "Thuram",
+      "jersey_number": 9,
+      "birthdate": "06.08.1997",
+      "club": "Inter Milan",
+      "position": "ST",
+      "height": "1,92m",
+      "aliases": []
+    },
+    {
+      "nation": "France",
+      "first_name": "Jean-Philippe",
+      "last_name": "Mateta",
+      "jersey_number": 22,
+      "birthdate": "28.06.1997",
+      "club": "Crystal Palace",
+      "position": "ST",
+      "height": "1,92m",
+      "aliases": []
+    }
+  ]
+}

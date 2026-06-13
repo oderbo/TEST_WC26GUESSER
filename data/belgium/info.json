@@ -1,0 +1,298 @@
+{
+  "teamName": "Belgium",
+  "group": "G",
+  "ranking": 9,
+  "color_1": "#B59C56",
+  "color_2": "#E30613",
+  "color_3": "#1D1D1B",
+  "players": [
+    {
+      "nation": "Belgium",
+      "first_name": "Senne",
+      "last_name": "Lammens",
+      "jersey_number": 12,
+      "birthdate": "07.07.2002",
+      "club": "Manchester United",
+      "position": "GK",
+      "height": "1,93m",
+      "aliases": []
+    },
+    {
+      "nation": "Belgium",
+      "first_name": "Mike",
+      "last_name": "Penders",
+      "jersey_number": 13,
+      "birthdate": "31.07.2005",
+      "club": "RC Strasbourg Alsace",
+      "position": "GK",
+      "height": "2,00m",
+      "aliases": []
+    },
+    {
+      "nation": "Belgium",
+      "first_name": "Thibaut",
+      "last_name": "Courtois",
+      "jersey_number": 1,
+      "birthdate": "11.05.1992",
+      "club": "Real Madrid",
+      "position": "GK",
+      "height": "1,99m",
+      "aliases": []
+    },
+    {
+      "nation": "Belgium",
+      "first_name": "Zeno",
+      "last_name": "Debast",
+      "jersey_number": 2,
+      "birthdate": "24.10.2003",
+      "club": "Sporting CP",
+      "position": "CB",
+      "height": "1,91m",
+      "aliases": []
+    },
+    {
+      "nation": "Belgium",
+      "first_name": "Nathan",
+      "last_name": "Ngoy",
+      "jersey_number": 25,
+      "birthdate": "10.06.2003",
+      "club": "LOSC Lille",
+      "position": "CB",
+      "height": "1,83m",
+      "aliases": []
+    },
+    {
+      "nation": "Belgium",
+      "first_name": "Koni",
+      "last_name": "de Winter",
+      "jersey_number": 16,
+      "birthdate": "12.06.2002",
+      "club": "AC Milan",
+      "position": "CB",
+      "height": "1,91m",
+      "aliases": []
+    },
+    {
+      "nation": "Belgium",
+      "first_name": "Arthur",
+      "last_name": "Theate",
+      "jersey_number": 3,
+      "birthdate": "25.05.2000",
+      "club": "Eintracht Frankfurt",
+      "position": "CB",
+      "height": "1,85m",
+      "aliases": []
+    },
+    {
+      "nation": "Belgium",
+      "first_name": "Brandon",
+      "last_name": "Mechele",
+      "jersey_number": 4,
+      "birthdate": "28.01.1993",
+      "club": "Club Brugge KV",
+      "position": "CB",
+      "height": "1,90m",
+      "aliases": []
+    },
+    {
+      "nation": "Belgium",
+      "first_name": "Maxim",
+      "last_name": "de Cuyper",
+      "jersey_number": 5,
+      "birthdate": "22.12.2000",
+      "club": "Brighton & Hove Albion",
+      "position": "LB",
+      "height": "1,82m",
+      "aliases": []
+    },
+    {
+      "nation": "Belgium",
+      "first_name": "Joaquin",
+      "last_name": "Seys",
+      "jersey_number": 18,
+      "birthdate": "28.03.2005",
+      "club": "Club Brugge KV",
+      "position": "LB",
+      "height": "1,78m",
+      "aliases": []
+    },
+    {
+      "nation": "Belgium",
+      "first_name": "Timothy",
+      "last_name": "Castagne",
+      "jersey_number": 21,
+      "birthdate": "05.12.1995",
+      "club": "Fulham FC",
+      "position": "RB",
+      "height": "1,85m",
+      "aliases": []
+    },
+    {
+      "nation": "Belgium",
+      "first_name": "Thomas",
+      "last_name": "Meunier",
+      "jersey_number": 15,
+      "birthdate": "12.09.1991",
+      "club": "LOSC Lille",
+      "position": "RB",
+      "height": "1,90m",
+      "aliases": []
+    },
+    {
+      "nation": "Belgium",
+      "first_name": "Amadou",
+      "last_name": "Onana",
+      "jersey_number": 24,
+      "birthdate": "16.08.2001",
+      "club": "Aston Villa",
+      "position": "DM",
+      "height": "1,92m",
+      "aliases": []
+    },
+    {
+      "nation": "Belgium",
+      "first_name": "Nicolas",
+      "last_name": "Raskin",
+      "jersey_number": 23,
+      "birthdate": "23.02.2001",
+      "club": "Rangers FC",
+      "position": "DM",
+      "height": "1,78m",
+      "aliases": []
+    },
+    {
+      "nation": "Belgium",
+      "first_name": "Axel",
+      "last_name": "Witsel",
+      "jersey_number": 6,
+      "birthdate": "12.01.1989",
+      "club": "Girona FC",
+      "position": "DM",
+      "height": "1,86m",
+      "aliases": []
+    },
+    {
+      "nation": "Belgium",
+      "first_name": "Youri",
+      "last_name": "Tielemans",
+      "jersey_number": 8,
+      "birthdate": "07.05.1997",
+      "club": "Aston Villa",
+      "position": "CM",
+      "height": "1,76m",
+      "aliases": []
+    },
+    {
+      "nation": "Belgium",
+      "first_name": "Alexis",
+      "last_name": "Saelemaekers",
+      "jersey_number": 22,
+      "birthdate": "27.06.1999",
+      "club": "AC Milan",
+      "position": "RW",
+      "height": "1,80m",
+      "aliases": []
+    },
+    {
+      "nation": "Belgium",
+      "first_name": "Diego",
+      "last_name": "Moreira",
+      "jersey_number": 19,
+      "birthdate": "06.08.2004",
+      "club": "RC Strasbourg Alsace",
+      "position": "LW",
+      "height": "1,79m",
+      "aliases": []
+    },
+    {
+      "nation": "Belgium",
+      "first_name": "Charles",
+      "last_name": "de Ketelaere",
+      "jersey_number": 17,
+      "birthdate": "10.03.2001",
+      "club": "Atalanta BC",
+      "position": "AM",
+      "height": "1,92m",
+      "aliases": []
+    },
+    {
+      "nation": "Belgium",
+      "first_name": "Kevin",
+      "last_name": "de Bruyne",
+      "jersey_number": 7,
+      "birthdate": "28.06.1991",
+      "club": "SSC Napoli",
+      "position": "AM",
+      "height": "1,81m",
+      "aliases": []
+    },
+    {
+      "nation": "Belgium",
+      "first_name": "Hans",
+      "last_name": "Vanaken",
+      "jersey_number": 20,
+      "birthdate": "24.08.1992",
+      "club": "Club Brugge KV",
+      "position": "AM",
+      "height": "1,95m",
+      "aliases": []
+    },
+    {
+      "nation": "Belgium",
+      "first_name": "Jérémy",
+      "last_name": "Doku",
+      "jersey_number": 11,
+      "birthdate": "27.05.2002",
+      "club": "Manchester City",
+      "position": "LW",
+      "height": "1,73m",
+      "aliases": []
+    },
+    {
+      "nation": "Belgium",
+      "first_name": "Leandro",
+      "last_name": "Trossard",
+      "jersey_number": 10,
+      "birthdate": "04.12.1994",
+      "club": "Arsenal FC",
+      "position": "LW",
+      "height": "1,72m",
+      "aliases": []
+    },
+    {
+      "nation": "Belgium",
+      "first_name": "Dodi",
+      "last_name": "Lukébakio",
+      "jersey_number": 14,
+      "birthdate": "24.09.1997",
+      "club": "SL Benfica",
+      "position": "RW",
+      "height": "1,84m",
+      "aliases": [
+        "Lukebakio"
+      ]
+    },
+    {
+      "nation": "Belgium",
+      "first_name": "Matias",
+      "last_name": "Fernandez-Pardo",
+      "jersey_number": 26,
+      "birthdate": "03.02.2005",
+      "club": "LOSC Lille",
+      "position": "ST",
+      "height": "1,88m",
+      "aliases": []
+    },
+    {
+      "nation": "Belgium",
+      "first_name": "Romelu",
+      "last_name": "Lukaku",
+      "jersey_number": 9,
+      "birthdate": "13.05.1993",
+      "club": "SSC Napoli",
+      "position": "ST",
+      "height": "1,90m",
+      "aliases": []
+    }
+  ]
+}

@@ -1,0 +1,310 @@
+{
+  "teamName": "Paraguay",
+  "group": "D",
+  "ranking": 40,
+  "color_1": "#FFFFFF",
+  "color_2": "#00619E",
+  "color_3": "#CC001C",
+  "players": [
+    {
+      "nation": "Paraguay",
+      "first_name": "Orlando",
+      "last_name": "Gill",
+      "jersey_number": 12,
+      "birthdate": "11.06.2000",
+      "club": "CA San Lorenzo de Almagro",
+      "position": "GK",
+      "height": "1,90m",
+      "aliases": []
+    },
+    {
+      "nation": "Paraguay",
+      "first_name": "Gastón",
+      "last_name": "Olveira",
+      "jersey_number": 22,
+      "birthdate": "21.04.1993",
+      "club": "Olimpia Asunción",
+      "position": "GK",
+      "height": "1,91m",
+      "aliases": []
+    },
+    {
+      "nation": "Paraguay",
+      "first_name": "Roberto",
+      "last_name": "Fernández",
+      "jersey_number": 1,
+      "birthdate": "29.03.1988",
+      "club": "Club Cerro Porteño",
+      "position": "GK",
+      "height": "1,91m",
+      "aliases": [
+        "Fernandez"
+      ]
+    },
+    {
+      "nation": "Paraguay",
+      "first_name": "Omar",
+      "last_name": "Alderete",
+      "jersey_number": 3,
+      "birthdate": "26.12.1996",
+      "club": "Sunderland AFC",
+      "position": "CB",
+      "height": "1,90m",
+      "aliases": []
+    },
+    {
+      "nation": "Paraguay",
+      "first_name": "Gustavo",
+      "last_name": "Gómez",
+      "jersey_number": 15,
+      "birthdate": "06.05.1993",
+      "club": "Sociedade Esportiva Palmeiras",
+      "position": "CB",
+      "height": "1,85m",
+      "aliases": [
+        "Gomez"
+      ]
+    },
+    {
+      "nation": "Paraguay",
+      "first_name": "José",
+      "last_name": "Canale",
+      "jersey_number": 13,
+      "birthdate": "20.07.1996",
+      "club": "CA Lanús",
+      "position": "CB",
+      "height": "1,92m",
+      "aliases": []
+    },
+    {
+      "nation": "Paraguay",
+      "first_name": "Júnior",
+      "last_name": "Alonso",
+      "jersey_number": 6,
+      "birthdate": "09.02.1993",
+      "club": "Clube Atlético Mineiro",
+      "position": "CB",
+      "height": "1,84m",
+      "aliases": []
+    },
+    {
+      "nation": "Paraguay",
+      "first_name": "Fabián",
+      "last_name": "Balbuena",
+      "jersey_number": 5,
+      "birthdate": "23.08.1991",
+      "club": "Grêmio Foot-Ball Porto Alegrense",
+      "position": "CB",
+      "height": "1,88m",
+      "aliases": []
+    },
+    {
+      "nation": "Paraguay",
+      "first_name": "Gustavo",
+      "last_name": "Velázquez",
+      "jersey_number": 2,
+      "birthdate": "17.04.1991",
+      "club": "Club Cerro Porteño",
+      "position": "CB",
+      "height": "1,89m",
+      "aliases": [
+        "Velazquez"
+      ]
+    },
+    {
+      "nation": "Paraguay",
+      "first_name": "Alexandro",
+      "last_name": "Maidana",
+      "jersey_number": 26,
+      "birthdate": "26.07.2005",
+      "club": "CA Talleres",
+      "position": "LB",
+      "height": "1,73m",
+      "aliases": []
+    },
+    {
+      "nation": "Paraguay",
+      "first_name": "Juan José",
+      "last_name": "Cáceres",
+      "jersey_number": 4,
+      "birthdate": "01.06.2000",
+      "club": "Dynamo Moscow",
+      "position": "RB",
+      "height": "1,87m",
+      "aliases": [
+        "Caceres"
+      ]
+    },
+    {
+      "nation": "Paraguay",
+      "first_name": "Andrés",
+      "last_name": "Cubas",
+      "jersey_number": 14,
+      "birthdate": "22.05.1996",
+      "club": "Vancouver Whitecaps FC",
+      "position": "DM",
+      "height": "1,66m",
+      "aliases": []
+    },
+    {
+      "nation": "Paraguay",
+      "first_name": "Braian",
+      "last_name": "Ojeda",
+      "jersey_number": 20,
+      "birthdate": "27.06.2000",
+      "club": "Orlando City SC",
+      "position": "DM",
+      "height": "1,73m",
+      "aliases": []
+    },
+    {
+      "nation": "Paraguay",
+      "first_name": "Diego",
+      "last_name": "Gómez",
+      "jersey_number": 8,
+      "birthdate": "27.03.2003",
+      "club": "Brighton & Hove Albion",
+      "position": "CM",
+      "height": "1,83m",
+      "aliases": [
+        "Gomez"
+      ]
+    },
+    {
+      "nation": "Paraguay",
+      "first_name": "Damián",
+      "last_name": "Bobadilla",
+      "jersey_number": 16,
+      "birthdate": "11.07.2001",
+      "club": "São Paulo Futebol Clube",
+      "position": "CM",
+      "height": "1,80m",
+      "aliases": []
+    },
+    {
+      "nation": "Paraguay",
+      "first_name": "Matías",
+      "last_name": "Galarza",
+      "jersey_number": 23,
+      "birthdate": "11.02.2002",
+      "club": "Atlanta United FC",
+      "position": "CM",
+      "height": "1,75m",
+      "aliases": []
+    },
+    {
+      "nation": "Paraguay",
+      "first_name": "Julio",
+      "last_name": "Enciso",
+      "jersey_number": 19,
+      "birthdate": "23.01.2004",
+      "club": "RC Strasbourg Alsace",
+      "position": "AM",
+      "height": "1,68m",
+      "aliases": []
+    },
+    {
+      "nation": "Paraguay",
+      "first_name": "Mauricio",
+      "last_name": "",
+      "jersey_number": 11,
+      "birthdate": "22.06.2001",
+      "club": "Sociedade Esportiva Palmeiras",
+      "position": "AM",
+      "height": "1,75m",
+      "aliases": []
+    },
+    {
+      "nation": "Paraguay",
+      "first_name": "Kaku",
+      "last_name": "",
+      "jersey_number": 17,
+      "birthdate": "11.01.1995",
+      "club": "Al-Ain FC",
+      "position": "AM",
+      "height": "1,65m",
+      "aliases": []
+    },
+    {
+      "nation": "Paraguay",
+      "first_name": "Gustavo",
+      "last_name": "Caballero",
+      "jersey_number": 24,
+      "birthdate": "21.09.2001",
+      "club": "Portsmouth FC",
+      "position": "LW",
+      "height": "1,89m",
+      "aliases": []
+    },
+    {
+      "nation": "Paraguay",
+      "first_name": "Miguel",
+      "last_name": "Almirón",
+      "jersey_number": 10,
+      "birthdate": "10.02.1994",
+      "club": "Atlanta United FC",
+      "position": "RW",
+      "height": "1,78m",
+      "aliases": [
+        "Almiron"
+      ]
+    },
+    {
+      "nation": "Paraguay",
+      "first_name": "Ramón",
+      "last_name": "Sosa",
+      "jersey_number": 7,
+      "birthdate": "31.08.1999",
+      "club": "Sociedade Esportiva Palmeiras",
+      "position": "ST",
+      "height": "1,78m",
+      "aliases": []
+    },
+    {
+      "nation": "Paraguay",
+      "first_name": "Isidro",
+      "last_name": "Pitta",
+      "jersey_number": 25,
+      "birthdate": "14.08.1999",
+      "club": "Red Bull Bragantino",
+      "position": "ST",
+      "height": "1,85m",
+      "aliases": []
+    },
+    {
+      "nation": "Paraguay",
+      "first_name": "Álex",
+      "last_name": "Arce",
+      "jersey_number": 18,
+      "birthdate": "16.06.1995",
+      "club": "CS Independiente Rivadavia",
+      "position": "ST",
+      "height": "1,88m",
+      "aliases": []
+    },
+    {
+      "nation": "Paraguay",
+      "first_name": "Antonio",
+      "last_name": "Sanabria",
+      "jersey_number": 9,
+      "birthdate": "04.03.1996",
+      "club": "US Cremonese",
+      "position": "ST",
+      "height": "1,80m",
+      "aliases": []
+    },
+    {
+      "nation": "Paraguay",
+      "first_name": "Gabriel",
+      "last_name": "Ávalos",
+      "jersey_number": 21,
+      "birthdate": "12.10.1990",
+      "club": "CA Independiente",
+      "position": "ST",
+      "height": "1,85m",
+      "aliases": [
+        "Avalos"
+      ]
+    }
+  ]
+}

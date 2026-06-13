@@ -1,0 +1,300 @@
+{
+  "teamName": "Algeria",
+  "group": "J",
+  "ranking": 28,
+  "color_1": "#FFFFFF",
+  "color_2": "#4F9A44",
+  "color_3": "#DB1F26",
+  "players": [
+    {
+      "nation": "Algeria",
+      "first_name": "Luca",
+      "last_name": "Zidane",
+      "jersey_number": 23,
+      "birthdate": "13.05.1998",
+      "club": "Granada CF",
+      "position": "GK",
+      "height": "1,83m",
+      "aliases": []
+    },
+    {
+      "nation": "Algeria",
+      "first_name": "Oussama",
+      "last_name": "Benbout",
+      "jersey_number": 16,
+      "birthdate": "11.10.1994",
+      "club": "USM Alger",
+      "position": "GK",
+      "height": "1,88m",
+      "aliases": []
+    },
+    {
+      "nation": "Algeria",
+      "first_name": "Melvin",
+      "last_name": "Mastil",
+      "jersey_number": 1,
+      "birthdate": "19.02.2000",
+      "club": "FC Stade Nyonnais",
+      "position": "GK",
+      "height": "1,94m",
+      "aliases": []
+    },
+    {
+      "nation": "Algeria",
+      "first_name": "Ramy",
+      "last_name": "Bensebaini",
+      "jersey_number": 21,
+      "birthdate": "16.04.1995",
+      "club": "Borussia Dortmund",
+      "position": "CB",
+      "height": "1,87m",
+      "aliases": []
+    },
+    {
+      "nation": "Algeria",
+      "first_name": "Samir",
+      "last_name": "Chergui",
+      "jersey_number": 26,
+      "birthdate": "06.02.1999",
+      "club": "Paris FC",
+      "position": "CB",
+      "height": "1,85m",
+      "aliases": []
+    },
+    {
+      "nation": "Algeria",
+      "first_name": "Zineddine",
+      "last_name": "Belaid",
+      "jersey_number": 5,
+      "birthdate": "20.03.1999",
+      "club": "JS Kabylie",
+      "position": "CB",
+      "height": "1,86m",
+      "aliases": []
+    },
+    {
+      "nation": "Algeria",
+      "first_name": "Mohamed Amine",
+      "last_name": "Tougai",
+      "jersey_number": 4,
+      "birthdate": "22.01.2000",
+      "club": "Esperance Tunis",
+      "position": "CB",
+      "height": "1,86m",
+      "aliases": []
+    },
+    {
+      "nation": "Algeria",
+      "first_name": "Aïssa",
+      "last_name": "Mandi",
+      "jersey_number": 2,
+      "birthdate": "22.10.1991",
+      "club": "LOSC Lille",
+      "position": "RB",
+      "height": "1,84m",
+      "aliases": []
+    },
+    {
+      "nation": "Algeria",
+      "first_name": "Achref",
+      "last_name": "Abada",
+      "jersey_number": 3,
+      "birthdate": "15.06.1999",
+      "club": "USM Alger",
+      "position": "CB",
+      "height": "1,85m",
+      "aliases": []
+    },
+    {
+      "nation": "Algeria",
+      "first_name": "Rayan",
+      "last_name": "Aït-Nouri",
+      "jersey_number": 15,
+      "birthdate": "06.06.2001",
+      "club": "Manchester City",
+      "position": "LB",
+      "height": "1,80m",
+      "aliases": [
+        "Ait-Nouri"
+      ]
+    },
+    {
+      "nation": "Algeria",
+      "first_name": "Jaouen",
+      "last_name": "Hadjam",
+      "jersey_number": 13,
+      "birthdate": "26.03.2003",
+      "club": "BSC Young Boys",
+      "position": "LB",
+      "height": "1,85m",
+      "aliases": []
+    },
+    {
+      "nation": "Algeria",
+      "first_name": "Rafik",
+      "last_name": "Belghali",
+      "jersey_number": 17,
+      "birthdate": "07.06.2002",
+      "club": "Hellas Verona",
+      "position": "RB",
+      "height": "1,80m",
+      "aliases": []
+    },
+    {
+      "nation": "Algeria",
+      "first_name": "Ramiz",
+      "last_name": "Zerrouki",
+      "jersey_number": 6,
+      "birthdate": "26.05.1998",
+      "club": "FC Twente Enschede",
+      "position": "DM",
+      "height": "1,83m",
+      "aliases": []
+    },
+    {
+      "nation": "Algeria",
+      "first_name": "Nabil",
+      "last_name": "Bentaleb",
+      "jersey_number": 19,
+      "birthdate": "24.11.1994",
+      "club": "LOSC Lille",
+      "position": "DM",
+      "height": "1,89m",
+      "aliases": []
+    },
+    {
+      "nation": "Algeria",
+      "first_name": "Hicham",
+      "last_name": "Boudaoui",
+      "jersey_number": 14,
+      "birthdate": "23.09.1999",
+      "club": "OGC Nice",
+      "position": "CM",
+      "height": "1,75m",
+      "aliases": []
+    },
+    {
+      "nation": "Algeria",
+      "first_name": "Yassine",
+      "last_name": "Titraoui",
+      "jersey_number": 24,
+      "birthdate": "26.07.2003",
+      "club": "Royal Charleroi SC",
+      "position": "CM",
+      "height": "1,80m",
+      "aliases": []
+    },
+    {
+      "nation": "Algeria",
+      "first_name": "Ibrahim",
+      "last_name": "Maza",
+      "jersey_number": 22,
+      "birthdate": "24.11.2005",
+      "club": "Bayer 04 Leverkusen",
+      "position": "AM",
+      "height": "1,80m",
+      "aliases": []
+    },
+    {
+      "nation": "Algeria",
+      "first_name": "Farès",
+      "last_name": "Chaïbi",
+      "jersey_number": 10,
+      "birthdate": "28.11.2002",
+      "club": "Eintracht Frankfurt",
+      "position": "AM",
+      "height": "1,83m",
+      "aliases": [
+        "Chaibi"
+      ]
+    },
+    {
+      "nation": "Algeria",
+      "first_name": "Houssem",
+      "last_name": "Aouar",
+      "jersey_number": 8,
+      "birthdate": "30.06.1998",
+      "club": "Al-Ittihad Club",
+      "position": "AM",
+      "height": "1,75m",
+      "aliases": []
+    },
+    {
+      "nation": "Algeria",
+      "first_name": "Adil",
+      "last_name": "Boulbina",
+      "jersey_number": 20,
+      "birthdate": "02.05.2003",
+      "club": "Al-Duhail SC",
+      "position": "LW",
+      "height": "1,83m",
+      "aliases": []
+    },
+    {
+      "nation": "Algeria",
+      "first_name": "Anis Hadj",
+      "last_name": "Moussa",
+      "jersey_number": 11,
+      "birthdate": "11.02.2002",
+      "club": "Feyenoord Rotterdam",
+      "position": "RW",
+      "height": "1,76m",
+      "aliases": []
+    },
+    {
+      "nation": "Algeria",
+      "first_name": "Farès",
+      "last_name": "Ghedjemis",
+      "jersey_number": 25,
+      "birthdate": "06.09.2002",
+      "club": "Frosinone Calcio",
+      "position": "RW",
+      "height": "1,83m",
+      "aliases": []
+    },
+    {
+      "nation": "Algeria",
+      "first_name": "Riyad",
+      "last_name": "Mahrez",
+      "jersey_number": 7,
+      "birthdate": "21.02.1991",
+      "club": "Al-Ahli SFC",
+      "position": "RW",
+      "height": "1,79m",
+      "aliases": []
+    },
+    {
+      "nation": "Algeria",
+      "first_name": "Amine",
+      "last_name": "Gouiri",
+      "jersey_number": 9,
+      "birthdate": "16.02.2000",
+      "club": "Olympique Marseille",
+      "position": "ST",
+      "height": "1,80m",
+      "aliases": []
+    },
+    {
+      "nation": "Algeria",
+      "first_name": "Mohamed",
+      "last_name": "Amoura",
+      "jersey_number": 18,
+      "birthdate": "09.05.2000",
+      "club": "VfL Wolfsburg",
+      "position": "LW",
+      "height": "1,70m",
+      "aliases": []
+    },
+    {
+      "nation": "Algeria",
+      "first_name": "Nadhir",
+      "last_name": "Benbouali",
+      "jersey_number": 12,
+      "birthdate": "17.04.2000",
+      "club": "ETO FC",
+      "position": "ST",
+      "height": "1,90m",
+      "aliases": []
+    }
+  ]
+}

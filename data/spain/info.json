@@ -1,0 +1,306 @@
+{
+  "teamName": "Spain",
+  "group": "H",
+  "ranking": 2,
+  "color_1": "#FF0028",
+  "color_2": "#FFC908",
+  "color_3": "#EDE8E1",
+  "players": [
+    {
+      "nation": "Spain",
+      "first_name": "Joan",
+      "last_name": "García",
+      "jersey_number": 13,
+      "birthdate": "04.05.2001",
+      "club": "FC Barcelona",
+      "position": "GK",
+      "height": "1,94m",
+      "aliases": [
+        "Garcia"
+      ]
+    },
+    {
+      "nation": "Spain",
+      "first_name": "David",
+      "last_name": "Raya",
+      "jersey_number": 1,
+      "birthdate": "15.09.1995",
+      "club": "Arsenal FC",
+      "position": "GK",
+      "height": "1,86m",
+      "aliases": []
+    },
+    {
+      "nation": "Spain",
+      "first_name": "Unai",
+      "last_name": "Simón",
+      "jersey_number": 23,
+      "birthdate": "11.06.1997",
+      "club": "Athletic Bilbao",
+      "position": "GK",
+      "height": "1,90m",
+      "aliases": [
+        "Simon"
+      ]
+    },
+    {
+      "nation": "Spain",
+      "first_name": "Pau",
+      "last_name": "Cubarsí",
+      "jersey_number": 22,
+      "birthdate": "22.01.2007",
+      "club": "FC Barcelona",
+      "position": "CB",
+      "height": "1,83m",
+      "aliases": [
+        "Cubarsi"
+      ]
+    },
+    {
+      "nation": "Spain",
+      "first_name": "Eric",
+      "last_name": "García",
+      "jersey_number": 4,
+      "birthdate": "09.01.2001",
+      "club": "FC Barcelona",
+      "position": "CB",
+      "height": "1,83m",
+      "aliases": [
+        "Garcia"
+      ]
+    },
+    {
+      "nation": "Spain",
+      "first_name": "Marc",
+      "last_name": "Pubill",
+      "jersey_number": 2,
+      "birthdate": "20.06.2003",
+      "club": "Atlético de Madrid",
+      "position": "CB",
+      "height": "1,91m",
+      "aliases": []
+    },
+    {
+      "nation": "Spain",
+      "first_name": "Aymeric",
+      "last_name": "Laporte",
+      "jersey_number": 14,
+      "birthdate": "27.05.1994",
+      "club": "Athletic Bilbao",
+      "position": "CB",
+      "height": "1,91m",
+      "aliases": []
+    },
+    {
+      "nation": "Spain",
+      "first_name": "Marc",
+      "last_name": "Cucurella",
+      "jersey_number": 24,
+      "birthdate": "22.07.1998",
+      "club": "Chelsea FC",
+      "position": "LB",
+      "height": "1,73m",
+      "aliases": []
+    },
+    {
+      "nation": "Spain",
+      "first_name": "Alejandro",
+      "last_name": "Grimaldo",
+      "jersey_number": 3,
+      "birthdate": "20.09.1995",
+      "club": "Bayer 04 Leverkusen",
+      "position": "LB",
+      "height": "1,71m",
+      "aliases": []
+    },
+    {
+      "nation": "Spain",
+      "first_name": "Pedro",
+      "last_name": "Porro",
+      "jersey_number": 12,
+      "birthdate": "13.09.1999",
+      "club": "Tottenham Hotspur",
+      "position": "RB",
+      "height": "1,73m",
+      "aliases": []
+    },
+    {
+      "nation": "Spain",
+      "first_name": "Marcos",
+      "last_name": "Llorente",
+      "jersey_number": 5,
+      "birthdate": "30.01.1995",
+      "club": "Atlético de Madrid",
+      "position": "RB",
+      "height": "1,83m",
+      "aliases": []
+    },
+    {
+      "nation": "Spain",
+      "first_name": "Martín",
+      "last_name": "Zubimendi",
+      "jersey_number": 18,
+      "birthdate": "02.02.1999",
+      "club": "Arsenal FC",
+      "position": "DM",
+      "height": "1,81m",
+      "aliases": []
+    },
+    {
+      "nation": "Spain",
+      "first_name": "Rodri",
+      "last_name": "",
+      "jersey_number": 16,
+      "birthdate": "22.06.1996",
+      "club": "Manchester City",
+      "position": "DM",
+      "height": "1,90m",
+      "aliases": []
+    },
+    {
+      "nation": "Spain",
+      "first_name": "Pedri",
+      "last_name": "",
+      "jersey_number": 20,
+      "birthdate": "25.11.2002",
+      "club": "FC Barcelona",
+      "position": "CM",
+      "height": "1,74m",
+      "aliases": []
+    },
+    {
+      "nation": "Spain",
+      "first_name": "Fabián",
+      "last_name": "Ruiz",
+      "jersey_number": 8,
+      "birthdate": "03.04.1996",
+      "club": "Paris Saint-Germain",
+      "position": "CM",
+      "height": "1,88m",
+      "aliases": []
+    },
+    {
+      "nation": "Spain",
+      "first_name": "Gavi",
+      "last_name": "",
+      "jersey_number": 9,
+      "birthdate": "05.08.2004",
+      "club": "FC Barcelona",
+      "position": "CM",
+      "height": "1,73m",
+      "aliases": []
+    },
+    {
+      "nation": "Spain",
+      "first_name": "Mikel",
+      "last_name": "Merino",
+      "jersey_number": 6,
+      "birthdate": "22.06.1996",
+      "club": "Arsenal FC",
+      "position": "CM",
+      "height": "1,88m",
+      "aliases": []
+    },
+    {
+      "nation": "Spain",
+      "first_name": "Dani",
+      "last_name": "Olmo",
+      "jersey_number": 10,
+      "birthdate": "07.05.1998",
+      "club": "FC Barcelona",
+      "position": "AM",
+      "height": "1,79m",
+      "aliases": []
+    },
+    {
+      "nation": "Spain",
+      "first_name": "Álex",
+      "last_name": "Baena",
+      "jersey_number": 15,
+      "birthdate": "20.07.2001",
+      "club": "Atlético de Madrid",
+      "position": "LW",
+      "height": "1,72m",
+      "aliases": []
+    },
+    {
+      "nation": "Spain",
+      "first_name": "Nico",
+      "last_name": "Williams",
+      "jersey_number": 17,
+      "birthdate": "12.07.2002",
+      "club": "Athletic Bilbao",
+      "position": "LW",
+      "height": "1,81m",
+      "aliases": []
+    },
+    {
+      "nation": "Spain",
+      "first_name": "Víctor",
+      "last_name": "Muñoz",
+      "jersey_number": 25,
+      "birthdate": "13.07.2003",
+      "club": "CA Osasuna",
+      "position": "LW",
+      "height": "1,73m",
+      "aliases": [
+        "Munoz"
+      ]
+    },
+    {
+      "nation": "Spain",
+      "first_name": "Lamine",
+      "last_name": "Yamal",
+      "jersey_number": 19,
+      "birthdate": "13.07.2007",
+      "club": "FC Barcelona",
+      "position": "RW",
+      "height": "1,83m",
+      "aliases": []
+    },
+    {
+      "nation": "Spain",
+      "first_name": "Yéremy",
+      "last_name": "Pino",
+      "jersey_number": 11,
+      "birthdate": "20.10.2002",
+      "club": "Crystal Palace",
+      "position": "RW",
+      "height": "1,74m",
+      "aliases": []
+    },
+    {
+      "nation": "Spain",
+      "first_name": "Ferran",
+      "last_name": "Torres",
+      "jersey_number": 7,
+      "birthdate": "29.02.2000",
+      "club": "FC Barcelona",
+      "position": "ST",
+      "height": "1,83m",
+      "aliases": []
+    },
+    {
+      "nation": "Spain",
+      "first_name": "Mikel",
+      "last_name": "Oyarzabal",
+      "jersey_number": 21,
+      "birthdate": "21.04.1997",
+      "club": "Real Sociedad",
+      "position": "ST",
+      "height": "1,81m",
+      "aliases": []
+    },
+    {
+      "nation": "Spain",
+      "first_name": "Borja",
+      "last_name": "Iglesias",
+      "jersey_number": 26,
+      "birthdate": "17.01.1993",
+      "club": "Celta de Vigo",
+      "position": "ST",
+      "height": "1,87m",
+      "aliases": []
+    }
+  ]
+}

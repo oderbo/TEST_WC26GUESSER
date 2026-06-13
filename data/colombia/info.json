@@ -1,0 +1,318 @@
+{
+  "teamName": "Colombia",
+  "group": "K",
+  "ranking": 13,
+  "color_1": "#F5313F",
+  "color_2": "#F6E200",
+  "color_3": "#045DA3",
+  "players": [
+    {
+      "nation": "Colombia",
+      "first_name": "Álvaro",
+      "last_name": "Montero",
+      "jersey_number": 24,
+      "birthdate": "29.03.1995",
+      "club": "CA Vélez Sarsfield",
+      "position": "GK",
+      "height": "2,01m",
+      "aliases": []
+    },
+    {
+      "nation": "Colombia",
+      "first_name": "Camilo",
+      "last_name": "Vargas",
+      "jersey_number": 12,
+      "birthdate": "09.03.1989",
+      "club": "Atlas Guadalajara",
+      "position": "GK",
+      "height": "1,83m",
+      "aliases": []
+    },
+    {
+      "nation": "Colombia",
+      "first_name": "David",
+      "last_name": "Ospina",
+      "jersey_number": 1,
+      "birthdate": "31.08.1988",
+      "club": "Atlético Nacional",
+      "position": "GK",
+      "height": "1,83m",
+      "aliases": []
+    },
+    {
+      "nation": "Colombia",
+      "first_name": "Jhon",
+      "last_name": "Lucumí",
+      "jersey_number": 3,
+      "birthdate": "26.06.1998",
+      "club": "Bologna FC 1909",
+      "position": "CB",
+      "height": "1,87m",
+      "aliases": [
+        "Lucumi"
+      ]
+    },
+    {
+      "nation": "Colombia",
+      "first_name": "Davinson",
+      "last_name": "Sánchez",
+      "jersey_number": 23,
+      "birthdate": "12.06.1996",
+      "club": "Galatasaray",
+      "position": "CB",
+      "height": "1,88m",
+      "aliases": [
+        "Sanchez"
+      ]
+    },
+    {
+      "nation": "Colombia",
+      "first_name": "Willer",
+      "last_name": "Ditta",
+      "jersey_number": 18,
+      "birthdate": "23.01.1998",
+      "club": "CD Cruz Azul",
+      "position": "CB",
+      "height": "1,79m",
+      "aliases": []
+    },
+    {
+      "nation": "Colombia",
+      "first_name": "Yerry",
+      "last_name": "Mina",
+      "jersey_number": 13,
+      "birthdate": "23.09.1994",
+      "club": "Cagliari Calcio",
+      "position": "CB",
+      "height": "1,95m",
+      "aliases": []
+    },
+    {
+      "nation": "Colombia",
+      "first_name": "Deiver",
+      "last_name": "Machado",
+      "jersey_number": 22,
+      "birthdate": "02.09.1993",
+      "club": "FC Nantes",
+      "position": "LB",
+      "height": "1,73m",
+      "aliases": []
+    },
+    {
+      "nation": "Colombia",
+      "first_name": "Johan",
+      "last_name": "Mojica",
+      "jersey_number": 17,
+      "birthdate": "21.08.1992",
+      "club": "RCD Mallorca",
+      "position": "LB",
+      "height": "1,84m",
+      "aliases": []
+    },
+    {
+      "nation": "Colombia",
+      "first_name": "Daniel",
+      "last_name": "Muñoz",
+      "jersey_number": 2,
+      "birthdate": "26.05.1996",
+      "club": "Crystal Palace",
+      "position": "RB",
+      "height": "1,80m",
+      "aliases": [
+        "Munoz"
+      ]
+    },
+    {
+      "nation": "Colombia",
+      "first_name": "Santiago",
+      "last_name": "Arias",
+      "jersey_number": 4,
+      "birthdate": "13.01.1992",
+      "club": "CA Independiente",
+      "position": "RB",
+      "height": "1,77m",
+      "aliases": []
+    },
+    {
+      "nation": "Colombia",
+      "first_name": "Richard",
+      "last_name": "Ríos",
+      "jersey_number": 6,
+      "birthdate": "02.06.2000",
+      "club": "SL Benfica",
+      "position": "DM",
+      "height": "1,85m",
+      "aliases": [
+        "Rios"
+      ]
+    },
+    {
+      "nation": "Colombia",
+      "first_name": "Jefferson",
+      "last_name": "Lerma",
+      "jersey_number": 16,
+      "birthdate": "25.10.1994",
+      "club": "Crystal Palace",
+      "position": "DM",
+      "height": "1,80m",
+      "aliases": []
+    },
+    {
+      "nation": "Colombia",
+      "first_name": "Kevin",
+      "last_name": "Castaño",
+      "jersey_number": 5,
+      "birthdate": "29.09.2000",
+      "club": "CA River Plate",
+      "position": "DM",
+      "height": "1,79m",
+      "aliases": [
+        "Castano"
+      ]
+    },
+    {
+      "nation": "Colombia",
+      "first_name": "Gustavo",
+      "last_name": "Puerta",
+      "jersey_number": 14,
+      "birthdate": "23.07.2003",
+      "club": "Racing Santander",
+      "position": "CM",
+      "height": "1,73m",
+      "aliases": []
+    },
+    {
+      "nation": "Colombia",
+      "first_name": "Juan",
+      "last_name": "Portilla",
+      "jersey_number": 15,
+      "birthdate": "12.09.1998",
+      "club": "Club Athletico Paranaense",
+      "position": "CM",
+      "height": "1,81m",
+      "aliases": []
+    },
+    {
+      "nation": "Colombia",
+      "first_name": "Jorge",
+      "last_name": "Carrascal",
+      "jersey_number": 8,
+      "birthdate": "25.05.1998",
+      "club": "CR Flamengo",
+      "position": "RW",
+      "height": "1,80m",
+      "aliases": []
+    },
+    {
+      "nation": "Colombia",
+      "first_name": "Juan Fernando",
+      "last_name": "Quintero",
+      "jersey_number": 20,
+      "birthdate": "18.01.1993",
+      "club": "CA River Plate",
+      "position": "AM",
+      "height": "1,67m",
+      "aliases": []
+    },
+    {
+      "nation": "Colombia",
+      "first_name": "James",
+      "last_name": "Rodríguez",
+      "jersey_number": 10,
+      "birthdate": "12.07.1991",
+      "club": "Minnesota United FC",
+      "position": "AM",
+      "height": "1,81m",
+      "aliases": [
+        "Rodriguez"
+      ]
+    },
+    {
+      "nation": "Colombia",
+      "first_name": "Luis",
+      "last_name": "Díaz",
+      "jersey_number": 7,
+      "birthdate": "13.01.1997",
+      "club": "Bayern Munich",
+      "position": "LW",
+      "height": "1,79m",
+      "aliases": [
+        "Diaz"
+      ]
+    },
+    {
+      "nation": "Colombia",
+      "first_name": "Andrés",
+      "last_name": "Gómez",
+      "jersey_number": 26,
+      "birthdate": "12.09.2002",
+      "club": "Clube de Regatas Vasco da Gama",
+      "position": "LW",
+      "height": "1,70m",
+      "aliases": [
+        "Gomez"
+      ]
+    },
+    {
+      "nation": "Colombia",
+      "first_name": "Jáminton",
+      "last_name": "Campaz",
+      "jersey_number": 21,
+      "birthdate": "24.05.2000",
+      "club": "CA Rosario Central",
+      "position": "LW",
+      "height": "1,66m",
+      "aliases": []
+    },
+    {
+      "nation": "Colombia",
+      "first_name": "Jhon",
+      "last_name": "Arias",
+      "jersey_number": 11,
+      "birthdate": "21.09.1997",
+      "club": "Sociedade Esportiva Palmeiras",
+      "position": "RW",
+      "height": "1,68m",
+      "aliases": []
+    },
+    {
+      "nation": "Colombia",
+      "first_name": "Luis",
+      "last_name": "Suárez",
+      "jersey_number": 25,
+      "birthdate": "02.12.1997",
+      "club": "Sporting CP",
+      "position": "ST",
+      "height": "1,79m",
+      "aliases": [
+        "Suarez"
+      ]
+    },
+    {
+      "nation": "Colombia",
+      "first_name": "Cucho",
+      "last_name": "Hernández",
+      "jersey_number": 19,
+      "birthdate": "20.04.1999",
+      "club": "Real Betis Balompié",
+      "position": "ST",
+      "height": "1,76m",
+      "aliases": [
+        "Hernandez"
+      ]
+    },
+    {
+      "nation": "Colombia",
+      "first_name": "Jhon",
+      "last_name": "Córdoba",
+      "jersey_number": 9,
+      "birthdate": "11.05.1993",
+      "club": "FC Krasnodar",
+      "position": "ST",
+      "height": "1,86m",
+      "aliases": [
+        "Cordoba"
+      ]
+    }
+  ]
+}

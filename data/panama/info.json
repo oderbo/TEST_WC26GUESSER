@@ -1,0 +1,316 @@
+{
+  "teamName": "Panama",
+  "group": "L",
+  "ranking": 33,
+  "color_1": "#F9F9F9",
+  "color_2": "#152344",
+  "color_3": "#F70034",
+  "players": [
+    {
+      "nation": "Panama",
+      "first_name": "Orlando",
+      "last_name": "Mosquera",
+      "jersey_number": 22,
+      "birthdate": "25.12.1994",
+      "club": "Al-Fayha FC",
+      "position": "GK",
+      "height": "1,91m",
+      "aliases": []
+    },
+    {
+      "nation": "Panama",
+      "first_name": "César",
+      "last_name": "Samudio",
+      "jersey_number": 12,
+      "birthdate": "23.02.1994",
+      "club": "CD Marathón",
+      "position": "GK",
+      "height": "1,89m",
+      "aliases": []
+    },
+    {
+      "nation": "Panama",
+      "first_name": "Luis",
+      "last_name": "Mejía",
+      "jersey_number": 1,
+      "birthdate": "16.03.1991",
+      "club": "Club Nacional",
+      "position": "GK",
+      "height": "1,93m",
+      "aliases": [
+        "Mejia"
+      ]
+    },
+    {
+      "nation": "Panama",
+      "first_name": "José",
+      "last_name": "Córdoba",
+      "jersey_number": 3,
+      "birthdate": "03.06.2001",
+      "club": "Norwich City",
+      "position": "CB",
+      "height": "1,89m",
+      "aliases": [
+        "Cordoba"
+      ]
+    },
+    {
+      "nation": "Panama",
+      "first_name": "Andrés",
+      "last_name": "Andrade",
+      "jersey_number": 16,
+      "birthdate": "16.10.1998",
+      "club": "LASK",
+      "position": "CB",
+      "height": "1,87m",
+      "aliases": []
+    },
+    {
+      "nation": "Panama",
+      "first_name": "Edgardo",
+      "last_name": "Fariña",
+      "jersey_number": 5,
+      "birthdate": "19.10.2001",
+      "club": "FC Pari Nizhniy Novgorod",
+      "position": "CB",
+      "height": "1,95m",
+      "aliases": [
+        "Farina"
+      ]
+    },
+    {
+      "nation": "Panama",
+      "first_name": "Jiovany",
+      "last_name": "Ramos",
+      "jersey_number": 13,
+      "birthdate": "26.01.1997",
+      "club": "Academia Puerto Cabello",
+      "position": "CB",
+      "height": "1,88m",
+      "aliases": []
+    },
+    {
+      "nation": "Panama",
+      "first_name": "Fidel",
+      "last_name": "Escobar",
+      "jersey_number": 4,
+      "birthdate": "09.01.1995",
+      "club": "Deportivo Saprissa",
+      "position": "CB",
+      "height": "1,84m",
+      "aliases": []
+    },
+    {
+      "nation": "Panama",
+      "first_name": "Roderick",
+      "last_name": "Miller",
+      "jersey_number": 25,
+      "birthdate": "03.04.1992",
+      "club": "Turan-Tovuz IK",
+      "position": "CB",
+      "height": "1,90m",
+      "aliases": []
+    },
+    {
+      "nation": "Panama",
+      "first_name": "Jorge",
+      "last_name": "Gutiérrez",
+      "jersey_number": 26,
+      "birthdate": "01.09.1998",
+      "club": "Deportivo La Guaira",
+      "position": "LB",
+      "height": "1,71m",
+      "aliases": [
+        "Gutierrez"
+      ]
+    },
+    {
+      "nation": "Panama",
+      "first_name": "Éric",
+      "last_name": "Davis",
+      "jersey_number": 15,
+      "birthdate": "31.03.1991",
+      "club": "CD Plaza Amador",
+      "position": "LB",
+      "height": "1,80m",
+      "aliases": []
+    },
+    {
+      "nation": "Panama",
+      "first_name": "Amir",
+      "last_name": "Murillo",
+      "jersey_number": 23,
+      "birthdate": "11.02.1996",
+      "club": "Besiktas JK",
+      "position": "RB",
+      "height": "1,85m",
+      "aliases": []
+    },
+    {
+      "nation": "Panama",
+      "first_name": "César",
+      "last_name": "Blackman",
+      "jersey_number": 2,
+      "birthdate": "02.04.1998",
+      "club": "Slovan Bratislava",
+      "position": "RB",
+      "height": "1,74m",
+      "aliases": []
+    },
+    {
+      "nation": "Panama",
+      "first_name": "Cristian",
+      "last_name": "Martínez",
+      "jersey_number": 6,
+      "birthdate": "06.02.1997",
+      "club": "Ironi Kiryat Shmona",
+      "position": "DM",
+      "height": "1,70m",
+      "aliases": [
+        "Martinez"
+      ]
+    },
+    {
+      "nation": "Panama",
+      "first_name": "Carlos",
+      "last_name": "Harvey",
+      "jersey_number": 14,
+      "birthdate": "03.02.2000",
+      "club": "Minnesota United FC",
+      "position": "DM",
+      "height": "1,84m",
+      "aliases": []
+    },
+    {
+      "nation": "Panama",
+      "first_name": "Aníbal",
+      "last_name": "Godoy",
+      "jersey_number": 20,
+      "birthdate": "10.02.1990",
+      "club": "San Diego FC",
+      "position": "DM",
+      "height": "1,84m",
+      "aliases": []
+    },
+    {
+      "nation": "Panama",
+      "first_name": "Adalberto",
+      "last_name": "Carrasquilla",
+      "jersey_number": 8,
+      "birthdate": "28.11.1998",
+      "club": "UNAM Pumas",
+      "position": "CM",
+      "height": "1,71m",
+      "aliases": []
+    },
+    {
+      "nation": "Panama",
+      "first_name": "José Luis",
+      "last_name": "Rodríguez",
+      "jersey_number": 7,
+      "birthdate": "19.06.1998",
+      "club": "FC Juárez",
+      "position": "LW",
+      "height": "1,80m",
+      "aliases": [
+        "Rodriguez"
+      ]
+    },
+    {
+      "nation": "Panama",
+      "first_name": "Ismael",
+      "last_name": "Díaz",
+      "jersey_number": 10,
+      "birthdate": "12.05.1997",
+      "club": "Club León FC",
+      "position": "LW",
+      "height": "1,84m",
+      "aliases": [
+        "Diaz"
+      ]
+    },
+    {
+      "nation": "Panama",
+      "first_name": "Yoel",
+      "last_name": "Bárcenas",
+      "jersey_number": 11,
+      "birthdate": "23.10.1993",
+      "club": "Mazatlán FC",
+      "position": "RW",
+      "height": "1,75m",
+      "aliases": [
+        "Barcenas"
+      ]
+    },
+    {
+      "nation": "Panama",
+      "first_name": "César",
+      "last_name": "Yanis",
+      "jersey_number": 21,
+      "birthdate": "28.01.1996",
+      "club": "CD Cobresal",
+      "position": "RW",
+      "height": "1,60m",
+      "aliases": []
+    },
+    {
+      "nation": "Panama",
+      "first_name": "Alberto",
+      "last_name": "Quintero",
+      "jersey_number": 19,
+      "birthdate": "18.12.1987",
+      "club": "CD Plaza Amador",
+      "position": "RW",
+      "height": "1,65m",
+      "aliases": []
+    },
+    {
+      "nation": "Panama",
+      "first_name": "Tomás",
+      "last_name": "Rodríguez",
+      "jersey_number": 9,
+      "birthdate": "09.03.1999",
+      "club": "Deportivo Saprissa",
+      "position": "ST",
+      "height": "1,83m",
+      "aliases": [
+        "Rodriguez"
+      ]
+    },
+    {
+      "nation": "Panama",
+      "first_name": "Azarías",
+      "last_name": "Londoño",
+      "jersey_number": 24,
+      "birthdate": "21.06.2001",
+      "club": "CD Universidad Católica",
+      "position": "ST",
+      "height": "1,85m",
+      "aliases": [
+        "Londono"
+      ]
+    },
+    {
+      "nation": "Panama",
+      "first_name": "José",
+      "last_name": "Fajardo",
+      "jersey_number": 17,
+      "birthdate": "18.08.1993",
+      "club": "CD Universidad Católica",
+      "position": "ST",
+      "height": "1,84m",
+      "aliases": []
+    },
+    {
+      "nation": "Panama",
+      "first_name": "Cecilio",
+      "last_name": "Waterman",
+      "jersey_number": 18,
+      "birthdate": "13.04.1991",
+      "club": "Universidad de Concepción",
+      "position": "ST",
+      "height": "1,80m",
+      "aliases": []
+    }
+  ]
+}

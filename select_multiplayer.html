@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Pick Nation</title>
+<style>
+/* --- OFFIZIELLE TURNIER-SCHRIFT EINBINDEN --- */
+@font-face {
+    font-family: 'FWC2026';
+    src: url('assets/FWC2026.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body { 
+    margin: 0; 
+    padding: 10px 6px; 
+    font-family: 'FWC2026', Arial, sans-serif; 
+    color: white; 
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+    min-height: 100dvh;
+    width: 100%;
+    background-color: #3f57f5; 
+}
+
+h1 { 
+    /* HIER DIE POSITIONIERUNG FÜR MOBILE ANPASSEN */
+    margin-top: -20px; 
+    margin-bottom: 0px; 
+    font-size: 22px; 
+    text-transform: uppercase;
+    text-shadow: 0 1px 3px rgba(0,0,0,0.4);
+    font-family: 'FWC2026', Arial, sans-serif;
+    letter-spacing: 1px;
+}
+
+/* --- GRUPPEN WRAPPER --- */
+#groups {
+    display: grid;
+    width: 100%;
+    max-width: 1400px;
+    gap: 4px; 
+    padding-bottom: 20px;
+}
+
+/* --- COMPACT GRUPPEN BOX --- */
+.group-box {
+    display: flex;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.4); 
+    border-radius: 8px;
+    padding: 4px 6px; 
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    width: 100%;
+}
+
+/* Feste Breite für den Buchstaben links (jetzt leicht nach links gerückt) */
+.group-letter {
+    font-size: 34px; 
+    font-weight: bold;
+    text-align: center;
+    line-height: 1;
+    width: 32px; 
+    flex-shrink: 0; 
+    margin-left: -4px; 
+    margin-right: 8px;
+}
+
+/* Das Grid erzwingt zwei identische Spalten */
+.teams-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    gap: 3px; 
+    flex-grow: 1;
+}
+
+/* --- ABSOLUT GEOMETRISCHE BUTTONS --- */
+.team-button {
+    display: flex;
+    flex-direction: row; 
+    align-items: center;
+    justify-content: space-between;
+    background: #252830; 
+    border: 1.5px solid rgba(255, 255, 255, 0.2); 
+    border-radius: 6px;
+    padding: 2px 1px 2px 4px; /* Rechts auf 1px verringert -> Kürzel rutscht weiter nach rechts */
+    cursor: pointer;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+    color: white;
+    width: 100%;
+    height: 42px; 
+    position: relative;
+    overflow: hidden;
+}
+
+/* Flagge zentriert sich im linken Bereich */
+.team-button img { 
+    height: 30px; 
+    width: 55%; 
+    object-fit: contain; 
+    filter: drop-shadow(0 1px 2px rgba(0,0,0,0.4));
+}
+
+/* Um 90 Grad gedrehtes Länderkürzel mit feiner Outline */
+.team-button span {
+    font-size: 10px;
+    font-weight: bold;
+    text-align: center;
+    font-family: 'FWC2026', Arial, sans-serif;
+    width: 18px; 
+    
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+    
+    white-space: nowrap;
+    line-height: 1;
+    text-shadow: none; 
+    
+    /* NEU: Auf 0.5px verringert für eine hauchdünne Outline */
+    -webkit-text-stroke: 0.5px transparent; 
+}
+
+.team-button:hover { 
+    transform: scale(1.03);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+
+/* --- DESKTOP LAYOUT --- */
+@media (min-width: 768px) {
+    body { padding: 20px; }
+    /* HIER DIE POSITIONIERUNG FÜR DESKTOP ANPASSEN */
+    h1 { margin-top: 15px; margin-bottom: 25px; font-size: 36px; }
+    #groups { grid-template-columns: repeat(4, 1fr); gap: 20px; }
+    .group-box { padding: 12px; border: 2px solid rgba(255, 255, 255, 0.6); }
+    .group-letter { font-size: 50px; width: 55px; margin-right: 8px; }
+    .teams-grid { gap: 10px; }
+    .team-button { height: 65px; padding: 4px 4px 4px 8px; } /* padding-right verringert */
+    .team-button img { height: 44px; width: 60%; }
+    .team-button span { font-size: 13px; width: 24px; -webkit-text-stroke: 0.8px transparent; }
+}
+
+/* --- IPHONE SCREEN OPTIMIERUNG --- */
+@media (max-width: 767px) {
+    #groups {
+        grid-template-columns: repeat(2, 1fr); 
+        gap: 6px; 
+    }
+    .teams-grid {
+        justify-items: center;
+    }
+    .team-button {
+        width: 95%; 
+    }
+}
+</style>
+</head>
+<body>
+
+<h1>Pick a Nation</h1>
+<div id="groups"></div>
+
+<script>
+fetch("./data/worldcup_teams.json")
+.then(r=>r.json())
+.then(data=>{
+    const container = document.getElementById("groups");
+
+    Object.entries(data.groups).forEach(([groupName, teams])=>{
+        const groupBox = document.createElement("div");
+        groupBox.className = "group-box";
+
+        const letterDiv = document.createElement("div");
+        letterDiv.className = "group-letter";
+        letterDiv.innerText = groupName;
+        groupBox.appendChild(letterDiv);
+
+        const teamsGrid = document.createElement("div");
+        teamsGrid.className = "teams-grid";
+
+        teams.forEach(teamKey=>{
+            const team = data.teams[teamKey];
+            if(!team) return;
+
+            const btn = document.createElement("button");
+            btn.className = "team-button";
+            
+            if(team.color_1) {
+                btn.style.backgroundColor = team.color_1;
+            }
+            
+            const displayCode = team.country_code ? team.country_code : team.name.substring(0,3).toUpperCase();
+
+            btn.innerHTML = `
+                <img src="${team.flag}" alt="${team.name}"> 
+                <span>${displayCode}</span>
+            `;
+
+            const textSpan = btn.querySelector("span");
+
+            if(team.color_2) {
+                btn.style.borderColor = team.color_2;
+                
+                // NEU: Wenn color_2 NICHT reines Weiß (#FFFFFF) ist, wird die dünne Outline gesetzt
+                if(textSpan && team.color_2.toUpperCase() !== "#FFFFFF") {
+                    textSpan.style.webkitTextStrokeColor = team.color_2;
+                }
+            }
+
+            btn.onclick = () => { window.location.href = `game.html?team=${teamKey}`; };
+            teamsGrid.appendChild(btn);
+        });
+
+        groupBox.appendChild(teamsGrid);
+        container.appendChild(groupBox);
+    });
+});
+</script>
+</body>
+</html>

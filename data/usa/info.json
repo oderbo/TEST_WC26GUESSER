@@ -1,0 +1,298 @@
+{
+  "teamName": "United States",
+  "group": "D",
+  "ranking": 16,
+  "color_1": "#FFFFFF",
+  "color_2": "#1F2742",
+  "color_3": "#BB2533",
+  "players": [
+    {
+      "nation": "United States",
+      "first_name": "Matt",
+      "last_name": "Turner",
+      "jersey_number": 1,
+      "birthdate": "24.06.1994",
+      "club": "New England Revolution",
+      "position": "GK",
+      "height": "1,90m",
+      "aliases": []
+    },
+    {
+      "nation": "United States",
+      "first_name": "Chris",
+      "last_name": "Brady",
+      "jersey_number": 25,
+      "birthdate": "03.03.2004",
+      "club": "Chicago Fire FC",
+      "position": "GK",
+      "height": "1,93m",
+      "aliases": []
+    },
+    {
+      "nation": "United States",
+      "first_name": "Matt",
+      "last_name": "Freese",
+      "jersey_number": 24,
+      "birthdate": "02.09.1998",
+      "club": "New York City FC",
+      "position": "GK",
+      "height": "1,98m",
+      "aliases": []
+    },
+    {
+      "nation": "United States",
+      "first_name": "Chris",
+      "last_name": "Richards",
+      "jersey_number": 3,
+      "birthdate": "28.03.2000",
+      "club": "Crystal Palace",
+      "position": "CB",
+      "height": "1,89m",
+      "aliases": []
+    },
+    {
+      "nation": "United States",
+      "first_name": "Mark",
+      "last_name": "McKenzie",
+      "jersey_number": 22,
+      "birthdate": "25.02.1999",
+      "club": "FC Toulouse",
+      "position": "CB",
+      "height": "1,86m",
+      "aliases": []
+    },
+    {
+      "nation": "United States",
+      "first_name": "Auston",
+      "last_name": "Trusty",
+      "jersey_number": 6,
+      "birthdate": "12.08.1998",
+      "club": "Celtic FC",
+      "position": "LB",
+      "height": "1,90m",
+      "aliases": []
+    },
+    {
+      "nation": "United States",
+      "first_name": "Miles",
+      "last_name": "Robinson",
+      "jersey_number": 12,
+      "birthdate": "14.03.1997",
+      "club": "FC Cincinnati",
+      "position": "CB",
+      "height": "1,87m",
+      "aliases": []
+    },
+    {
+      "nation": "United States",
+      "first_name": "Tim",
+      "last_name": "Ream",
+      "jersey_number": 13,
+      "birthdate": "05.10.1987",
+      "club": "Charlotte FC",
+      "position": "CB",
+      "height": "1,86m",
+      "aliases": []
+    },
+    {
+      "nation": "United States",
+      "first_name": "Antonee",
+      "last_name": "Robinson",
+      "jersey_number": 5,
+      "birthdate": "08.08.1997",
+      "club": "Fulham FC",
+      "position": "LB",
+      "height": "1,83m",
+      "aliases": []
+    },
+    {
+      "nation": "United States",
+      "first_name": "Sergiño",
+      "last_name": "Dest",
+      "jersey_number": 2,
+      "birthdate": "03.11.2000",
+      "club": "PSV Eindhoven",
+      "position": "RW",
+      "height": "1,73m",
+      "aliases": []
+    },
+    {
+      "nation": "United States",
+      "first_name": "Joe",
+      "last_name": "Scally",
+      "jersey_number": 23,
+      "birthdate": "31.12.2002",
+      "club": "Borussia Mönchengladbach",
+      "position": "RB",
+      "height": "1,84m",
+      "aliases": []
+    },
+    {
+      "nation": "United States",
+      "first_name": "Alex",
+      "last_name": "Freeman",
+      "jersey_number": 16,
+      "birthdate": "09.08.2004",
+      "club": "Villarreal CF",
+      "position": "RB",
+      "height": "1,88m",
+      "aliases": []
+    },
+    {
+      "nation": "United States",
+      "first_name": "Tyler",
+      "last_name": "Adams",
+      "jersey_number": 4,
+      "birthdate": "14.02.1999",
+      "club": "AFC Bournemouth",
+      "position": "DM",
+      "height": "1,75m",
+      "aliases": []
+    },
+    {
+      "nation": "United States",
+      "first_name": "Weston",
+      "last_name": "McKennie",
+      "jersey_number": 8,
+      "birthdate": "28.08.1998",
+      "club": "Juventus FC",
+      "position": "CM",
+      "height": "1,80m",
+      "aliases": []
+    },
+    {
+      "nation": "United States",
+      "first_name": "Sebastian",
+      "last_name": "Berhalter",
+      "jersey_number": 14,
+      "birthdate": "10.05.2001",
+      "club": "Vancouver Whitecaps FC",
+      "position": "CM",
+      "height": "1,75m",
+      "aliases": []
+    },
+    {
+      "nation": "United States",
+      "first_name": "Cristian",
+      "last_name": "Roldán",
+      "jersey_number": 15,
+      "birthdate": "03.06.1995",
+      "club": "Seattle Sounders FC",
+      "position": "CM",
+      "height": "1,73m",
+      "aliases": [
+        "Roldan"
+      ]
+    },
+    {
+      "nation": "United States",
+      "first_name": "Timothy",
+      "last_name": "Weah",
+      "jersey_number": 21,
+      "birthdate": "22.02.2000",
+      "club": "Olympique Marseille",
+      "position": "RW",
+      "height": "1,83m",
+      "aliases": []
+    },
+    {
+      "nation": "United States",
+      "first_name": "Malik",
+      "last_name": "Tillman",
+      "jersey_number": 17,
+      "birthdate": "28.05.2002",
+      "club": "Bayer 04 Leverkusen",
+      "position": "AM",
+      "height": "1,87m",
+      "aliases": []
+    },
+    {
+      "nation": "United States",
+      "first_name": "Brenden",
+      "last_name": "Aaronson",
+      "jersey_number": 11,
+      "birthdate": "22.10.2000",
+      "club": "Leeds United",
+      "position": "AM",
+      "height": "1,77m",
+      "aliases": []
+    },
+    {
+      "nation": "United States",
+      "first_name": "Giovanni",
+      "last_name": "Reyna",
+      "jersey_number": 7,
+      "birthdate": "13.11.2002",
+      "club": "Borussia Mönchengladbach",
+      "position": "AM",
+      "height": "1,87m",
+      "aliases": []
+    },
+    {
+      "nation": "United States",
+      "first_name": "Max",
+      "last_name": "Arfsten",
+      "jersey_number": 18,
+      "birthdate": "19.04.2001",
+      "club": "Columbus Crew",
+      "position": "LW",
+      "height": "1,85m",
+      "aliases": []
+    },
+    {
+      "nation": "United States",
+      "first_name": "Christian",
+      "last_name": "Pulisic",
+      "jersey_number": 10,
+      "birthdate": "18.09.1998",
+      "club": "AC Milan",
+      "position": "LW",
+      "height": "1,77m",
+      "aliases": []
+    },
+    {
+      "nation": "United States",
+      "first_name": "Álex",
+      "last_name": "Zendejas",
+      "jersey_number": 26,
+      "birthdate": "07.02.1998",
+      "club": "CF América",
+      "position": "RW",
+      "height": "1,67m",
+      "aliases": []
+    },
+    {
+      "nation": "United States",
+      "first_name": "Folarin",
+      "last_name": "Balogun",
+      "jersey_number": 20,
+      "birthdate": "03.07.2001",
+      "club": "AS Monaco",
+      "position": "ST",
+      "height": "1,79m",
+      "aliases": []
+    },
+    {
+      "nation": "United States",
+      "first_name": "Ricardo",
+      "last_name": "Pepi",
+      "jersey_number": 9,
+      "birthdate": "09.01.2003",
+      "club": "PSV Eindhoven",
+      "position": "ST",
+      "height": "1,85m",
+      "aliases": []
+    },
+    {
+      "nation": "United States",
+      "first_name": "Haji",
+      "last_name": "Wright",
+      "jersey_number": 19,
+      "birthdate": "27.03.1998",
+      "club": "Coventry City",
+      "position": "ST",
+      "height": "1,91m",
+      "aliases": []
+    }
+  ]
+}

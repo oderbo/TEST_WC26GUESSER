@@ -1,0 +1,312 @@
+{
+  "teamName": "Ivory Coast",
+  "group": "E",
+  "ranking": 34,
+  "color_1": "#31AE97",
+  "color_2": "#FF8413",
+  "color_3": "#FFFFFF",
+  "players": [
+    {
+      "nation": "Ivory Coast",
+      "first_name": "Yahia",
+      "last_name": "Fofana",
+      "jersey_number": 1,
+      "birthdate": "21.08.2000",
+      "club": "Caykur Rizespor",
+      "position": "GK",
+      "height": "1,94m",
+      "aliases": []
+    },
+    {
+      "nation": "Ivory Coast",
+      "first_name": "Alban",
+      "last_name": "Lafont",
+      "jersey_number": 23,
+      "birthdate": "23.01.1999",
+      "club": "Panathinaikos",
+      "position": "GK",
+      "height": "1,96m",
+      "aliases": []
+    },
+    {
+      "nation": "Ivory Coast",
+      "first_name": "Mohamed",
+      "last_name": "Koné",
+      "jersey_number": 16,
+      "birthdate": "07.03.2002",
+      "club": "Royal Charleroi SC",
+      "position": "GK",
+      "height": "1,86m",
+      "aliases": [
+        "Kone"
+      ]
+    },
+    {
+      "nation": "Ivory Coast",
+      "first_name": "Ousmane",
+      "last_name": "Diomande",
+      "jersey_number": 2,
+      "birthdate": "04.12.2003",
+      "club": "Sporting CP",
+      "position": "CB",
+      "height": "1,90m",
+      "aliases": []
+    },
+    {
+      "nation": "Ivory Coast",
+      "first_name": "Evan",
+      "last_name": "Ndicka",
+      "jersey_number": 21,
+      "birthdate": "20.08.1999",
+      "club": "AS Roma",
+      "position": "CB",
+      "height": "1,92m",
+      "aliases": []
+    },
+    {
+      "nation": "Ivory Coast",
+      "first_name": "Wilfried",
+      "last_name": "Singo",
+      "jersey_number": 5,
+      "birthdate": "25.12.2000",
+      "club": "Galatasaray",
+      "position": "RB",
+      "height": "1,82m",
+      "aliases": []
+    },
+    {
+      "nation": "Ivory Coast",
+      "first_name": "Emmanuel",
+      "last_name": "Agbadou",
+      "jersey_number": 20,
+      "birthdate": "17.06.1997",
+      "club": "Besiktas JK",
+      "position": "CB",
+      "height": "1,85m",
+      "aliases": []
+    },
+    {
+      "nation": "Ivory Coast",
+      "first_name": "Odilon",
+      "last_name": "Kossounou",
+      "jersey_number": 7,
+      "birthdate": "04.01.2001",
+      "club": "Atalanta BC",
+      "position": "CB",
+      "height": "1,91m",
+      "aliases": []
+    },
+    {
+      "nation": "Ivory Coast",
+      "first_name": "Christopher",
+      "last_name": "Operi",
+      "jersey_number": 13,
+      "birthdate": "29.04.1997",
+      "club": "Basaksehir FK",
+      "position": "LB",
+      "height": "1,83m",
+      "aliases": []
+    },
+    {
+      "nation": "Ivory Coast",
+      "first_name": "Ghislain",
+      "last_name": "Konan",
+      "jersey_number": 3,
+      "birthdate": "27.12.1995",
+      "club": "Gil Vicente FC",
+      "position": "LB",
+      "height": "1,76m",
+      "aliases": []
+    },
+    {
+      "nation": "Ivory Coast",
+      "first_name": "Guéla",
+      "last_name": "Doué",
+      "jersey_number": 17,
+      "birthdate": "17.10.2002",
+      "club": "RC Strasbourg Alsace",
+      "position": "RB",
+      "height": "1,87m",
+      "aliases": [
+        "Doue"
+      ]
+    },
+    {
+      "nation": "Ivory Coast",
+      "first_name": "Ibrahim",
+      "last_name": "Sangaré",
+      "jersey_number": 18,
+      "birthdate": "02.12.1997",
+      "club": "Nottingham Forest",
+      "position": "DM",
+      "height": "1,91m",
+      "aliases": [
+        "Sangare"
+      ]
+    },
+    {
+      "nation": "Ivory Coast",
+      "first_name": "Jean Michaël",
+      "last_name": "Seri",
+      "jersey_number": 4,
+      "birthdate": "19.07.1991",
+      "club": "NK Maribor",
+      "position": "DM",
+      "height": "1,68m",
+      "aliases": []
+    },
+    {
+      "nation": "Ivory Coast",
+      "first_name": "Christ Inao",
+      "last_name": "Oulaï",
+      "jersey_number": 26,
+      "birthdate": "06.04.2006",
+      "club": "Trabzonspor",
+      "position": "CM",
+      "height": "1,73m",
+      "aliases": [
+        "Oulai"
+      ]
+    },
+    {
+      "nation": "Ivory Coast",
+      "first_name": "Franck",
+      "last_name": "Kessié",
+      "jersey_number": 8,
+      "birthdate": "19.12.1996",
+      "club": "Al-Ahli SFC",
+      "position": "CM",
+      "height": "1,83m",
+      "aliases": [
+        "Kessie"
+      ]
+    },
+    {
+      "nation": "Ivory Coast",
+      "first_name": "Seko",
+      "last_name": "Fofana",
+      "jersey_number": 6,
+      "birthdate": "07.05.1995",
+      "club": "FC Porto",
+      "position": "CM",
+      "height": "1,85m",
+      "aliases": []
+    },
+    {
+      "nation": "Ivory Coast",
+      "first_name": "Yan",
+      "last_name": "Diomande",
+      "jersey_number": 11,
+      "birthdate": "14.11.2006",
+      "club": "RB Leipzig",
+      "position": "LW",
+      "height": "1,80m",
+      "aliases": []
+    },
+    {
+      "nation": "Ivory Coast",
+      "first_name": "Bazoumana",
+      "last_name": "Touré",
+      "jersey_number": 24,
+      "birthdate": "02.03.2006",
+      "club": "TSG 1899 Hoffenheim",
+      "position": "LW",
+      "height": "1,78m",
+      "aliases": [
+        "Toure"
+      ]
+    },
+    {
+      "nation": "Ivory Coast",
+      "first_name": "Simon",
+      "last_name": "Adingra",
+      "jersey_number": 10,
+      "birthdate": "01.01.2002",
+      "club": "AS Monaco",
+      "position": "LW",
+      "height": "1,75m",
+      "aliases": []
+    },
+    {
+      "nation": "Ivory Coast",
+      "first_name": "Parfait",
+      "last_name": "Guiagon",
+      "jersey_number": 25,
+      "birthdate": "22.02.2001",
+      "club": "Royal Charleroi SC",
+      "position": "LW",
+      "height": "1,65m",
+      "aliases": []
+    },
+    {
+      "nation": "Ivory Coast",
+      "first_name": "Amad",
+      "last_name": "Diallo",
+      "jersey_number": 15,
+      "birthdate": "11.07.2002",
+      "club": "Manchester United",
+      "position": "RW",
+      "height": "1,73m",
+      "aliases": []
+    },
+    {
+      "nation": "Ivory Coast",
+      "first_name": "Evann",
+      "last_name": "Guessand",
+      "jersey_number": 22,
+      "birthdate": "01.07.2001",
+      "club": "Crystal Palace",
+      "position": "RW",
+      "height": "1,88m",
+      "aliases": []
+    },
+    {
+      "nation": "Ivory Coast",
+      "first_name": "Nicolas",
+      "last_name": "Pépé",
+      "jersey_number": 19,
+      "birthdate": "29.05.1995",
+      "club": "Villarreal CF",
+      "position": "RW",
+      "height": "1,83m",
+      "aliases": [
+        "Pepe"
+      ]
+    },
+    {
+      "nation": "Ivory Coast",
+      "first_name": "Ange-Yoan",
+      "last_name": "Bonny",
+      "jersey_number": 9,
+      "birthdate": "25.10.2003",
+      "club": "Inter Milan",
+      "position": "ST",
+      "height": "1,89m",
+      "aliases": []
+    },
+    {
+      "nation": "Ivory Coast",
+      "first_name": "Elye",
+      "last_name": "Wahi",
+      "jersey_number": 12,
+      "birthdate": "02.01.2003",
+      "club": "OGC Nice",
+      "position": "ST",
+      "height": "1,81m",
+      "aliases": []
+    },
+    {
+      "nation": "Ivory Coast",
+      "first_name": "Oumar",
+      "last_name": "Diakité",
+      "jersey_number": 14,
+      "birthdate": "20.12.2003",
+      "club": "Cercle Brugge",
+      "position": "ST",
+      "height": "1,82m",
+      "aliases": [
+        "Diakite"
+      ]
+    }
+  ]
+}

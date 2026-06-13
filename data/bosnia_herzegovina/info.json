@@ -1,0 +1,308 @@
+{
+  "teamName": "Bosnia-Herzegovina",
+  "group": "B",
+  "ranking": 65,
+  "color_1": "#FFFFFF",
+  "color_2": "#FFDE67",
+  "color_3": "#415FA9",
+  "players": [
+    {
+      "nation": "Bosnia-Herzegovina",
+      "first_name": "Nikola",
+      "last_name": "Vasilj",
+      "jersey_number": 1,
+      "birthdate": "02.12.1995",
+      "club": "FC St. Pauli",
+      "position": "GK",
+      "height": "1,93m",
+      "aliases": []
+    },
+    {
+      "nation": "Bosnia-Herzegovina",
+      "first_name": "Martin",
+      "last_name": "Zlomislic",
+      "jersey_number": 22,
+      "birthdate": "16.08.1998",
+      "club": "HNK Rijeka",
+      "position": "GK",
+      "height": "1,89m",
+      "aliases": []
+    },
+    {
+      "nation": "Bosnia-Herzegovina",
+      "first_name": "Mladen",
+      "last_name": "Jurkas",
+      "jersey_number": 12,
+      "birthdate": "07.10.2007",
+      "club": "FK Borac Banja Luka",
+      "position": "GK",
+      "height": "1,93m",
+      "aliases": []
+    },
+    {
+      "nation": "Bosnia-Herzegovina",
+      "first_name": "Tarik",
+      "last_name": "Muharemović",
+      "jersey_number": 4,
+      "birthdate": "28.02.2003",
+      "club": "US Sassuolo",
+      "position": "CB",
+      "height": "1,92m",
+      "aliases": [
+        "Muharemovic"
+      ]
+    },
+    {
+      "nation": "Bosnia-Herzegovina",
+      "first_name": "Nidal",
+      "last_name": "Celik",
+      "jersey_number": 24,
+      "birthdate": "17.07.2006",
+      "club": "RC Lens",
+      "position": "CB",
+      "height": "1,92m",
+      "aliases": []
+    },
+    {
+      "nation": "Bosnia-Herzegovina",
+      "first_name": "Sead",
+      "last_name": "Kolasinac",
+      "jersey_number": 5,
+      "birthdate": "20.06.1993",
+      "club": "Atalanta BC",
+      "position": "LB",
+      "height": "1,83m",
+      "aliases": []
+    },
+    {
+      "nation": "Bosnia-Herzegovina",
+      "first_name": "Stjepan",
+      "last_name": "Radeljic",
+      "jersey_number": 21,
+      "birthdate": "05.09.1997",
+      "club": "HNK Rijeka",
+      "position": "CB",
+      "height": "2,01m",
+      "aliases": []
+    },
+    {
+      "nation": "Bosnia-Herzegovina",
+      "first_name": "Nikola",
+      "last_name": "Katic",
+      "jersey_number": 18,
+      "birthdate": "10.10.1996",
+      "club": "FC Schalke 04",
+      "position": "CB",
+      "height": "1,94m",
+      "aliases": []
+    },
+    {
+      "nation": "Bosnia-Herzegovina",
+      "first_name": "Nihad",
+      "last_name": "Mujakic",
+      "jersey_number": 2,
+      "birthdate": "15.04.1998",
+      "club": "Gaziantep FK",
+      "position": "LB",
+      "height": "1,89m",
+      "aliases": []
+    },
+    {
+      "nation": "Bosnia-Herzegovina",
+      "first_name": "Dennis",
+      "last_name": "Hadzikadunic",
+      "jersey_number": 3,
+      "birthdate": "09.07.1998",
+      "club": "UC Sampdoria",
+      "position": "CB",
+      "height": "1,91m",
+      "aliases": []
+    },
+    {
+      "nation": "Bosnia-Herzegovina",
+      "first_name": "Amar",
+      "last_name": "Dedić",
+      "jersey_number": 7,
+      "birthdate": "18.08.2002",
+      "club": "SL Benfica",
+      "position": "RB",
+      "height": "1,80m",
+      "aliases": [
+        "Dedic"
+      ]
+    },
+    {
+      "nation": "Bosnia-Herzegovina",
+      "first_name": "Amir",
+      "last_name": "Hadziahmetovic",
+      "jersey_number": 16,
+      "birthdate": "08.03.1997",
+      "club": "Hull City",
+      "position": "DM",
+      "height": "1,79m",
+      "aliases": []
+    },
+    {
+      "nation": "Bosnia-Herzegovina",
+      "first_name": "Ivan",
+      "last_name": "Šunjić",
+      "jersey_number": 14,
+      "birthdate": "09.10.1996",
+      "club": "Pafos FC",
+      "position": "DM",
+      "height": "1,83m",
+      "aliases": [
+        "Sunjic"
+      ]
+    },
+    {
+      "nation": "Bosnia-Herzegovina",
+      "first_name": "Dzenis",
+      "last_name": "Burnic",
+      "jersey_number": 17,
+      "birthdate": "22.05.1998",
+      "club": "Karlsruher SC",
+      "position": "DM",
+      "height": "1,82m",
+      "aliases": []
+    },
+    {
+      "nation": "Bosnia-Herzegovina",
+      "first_name": "Benjamin",
+      "last_name": "Tahirović",
+      "jersey_number": 6,
+      "birthdate": "03.03.2003",
+      "club": "Bröndby IF",
+      "position": "CM",
+      "height": "1,91m",
+      "aliases": [
+        "Tahirovic"
+      ]
+    },
+    {
+      "nation": "Bosnia-Herzegovina",
+      "first_name": "Armin",
+      "last_name": "Gigovic",
+      "jersey_number": 8,
+      "birthdate": "06.04.2002",
+      "club": "BSC Young Boys",
+      "position": "CM",
+      "height": "1,87m",
+      "aliases": []
+    },
+    {
+      "nation": "Bosnia-Herzegovina",
+      "first_name": "Ivan",
+      "last_name": "Basic",
+      "jersey_number": 13,
+      "birthdate": "30.04.2002",
+      "club": "FC Astana",
+      "position": "CM",
+      "height": "1,78m",
+      "aliases": []
+    },
+    {
+      "nation": "Bosnia-Herzegovina",
+      "first_name": "Amar",
+      "last_name": "Memić",
+      "jersey_number": 15,
+      "birthdate": "20.01.2001",
+      "club": "FC Viktoria Plzen",
+      "position": "RW",
+      "height": "1,76m",
+      "aliases": [
+        "Memic"
+      ]
+    },
+    {
+      "nation": "Bosnia-Herzegovina",
+      "first_name": "Ermin",
+      "last_name": "Mahmic",
+      "jersey_number": 26,
+      "birthdate": "14.03.2005",
+      "club": "FC Slovan Liberec",
+      "position": "AM",
+      "height": "1,82m",
+      "aliases": []
+    },
+    {
+      "nation": "Bosnia-Herzegovina",
+      "first_name": "Kerim",
+      "last_name": "Alajbegovic",
+      "jersey_number": 19,
+      "birthdate": "21.09.2007",
+      "club": "Red Bull Salzburg",
+      "position": "LW",
+      "height": "1,86m",
+      "aliases": []
+    },
+    {
+      "nation": "Bosnia-Herzegovina",
+      "first_name": "Esmir",
+      "last_name": "Bajraktarevic",
+      "jersey_number": 20,
+      "birthdate": "10.03.2005",
+      "club": "PSV Eindhoven",
+      "position": "RW",
+      "height": "1,75m",
+      "aliases": []
+    },
+    {
+      "nation": "Bosnia-Herzegovina",
+      "first_name": "Ermedin",
+      "last_name": "Demirovic",
+      "jersey_number": 10,
+      "birthdate": "25.03.1998",
+      "club": "VfB Stuttgart",
+      "position": "ST",
+      "height": "1,85m",
+      "aliases": []
+    },
+    {
+      "nation": "Bosnia-Herzegovina",
+      "first_name": "Haris",
+      "last_name": "Tabakovic",
+      "jersey_number": 23,
+      "birthdate": "20.06.1994",
+      "club": "Borussia Mönchengladbach",
+      "position": "ST",
+      "height": "1,96m",
+      "aliases": []
+    },
+    {
+      "nation": "Bosnia-Herzegovina",
+      "first_name": "Jovo",
+      "last_name": "Lukić",
+      "jersey_number": 25,
+      "birthdate": "28.11.1998",
+      "club": "FC Universitatea Cluj",
+      "position": "ST",
+      "height": "1,90m",
+      "aliases": [
+        "Lukic"
+      ]
+    },
+    {
+      "nation": "Bosnia-Herzegovina",
+      "first_name": "Samed",
+      "last_name": "Bazdar",
+      "jersey_number": 9,
+      "birthdate": "31.01.2004",
+      "club": "Jagiellonia Bialystok",
+      "position": "CM",
+      "height": "1,89m",
+      "aliases": []
+    },
+    {
+      "nation": "Bosnia-Herzegovina",
+      "first_name": "Edin",
+      "last_name": "Dzeko",
+      "jersey_number": 11,
+      "birthdate": "17.03.1986",
+      "club": "FC Schalke 04",
+      "position": "ST",
+      "height": "1,92m",
+      "aliases": []
+    }
+  ]
+}

@@ -1,0 +1,298 @@
+{
+  "teamName": "Netherlands",
+  "group": "F",
+  "ranking": 7,
+  "color_1": "#F36C21",
+  "color_2": "#FFFFFF",
+  "color_3": "#D2D2D4",
+  "players": [
+    {
+      "nation": "Netherlands",
+      "first_name": "Bart",
+      "last_name": "Verbruggen",
+      "jersey_number": 1,
+      "birthdate": "18.08.2002",
+      "club": "Brighton & Hove Albion",
+      "position": "GK",
+      "height": "1,93m",
+      "aliases": []
+    },
+    {
+      "nation": "Netherlands",
+      "first_name": "Robin",
+      "last_name": "Roefs",
+      "jersey_number": 13,
+      "birthdate": "17.01.2003",
+      "club": "Sunderland AFC",
+      "position": "GK",
+      "height": "1,93m",
+      "aliases": []
+    },
+    {
+      "nation": "Netherlands",
+      "first_name": "Mark",
+      "last_name": "Flekken",
+      "jersey_number": 23,
+      "birthdate": "13.06.1993",
+      "club": "Bayer 04 Leverkusen",
+      "position": "GK",
+      "height": "1,95m",
+      "aliases": []
+    },
+    {
+      "nation": "Netherlands",
+      "first_name": "Micky",
+      "last_name": "van de Ven",
+      "jersey_number": 15,
+      "birthdate": "19.04.2001",
+      "club": "Tottenham Hotspur",
+      "position": "LB",
+      "height": "1,93m",
+      "aliases": []
+    },
+    {
+      "nation": "Netherlands",
+      "first_name": "Jan Paul",
+      "last_name": "van Hecke",
+      "jersey_number": 6,
+      "birthdate": "08.06.2000",
+      "club": "Brighton & Hove Albion",
+      "position": "CB",
+      "height": "1,89m",
+      "aliases": []
+    },
+    {
+      "nation": "Netherlands",
+      "first_name": "Virgil",
+      "last_name": "van Dijk",
+      "jersey_number": 4,
+      "birthdate": "08.07.1991",
+      "club": "Liverpool FC",
+      "position": "CB",
+      "height": "1,95m",
+      "aliases": []
+    },
+    {
+      "nation": "Netherlands",
+      "first_name": "Nathan",
+      "last_name": "Aké",
+      "jersey_number": 5,
+      "birthdate": "18.02.1995",
+      "club": "Manchester City",
+      "position": "CB",
+      "height": "1,80m",
+      "aliases": [
+        "Ake"
+      ]
+    },
+    {
+      "nation": "Netherlands",
+      "first_name": "Jorrel",
+      "last_name": "Hato",
+      "jersey_number": 25,
+      "birthdate": "07.03.2006",
+      "club": "Chelsea FC",
+      "position": "LB",
+      "height": "1,82m",
+      "aliases": []
+    },
+    {
+      "nation": "Netherlands",
+      "first_name": "Mats",
+      "last_name": "Wieffer",
+      "jersey_number": 12,
+      "birthdate": "16.11.1999",
+      "club": "Brighton & Hove Albion",
+      "position": "RB",
+      "height": "1,89m",
+      "aliases": []
+    },
+    {
+      "nation": "Netherlands",
+      "first_name": "Denzel",
+      "last_name": "Dumfries",
+      "jersey_number": 22,
+      "birthdate": "18.04.1996",
+      "club": "Inter Milan",
+      "position": "RB",
+      "height": "1,88m",
+      "aliases": []
+    },
+    {
+      "nation": "Netherlands",
+      "first_name": "Lutsharel",
+      "last_name": "Geertruida",
+      "jersey_number": 2,
+      "birthdate": "18.07.2000",
+      "club": "Sunderland AFC",
+      "position": "CB",
+      "height": "1,84m",
+      "aliases": []
+    },
+    {
+      "nation": "Netherlands",
+      "first_name": "Ryan",
+      "last_name": "Gravenberch",
+      "jersey_number": 8,
+      "birthdate": "16.05.2002",
+      "club": "Liverpool FC",
+      "position": "DM",
+      "height": "1,90m",
+      "aliases": []
+    },
+    {
+      "nation": "Netherlands",
+      "first_name": "Teun",
+      "last_name": "Koopmeiners",
+      "jersey_number": 20,
+      "birthdate": "28.02.1998",
+      "club": "Juventus FC",
+      "position": "DM",
+      "height": "1,85m",
+      "aliases": []
+    },
+    {
+      "nation": "Netherlands",
+      "first_name": "Marten",
+      "last_name": "de Roon",
+      "jersey_number": 3,
+      "birthdate": "29.03.1991",
+      "club": "Atalanta BC",
+      "position": "DM",
+      "height": "1,86m",
+      "aliases": []
+    },
+    {
+      "nation": "Netherlands",
+      "first_name": "Tijjani",
+      "last_name": "Reijnders",
+      "jersey_number": 14,
+      "birthdate": "29.07.1998",
+      "club": "Manchester City",
+      "position": "CM",
+      "height": "1,78m",
+      "aliases": []
+    },
+    {
+      "nation": "Netherlands",
+      "first_name": "Frenkie",
+      "last_name": "de Jong",
+      "jersey_number": 21,
+      "birthdate": "12.05.1997",
+      "club": "FC Barcelona",
+      "position": "CM",
+      "height": "1,81m",
+      "aliases": []
+    },
+    {
+      "nation": "Netherlands",
+      "first_name": "Quinten",
+      "last_name": "Timber",
+      "jersey_number": 26,
+      "birthdate": "17.06.2001",
+      "club": "Olympique Marseille",
+      "position": "CM",
+      "height": "1,76m",
+      "aliases": []
+    },
+    {
+      "nation": "Netherlands",
+      "first_name": "Justin",
+      "last_name": "Kluivert",
+      "jersey_number": 7,
+      "birthdate": "05.05.1999",
+      "club": "AFC Bournemouth",
+      "position": "AM",
+      "height": "1,73m",
+      "aliases": []
+    },
+    {
+      "nation": "Netherlands",
+      "first_name": "Guus",
+      "last_name": "Til",
+      "jersey_number": 16,
+      "birthdate": "22.12.1997",
+      "club": "PSV Eindhoven",
+      "position": "AM",
+      "height": "1,88m",
+      "aliases": []
+    },
+    {
+      "nation": "Netherlands",
+      "first_name": "Cody",
+      "last_name": "Gakpo",
+      "jersey_number": 11,
+      "birthdate": "07.05.1999",
+      "club": "Liverpool FC",
+      "position": "LW",
+      "height": "1,93m",
+      "aliases": []
+    },
+    {
+      "nation": "Netherlands",
+      "first_name": "Crysencio",
+      "last_name": "Summerville",
+      "jersey_number": 24,
+      "birthdate": "30.10.2001",
+      "club": "West Ham United",
+      "position": "RW",
+      "height": "1,72m",
+      "aliases": []
+    },
+    {
+      "nation": "Netherlands",
+      "first_name": "Noa",
+      "last_name": "Lang",
+      "jersey_number": 17,
+      "birthdate": "17.06.1999",
+      "club": "Galatasaray",
+      "position": "LW",
+      "height": "1,76m",
+      "aliases": []
+    },
+    {
+      "nation": "Netherlands",
+      "first_name": "Donyell",
+      "last_name": "Malen",
+      "jersey_number": 18,
+      "birthdate": "19.01.1999",
+      "club": "AS Roma",
+      "position": "RW",
+      "height": "1,78m",
+      "aliases": []
+    },
+    {
+      "nation": "Netherlands",
+      "first_name": "Brian",
+      "last_name": "Brobbey",
+      "jersey_number": 19,
+      "birthdate": "01.02.2002",
+      "club": "Sunderland AFC",
+      "position": "ST",
+      "height": "1,81m",
+      "aliases": []
+    },
+    {
+      "nation": "Netherlands",
+      "first_name": "Memphis",
+      "last_name": "Depay",
+      "jersey_number": 10,
+      "birthdate": "13.02.1994",
+      "club": "Sport Club Corinthians Paulista",
+      "position": "ST",
+      "height": "1,78m",
+      "aliases": []
+    },
+    {
+      "nation": "Netherlands",
+      "first_name": "Wout",
+      "last_name": "Weghorst",
+      "jersey_number": 9,
+      "birthdate": "07.08.1992",
+      "club": "Ajax Amsterdam",
+      "position": "ST",
+      "height": "1,97m",
+      "aliases": []
+    }
+  ]
+}

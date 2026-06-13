@@ -1,0 +1,306 @@
+{
+  "teamName": "Brazil",
+  "group": "C",
+  "ranking": 6,
+  "color_1": "#FDDC02",
+  "color_2": "#19AE47",
+  "color_3": "#0C87D1",
+  "players": [
+    {
+      "nation": "Brazil",
+      "first_name": "Alisson",
+      "last_name": "",
+      "jersey_number": 1,
+      "birthdate": "02.10.1992",
+      "club": "Liverpool FC",
+      "position": "GK",
+      "height": "1,93m",
+      "aliases": []
+    },
+    {
+      "nation": "Brazil",
+      "first_name": "Ederson",
+      "last_name": "",
+      "jersey_number": 23,
+      "birthdate": "17.08.1993",
+      "club": "Fenerbahce",
+      "position": "GK",
+      "height": "1,88m",
+      "aliases": []
+    },
+    {
+      "nation": "Brazil",
+      "first_name": "Weverton",
+      "last_name": "",
+      "jersey_number": 12,
+      "birthdate": "13.12.1987",
+      "club": "Grêmio Foot-Ball Porto Alegrense",
+      "position": "GK",
+      "height": "1,89m",
+      "aliases": []
+    },
+    {
+      "nation": "Brazil",
+      "first_name": "Gabriel",
+      "last_name": "",
+      "jersey_number": 3,
+      "birthdate": "19.12.1997",
+      "club": "Arsenal FC",
+      "position": "CB",
+      "height": "1,90m",
+      "aliases": []
+    },
+    {
+      "nation": "Brazil",
+      "first_name": "Bremer",
+      "last_name": "",
+      "jersey_number": 14,
+      "birthdate": "18.03.1997",
+      "club": "Juventus FC",
+      "position": "CB",
+      "height": "1,88m",
+      "aliases": []
+    },
+    {
+      "nation": "Brazil",
+      "first_name": "Marquinhos",
+      "last_name": "",
+      "jersey_number": 4,
+      "birthdate": "14.05.1994",
+      "club": "Paris Saint-Germain",
+      "position": "CB",
+      "height": "1,83m",
+      "aliases": []
+    },
+    {
+      "nation": "Brazil",
+      "first_name": "Roger",
+      "last_name": "Ibañez",
+      "jersey_number": 24,
+      "birthdate": "23.11.1998",
+      "club": "Al-Ahli SFC",
+      "position": "CB",
+      "height": "1,86m",
+      "aliases": [
+        "Ibanez"
+      ]
+    },
+    {
+      "nation": "Brazil",
+      "first_name": "Léo",
+      "last_name": "Pereira",
+      "jersey_number": 15,
+      "birthdate": "31.01.1996",
+      "club": "CR Flamengo",
+      "position": "CB",
+      "height": "1,89m",
+      "aliases": []
+    },
+    {
+      "nation": "Brazil",
+      "first_name": "Danilo",
+      "last_name": "",
+      "jersey_number": 13,
+      "birthdate": "15.07.1991",
+      "club": "CR Flamengo",
+      "position": "CB",
+      "height": "1,84m",
+      "aliases": []
+    },
+    {
+      "nation": "Brazil",
+      "first_name": "Douglas",
+      "last_name": "Santos",
+      "jersey_number": 16,
+      "birthdate": "22.03.1994",
+      "club": "Zenit St. Petersburg",
+      "position": "LB",
+      "height": "1,73m",
+      "aliases": []
+    },
+    {
+      "nation": "Brazil",
+      "first_name": "Alex",
+      "last_name": "Sandro",
+      "jersey_number": 6,
+      "birthdate": "26.01.1991",
+      "club": "CR Flamengo",
+      "position": "LB",
+      "height": "1,80m",
+      "aliases": []
+    },
+    {
+      "nation": "Brazil",
+      "first_name": "Fabinho",
+      "last_name": "",
+      "jersey_number": 17,
+      "birthdate": "23.10.1993",
+      "club": "Al-Ittihad Club",
+      "position": "DM",
+      "height": "1,88m",
+      "aliases": []
+    },
+    {
+      "nation": "Brazil",
+      "first_name": "Casemiro",
+      "last_name": "",
+      "jersey_number": 5,
+      "birthdate": "23.02.1992",
+      "club": "Manchester United",
+      "position": "DM",
+      "height": "1,85m",
+      "aliases": []
+    },
+    {
+      "nation": "Brazil",
+      "first_name": "Bruno",
+      "last_name": "Guimarães",
+      "jersey_number": 8,
+      "birthdate": "16.11.1997",
+      "club": "Newcastle United",
+      "position": "CM",
+      "height": "1,82m",
+      "aliases": [
+        "Guimaraes"
+      ]
+    },
+    {
+      "nation": "Brazil",
+      "first_name": "Éderson",
+      "last_name": "",
+      "jersey_number": 2,
+      "birthdate": "07.07.1999",
+      "club": "Atalanta BC",
+      "position": "CM",
+      "height": "1,83m",
+      "aliases": [
+        "Ederson"
+      ]
+    },
+    {
+      "nation": "Brazil",
+      "first_name": "Danilo",
+      "last_name": "",
+      "jersey_number": 18,
+      "birthdate": "29.04.2001",
+      "club": "Botafogo de Futebol e Regatas",
+      "position": "CM",
+      "height": "1,77m",
+      "aliases": []
+    },
+    {
+      "nation": "Brazil",
+      "first_name": "Lucas",
+      "last_name": "Paquetá",
+      "jersey_number": 20,
+      "birthdate": "27.08.1997",
+      "club": "CR Flamengo",
+      "position": "AM",
+      "height": "1,83m",
+      "aliases": [
+        "Paqueta"
+      ]
+    },
+    {
+      "nation": "Brazil",
+      "first_name": "Neymar",
+      "last_name": "",
+      "jersey_number": 10,
+      "birthdate": "05.02.1992",
+      "club": "Santos FC",
+      "position": "AM",
+      "height": "1,75m",
+      "aliases": []
+    },
+    {
+      "nation": "Brazil",
+      "first_name": "Vinicius",
+      "last_name": "Junior",
+      "jersey_number": 7,
+      "birthdate": "12.07.2000",
+      "club": "Real Madrid",
+      "position": "LW",
+      "height": "1,76m",
+      "aliases": [
+        "Vinicius"
+      ]
+    },
+    {
+      "nation": "Brazil",
+      "first_name": "Matheus",
+      "last_name": "Cunha",
+      "jersey_number": 9,
+      "birthdate": "27.05.1999",
+      "club": "Manchester United",
+      "position": "RW",
+      "height": "1,83m",
+      "aliases": []
+    },
+    {
+      "nation": "Brazil",
+      "first_name": "Raphinha",
+      "last_name": "",
+      "jersey_number": 11,
+      "birthdate": "14.12.1996",
+      "club": "FC Barcelona",
+      "position": "AM",
+      "height": "1,76m",
+      "aliases": []
+    },
+    {
+      "nation": "Brazil",
+      "first_name": "Gabriel",
+      "last_name": "Martinelli",
+      "jersey_number": 22,
+      "birthdate": "18.06.2001",
+      "club": "Arsenal FC",
+      "position": "LW",
+      "height": "1,78m",
+      "aliases": []
+    },
+    {
+      "nation": "Brazil",
+      "first_name": "Rayan",
+      "last_name": "",
+      "jersey_number": 26,
+      "birthdate": "03.08.2006",
+      "club": "AFC Bournemouth",
+      "position": "RW",
+      "height": "1,87m",
+      "aliases": []
+    },
+    {
+      "nation": "Brazil",
+      "first_name": "Luiz",
+      "last_name": "Henrique",
+      "jersey_number": 21,
+      "birthdate": "02.01.2001",
+      "club": "Zenit St. Petersburg",
+      "position": "RW",
+      "height": "1,82m",
+      "aliases": []
+    },
+    {
+      "nation": "Brazil",
+      "first_name": "Igor",
+      "last_name": "Thiago",
+      "jersey_number": 25,
+      "birthdate": "26.06.2001",
+      "club": "Brentford FC",
+      "position": "ST",
+      "height": "1,90m",
+      "aliases": []
+    },
+    {
+      "nation": "Brazil",
+      "first_name": "Endrick",
+      "last_name": "",
+      "jersey_number": 19,
+      "birthdate": "21.07.2006",
+      "club": "Olympique Lyon",
+      "position": "ST",
+      "height": "1,72m",
+      "aliases": []
+    }
+  ]
+}

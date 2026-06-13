@@ -1,0 +1,316 @@
+{
+  "teamName": "Mexico",
+  "group": "A",
+  "ranking": 15,
+  "color_1": "#3A544C",
+  "color_2": "#F33946",
+  "color_3": "#0A9841",
+  "players": [
+    {
+      "nation": "Mexico",
+      "first_name": "Raúl",
+      "last_name": "Rangel",
+      "jersey_number": 1,
+      "birthdate": "25.02.2000",
+      "club": "Deportivo Guadalajara",
+      "position": "GK",
+      "height": "1,90m",
+      "aliases": []
+    },
+    {
+      "nation": "Mexico",
+      "first_name": "Carlos",
+      "last_name": "Acevedo",
+      "jersey_number": 12,
+      "birthdate": "19.04.1996",
+      "club": "Santos Laguna",
+      "position": "GK",
+      "height": "1,85m",
+      "aliases": []
+    },
+    {
+      "nation": "Mexico",
+      "first_name": "Guillermo",
+      "last_name": "Ochoa",
+      "jersey_number": 13,
+      "birthdate": "13.07.1985",
+      "club": "AEL Limassol",
+      "position": "GK",
+      "height": "1,85m",
+      "aliases": []
+    },
+    {
+      "nation": "Mexico",
+      "first_name": "Johan",
+      "last_name": "Vásquez",
+      "jersey_number": 5,
+      "birthdate": "22.10.1998",
+      "club": "Genoa CFC",
+      "position": "CB",
+      "height": "1,82m",
+      "aliases": [
+        "Vasquez"
+      ]
+    },
+    {
+      "nation": "Mexico",
+      "first_name": "César",
+      "last_name": "Montes",
+      "jersey_number": 3,
+      "birthdate": "24.02.1997",
+      "club": "Lokomotiv Moscow",
+      "position": "CB",
+      "height": "1,95m",
+      "aliases": []
+    },
+    {
+      "nation": "Mexico",
+      "first_name": "Luis",
+      "last_name": "Romo",
+      "jersey_number": 7,
+      "birthdate": "05.06.1995",
+      "club": "Deportivo Guadalajara",
+      "position": "CB",
+      "height": "1,83m",
+      "aliases": []
+    },
+    {
+      "nation": "Mexico",
+      "first_name": "Mateo",
+      "last_name": "Chávez",
+      "jersey_number": 20,
+      "birthdate": "12.05.2004",
+      "club": "AZ Alkmaar",
+      "position": "LB",
+      "height": "1,78m",
+      "aliases": [
+        "Chavez"
+      ]
+    },
+    {
+      "nation": "Mexico",
+      "first_name": "Jesús",
+      "last_name": "Gallardo",
+      "jersey_number": 23,
+      "birthdate": "15.08.1994",
+      "club": "Deportivo Toluca",
+      "position": "LB",
+      "height": "1,74m",
+      "aliases": []
+    },
+    {
+      "nation": "Mexico",
+      "first_name": "Israel",
+      "last_name": "Reyes",
+      "jersey_number": 15,
+      "birthdate": "23.05.2000",
+      "club": "CF América",
+      "position": "RB",
+      "height": "1,81m",
+      "aliases": []
+    },
+    {
+      "nation": "Mexico",
+      "first_name": "Jorge",
+      "last_name": "Sánchez",
+      "jersey_number": 2,
+      "birthdate": "10.12.1997",
+      "club": "PAOK Thessaloniki",
+      "position": "RB",
+      "height": "1,76m",
+      "aliases": [
+        "Sanchez"
+      ]
+    },
+    {
+      "nation": "Mexico",
+      "first_name": "Edson",
+      "last_name": "Álvarez",
+      "jersey_number": 4,
+      "birthdate": "24.10.1997",
+      "club": "Fenerbahce",
+      "position": "DM",
+      "height": "1,90m",
+      "aliases": [
+        "Alvarez"
+      ]
+    },
+    {
+      "nation": "Mexico",
+      "first_name": "Érik",
+      "last_name": "Lira",
+      "jersey_number": 6,
+      "birthdate": "08.05.2000",
+      "club": "CD Cruz Azul",
+      "position": "DM",
+      "height": "1,72m",
+      "aliases": []
+    },
+    {
+      "nation": "Mexico",
+      "first_name": "Luis",
+      "last_name": "Chávez",
+      "jersey_number": 24,
+      "birthdate": "15.01.1996",
+      "club": "Dynamo Moscow",
+      "position": "DM",
+      "height": "1,78m",
+      "aliases": [
+        "Chavez"
+      ]
+    },
+    {
+      "nation": "Mexico",
+      "first_name": "Obed",
+      "last_name": "Vargas",
+      "jersey_number": 18,
+      "birthdate": "05.08.2005",
+      "club": "Atlético de Madrid",
+      "position": "CM",
+      "height": "1,75m",
+      "aliases": []
+    },
+    {
+      "nation": "Mexico",
+      "first_name": "Orbelín",
+      "last_name": "Pineda",
+      "jersey_number": 17,
+      "birthdate": "24.03.1996",
+      "club": "AEK Athens",
+      "position": "CM",
+      "height": "1,69m",
+      "aliases": []
+    },
+    {
+      "nation": "Mexico",
+      "first_name": "Álvaro",
+      "last_name": "Fidalgo",
+      "jersey_number": 8,
+      "birthdate": "09.04.1997",
+      "club": "Real Betis Balompié",
+      "position": "CM",
+      "height": "1,75m",
+      "aliases": []
+    },
+    {
+      "nation": "Mexico",
+      "first_name": "Gilberto",
+      "last_name": "Mora",
+      "jersey_number": 19,
+      "birthdate": "14.10.2008",
+      "club": "Club Tijuana",
+      "position": "AM",
+      "height": "1,75m",
+      "aliases": []
+    },
+    {
+      "nation": "Mexico",
+      "first_name": "Brian",
+      "last_name": "Gutiérrez",
+      "jersey_number": 26,
+      "birthdate": "17.06.2003",
+      "club": "Deportivo Guadalajara",
+      "position": "AM",
+      "height": "1,78m",
+      "aliases": [
+        "Gutierrez"
+      ]
+    },
+    {
+      "nation": "Mexico",
+      "first_name": "Alexis",
+      "last_name": "Vega",
+      "jersey_number": 10,
+      "birthdate": "25.11.1997",
+      "club": "Deportivo Toluca",
+      "position": "LW",
+      "height": "1,75m",
+      "aliases": []
+    },
+    {
+      "nation": "Mexico",
+      "first_name": "César",
+      "last_name": "Huerta",
+      "jersey_number": 21,
+      "birthdate": "03.12.2000",
+      "club": "RSC Anderlecht",
+      "position": "LW",
+      "height": "1,71m",
+      "aliases": []
+    },
+    {
+      "nation": "Mexico",
+      "first_name": "Roberto",
+      "last_name": "Alvarado",
+      "jersey_number": 25,
+      "birthdate": "07.09.1998",
+      "club": "Deportivo Guadalajara",
+      "position": "RW",
+      "height": "1,76m",
+      "aliases": []
+    },
+    {
+      "nation": "Mexico",
+      "first_name": "Santiago",
+      "last_name": "Gimenez",
+      "jersey_number": 11,
+      "birthdate": "18.04.2001",
+      "club": "AC Milan",
+      "position": "ST",
+      "height": "1,80m",
+      "aliases": []
+    },
+    {
+      "nation": "Mexico",
+      "first_name": "Armando",
+      "last_name": "González",
+      "jersey_number": 14,
+      "birthdate": "20.04.2003",
+      "club": "Deportivo Guadalajara",
+      "position": "ST",
+      "height": "1,82m",
+      "aliases": [
+        "Gonzalez"
+      ]
+    },
+    {
+      "nation": "Mexico",
+      "first_name": "Julián",
+      "last_name": "Quiñones",
+      "jersey_number": 16,
+      "birthdate": "24.03.1997",
+      "club": "Al-Qadsiah FC",
+      "position": "ST",
+      "height": "1,77m",
+      "aliases": [
+        "Quinones"
+      ]
+    },
+    {
+      "nation": "Mexico",
+      "first_name": "Raúl",
+      "last_name": "Jiménez",
+      "jersey_number": 9,
+      "birthdate": "05.05.1991",
+      "club": "Fulham FC",
+      "position": "ST",
+      "height": "1,88m",
+      "aliases": [
+        "Jimenez"
+      ]
+    },
+    {
+      "nation": "Mexico",
+      "first_name": "Guillermo",
+      "last_name": "Martínez",
+      "jersey_number": 22,
+      "birthdate": "15.03.1995",
+      "club": "UNAM Pumas",
+      "position": "ST",
+      "height": "1,91m",
+      "aliases": [
+        "Martinez"
+      ]
+    }
+  ]
+}

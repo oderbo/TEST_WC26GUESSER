@@ -1,0 +1,312 @@
+{
+  "teamName": "Uruguay",
+  "group": "H",
+  "ranking": 17,
+  "color_1": "#FFFFFF",
+  "color_2": "#55B5E5",
+  "color_3": "#FFC905",
+  "players": [
+    {
+      "nation": "Uruguay",
+      "first_name": "Santiago",
+      "last_name": "Mele",
+      "jersey_number": 12,
+      "birthdate": "06.09.1997",
+      "club": "CF Monterrey",
+      "position": "GK",
+      "height": "1,85m",
+      "aliases": []
+    },
+    {
+      "nation": "Uruguay",
+      "first_name": "Sergio",
+      "last_name": "Rochet",
+      "jersey_number": 1,
+      "birthdate": "23.03.1993",
+      "club": "Sport Club Internacional",
+      "position": "GK",
+      "height": "1,89m",
+      "aliases": []
+    },
+    {
+      "nation": "Uruguay",
+      "first_name": "Fernando",
+      "last_name": "Muslera",
+      "jersey_number": 23,
+      "birthdate": "16.06.1986",
+      "club": "Club Estudiantes de La Plata",
+      "position": "GK",
+      "height": "1,90m",
+      "aliases": []
+    },
+    {
+      "nation": "Uruguay",
+      "first_name": "Ronald",
+      "last_name": "Araujo",
+      "jersey_number": 4,
+      "birthdate": "07.03.1999",
+      "club": "FC Barcelona",
+      "position": "CB",
+      "height": "1,85m",
+      "aliases": []
+    },
+    {
+      "nation": "Uruguay",
+      "first_name": "Santiago",
+      "last_name": "Bueno",
+      "jersey_number": 24,
+      "birthdate": "09.11.1998",
+      "club": "Wolverhampton Wanderers",
+      "position": "CB",
+      "height": "1,91m",
+      "aliases": []
+    },
+    {
+      "nation": "Uruguay",
+      "first_name": "José María",
+      "last_name": "Giménez",
+      "jersey_number": 2,
+      "birthdate": "20.01.1995",
+      "club": "Atlético de Madrid",
+      "position": "CB",
+      "height": "1,86m",
+      "aliases": [
+        "Gimenez"
+      ]
+    },
+    {
+      "nation": "Uruguay",
+      "first_name": "Sebastián",
+      "last_name": "Cáceres",
+      "jersey_number": 3,
+      "birthdate": "18.08.1999",
+      "club": "CF América",
+      "position": "CB",
+      "height": "1,80m",
+      "aliases": [
+        "Caceres"
+      ]
+    },
+    {
+      "nation": "Uruguay",
+      "first_name": "Maxi",
+      "last_name": "Araújo",
+      "jersey_number": 20,
+      "birthdate": "15.02.2000",
+      "club": "Sporting CP",
+      "position": "LW",
+      "height": "1,76m",
+      "aliases": [
+        "Araujo"
+      ]
+    },
+    {
+      "nation": "Uruguay",
+      "first_name": "Mathías",
+      "last_name": "Olivera",
+      "jersey_number": 16,
+      "birthdate": "31.10.1997",
+      "club": "SSC Napoli",
+      "position": "CB",
+      "height": "1,74m",
+      "aliases": []
+    },
+    {
+      "nation": "Uruguay",
+      "first_name": "Joaquín",
+      "last_name": "Piquerez",
+      "jersey_number": 22,
+      "birthdate": "24.08.1998",
+      "club": "Sociedade Esportiva Palmeiras",
+      "position": "LB",
+      "height": "1,85m",
+      "aliases": []
+    },
+    {
+      "nation": "Uruguay",
+      "first_name": "Juan Manuel",
+      "last_name": "Sanabria",
+      "jersey_number": 25,
+      "birthdate": "29.03.2000",
+      "club": "Real Salt Lake City",
+      "position": "LB",
+      "height": "1,70m",
+      "aliases": []
+    },
+    {
+      "nation": "Uruguay",
+      "first_name": "Matías",
+      "last_name": "Viña",
+      "jersey_number": 17,
+      "birthdate": "09.11.1997",
+      "club": "CA River Plate",
+      "position": "LB",
+      "height": "1,80m",
+      "aliases": [
+        "Vina"
+      ]
+    },
+    {
+      "nation": "Uruguay",
+      "first_name": "Guillermo",
+      "last_name": "Varela",
+      "jersey_number": 13,
+      "birthdate": "24.03.1993",
+      "club": "CR Flamengo",
+      "position": "RB",
+      "height": "1,74m",
+      "aliases": []
+    },
+    {
+      "nation": "Uruguay",
+      "first_name": "Manuel",
+      "last_name": "Ugarte",
+      "jersey_number": 5,
+      "birthdate": "11.04.2001",
+      "club": "Manchester United",
+      "position": "DM",
+      "height": "1,82m",
+      "aliases": []
+    },
+    {
+      "nation": "Uruguay",
+      "first_name": "Rodrigo",
+      "last_name": "Bentancur",
+      "jersey_number": 6,
+      "birthdate": "25.06.1997",
+      "club": "Tottenham Hotspur",
+      "position": "DM",
+      "height": "1,87m",
+      "aliases": []
+    },
+    {
+      "nation": "Uruguay",
+      "first_name": "Emiliano",
+      "last_name": "Martínez",
+      "jersey_number": 15,
+      "birthdate": "17.08.1999",
+      "club": "Sociedade Esportiva Palmeiras",
+      "position": "DM",
+      "height": "1,84m",
+      "aliases": [
+        "Martinez"
+      ]
+    },
+    {
+      "nation": "Uruguay",
+      "first_name": "Federico",
+      "last_name": "Valverde",
+      "jersey_number": 8,
+      "birthdate": "22.07.1998",
+      "club": "Real Madrid",
+      "position": "CM",
+      "height": "1,82m",
+      "aliases": []
+    },
+    {
+      "nation": "Uruguay",
+      "first_name": "Nicolás de la",
+      "last_name": "Cruz",
+      "jersey_number": 7,
+      "birthdate": "01.06.1997",
+      "club": "CR Flamengo",
+      "position": "CM",
+      "height": "1,67m",
+      "aliases": []
+    },
+    {
+      "nation": "Uruguay",
+      "first_name": "Rodrigo",
+      "last_name": "Zalazar",
+      "jersey_number": 26,
+      "birthdate": "12.08.1999",
+      "club": "SC Braga",
+      "position": "AM",
+      "height": "1,75m",
+      "aliases": []
+    },
+    {
+      "nation": "Uruguay",
+      "first_name": "Giorgian de",
+      "last_name": "Arrascaeta",
+      "jersey_number": 10,
+      "birthdate": "01.06.1994",
+      "club": "CR Flamengo",
+      "position": "AM",
+      "height": "1,77m",
+      "aliases": []
+    },
+    {
+      "nation": "Uruguay",
+      "first_name": "Agustín",
+      "last_name": "Canobbio",
+      "jersey_number": 14,
+      "birthdate": "01.10.1998",
+      "club": "Fluminense Football Club",
+      "position": "RW",
+      "height": "1,76m",
+      "aliases": []
+    },
+    {
+      "nation": "Uruguay",
+      "first_name": "Brian",
+      "last_name": "Rodríguez",
+      "jersey_number": 18,
+      "birthdate": "20.05.2000",
+      "club": "CF América",
+      "position": "LW",
+      "height": "1,75m",
+      "aliases": [
+        "Rodriguez"
+      ]
+    },
+    {
+      "nation": "Uruguay",
+      "first_name": "Facundo",
+      "last_name": "Pellistri",
+      "jersey_number": 11,
+      "birthdate": "20.12.2001",
+      "club": "Panathinaikos",
+      "position": "RW",
+      "height": "1,74m",
+      "aliases": []
+    },
+    {
+      "nation": "Uruguay",
+      "first_name": "Darwin",
+      "last_name": "Núñez",
+      "jersey_number": 9,
+      "birthdate": "24.06.1999",
+      "club": "Al-Hilal SFC",
+      "position": "ST",
+      "height": "1,85m",
+      "aliases": [
+        "Nunez"
+      ]
+    },
+    {
+      "nation": "Uruguay",
+      "first_name": "Federico",
+      "last_name": "Viñas",
+      "jersey_number": 21,
+      "birthdate": "30.06.1998",
+      "club": "Real Oviedo",
+      "position": "ST",
+      "height": "1,81m",
+      "aliases": [
+        "Vinas"
+      ]
+    },
+    {
+      "nation": "Uruguay",
+      "first_name": "Rodrigo",
+      "last_name": "Aguirre",
+      "jersey_number": 19,
+      "birthdate": "01.10.1994",
+      "club": "Tigres UANL",
+      "position": "ST",
+      "height": "1,82m",
+      "aliases": []
+    }
+  ]
+}

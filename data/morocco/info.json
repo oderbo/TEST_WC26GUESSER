@@ -1,0 +1,298 @@
+{
+  "teamName": "Morocco",
+  "group": "C",
+  "ranking": 8,
+  "color_1": "#40AC79",
+  "color_2": "#EB1E28",
+  "color_3": "#C8915B",
+  "players": [
+    {
+      "nation": "Morocco",
+      "first_name": "Yassine",
+      "last_name": "Bounou",
+      "jersey_number": 1,
+      "birthdate": "05.04.1991",
+      "club": "Al-Hilal SFC",
+      "position": "GK",
+      "height": "1,92m",
+      "aliases": []
+    },
+    {
+      "nation": "Morocco",
+      "first_name": "Ahmed",
+      "last_name": "Reda Tagnaouti",
+      "jersey_number": 22,
+      "birthdate": "05.04.1996",
+      "club": "AS FAR Rabat",
+      "position": "GK",
+      "height": "1,94m",
+      "aliases": []
+    },
+    {
+      "nation": "Morocco",
+      "first_name": "Munir",
+      "last_name": "El Kajoui",
+      "jersey_number": 12,
+      "birthdate": "10.05.1989",
+      "club": "Renaissance de Berkane",
+      "position": "GK",
+      "height": "1,90m",
+      "aliases": []
+    },
+    {
+      "nation": "Morocco",
+      "first_name": "Nayef",
+      "last_name": "Aguerd",
+      "jersey_number": 5,
+      "birthdate": "30.03.1996",
+      "club": "Olympique Marseille",
+      "position": "CB",
+      "height": "1,90m",
+      "aliases": []
+    },
+    {
+      "nation": "Morocco",
+      "first_name": "Chadi",
+      "last_name": "Riad",
+      "jersey_number": 18,
+      "birthdate": "17.06.2003",
+      "club": "Crystal Palace",
+      "position": "CB",
+      "height": "1,86m",
+      "aliases": []
+    },
+    {
+      "nation": "Morocco",
+      "first_name": "Issa",
+      "last_name": "Diop",
+      "jersey_number": 14,
+      "birthdate": "09.01.1997",
+      "club": "Fulham FC",
+      "position": "CB",
+      "height": "1,94m",
+      "aliases": []
+    },
+    {
+      "nation": "Morocco",
+      "first_name": "Redouane",
+      "last_name": "Halhal",
+      "jersey_number": 25,
+      "birthdate": "05.03.2003",
+      "club": "KV Mechelen",
+      "position": "CB",
+      "height": "1,89m",
+      "aliases": []
+    },
+    {
+      "nation": "Morocco",
+      "first_name": "Anass",
+      "last_name": "Salah-Eddine",
+      "jersey_number": 26,
+      "birthdate": "18.01.2002",
+      "club": "PSV Eindhoven",
+      "position": "LB",
+      "height": "1,81m",
+      "aliases": []
+    },
+    {
+      "nation": "Morocco",
+      "first_name": "Youssef",
+      "last_name": "Belammari",
+      "jersey_number": 19,
+      "birthdate": "20.09.1998",
+      "club": "Al Ahly FC",
+      "position": "LB",
+      "height": "1,75m",
+      "aliases": []
+    },
+    {
+      "nation": "Morocco",
+      "first_name": "Achraf",
+      "last_name": "Hakimi",
+      "jersey_number": 2,
+      "birthdate": "04.11.1998",
+      "club": "Paris Saint-Germain",
+      "position": "RB",
+      "height": "1,80m",
+      "aliases": []
+    },
+    {
+      "nation": "Morocco",
+      "first_name": "Noussair",
+      "last_name": "Mazraoui",
+      "jersey_number": 3,
+      "birthdate": "14.11.1997",
+      "club": "Manchester United",
+      "position": "RB",
+      "height": "1,83m",
+      "aliases": []
+    },
+    {
+      "nation": "Morocco",
+      "first_name": "Zakaria",
+      "last_name": "El Ouahdi",
+      "jersey_number": 13,
+      "birthdate": "31.12.2001",
+      "club": "KRC Genk",
+      "position": "RB",
+      "height": "1,71m",
+      "aliases": []
+    },
+    {
+      "nation": "Morocco",
+      "first_name": "Sofyan",
+      "last_name": "Amrabat",
+      "jersey_number": 4,
+      "birthdate": "21.08.1996",
+      "club": "Real Betis Balompié",
+      "position": "DM",
+      "height": "1,85m",
+      "aliases": []
+    },
+    {
+      "nation": "Morocco",
+      "first_name": "Ayyoub",
+      "last_name": "Bouaddi",
+      "jersey_number": 6,
+      "birthdate": "02.10.2007",
+      "club": "LOSC Lille",
+      "position": "CM",
+      "height": "1,85m",
+      "aliases": []
+    },
+    {
+      "nation": "Morocco",
+      "first_name": "Neil",
+      "last_name": "El Aynaoui",
+      "jersey_number": 24,
+      "birthdate": "02.07.2001",
+      "club": "AS Roma",
+      "position": "CM",
+      "height": "1,85m",
+      "aliases": []
+    },
+    {
+      "nation": "Morocco",
+      "first_name": "Samir",
+      "last_name": "El Mourabet",
+      "jersey_number": 15,
+      "birthdate": "06.10.2005",
+      "club": "RC Strasbourg Alsace",
+      "position": "CM",
+      "height": "1,87m",
+      "aliases": []
+    },
+    {
+      "nation": "Morocco",
+      "first_name": "Azzedine",
+      "last_name": "Ounahi",
+      "jersey_number": 8,
+      "birthdate": "19.04.2000",
+      "club": "Girona FC",
+      "position": "CM",
+      "height": "1,82m",
+      "aliases": []
+    },
+    {
+      "nation": "Morocco",
+      "first_name": "Ismael",
+      "last_name": "Saibari",
+      "jersey_number": 11,
+      "birthdate": "28.01.2001",
+      "club": "PSV Eindhoven",
+      "position": "AM",
+      "height": "1,85m",
+      "aliases": []
+    },
+    {
+      "nation": "Morocco",
+      "first_name": "Bilal",
+      "last_name": "El Khannouss",
+      "jersey_number": 23,
+      "birthdate": "10.05.2004",
+      "club": "VfB Stuttgart",
+      "position": "AM",
+      "height": "1,80m",
+      "aliases": []
+    },
+    {
+      "nation": "Morocco",
+      "first_name": "Abde",
+      "last_name": "Ezzalzouli",
+      "jersey_number": 17,
+      "birthdate": "17.12.2001",
+      "club": "Real Betis Balompié",
+      "position": "LW",
+      "height": "1,77m",
+      "aliases": []
+    },
+    {
+      "nation": "Morocco",
+      "first_name": "Soufiane",
+      "last_name": "Rahimi",
+      "jersey_number": 9,
+      "birthdate": "02.06.1996",
+      "club": "Al-Ain FC",
+      "position": "LW",
+      "height": "1,80m",
+      "aliases": []
+    },
+    {
+      "nation": "Morocco",
+      "first_name": "Brahim",
+      "last_name": "Díaz",
+      "jersey_number": 10,
+      "birthdate": "03.08.1999",
+      "club": "Real Madrid",
+      "position": "RW",
+      "height": "1,70m",
+      "aliases": [
+        "Diaz"
+      ]
+    },
+    {
+      "nation": "Morocco",
+      "first_name": "Chemsdine",
+      "last_name": "Talbi",
+      "jersey_number": 7,
+      "birthdate": "09.05.2005",
+      "club": "Sunderland AFC",
+      "position": "LW",
+      "height": "1,75m",
+      "aliases": []
+    },
+    {
+      "nation": "Morocco",
+      "first_name": "Gessime",
+      "last_name": "Yassine",
+      "jersey_number": 16,
+      "birthdate": "22.11.2005",
+      "club": "RC Strasbourg Alsace",
+      "position": "RW",
+      "height": "1,72m",
+      "aliases": []
+    },
+    {
+      "nation": "Morocco",
+      "first_name": "Ayoube",
+      "last_name": "Amaimouni-Echghouyab",
+      "jersey_number": 21,
+      "birthdate": "30.11.2004",
+      "club": "Eintracht Frankfurt",
+      "position": "RW",
+      "height": "1,79m",
+      "aliases": []
+    },
+    {
+      "nation": "Morocco",
+      "first_name": "Ayoub",
+      "last_name": "El Kaabi",
+      "jersey_number": 20,
+      "birthdate": "25.06.1993",
+      "club": "Olympiacos Piraeus",
+      "position": "ST",
+      "height": "1,82m",
+      "aliases": []
+    }
+  ]
+}
