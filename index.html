@@ -30,25 +30,8 @@ body {
     height: 100dvh;
     min-height: 100dvh;
     width: 100%;
-    overflow: hidden; /* Zwingend notwendig: Verhindert jegliches Scrollen der Hauptseite */
+    overflow: hidden; /* Verhindert jegliches Scrollen der Hauptseite */
     position: relative;
-}
-
-/* Zentrales Icon */
-.center-bg-icon {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 35vw;
-    max-width: 500px;
-    aspect-ratio: 1 / 1;
-    background-image: url('assets/Icon.png');
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
-    z-index: -1;
-    opacity: 0.8;
 }
 
 /* --- LOGO WRAPPER --- */
@@ -88,6 +71,23 @@ body {
 @media (min-width: 768px) {
     body {
         justify-content: flex-start; 
+    }
+
+    /* Zentrales Icon nur für Desktop separat */
+    .center-bg-icon-desktop {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 35vw;
+        max-width: 500px;
+        aspect-ratio: 1 / 1;
+        background-image: url('assets/Icon.png');
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+        z-index: -1;
+        opacity: 0.8;
     }
 
     .logo-container {
@@ -144,21 +144,25 @@ body {
         transform: translate(-50%, -50%);
         margin: 0;
         z-index: 11;
+        width: 180px;
+        height: 252px;
     }
 }
 
-/* --- MOBILE LAYOUT (Komplett überarbeitet nach deinen Wünschen) --- */
+/* --- MOBILE LAYOUT (Komplett korrigiert nach deinen Screenshots) --- */
 @media (max-width: 767px) {
     body {
         justify-content: flex-start; 
         padding: 0 15px;
     }
 
-    /* Der obere Logo Container */
+    .center-bg-icon-desktop {
+        display: none; /* Auf Mobile deaktiviert, da jetzt direkt in der Booster-Zone */
+    }
+
+    /* Das obere Logo */
     .logo-container {
-        margin-top: calc(env(safe-area-inset-top, 0px) + 10px);
-        margin-bottom: 0; /* Abstände werden jetzt dynamisch über Flexbox berechnet */
-        padding: 0 15px;
+        margin-top: calc(env(safe-area-inset-top, 0px) + 15px);
         flex-shrink: 0;
     }
     
@@ -168,28 +172,28 @@ body {
     
     .logo-mobile {
         display: block;
-        max-width: 240px; 
-        width: 60vw;
+        max-width: 220px; 
+        width: 55vw;
         aspect-ratio: 1.2 / 1; 
         -webkit-mask-image: url('assets/WC_26_GUESSER.svg');
         mask-image: url('assets/WC_26_GUESSER.svg');
     }
 
-    /* Dynamische Abstands-Kästen für exakt gleiche Zwischenräume */
+    /* Die beiden flexiblen Abstandshalter verteilen das Menü nun perfekt in der Mitte */
     .mobile-spacer {
         display: block;
-        flex-grow: 1; /* Beide Spacer nehmen exakt gleich viel freien Platz ein */
+        flex-grow: 1;
         width: 100%;
     }
 
-    /* Der Button-Container */
+    /* Der Button-Block rückt wieder weiter nach oben ins obere Drittel */
     .menu-container {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
         gap: 12px; 
         justify-items: center;
         align-items: center;
-        max-width: 260px;
+        max-width: 250px;
         width: 100%;
         margin: 0 auto; 
         z-index: 10;
@@ -197,32 +201,31 @@ body {
     }
 
     .image-btn {
-        width: 30vw; 
-        max-width: 110px;
+        width: 28vw; 
+        max-width: 105px;
     }
 
-    /* Die feste Unterkanten-Definition für die Booster-Zone und das Icon (2vw von unten) */
-    .booster-zone, .center-bg-icon {
-        position: fixed;
-        bottom: calc(env(safe-area-inset-bottom, 0px) + 2vw);
-        left: 50%;
-        transform: translateX(-50%); /* Nur noch auf der X-Achse verschieben, da bottom fest ist */
-        top: auto; /* Deaktiviert die alte prozentuale Positionierung */
-        margin: 0;
-    }
-
-    /* Exakte Größengleichheit: Ober- und Unterkante von Icon und Booster-Zone sind nun absolut identisch */
-    .center-bg-icon {
-        width: 140px;  /* Gleiche Breite wie .pack-pile auf Mobile */
-        height: 196px; /* Gleiche Höhe wie .pack-pile auf Mobile */
-        max-width: none;
-        z-index: -1;
-    }
-
+    /* Die Booster-Zone steht im normalen Textfluss, hält aber strikt 2vw Abstand nach unten */
     .booster-zone {
+        display: none; /* Wird via JS auf 'flex' gesetzt, wenn Packs > 0 */
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        position: relative;
         z-index: 12;
+        flex-shrink: 0;
+        margin-top: 0;
+        margin-bottom: calc(env(safe-area-inset-bottom, 0px) + 2vw);
+        
+        /* Feste Maße für das Pack auf Mobile */
         width: 140px;
         height: 196px;
+        
+        /* Das HINTERGRUND-BILD klebt jetzt direkt auf den Pixel genau auf dieser Box! */
+        background-image: url('assets/Icon.png');
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
     }
 }
 
@@ -323,12 +326,6 @@ body {
 /* =========================================================================
    BOOSTER OPENING SECTION
    ========================================================================= */
-.booster-zone {
-    display: none; 
-    flex-direction: column;
-    align-items: center;
-}
-
 .pack-counter-circle {
     position: absolute;
     top: -12px;
@@ -349,16 +346,9 @@ body {
 
 .pack-pile {
     position: relative;
-    width: 140px;
-    height: 196px;
+    width: 100%;
+    height: 100%;
     cursor: pointer;
-}
-
-@media (min-width: 768px) {
-    .pack-pile {
-        width: 180px;
-        height: 252px;
-    }
 }
 
 .pack-layer {
@@ -387,16 +377,9 @@ body {
 
 .ripped-pack-wrapper {
     position: relative;
-    width: 140px;
-    height: 196px;
+    width: 100%;
+    height: 100%;
     display: none;
-}
-
-@media (min-width: 768px) {
-    .ripped-pack-wrapper {
-        width: 180px;
-        height: 252px;
-    }
 }
 
 .pack-part {
@@ -621,7 +604,7 @@ body {
 </head>
 <body>
 
-<div class="center-bg-icon"></div>
+<div class="center-bg-icon-desktop"></div>
 
 <div class="logo-container">
     <div class="logo-mask logo-desktop"></div>
