@@ -2,7 +2,7 @@
 <html lang="de">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=no">
 <title>WC26 Guesser & Album</title>
 <link rel="icon" type="image/png" href="assets/favicon.png">
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
@@ -11,51 +11,30 @@
     box-sizing: border-box;
 }
 
+html, body {
+    text-size-adjust: none;
+    -webkit-text-size-adjust: none;
+}
+
 body { 
     margin: 0; 
     padding: 20px;
     font-family: Arial, sans-serif; 
     color: white; 
+    background-color: #3f57f5;
     
     display: flex; 
     align-items: center; 
     flex-direction: column; 
     
+    height: 100dvh;
     min-height: 100dvh;
     width: 100%;
-    overflow-x: hidden;
+    overflow: hidden; /* Zwingend notwendig: Verhindert jegliches Scrollen der Hauptseite */
     position: relative;
 }
 
-/* --- DYNAMISCHES HINTERGRUND SYSTEM --- */
-body::before {
-    content: "";
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
-    z-index: -2;
-}
-
-/* Desktop & Tablet Standard-Hintergrund */
-@media (min-width: 768px) {
-    body::before {
-        background-image: url('assets/main_background.png?v=2');
-    }
-}
-
-/* Smartphone-Hintergrund */
-@media (max-width: 767px) {
-    body::before {
-        background-image: url('assets/main_background2.png?v=2');
-    }
-}
-
-/* Zentrales Icon auf dem Desktop */
+/* Zentrales Icon */
 .center-bg-icon {
     position: fixed;
     top: 50%;
@@ -172,20 +151,12 @@ body::before {
 @media (max-width: 767px) {
     body {
         justify-content: flex-start; 
-    }
-
-    .center-bg-icon {
-        top: auto;
-        bottom: 5vh;
-        transform: translateX(-50%);
-        width: 60vw;
-        max-width: 280px;
-        height: auto;
+        padding: 0 15px;
     }
 
     .logo-container {
-        margin-top: calc(env(safe-area-inset-top, 0px) + 10px);
-        margin-bottom: 20px;
+        margin-top: calc(env(safe-area-inset-top, 0px) + 0vh);
+        margin-bottom: 30px;
         padding: 0 15px;
     }
     
@@ -205,11 +176,11 @@ body::before {
     .menu-container {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
-        gap: 15px; 
+        gap: 12px; /* Wirklich kleiner Zwischenraum */
         justify-items: center;
         align-items: center;
         max-width: 280px;
-        margin: 10px auto; 
+        margin: 0 auto; 
         z-index: 10;
     }
 
@@ -218,9 +189,22 @@ body::before {
         max-width: 120px;
     }
 
+    /* Exakte Boxen-Positionierung für Icon und Booster-Pakete auf Mobile */
+    .center-bg-icon {
+        top: auto;
+        bottom: 12vh;
+        transform: translateX(-50%);
+        width: 55vw;
+        max-width: 240px;
+        height: auto;
+    }
+
     .booster-zone {
-        margin-top: auto;
-        margin-bottom: 40px;
+        position: fixed;
+        bottom: 12vh;
+        left: 50%;
+        transform: translateX(-50%);
+        margin: 0;
         z-index: 12;
     }
 }
@@ -348,8 +332,8 @@ body::before {
 
 .pack-pile {
     position: relative;
-    width: 160px;
-    height: 224px;
+    width: 140px;
+    height: 196px;
     cursor: pointer;
 }
 
@@ -386,9 +370,16 @@ body::before {
 
 .ripped-pack-wrapper {
     position: relative;
-    width: 180px;
-    height: 252px;
+    width: 140px;
+    height: 196px;
     display: none;
+}
+
+@media (min-width: 768px) {
+    .ripped-pack-wrapper {
+        width: 180px;
+        height: 252px;
+    }
 }
 
 .pack-part {
@@ -428,7 +419,7 @@ body::before {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.85); 
+    background: transparent; /* 100% transparent: Keine Abdunklung des blauen Hauptscreens */
     z-index: 99999; 
     display: none;
     flex-direction: column;
@@ -437,6 +428,7 @@ body::before {
     padding: 20px;
     overflow: hidden;
     pointer-events: auto; 
+    touch-action: none; /* Verhindert das Scrollen/Verschieben auf Mobile im gesamten Overlay */
 }
 
 .sticker-display-grid {
@@ -452,7 +444,7 @@ body::before {
     .sticker-display-grid {
         flex-direction: row;
         max-width: 1400px;
-        margin-top: -60px; /* Perfekte Zentrierung auf Desktops */
+        margin-top: -60px; 
     }
     .sticker-card-container {
         width: 15%;
@@ -463,10 +455,10 @@ body::before {
 @media (max-width: 767px) {
     .sticker-display-grid {
         display: grid;
-        grid-template-columns: repeat(3, 1fr); /* 3 Spalten nebeneinander, damit es flacher ist */
+        grid-template-columns: repeat(3, 1fr); 
         max-width: 350px; 
         gap: 10px;
-        margin-top: -80px; /* Schiebt Sticker auf Mobile leicht hoch */
+        margin-top: -80px; 
     }
     .sticker-card-container {
         width: 100%;
@@ -519,6 +511,7 @@ body::before {
     z-index: 8;
     cursor: crosshair;
     transition: opacity 0.4s ease;
+    touch-action: none; /* Verhindert Gesten-Scrolling beim Wischen auf dem Canvas */
 }
 
 .duplicate-ribbon {
@@ -550,7 +543,7 @@ body::before {
 @media (min-width: 768px) {
     .action-panel {
         position: absolute;
-        bottom: 12vh; /* Fixiert unterhalb der Stickerzeile, ohne das Layout zu verschieben */
+        bottom: 12vh; 
         left: 50%;
         transform: translateX(-50%);
         width: auto;
@@ -560,7 +553,7 @@ body::before {
 @media (max-width: 767px) {
     .action-panel {
         position: absolute;
-        bottom: 8vh; /* Platziert die Buttons sicher im freien Bereich unten am Screen */
+        bottom: 8vh; 
         left: 0;
         width: 100%;
     }
@@ -703,6 +696,13 @@ let packTimerInterval = null;
 
 let totalShinyCount = 0;
 let scratchedShinyCount = 0;
+
+// Verhindert das "Elastic Band"-Scrolling / Ziehen der gesamten Website auf iOS Safari
+document.addEventListener('touchmove', (e) => {
+    if (document.getElementById('stickerOverlay').style.display === 'flex') {
+        e.preventDefault();
+    }
+}, { passive: false });
 
 document.addEventListener("DOMContentLoaded", () => {
     const isTop10Active = localStorage.getItem("random_player_top10") === "true";
@@ -929,12 +929,13 @@ function setupScratchEffect(canvas) {
     canvas.width = width;
     canvas.height = height;
 
-    // Schlichtes Dunkelgrau statt knallblau
     ctx.fillStyle = "#2a2a2a";
     ctx.fillRect(0, 0, width, height);
 
     function scratch(e) {
         if (!isDrawing) return;
+        e.preventDefault(); // Absolut kritisch: Verhindert jegliche Screen-Bewegung / Viewport-Verschiebung beim Ziehen
+        
         const rect = canvas.getBoundingClientRect();
         const clientX = e.touches ? e.touches[0].clientX : e.clientX;
         const clientY = e.touches ? e.touches[0].clientY : e.clientY;
@@ -963,19 +964,18 @@ function setupScratchEffect(canvas) {
             canvas.dataset.cleared = "true";
             canvas.style.opacity = "0";
             setTimeout(() => {
-                // Das Canvas-Element wird komplett gelöscht -> 100% transparent, kein Abdunkeln
                 canvas.remove();
                 handleShinyScratchedNotification();
             }, 300);
         }
     }
 
-    canvas.addEventListener("mousedown", () => isDrawing = true);
-    canvas.addEventListener("touchstart", () => isDrawing = true);
+    canvas.addEventListener("mousedown", (e) => { isDrawing = true; });
+    canvas.addEventListener("touchstart", (e) => { isDrawing = true; e.preventDefault(); }, { passive: false });
     window.addEventListener("mouseup", () => isDrawing = false);
     window.addEventListener("touchend", () => isDrawing = false);
     canvas.addEventListener("mousemove", scratch);
-    canvas.addEventListener("touchmove", scratch);
+    canvas.addEventListener("touchmove", scratch, { passive: false });
 }
 
 function handleShinyScratchedNotification() {
@@ -1013,7 +1013,6 @@ function processDuplicatesToMarket() {
         db.collection("users").doc(uid).update({ stapel: updatedStapel });
     }
 
-    // Info-Alert komplett entfernt
     resetBoosterDashboardView();
 }
 
@@ -1027,7 +1026,6 @@ function sendNewToAlbumStapel() {
     db.collection("users").doc(uid).update({
         stapel: updatedStapel
     }).then(() => {
-        // Info-Alert komplett entfernt
         resetBoosterDashboardView();
     });
 }
