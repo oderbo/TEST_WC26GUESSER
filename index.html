@@ -30,7 +30,7 @@ body {
     height: 100dvh;
     min-height: 100dvh;
     width: 100%;
-    overflow: hidden; /* Verhindert jegliches Scrollen der Hauptseite */
+    overflow: hidden;
     position: relative;
 }
 
@@ -64,161 +64,72 @@ body {
     animation: goldGlow 8s ease infinite;
 }
 
-.center-space {
-    display: none;
-}
+.center-space { display: none; }
 
 /* --- DESKTOP & TABLET LAYOUT --- */
 @media (min-width: 768px) {
-    body {
-        justify-content: flex-start; 
-    }
+    body { justify-content: flex-start; }
 
     .center-bg-icon-desktop {
-        position: fixed;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        width: 35vw;
-        max-width: 500px;
-        aspect-ratio: 1 / 1;
-        background-image: url('assets/Icon.png');
-        background-size: contain;
-        background-repeat: no-repeat;
-        background-position: center;
-        z-index: -1;
-        opacity: 0.8;
+        position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);
+        width: 35vw; max-width: 500px; aspect-ratio: 1 / 1;
+        background-image: url('assets/Icon.png'); background-size: contain;
+        background-repeat: no-repeat; background-position: center; z-index: -1; opacity: 0.8;
     }
 
-    .header-container {
-        margin-top: 3vh; 
-    }
+    .header-container { margin-top: 3vh; }
 
     .logo-desktop {
-        display: block;
-        max-width: 900px; 
-        width: 70vw;
-        aspect-ratio: 3 / 1; 
-        -webkit-mask-image: url('assets/WC26Guesser.svg');
-        mask-image: url('assets/WC26Guesser.svg');
+        display: block; max-width: 900px; width: 70vw; aspect-ratio: 3 / 1; 
+        -webkit-mask-image: url('assets/WC26Guesser.svg'); mask-image: url('assets/WC26Guesser.svg');
     }
     
-    .logo-mobile {
-        display: none; 
-    }
+    .logo-mobile { display: none; }
 
     .menu-container {
-        position: absolute;
-        top: 55%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
-        align-items: center;
-        width: 100%;
-        max-width: 1400px; 
-        gap: 2.5vw; 
-        z-index: 10;
-        padding: 0 20px;
+        position: absolute; top: 55%; left: 50%; transform: translate(-50%, -50%);
+        display: flex; flex-direction: row; justify-content: center; align-items: center;
+        width: 100%; max-width: 1400px; gap: 2.5vw; z-index: 10; padding: 0 20px;
     }
 
-    .image-btn {
-        width: 13vw; 
-        max-width: 160px;
-    }
-
-    .center-space {
-        display: block;
-        width: 18vw;
-        max-width: 220px;
-        aspect-ratio: 1 / 1;
-        visibility: hidden; 
-    }
+    .image-btn { width: 13vw; max-width: 160px; }
+    .center-space { display: block; width: 18vw; max-width: 220px; aspect-ratio: 1 / 1; visibility: hidden; }
 
     .booster-zone {
-        position: absolute;
-        top: 55%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        margin: 0;
-        z-index: 11;
-        width: 180px;
-        height: 252px;
+        position: absolute; top: 55%; left: 50%; transform: translate(-50%, -50%);
+        margin: 0; z-index: 11; width: 180px; height: 252px;
     }
 }
 
 /* --- MOBILE LAYOUT --- */
 @media (max-width: 767px) {
-    body {
-        justify-content: flex-start; 
-        padding: 0 15px;
-    }
-
-    .center-bg-icon-desktop {
-        display: none; 
-    }
-
-    .header-container {
-        margin-top: calc(env(safe-area-inset-top, 0px) + 15px);
-    }
-    
-    .logo-desktop {
-        display: none; 
-    }
+    body { justify-content: flex-start; padding: 0 15px; }
+    .center-bg-icon-desktop { display: none; }
+    .header-container { margin-top: calc(env(safe-area-inset-top, 0px) + 15px); }
+    .logo-desktop { display: none; }
     
     .logo-mobile {
-        display: block;
-        max-width: 220px; 
-        width: 55vw;
-        aspect-ratio: 1.2 / 1; 
-        -webkit-mask-image: url('assets/WC_26_GUESSER.svg');
-        mask-image: url('assets/WC_26_GUESSER.svg');
+        display: block; max-width: 220px; width: 55vw; aspect-ratio: 1.2 / 1; 
+        -webkit-mask-image: url('assets/WC_26_GUESSER.svg'); mask-image: url('assets/WC_26_GUESSER.svg');
     }
 
-    .mobile-spacer {
-        display: block;
-        flex-grow: 1;
-        width: 100%;
-    }
+    .mobile-spacer { display: block; flex-grow: 1; width: 100%; }
 
     .menu-container {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 12px; 
-        justify-items: center;
-        align-items: center;
-        max-width: 250px;
-        width: 100%;
-        margin: 0 auto; 
-        z-index: 10;
-        flex-shrink: 0;
+        display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; 
+        justify-items: center; align-items: center; max-width: 250px; width: 100%;
+        margin: 0 auto; z-index: 10; flex-shrink: 0;
     }
 
-    .image-btn {
-        width: 28vw; 
-        max-width: 105px;
-    }
+    .image-btn { width: 28vw; max-width: 105px; }
 
     .booster-zone {
-        display: none; 
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        position: relative;
-        z-index: 12;
-        flex-shrink: 0;
-        margin-top: 0;
+        display: none; flex-direction: column; align-items: center; justify-content: center;
+        position: relative; z-index: 12; flex-shrink: 0; margin-top: 0;
         margin-bottom: calc(env(safe-area-inset-bottom, 0px) + 2vw);
-        
-        width: 140px;
-        height: 196px;
-        
-        background-image: url('assets/Icon.png');
-        background-size: contain;
-        background-repeat: no-repeat;
-        background-position: center;
+        width: 140px; height: 196px;
+        background-image: url('assets/Icon.png'); background-size: contain;
+        background-repeat: no-repeat; background-position: center;
     }
 }
 
@@ -230,57 +141,26 @@ body {
 
 /* --- IMAGE BUTTON SYSTEM --- */
 .image-btn {
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    border: 1px solid rgba(255, 255, 255, 0.1); 
-    border-radius: 14px; 
-    cursor: pointer; 
-    transition: all 0.2s ease; 
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
-    aspect-ratio: 1 / 1; 
-    padding: 0;
+    background-size: cover; background-position: center; background-repeat: no-repeat;
+    border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 14px; cursor: pointer; 
+    transition: all 0.2s ease; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+    aspect-ratio: 1 / 1; padding: 0;
 }
-
-.image-btn:hover { 
-    transform: translateY(-4px); 
-    box-shadow: 0 8px 25px rgba(0, 255, 204, 0.4);
-    border-color: #00ffcc;
-}
-
-.image-btn:active {
-    transform: translateY(1px);
-}
-
+.image-btn:hover { transform: translateY(-4px); box-shadow: 0 8px 25px rgba(0, 255, 204, 0.4); border-color: #00ffcc; }
+.image-btn:active { transform: translateY(1px); }
 .btn-random-nation { background-image: url('assets/country_random_button.jpg'); }
 .btn-pick-nation { background-image: url('assets/country_pick_button.jpg'); }
-
-.btn-player-random { 
-    background-image: url('assets/player_random_button.png'); 
-    position: relative;
-}
+.btn-player-random { background-image: url('assets/player_random_button.png'); position: relative; }
 .btn-album { background-image: url('assets/album_button.png'); }
 
 /* --- TOP 10 BADGE STYLE --- */
 .top10-badge {
-    position: absolute;
-    top: 0;    
-    right: 0;  
-    background-color: #ffffff; 
-    border-left: 1px solid rgba(0, 0, 0, 0.1);
-    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-    border-top-right-radius: inherit; 
-    border-bottom-left-radius: 8px; 
-    padding: 6px 8px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 2px;
-    cursor: pointer;
-    box-shadow: -2px 2px 6px rgba(0,0,0,0.15);
-    transition: background-color 0.2s ease;
+    position: absolute; top: 0; right: 0; background-color: #ffffff; 
+    border-left: 1px solid rgba(0, 0, 0, 0.1); border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    border-top-right-radius: inherit; border-bottom-left-radius: 8px; padding: 6px 8px;
+    display: flex; flex-direction: column; align-items: center; gap: 2px;
+    cursor: pointer; box-shadow: -2px 2px 6px rgba(0,0,0,0.15); transition: background-color 0.2s ease;
 }
-
 .top10-badge:hover { background-color: #f0f2ff; }
 .top10-badge span { font-size: clamp(8px, 1.2vw, 10px); font-weight: bold; color: #3f57f5; letter-spacing: 0.5px; }
 .status-dot { width: 6px; height: 6px; border-radius: 50%; background-color: #cccccc; transition: all 0.3s ease; }
@@ -320,150 +200,73 @@ body {
    BOOSTER OPENING SECTION
    ========================================================================= */
 .pack-counter-circle {
-    position: absolute;
-    top: -12px;
-    right: -12px;
-    width: 34px;
-    height: 34px;
-    background-color: #ffffff;
-    color: #3f57f5;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: bold;
-    font-size: 16px;
-    box-shadow: 0 3px 8px rgba(0,0,0,0.3);
-    z-index: 10;
+    position: absolute; top: -12px; right: -12px; width: 34px; height: 34px;
+    background-color: #ffffff; color: #3f57f5; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: bold; font-size: 16px; box-shadow: 0 3px 8px rgba(0,0,0,0.3); z-index: 10;
 }
 
-.pack-pile {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    cursor: pointer;
-}
+.pack-pile { position: relative; width: 100%; height: 100%; cursor: pointer; }
 
 .pack-layer {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background-size: cover;
-    background-position: center;
-    border-radius: 12px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-    transition: all 0.3s ease;
+    position: absolute; width: 100%; height: 100%; background-size: cover;
+    background-position: center; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.3); transition: all 0.3s ease;
 }
 
 .pack-layer.back2 { transform: scale(0.9) translateY(-15px) rotate(-5deg); opacity: 0.5; z-index: 1; }
 .pack-layer.back1 { transform: scale(0.95) translateY(-8px) rotate(3deg); opacity: 0.8; z-index: 2; }
-.pack-layer.front { 
-    background-image: url('assets/booster_pack_front.png'); 
-    z-index: 3; 
-    transform: translateY(-12px);
-}
+.pack-layer.front { background-image: url('assets/booster_pack_front.png'); z-index: 3; transform: translateY(-12px); }
 
 .pack-pile:hover .pack-layer.front {
-    transform: scale(1.05) translateY(-18px);
-    box-shadow: 0 10px 25px rgba(0, 255, 204, 0.5);
+    transform: scale(1.05) translateY(-18px); box-shadow: 0 10px 25px rgba(0, 255, 204, 0.5);
 }
 
-.ripped-pack-wrapper {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    display: none;
-}
+.ripped-pack-wrapper { position: relative; width: 100%; height: 100%; display: none; }
 
-.pack-part {
-    position: absolute;
-    width: 100%;
-    background-size: cover;
-    background-position: center;
-}
+.pack-part { position: absolute; width: 100%; background-size: cover; background-position: center; }
 
 .pack-part.bottom-half {
-    bottom: 0;
-    height: 80%;
-    background-image: url('assets/booster_pack_ripped_bottom.png');
-    z-index: 5;
+    bottom: 0; height: 80%; background-image: url('assets/booster_pack_ripped_bottom.png'); z-index: 5;
 }
 
 .pack-part.top-half {
-    top: 0;
-    height: 20%;
-    background-image: url('assets/booster_pack_ripped_top.png');
-    z-index: 6;
-    transform-origin: left bottom;
-    transition: transform 0.6s ease-in, opacity 0.6s ease-in;
+    top: 0; height: 20%; background-image: url('assets/booster_pack_ripped_top.png');
+    z-index: 6; transform-origin: left bottom; transition: transform 0.6s ease-in, opacity 0.6s ease-in;
 }
 
-.pack-part.top-half.torn {
-    transform: translateY(-150%) rotate(-20deg);
-    opacity: 0;
-}
+.pack-part.top-half.torn { transform: translateY(-150%) rotate(-20deg); opacity: 0; }
 
 /* =========================================================================
-   STICKER OVERLAY DISPLAY SYSTEM
+   STICKER OVERLAY & CONTAINER QUERIES (DAS NEUE DESIGN-HERZSTÜCK)
    ========================================================================= */
 .sticker-overlay-layer {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: transparent; 
-    z-index: 99999; 
-    display: none;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 20px;
-    overflow: hidden;
-    pointer-events: auto; 
-    touch-action: none; 
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background: transparent; z-index: 99999; display: none; flex-direction: column;
+    align-items: center; justify-content: center; padding: 20px; overflow: hidden;
+    pointer-events: auto; touch-action: none; 
 }
 
 .sticker-display-grid {
-    display: flex;
-    gap: 20px;
-    width: 100%;
-    justify-content: center;
-    align-items: center;
-    position: relative;
+    display: flex; gap: 20px; width: 100%; justify-content: center;
+    align-items: center; position: relative;
 }
 
 @media (min-width: 768px) {
-    .sticker-display-grid {
-        flex-direction: row;
-        max-width: 1400px;
-        margin-top: -60px; 
-    }
-    .sticker-card-container {
-        width: 15%;
-        max-width: 180px;
-    }
+    .sticker-display-grid { flex-direction: row; max-width: 1400px; margin-top: -60px; }
+    .sticker-card-container { width: 15%; max-width: 180px; }
 }
 
 @media (max-width: 767px) {
-    .sticker-display-grid {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr); 
-        max-width: 350px; 
-        gap: 10px;
-        margin-top: -80px; 
-    }
-    .sticker-card-container {
-        width: 100%;
-    }
+    .sticker-display-grid { display: grid; grid-template-columns: repeat(3, 1fr); max-width: 350px; gap: 10px; margin-top: -80px; }
+    .sticker-card-container { width: 100%; }
 }
 
-/* --- DYNAMISCHER STICKER CONTAINER (NEUES DESIGN) --- */
+/* --- DYNAMISCHER STICKER CONTAINER (GILT FÜR ALLE TYPEN) --- */
 .sticker-card-container {
-    container-type: inline-size; /* CRITICAL: Erlaubt cqw für skalierende Schriften! */
+    container-type: inline-size;
     position: relative;
     aspect-ratio: 1 / 1.38;
-    background-color: #eeeeee; 
+    background-color: #eeeeee; /* Standardmäßig die weiße Sticker-Rückseite */
     box-shadow: 0 10px 30px rgba(0,0,0,0.5);
     border-radius: 8px; 
     overflow: hidden;
@@ -478,7 +281,9 @@ body {
     pointer-events: none;
 }
 
-/* --- DEINE NEUEN STICKER CSS-KLASSEN --- */
+/* =========================================================================
+   CSS-KLASSEN FÜR SPIELER-STICKER
+   ========================================================================= */
 .sticker-inner {
     position: absolute;
     top: 5cqw; left: 5cqw; right: 5cqw; bottom: 5cqw;
@@ -519,8 +324,8 @@ body {
 .player-image-container img { width: 100%; height: 100%; object-fit: contain; display: block; }
 
 .lower-elements-wrapper {
-    position: absolute; top: 60%; bottom: 0; left: 2px; right: 2px; 
-    display: flex; flex-direction: column; gap: 2px; padding-bottom: 2px; 
+    position: absolute; top: 60%; bottom: 0; left: 8px; right: 8px; 
+    display: flex; flex-direction: column; gap: 4px; padding-bottom: 4px; 
     box-sizing: border-box; z-index: 2;
 }
 
@@ -576,39 +381,61 @@ body {
 
 .club-logo-bottom { height: 90%; width: auto; object-fit: contain; margin-left: auto; }
 
-/* FALLBACK FÜR ALTE BILDER/SONDERSTICKER */
-.sticker-img {
-    width: 100%; height: 100%; object-fit: cover; display: block;
-    position: absolute; top: 0; left: 0;
+/* =========================================================================
+   CSS-KLASSEN FÜR ALLE SONDERSTICKER
+   ========================================================================= */
+.special-sticker-inner {
+    position: absolute;
+    top: 5cqw; left: 5cqw; right: 5cqw; bottom: 5cqw;
+    background-color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
 }
 
+.special-sticker-img {
+    width: 100%; height: 100%; object-fit: cover; display: block;
+}
+
+/* STADIEN: Linke oder Rechte Kante komplett entfernen */
+.container-stadium-left .special-sticker-inner { left: 0; }
+.container-stadium-right .special-sticker-inner { right: 0; }
+
+/* LOGO: Silber-Glitter Hintergrund, kein Rahmen, Bild fully contained */
+.container-logo {
+    background: linear-gradient(135deg, #e0e0e0 0%, #ffffff 25%, #a0a0a0 50%, #f8f8f8 75%, #c0c0c0 100%) !important;
+}
+.container-logo .special-sticker-inner {
+    top: 0; bottom: 0; left: 0; right: 0;
+    background-color: transparent; /* Glitzer scheint durch */
+}
+.container-logo .special-sticker-img {
+    object-fit: contain;
+    padding: 0 4px; /* Verhindert das Abschneiden am Rand */
+}
+
+/* GOLDEN BOOT: Silberner Rahmen */
+.container-golden-boot {
+    background: linear-gradient(135deg, #e0e0e0 0%, #ffffff 25%, #a0a0a0 50%, #f8f8f8 75%, #c0c0c0 100%) !important;
+}
+
+/* GOLDEN BALL & HISTORIC WINNER: Goldener Rahmen */
+.container-golden-ball, .container-historic-winner {
+    background: linear-gradient(135deg, #bf953f 0%, #fcf6ba 25%, #b38728 50%, #fbf5b7 75%, #aa771c 100%) !important;
+}
+
+/* --- RUBBEL-OVERLAY --- */
 .scratch-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 8;
-    cursor: crosshair;
-    transition: opacity 0.4s ease;
-    touch-action: none; 
+    position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 8;
+    cursor: crosshair; transition: opacity 0.4s ease; touch-action: none; 
 }
 
 .duplicate-ribbon {
-    position: absolute;
-    top: 12px;
-    left: -25px;
-    background: #ffffff;
-    color: #ff0000;
-    font-weight: bold;
-    font-family: 'Arial Black', sans-serif;
-    font-size: 9px;
-    text-transform: uppercase;
-    padding: 3px 25px;
-    transform: rotate(-35deg);
-    box-shadow: 0 2px 4px rgba(0,0,0,0.25);
-    z-index: 15;
-    letter-spacing: 0.5px;
+    position: absolute; top: 12px; left: -25px; background: #ffffff; color: #ff0000;
+    font-weight: bold; font-family: 'Arial Black', sans-serif; font-size: 9px;
+    text-transform: uppercase; padding: 3px 25px; transform: rotate(-35deg);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.25); z-index: 15; letter-spacing: 0.5px;
 }
 
 /* FLUGANIMATIONEN */
@@ -1013,7 +840,7 @@ function renderDrawnStickersGrid() {
         }
 
         // =========================================================================
-        // DYNAMISCHES SPIELER-DESIGN INJEZIEREN
+        // KATEGORIE 1: DYNAMISCHES SPIELER-DESIGN 
         // =========================================================================
         if (sticker.type === "player") {
             // 1. Namen sicher zusammenführen
@@ -1086,11 +913,22 @@ function renderDrawnStickersGrid() {
             `;
         } else {
             // =========================================================================
-            // SONDERSTICKER FALLBACK (Logos, Stadien, Historie)
+            // KATEGORIE 2: SONDERSTICKER (Stadien, Logos, Historie, Awards)
             // =========================================================================
-            const img = document.createElement("img");
-            img.className = "sticker-img";
+            
+            // Herausfinden, welche spezifische Container-Klasse benötigt wird
+            let typeClass = "container-default-special";
+            if (sticker.type === 'stadium_left') typeClass = "container-stadium-left";
+            else if (sticker.type === 'stadium_right') typeClass = "container-stadium-right";
+            else if (sticker.type === 'team_photo') typeClass = "container-team-photo";
+            else if (sticker.type === 'logo') typeClass = "container-logo";
+            else if (sticker.type === 'golden_boot' || (sticker.id && sticker.id.startsWith('GBO'))) typeClass = "container-golden-boot";
+            else if (sticker.type === 'golden_ball' || (sticker.id && sticker.id.startsWith('GBA'))) typeClass = "container-golden-ball";
+            else if (sticker.type === 'historic_winner') typeClass = "container-historic-winner";
+            
+            container.classList.add(typeClass);
 
+            // Korrekten Dateipfad generieren
             let finalPath = sticker.image || "";
             if (finalPath.startsWith('./')) {
                 finalPath = finalPath.substring(2);
@@ -1119,8 +957,12 @@ function renderDrawnStickersGrid() {
                 finalPath = "photos/winning_teams/" + pureFileName;
             }
 
-            img.src = finalPath;
-            container.appendChild(img);
+            // Exaktes Spezial-Sticker Skelett injizieren
+            container.innerHTML += `
+                <div class="special-sticker-inner">
+                    <img src="${finalPath}" class="special-sticker-img" onerror="this.src='assets/Icon.png'">
+                </div>
+            `;
         }
 
         // --- RUBBEL-EFFEKT (Funktioniert für alle Karten) ---
