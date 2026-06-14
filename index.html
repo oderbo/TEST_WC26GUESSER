@@ -916,44 +916,43 @@ function renderDrawnStickersGrid() {
         const img = document.createElement("img");
         img.className = "sticker-img";
 
-        // --- ABSOLUT PRÄZISES PFAD-MAPPING BASIEREND AUF DEINER ORDNERSTRUKTUR ---
+        // --- WASSERDICHTER PFAD-ÜBERSETZER FÜR ALLE SONDERBILDER ---
         let finalPath = sticker.image;
         if (finalPath.startsWith('./')) {
             finalPath = finalPath.substring(2);
         }
         
-        // Isolieren des reinen Dateinamens (z.B. "spc001.png" oder "logo_de.png")
+        // Holt den reinen Dateinamen aus der JSON (z.B. "spc001.png", "winners22.png", "GBA22.png", "GBO28.png")
         const pureFileName = finalPath.substring(finalPath.lastIndexOf('/') + 1);
 
-        // 1. Trophäen & Specials der ersten Seite (Typ startet mit "special")
-        if (sticker.type && sticker.type.startsWith('special')) {
-            let correctFileName = pureFileName;
-            
-            // Falls die JSON "spc00X.png" liefert, übersetzen wir es live zu "special_0X.png"
+        // 1. Golden Boot (In der JSON fälschlicherweise im Ordner golden_ball hinterlegt, Zielordner: photos/golden_boot/)
+        if (sticker.type === 'golden_boot' || sticker.id.startsWith('GBO')) {
+            finalPath = "photos/golden_boot/" + pureFileName;
+        } 
+        // 2. Golden Ball (In der JSON fälschlicherweise im Ordner golden_boot hinterlegt, Zielordner: photos/golden_ball/)
+        else if (sticker.type === 'golden_ball' || sticker.id.startsWith('GBA')) {
+            finalPath = "photos/golden_ball/" + pureFileName;
+        }
+        // 3. Trophäen & Specials der ersten Seite (In der JSON specials mit s, Zielordner: photos/special/)
+        else if (sticker.type && sticker.type.startsWith('special')) {
+            // Live-Korrektur des Dateinamens auf Großbuchstaben ("spc01.png" -> "Special_01.png")
+            let correctSpecialName = pureFileName;
             if (pureFileName.startsWith('spc')) {
                 const numberMatch = pureFileName.match(/\d+/);
                 if (numberMatch) {
                     const num = parseInt(numberMatch[0], 10);
                     const formattedNum = num < 10 ? '0' + num : num;
-                    correctFileName = "special_" + formattedNum + ".png";
+                    correctSpecialName = "Special_" + formattedNum + ".png";
                 }
             }
-            
-            // Exaktes Mapping für die beiden Spezial-Awards aus deiner JSON
-            if (sticker.type === 'special_boot') {
-                finalPath = "photos/golden_boot/golden_boot.png";
-            } else if (sticker.type === 'special_ball') {
-                finalPath = "photos/golden_ball/golden_ball.png";
-            } else {
-                finalPath = "photos/special/" + correctFileName;
-            }
+            finalPath = "photos/special/" + correctSpecialName;
         } 
-        // 2. WM-Stadien (Ordner: photos/stadiums)
+        // 4. WM-Stadien (Zielordner: photos/stadiums/)
         else if (sticker.type && sticker.type.startsWith('stadium')) {
             finalPath = "photos/stadiums/" + pureFileName;
         } 
-        // 3. Gewinner-Teambilder (Ordner: photos/winning_teams)
-        else if (sticker.type === 'team_photo') {
+        // 5. Historische Gewinner-Teambilder (In der JSON type "historic_winner", Zielordner: photos/winning_teams/)
+        else if (sticker.type === 'historic_winner' || sticker.type === 'team_photo') {
             finalPath = "photos/winning_teams/" + pureFileName;
         }
 
