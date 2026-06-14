@@ -369,7 +369,7 @@ body {
     height: 100%; aspect-ratio: 1 / 1; display: flex; align-items: center; justify-content: center;
     font-weight: bold; font-size: 9cqw; line-height: 1; border-radius: 5px; 
     border: 1px solid rgba(0,0,0,0.2); box-shadow: 0 0 5px 1px rgba(255, 255, 255, 0.4);
-    box-sizing: border-box; padding: 0; text-transform: nonoe;
+    box-sizing: border-box; padding: 0; text-transform: none;
 }
 .pos-box[data-pos="at"] { background-color: #ff1145; color: #ffffff; } 
 .pos-box[data-pos="mf"] { background-color: #28a745; color: #ffffff; } 
@@ -380,7 +380,7 @@ body {
 
 .club-name {
     color: #ffffff; font-weight: bold; font-size: 5.5cqw; -webkit-text-stroke: 0.3px #000000; 
-    text-transform: nonoe; letter-spacing: 0.2px; max-width: 100%; 
+    text-transform: none; letter-spacing: 0.2px; max-width: 100%; 
     display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;
     overflow: hidden; line-height: 1.1;
 }
@@ -714,7 +714,8 @@ function startUserSync(uid) {
                 packs_available: 7,
                 last_pack_claimed: firebase.firestore.FieldValue.serverTimestamp(),
                 album: {},
-                stapel: []
+                stapel: [],
+                unassigned_stickers: [] // NEU: Array zum Zwischenspeichern
             }).then(() => {
                 console.log("Neues Profil angelegt.");
             }).catch(err => console.error("Fehler beim Erstellen des Profils:", err));
@@ -727,11 +728,54 @@ function startUserSync(uid) {
         
         updateBoosterZoneVisibility();
         
+        // NEU: CHECK AUF OFFENE, NICHT ZUGEORDNETE STICKER BEIM START/RELOAD
+        if (currentUserData.unassigned_stickers && currentUserData.unassigned_stickers.length > 0) {
+            // Nur erzwingen, wenn wir nicht sowieso gerade ein Pack aufmachen
+            if (currentOpenedStickers.length === 0) {
+                restoreUnassignedStickers(currentUserData.unassigned_stickers);
+            }
+        }
+        
         if(!packTimerInterval) {
             checkAndGeneratePacks(uid);
             packTimerInterval = setInterval(() => checkAndGeneratePacks(uid), 60000);
         }
     });
+}
+
+// NEU: RESTORE FUNKTION FÜR ABGEBROCHENE PACKS
+function restoreUnassignedStickers(unassignedIds) {
+    // Warten bis die Datenbank fertig geladen ist
+    if (!globalStickerDatabase) {
+        setTimeout(() => restoreUnassignedStickers(unassignedIds), 500);
+        return;
+    }
+    
+    // Verstecke die Pack-Grafiken, da wir direkt zur Anzeige springen
+    document.getElementById("packPile").style.display = "none";
+    document.getElementById("rippedWrapper").style.display = "none";
+    
+    // Baue die Sticker-Objekte aus den IDs wieder zusammen
+    currentOpenedStickers = unassignedIds.map(id => globalStickerDatabase[id]).filter(Boolean);
+    
+    const currentAlbum = currentUserData.album || {};
+    const currentStapel = currentUserData.stapel || [];
+    
+    remainingDuplicates = [];
+    remainingNewStickers = [];
+
+    currentOpenedStickers.forEach(sticker => {
+        const isDuplicate = currentAlbum[sticker.id] === "pasted" || currentStapel.includes(sticker.id);
+        if (isDuplicate) {
+            remainingDuplicates.push(sticker);
+        } else {
+            remainingNewStickers.push(sticker);
+        }
+    });
+
+    // Zeige das Overlay (mit deinem transparenten Hintergrund) und baue die Karten
+    document.getElementById("stickerOverlay").style.display = "flex";
+    renderDrawnStickersGrid();
 }
 
 function checkAndGeneratePacks(uid) {
@@ -776,7 +820,6 @@ function openBoosterPack() {
     const rippedWrapper = document.getElementById("rippedWrapper");
     const packTop = document.getElementById("packTop");
     
-    // NEU: Hält das Pack während der Aufreiß-Animation auf genau der vergrößerten Skalierung
     rippedWrapper.classList.add("active-rip"); 
     rippedWrapper.style.display = "block";
     packTop.classList.remove("torn");
@@ -790,6 +833,7 @@ function openBoosterPack() {
         }
     }
     currentOpenedStickers = chosenStickers;
+    const chosenIds = chosenStickers.map(s => s.id);
 
     const currentAlbum = currentUserData.album || {};
     const currentStapel = currentUserData.stapel || [];
@@ -806,6 +850,12 @@ function openBoosterPack() {
         }
     });
 
+    // NEU: SICHERUNGSSPUNKT - Sticker direkt beim Öffnen in Firebase eintragen
+    db.collection("users").doc(uid).update({
+        packs_available: currentUserData.packs_available - 1,
+        unassigned_stickers: chosenIds
+    });
+
     setTimeout(() => {
         packTop.classList.add("torn");
         
@@ -815,10 +865,6 @@ function openBoosterPack() {
             renderDrawnStickersGrid();
         }, 600);
     }, 400);
-
-    db.collection("users").doc(uid).update({
-        packs_available: currentUserData.packs_available - 1
-    });
 }
 
 function renderDrawnStickersGrid() {
@@ -1077,6 +1123,7 @@ function processDuplicatesToMarket() {
     if (remainingDuplicates.length === 0) return;
     
     const uid = firebase.auth().currentUser.uid;
+    const processedIds = remainingDuplicates.map(s => s.id);
     
     remainingDuplicates.forEach(sticker => {
         const cardEl = document.getElementById(`sticker-card-${sticker.id}`);
@@ -1090,6 +1137,10 @@ function processDuplicatesToMarket() {
             status: "available"
         });
     });
+
+    // NEU: Die auf den Markt geschickten Sticker aus der Unassigned-Liste löschen
+    const newUnassigned = (currentUserData.unassigned_stickers || []).filter(id => !processedIds.includes(id));
+    db.collection("users").doc(uid).update({ unassigned_stickers: newUnassigned });
 
     remainingDuplicates = [];
     
@@ -1113,9 +1164,13 @@ function sendNewToAlbumStapel() {
     });
 
     const updatedStapel = [...currentStapel, ...newIds];
+    
+    // NEU: Die in den Stapel geschickten Sticker aus der Unassigned-Liste löschen
+    const newUnassigned = (currentUserData.unassigned_stickers || []).filter(id => !newIds.includes(id));
 
     db.collection("users").doc(uid).update({
-        stapel: updatedStapel
+        stapel: updatedStapel,
+        unassigned_stickers: newUnassigned
     }).then(() => {
         remainingNewStickers = [];
 
@@ -1132,7 +1187,6 @@ function resetBoosterDashboardView() {
     document.getElementById("actionPanel").style.display = "none";
     document.getElementById("packPile").style.display = "block";
     
-    // NEU: Animation-Klasse beim Zurücksetzen sauber entfernen
     document.getElementById("rippedWrapper").classList.remove("active-rip"); 
     
     currentOpenedStickers = [];
