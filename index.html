@@ -906,31 +906,7 @@ function renderDrawnStickersGrid() {
 
         const img = document.createElement("img");
         img.className = "sticker-img";
-
-        // --- DYNAMISCHE PFAD-KORREKTUR FÜR DEN PHOTOS-ORDNER ---
-        let finalPath = sticker.image;
-        if (finalPath.startsWith('./')) {
-            finalPath = finalPath.substring(2);
-        }
-        
-        // 1. Abfangen von Trophäen, Stempeln, etc. (Typen starten mit "special_")
-        if (sticker.type && sticker.type.startsWith('special')) {
-            finalPath = "photos/special/" + finalPath.substring(finalPath.lastIndexOf('/') + 1);
-        } 
-        // 2. Abfangen von Stadien
-        else if (sticker.type && sticker.type.startsWith('stadium')) {
-            finalPath = "photos/stadiums/" + finalPath.substring(finalPath.lastIndexOf('/') + 1);
-        } 
-        // 3. Abfangen des Golden Boots
-        else if (sticker.type === 'golden_boot') {
-            finalPath = "photos/golden_boot/" + finalPath.substring(finalPath.lastIndexOf('/') + 1);
-        }
-        // 4. Abfangen von Teambildern
-        else if (sticker.type === 'team_photo') {
-            finalPath = "photos/winning_teams/" + finalPath.substring(finalPath.lastIndexOf('/') + 1);
-        }
-
-        img.src = finalPath;
+        img.src = sticker.image;
         container.appendChild(img);
 
         if (sticker.shiny === "gold" || sticker.shiny === "silver") {
