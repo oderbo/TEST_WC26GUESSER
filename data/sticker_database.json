@@ -31,7 +31,7 @@
     "SPC003": {
         "id": "SPC003",
         "albumNumber": "3",
-        "type": "special_egde",
+        "type": "special_edge",
         "name": "Oli in Gold",
         "image": "./photos/specials/spc003.png",
         "shiny": "gold",
