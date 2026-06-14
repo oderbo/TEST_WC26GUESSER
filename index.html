@@ -211,7 +211,7 @@ body {
 
 .pack-layer {
     position: absolute; width: 100%; height: 100%; background-size: cover;
-    background-position: center; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.3); transition: all 0.3s ease;
+    background-position: center; border-radius: 0px; box-shadow: 0 4px 10px rgba(0,0,0,0.3); transition: all 0.3s ease;
 }
 
 .pack-layer.back2 { transform: scale(0.9) translateY(-15px) rotate(-5deg); opacity: 0.5; z-index: 1; }
@@ -219,7 +219,7 @@ body {
 .pack-layer.front { background-image: url('assets/booster_pack_front.png'); z-index: 3; transform: translateY(-12px); }
 
 .pack-pile:hover .pack-layer.front {
-    transform: scale(1.05) translateY(-18px); box-shadow: 0 10px 25px rgba(0, 255, 204, 0.5);
+    transform: scale(1.05) translateY(-18px); box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
 }
 
 .ripped-pack-wrapper { position: relative; width: 100%; height: 100%; display: none; transition: transform 0.2s ease; }
@@ -227,7 +227,7 @@ body {
 /* ÜBERNIMMT DIE VERGRÖSSERTE SKALIERUNG WÄHREND DEM AUFREISSEN */
 .ripped-pack-wrapper.active-rip {
     transform: scale(1.05) translateY(-18px);
-    filter: drop-shadow(0 10px 25px rgba(0, 255, 204, 0.5));
+    filter: drop-shadow(0 10px 25px rgba(0, 0, 0, 0.5));
 }
 
 .pack-part { position: absolute; width: 100%; background-size: cover; background-position: center; }
@@ -815,14 +815,10 @@ function openBoosterPack() {
     }
 
     const uid = firebase.auth().currentUser.uid;
-    document.getElementById("packPile").style.display = "none";
+    const packPile = document.getElementById("packPile");
     
-    const rippedWrapper = document.getElementById("rippedWrapper");
-    const packTop = document.getElementById("packTop");
-    
-    rippedWrapper.classList.add("active-rip"); 
-    rippedWrapper.style.display = "block";
-    packTop.classList.remove("torn");
+    // NEU: Zwingt das Pack für 100ms in die Hover-Ansicht (wichtig fürs Smartphone)
+    packPile.classList.add("force-hover");
 
     const allIds = Object.keys(globalStickerDatabase);
     const chosenStickers = [];
@@ -850,21 +846,36 @@ function openBoosterPack() {
         }
     });
 
-    // NEU: SICHERUNGSSPUNKT - Sticker direkt beim Öffnen in Firebase eintragen
+    // SICHERUNGSSPUNKT - Sticker direkt beim Öffnen in Firebase eintragen
     db.collection("users").doc(uid).update({
         packs_available: currentUserData.packs_available - 1,
         unassigned_stickers: chosenIds
     });
 
+    // NEU: Nach exakt 100ms tauschen wir das schwebende Pack gegen die Aufreiß-Animation aus
     setTimeout(() => {
-        packTop.classList.add("torn");
+        packPile.classList.remove("force-hover");
+        packPile.style.display = "none";
         
+        const rippedWrapper = document.getElementById("rippedWrapper");
+        const packTop = document.getElementById("packTop");
+        
+        rippedWrapper.classList.add("active-rip"); 
+        rippedWrapper.style.display = "block";
+        packTop.classList.remove("torn");
+        
+        // Die eigentliche Aufreiß-Animation startet (300ms + 100ms davor = 400ms Gesamt wie vorher)
         setTimeout(() => {
-            rippedWrapper.style.display = "none";
-            document.getElementById("stickerOverlay").style.display = "flex";
-            renderDrawnStickersGrid();
-        }, 600);
-    }, 400);
+            packTop.classList.add("torn");
+            
+            setTimeout(() => {
+                rippedWrapper.style.display = "none";
+                document.getElementById("stickerOverlay").style.display = "flex";
+                renderDrawnStickersGrid();
+            }, 600);
+        }, 300); 
+        
+    }, 100);
 }
 
 function renderDrawnStickersGrid() {
@@ -1187,6 +1198,8 @@ function resetBoosterDashboardView() {
     document.getElementById("actionPanel").style.display = "none";
     document.getElementById("packPile").style.display = "block";
     
+    // Setzt die CSS-Klassen wieder auf null
+    document.getElementById("packPile").classList.remove("force-hover");
     document.getElementById("rippedWrapper").classList.remove("active-rip"); 
     
     currentOpenedStickers = [];
