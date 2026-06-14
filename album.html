@@ -89,10 +89,10 @@ h1 {
 
 /* --- RUNDER MARKT-BUTTON (UNTEN LINKS) --- */
 .action-btn-round {
-    position: fixed;      /* Schwebt immer über dem Bildschirm */
-    bottom: 20px;         /* Abstand von unten */
-    left: 20px;           /* Abstand von links */
-    width: 60px;          /* Etwas kompakter für Handys */
+    position: fixed;      
+    bottom: 20px;         
+    left: 20px;           
+    width: 60px;          
     height: 60px;
     border-radius: 50%;
     background-color: #ffffff;
@@ -103,7 +103,7 @@ h1 {
     box-shadow: 0 6px 16px rgba(0,0,0,0.3);
     transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.2s;
     padding: 0;
-    z-index: 1000;        /* Liegt immer über dem restlichen Inhalt */
+    z-index: 1000;        
 }
 
 .action-btn-round:hover {
@@ -143,7 +143,6 @@ h1 {
         border-width: 2px;
     }
 
-    /* Markt-Button auf Desktop etwas größer */
     .action-btn-round {
         width: 70px;
         height: 70px;
@@ -170,4 +169,32 @@ h1 {
 
 <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/9.23.0
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+
+<script>
+// Firebase Konfiguration
+const firebaseConfig = {
+  apiKey: "AIzaSyD2KXF4jwbym0ghwMrSPFCiD-pgajGIopE",
+  authDomain: "wc26guesser-db.firebaseapp.com",
+  projectId: "wc26guesser-db",
+  storageBucket: "wc26guesser-db.firebasestorage.app",
+  messagingSenderId: "396925110064",
+  appId: "1:396925110064:web:18d8f40a30e2f0d63deaf5"
+};
+
+firebase.initializeApp(firebaseConfig);
+const db = firebase.firestore();
+
+firebase.auth().onAuthStateChanged((user) => {
+    if (user) {
+        console.log("User angemeldet, bereite Album für UID vor:", user.uid);
+        // HIER: Funktion zum Laden der Sticker aus Firebase starten
+    } else {
+        console.log("Kein User angemeldet. Weiterleitung zur Startseite...");
+        // SICHERHEITS-WEITERLEITUNG:
+        window.location.href = 'index.html';
+    }
+});
+</script>
+</body>
+</html>

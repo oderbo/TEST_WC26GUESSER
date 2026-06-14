@@ -151,8 +151,9 @@ firebase.auth().onAuthStateChanged((user) => {
         console.log("User angemeldet, bereite Market für UID vor:", user.uid);
         // HIER: Funktion zum Laden der Sticker aus Firebase starten
     } else {
-        console.log("Kein User angemeldet.");
-        // HIER: Eventuell Redirect zur Startseite
+        console.log("Kein User angemeldet. Weiterleitung zur Startseite...");
+        // SICHERHEITS-WEITERLEITUNG:
+        window.location.href = 'index.html';
     }
 });
 </script>
