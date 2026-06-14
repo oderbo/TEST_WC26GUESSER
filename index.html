@@ -38,10 +38,8 @@ body {
 .header-container {
     width: 100%;
     display: flex;
-    justify-content: center;
+    justify-content: center; /* <--- DAS zwingt den Inhalt exakt in die Mitte */
     align-items: center;
-    z-index: 5;
-    flex-shrink: 0;
 }
 
 .logo-mask {
@@ -93,7 +91,7 @@ body {
     }
 
     .image-btn { width: 13vw; max-width: 160px; }
-    .center-space { display: block; width: 18vw; max-width: 220px; aspect-ratio: 1 / 1; visibility: hidden; }
+    .center-space { display: block; width: 20vw; max-width: 250px; aspect-ratio: 1 / 1; visibility: hidden; }
 
     .booster-zone {
         position: absolute; top: 55%; left: 50%; transform: translate(-50%, -50%);
@@ -109,14 +107,18 @@ body {
     .logo-desktop { display: none; }
     
     .logo-mobile {
-        display: block; max-width: 220px; width: 55vw; aspect-ratio: 1.2 / 1; 
+        display: block; max-width: 260px; width: 65vw; aspect-ratio: 1.2 / 1; 
         -webkit-mask-image: url('assets/WC_26_GUESSER.svg'); mask-image: url('assets/WC_26_GUESSER.svg');
     }
 
     .menu-container {
         display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; 
         justify-items: center; align-items: center; max-width: 250px; width: 100%;
-        margin: auto auto; /* PERFEKTE MITTIGE VERTEILUNG ZWISCHEN HEADER UND PACK */
+        margin-top: 5vh;    /* Abstand nach oben zum Logo */
+        margin-bottom: 5vh; /* Abstand nach unten zum Pack */
+        margin-left: auto;   /* Hält das Menü in der horizontalen Mitte */
+        margin-right: auto;  /* Hält das Menü in der horizontalen Mitte */
+        
         z-index: 10; flex-shrink: 0;
     }
 
@@ -367,7 +369,7 @@ body {
     height: 100%; aspect-ratio: 1 / 1; display: flex; align-items: center; justify-content: center;
     font-weight: bold; font-size: 9cqw; line-height: 1; border-radius: 5px; 
     border: 1px solid rgba(0,0,0,0.2); box-shadow: 0 0 5px 1px rgba(255, 255, 255, 0.4);
-    box-sizing: border-box; padding: 0; text-transform: uppercase;
+    box-sizing: border-box; padding: 0; text-transform: nonoe;
 }
 .pos-box[data-pos="at"] { background-color: #ff1145; color: #ffffff; } 
 .pos-box[data-pos="mf"] { background-color: #28a745; color: #ffffff; } 
@@ -378,7 +380,7 @@ body {
 
 .club-name {
     color: #ffffff; font-weight: bold; font-size: 5.5cqw; -webkit-text-stroke: 0.3px #000000; 
-    text-transform: uppercase; letter-spacing: 0.2px; max-width: 100%; 
+    text-transform: nonoe; letter-spacing: 0.2px; max-width: 100%; 
     display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;
     overflow: hidden; line-height: 1.1;
 }
@@ -534,8 +536,6 @@ body {
     <div class="logo-mask logo-mobile"></div>
 </div>
 
-<div class="mobile-spacer"></div>
-
 <div class="menu-container">
     <button class="image-btn btn-random-nation" onclick="startRandom()"></button>
     <button class="image-btn btn-pick-nation" onclick="openSelect()"></button>
@@ -551,8 +551,6 @@ body {
     
     <button class="image-btn btn-album" onclick="window.location.href='album.html'"></button>
 </div>
-
-<div class="mobile-spacer"></div>
 
 <div class="booster-zone" id="boosterZone">
     <div class="pack-pile" id="packPile" onclick="openBoosterPack()">
