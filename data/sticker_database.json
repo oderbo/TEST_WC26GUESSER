@@ -2,16 +2,16 @@
   "SPC000": {
     "id": "SPC000",
     "albumNumber": "00",
-    "type": "special",
+    "type": "special_fill",
     "name": "FIFA World Cup 2026 Stamp",
-    "image": "./assets/specials/special_00.png",
+    "image": "./assets/specials/spc00.png",
     "shiny": "gold",
     "orientation": "portrait"
   },
   "SPC001": {
     "id": "SPC001",
     "albumNumber": "1",
-    "type": "special",
+    "type": "special_top",
     "name": "WC Trophy (Top)",
     "image": "./assets/specials/spc001.png",
     "shiny": "gold",
@@ -21,7 +21,7 @@
   "SPC002": {
     "id": "SPC002",
     "albumNumber": "2",
-    "type": "special",
+    "type": "special_bottom",
     "name": "WC Trophy (Bottom)",
     "image": "./assets/specials/spc002.png",
     "shiny": "gold",
@@ -31,7 +31,7 @@
   "SPC003": {
     "id": "SPC003",
     "albumNumber": "3",
-    "type": "special",
+    "type": "special_egde",
     "name": "Oli in Gold",
     "image": "./assets/specials/spc003.png",
     "shiny": "gold",
@@ -40,7 +40,7 @@
   "SPC004": {
     "id": "SPC004",
     "albumNumber": "4",
-    "type": "special",
+    "type": "special_fill",
     "name": "Official Match Ball",
     "image": "./assets/specials/spc004.png",
     "shiny": "gold",
@@ -49,25 +49,27 @@
   "SPC005": {
     "id": "SPC005",
     "albumNumber": "5",
-    "type": "special",
-    "name": "Tournament Logo",
+    "type": "special_top",
+    "name": "WC Logo (Top)",
     "image": "./assets/specials/spc005.png",
     "shiny": "gold",
-    "orientation": "portrait"
+    "orientation": "landscape",
+    "part": "top"
   },
   "SPC006": {
     "id": "SPC006",
-    "albumNumber": "6",
-    "type": "special",
-    "name": "FIFA Shiny Gold",
+    "albumNumber": "5",
+    "type": "special_bottom",
+    "name": "WC Logo (Bottom)",
     "image": "./assets/specials/spc006.png",
     "shiny": "gold",
-    "orientation": "portrait"
+    "orientation": "landscape",
+    "part": "bottom"
   },
-  "STD001": {
+"STD001": {
     "id": "STD001",
     "albumNumber": "7",
-    "type": "stadium",
+    "type": "stadium_left",
     "name": "Stadium 01 - Left Half",
     "image": "./assets/stadiums/stadium_01_left.png",
     "shiny": "none",
@@ -77,7 +79,7 @@
   "STD002": {
     "id": "STD002",
     "albumNumber": "8",
-    "type": "stadium",
+    "type": "stadium_right",
     "name": "Stadium 01 - Right Half",
     "image": "./assets/stadiums/stadium_01_right.png",
     "shiny": "none",
@@ -87,7 +89,7 @@
   "STD003": {
     "id": "STD003",
     "albumNumber": "9",
-    "type": "stadium",
+    "type": "stadium_left",
     "name": "Stadium 02 - Left Half",
     "image": "./assets/stadiums/stadium_02_left.png",
     "shiny": "none",
@@ -97,7 +99,7 @@
   "STD004": {
     "id": "STD004",
     "albumNumber": "10",
-    "type": "stadium",
+    "type": "stadium_right",
     "name": "Stadium 02 - Right Half",
     "image": "./assets/stadiums/stadium_02_right.png",
     "shiny": "none",
@@ -107,7 +109,7 @@
   "STD005": {
     "id": "STD005",
     "albumNumber": "11",
-    "type": "stadium",
+    "type": "stadium_left",
     "name": "Stadium 03 - Left Half",
     "image": "./assets/stadiums/stadium_03_left.png",
     "shiny": "none",
@@ -117,7 +119,7 @@
   "STD006": {
     "id": "STD006",
     "albumNumber": "12",
-    "type": "stadium",
+    "type": "stadium_right",
     "name": "Stadium 03 - Right Half",
     "image": "./assets/stadiums/stadium_03_right.png",
     "shiny": "none",
@@ -127,7 +129,7 @@
   "STD007": {
     "id": "STD007",
     "albumNumber": "13",
-    "type": "stadium",
+    "type": "stadium_left",
     "name": "Stadium 04 - Left Half",
     "image": "./assets/stadiums/stadium_04_left.png",
     "shiny": "none",
@@ -137,7 +139,7 @@
   "STD008": {
     "id": "STD008",
     "albumNumber": "14",
-    "type": "stadium",
+    "type": "stadium_right",
     "name": "Stadium 04 - Right Half",
     "image": "./assets/stadiums/stadium_04_right.png",
     "shiny": "none",
@@ -147,7 +149,7 @@
   "STD009": {
     "id": "STD009",
     "albumNumber": "15",
-    "type": "stadium",
+    "type": "stadium_left",
     "name": "Stadium 05 - Left Half",
     "image": "./assets/stadiums/stadium_05_left.png",
     "shiny": "none",
@@ -157,7 +159,7 @@
   "STD010": {
     "id": "STD010",
     "albumNumber": "16",
-    "type": "stadium",
+    "type": "stadium_right",
     "name": "Stadium 05 - Right Half",
     "image": "./assets/stadiums/stadium_05_right.png",
     "shiny": "none",
@@ -167,7 +169,7 @@
   "STD011": {
     "id": "STD011",
     "albumNumber": "17",
-    "type": "stadium",
+    "type": "stadium_left",
     "name": "Stadium 06 - Left Half",
     "image": "./assets/stadiums/stadium_06_left.png",
     "shiny": "none",
@@ -177,7 +179,7 @@
   "STD012": {
     "id": "STD012",
     "albumNumber": "18",
-    "type": "stadium",
+    "type": "stadium_right",
     "name": "Stadium 06 - Right Half",
     "image": "./assets/stadiums/stadium_06_right.png",
     "shiny": "none",
@@ -187,7 +189,7 @@
   "STD013": {
     "id": "STD013",
     "albumNumber": "19",
-    "type": "stadium",
+    "type": "stadium_left",
     "name": "Stadium 07 - Left Half",
     "image": "./assets/stadiums/stadium_07_left.png",
     "shiny": "none",
@@ -197,7 +199,7 @@
   "STD014": {
     "id": "STD014",
     "albumNumber": "20",
-    "type": "stadium",
+    "type": "stadium_right",
     "name": "Stadium 07 - Right Half",
     "image": "./assets/stadiums/stadium_07_right.png",
     "shiny": "none",
@@ -207,7 +209,7 @@
   "STD015": {
     "id": "STD015",
     "albumNumber": "21",
-    "type": "stadium",
+    "type": "stadium_left",
     "name": "Stadium 08 - Left Half",
     "image": "./assets/stadiums/stadium_08_left.png",
     "shiny": "none",
@@ -217,7 +219,7 @@
   "STD016": {
     "id": "STD016",
     "albumNumber": "22",
-    "type": "stadium",
+    "type": "stadium_right",
     "name": "Stadium 08 - Right Half",
     "image": "./assets/stadiums/stadium_08_right.png",
     "shiny": "none",
@@ -227,7 +229,7 @@
   "STD017": {
     "id": "STD017",
     "albumNumber": "23",
-    "type": "stadium",
+    "type": "stadium_left",
     "name": "Stadium 09 - Left Half",
     "image": "./assets/stadiums/stadium_09_left.png",
     "shiny": "none",
@@ -237,7 +239,7 @@
   "STD018": {
     "id": "STD018",
     "albumNumber": "24",
-    "type": "stadium",
+    "type": "stadium_right",
     "name": "Stadium 09 - Right Half",
     "image": "./assets/stadiums/stadium_09_right.png",
     "shiny": "none",
@@ -247,7 +249,7 @@
   "STD019": {
     "id": "STD019",
     "albumNumber": "25",
-    "type": "stadium",
+    "type": "stadium_left",
     "name": "Stadium 10 - Left Half",
     "image": "./assets/stadiums/stadium_10_left.png",
     "shiny": "none",
@@ -257,7 +259,7 @@
   "STD020": {
     "id": "STD020",
     "albumNumber": "26",
-    "type": "stadium",
+    "type": "stadium_right",
     "name": "Stadium 10 - Right Half",
     "image": "./assets/stadiums/stadium_10_right.png",
     "shiny": "none",
@@ -267,7 +269,7 @@
   "STD021": {
     "id": "STD021",
     "albumNumber": "27",
-    "type": "stadium",
+    "type": "stadium_left",
     "name": "Stadium 11 - Left Half",
     "image": "./assets/stadiums/stadium_11_left.png",
     "shiny": "none",
@@ -277,7 +279,7 @@
   "STD022": {
     "id": "STD022",
     "albumNumber": "28",
-    "type": "stadium",
+    "type": "stadium_right",
     "name": "Stadium 11 - Right Half",
     "image": "./assets/stadiums/stadium_11_right.png",
     "shiny": "none",
@@ -287,7 +289,7 @@
   "STD023": {
     "id": "STD023",
     "albumNumber": "29",
-    "type": "stadium",
+    "type": "stadium_left",
     "name": "Stadium 12 - Left Half",
     "image": "./assets/stadiums/stadium_12_left.png",
     "shiny": "none",
@@ -297,7 +299,7 @@
   "STD024": {
     "id": "STD024",
     "albumNumber": "30",
-    "type": "stadium",
+    "type": "stadium_right",
     "name": "Stadium 12 - Right Half",
     "image": "./assets/stadiums/stadium_12_right.png",
     "shiny": "none",
@@ -307,7 +309,7 @@
   "STD025": {
     "id": "STD025",
     "albumNumber": "31",
-    "type": "stadium",
+    "type": "stadium_left",
     "name": "Stadium 13 - Left Half",
     "image": "./assets/stadiums/stadium_13_left.png",
     "shiny": "none",
@@ -317,7 +319,7 @@
   "STD026": {
     "id": "STD026",
     "albumNumber": "32",
-    "type": "stadium",
+    "type": "stadium_right",
     "name": "Stadium 13 - Right Half",
     "image": "./assets/stadiums/stadium_13_right.png",
     "shiny": "none",
@@ -327,7 +329,7 @@
   "STD027": {
     "id": "STD027",
     "albumNumber": "33",
-    "type": "stadium",
+    "type": "stadium_left",
     "name": "Stadium 14 - Left Half",
     "image": "./assets/stadiums/stadium_14_left.png",
     "shiny": "none",
@@ -337,7 +339,7 @@
   "STD028": {
     "id": "STD028",
     "albumNumber": "34",
-    "type": "stadium",
+    "type": "stadium_right",
     "name": "Stadium 14 - Right Half",
     "image": "./assets/stadiums/stadium_14_right.png",
     "shiny": "none",
@@ -347,7 +349,7 @@
   "STD029": {
     "id": "STD029",
     "albumNumber": "35",
-    "type": "stadium",
+    "type": "stadium_left",
     "name": "Stadium 15 - Left Half",
     "image": "./assets/stadiums/stadium_15_left.png",
     "shiny": "none",
@@ -357,7 +359,7 @@
   "STD030": {
     "id": "STD030",
     "albumNumber": "36",
-    "type": "stadium",
+    "type": "stadium_right",
     "name": "Stadium 15 - Right Half",
     "image": "./assets/stadiums/stadium_15_right.png",
     "shiny": "none",
@@ -367,7 +369,7 @@
   "STD031": {
     "id": "STD031",
     "albumNumber": "37",
-    "type": "stadium",
+    "type": "stadium_left",
     "name": "Stadium 16 - Left Half",
     "image": "./assets/stadiums/stadium_16_left.png",
     "shiny": "none",
@@ -377,13 +379,13 @@
   "STD032": {
     "id": "STD032",
     "albumNumber": "38",
-    "type": "stadium",
+    "type": "stadium_right",
     "name": "Stadium 16 - Right Half",
     "image": "./assets/stadiums/stadium_16_right.png",
     "shiny": "none",
     "orientation": "portrait",
     "part": "right"
-  },
+  }
   "MEX001": {
     "id": "MEX001",
     "albumNumber": "39",
