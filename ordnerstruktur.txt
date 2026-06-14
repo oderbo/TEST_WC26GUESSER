@@ -1,0 +1,2823 @@
+Auflistung der Ordnerpfade
+Volumeseriennummer : 9FC8-9A10
+C:.
+≥   game.html
+≥   game_random_player.html
+≥   generate_sticker_db.py
+≥   index.html
+≥   lobby.html
+≥   ordnerstruktur.txt
+≥   README.md
+≥   select.html
+≥   select_multiplayer.html
+≥   start.bat
+≥   
+√ƒƒƒassets
+≥       album_button.png
+≥       apple-touch-icon.png
+≥       booster_pack_front.png
+≥       booster_pack_ripped_bottom.png
+≥       booster_pack_ripped_top.png
+≥       country_pick_button.jpg
+≥       country_pick_button.jpg.png
+≥       country_random_button.jpg
+≥       favicon.png
+≥       fifa-world-cup-2026.9737ad74.png
+≥       FIFA_icon.svg
+≥       Flag_basic.png
+≥       FWC2026.ttf
+≥       Guesser.svg
+≥       Icon.png
+≥       main_background.jpg
+≥       main_background.png
+≥       main_background2.png
+≥       market_icon.png
+≥       panini_album.png
+≥       player_random_button.png
+≥       Unbenannt.jpg
+≥       WC26.svg
+≥       WC26Guesser.svg
+≥       WC_26_GUESSER.svg
+≥       xmain_background.jpg
+≥       
+√ƒƒƒdata
+≥   ≥   sticker_database.json
+≥   ≥   worldcup_teams.json
+≥   ≥   
+≥   √ƒƒƒalgeria
+≥   ≥   ≥   algeria_flag.png
+≥   ≥   ≥   info.json
+≥   ≥   ≥   logo.png
+≥   ≥   ≥   
+≥   ≥   √ƒƒƒclubs
+≥   ≥   ≥       Al-Ahli SFC.png
+≥   ≥   ≥       Al-Duhail SC.png
+≥   ≥   ≥       Al-Ittihad Club.png
+≥   ≥   ≥       Bayer 04 Leverkusen.png
+≥   ≥   ≥       Borussia Dortmund.png
+≥   ≥   ≥       BSC Young Boys.png
+≥   ≥   ≥       Eintracht Frankfurt.png
+≥   ≥   ≥       Esperance Tunis.png
+≥   ≥   ≥       ETO FC.png
+≥   ≥   ≥       FC Stade Nyonnais.png
+≥   ≥   ≥       FC Twente Enschede.png
+≥   ≥   ≥       Feyenoord Rotterdam.png
+≥   ≥   ≥       Frosinone Calcio.png
+≥   ≥   ≥       Granada CF.png
+≥   ≥   ≥       Hellas Verona.png
+≥   ≥   ≥       JS Kabylie.png
+≥   ≥   ≥       LOSC Lille.png
+≥   ≥   ≥       Manchester City.png
+≥   ≥   ≥       OGC Nice.png
+≥   ≥   ≥       Olympique Marseille.png
+≥   ≥   ≥       Paris FC.png
+≥   ≥   ≥       Royal Charleroi SC.png
+≥   ≥   ≥       USM Alger.png
+≥   ≥   ≥       VfL Wolfsburg.png
+≥   ≥   ≥       
+≥   ≥   ¿ƒƒƒplayers
+≥   ≥           1.png
+≥   ≥           10.png
+≥   ≥           11.png
+≥   ≥           12.png
+≥   ≥           13.png
+≥   ≥           14.png
+≥   ≥           15.png
+≥   ≥           16.png
+≥   ≥           17.png
+≥   ≥           18.png
+≥   ≥           19.png
+≥   ≥           2.png
+≥   ≥           20.png
+≥   ≥           21.png
+≥   ≥           22.png
+≥   ≥           23.png
+≥   ≥           24.png
+≥   ≥           25.png
+≥   ≥           26.png
+≥   ≥           3.png
+≥   ≥           4.png
+≥   ≥           5.png
+≥   ≥           6.png
+≥   ≥           7.png
+≥   ≥           8.png
+≥   ≥           9.png
+≥   ≥           coach.png
+≥   ≥           
+≥   √ƒƒƒargentina
+≥   ≥   ≥   argentina_flag.png
+≥   ≥   ≥   info.json
+≥   ≥   ≥   logo.png
+≥   ≥   ≥   
+≥   ≥   √ƒƒƒclubs
+≥   ≥   ≥       Aston Villa.png
+≥   ≥   ≥       AtlÇtico de Madrid.png
+≥   ≥   ≥       Bayer 04 Leverkusen.png
+≥   ≥   ≥       CA Boca Juniors.png
+≥   ≥   ≥       CA River Plate.png
+≥   ≥   ≥       Chelsea FC.png
+≥   ≥   ≥       Como 1907.png
+≥   ≥   ≥       Inter Miami CF.png
+≥   ≥   ≥       Inter Milan.png
+≥   ≥   ≥       Liverpool FC.png
+≥   ≥   ≥       Manchester United.png
+≥   ≥   ≥       Olympique Lyon.png
+≥   ≥   ≥       Olympique Marseille.png
+≥   ≥   ≥       RC Strasbourg Alsace.png
+≥   ≥   ≥       Real Betis BalompiÇ.png
+≥   ≥   ≥       SL Benfica.png
+≥   ≥   ≥       Sociedade Esportiva Palmeiras.png
+≥   ≥   ≥       Tottenham Hotspur.png
+≥   ≥   ≥       
+≥   ≥   ¿ƒƒƒplayers
+≥   ≥           1.png
+≥   ≥           10.png
+≥   ≥           11.png
+≥   ≥           12.png
+≥   ≥           13.png
+≥   ≥           14.png
+≥   ≥           15.png
+≥   ≥           16.png
+≥   ≥           17.png
+≥   ≥           18.png
+≥   ≥           19.png
+≥   ≥           2.png
+≥   ≥           20.png
+≥   ≥           21.png
+≥   ≥           22.png
+≥   ≥           23.png
+≥   ≥           24.png
+≥   ≥           25.png
+≥   ≥           26.png
+≥   ≥           3.png
+≥   ≥           4.png
+≥   ≥           5.png
+≥   ≥           6.png
+≥   ≥           7.png
+≥   ≥           8.png
+≥   ≥           9.png
+≥   ≥           coach.png
+≥   ≥           
+≥   √ƒƒƒaustralia
+≥   ≥   ≥   australia_flag.png
+≥   ≥   ≥   info.json
+≥   ≥   ≥   logo.png
+≥   ≥   ≥   
+≥   ≥   √ƒƒƒclubs
+≥   ≥   ≥       Albirex Niigata.png
+≥   ≥   ≥       APOEL Nicosia.png
+≥   ≥   ≥       CD Castell¢n.png
+≥   ≥   ≥       Colorado Rapids.png
+≥   ≥   ≥       FC St. Pauli.png
+≥   ≥   ≥       Feyenoord Rotterdam.png
+≥   ≥   ≥       Grazer AK 1902.png
+≥   ≥   ≥       Heart of Midlothian FC.png
+≥   ≥   ≥       Heracles Almelo.png
+≥   ≥   ≥       Leicester City.png
+≥   ≥   ≥       Levante UD.png
+≥   ≥   ≥       Machida Zelvia.png
+≥   ≥   ≥       Melbourne City FC.png
+≥   ≥   ≥       Melbourne Victory.png
+≥   ≥   ≥       New York City FC.png
+≥   ≥   ≥       Norwich City.png
+≥   ≥   ≥       Parma Calcio 1913.png
+≥   ≥   ≥       Randers FC.png
+≥   ≥   ≥       Swansea City.png
+≥   ≥   ≥       Sydney FC.png
+≥   ≥   ≥       US Sassuolo.png
+≥   ≥   ≥       Watford FC.png
+≥   ≥   ≥       
+≥   ≥   ¿ƒƒƒplayers
+≥   ≥           1.png
+≥   ≥           10.png
+≥   ≥           11.png
+≥   ≥           12.png
+≥   ≥           13.png
+≥   ≥           14.png
+≥   ≥           15.png
+≥   ≥           16.png
+≥   ≥           17.png
+≥   ≥           18.png
+≥   ≥           19.png
+≥   ≥           2.png
+≥   ≥           20.png
+≥   ≥           21.png
+≥   ≥           22.png
+≥   ≥           23.png
+≥   ≥           24.png
+≥   ≥           25.png
+≥   ≥           26.png
+≥   ≥           3.png
+≥   ≥           4.png
+≥   ≥           5.png
+≥   ≥           6.png
+≥   ≥           7.png
+≥   ≥           8.png
+≥   ≥           9.png
+≥   ≥           coach.png
+≥   ≥           
+≥   √ƒƒƒaustria
+≥   ≥   ≥   austria_flag.png
+≥   ≥   ≥   info.json
+≥   ≥   ≥   logo.png
+≥   ≥   ≥   
+≥   ≥   √ƒƒƒclubs
+≥   ≥   ≥       1.FSV Mainz 05.png
+≥   ≥   ≥       Bayern Munich.png
+≥   ≥   ≥       Borussia Dortmund.png
+≥   ≥   ≥       Brîndby IF.png
+≥   ≥   ≥       Elche CF.png
+≥   ≥   ≥       FC Augsburg.png
+≥   ≥   ≥       FC Schalke 04.png
+≥   ≥   ≥       FC Viktoria Plzen.png
+≥   ≥   ≥       LASK.png
+≥   ≥   ≥       PSV Eindhoven.png
+≥   ≥   ≥       RB Leipzig.png
+≥   ≥   ≥       Real Madrid.png
+≥   ≥   ≥       Red Bull Salzburg.png
+≥   ≥   ≥       Red Star Belgrade.png
+≥   ≥   ≥       SC Braga.png
+≥   ≥   ≥       SC Freiburg.png
+≥   ≥   ≥       SV Werder Bremen.png
+≥   ≥   ≥       Tottenham Hotspur.png
+≥   ≥   ≥       TSG 1899 Hoffenheim.png
+≥   ≥   ≥       Venezia FC.png
+≥   ≥   ≥       VfL Wolfsburg.png
+≥   ≥   ≥       Wolfsberger AC.png
+≥   ≥   ≥       
+≥   ≥   ¿ƒƒƒplayers
+≥   ≥           1.png
+≥   ≥           10.png
+≥   ≥           11.png
+≥   ≥           12.png
+≥   ≥           13.png
+≥   ≥           14.png
+≥   ≥           15.png
+≥   ≥           16.png
+≥   ≥           17.png
+≥   ≥           18.png
+≥   ≥           19.png
+≥   ≥           2.png
+≥   ≥           20.png
+≥   ≥           21.png
+≥   ≥           22.png
+≥   ≥           23.png
+≥   ≥           24.png
+≥   ≥           25.png
+≥   ≥           26.png
+≥   ≥           3.png
+≥   ≥           4.png
+≥   ≥           5.png
+≥   ≥           6.png
+≥   ≥           7.png
+≥   ≥           8.png
+≥   ≥           9.png
+≥   ≥           coach.png
+≥   ≥           
+≥   √ƒƒƒbelgium
+≥   ≥   ≥   belgium_flag.png
+≥   ≥   ≥   info.json
+≥   ≥   ≥   logo.png
+≥   ≥   ≥   
+≥   ≥   √ƒƒƒclubs
+≥   ≥   ≥       AC Milan.png
+≥   ≥   ≥       Arsenal FC.png
+≥   ≥   ≥       Aston Villa.png
+≥   ≥   ≥       Atalanta BC.png
+≥   ≥   ≥       Brighton & Hove Albion.png
+≥   ≥   ≥       Club Brugge KV.png
+≥   ≥   ≥       Eintracht Frankfurt.png
+≥   ≥   ≥       Fulham FC.png
+≥   ≥   ≥       Girona FC.png
+≥   ≥   ≥       LOSC Lille.png
+≥   ≥   ≥       Manchester City.png
+≥   ≥   ≥       Manchester United.png
+≥   ≥   ≥       Rangers FC.png
+≥   ≥   ≥       RC Strasbourg Alsace.png
+≥   ≥   ≥       Real Madrid.png
+≥   ≥   ≥       SL Benfica.png
+≥   ≥   ≥       Sporting CP.png
+≥   ≥   ≥       SSC Napoli.png
+≥   ≥   ≥       
+≥   ≥   ¿ƒƒƒplayers
+≥   ≥           1.png
+≥   ≥           10.png
+≥   ≥           11.png
+≥   ≥           12.png
+≥   ≥           13.png
+≥   ≥           14.png
+≥   ≥           15.png
+≥   ≥           16.png
+≥   ≥           17.png
+≥   ≥           18.png
+≥   ≥           19.png
+≥   ≥           2.png
+≥   ≥           20.png
+≥   ≥           21.png
+≥   ≥           22.png
+≥   ≥           23.png
+≥   ≥           24.png
+≥   ≥           25.png
+≥   ≥           26.png
+≥   ≥           3.png
+≥   ≥           4.png
+≥   ≥           5.png
+≥   ≥           6.png
+≥   ≥           7.png
+≥   ≥           8.png
+≥   ≥           9.png
+≥   ≥           coach.png
+≥   ≥           
+≥   √ƒƒƒbosnia_herzegovina
+≥   ≥   ≥   bosnia_herzegovina_flag.png
+≥   ≥   ≥   info.json
+≥   ≥   ≥   logo.png
+≥   ≥   ≥   
+≥   ≥   √ƒƒƒclubs
+≥   ≥   ≥       Atalanta BC.png
+≥   ≥   ≥       Borussia Mînchengladbach.png
+≥   ≥   ≥       Brîndby IF.png
+≥   ≥   ≥       BSC Young Boys.png
+≥   ≥   ≥       FC Astana.png
+≥   ≥   ≥       FC Schalke 04.png
+≥   ≥   ≥       FC Slovan Liberec.png
+≥   ≥   ≥       FC St. Pauli.png
+≥   ≥   ≥       FC Universitatea Cluj.png
+≥   ≥   ≥       FC Viktoria Plzen.png
+≥   ≥   ≥       FK Borac Banja Luka.png
+≥   ≥   ≥       Gaziantep FK.png
+≥   ≥   ≥       HNK Rijeka.png
+≥   ≥   ≥       Hull City.png
+≥   ≥   ≥       Jagiellonia Bialystok.png
+≥   ≥   ≥       Karlsruher SC.png
+≥   ≥   ≥       Pafos FC.png
+≥   ≥   ≥       PSV Eindhoven.png
+≥   ≥   ≥       RC Lens.png
+≥   ≥   ≥       Red Bull Salzburg.png
+≥   ≥   ≥       SL Benfica.png
+≥   ≥   ≥       UC Sampdoria.png
+≥   ≥   ≥       US Sassuolo.png
+≥   ≥   ≥       VfB Stuttgart.png
+≥   ≥   ≥       
+≥   ≥   ¿ƒƒƒplayers
+≥   ≥           1.png
+≥   ≥           10.png
+≥   ≥           11.png
+≥   ≥           12.png
+≥   ≥           13.png
+≥   ≥           14.png
+≥   ≥           15.png
+≥   ≥           16.png
+≥   ≥           17.png
+≥   ≥           18.png
+≥   ≥           19.png
+≥   ≥           2.png
+≥   ≥           20.png
+≥   ≥           21.png
+≥   ≥           22.png
+≥   ≥           23.png
+≥   ≥           24.png
+≥   ≥           25.png
+≥   ≥           26.png
+≥   ≥           3.png
+≥   ≥           4.png
+≥   ≥           5.png
+≥   ≥           6.png
+≥   ≥           7.png
+≥   ≥           8.png
+≥   ≥           9.png
+≥   ≥           coach.png
+≥   ≥           
+≥   √ƒƒƒbrazil
+≥   ≥   ≥   brazil_flag.png
+≥   ≥   ≥   info.json
+≥   ≥   ≥   logo.png
+≥   ≥   ≥   
+≥   ≥   √ƒƒƒclubs
+≥   ≥   ≥       AFC Bournemouth.png
+≥   ≥   ≥       Al-Ahli SFC.png
+≥   ≥   ≥       Al-Ittihad Club.png
+≥   ≥   ≥       Arsenal FC.png
+≥   ≥   ≥       Atalanta BC.png
+≥   ≥   ≥       Botafogo de Futebol e Regatas.png
+≥   ≥   ≥       Brentford FC.png
+≥   ≥   ≥       CR Flamengo.png
+≥   ≥   ≥       FC Barcelona.png
+≥   ≥   ≥       Fenerbahce.png
+≥   ≥   ≥       Gràmio Foot-Ball Porto Alegrense.png
+≥   ≥   ≥       Juventus FC.png
+≥   ≥   ≥       Liverpool FC.png
+≥   ≥   ≥       Manchester United.png
+≥   ≥   ≥       Newcastle United.png
+≥   ≥   ≥       Olympique Lyon.png
+≥   ≥   ≥       Paris Saint-Germain.png
+≥   ≥   ≥       Real Madrid.png
+≥   ≥   ≥       Santos FC.png
+≥   ≥   ≥       Zenit St. Petersburg.png
+≥   ≥   ≥       
+≥   ≥   ¿ƒƒƒplayers
+≥   ≥           1.png
+≥   ≥           10.png
+≥   ≥           11.png
+≥   ≥           12.png
+≥   ≥           13.png
+≥   ≥           14.png
+≥   ≥           15.png
+≥   ≥           16.png
+≥   ≥           17.png
+≥   ≥           18.png
+≥   ≥           19.png
+≥   ≥           2.png
+≥   ≥           20.png
+≥   ≥           21.png
+≥   ≥           22.png
+≥   ≥           23.png
+≥   ≥           24.png
+≥   ≥           25.png
+≥   ≥           26.png
+≥   ≥           3.png
+≥   ≥           4.png
+≥   ≥           5.png
+≥   ≥           6.png
+≥   ≥           7.png
+≥   ≥           8.png
+≥   ≥           9.png
+≥   ≥           coach.png
+≥   ≥           
+≥   √ƒƒƒcanada
+≥   ≥   ≥   canada_flag.png
+≥   ≥   ≥   info.json
+≥   ≥   ≥   logo.png
+≥   ≥   ≥   
+≥   ≥   √ƒƒƒclubs
+≥   ≥   ≥       Austin FC.png
+≥   ≥   ≥       Barnsley FC.png
+≥   ≥   ≥       Bayern Munich.png
+≥   ≥   ≥       Celtic FC.png
+≥   ≥   ≥       Chicago Fire FC.png
+≥   ≥   ≥       FCV Dender EH.png
+≥   ≥   ≥       HNK Hajduk Split.png
+≥   ≥   ≥       Hull City.png
+≥   ≥   ≥       Inter Miami CF.png
+≥   ≥   ≥       Juventus FC.png
+≥   ≥   ≥       Los Angeles FC.png
+≥   ≥   ≥       Middlesbrough FC.png
+≥   ≥   ≥       Norwich City.png
+≥   ≥   ≥       OGC Nice.png
+≥   ≥   ≥       Olympique Marseille.png
+≥   ≥   ≥       Orlando City SC.png
+≥   ≥   ≥       RSC Anderlecht.png
+≥   ≥   ≥       Southampton FC.png
+≥   ≥   ≥       Toronto FC.png
+≥   ≥   ≥       Union Saint-Gilloise.png
+≥   ≥   ≥       US Sassuolo.png
+≥   ≥   ≥       Villarreal CF.png
+≥   ≥   ≥       
+≥   ≥   ¿ƒƒƒplayers
+≥   ≥           1.png
+≥   ≥           10.png
+≥   ≥           11.png
+≥   ≥           12.png
+≥   ≥           13.png
+≥   ≥           14.png
+≥   ≥           15.png
+≥   ≥           16.png
+≥   ≥           17.png
+≥   ≥           18.png
+≥   ≥           19.png
+≥   ≥           2.png
+≥   ≥           20.png
+≥   ≥           21.png
+≥   ≥           22.png
+≥   ≥           23.png
+≥   ≥           24.png
+≥   ≥           25.png
+≥   ≥           26.png
+≥   ≥           3.png
+≥   ≥           4.png
+≥   ≥           5.png
+≥   ≥           6.png
+≥   ≥           7.png
+≥   ≥           8.png
+≥   ≥           9.png
+≥   ≥           coach.png
+≥   ≥           
+≥   √ƒƒƒcape_verde
+≥   ≥   ≥   cape_verde_flag.png
+≥   ≥   ≥   info.json
+≥   ≥   ≥   logo.png
+≥   ≥   ≥   
+≥   ≥   √ƒƒƒclubs
+≥   ≥   ≥       Akron Tolyatti.png
+≥   ≥   ≥       Al-Bataeh CSC.png
+≥   ≥   ≥       Apollon Limassol.png
+≥   ≥   ≥       Basaksehir FK.png
+≥   ≥   ≥       Casa Pia AC.png
+≥   ≥   ≥       CF Estrela Amadora.png
+≥   ≥   ≥       Columbus Crew.png
+≥   ≥   ≥       FC Krasnodar.png
+≥   ≥   ≥       FCSB.png
+≥   ≥   ≥       GD Chaves.png
+≥   ≥   ≥       Igdir FK.png
+≥   ≥   ≥       Ludogorets Razgrad.png
+≥   ≥   ≥       Maccabi Tel Aviv.png
+≥   ≥   ≥       Montana.png
+≥   ≥   ≥       Omonia Nicosia.png
+≥   ≥   ≥       PEC Zwolle.png
+≥   ≥   ≥       Pusk†s AkadÇmia FC.png
+≥   ≥   ≥       San Diego FC.png
+≥   ≥   ≥       SC Farense.png
+≥   ≥   ≥       SC Uni∆o Torreense.png
+≥   ≥   ≥       Shamrock Rovers.png
+≥   ≥   ≥       SJK SeinÑjoki.png
+≥   ≥   ≥       SL Benfica.png
+≥   ≥   ≥       Trabzonspor.png
+≥   ≥   ≥       Villarreal CF.png
+≥   ≥   ≥       Vit¢ria Guimar∆es SC.png
+≥   ≥   ≥       
+≥   ≥   ¿ƒƒƒplayers
+≥   ≥           1.png
+≥   ≥           10.png
+≥   ≥           11.png
+≥   ≥           12.png
+≥   ≥           13.png
+≥   ≥           14.png
+≥   ≥           15.png
+≥   ≥           16.png
+≥   ≥           17.png
+≥   ≥           18.png
+≥   ≥           19.png
+≥   ≥           2.png
+≥   ≥           20.png
+≥   ≥           21.png
+≥   ≥           22.png
+≥   ≥           23.png
+≥   ≥           24.png
+≥   ≥           25.png
+≥   ≥           26.png
+≥   ≥           3.png
+≥   ≥           4.png
+≥   ≥           5.png
+≥   ≥           6.png
+≥   ≥           7.png
+≥   ≥           8.png
+≥   ≥           9.png
+≥   ≥           coach.png
+≥   ≥           
+≥   √ƒƒƒcolombia
+≥   ≥   ≥   colombia_flag.png
+≥   ≥   ≥   info.json
+≥   ≥   ≥   logo.png
+≥   ≥   ≥   
+≥   ≥   √ƒƒƒclubs
+≥   ≥   ≥       Atlas Guadalajara.png
+≥   ≥   ≥       AtlÇtico Nacional.png
+≥   ≥   ≥       Bayern Munich.png
+≥   ≥   ≥       Bologna FC 1909.png
+≥   ≥   ≥       CA Independiente.png
+≥   ≥   ≥       CA River Plate.png
+≥   ≥   ≥       CA Rosario Central.png
+≥   ≥   ≥       CA VÇlez Sarsfield.png
+≥   ≥   ≥       Cagliari Calcio.png
+≥   ≥   ≥       CD Cruz Azul.png
+≥   ≥   ≥       Club Athletico Paranaense.png
+≥   ≥   ≥       Clube de Regatas Vasco da Gama.png
+≥   ≥   ≥       CR Flamengo.png
+≥   ≥   ≥       Crystal Palace.png
+≥   ≥   ≥       FC Krasnodar.png
+≥   ≥   ≥       FC Nantes.png
+≥   ≥   ≥       Galatasaray.png
+≥   ≥   ≥       Minnesota United FC.png
+≥   ≥   ≥       Racing Santander.png
+≥   ≥   ≥       RCD Mallorca.png
+≥   ≥   ≥       Real Betis BalompiÇ.png
+≥   ≥   ≥       SL Benfica.png
+≥   ≥   ≥       Sociedade Esportiva Palmeiras.png
+≥   ≥   ≥       Sporting CP.png
+≥   ≥   ≥       
+≥   ≥   ¿ƒƒƒplayers
+≥   ≥           1.png
+≥   ≥           10.png
+≥   ≥           11.png
+≥   ≥           12.png
+≥   ≥           13.png
+≥   ≥           14.png
+≥   ≥           15.png
+≥   ≥           16.png
+≥   ≥           17.png
+≥   ≥           18.png
+≥   ≥           19.png
+≥   ≥           2.png
+≥   ≥           20.png
+≥   ≥           21.png
+≥   ≥           22.png
+≥   ≥           23.png
+≥   ≥           24.png
+≥   ≥           25.png
+≥   ≥           26.png
+≥   ≥           3.png
+≥   ≥           4.png
+≥   ≥           5.png
+≥   ≥           6.png
+≥   ≥           7.png
+≥   ≥           8.png
+≥   ≥           9.png
+≥   ≥           coach.png
+≥   ≥           
+≥   √ƒƒƒcroatia
+≥   ≥   ≥   croatia_flag.png
+≥   ≥   ≥   info.json
+≥   ≥   ≥   logo.png
+≥   ≥   ≥   
+≥   ≥   √ƒƒƒclubs
+≥   ≥   ≥       AC Florenz.png
+≥   ≥   ≥       AC Mailand.png
+≥   ≥   ≥       AC Milan.png
+≥   ≥   ≥       ACF Fiorentina.png
+≥   ≥   ≥       Ajax Amsterdam.png
+≥   ≥   ≥       Atalanta BC.png
+≥   ≥   ≥       Atalanta Bergamo.png
+≥   ≥   ≥       Bayern Munich.png
+≥   ≥   ≥       Bologna FC 1909.png
+≥   ≥   ≥       CA Osasuna.png
+≥   ≥   ≥       Como 1907.png
+≥   ≥   ≥       FC Augsburg.png
+≥   ≥   ≥       FC Bayern MÅnchen.png
+≥   ≥   ≥       FC Bologna.png
+≥   ≥   ≥       FC Copenhagen.png
+≥   ≥   ≥       FC Dallas.png
+≥   ≥   ≥       FC Kopenhagen.png
+≥   ≥   ≥       FC Midtjylland.png
+≥   ≥   ≥       FC Turin.png
+≥   ≥   ≥       GNK Dinamo Zagreb.png
+≥   ≥   ≥       Hamburger SV.png
+≥   ≥   ≥       HNK Rijeka.png
+≥   ≥   ≥       Hull City.png
+≥   ≥   ≥       Inter Mailand.png
+≥   ≥   ≥       Inter Milan.png
+≥   ≥   ≥       Manchester City.png
+≥   ≥   ≥       Orlando City SC.png
+≥   ≥   ≥       PSV Eindhoven.png
+≥   ≥   ≥       Real Sociedad San Sebasti†n.png
+≥   ≥   ≥       Real Sociedad.png
+≥   ≥   ≥       SC Freiburg.png
+≥   ≥   ≥       Torino FC.png
+≥   ≥   ≥       TSG 1899 Hoffenheim.png
+≥   ≥   ≥       
+≥   ≥   ¿ƒƒƒplayers
+≥   ≥           1.png
+≥   ≥           10.png
+≥   ≥           11.png
+≥   ≥           12.png
+≥   ≥           13.png
+≥   ≥           14.png
+≥   ≥           15.png
+≥   ≥           16.png
+≥   ≥           17.png
+≥   ≥           18.png
+≥   ≥           19.png
+≥   ≥           2.png
+≥   ≥           20.png
+≥   ≥           21.png
+≥   ≥           22.png
+≥   ≥           23.png
+≥   ≥           24.png
+≥   ≥           25.png
+≥   ≥           26.png
+≥   ≥           3.png
+≥   ≥           4.png
+≥   ≥           5.png
+≥   ≥           6.png
+≥   ≥           7.png
+≥   ≥           8.png
+≥   ≥           9.png
+≥   ≥           coach.png
+≥   ≥           
+≥   √ƒƒƒcuracao
+≥   ≥   ≥   curacao_flag.png
+≥   ≥   ≥   info.json
+≥   ≥   ≥   logo.png
+≥   ≥   ≥   
+≥   ≥   √ƒƒƒclubs
+≥   ≥   ≥       Abha Club.png
+≥   ≥   ≥       AE Kifisia.png
+≥   ≥   ≥       FC Den Bosch.png
+≥   ≥   ≥       FC Volendam.png
+≥   ≥   ≥       FC ZÅrich.png
+≥   ≥   ≥       Igdir FK.png
+≥   ≥   ≥       Kayserispor.png
+≥   ≥   ≥       Konyaspor.png
+≥   ≥   ≥       Maccabi Haifa.png
+≥   ≥   ≥       Miami FC.png
+≥   ≥   ≥       Middlesbrough FC.png
+≥   ≥   ≥       NEC Nijmegen.png
+≥   ≥   ≥       PEC Zwolle.png
+≥   ≥   ≥       PSV Eindhoven.png
+≥   ≥   ≥       RKC Waalwijk.png
+≥   ≥   ≥       Rotherham United.png
+≥   ≥   ≥       SC Telstar.png
+≥   ≥   ≥       Sheffield United.png
+≥   ≥   ≥       SK Beveren.png
+≥   ≥   ≥       Sparta Rotterdam.png
+≥   ≥   ≥       Terengganu FC.png
+≥   ≥   ≥       VVV-Venlo.png
+≥   ≥   ≥       
+≥   ≥   ¿ƒƒƒplayers
+≥   ≥           1.png
+≥   ≥           10.png
+≥   ≥           11.png
+≥   ≥           12.png
+≥   ≥           13.png
+≥   ≥           14.png
+≥   ≥           15.png
+≥   ≥           16.png
+≥   ≥           17.png
+≥   ≥           18.png
+≥   ≥           19.png
+≥   ≥           2.png
+≥   ≥           20.png
+≥   ≥           21.png
+≥   ≥           22.png
+≥   ≥           23.png
+≥   ≥           24.png
+≥   ≥           25.png
+≥   ≥           26.png
+≥   ≥           3.png
+≥   ≥           4.png
+≥   ≥           5.png
+≥   ≥           6.png
+≥   ≥           7.png
+≥   ≥           8.png
+≥   ≥           9.png
+≥   ≥           coach.png
+≥   ≥           
+≥   √ƒƒƒczechia
+≥   ≥   ≥   czechia_flag.png
+≥   ≥   ≥   info.json
+≥   ≥   ≥   logo.png
+≥   ≥   ≥   
+≥   ≥   √ƒƒƒclubs
+≥   ≥   ≥       AC Sparta Prague.png
+≥   ≥   ≥       Bayer 04 Leverkusen.png
+≥   ≥   ≥       FC Hradec Kralove.png
+≥   ≥   ≥       FC Viktoria Plzen.png
+≥   ≥   ≥       Olympique Lyon.png
+≥   ≥   ≥       PSV Eindhoven.png
+≥   ≥   ≥       SC Braga.png
+≥   ≥   ≥       SK Slavia Prague.png
+≥   ≥   ≥       TSG 1899 Hoffenheim.png
+≥   ≥   ≥       West Ham United.png
+≥   ≥   ≥       Wolverhampton Wanderers.png
+≥   ≥   ≥       
+≥   ≥   ¿ƒƒƒplayers
+≥   ≥           1.png
+≥   ≥           10.png
+≥   ≥           11.png
+≥   ≥           12.png
+≥   ≥           13.png
+≥   ≥           14.png
+≥   ≥           15.png
+≥   ≥           16.png
+≥   ≥           17.png
+≥   ≥           18.png
+≥   ≥           19.png
+≥   ≥           2.png
+≥   ≥           20.png
+≥   ≥           21.png
+≥   ≥           22.png
+≥   ≥           23.png
+≥   ≥           24.png
+≥   ≥           25.png
+≥   ≥           26.png
+≥   ≥           3.png
+≥   ≥           4.png
+≥   ≥           5.png
+≥   ≥           6.png
+≥   ≥           7.png
+≥   ≥           8.png
+≥   ≥           9.png
+≥   ≥           coach.png
+≥   ≥           
+≥   √ƒƒƒdr_congo
+≥   ≥   ≥   dr_congo_flag.png
+≥   ≥   ≥   info.json
+≥   ≥   ≥   logo.png
+≥   ≥   ≥   
+≥   ≥   √ƒƒƒclubs
+≥   ≥   ≥       AE Larisa.png
+≥   ≥   ≥       AFC Sunderland.png
+≥   ≥   ≥       Al-Jazira Club.png
+≥   ≥   ≥       Alanyaspor.png
+≥   ≥   ≥       Aris Limassol.png
+≥   ≥   ≥       Atromitos Athen.png
+≥   ≥   ≥       Atromitos Athens.png
+≥   ≥   ≥       Burnley FC.png
+≥   ≥   ≥       CD Castell¢n.png
+≥   ≥   ≥       Espanyol Barcelona.png
+≥   ≥   ≥       FC Burnley.png
+≥   ≥   ≥       FC Noah Erewan.png
+≥   ≥   ≥       FC Noah Yerevan.png
+≥   ≥   ≥       FC Watford.png
+≥   ≥   ≥       Kilmarnock FC.png
+≥   ≥   ≥       KRC Genk.png
+≥   ≥   ≥       Le Havre AC.png
+≥   ≥   ≥       LOSC Lille.png
+≥   ≥   ≥       Montpellier HSC.png
+≥   ≥   ≥       Newcastle United.png
+≥   ≥   ≥       Pyramids FC.png
+≥   ≥   ≥       RC Lens.png
+≥   ≥   ≥       RCD Espanyol Barcelona.png
+≥   ≥   ≥       Real Betis BalompiÇ.png
+≥   ≥   ≥       Real Betis Sevilla.png
+≥   ≥   ≥       Spartak Moscow.png
+≥   ≥   ≥       Spartak Moskau.png
+≥   ≥   ≥       Standard Liäge.png
+≥   ≥   ≥       Standard LÅttich.png
+≥   ≥   ≥       Sunderland AFC.png
+≥   ≥   ≥       Watford FC.png
+≥   ≥   ≥       West Ham United.png
+≥   ≥   ≥       Widzew Lodz.png
+≥   ≥   ≥       
+≥   ≥   ¿ƒƒƒplayers
+≥   ≥           1.png
+≥   ≥           10.png
+≥   ≥           11.png
+≥   ≥           12.png
+≥   ≥           13.png
+≥   ≥           14.png
+≥   ≥           15.png
+≥   ≥           16.png
+≥   ≥           17.png
+≥   ≥           18.png
+≥   ≥           19.png
+≥   ≥           2.png
+≥   ≥           20.png
+≥   ≥           21.png
+≥   ≥           22.png
+≥   ≥           23.png
+≥   ≥           24.png
+≥   ≥           25.png
+≥   ≥           26.png
+≥   ≥           3.png
+≥   ≥           4.png
+≥   ≥           5.png
+≥   ≥           6.png
+≥   ≥           7.png
+≥   ≥           8.png
+≥   ≥           9.png
+≥   ≥           coach.png
+≥   ≥           
+≥   √ƒƒƒecuador
+≥   ≥   ≥   ecuador_flag.png
+≥   ≥   ≥   info.json
+≥   ≥   ≥   logo.png
+≥   ≥   ≥   
+≥   ≥   √ƒƒƒclubs
+≥   ≥   ≥       AC Milan.png
+≥   ≥   ≥       AE Kifisia.png
+≥   ≥   ≥       Arsenal FC.png
+≥   ≥   ≥       CA Hurac†n.png
+≥   ≥   ≥       CA River Plate.png
+≥   ≥   ≥       CF Pachuca.png
+≥   ≥   ≥       Chelsea FC.png
+≥   ≥   ≥       Club Brugge KV.png
+≥   ≥   ≥       Club Tijuana.png
+≥   ≥   ≥       Clube AtlÇtico Mineiro.png
+≥   ≥   ≥       CR Flamengo.png
+≥   ≥   ≥       FC Midtjylland.png
+≥   ≥   ≥       Independiente del Valle.png
+≥   ≥   ≥       KRC Genk.png
+≥   ≥   ≥       LDU Quito.png
+≥   ≥   ≥       Paris Saint-Germain.png
+≥   ≥   ≥       Royal Antwerp FC.png
+≥   ≥   ≥       Sport Club Internacional.png
+≥   ≥   ≥       Sunderland AFC.png
+≥   ≥   ≥       UNAM Pumas.png
+≥   ≥   ≥       Union Saint-Gilloise.png
+≥   ≥   ≥       Venezia FC.png
+≥   ≥   ≥       VfB Stuttgart.png
+≥   ≥   ≥       
+≥   ≥   ¿ƒƒƒplayers
+≥   ≥           1.png
+≥   ≥           10.png
+≥   ≥           11.png
+≥   ≥           12.png
+≥   ≥           13.png
+≥   ≥           14.png
+≥   ≥           15.png
+≥   ≥           16.png
+≥   ≥           17.png
+≥   ≥           18.png
+≥   ≥           19.png
+≥   ≥           2.png
+≥   ≥           20.png
+≥   ≥           21.png
+≥   ≥           22.png
+≥   ≥           23.png
+≥   ≥           24.png
+≥   ≥           25.png
+≥   ≥           26.png
+≥   ≥           3.png
+≥   ≥           4.png
+≥   ≥           5.png
+≥   ≥           6.png
+≥   ≥           7.png
+≥   ≥           8.png
+≥   ≥           9.png
+≥   ≥           coach.png
+≥   ≥           
+≥   √ƒƒƒegypt
+≥   ≥   ≥   egypt_flag.png
+≥   ≥   ≥   info.json
+≥   ≥   ≥   logo.png
+≥   ≥   ≥   
+≥   ≥   √ƒƒƒclubs
+≥   ≥   ≥       Al Ahly FC.png
+≥   ≥   ≥       Al-Ain FC.png
+≥   ≥   ≥       Al-Najma SC.png
+≥   ≥   ≥       Al-Wakrah SC.png
+≥   ≥   ≥       El Gouna FC.png
+≥   ≥   ≥       FC Barcelona U19.png
+≥   ≥   ≥       FC Nordsjaelland.png
+≥   ≥   ≥       Liverpool FC.png
+≥   ≥   ≥       Manchester City.png
+≥   ≥   ≥       OGC Nice.png
+≥   ≥   ≥       Pyramids FC.png
+≥   ≥   ≥       Real Oviedo.png
+≥   ≥   ≥       Zamalek SC.png
+≥   ≥   ≥       Zed FC.png
+≥   ≥   ≥       
+≥   ≥   ¿ƒƒƒplayers
+≥   ≥           1.png
+≥   ≥           10.png
+≥   ≥           11.png
+≥   ≥           12.png
+≥   ≥           13.png
+≥   ≥           14.png
+≥   ≥           15.png
+≥   ≥           16.png
+≥   ≥           17.png
+≥   ≥           18.png
+≥   ≥           19.png
+≥   ≥           2.png
+≥   ≥           20.png
+≥   ≥           21.png
+≥   ≥           22.png
+≥   ≥           23.png
+≥   ≥           24.png
+≥   ≥           25.png
+≥   ≥           26.png
+≥   ≥           3.png
+≥   ≥           4.png
+≥   ≥           5.png
+≥   ≥           6.png
+≥   ≥           7.png
+≥   ≥           8.png
+≥   ≥           9.png
+≥   ≥           coach.png
+≥   ≥           
+≥   √ƒƒƒengland
+≥   ≥   ≥   england_flag.png
+≥   ≥   ≥   info.json
+≥   ≥   ≥   logo.png
+≥   ≥   ≥   
+≥   ≥   √ƒƒƒclubs
+≥   ≥   ≥       Al-Ahli SFC.png
+≥   ≥   ≥       Arsenal FC.png
+≥   ≥   ≥       Aston Villa.png
+≥   ≥   ≥       Bayer 04 Leverkusen.png
+≥   ≥   ≥       Bayern Munich.png
+≥   ≥   ≥       Brentford FC.png
+≥   ≥   ≥       Chelsea FC.png
+≥   ≥   ≥       Crystal Palace.png
+≥   ≥   ≥       Everton FC.png
+≥   ≥   ≥       FC Barcelona.png
+≥   ≥   ≥       Manchester City.png
+≥   ≥   ≥       Manchester United.png
+≥   ≥   ≥       Newcastle United.png
+≥   ≥   ≥       Nottingham Forest.png
+≥   ≥   ≥       Real Madrid.png
+≥   ≥   ≥       Tottenham Hotspur.png
+≥   ≥   ≥       
+≥   ≥   ¿ƒƒƒplayers
+≥   ≥           1.png
+≥   ≥           10.png
+≥   ≥           11.png
+≥   ≥           12.png
+≥   ≥           13.png
+≥   ≥           14.png
+≥   ≥           15.png
+≥   ≥           16.png
+≥   ≥           17.png
+≥   ≥           18.png
+≥   ≥           19.png
+≥   ≥           2.png
+≥   ≥           20.png
+≥   ≥           21.png
+≥   ≥           22.png
+≥   ≥           23.png
+≥   ≥           24.png
+≥   ≥           25.png
+≥   ≥           26.png
+≥   ≥           3.png
+≥   ≥           4.png
+≥   ≥           5.png
+≥   ≥           6.png
+≥   ≥           7.png
+≥   ≥           8.png
+≥   ≥           9.png
+≥   ≥           coach.png
+≥   ≥           
+≥   √ƒƒƒfrance
+≥   ≥   ≥   france_flag.png
+≥   ≥   ≥   info.json
+≥   ≥   ≥   logo.png
+≥   ≥   ≥   
+≥   ≥   √ƒƒƒclubs
+≥   ≥   ≥       AC Milan.png
+≥   ≥   ≥       Al-Hilal SFC.png
+≥   ≥   ≥       Arsenal FC.png
+≥   ≥   ≥       AS Monaco.png
+≥   ≥   ≥       AS Roma.png
+≥   ≥   ≥       Aston Villa.png
+≥   ≥   ≥       Bayern Munich.png
+≥   ≥   ≥       Chelsea FC.png
+≥   ≥   ≥       Crystal Palace.png
+≥   ≥   ≥       FC Barcelona.png
+≥   ≥   ≥       Fenerbahce.png
+≥   ≥   ≥       Inter Milan.png
+≥   ≥   ≥       Liverpool FC.png
+≥   ≥   ≥       Manchester City.png
+≥   ≥   ≥       Paris Saint-Germain.png
+≥   ≥   ≥       RC Lens.png
+≥   ≥   ≥       Real Madrid.png
+≥   ≥   ≥       Stade Rennais FC.png
+≥   ≥   ≥       VfB Stuttgart.png
+≥   ≥   ≥       
+≥   ≥   ¿ƒƒƒplayers
+≥   ≥           1.png
+≥   ≥           10.png
+≥   ≥           11.png
+≥   ≥           12.png
+≥   ≥           13.png
+≥   ≥           14.png
+≥   ≥           15.png
+≥   ≥           16.png
+≥   ≥           17.png
+≥   ≥           18.png
+≥   ≥           19.png
+≥   ≥           2.png
+≥   ≥           20.png
+≥   ≥           21.png
+≥   ≥           22.png
+≥   ≥           23.png
+≥   ≥           24.png
+≥   ≥           25.png
+≥   ≥           26.png
+≥   ≥           3.png
+≥   ≥           4.png
+≥   ≥           5.png
+≥   ≥           6.png
+≥   ≥           7.png
+≥   ≥           8.png
+≥   ≥           9.png
+≥   ≥           coach.png
+≥   ≥           
+≥   √ƒƒƒgermany
+≥   ≥   ≥   germany_flag.png
+≥   ≥   ≥   info.json
+≥   ≥   ≥   logo.png
+≥   ≥   ≥   
+≥   ≥   √ƒƒƒclubs
+≥   ≥   ≥       1.FSV Mainz 05.png
+≥   ≥   ≥       Arsenal FC.png
+≥   ≥   ≥       Bayern Munich.png
+≥   ≥   ≥       Borussia Dortmund.png
+≥   ≥   ≥       Brighton & Hove Albion.png
+≥   ≥   ≥       Eintracht Frankfurt.png
+≥   ≥   ≥       Galatasaray.png
+≥   ≥   ≥       Liverpool FC.png
+≥   ≥   ≥       Newcastle United.png
+≥   ≥   ≥       RB Leipzig.png
+≥   ≥   ≥       Real Madrid.png
+≥   ≥   ≥       TSG 1899 Hoffenheim.png
+≥   ≥   ≥       VfB Stuttgart.png
+≥   ≥   ≥       
+≥   ≥   ¿ƒƒƒplayers
+≥   ≥           1.png
+≥   ≥           10.png
+≥   ≥           11.png
+≥   ≥           12.png
+≥   ≥           13.png
+≥   ≥           14.png
+≥   ≥           15.png
+≥   ≥           16.png
+≥   ≥           17.png
+≥   ≥           18.png
+≥   ≥           19.png
+≥   ≥           2.png
+≥   ≥           20.png
+≥   ≥           21.png
+≥   ≥           22.png
+≥   ≥           23.png
+≥   ≥           24.png
+≥   ≥           25.png
+≥   ≥           26.png
+≥   ≥           3.png
+≥   ≥           4.png
+≥   ≥           5.png
+≥   ≥           6.png
+≥   ≥           7.png
+≥   ≥           8.png
+≥   ≥           9.png
+≥   ≥           coach.png
+≥   ≥           
+≥   √ƒƒƒghana
+≥   ≥   ≥   ghana_flag.png
+≥   ≥   ≥   info.json
+≥   ≥   ≥   logo.png
+≥   ≥   ≥   
+≥   ≥   √ƒƒƒclubs
+≥   ≥   ≥       AJ Auxerre.png
+≥   ≥   ≥       Al-Qadsiah FC.png
+≥   ≥   ≥       AS Saint-êtienne.png
+≥   ≥   ≥       Atalanta BC.png
+≥   ≥   ≥       Atalanta Bergamo.png
+≥   ≥   ≥       Athletic Bilbao.png
+≥   ≥   ≥       Basaksehir FK.png
+≥   ≥   ≥       Coventry City.png
+≥   ≥   ≥       Dundee United FC.png
+≥   ≥   ≥       FC Nordsjaelland.png
+≥   ≥   ≥       FC St. Gallen 1879.png
+≥   ≥   ≥       FC Stade Rennes.png
+≥   ≥   ≥       FC Viktoria Pilsen.png
+≥   ≥   ≥       FC Viktoria Plzen.png
+≥   ≥   ≥       FC Villarreal.png
+≥   ≥   ≥       Hearts of Oak.png
+≥   ≥   ≥       Leicester City.png
+≥   ≥   ≥       Manchester City.png
+≥   ≥   ≥       OGC Nice.png
+≥   ≥   ≥       OGC Nizza.png
+≥   ≥   ≥       Olympique Lyon.png
+≥   ≥   ≥       Pafos FC.png
+≥   ≥   ≥       PAOK Thessaloniki.png
+≥   ≥   ≥       Rayo Vallecano.png
+≥   ≥   ≥       Real Oviedo.png
+≥   ≥   ≥       St. Patricks Athletic.png
+≥   ≥   ≥       Stade Rennais FC.png
+≥   ≥   ≥       VfL Wolfsburg.png
+≥   ≥   ≥       Villarreal CF.png
+≥   ≥   ≥       
+≥   ≥   ¿ƒƒƒplayers
+≥   ≥           1.png
+≥   ≥           10.png
+≥   ≥           11.png
+≥   ≥           12.png
+≥   ≥           13.png
+≥   ≥           14.png
+≥   ≥           15.png
+≥   ≥           16.png
+≥   ≥           17.png
+≥   ≥           18.png
+≥   ≥           19.png
+≥   ≥           2.png
+≥   ≥           20.png
+≥   ≥           21.png
+≥   ≥           22.png
+≥   ≥           23.png
+≥   ≥           24.png
+≥   ≥           25.png
+≥   ≥           26.png
+≥   ≥           3.png
+≥   ≥           4.png
+≥   ≥           5.png
+≥   ≥           6.png
+≥   ≥           7.png
+≥   ≥           8.png
+≥   ≥           9.png
+≥   ≥           coach.png
+≥   ≥           
+≥   √ƒƒƒhaiti
+≥   ≥   ≥   haiti_flag.png
+≥   ≥   ≥   info.json
+≥   ≥   ≥   logo.png
+≥   ≥   ≥   
+≥   ≥   √ƒƒƒclubs
+≥   ≥   ≥       AJ Auxerre.png
+≥   ≥   ≥       Almere City FC.png
+≥   ≥   ≥       Angers SCO.png
+≥   ≥   ≥       AS Nancy-Lorraine.png
+≥   ≥   ≥       BSC Young Boys U21.png
+≥   ≥   ≥       Caykur Rizespor.png
+≥   ≥   ≥       Colorado Springs Switchbacks FC.png
+≥   ≥   ≥       El Paso Locomotive FC.png
+≥   ≥   ≥       Esteghlal FC.png
+≥   ≥   ≥       FC Cosmos Koblenz.png
+≥   ≥   ≥       FC Dallas.png
+≥   ≥   ≥       FC Lugano.png
+≥   ≥   ≥       FC Sochaux-MontbÇliard.png
+≥   ≥   ≥       FC Tatran Presov.png
+≥   ≥   ≥       FC Vizela.png
+≥   ≥   ≥       Ferencv†rosi TC.png
+≥   ≥   ≥       KAA Gent.png
+≥   ≥   ≥       LDU Quito.png
+≥   ≥   ≥       Philadelphia Union.png
+≥   ≥   ≥       SC Bastia.png
+≥   ≥   ≥       Sunderland AFC.png
+≥   ≥   ≥       Toronto FC.png
+≥   ≥   ≥       Violette Athletic Club.png
+≥   ≥   ≥       Wolverhampton Wanderers.png
+≥   ≥   ≥       Zulte Waregem.png
+≥   ≥   ≥       
+≥   ≥   ¿ƒƒƒplayers
+≥   ≥           1.png
+≥   ≥           10.png
+≥   ≥           11.png
+≥   ≥           12.png
+≥   ≥           13.png
+≥   ≥           14.png
+≥   ≥           15.png
+≥   ≥           16.png
+≥   ≥           17.png
+≥   ≥           18.png
+≥   ≥           19.png
+≥   ≥           2.png
+≥   ≥           20.png
+≥   ≥           21.png
+≥   ≥           22.png
+≥   ≥           23.png
+≥   ≥           24.png
+≥   ≥           25.png
+≥   ≥           26.png
+≥   ≥           3.png
+≥   ≥           4.png
+≥   ≥           5.png
+≥   ≥           6.png
+≥   ≥           7.png
+≥   ≥           8.png
+≥   ≥           9.png
+≥   ≥           coach.png
+≥   ≥           
+≥   √ƒƒƒiran
+≥   ≥   ≥   info.json
+≥   ≥   ≥   iran_flag.png
+≥   ≥   ≥   logo.png
+≥   ≥   ≥   
+≥   ≥   √ƒƒƒclubs
+≥   ≥   ≥       Al-Nasr SC UAE.png
+≥   ≥   ≥       Al-Wahda FC.png
+≥   ≥   ≥       Esteghlal FC.png
+≥   ≥   ≥       FC Rostov.png
+≥   ≥   ≥       FCV Dender EH.png
+≥   ≥   ≥       Foolad FC.png
+≥   ≥   ≥       Kalba FC.png
+≥   ≥   ≥       Malavan Bandar Anzali.png
+≥   ≥   ≥       Olympiacos Piraeus.png
+≥   ≥   ≥       Persepolis FC.png
+≥   ≥   ≥       Sepahan FC.png
+≥   ≥   ≥       Shabab Al-Ahli Club.png
+≥   ≥   ≥       Standard Liäge.png
+≥   ≥   ≥       Tractor FC.png
+≥   ≥   ≥       
+≥   ≥   ¿ƒƒƒplayers
+≥   ≥           1.png
+≥   ≥           10.png
+≥   ≥           11.png
+≥   ≥           12.png
+≥   ≥           13.png
+≥   ≥           14.png
+≥   ≥           15.png
+≥   ≥           16.png
+≥   ≥           17.png
+≥   ≥           18.png
+≥   ≥           19.png
+≥   ≥           2.png
+≥   ≥           20.png
+≥   ≥           21.png
+≥   ≥           22.png
+≥   ≥           23.png
+≥   ≥           24.png
+≥   ≥           25.png
+≥   ≥           26.png
+≥   ≥           3.png
+≥   ≥           4.png
+≥   ≥           5.png
+≥   ≥           6.png
+≥   ≥           7.png
+≥   ≥           8.png
+≥   ≥           9.png
+≥   ≥           coach.png
+≥   ≥           
+≥   √ƒƒƒiraq
+≥   ≥   ≥   info.json
+≥   ≥   ≥   iraq_flag.png
+≥   ≥   ≥   logo.png
+≥   ≥   ≥   
+≥   ≥   √ƒƒƒclubs
+≥   ≥   ≥       Aarhus GF.png
+≥   ≥   ≥       AEK Larnaca.png
+≥   ≥   ≥       Al-Dhafra FC.png
+≥   ≥   ≥       Al-Karma.png
+≥   ≥   ≥       Al-Najma SC.png
+≥   ≥   ≥       Al-Shorta SC.png
+≥   ≥   ≥       Al-Talaba SC.png
+≥   ≥   ≥       Al-Zawraa SC.png
+≥   ≥   ≥       Cracovia.png
+≥   ≥   ≥       Dibba SCC.png
+≥   ≥   ≥       FC Utrecht U21.png
+≥   ≥   ≥       FC Viktoria Plzen.png
+≥   ≥   ≥       Luton Town.png
+≥   ≥   ≥       Nashville SC.png
+≥   ≥   ≥       Pakhtakor Tashkent.png
+≥   ≥   ≥       PERSIB Bandung.png
+≥   ≥   ≥       Pogon Szczecin.png
+≥   ≥   ≥       Port FC.png
+≥   ≥   ≥       Sarpsborg 08 FF.png
+≥   ≥   ≥       Venezia FC.png
+≥   ≥   ≥       
+≥   ≥   ¿ƒƒƒplayers
+≥   ≥           1.png
+≥   ≥           10.png
+≥   ≥           11.png
+≥   ≥           12.png
+≥   ≥           13.png
+≥   ≥           14.png
+≥   ≥           15.png
+≥   ≥           16.png
+≥   ≥           17.png
+≥   ≥           18.png
+≥   ≥           19.png
+≥   ≥           2.png
+≥   ≥           20.png
+≥   ≥           21.png
+≥   ≥           22.png
+≥   ≥           23.png
+≥   ≥           24.png
+≥   ≥           25.png
+≥   ≥           26.png
+≥   ≥           3.png
+≥   ≥           4.png
+≥   ≥           5.png
+≥   ≥           6.png
+≥   ≥           7.png
+≥   ≥           8.png
+≥   ≥           9.png
+≥   ≥           coach.png
+≥   ≥           
+≥   √ƒƒƒivory_coast
+≥   ≥   ≥   info.json
+≥   ≥   ≥   ivory_coast_flag.png
+≥   ≥   ≥   logo.png
+≥   ≥   ≥   
+≥   ≥   √ƒƒƒclubs
+≥   ≥   ≥       Al-Ahli SFC.png
+≥   ≥   ≥       AS Monaco.png
+≥   ≥   ≥       AS Roma.png
+≥   ≥   ≥       Atalanta BC.png
+≥   ≥   ≥       Basaksehir FK.png
+≥   ≥   ≥       Besiktas JK.png
+≥   ≥   ≥       Caykur Rizespor.png
+≥   ≥   ≥       Cercle Brugge.png
+≥   ≥   ≥       Crystal Palace.png
+≥   ≥   ≥       FC Porto.png
+≥   ≥   ≥       Galatasaray.png
+≥   ≥   ≥       Gil Vicente FC.png
+≥   ≥   ≥       Inter Milan.png
+≥   ≥   ≥       Manchester United.png
+≥   ≥   ≥       NK Maribor.png
+≥   ≥   ≥       Nottingham Forest.png
+≥   ≥   ≥       OGC Nice.png
+≥   ≥   ≥       Panathinaikos.png
+≥   ≥   ≥       RB Leipzig.png
+≥   ≥   ≥       RC Strasbourg Alsace.png
+≥   ≥   ≥       Royal Charleroi SC.png
+≥   ≥   ≥       Sporting CP.png
+≥   ≥   ≥       Trabzonspor.png
+≥   ≥   ≥       TSG 1899 Hoffenheim.png
+≥   ≥   ≥       Villarreal CF.png
+≥   ≥   ≥       
+≥   ≥   ¿ƒƒƒplayers
+≥   ≥           1.png
+≥   ≥           10.png
+≥   ≥           11.png
+≥   ≥           12.png
+≥   ≥           13.png
+≥   ≥           14.png
+≥   ≥           15.png
+≥   ≥           16.png
+≥   ≥           17.png
+≥   ≥           18.png
+≥   ≥           19.png
+≥   ≥           2.png
+≥   ≥           20.png
+≥   ≥           21.png
+≥   ≥           22.png
+≥   ≥           23.png
+≥   ≥           24.png
+≥   ≥           25.png
+≥   ≥           26.png
+≥   ≥           3.png
+≥   ≥           4.png
+≥   ≥           5.png
+≥   ≥           6.png
+≥   ≥           7.png
+≥   ≥           8.png
+≥   ≥           9.png
+≥   ≥           coach.png
+≥   ≥           
+≥   √ƒƒƒjapan
+≥   ≥   ≥   info.json
+≥   ≥   ≥   japan_flag.png
+≥   ≥   ≥   logo.png
+≥   ≥   ≥   
+≥   ≥   √ƒƒƒclubs
+≥   ≥   ≥       1.FSV Mainz 05.png
+≥   ≥   ≥       Ajax Amsterdam.png
+≥   ≥   ≥       Bayern Munich.png
+≥   ≥   ≥       Celtic FC.png
+≥   ≥   ≥       Crystal Palace.png
+≥   ≥   ≥       Eintracht Frankfurt.png
+≥   ≥   ≥       FC Copenhagen.png
+≥   ≥   ≥       FC Tokyo.png
+≥   ≥   ≥       Feyenoord Rotterdam.png
+≥   ≥   ≥       Kashima Antlers.png
+≥   ≥   ≥       KRC Genk.png
+≥   ≥   ≥       Le Havre AC.png
+≥   ≥   ≥       Leeds United.png
+≥   ≥   ≥       Liverpool FC.png
+≥   ≥   ≥       NEC Nijmegen.png
+≥   ≥   ≥       Parma Calcio 1913.png
+≥   ≥   ≥       Real Sociedad.png
+≥   ≥   ≥       Sanfrecce Hiroshima.png
+≥   ≥   ≥       SC Freiburg.png
+≥   ≥   ≥       Sint-Truidense VV.png
+≥   ≥   ≥       Stade Reims.png
+≥   ≥   ≥       SV Werder Bremen.png
+≥   ≥   ≥       VfL Wolfsburg.png
+≥   ≥   ≥       
+≥   ≥   ¿ƒƒƒplayers
+≥   ≥           1.png
+≥   ≥           10.png
+≥   ≥           11.png
+≥   ≥           12.png
+≥   ≥           13.png
+≥   ≥           14.png
+≥   ≥           15.png
+≥   ≥           16.png
+≥   ≥           17.png
+≥   ≥           18.png
+≥   ≥           19.png
+≥   ≥           2.png
+≥   ≥           20.png
+≥   ≥           21.png
+≥   ≥           22.png
+≥   ≥           23.png
+≥   ≥           24.png
+≥   ≥           25.png
+≥   ≥           26.png
+≥   ≥           3.png
+≥   ≥           4.png
+≥   ≥           5.png
+≥   ≥           6.png
+≥   ≥           7.png
+≥   ≥           8.png
+≥   ≥           9.png
+≥   ≥           coach.png
+≥   ≥           
+≥   √ƒƒƒjordan
+≥   ≥   ≥   info.json
+≥   ≥   ≥   jordanien_flag.png
+≥   ≥   ≥   logo.png
+≥   ≥   ≥   
+≥   ≥   √ƒƒƒclubs
+≥   ≥   ≥       Al-Faisaly SC.png
+≥   ≥   ≥       Al-Hussein SC Irbid.png
+≥   ≥   ≥       Al-Karma.png
+≥   ≥   ≥       Al-Quwa Al-Jawiya.png
+≥   ≥   ≥       Al-Sailiya SC.png
+≥   ≥   ≥       Al-Shabab FC.png
+≥   ≥   ≥       Al-Wehdat SC.png
+≥   ≥   ≥       Al-Zawraa SC.png
+≥   ≥   ≥       FC Seoul.png
+≥   ≥   ≥       Pyramids FC.png
+≥   ≥   ≥       Qatar SC.png
+≥   ≥   ≥       Raja Club Athletic.png
+≥   ≥   ≥       Selangor FC.png
+≥   ≥   ≥       Stade Rennais FC.png
+≥   ≥   ≥       
+≥   ≥   ¿ƒƒƒplayers
+≥   ≥           1.png
+≥   ≥           10.png
+≥   ≥           11.png
+≥   ≥           12.png
+≥   ≥           13.png
+≥   ≥           14.png
+≥   ≥           15.png
+≥   ≥           16.png
+≥   ≥           17.png
+≥   ≥           18.png
+≥   ≥           19.png
+≥   ≥           2.png
+≥   ≥           20.png
+≥   ≥           21.png
+≥   ≥           22.png
+≥   ≥           23.png
+≥   ≥           24.png
+≥   ≥           25.png
+≥   ≥           26.png
+≥   ≥           3.png
+≥   ≥           4.png
+≥   ≥           5.png
+≥   ≥           6.png
+≥   ≥           7.png
+≥   ≥           8.png
+≥   ≥           9.png
+≥   ≥           coach.png
+≥   ≥           
+≥   √ƒƒƒmexico
+≥   ≥   ≥   info.json
+≥   ≥   ≥   logo.png
+≥   ≥   ≥   mexico_flag.png
+≥   ≥   ≥   
+≥   ≥   √ƒƒƒclubs
+≥   ≥   ≥       AC Milan.png
+≥   ≥   ≥       AEK Athens.png
+≥   ≥   ≥       AEL Limassol.png
+≥   ≥   ≥       Al-Qadsiah FC.png
+≥   ≥   ≥       AtlÇtico de Madrid.png
+≥   ≥   ≥       AZ Alkmaar.png
+≥   ≥   ≥       CD Cruz Azul.png
+≥   ≥   ≥       CF AmÇrica.png
+≥   ≥   ≥       Club Tijuana.png
+≥   ≥   ≥       Deportivo Guadalajara.png
+≥   ≥   ≥       Deportivo Toluca.png
+≥   ≥   ≥       Dynamo Moscow.png
+≥   ≥   ≥       Fenerbahce.png
+≥   ≥   ≥       Fulham FC.png
+≥   ≥   ≥       Genoa CFC.png
+≥   ≥   ≥       Lokomotiv Moscow.png
+≥   ≥   ≥       PAOK Thessaloniki.png
+≥   ≥   ≥       Real Betis BalompiÇ.png
+≥   ≥   ≥       RSC Anderlecht.png
+≥   ≥   ≥       Santos Laguna.png
+≥   ≥   ≥       UNAM Pumas.png
+≥   ≥   ≥       
+≥   ≥   ¿ƒƒƒplayers
+≥   ≥           1.png
+≥   ≥           10.png
+≥   ≥           11.png
+≥   ≥           12.png
+≥   ≥           13.png
+≥   ≥           14.png
+≥   ≥           15.png
+≥   ≥           16.png
+≥   ≥           17.png
+≥   ≥           18.png
+≥   ≥           19.png
+≥   ≥           2.png
+≥   ≥           20.png
+≥   ≥           21.png
+≥   ≥           22.png
+≥   ≥           23.png
+≥   ≥           24.png
+≥   ≥           25.png
+≥   ≥           26.png
+≥   ≥           3.png
+≥   ≥           4.png
+≥   ≥           5.png
+≥   ≥           6.png
+≥   ≥           7.png
+≥   ≥           8.png
+≥   ≥           9.png
+≥   ≥           coach.png
+≥   ≥           
+≥   √ƒƒƒmorocco
+≥   ≥   ≥   info.json
+≥   ≥   ≥   logo.png
+≥   ≥   ≥   morocco_flag.png
+≥   ≥   ≥   
+≥   ≥   √ƒƒƒclubs
+≥   ≥   ≥       Al Ahly FC.png
+≥   ≥   ≥       Al-Ain FC.png
+≥   ≥   ≥       Al-Hilal SFC.png
+≥   ≥   ≥       AS FAR Rabat.png
+≥   ≥   ≥       AS Roma.png
+≥   ≥   ≥       Crystal Palace.png
+≥   ≥   ≥       Eintracht Frankfurt.png
+≥   ≥   ≥       Fulham FC.png
+≥   ≥   ≥       Girona FC.png
+≥   ≥   ≥       KRC Genk.png
+≥   ≥   ≥       KV Mechelen.png
+≥   ≥   ≥       LOSC Lille.png
+≥   ≥   ≥       Manchester United.png
+≥   ≥   ≥       Olympiacos Piraeus.png
+≥   ≥   ≥       Olympique Marseille.png
+≥   ≥   ≥       Paris Saint-Germain.png
+≥   ≥   ≥       PSV Eindhoven.png
+≥   ≥   ≥       RC Strasbourg Alsace.png
+≥   ≥   ≥       Real Betis BalompiÇ.png
+≥   ≥   ≥       Real Madrid.png
+≥   ≥   ≥       Renaissance de Berkane.png
+≥   ≥   ≥       Sunderland AFC.png
+≥   ≥   ≥       VfB Stuttgart.png
+≥   ≥   ≥       
+≥   ≥   ¿ƒƒƒplayers
+≥   ≥           1.png
+≥   ≥           10.png
+≥   ≥           11.png
+≥   ≥           12.png
+≥   ≥           13.png
+≥   ≥           14.png
+≥   ≥           15.png
+≥   ≥           16.png
+≥   ≥           17.png
+≥   ≥           18.png
+≥   ≥           19.png
+≥   ≥           2.png
+≥   ≥           20.png
+≥   ≥           21.png
+≥   ≥           22.png
+≥   ≥           23.png
+≥   ≥           24.png
+≥   ≥           25.png
+≥   ≥           26.png
+≥   ≥           3.png
+≥   ≥           4.png
+≥   ≥           5.png
+≥   ≥           6.png
+≥   ≥           7.png
+≥   ≥           8.png
+≥   ≥           9.png
+≥   ≥           coach.png
+≥   ≥           
+≥   √ƒƒƒnetherlands
+≥   ≥   ≥   info.json
+≥   ≥   ≥   logo.png
+≥   ≥   ≥   netherlands_flag.png
+≥   ≥   ≥   
+≥   ≥   √ƒƒƒclubs
+≥   ≥   ≥       AFC Bournemouth.png
+≥   ≥   ≥       Ajax Amsterdam.png
+≥   ≥   ≥       AS Roma.png
+≥   ≥   ≥       Atalanta BC.png
+≥   ≥   ≥       Bayer 04 Leverkusen.png
+≥   ≥   ≥       Brighton & Hove Albion.png
+≥   ≥   ≥       Chelsea FC.png
+≥   ≥   ≥       FC Barcelona.png
+≥   ≥   ≥       Galatasaray.png
+≥   ≥   ≥       Inter Milan.png
+≥   ≥   ≥       Juventus FC.png
+≥   ≥   ≥       Liverpool FC.png
+≥   ≥   ≥       Manchester City.png
+≥   ≥   ≥       Olympique Marseille.png
+≥   ≥   ≥       PSV Eindhoven.png
+≥   ≥   ≥       Sport Club Corinthians Paulista.png
+≥   ≥   ≥       Sunderland AFC.png
+≥   ≥   ≥       Tottenham Hotspur.png
+≥   ≥   ≥       West Ham United.png
+≥   ≥   ≥       
+≥   ≥   ¿ƒƒƒplayers
+≥   ≥           1.png
+≥   ≥           10.png
+≥   ≥           11.png
+≥   ≥           12.png
+≥   ≥           13.png
+≥   ≥           14.png
+≥   ≥           15.png
+≥   ≥           16.png
+≥   ≥           17.png
+≥   ≥           18.png
+≥   ≥           19.png
+≥   ≥           2.png
+≥   ≥           20.png
+≥   ≥           21.png
+≥   ≥           22.png
+≥   ≥           23.png
+≥   ≥           24.png
+≥   ≥           25.png
+≥   ≥           26.png
+≥   ≥           3.png
+≥   ≥           4.png
+≥   ≥           5.png
+≥   ≥           6.png
+≥   ≥           7.png
+≥   ≥           8.png
+≥   ≥           9.png
+≥   ≥           coach.png
+≥   ≥           
+≥   √ƒƒƒnew_zealand
+≥   ≥   ≥   info.json
+≥   ≥   ≥   logo.png
+≥   ≥   ≥   new_zealand_flag.png
+≥   ≥   ≥   
+≥   ≥   √ƒƒƒclubs
+≥   ≥   ≥       AS Saint-êtienne.png
+≥   ≥   ≥       Auckland FC.png
+≥   ≥   ≥       Braintree Town.png
+≥   ≥   ≥       Lechia Gdansk.png
+≥   ≥   ≥       Millwall FC.png
+≥   ≥   ≥       Minnesota United FC.png
+≥   ≥   ≥       Motherwell FC.png
+≥   ≥   ≥       Newcastle United Jets.png
+≥   ≥   ≥       Nottingham Forest.png
+≥   ≥   ≥       PEC Zwolle.png
+≥   ≥   ≥       Peterborough United.png
+≥   ≥   ≥       Port Vale FC.png
+≥   ≥   ≥       Portland Timbers.png
+≥   ≥   ≥       Sheffield United.png
+≥   ≥   ≥       Silkeborg IF.png
+≥   ≥   ≥       Swansea City.png
+≥   ≥   ≥       Viking FK.png
+≥   ≥   ≥       Wellington Phoenix.png
+≥   ≥   ≥       Western Sydney Wanderers.png
+≥   ≥   ≥       Wrexham AFC.png
+≥   ≥   ≥       
+≥   ≥   ¿ƒƒƒplayers
+≥   ≥           1.png
+≥   ≥           10.png
+≥   ≥           11.png
+≥   ≥           12.png
+≥   ≥           13.png
+≥   ≥           14.png
+≥   ≥           15.png
+≥   ≥           16.png
+≥   ≥           17.png
+≥   ≥           18.png
+≥   ≥           19.png
+≥   ≥           2.png
+≥   ≥           20.png
+≥   ≥           21.png
+≥   ≥           22.png
+≥   ≥           23.png
+≥   ≥           24.png
+≥   ≥           25.png
+≥   ≥           26.png
+≥   ≥           3.png
+≥   ≥           4.png
+≥   ≥           5.png
+≥   ≥           6.png
+≥   ≥           7.png
+≥   ≥           8.png
+≥   ≥           9.png
+≥   ≥           coach.png
+≥   ≥           
+≥   √ƒƒƒnorway
+≥   ≥   ≥   info.json
+≥   ≥   ≥   logo.png
+≥   ≥   ≥   norway_flag.png
+≥   ≥   ≥   
+≥   ≥   √ƒƒƒclubs
+≥   ≥   ≥       Arsenal FC.png
+≥   ≥   ≥       AtlÇtico de Madrid.png
+≥   ≥   ≥       Bologna FC 1909.png
+≥   ≥   ≥       Borussia Dortmund.png
+≥   ≥   ≥       Brentford FC.png
+≥   ≥   ≥       Crystal Palace.png
+≥   ≥   ≥       Derby County.png
+≥   ≥   ≥       FK BodõGlimt.png
+≥   ≥   ≥       Fulham FC.png
+≥   ≥   ≥       Genoa CFC.png
+≥   ≥   ≥       Hamburger SV.png
+≥   ≥   ≥       Manchester City.png
+≥   ≥   ≥       Rangers FC.png
+≥   ≥   ≥       RB Leipzig.png
+≥   ≥   ≥       Sevilla FC.png
+≥   ≥   ≥       SL Benfica.png
+≥   ≥   ≥       Torino FC.png
+≥   ≥   ≥       US Cremonese.png
+≥   ≥   ≥       US Sassuolo.png
+≥   ≥   ≥       Viking FK.png
+≥   ≥   ≥       Watford FC.png
+≥   ≥   ≥       Wolverhampton Wanderers.png
+≥   ≥   ≥       
+≥   ≥   ¿ƒƒƒplayers
+≥   ≥           1.png
+≥   ≥           10.png
+≥   ≥           11.png
+≥   ≥           12.png
+≥   ≥           13.png
+≥   ≥           14.png
+≥   ≥           15.png
+≥   ≥           16.png
+≥   ≥           17.png
+≥   ≥           18.png
+≥   ≥           19.png
+≥   ≥           2.png
+≥   ≥           20.png
+≥   ≥           21.png
+≥   ≥           22.png
+≥   ≥           23.png
+≥   ≥           24.png
+≥   ≥           25.png
+≥   ≥           26.png
+≥   ≥           3.png
+≥   ≥           4.png
+≥   ≥           5.png
+≥   ≥           6.png
+≥   ≥           7.png
+≥   ≥           8.png
+≥   ≥           9.png
+≥   ≥           coach.png
+≥   ≥           
+≥   √ƒƒƒpanama
+≥   ≥   ≥   info.json
+≥   ≥   ≥   logo.png
+≥   ≥   ≥   panama_flag.png
+≥   ≥   ≥   
+≥   ≥   √ƒƒƒclubs
+≥   ≥   ≥       Academia Puerto Cabello.png
+≥   ≥   ≥       Al-Fayha FC.png
+≥   ≥   ≥       Besiktas JK.png
+≥   ≥   ≥       CD Cobresal.png
+≥   ≥   ≥       CD Marath¢n.png
+≥   ≥   ≥       CD Plaza Amador.png
+≥   ≥   ≥       CD Universidad Cat¢lica.png
+≥   ≥   ≥       Club Le¢n FC.png
+≥   ≥   ≥       Club Nacional.png
+≥   ≥   ≥       Deportivo La Guaira.png
+≥   ≥   ≥       Deportivo Saprissa.png
+≥   ≥   ≥       FC Ju†rez.png
+≥   ≥   ≥       FC Pari Nizhniy Novgorod.png
+≥   ≥   ≥       FK Pari Nizhniy Novgorod.png
+≥   ≥   ≥       Ironi Kiryat Shmona.png
+≥   ≥   ≥       LASK.png
+≥   ≥   ≥       Mazatl†n FC.png
+≥   ≥   ≥       Minnesota United FC.png
+≥   ≥   ≥       Norwich City.png
+≥   ≥   ≥       San Diego FC.png
+≥   ≥   ≥       Slovan Bratislava.png
+≥   ≥   ≥       Turan-Tovuz IK.png
+≥   ≥   ≥       UNAM Pumas.png
+≥   ≥   ≥       Universidad de Concepci¢n.png
+≥   ≥   ≥       
+≥   ≥   ¿ƒƒƒplayers
+≥   ≥           1.png
+≥   ≥           10.png
+≥   ≥           11.png
+≥   ≥           12.png
+≥   ≥           13.png
+≥   ≥           14.png
+≥   ≥           15.png
+≥   ≥           16.png
+≥   ≥           17.png
+≥   ≥           18.png
+≥   ≥           19.png
+≥   ≥           2.png
+≥   ≥           20.png
+≥   ≥           21.png
+≥   ≥           22.png
+≥   ≥           23.png
+≥   ≥           24.png
+≥   ≥           25.png
+≥   ≥           26.png
+≥   ≥           3.png
+≥   ≥           4.png
+≥   ≥           5.png
+≥   ≥           6.png
+≥   ≥           7.png
+≥   ≥           8.png
+≥   ≥           9.png
+≥   ≥           coach.png
+≥   ≥           
+≥   √ƒƒƒparaguay
+≥   ≥   ≥   info.json
+≥   ≥   ≥   logo.png
+≥   ≥   ≥   paraguay_flag.png
+≥   ≥   ≥   
+≥   ≥   √ƒƒƒclubs
+≥   ≥   ≥       Al-Ain FC.png
+≥   ≥   ≥       Atlanta United FC.png
+≥   ≥   ≥       Brighton & Hove Albion.png
+≥   ≥   ≥       CA Independiente.png
+≥   ≥   ≥       CA Lan£s.png
+≥   ≥   ≥       CA San Lorenzo de Almagro.png
+≥   ≥   ≥       CA Talleres.png
+≥   ≥   ≥       Club Cerro Porte§o.png
+≥   ≥   ≥       Clube AtlÇtico Mineiro.png
+≥   ≥   ≥       CS Independiente Rivadavia.png
+≥   ≥   ≥       Dynamo Moscow.png
+≥   ≥   ≥       Gràmio Foot-Ball Porto Alegrense.png
+≥   ≥   ≥       Olimpia Asunci¢n.png
+≥   ≥   ≥       Orlando City SC.png
+≥   ≥   ≥       Portsmouth FC.png
+≥   ≥   ≥       RC Strasbourg Alsace.png
+≥   ≥   ≥       Red Bull Bragantino.png
+≥   ≥   ≥       Sociedade Esportiva Palmeiras.png
+≥   ≥   ≥       Sunderland AFC.png
+≥   ≥   ≥       S∆o Paulo Futebol Clube.png
+≥   ≥   ≥       US Cremonese.png
+≥   ≥   ≥       Vancouver Whitecaps FC.png
+≥   ≥   ≥       
+≥   ≥   ¿ƒƒƒplayers
+≥   ≥           1.png
+≥   ≥           10.png
+≥   ≥           11.png
+≥   ≥           12.png
+≥   ≥           13.png
+≥   ≥           14.png
+≥   ≥           15.png
+≥   ≥           16.png
+≥   ≥           17.png
+≥   ≥           18.png
+≥   ≥           19.png
+≥   ≥           2.png
+≥   ≥           20.png
+≥   ≥           21.png
+≥   ≥           22.png
+≥   ≥           23.png
+≥   ≥           24.png
+≥   ≥           25.png
+≥   ≥           26.png
+≥   ≥           3.png
+≥   ≥           4.png
+≥   ≥           5.png
+≥   ≥           6.png
+≥   ≥           7.png
+≥   ≥           8.png
+≥   ≥           9.png
+≥   ≥           coach.png
+≥   ≥           
+≥   √ƒƒƒportugal
+≥   ≥   ≥   info.json
+≥   ≥   ≥   logo.png
+≥   ≥   ≥   portugal_flag.png
+≥   ≥   ≥   
+≥   ≥   √ƒƒƒclubs
+≥   ≥   ≥       AC Milan.png
+≥   ≥   ≥       Al-Hilal SFC.png
+≥   ≥   ≥       Al-Nassr FC.png
+≥   ≥   ≥       Chelsea FC.png
+≥   ≥   ≥       FC Barcelona.png
+≥   ≥   ≥       FC Porto.png
+≥   ≥   ≥       Fenerbahce.png
+≥   ≥   ≥       Juventus FC.png
+≥   ≥   ≥       Manchester City.png
+≥   ≥   ≥       Manchester United.png
+≥   ≥   ≥       Paris Saint-Germain.png
+≥   ≥   ≥       RCD Mallorca.png
+≥   ≥   ≥       Real Sociedad.png
+≥   ≥   ≥       SL Benfica.png
+≥   ≥   ≥       Sporting CP.png
+≥   ≥   ≥       Villarreal CF.png
+≥   ≥   ≥       Wolverhampton Wanderers.png
+≥   ≥   ≥       
+≥   ≥   ¿ƒƒƒplayers
+≥   ≥           1.png
+≥   ≥           10.png
+≥   ≥           11.png
+≥   ≥           12.png
+≥   ≥           13.png
+≥   ≥           14.png
+≥   ≥           15.png
+≥   ≥           16.png
+≥   ≥           17.png
+≥   ≥           18.png
+≥   ≥           19.png
+≥   ≥           2.png
+≥   ≥           20.png
+≥   ≥           21.png
+≥   ≥           22.png
+≥   ≥           23.png
+≥   ≥           24.png
+≥   ≥           25.png
+≥   ≥           26.png
+≥   ≥           3.png
+≥   ≥           4.png
+≥   ≥           5.png
+≥   ≥           6.png
+≥   ≥           7.png
+≥   ≥           8.png
+≥   ≥           9.png
+≥   ≥           coach.png
+≥   ≥           
+≥   √ƒƒƒqatar
+≥   ≥   ≥   info.json
+≥   ≥   ≥   logo.png
+≥   ≥   ≥   qatar_flag.png
+≥   ≥   ≥   
+≥   ≥   √ƒƒƒclubs
+≥   ≥   ≥       Al-Arabi SC.png
+≥   ≥   ≥       Al-Duhail SC.png
+≥   ≥   ≥       Al-Gharafa SC.png
+≥   ≥   ≥       Al-Rayyan SC.png
+≥   ≥   ≥       Al-Sadd SC.png
+≥   ≥   ≥       Al-Shamal SC.png
+≥   ≥   ≥       Al-Wakrah SC.png
+≥   ≥   ≥       Cultural Leonesa.png
+≥   ≥   ≥       
+≥   ≥   ¿ƒƒƒplayers
+≥   ≥           1.png
+≥   ≥           10.png
+≥   ≥           11.png
+≥   ≥           12.png
+≥   ≥           13.png
+≥   ≥           14.png
+≥   ≥           15.png
+≥   ≥           16.png
+≥   ≥           17.png
+≥   ≥           18.png
+≥   ≥           19.png
+≥   ≥           2.png
+≥   ≥           20.png
+≥   ≥           21.png
+≥   ≥           22.png
+≥   ≥           23.png
+≥   ≥           24.png
+≥   ≥           25.png
+≥   ≥           26.png
+≥   ≥           3.png
+≥   ≥           4.png
+≥   ≥           5.png
+≥   ≥           6.png
+≥   ≥           7.png
+≥   ≥           8.png
+≥   ≥           9.png
+≥   ≥           coach.png
+≥   ≥           
+≥   √ƒƒƒsaudi_arabia
+≥   ≥   ≥   info.json
+≥   ≥   ≥   logo.png
+≥   ≥   ≥   saudi_arabia_flag.png
+≥   ≥   ≥   
+≥   ≥   √ƒƒƒclubs
+≥   ≥   ≥       Al-Ahli SFC.png
+≥   ≥   ≥       Al-Ettifaq FC.png
+≥   ≥   ≥       Al-Hilal SFC.png
+≥   ≥   ≥       Al-Ittihad Club.png
+≥   ≥   ≥       Al-Nassr FC.png
+≥   ≥   ≥       Al-Qadsiah FC.png
+≥   ≥   ≥       Al-Ula FC.png
+≥   ≥   ≥       NEOM SC.png
+≥   ≥   ≥       RC Lens.png
+≥   ≥   ≥       
+≥   ≥   ¿ƒƒƒplayers
+≥   ≥           1.png
+≥   ≥           10.png
+≥   ≥           11.png
+≥   ≥           12.png
+≥   ≥           13.png
+≥   ≥           14.png
+≥   ≥           15.png
+≥   ≥           16.png
+≥   ≥           17.png
+≥   ≥           18.png
+≥   ≥           19.png
+≥   ≥           2.png
+≥   ≥           20.png
+≥   ≥           21.png
+≥   ≥           22.png
+≥   ≥           23.png
+≥   ≥           24.png
+≥   ≥           25.png
+≥   ≥           26.png
+≥   ≥           3.png
+≥   ≥           4.png
+≥   ≥           5.png
+≥   ≥           6.png
+≥   ≥           7.png
+≥   ≥           8.png
+≥   ≥           9.png
+≥   ≥           coach.png
+≥   ≥           
+≥   √ƒƒƒscotland
+≥   ≥   ≥   info.json
+≥   ≥   ≥   logo.png
+≥   ≥   ≥   scotland_flag.png
+≥   ≥   ≥   
+≥   ≥   √ƒƒƒclubs
+≥   ≥   ≥       AFC Bournemouth.png
+≥   ≥   ≥       Al-Ettifaq FC.png
+≥   ≥   ≥       Aston Villa.png
+≥   ≥   ≥       Bologna FC 1909.png
+≥   ≥   ≥       Brentford FC.png
+≥   ≥   ≥       Celtic FC.png
+≥   ≥   ≥       Charlton Athletic.png
+≥   ≥   ≥       Everton FC.png
+≥   ≥   ≥       GNK Dinamo Zagreb.png
+≥   ≥   ≥       Heart of Midlothian FC.png
+≥   ≥   ≥       Hibernian FC.png
+≥   ≥   ≥       Ipswich Town.png
+≥   ≥   ≥       Liverpool FC.png
+≥   ≥   ≥       Manchester United U21.png
+≥   ≥   ≥       Norwich City.png
+≥   ≥   ≥       Nottingham Forest.png
+≥   ≥   ≥       Rangers FC.png
+≥   ≥   ≥       Southampton FC.png
+≥   ≥   ≥       SSC Napoli.png
+≥   ≥   ≥       Torino FC.png
+≥   ≥   ≥       Wrexham AFC.png
+≥   ≥   ≥       
+≥   ≥   ¿ƒƒƒplayers
+≥   ≥           1.png
+≥   ≥           10.png
+≥   ≥           11.png
+≥   ≥           12.png
+≥   ≥           13.png
+≥   ≥           14.png
+≥   ≥           15.png
+≥   ≥           16.png
+≥   ≥           17.png
+≥   ≥           18.png
+≥   ≥           19.png
+≥   ≥           2.png
+≥   ≥           20.png
+≥   ≥           21.png
+≥   ≥           22.png
+≥   ≥           23.png
+≥   ≥           24.png
+≥   ≥           25.png
+≥   ≥           26.png
+≥   ≥           3.png
+≥   ≥           4.png
+≥   ≥           5.png
+≥   ≥           6.png
+≥   ≥           7.png
+≥   ≥           8.png
+≥   ≥           9.png
+≥   ≥           coach.png
+≥   ≥           
+≥   √ƒƒƒsenegal
+≥   ≥   ≥   info.json
+≥   ≥   ≥   logo.png
+≥   ≥   ≥   senegal_flag.png
+≥   ≥   ≥   
+≥   ≥   √ƒƒƒclubs
+≥   ≥   ≥       Al-Ahli SFC.png
+≥   ≥   ≥       Al-Hilal SFC.png
+≥   ≥   ≥       Al-Nassr FC.png
+≥   ≥   ≥       AS Monaco.png
+≥   ≥   ≥       Bayern Munich.png
+≥   ≥   ≥       Chelsea FC.png
+≥   ≥   ≥       Como 1907.png
+≥   ≥   ≥       Crystal Palace.png
+≥   ≥   ≥       Everton FC.png
+≥   ≥   ≥       FC Lorient.png
+≥   ≥   ≥       Galatasaray.png
+≥   ≥   ≥       Le Havre AC.png
+≥   ≥   ≥       Maccabi Haifa.png
+≥   ≥   ≥       OGC Nice.png
+≥   ≥   ≥       Olympique Lyon.png
+≥   ≥   ≥       Paris Saint-Germain.png
+≥   ≥   ≥       Rayo Vallecano.png
+≥   ≥   ≥       Samsunspor.png
+≥   ≥   ≥       Sunderland AFC.png
+≥   ≥   ≥       Tottenham Hotspur.png
+≥   ≥   ≥       Villarreal CF.png
+≥   ≥   ≥       West Ham United.png
+≥   ≥   ≥       
+≥   ≥   ¿ƒƒƒplayers
+≥   ≥           1.png
+≥   ≥           10.png
+≥   ≥           11.png
+≥   ≥           12.png
+≥   ≥           13.png
+≥   ≥           14.png
+≥   ≥           15.png
+≥   ≥           16.png
+≥   ≥           17.png
+≥   ≥           18.png
+≥   ≥           19.png
+≥   ≥           2.png
+≥   ≥           20.png
+≥   ≥           21.png
+≥   ≥           22.png
+≥   ≥           23.png
+≥   ≥           24.png
+≥   ≥           25.png
+≥   ≥           26.png
+≥   ≥           3.png
+≥   ≥           4.png
+≥   ≥           5.png
+≥   ≥           6.png
+≥   ≥           7.png
+≥   ≥           8.png
+≥   ≥           9.png
+≥   ≥           coach.png
+≥   ≥           
+≥   √ƒƒƒsouth_africa
+≥   ≥   ≥   info.json
+≥   ≥   ≥   logo.png
+≥   ≥   ≥   south_africa_flag.png
+≥   ≥   ≥   
+≥   ≥   √ƒƒƒclubs
+≥   ≥   ≥       AEL Limassol.png
+≥   ≥   ≥       Burnley FC.png
+≥   ≥   ≥       CD Tondela.png
+≥   ≥   ≥       Chicago Fire FC.png
+≥   ≥   ≥       Hannover 96.png
+≥   ≥   ≥       Kaizer Chiefs.png
+≥   ≥   ≥       Mamelodi Sundowns FC.png
+≥   ≥   ≥       Molde FK.png
+≥   ≥   ≥       Orlando Pirates.png
+≥   ≥   ≥       Philadelphia Union.png
+≥   ≥   ≥       Polokwane City FC.png
+≥   ≥   ≥       Siwelele Football Club.png
+≥   ≥   ≥       
+≥   ≥   ¿ƒƒƒplayers
+≥   ≥           1.png
+≥   ≥           10.png
+≥   ≥           11.png
+≥   ≥           12.png
+≥   ≥           13.png
+≥   ≥           14.png
+≥   ≥           15.png
+≥   ≥           16.png
+≥   ≥           17.png
+≥   ≥           18.png
+≥   ≥           19.png
+≥   ≥           2.png
+≥   ≥           20.png
+≥   ≥           21.png
+≥   ≥           22.png
+≥   ≥           23.png
+≥   ≥           24.png
+≥   ≥           25.png
+≥   ≥           26.png
+≥   ≥           3.png
+≥   ≥           4.png
+≥   ≥           5.png
+≥   ≥           6.png
+≥   ≥           7.png
+≥   ≥           8.png
+≥   ≥           9.png
+≥   ≥           coach.png
+≥   ≥           
+≥   √ƒƒƒsouth_korea
+≥   ≥   ≥   info.json
+≥   ≥   ≥   logo.png
+≥   ≥   ≥   south_korea_flag.png
+≥   ≥   ≥   
+≥   ≥   √ƒƒƒclubs
+≥   ≥   ≥       1.FSV Mainz 05.png
+≥   ≥   ≥       Austria Vienna.png
+≥   ≥   ≥       Bayern Munich.png
+≥   ≥   ≥       Besiktas JK.png
+≥   ≥   ≥       Birmingham City.png
+≥   ≥   ≥       Borussia Mînchengladbach.png
+≥   ≥   ≥       Celtic FC.png
+≥   ≥   ≥       Daejeon Hana Citizen.png
+≥   ≥   ≥       FC Midtjylland.png
+≥   ≥   ≥       FC Tokyo.png
+≥   ≥   ≥       Feyenoord Rotterdam.png
+≥   ≥   ≥       Gangwon FC.png
+≥   ≥   ≥       Jeonbuk Hyundai Motors.png
+≥   ≥   ≥       Kashima Antlers.png
+≥   ≥   ≥       Los Angeles FC.png
+≥   ≥   ≥       Paris Saint-Germain.png
+≥   ≥   ≥       Red Star Belgrade.png
+≥   ≥   ≥       Stoke City.png
+≥   ≥   ≥       Swansea City.png
+≥   ≥   ≥       Ulsan HD FC.png
+≥   ≥   ≥       Wolverhampton Wanderers.png
+≥   ≥   ≥       Zhejiang FC.png
+≥   ≥   ≥       
+≥   ≥   ¿ƒƒƒplayers
+≥   ≥           1.png
+≥   ≥           10.png
+≥   ≥           11.png
+≥   ≥           12.png
+≥   ≥           13.png
+≥   ≥           14.png
+≥   ≥           15.png
+≥   ≥           16.png
+≥   ≥           17.png
+≥   ≥           18.png
+≥   ≥           19.png
+≥   ≥           2.png
+≥   ≥           20.png
+≥   ≥           21.png
+≥   ≥           22.png
+≥   ≥           23.png
+≥   ≥           24.png
+≥   ≥           25.png
+≥   ≥           26.png
+≥   ≥           3.png
+≥   ≥           4.png
+≥   ≥           5.png
+≥   ≥           6.png
+≥   ≥           7.png
+≥   ≥           8.png
+≥   ≥           9.png
+≥   ≥           coach.png
+≥   ≥           
+≥   √ƒƒƒspain
+≥   ≥   ≥   info.json
+≥   ≥   ≥   logo.png
+≥   ≥   ≥   spain_flag.png
+≥   ≥   ≥   
+≥   ≥   √ƒƒƒclubs
+≥   ≥   ≥       Arsenal FC.png
+≥   ≥   ≥       Athletic Bilbao.png
+≥   ≥   ≥       AtlÇtico de Madrid.png
+≥   ≥   ≥       Bayer 04 Leverkusen.png
+≥   ≥   ≥       CA Osasuna.png
+≥   ≥   ≥       Celta de Vigo.png
+≥   ≥   ≥       Chelsea FC.png
+≥   ≥   ≥       Crystal Palace.png
+≥   ≥   ≥       FC Barcelona.png
+≥   ≥   ≥       Manchester City.png
+≥   ≥   ≥       Paris Saint-Germain.png
+≥   ≥   ≥       Real Sociedad.png
+≥   ≥   ≥       Tottenham Hotspur.png
+≥   ≥   ≥       
+≥   ≥   ¿ƒƒƒplayers
+≥   ≥           1.png
+≥   ≥           10.png
+≥   ≥           11.png
+≥   ≥           12.png
+≥   ≥           13.png
+≥   ≥           14.png
+≥   ≥           15.png
+≥   ≥           16.png
+≥   ≥           17.png
+≥   ≥           18.png
+≥   ≥           19.png
+≥   ≥           2.png
+≥   ≥           20.png
+≥   ≥           21.png
+≥   ≥           22.png
+≥   ≥           23.png
+≥   ≥           24.png
+≥   ≥           25.png
+≥   ≥           26.png
+≥   ≥           3.png
+≥   ≥           4.png
+≥   ≥           5.png
+≥   ≥           6.png
+≥   ≥           7.png
+≥   ≥           8.png
+≥   ≥           9.png
+≥   ≥           trainer.png
+≥   ≥           
+≥   √ƒƒƒsweden
+≥   ≥   ≥   info.json
+≥   ≥   ≥   logo.png
+≥   ≥   ≥   sweden_flag.png
+≥   ≥   ≥   
+≥   ≥   √ƒƒƒclubs
+≥   ≥   ≥       AIK.png
+≥   ≥   ≥       Arsenal FC.png
+≥   ≥   ≥       Aston Villa.png
+≥   ≥   ≥       Atalanta BC.png
+≥   ≥   ≥       Borussia Dortmund.png
+≥   ≥   ≥       Brighton & Hove Albion.png
+≥   ≥   ≥       Burnley FC.png
+≥   ≥   ≥       Celta de Vigo.png
+≥   ≥   ≥       Celtic FC.png
+≥   ≥   ≥       Club Brugge KV.png
+≥   ≥   ≥       Derby County.png
+≥   ≥   ≥       FC Dallas.png
+≥   ≥   ≥       FC St. Pauli.png
+≥   ≥   ≥       Holstein Kiel.png
+≥   ≥   ≥       Leeds United.png
+≥   ≥   ≥       Liverpool FC.png
+≥   ≥   ≥       Malmî FF.png
+≥   ≥   ≥       MjÑllby AIF.png
+≥   ≥   ≥       Newcastle United.png
+≥   ≥   ≥       Pafos FC.png
+≥   ≥   ≥       SC Braga.png
+≥   ≥   ≥       Stoke City.png
+≥   ≥   ≥       Tottenham Hotspur.png
+≥   ≥   ≥       Udinese Calcio.png
+≥   ≥   ≥       Union Saint-Gilloise.png
+≥   ≥   ≥       VfL Wolfsburg.png
+≥   ≥   ≥       
+≥   ≥   ¿ƒƒƒplayers
+≥   ≥           1.png
+≥   ≥           10.png
+≥   ≥           11.png
+≥   ≥           12.png
+≥   ≥           13.png
+≥   ≥           14.png
+≥   ≥           15.png
+≥   ≥           16.png
+≥   ≥           17.png
+≥   ≥           18.png
+≥   ≥           19.png
+≥   ≥           2.png
+≥   ≥           20.png
+≥   ≥           21.png
+≥   ≥           22.png
+≥   ≥           23.png
+≥   ≥           24.png
+≥   ≥           25.png
+≥   ≥           26.png
+≥   ≥           3.png
+≥   ≥           4.png
+≥   ≥           5.png
+≥   ≥           6.png
+≥   ≥           7.png
+≥   ≥           8.png
+≥   ≥           9.png
+≥   ≥           coach.png
+≥   ≥           
+≥   √ƒƒƒswitzerland
+≥   ≥   ≥   info.json
+≥   ≥   ≥   logo.png
+≥   ≥   ≥   switzerland_flag.png
+≥   ≥   ≥   
+≥   ≥   √ƒƒƒclubs
+≥   ≥   ≥       1.FSV Mainz 05.png
+≥   ≥   ≥       AC Milan.png
+≥   ≥   ≥       AS Monaco.png
+≥   ≥   ≥       Bologna FC 1909.png
+≥   ≥   ≥       Borussia Dortmund.png
+≥   ≥   ≥       Borussia Mînchengladbach.png
+≥   ≥   ≥       BSC Young Boys.png
+≥   ≥   ≥       Burnley FC.png
+≥   ≥   ≥       Eintracht Frankfurt.png
+≥   ≥   ≥       FC Augsburg.png
+≥   ≥   ≥       FC Lorient.png
+≥   ≥   ≥       Fortuna DÅsseldorf.png
+≥   ≥   ≥       Hamburger SV.png
+≥   ≥   ≥       Inter Milan.png
+≥   ≥   ≥       Leeds United.png
+≥   ≥   ≥       Nottingham Forest.png
+≥   ≥   ≥       Pisa Sporting Club.png
+≥   ≥   ≥       Real Betis BalompiÇ.png
+≥   ≥   ≥       SC Freiburg.png
+≥   ≥   ≥       Sevilla FC.png
+≥   ≥   ≥       Stade Rennais FC.png
+≥   ≥   ≥       Sunderland AFC.png
+≥   ≥   ≥       Valencia CF.png
+≥   ≥   ≥       VfB Stuttgart.png
+≥   ≥   ≥       
+≥   ≥   ¿ƒƒƒplayers
+≥   ≥           1.png
+≥   ≥           10.png
+≥   ≥           11.png
+≥   ≥           12.png
+≥   ≥           13.png
+≥   ≥           14.png
+≥   ≥           15.png
+≥   ≥           16.png
+≥   ≥           17.png
+≥   ≥           18.png
+≥   ≥           19.png
+≥   ≥           2.png
+≥   ≥           20.png
+≥   ≥           21.png
+≥   ≥           22.png
+≥   ≥           23.png
+≥   ≥           24.png
+≥   ≥           25.png
+≥   ≥           26.png
+≥   ≥           3.png
+≥   ≥           4.png
+≥   ≥           5.png
+≥   ≥           6.png
+≥   ≥           7.png
+≥   ≥           8.png
+≥   ≥           9.png
+≥   ≥           coach.png
+≥   ≥           
+≥   √ƒƒƒtunisia
+≥   ≥   ≥   info.json
+≥   ≥   ≥   logo.png
+≥   ≥   ≥   tunisia_flag.png
+≥   ≥   ≥   
+≥   ≥   √ƒƒƒclubs
+≥   ≥   ≥       1.FC Union Berlin.png
+≥   ≥   ≥       BSC Young Boys.png
+≥   ≥   ≥       Burnley FC.png
+≥   ≥   ≥       Celtic FC.png
+≥   ≥   ≥       Club Africain.png
+≥   ≥   ≥       CS Sfaxien.png
+≥   ≥   ≥       Dinamo Makhachkala.png
+≥   ≥   ≥       Eintracht Frankfurt.png
+≥   ≥   ≥       Esperance Tunis.png
+≥   ≥   ≥       Etoile Sportive du Sahel.png
+≥   ≥   ≥       FC Augsburg.png
+≥   ≥   ≥       FC Copenhagen.png
+≥   ≥   ≥       FC Lorient.png
+≥   ≥   ≥       FC Lugano.png
+≥   ≥   ≥       Hannover 96.png
+≥   ≥   ≥       IFK Norrkîping.png
+≥   ≥   ≥       Kasimpasa.png
+≥   ≥   ≥       NK Maribor.png
+≥   ≥   ≥       Norwich City.png
+≥   ≥   ≥       OGC Nice.png
+≥   ≥   ≥       Paris Saint-Germain Espoirs.png
+≥   ≥   ≥       Servette FC.png
+≥   ≥   ≥       US Monastir.png
+≥   ≥   ≥       Vancouver Whitecaps FC.png
+≥   ≥   ≥       
+≥   ≥   ¿ƒƒƒplayers
+≥   ≥           1.png
+≥   ≥           10.png
+≥   ≥           11.png
+≥   ≥           12.png
+≥   ≥           13.png
+≥   ≥           14.png
+≥   ≥           15.png
+≥   ≥           16.png
+≥   ≥           17.png
+≥   ≥           18.png
+≥   ≥           19.png
+≥   ≥           2.png
+≥   ≥           20.png
+≥   ≥           21.png
+≥   ≥           22.png
+≥   ≥           23.png
+≥   ≥           24.png
+≥   ≥           25.png
+≥   ≥           26.png
+≥   ≥           3.png
+≥   ≥           4.png
+≥   ≥           5.png
+≥   ≥           6.png
+≥   ≥           7.png
+≥   ≥           8.png
+≥   ≥           9.png
+≥   ≥           coach.png
+≥   ≥           
+≥   √ƒƒƒturkey
+≥   ≥   ≥   info.json
+≥   ≥   ≥   logo.png
+≥   ≥   ≥   turkey_flag.png
+≥   ≥   ≥   
+≥   ≥   √ƒƒƒclubs
+≥   ≥   ≥       Al-Ahli SFC.png
+≥   ≥   ≥       AS Roma.png
+≥   ≥   ≥       Besiktas JK.png
+≥   ≥   ≥       Borussia Dortmund.png
+≥   ≥   ≥       Brighton & Hove Albion.png
+≥   ≥   ≥       Caykur Rizespor.png
+≥   ≥   ≥       Eintracht Frankfurt.png
+≥   ≥   ≥       FC Porto.png
+≥   ≥   ≥       Fenerbahce.png
+≥   ≥   ≥       Galatasaray.png
+≥   ≥   ≥       Inter Milan.png
+≥   ≥   ≥       Juventus FC.png
+≥   ≥   ≥       Kasimpasa.png
+≥   ≥   ≥       Manchester United.png
+≥   ≥   ≥       Real Madrid.png
+≥   ≥   ≥       TSG 1899 Hoffenheim.png
+≥   ≥   ≥       
+≥   ≥   ¿ƒƒƒplayers
+≥   ≥           1.png
+≥   ≥           10.png
+≥   ≥           11.png
+≥   ≥           12.png
+≥   ≥           13.png
+≥   ≥           14.png
+≥   ≥           15.png
+≥   ≥           16.png
+≥   ≥           17.png
+≥   ≥           18.png
+≥   ≥           19.png
+≥   ≥           2.png
+≥   ≥           20.png
+≥   ≥           21.png
+≥   ≥           22.png
+≥   ≥           23.png
+≥   ≥           24.png
+≥   ≥           25.png
+≥   ≥           26.png
+≥   ≥           3.png
+≥   ≥           4.png
+≥   ≥           5.png
+≥   ≥           6.png
+≥   ≥           7.png
+≥   ≥           8.png
+≥   ≥           9.png
+≥   ≥           coach.png
+≥   ≥           
+≥   √ƒƒƒuruguay
+≥   ≥   ≥   info.json
+≥   ≥   ≥   logo.png
+≥   ≥   ≥   uruguay_flag.png
+≥   ≥   ≥   
+≥   ≥   √ƒƒƒclubs
+≥   ≥   ≥       Al-Hilal SFC.png
+≥   ≥   ≥       AtlÇtico de Madrid.png
+≥   ≥   ≥       CA River Plate.png
+≥   ≥   ≥       CF AmÇrica.png
+≥   ≥   ≥       CF Monterrey.png
+≥   ≥   ≥       Club Estudiantes de La Plata.png
+≥   ≥   ≥       CR Flamengo.png
+≥   ≥   ≥       FC Barcelona.png
+≥   ≥   ≥       Fluminense Football Club.png
+≥   ≥   ≥       Manchester United.png
+≥   ≥   ≥       Panathinaikos.png
+≥   ≥   ≥       Real Madrid.png
+≥   ≥   ≥       Real Oviedo.png
+≥   ≥   ≥       Real Salt Lake City.png
+≥   ≥   ≥       SC Braga.png
+≥   ≥   ≥       Sociedade Esportiva Palmeiras.png
+≥   ≥   ≥       Sport Club Internacional.png
+≥   ≥   ≥       Sporting CP.png
+≥   ≥   ≥       SSC Napoli.png
+≥   ≥   ≥       Tigres UANL.png
+≥   ≥   ≥       Tottenham Hotspur.png
+≥   ≥   ≥       Wolverhampton Wanderers.png
+≥   ≥   ≥       
+≥   ≥   ¿ƒƒƒplayers
+≥   ≥           1.png
+≥   ≥           10.png
+≥   ≥           11.png
+≥   ≥           12.png
+≥   ≥           13.png
+≥   ≥           14.png
+≥   ≥           15.png
+≥   ≥           16.png
+≥   ≥           17.png
+≥   ≥           18.png
+≥   ≥           19.png
+≥   ≥           2.png
+≥   ≥           20.png
+≥   ≥           21.png
+≥   ≥           22.png
+≥   ≥           23.png
+≥   ≥           24.png
+≥   ≥           25.png
+≥   ≥           26.png
+≥   ≥           3.png
+≥   ≥           4.png
+≥   ≥           5.png
+≥   ≥           6.png
+≥   ≥           7.png
+≥   ≥           8.png
+≥   ≥           9.png
+≥   ≥           coach.png
+≥   ≥           
+≥   √ƒƒƒusa
+≥   ≥   ≥   info.json
+≥   ≥   ≥   logo.png
+≥   ≥   ≥   usa_flag.png
+≥   ≥   ≥   
+≥   ≥   √ƒƒƒclubs
+≥   ≥   ≥       AC Milan.png
+≥   ≥   ≥       AFC Bournemouth.png
+≥   ≥   ≥       AS Monaco.png
+≥   ≥   ≥       Bayer 04 Leverkusen.png
+≥   ≥   ≥       Borussia Mînchengladbach.png
+≥   ≥   ≥       Celtic FC.png
+≥   ≥   ≥       CF AmÇrica.png
+≥   ≥   ≥       Charlotte FC.png
+≥   ≥   ≥       Chicago Fire FC.png
+≥   ≥   ≥       Columbus Crew.png
+≥   ≥   ≥       Coventry City.png
+≥   ≥   ≥       Crystal Palace.png
+≥   ≥   ≥       FC Cincinnati.png
+≥   ≥   ≥       FC Toulouse.png
+≥   ≥   ≥       Fulham FC.png
+≥   ≥   ≥       Juventus FC.png
+≥   ≥   ≥       Leeds United.png
+≥   ≥   ≥       New England Revolution.png
+≥   ≥   ≥       New York City FC.png
+≥   ≥   ≥       Olympique Marseille.png
+≥   ≥   ≥       PSV Eindhoven.png
+≥   ≥   ≥       Seattle Sounders FC.png
+≥   ≥   ≥       Vancouver Whitecaps FC.png
+≥   ≥   ≥       Villarreal CF.png
+≥   ≥   ≥       
+≥   ≥   ¿ƒƒƒplayers
+≥   ≥           1.png
+≥   ≥           10.png
+≥   ≥           11.png
+≥   ≥           12.png
+≥   ≥           13.png
+≥   ≥           14.png
+≥   ≥           15.png
+≥   ≥           16.png
+≥   ≥           17.png
+≥   ≥           18.png
+≥   ≥           19.png
+≥   ≥           2.png
+≥   ≥           20.png
+≥   ≥           21.png
+≥   ≥           22.png
+≥   ≥           23.png
+≥   ≥           24.png
+≥   ≥           25.png
+≥   ≥           26.png
+≥   ≥           3.png
+≥   ≥           4.png
+≥   ≥           5.png
+≥   ≥           6.png
+≥   ≥           7.png
+≥   ≥           8.png
+≥   ≥           9.png
+≥   ≥           coach.png
+≥   ≥           
+≥   ¿ƒƒƒuzbekistan
+≥       ≥   info.json
+≥       ≥   logo.png
+≥       ≥   uzbekistan_flag.png
+≥       ≥   
+≥       √ƒƒƒclubs
+≥       ≥       Al-Bataeh CSC.png
+≥       ≥       Basaksehir FK.png
+≥       ≥       Dibba SCC.png
+≥       ≥       Dinamo Samarkand.png
+≥       ≥       Dinamo Samarqand.png
+≥       ≥       Esteghlal FC.png
+≥       ≥       FC Baniyas.png
+≥       ≥       FC Buxoro.png
+≥       ≥       FC OKMK Olmaliq.png
+≥       ≥       FK Buxoro.png
+≥       ≥       FK OKMK Olmaliq.png
+≥       ≥       Manchester City.png
+≥       ≥       Nasaf Qarshi.png
+≥       ≥       Navbahor Namangan.png
+≥       ≥       Neftchi Fergana.png
+≥       ≥       Pakhtakor Tashkent.png
+≥       ≥       Persepolis FC.png
+≥       ≥       Surkhon Termiz.png
+≥       ≥       Tractor FC.png
+≥       ≥       
+≥       ¿ƒƒƒplayers
+≥               1.png
+≥               10.png
+≥               11.png
+≥               12.png
+≥               13.png
+≥               14.png
+≥               15.png
+≥               16.png
+≥               17.png
+≥               18.png
+≥               19.png
+≥               2.png
+≥               20.png
+≥               21.png
+≥               22.png
+≥               23.png
+≥               24.png
+≥               25.png
+≥               26.png
+≥               3.png
+≥               4.png
+≥               5.png
+≥               6.png
+≥               7.png
+≥               8.png
+≥               9.png
+≥               coach.png
+≥               
+¿ƒƒƒphotos
+    √ƒƒƒgolden_ball
+    ≥       GBA1.png
+    ≥       GBA10.png
+    ≥       GBA11.png
+    ≥       GBA12.png
+    ≥       GBA13.png
+    ≥       GBA14.png
+    ≥       GBA15.png
+    ≥       GBA16.png
+    ≥       GBA17.png
+    ≥       GBA18.png
+    ≥       GBA19.png
+    ≥       GBA2.png
+    ≥       GBA20.png
+    ≥       GBA21.png
+    ≥       GBA22.png
+    ≥       GBA3.png
+    ≥       GBA4.png
+    ≥       GBA5.png
+    ≥       GBA6.png
+    ≥       GBA7.png
+    ≥       GBA8.png
+    ≥       GBA9.png
+    ≥       
+    √ƒƒƒgolden_boot
+    ≥       GBO1.png
+    ≥       GBO10.png
+    ≥       GBO11.png
+    ≥       GBO12.png
+    ≥       GBO13.png
+    ≥       GBO14.png
+    ≥       GBO15_1.png
+    ≥       GBO15_2.png
+    ≥       GBO16.png
+    ≥       GBO17.png
+    ≥       GBO18.png
+    ≥       GBO19.png
+    ≥       GBO2.png
+    ≥       GBO20.png
+    ≥       GBO21.png
+    ≥       GBO22.png
+    ≥       GBO3.png
+    ≥       GBO4.png
+    ≥       GBO5.png
+    ≥       GBO6.png
+    ≥       GBO7_1.png
+    ≥       GBO7_2.png
+    ≥       GBO7_3.png
+    ≥       GBO7_4.png
+    ≥       GBO7_5.png
+    ≥       GBO7_6.png
+    ≥       GBO8.png
+    ≥       GBO9.png
+    ≥       
+    √ƒƒƒspecial
+    ≥       spc00.png
+    ≥       spc001.png
+    ≥       spc002.png
+    ≥       spc003.png
+    ≥       spc004.png
+    ≥       WM-Logo.png
+    ≥       
+    √ƒƒƒstadiums
+    ¿ƒƒƒwinning_teams
