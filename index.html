@@ -710,6 +710,19 @@ document.addEventListener('touchmove', (e) => {
     }
 }, { passive: false });
 
+function updateBoosterZoneVisibility() {
+    const bZone = document.getElementById('boosterZone');
+    if (!bZone) return;
+
+    const packs = (currentUserData && currentUserData.packs_available) ? currentUserData.packs_available : 0;
+
+    if (packs > 0 && globalStickerDatabase !== null) {
+        bZone.style.display = "flex";
+    } else {
+        bZone.style.display = "none";
+    }
+}
+
 document.addEventListener("DOMContentLoaded", () => {
     const isTop10Active = localStorage.getItem("random_player_top10") === "true";
     const badge = document.getElementById("top10Badge");
@@ -719,7 +732,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
     fetch("./data/sticker_database.json")
         .then(res => res.json())
-        .then(data => { globalStickerDatabase = data; })
+        .then(data => { 
+            globalStickerDatabase = data; 
+            updateBoosterZoneVisibility();
+        })
         .catch(err => console.error("Database reading aborted: ", err));
 });
 
@@ -731,7 +747,6 @@ firebase.auth().onAuthStateChanged((user) => {
     const inputUser = document.getElementById('loginUser');
     const inputPass = document.getElementById('loginPass');
     const modalDesc = document.getElementById('modalDesc');
-    const bZone = document.getElementById('boosterZone');
 
     if (user) {
         led.classList.add('online'); 
@@ -759,15 +774,13 @@ firebase.auth().onAuthStateChanged((user) => {
         modalDesc.innerText = "Create an account to save progress and collect stickers!";
         document.getElementById('modalTitle').innerText = "User Profile";
         
-        bZone.style.display = "none";
+        updateBoosterZoneVisibility();
         if(packTimerInterval) clearInterval(packTimerInterval);
     }
 });
 
 function startUserSync(uid) {
     db.collection("users").doc(uid).onSnapshot((doc) => {
-        const bZone = document.getElementById('boosterZone');
-        
         if (!doc.exists) {
             db.collection("users").doc(uid).set({
                 packs_available: 7,
@@ -784,11 +797,7 @@ function startUserSync(uid) {
         const packs = currentUserData.packs_available || 0;
         document.getElementById("packCounterCircle").innerText = packs;
         
-        if (packs > 0) {
-            bZone.style.display = "flex";
-        } else {
-            bZone.style.display = "none";
-        }
+        updateBoosterZoneVisibility();
         
         if(!packTimerInterval) {
             checkAndGeneratePacks(uid);
@@ -907,27 +916,33 @@ function renderDrawnStickersGrid() {
         const img = document.createElement("img");
         img.className = "sticker-img";
 
-        // --- DYNAMISCHE PFAD-KORREKTUR FÜR DEN PHOTOS-ORDNER ---
+        // --- EXAKTES PFAD-MAPPING BASIEREND AUF DEINER ORDNERSTRUKTUR ---
         let finalPath = sticker.image;
         if (finalPath.startsWith('./')) {
             finalPath = finalPath.substring(2);
         }
         
-        // 1. Abfangen von Trophäen, Stempeln, etc. (Typen starten mit "special_")
+        const pureFileName = finalPath.substring(finalPath.lastIndexOf('/') + 1);
+
+        // 1. Trophäen, Stempel, Auszeichnungen (Ordner: photos/special)
         if (sticker.type && sticker.type.startsWith('special')) {
-            finalPath = "photos/special/" + finalPath.substring(finalPath.lastIndexOf('/') + 1);
+            finalPath = "photos/special/" + pureFileName;
         } 
-        // 2. Abfangen von Stadien
+        // 2. WM-Stadien (Ordner: photos/stadiums)
         else if (sticker.type && sticker.type.startsWith('stadium')) {
-            finalPath = "photos/stadiums/" + finalPath.substring(finalPath.lastIndexOf('/') + 1);
+            finalPath = "photos/stadiums/" + pureFileName;
         } 
-        // 3. Abfangen des Golden Boots
+        // 3. Golden Boot (Ordner: photos/golden_boot)
         else if (sticker.type === 'golden_boot') {
-            finalPath = "photos/golden_boot/" + finalPath.substring(finalPath.lastIndexOf('/') + 1);
+            finalPath = "photos/golden_boot/" + pureFileName;
         }
-        // 4. Abfangen von Teambildern
+        // 4. Golden Ball (Ordner: photos/golden_ball)
+        else if (sticker.type === 'golden_ball') {
+            finalPath = "photos/golden_ball/" + pureFileName;
+        }
+        // 5. Gewinner-Teambilder (Ordner: photos/winning_teams)
         else if (sticker.type === 'team_photo') {
-            finalPath = "photos/winning_teams/" + finalPath.substring(finalPath.lastIndexOf('/') + 1);
+            finalPath = "photos/winning_teams/" + pureFileName;
         }
 
         img.src = finalPath;
@@ -976,9 +991,7 @@ function setupScratchEffect(canvas) {
     function scratch(e) {
         if (!isDrawing) return;
         
-        // Verhindert iOS Elastic-Scrolling am Bildschirmrand absolut zuverlässig
         if (e.cancelable) e.preventDefault(); 
-        
         const rect = canvas.getBoundingClientRect();
         
         let clientX, clientY;
@@ -986,7 +999,6 @@ function setupScratchEffect(canvas) {
             clientX = e.touches[0].clientX;
             clientY = e.touches[0].clientY;
         } else if (e.changedTouches && e.changedTouches.length > 0) {
-            // Extrem wichtig für iOS-Ränder, falls der Finger das Canvas verlässt
             clientX = e.changedTouches[0].clientX;
             clientY = e.changedTouches[0].clientY;
         } else {
@@ -999,7 +1011,7 @@ function setupScratchEffect(canvas) {
 
         ctx.globalCompositeOperation = "destination-out";
         ctx.beginPath();
-        ctx.arc(x, y, 40, 0, Math.PI * 2); // Radius optimiert für präziseres Freiwischen
+        ctx.arc(x, y, 40, 0, Math.PI * 2); 
         ctx.fill();
         
         checkScratchPercentage();
@@ -1015,7 +1027,6 @@ function setupScratchEffect(canvas) {
         }
         const totalPixels = width * height;
         
-        // Sobald 75% freigerubbelt sind, decken wir das Canvas automatisch auf (verhindert Frust bei Resten am Rand)
         if ((pixelsCleared / totalPixels) >= 0.75) {
             canvas.dataset.cleared = "true";
             canvas.style.opacity = "0";
@@ -1026,12 +1037,10 @@ function setupScratchEffect(canvas) {
         }
     }
 
-    // Maus-Events (Desktop)
     canvas.addEventListener("mousedown", (e) => { isDrawing = true; scratch(e); });
     canvas.addEventListener("mousemove", scratch);
     window.addEventListener("mouseup", () => isDrawing = false);
 
-    // Touch-Events (iOS / Android)
     canvas.addEventListener("touchstart", (e) => { 
         isDrawing = true; 
         scratch(e); 
