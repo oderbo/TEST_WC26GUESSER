@@ -30,7 +30,7 @@ body {
     height: 100dvh;
     min-height: 100dvh;
     width: 100%;
-    overflow: hidden; /* Verhindert jegliches Scrollen der Hauptseite */
+    overflow: hidden;
     position: relative;
 }
 
@@ -70,155 +70,75 @@ body {
 
 /* --- DESKTOP & TABLET LAYOUT --- */
 @media (min-width: 768px) {
-    body {
-        justify-content: flex-start; 
-    }
+    body { justify-content: flex-start; }
 
     .center-bg-icon-desktop {
-        position: fixed;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        width: 35vw;
-        max-width: 500px;
-        aspect-ratio: 1 / 1;
-        background-image: url('assets/Icon.png');
-        background-size: contain;
-        background-repeat: no-repeat;
-        background-position: center;
-        z-index: -1;
-        opacity: 0.8;
+        position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);
+        width: 35vw; max-width: 500px; aspect-ratio: 1 / 1;
+        background-image: url('assets/Icon.png'); background-size: contain;
+        background-repeat: no-repeat; background-position: center;
+        z-index: -1; opacity: 0.8;
     }
 
-    .header-container {
-        margin-top: 3vh; 
-    }
+    .header-container { margin-top: 3vh; }
 
     .logo-desktop {
-        display: block;
-        max-width: 900px; 
-        width: 70vw;
-        aspect-ratio: 3 / 1; 
-        -webkit-mask-image: url('assets/WC26Guesser.svg');
-        mask-image: url('assets/WC26Guesser.svg');
+        display: block; max-width: 900px; width: 70vw; aspect-ratio: 3 / 1; 
+        -webkit-mask-image: url('assets/WC26Guesser.svg'); mask-image: url('assets/WC26Guesser.svg');
     }
     
-    .logo-mobile {
-        display: none; 
-    }
+    .logo-mobile { display: none; }
 
     .menu-container {
-        position: absolute;
-        top: 55%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
-        align-items: center;
-        width: 100%;
-        max-width: 1400px; 
-        gap: 2.5vw; 
-        z-index: 10;
-        padding: 0 20px;
+        position: absolute; top: 55%; left: 50%; transform: translate(-50%, -50%);
+        display: flex; flex-direction: row; justify-content: center; align-items: center;
+        width: 100%; max-width: 1400px; gap: 2.5vw; z-index: 10; padding: 0 20px;
     }
 
-    .image-btn {
-        width: 13vw; 
-        max-width: 160px;
-    }
+    .image-btn { width: 13vw; max-width: 160px; }
 
     .center-space {
-        display: block;
-        width: 18vw;
-        max-width: 220px;
-        aspect-ratio: 1 / 1;
-        visibility: hidden; 
+        display: block; width: 18vw; max-width: 220px; aspect-ratio: 1 / 1; visibility: hidden; 
     }
 
     .booster-zone {
-        position: absolute;
-        top: 55%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        margin: 0;
-        z-index: 11;
-        width: 180px;
-        height: 252px;
+        position: absolute; top: 55%; left: 50%; transform: translate(-50%, -50%);
+        margin: 0; z-index: 11; width: 180px; height: 252px;
     }
 }
 
 /* --- MOBILE LAYOUT --- */
 @media (max-width: 767px) {
-    body {
-        justify-content: flex-start; 
-        padding: 0 15px;
-    }
+    body { justify-content: flex-start; padding: 0 15px; }
 
-    .center-bg-icon-desktop {
-        display: none; 
-    }
+    .center-bg-icon-desktop { display: none; }
 
-    .header-container {
-        margin-top: calc(env(safe-area-inset-top, 0px) + 15px);
-    }
+    .header-container { margin-top: calc(env(safe-area-inset-top, 0px) + 15px); }
     
-    .logo-desktop {
-        display: none; 
-    }
+    .logo-desktop { display: none; }
     
     .logo-mobile {
-        display: block;
-        max-width: 220px; 
-        width: 55vw;
-        aspect-ratio: 1.2 / 1; 
-        -webkit-mask-image: url('assets/WC_26_GUESSER.svg');
-        mask-image: url('assets/WC_26_GUESSER.svg');
+        display: block; max-width: 220px; width: 55vw; aspect-ratio: 1.2 / 1; 
+        -webkit-mask-image: url('assets/WC_26_GUESSER.svg'); mask-image: url('assets/WC_26_GUESSER.svg');
     }
 
-    .mobile-spacer {
-        display: block;
-        flex-grow: 1;
-        width: 100%;
-    }
+    .mobile-spacer { display: block; flex-grow: 1; width: 100%; }
 
     .menu-container {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 12px; 
-        justify-items: center;
-        align-items: center;
-        max-width: 250px;
-        width: 100%;
-        margin: 0 auto; 
-        z-index: 10;
-        flex-shrink: 0;
+        display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; 
+        justify-items: center; align-items: center; max-width: 250px; width: 100%;
+        margin: 0 auto; z-index: 10; flex-shrink: 0;
     }
 
-    .image-btn {
-        width: 28vw; 
-        max-width: 105px;
-    }
+    .image-btn { width: 28vw; max-width: 105px; }
 
     .booster-zone {
-        display: none; 
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        position: relative;
-        z-index: 12;
-        flex-shrink: 0;
-        margin-top: 0;
+        display: none; flex-direction: column; align-items: center; justify-content: center;
+        position: relative; z-index: 12; flex-shrink: 0; margin-top: 0;
         margin-bottom: calc(env(safe-area-inset-bottom, 0px) + 2vw);
-        
-        width: 140px;
-        height: 196px;
-        
-        background-image: url('assets/Icon.png');
-        background-size: contain;
-        background-repeat: no-repeat;
-        background-position: center;
+        width: 140px; height: 196px;
+        background-image: url('assets/Icon.png'); background-size: contain;
+        background-repeat: no-repeat; background-position: center;
     }
 }
 
@@ -230,57 +150,27 @@ body {
 
 /* --- IMAGE BUTTON SYSTEM --- */
 .image-btn {
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    border: 1px solid rgba(255, 255, 255, 0.1); 
-    border-radius: 14px; 
-    cursor: pointer; 
-    transition: all 0.2s ease; 
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
-    aspect-ratio: 1 / 1; 
-    padding: 0;
+    background-size: cover; background-position: center; background-repeat: no-repeat;
+    border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 14px; cursor: pointer; 
+    transition: all 0.2s ease; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+    aspect-ratio: 1 / 1; padding: 0;
 }
-
-.image-btn:hover { 
-    transform: translateY(-4px); 
-    box-shadow: 0 8px 25px rgba(0, 255, 204, 0.4);
-    border-color: #00ffcc;
-}
-
-.image-btn:active {
-    transform: translateY(1px);
-}
+.image-btn:hover { transform: translateY(-4px); box-shadow: 0 8px 25px rgba(0, 255, 204, 0.4); border-color: #00ffcc; }
+.image-btn:active { transform: translateY(1px); }
 
 .btn-random-nation { background-image: url('assets/country_random_button.jpg'); }
 .btn-pick-nation { background-image: url('assets/country_pick_button.jpg'); }
-
-.btn-player-random { 
-    background-image: url('assets/player_random_button.png'); 
-    position: relative;
-}
+.btn-player-random { background-image: url('assets/player_random_button.png'); position: relative; }
 .btn-album { background-image: url('assets/album_button.png'); }
 
 /* --- TOP 10 BADGE STYLE --- */
 .top10-badge {
-    position: absolute;
-    top: 0;    
-    right: 0;  
-    background-color: #ffffff; 
-    border-left: 1px solid rgba(0, 0, 0, 0.1);
-    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-    border-top-right-radius: inherit; 
-    border-bottom-left-radius: 8px; 
-    padding: 6px 8px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 2px;
-    cursor: pointer;
-    box-shadow: -2px 2px 6px rgba(0,0,0,0.15);
-    transition: background-color 0.2s ease;
+    position: absolute; top: 0; right: 0; background-color: #ffffff; 
+    border-left: 1px solid rgba(0, 0, 0, 0.1); border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    border-top-right-radius: inherit; border-bottom-left-radius: 8px; padding: 6px 8px;
+    display: flex; flex-direction: column; align-items: center; gap: 2px;
+    cursor: pointer; box-shadow: -2px 2px 6px rgba(0,0,0,0.15); transition: background-color 0.2s ease;
 }
-
 .top10-badge:hover { background-color: #f0f2ff; }
 .top10-badge span { font-size: clamp(8px, 1.2vw, 10px); font-weight: bold; color: #3f57f5; letter-spacing: 0.5px; }
 .status-dot { width: 6px; height: 6px; border-radius: 50%; background-color: #cccccc; transition: all 0.3s ease; }
@@ -317,158 +207,79 @@ body {
 .close-modal-btn { position: absolute; top: 10px; right: 12px; background: none; border: none; font-size: 18px; cursor: pointer; color: #555555; font-weight: bold; }
 
 /* =========================================================================
-   BOOSTER OPENING & STICKER DISPLAY SYSTEM
+   BOOSTER OPENING SECTION
    ========================================================================= */
 .pack-counter-circle {
-    position: absolute;
-    top: -12px;
-    right: -12px;
-    width: 34px;
-    height: 34px;
-    background-color: #ffffff;
-    color: #3f57f5;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: bold;
-    font-size: 16px;
-    box-shadow: 0 3px 8px rgba(0,0,0,0.3);
-    z-index: 10;
+    position: absolute; top: -12px; right: -12px; width: 34px; height: 34px;
+    background-color: #ffffff; color: #3f57f5; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: bold; font-size: 16px; box-shadow: 0 3px 8px rgba(0,0,0,0.3); z-index: 10;
 }
 
-.pack-pile {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    cursor: pointer;
-}
+.pack-pile { position: relative; width: 100%; height: 100%; cursor: pointer; }
 
 .pack-layer {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background-size: cover;
-    background-position: center;
-    border-radius: 12px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-    transition: all 0.3s ease;
+    position: absolute; width: 100%; height: 100%; background-size: cover;
+    background-position: center; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.3); transition: all 0.3s ease;
 }
 
 .pack-layer.back2 { transform: scale(0.9) translateY(-15px) rotate(-5deg); opacity: 0.5; z-index: 1; }
 .pack-layer.back1 { transform: scale(0.95) translateY(-8px) rotate(3deg); opacity: 0.8; z-index: 2; }
-.pack-layer.front { 
-    background-image: url('assets/booster_pack_front.png'); 
-    z-index: 3; 
-    transform: translateY(-12px);
-}
+.pack-layer.front { background-image: url('assets/booster_pack_front.png'); z-index: 3; transform: translateY(-12px); }
 
 .pack-pile:hover .pack-layer.front {
-    transform: scale(1.05) translateY(-18px);
-    box-shadow: 0 10px 25px rgba(0, 255, 204, 0.5);
+    transform: scale(1.05) translateY(-18px); box-shadow: 0 10px 25px rgba(0, 255, 204, 0.5);
 }
 
-.ripped-pack-wrapper {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    display: none;
-}
+.ripped-pack-wrapper { position: relative; width: 100%; height: 100%; display: none; }
 
-.pack-part {
-    position: absolute;
-    width: 100%;
-    background-size: cover;
-    background-position: center;
-}
+.pack-part { position: absolute; width: 100%; background-size: cover; background-position: center; }
 
 .pack-part.bottom-half {
-    bottom: 0;
-    height: 80%;
-    background-image: url('assets/booster_pack_ripped_bottom.png');
-    z-index: 5;
+    bottom: 0; height: 80%; background-image: url('assets/booster_pack_ripped_bottom.png'); z-index: 5;
 }
 
 .pack-part.top-half {
-    top: 0;
-    height: 20%;
-    background-image: url('assets/booster_pack_ripped_top.png');
-    z-index: 6;
-    transform-origin: left bottom;
-    transition: transform 0.6s ease-in, opacity 0.6s ease-in;
+    top: 0; height: 20%; background-image: url('assets/booster_pack_ripped_top.png');
+    z-index: 6; transform-origin: left bottom; transition: transform 0.6s ease-in, opacity 0.6s ease-in;
 }
 
-.pack-part.top-half.torn {
-    transform: translateY(-150%) rotate(-20deg);
-    opacity: 0;
-}
+.pack-part.top-half.torn { transform: translateY(-150%) rotate(-20deg); opacity: 0; }
 
+/* =========================================================================
+   STICKER OVERLAY & CONTAINER QUERIES (DAS NEUE DESIGN-HERZSTÜCK)
+   ========================================================================= */
 .sticker-overlay-layer {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: transparent; 
-    z-index: 99999; 
-    display: none;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 20px;
-    overflow: hidden;
-    pointer-events: auto; 
-    touch-action: none; 
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background: transparent; z-index: 99999; display: none; flex-direction: column;
+    align-items: center; justify-content: center; padding: 20px; overflow: hidden;
+    pointer-events: auto; touch-action: none; 
 }
 
 .sticker-display-grid {
-    display: flex;
-    gap: 20px;
-    width: 100%;
-    justify-content: center;
-    align-items: center;
-    position: relative;
+    display: flex; gap: 20px; width: 100%; justify-content: center;
+    align-items: center; position: relative;
 }
 
 @media (min-width: 768px) {
-    .sticker-display-grid {
-        flex-direction: row;
-        max-width: 1400px;
-        margin-top: -60px; 
-    }
-    .sticker-card-container {
-        width: 15%;
-        max-width: 180px;
-    }
+    .sticker-display-grid { flex-direction: row; max-width: 1400px; margin-top: -60px; }
+    .sticker-card-container { width: 15%; max-width: 180px; }
 }
 
 @media (max-width: 767px) {
-    .sticker-display-grid {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr); 
-        max-width: 350px; 
-        gap: 10px;
-        margin-top: -80px; 
-    }
-    .sticker-card-container {
-        width: 100%;
-    }
+    .sticker-display-grid { display: grid; grid-template-columns: repeat(3, 1fr); max-width: 350px; gap: 10px; margin-top: -80px; }
+    .sticker-card-container { width: 100%; }
 }
 
-/* =========================================================================
-   DYNAMISCHES PANINI-STICKER DESIGN COMPONENT
-   ========================================================================= */
+/* CONTAINER QUERIES ERLAUBEN "cqw" (Container Query Width) FÜR PROPORTIONALE SCHRIFTEN */
 .sticker-card-container {
-    --sticker-width: 100%;
-    --color-1: #eeeeee; 
-    --color-2: #333333; 
-    --color-3: #bbbbbb; 
-
+    container-type: inline-size;
     position: relative;
     aspect-ratio: 1 / 1.38;
     background-color: #eeeeee; 
-    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
     border-radius: 8px;
+    box-sizing: border-box;
     overflow: hidden;
     opacity: 0;
     animation-fill-mode: forwards !important;
@@ -481,163 +292,81 @@ body {
     pointer-events: none;
 }
 
+/* --- DYNAMISCHER SPIELER-STICKER --- */
 .sticker-inner {
     position: absolute;
-    top: 5%;
-    left: 5%;
-    right: 5%;
-    bottom: 5%;
-    background-color: var(--color-1); 
-    border: 2px solid var(--color-2);
-    outline: 2px solid var(--color-3);
+    top: 5cqw; left: 5cqw; right: 5cqw; bottom: 5cqw;
+    background-color: var(--color-1, #c10e23); 
+    border: 3px solid var(--color-2, #046a38);
+    outline: 3px solid var(--color-3, #f2a900);
     box-sizing: border-box;
 }
 
 .sticker-flag {
     position: absolute;
-    top: 3px;
-    right: 3px;
-    width: 16%;
-    aspect-ratio: 1 / 1;
-    border-radius: 50%;
-    overflow: hidden;
-    border: 1px solid #000000;
-    box-sizing: border-box; 
-    z-index: 2; 
+    top: 0; right: 0; width: 15cqw; height: 15cqw;
+    border-radius: 50%; overflow: hidden; border: 1px solid #000000;
+    box-sizing: border-box; z-index: 2; 
 }
-
-.sticker-flag img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover; 
-    display: block;
-}
+.sticker-flag img { width: 100%; height: 100%; object-fit: cover; display: block; }
 
 .bg-svg-2, .bg-svg-6 {
-    position: absolute;
-    width: 76%;
-    height: 40%;
-    background-repeat: no-repeat;
-    background-size: contain; 
+    position: absolute; width: 76%; height: 40%;
+    background-repeat: no-repeat; background-size: contain; 
 }
-
 .bg-svg-2 {
-    top: 0;
-    left: 0;
-    background-image: url('assets/2.svg');
-    background-position: left top;
+    top: 0; left: 0; background-image: url('assets/2.svg'); /* Pfad angepasst auf assets/ */
+    background-position: left top; filter: drop-shadow(0px 0px 0px var(--color-2));
 }
-
 .bg-svg-6 {
-    bottom: 40%; 
-    right: 0;
-    background-image: url('assets/6.svg');
+    bottom: 40%; right: 0; background-image: url('assets/6.svg'); /* Pfad angepasst auf assets/ */
     background-position: right bottom;
 }
 
 .player-image-container {
-    position: absolute;
-    bottom: 40%; 
-    height: 60%; 
-    left: 0;
-    width: 100%;
-    z-index: 1; 
+    position: absolute; bottom: 40%; height: 60%; left: 0; width: 100%; z-index: 1; 
 }
-
-.player-image-container img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain; 
-    display: block;
-}
+.player-image-container img { width: 100%; height: 100%; object-fit: contain; display: block; }
 
 .lower-elements-wrapper {
-    --gap-size: 3px; 
-    position: absolute;
-    top: 60%; 
-    bottom: 0; 
-    left: 6px;
-    right: 6px; 
-    display: flex;
-    flex-direction: column;
-    gap: var(--gap-size); 
-    padding-bottom: var(--gap-size); 
-    box-sizing: border-box;
-    z-index: 2;
+    position: absolute; top: 60%; bottom: 0; left: 8px; right: 8px; 
+    display: flex; flex-direction: column; gap: 4px; padding-bottom: 4px; 
+    box-sizing: border-box; z-index: 2;
 }
 
 .sticker-info-box {
-    flex: 1; 
-    min-height: 0; 
-    width: 100%;
-    background-color: var(--color-2);
-    border-radius: 6px; 
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border: 1.5px solid var(--color-3); 
-    box-sizing: border-box;
+    flex: 1; min-height: 0; width: 100%;
+    background-color: var(--color-2); border-radius: 8px; 
+    display: flex; align-items: center; justify-content: center;
+    border: 2px solid var(--color-3); box-sizing: border-box;
 }
 
 .player-name {
-    color: #ffffff; 
-    font-weight: bold;
-    text-align: center;
-    white-space: normal; 
-    padding: 0 4px;
-    font-size: clamp(10px, 3.2vw, 14px); 
-    line-height: 1.1;
-    text-shadow: 1px 1px 2px rgba(0,0,0,0.5); 
+    color: #ffffff; font-weight: bold; text-align: center; white-space: normal; 
+    padding: 0 10px; font-size: 5.8cqw; line-height: 1.1; text-shadow: 1px 1px 2px rgba(0,0,0,0.5); 
 }
 
 .sticker-meta-container {
-    flex: 0.8; 
-    min-height: 0;
-    width: 100%;
-    display: flex;
-    gap: 2px; 
-    box-sizing: border-box;
+    flex: 0.8; min-height: 0; width: 100%; display: flex; gap: 2px; box-sizing: border-box;
 }
 
 .meta-box {
-    background-color: #ffffff;
-    border: 1px solid #000000; 
-    color: #000000;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: bold;
-    text-align: center;
-    font-size: clamp(8px, 2.5vw, 11px);
-    box-sizing: border-box;
+    background-color: #ffffff; border: 2px solid #000000; color: #000000;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: bold; text-align: center; font-size: 5.2cqw; box-sizing: border-box;
 }
 
-.meta-box-left { width: 16%; border-radius: 9999px; }
-.meta-box-center { flex: 1; border-radius: 9999px; font-size: clamp(7.5px, 2.2vw, 10px); }
+.meta-box-left { width: 15%; border-radius: 9999px; }
+.meta-box-center { flex: 1; border-radius: 9999px; }
 .meta-box-right { width: 25%; border-radius: 9999px; }
 
-.bottom-info-bar {
-    flex: 1; 
-    min-height: 0;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    gap: 4px; 
-}
+.bottom-info-bar { flex: 1; min-height: 0; width: 100%; display: flex; align-items: center; gap: 6px; }
 
 .pos-box {
-    height: 100%; 
-    aspect-ratio: 1 / 1; 
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: bold;
-    font-size: clamp(11px, 3.8vw, 16px); 
-    line-height: 1; 
-    border-radius: 5px; 
-    border: 1px solid rgba(0,0,0,0.2); 
-    box-shadow: 0 0 5px 1px rgba(255, 255, 255, 0.4);
-    box-sizing: border-box;
+    height: 100%; aspect-ratio: 1 / 1; display: flex; align-items: center; justify-content: center;
+    font-weight: bold; font-size: 9cqw; line-height: 1; border-radius: 8px; 
+    border: 1px solid rgba(0,0,0,0.3); box-shadow: 0 0 8px 1px rgba(255, 255, 255, 0.5);
+    box-sizing: border-box; padding: 0; 
 }
 
 .pos-box[data-pos="LW"], .pos-box[data-pos="ST"], .pos-box[data-pos="RW"] { background-color: #ff1145; color: #ffffff; } 
@@ -645,131 +374,67 @@ body {
 .pos-box[data-pos="LB"], .pos-box[data-pos="CB"], .pos-box[data-pos="RB"] { background-color: #ffc107; color: #ffffff; } 
 .pos-box[data-pos="GK"] { background-color: #007bff; color: #ffffff; } 
 
-.club-logo-small {
-    height: 80%; 
-    width: auto;
-    object-fit: contain;
-}
+.club-logo-small { height: 65%; width: auto; object-fit: contain; }
 
 .club-name {
-    color: #ffffff;
-    font-weight: bold;
-    font-size: clamp(8px, 2.4vw, 10px); 
-    -webkit-text-stroke: 0.3px #000000; 
-    text-transform: uppercase;
-    letter-spacing: 0.2px;
-    max-width: 9ch; 
-    display: -webkit-box;
-    -webkit-line-clamp: 2; 
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-    line-height: 1.1;
+    color: #ffffff; font-weight: bold; font-size: 5cqw; -webkit-text-stroke: 0.5px #000000; 
+    text-transform: uppercase; letter-spacing: 0.5px; max-width: 12ch; 
+    display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;
+    overflow: hidden; line-height: 1.1;
 }
 
-.club-logo-bottom {
-    height: 90%; 
-    width: auto;
-    object-fit: contain;
-    margin-left: auto; 
-}
+.club-logo-bottom { height: 100%; width: auto; object-fit: contain; margin-left: auto; }
 
-/* --- REINER BILD-FALLBACK FÜR LOGOS/STADIEN --- */
-.sticker-img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-}
+/* Fallback für Sondersticker ohne Layout */
+.sticker-img { width: 100%; height: 100%; object-fit: cover; display: block; position: absolute; top: 0; left: 0;}
 
 .scratch-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 8;
-    cursor: crosshair;
-    transition: opacity 0.4s ease;
-    touch-action: none; 
+    position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 8;
+    cursor: crosshair; transition: opacity 0.4s ease; touch-action: none; 
 }
 
 .duplicate-ribbon {
-    position: absolute;
-    top: 12px;
-    left: -25px;
-    background: #ffffff;
-    color: #ff0000;
-    font-weight: bold;
-    font-family: 'Arial Black', sans-serif;
-    font-size: 9px;
-    text-transform: uppercase;
-    padding: 3px 25px;
-    transform: rotate(-35deg);
-    box-shadow: 0 2px 4px rgba(0,0,0,0.25);
-    z-index: 15;
-    letter-spacing: 0.5px;
+    position: absolute; top: 12px; left: -25px; background: #ffffff; color: #ff0000;
+    font-weight: bold; font-family: 'Arial Black', sans-serif; font-size: 9px;
+    text-transform: uppercase; padding: 3px 25px; transform: rotate(-35deg);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.25); z-index: 15; letter-spacing: 0.5px;
+}
+
+/* FLUGANIMATIONEN */
+@media (min-width: 768px) {
+    @keyframes flyToPos1 { 0% { opacity: 0; transform: translate(370px, 150px) scale(0.1); } 100% { opacity: 1; transform: translate(0, 0) scale(1); } }
+    @keyframes flyToPos2 { 0% { opacity: 0; transform: translate(170px, 150px) scale(0.1); } 100% { opacity: 1; transform: translate(0, 0) scale(1); } }
+    @keyframes flyToPos3 { 0% { opacity: 0; transform: translate(20px, 150px) scale(0.1); } 100% { opacity: 1; transform: translate(0, 0) scale(1); } }
+    @keyframes flyToPos4 { 0% { opacity: 0; transform: translate(-20px, 150px) scale(0.1); } 100% { opacity: 1; transform: translate(0, 0) scale(1); } }
+    @keyframes flyToPos5 { 0% { opacity: 0; transform: translate(-170px, 150px) scale(0.1); } 100% { opacity: 1; transform: translate(0, 0) scale(1); } }
+    @keyframes flyToPos6 { 0% { opacity: 0; transform: translate(-370px, 150px) scale(0.1); } 100% { opacity: 1; transform: translate(0, 0) scale(1); } }
+}
+
+@media (max-width: 767px) {
+    @keyframes flyToPos1 { 0% { opacity: 0; transform: translate(100px, 250px) scale(0.1); } 100% { opacity: 1; transform: translate(0, 0) scale(1); } }
+    @keyframes flyToPos2 { 0% { opacity: 0; transform: translate(0px, 250px) scale(0.1); } 100% { opacity: 1; transform: translate(0, 0) scale(1); } }
+    @keyframes flyToPos3 { 0% { opacity: 0; transform: translate(-100px, 250px) scale(0.1); } 100% { opacity: 1; transform: translate(0, 0) scale(1); } }
+    @keyframes flyToPos4 { 0% { opacity: 0; transform: translate(100px, 120px) scale(0.1); } 100% { opacity: 1; transform: translate(0, 0) scale(1); } }
+    @keyframes flyToPos5 { 0% { opacity: 0; transform: translate(0px, 120px) scale(0.1); } 100% { opacity: 1; transform: translate(0, 0) scale(1); } }
+    @keyframes flyToPos6 { 0% { opacity: 0; transform: translate(-100px, 120px) scale(0.1); } 100% { opacity: 1; transform: translate(0, 0) scale(1); } }
 }
 
 /* --- ACTION PANEL --- */
 .action-panel {
-    display: none;
-    gap: 30px;
-    justify-content: center;
-    align-items: center;
-    z-index: 100000;
+    display: none; gap: 30px; justify-content: center; align-items: center; z-index: 100000;
 }
 
-@media (min-width: 768px) {
-    .action-panel {
-        position: absolute;
-        bottom: 12vh; 
-        left: 50%;
-        transform: translateX(-50%);
-        width: auto;
-    }
-}
-
-@media (max-width: 767px) {
-    .action-panel {
-        position: absolute;
-        bottom: 8vh; 
-        left: 0;
-        width: 100%;
-    }
-}
+@media (min-width: 768px) { .action-panel { position: absolute; bottom: 12vh; left: 50%; transform: translateX(-50%); width: auto; } }
+@media (max-width: 767px) { .action-panel { position: absolute; bottom: 8vh; left: 0; width: 100%; } }
 
 .action-btn-round {
-    width: 70px;
-    height: 70px;
-    border-radius: 50%;
-    background-color: #ffffff;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    box-shadow: 0 6px 16px rgba(0,0,0,0.3);
-    transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.2s, opacity 0.2s;
-    padding: 0;
+    width: 70px; height: 70px; border-radius: 50%; background-color: #ffffff;
+    display: flex; align-items: center; justify-content: center; cursor: pointer;
+    box-shadow: 0 6px 16px rgba(0,0,0,0.3); transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.2s, opacity 0.2s; padding: 0;
 }
-
-.action-btn-round:hover:not(:disabled) {
-    transform: scale(1.1);
-    box-shadow: 0 8px 22px rgba(0,0,0,0.4);
-}
-
-.action-btn-round:disabled {
-    opacity: 0.2;
-    cursor: not-allowed;
-    filter: grayscale(1);
-}
-
-.action-btn-round img {
-    width: 60%;
-    height: 60%;
-    object-fit: contain;
-    display: block;
-}
-
+.action-btn-round:hover:not(:disabled) { transform: scale(1.1); box-shadow: 0 8px 22px rgba(0,0,0,0.4); }
+.action-btn-round:disabled { opacity: 0.2; cursor: not-allowed; filter: grayscale(1); }
+.action-btn-round img { width: 60%; height: 60%; object-fit: contain; display: block; }
 .btn-market-round { border: 2px solid #ffbb04; }
 .btn-send-album-round { border: 2px solid #28a745; }
 </style>
@@ -788,16 +453,12 @@ body {
 <div class="menu-container">
     <button class="image-btn btn-random-nation" onclick="startRandom()"></button>
     <button class="image-btn btn-pick-nation" onclick="openSelect()"></button>
-    
     <div class="center-space"></div>
-    
     <button class="image-btn btn-player-random" onclick="openRandomPlayer()">
         <div class="top10-badge" id="top10Badge" onclick="toggleTop10(event)">
-            <span>TOP 10</span>
-            <div class="status-dot"></div>
+            <span>TOP 10</span><div class="status-dot"></div>
         </div>
     </button>
-    
     <button class="image-btn btn-album" onclick="window.location.href='album.html'"></button>
 </div>
 
@@ -810,7 +471,6 @@ body {
         <div class="pack-layer back1" style="background-image: url('assets/booster_pack_front.png');"></div>
         <div class="pack-layer front"></div>
     </div>
-
     <div class="ripped-pack-wrapper" id="rippedWrapper">
         <div class="pack-part top-half" id="packTop"></div>
         <div class="pack-part bottom-half"></div>
@@ -819,7 +479,6 @@ body {
 
 <div class="sticker-overlay-layer" id="stickerOverlay">
     <div class="sticker-display-grid" id="stickerGrid"></div>
-
     <div class="action-panel" id="actionPanel">
         <button class="action-btn-round btn-market-round" id="marketBtn" onclick="processDuplicatesToMarket()" title="Duplikate auf den Markt schicken">
             <img src="assets/market_icon.png" alt="Market">
@@ -840,15 +499,12 @@ body {
         <button class="close-modal-btn" onclick="closeLoginModal()">✕</button>
         <h2 id="modalTitle">User Profile</h2>
         <p id="modalDesc">Create an account to save progress and collect stickers!</p>
-        
         <input type="text" id="loginUser" class="login-input" placeholder="Username">
         <input type="password" id="loginPass" class="login-input" placeholder="Password (min. 6 characters)">
-        
         <div class="login-btn-group" id="authButtons">
             <button class="login-btn btn-primary" onclick="handleAuth('login')">Login</button>
             <button class="login-btn btn-secondary" onclick="handleAuth('register')">Register</button>
         </div>
-        
         <button class="login-btn btn-secondary" id="logoutBtn" style="display:none; width:100%; margin-top:15px; background:#ff4a4a; color:white;" onclick="handleLogout()">
             Log Out
         </button>
@@ -884,17 +540,13 @@ let remainingDuplicates = [];
 let remainingNewStickers = [];
 
 document.addEventListener('touchmove', (e) => {
-    if (document.getElementById('stickerOverlay').style.display === 'flex') {
-        e.preventDefault();
-    }
+    if (document.getElementById('stickerOverlay').style.display === 'flex') { e.preventDefault(); }
 }, { passive: false });
 
 function updateBoosterZoneVisibility() {
     const bZone = document.getElementById('boosterZone');
     if (!bZone) return;
-
     const packs = (currentUserData && currentUserData.packs_available) ? currentUserData.packs_available : 0;
-
     if (packs > 0 && globalStickerDatabase !== null) {
         bZone.style.display = "flex";
     } else {
@@ -905,16 +557,11 @@ function updateBoosterZoneVisibility() {
 document.addEventListener("DOMContentLoaded", () => {
     const isTop10Active = localStorage.getItem("random_player_top10") === "true";
     const badge = document.getElementById("top10Badge");
-    if (isTop10Active) {
-        badge.classList.add("active");
-    }
+    if (isTop10Active) badge.classList.add("active");
 
     fetch("./data/sticker_database.json")
         .then(res => res.json())
-        .then(data => { 
-            globalStickerDatabase = data; 
-            updateBoosterZoneVisibility();
-        })
+        .then(data => { globalStickerDatabase = data; updateBoosterZoneVisibility(); })
         .catch(err => console.error("Database reading aborted: ", err));
 });
 
@@ -931,28 +578,23 @@ firebase.auth().onAuthStateChanged((user) => {
         led.classList.add('online'); 
         const username = user.email.split('@')[0];
         const formattedName = username.charAt(0).toUpperCase() + username.slice(1);
-        
         tabText.innerText = formattedName; 
         inputUser.style.display = 'none';
         inputPass.style.display = 'none';
         authButtons.style.display = 'none';
         logoutBtn.style.display = 'block';
-        
         modalDesc.innerText = formattedName;
         document.getElementById('modalTitle').innerText = "Account Connected";
-        
         startUserSync(user.uid);
     } else {
         led.classList.remove('online'); 
         tabText.innerText = "Login"; 
-        
         inputUser.style.display = 'block';
         inputPass.style.display = 'block';
         authButtons.style.display = 'flex';
         logoutBtn.style.display = 'none';
         modalDesc.innerText = "Create an account to save progress and collect stickers!";
         document.getElementById('modalTitle').innerText = "User Profile";
-        
         updateBoosterZoneVisibility();
         if(packTimerInterval) clearInterval(packTimerInterval);
     }
@@ -964,18 +606,13 @@ function startUserSync(uid) {
             db.collection("users").doc(uid).set({
                 packs_available: 7,
                 last_pack_claimed: firebase.firestore.FieldValue.serverTimestamp(),
-                album: {},
-                stapel: []
-            }).then(() => {
-                console.log("Neues Profil angelegt.");
+                album: {}, stapel: []
             }).catch(err => console.error("Fehler beim Erstellen des Profils:", err));
             return;
         }
-        
         currentUserData = doc.data();
         const packs = currentUserData.packs_available || 0;
         document.getElementById("packCounterCircle").innerText = packs;
-        
         updateBoosterZoneVisibility();
         
         if(!packTimerInterval) {
@@ -989,10 +626,7 @@ function checkAndGeneratePacks(uid) {
     if (!currentUserData || currentUserData.packs_available === undefined) return;
     const now = new Date();
     let lastClaimed = now;
-    
-    if (currentUserData.last_pack_claimed) {
-        lastClaimed = currentUserData.last_pack_claimed.toDate();
-    }
+    if (currentUserData.last_pack_claimed) lastClaimed = currentUserData.last_pack_claimed.toDate();
 
     const diffMs = now - lastClaimed;
     const fourHoursMs = 4 * 60 * 60 * 1000;
@@ -1000,10 +634,8 @@ function checkAndGeneratePacks(uid) {
     if (diffMs >= fourHoursMs) {
         const earnedPacks = Math.floor(diffMs / fourHoursMs);
         let newPackTotal = (currentUserData.packs_available || 0) + earnedPacks;
-        
         if (newPackTotal > 100) newPackTotal = 100;
         const nextClaimTimestamp = new Date(lastClaimed.getTime() + (earnedPacks * fourHoursMs));
-
         db.collection("users").doc(uid).update({
             packs_available: newPackTotal,
             last_pack_claimed: firebase.firestore.Timestamp.fromDate(nextClaimTimestamp)
@@ -1012,14 +644,8 @@ function checkAndGeneratePacks(uid) {
 }
 
 function openBoosterPack() {
-    if (!currentUserData || currentUserData.packs_available <= 0) {
-        alert("You have no packs available right now!");
-        return;
-    }
-    if (!globalStickerDatabase) {
-        alert("Sticker database loading, please wait a second.");
-        return;
-    }
+    if (!currentUserData || currentUserData.packs_available <= 0) { alert("You have no packs available right now!"); return; }
+    if (!globalStickerDatabase) { alert("Sticker database loading, please wait a second."); return; }
 
     const uid = firebase.auth().currentUser.uid;
     document.getElementById("packPile").style.display = "none";
@@ -1041,22 +667,17 @@ function openBoosterPack() {
 
     const currentAlbum = currentUserData.album || {};
     const currentStapel = currentUserData.stapel || [];
-    
     remainingDuplicates = [];
     remainingNewStickers = [];
 
     currentOpenedStickers.forEach(sticker => {
         const isDuplicate = currentAlbum[sticker.id] === "pasted" || currentStapel.includes(sticker.id);
-        if (isDuplicate) {
-            remainingDuplicates.push(sticker);
-        } else {
-            remainingNewStickers.push(sticker);
-        }
+        if (isDuplicate) remainingDuplicates.push(sticker);
+        else remainingNewStickers.push(sticker);
     });
 
     setTimeout(() => {
         packTop.classList.add("torn");
-        
         setTimeout(() => {
             rippedWrapper.style.display = "none";
             document.getElementById("stickerOverlay").style.display = "flex";
@@ -1064,9 +685,7 @@ function openBoosterPack() {
         }, 600);
     }, 400);
 
-    db.collection("users").doc(uid).update({
-        packs_available: currentUserData.packs_available - 1
-    });
+    db.collection("users").doc(uid).update({ packs_available: currentUserData.packs_available - 1 });
 }
 
 function renderDrawnStickersGrid() {
@@ -1084,7 +703,6 @@ function renderDrawnStickersGrid() {
         container.style.animation = `flyToPos${animationNumber} 0.6s cubic-bezier(0.25, 1, 0.5, 1) ${idx * 0.15}s forwards`;
 
         const isDuplicate = remainingDuplicates.some(s => s.id === sticker.id);
-
         if (isDuplicate) {
             const ribbon = document.createElement("div");
             ribbon.className = "duplicate-ribbon";
@@ -1093,76 +711,90 @@ function renderDrawnStickersGrid() {
         }
 
         // =========================================================================
-        // KATEGORIE 1: REINE SPIELER-STICKER (DEIN PROTOTYP LAYOUT)
+        // KATEGORIE 1: DYNAMISCHES SPIELER-LAYOUT 
         // =========================================================================
         if (sticker.type === "player") {
-            
-            // 1. Automatische Altersberechnung für das Turnierjahr 2026
+            // 1. Sicheres Mapping der Namen (Berücksichtigt Spieler mit nur einem Namen)
+            const fName = sticker.first_name ? sticker.first_name.trim() : "";
+            const lName = sticker.last_name ? sticker.last_name.trim() : "";
+            const fullName = lName ? `${fName} ${lName}` : fName;
+
+            // 2. Altersberechnung basierend auf Jahr 2026
             let ageStr = "";
-            if (sticker.dateOfBirth) {
-                const yearMatch = sticker.dateOfBirth.match(/\d{4}$/);
-                if (yearMatch) {
-                    const birthYear = parseInt(yearMatch[0], 10);
+            if (sticker.birthdate) {
+                const parts = sticker.birthdate.split('.');
+                if (parts.length === 3) {
+                    const birthYear = parseInt(parts[2], 10);
                     ageStr = ` (${2026 - birthYear})`;
                 }
             }
-            const birthAndAge = (sticker.dateOfBirth ? sticker.dateOfBirth : "") + ageStr;
+            const birthAndAge = (sticker.birthdate ? sticker.birthdate : "") + ageStr;
 
-            // 2. Befüllen deines exakten HTML-Sticker-Skeletts
-            container.innerHTML += `
+            // 3. Pfade von überflüssigen "./" säubern
+            const cleanPath = (p) => p && p.startsWith('./') ? p.substring(2) : (p || '');
+            const playerImg = cleanPath(sticker.image);
+            const flagImg = cleanPath(sticker.flag);
+            const clubImg = cleanPath(sticker.club_image);
+
+            // 4. HTML dynamisch an den Container hängen
+            container.insertAdjacentHTML('beforeend', `
                 <div class="sticker-inner">
                     <div class="sticker-flag">
-                        <img src="${sticker.flagImage || ''}" alt="Flag">
+                        <img src="${flagImg}" alt="Flag" onerror="this.style.display='none'">
                     </div>
 
                     <div class="bg-svg-2"></div>
                     <div class="bg-svg-6"></div>
 
                     <div class="player-image-container">
-                        <img src="${sticker.image}" alt="${sticker.name}">
+                        <img src="${playerImg}" alt="${fullName}" onerror="this.src='assets/Icon.png'">
                     </div>
 
                     <div class="lower-elements-wrapper">
                         <div class="sticker-info-box">
-                            <div class="player-name">${sticker.name}</div>
+                            <div class="player-name">${fullName}</div>
                         </div>
 
                         <div class="sticker-meta-container">
-                            <div class="meta-box meta-box-left">${sticker.shirtNumber || '-'}</div>
+                            <div class="meta-box meta-box-left">${sticker.jersey_number || '-'}</div>
                             <div class="meta-box meta-box-center">${birthAndAge}</div>
                             <div class="meta-box meta-box-right">${sticker.height || '-'}</div>
                         </div>
 
                         <div class="bottom-info-bar">
                             <div class="pos-box" data-pos="${sticker.position || 'ST'}">${sticker.position || 'ST'}</div>
-                            <img class="club-logo-small" src="${sticker.clubLogo || ''}" alt="Club Logo">
-                            <div class="club-name">${sticker.club || '-'}</div>
-                            <img class="club-logo-bottom" src="assets/WC_logo.png" alt="WC Logo">
+                            <img class="club-logo-small" src="${clubImg}" alt="Club" onerror="this.style.display='none'">
+                            <div class="club-name">${sticker.club_name || '-'}</div>
+                            <img class="club-logo-bottom" src="assets/WC_logo.png" alt="WC Logo" onerror="this.style.display='none'">
                         </div>
                     </div>
                 </div>
-            `;
+            `);
             
-            // 3. Übergabe der HEX-Farbcodes direkt aus der Datenbank an die CSS-Klassen
+            // 5. CSS-Variablen aus der JSON schreiben
             container.style.setProperty('--color-1', sticker.color_1 || '#c10e23');
             container.style.setProperty('--color-2', sticker.color_2 || '#046a38');
             container.style.setProperty('--color-3', sticker.color_3 || '#f2a900');
 
         } else {
             // =========================================================================
-            // KATEGORIE 2: SONDERSTICKER (REINER BILD-FALLBACK BIS ZUM NÄCHSTEN SCHRITT)
+            // KATEGORIE 2: SONDERSTICKER FALLBACK (Logos, Stadien, Historie)
             // =========================================================================
             const img = document.createElement("img");
             img.className = "sticker-img";
 
-            let finalPath = sticker.image;
+            let finalPath = sticker.image || "";
             if (finalPath.startsWith('./')) {
                 finalPath = finalPath.substring(2);
             }
             
             const pureFileName = finalPath.substring(finalPath.lastIndexOf('/') + 1);
 
-            if (sticker.type && sticker.type.startsWith('special')) {
+            if (sticker.type === 'golden_ball' || (sticker.id && sticker.id.startsWith('GBA'))) {
+                finalPath = "photos/golden_ball/" + pureFileName;
+            } else if (sticker.type === 'golden_boot' || (sticker.id && sticker.id.startsWith('GBO'))) {
+                finalPath = "photos/golden_boot/" + pureFileName;
+            } else if (sticker.type && sticker.type.startsWith('special')) {
                 let correctSpecialName = pureFileName;
                 if (pureFileName.startsWith('spc')) {
                     const numberMatch = pureFileName.match(/\d+/);
@@ -1173,25 +805,18 @@ function renderDrawnStickersGrid() {
                     }
                 }
                 finalPath = "photos/special/" + correctSpecialName;
-            } 
-            else if (sticker.type && sticker.type.startsWith('stadium')) {
+            } else if (sticker.type && sticker.type.startsWith('stadium')) {
                 finalPath = "photos/stadiums/" + pureFileName;
-            } 
-            else if (sticker.type === 'historic_winner' || sticker.type === 'team_photo') {
+            } else if (sticker.type === 'historic_winner') {
                 finalPath = "photos/winning_teams/" + pureFileName;
             }
-            else if (sticker.type === 'golden_boot' || sticker.id.startsWith('GBO')) {
-                finalPath = "photos/golden_boot/" + pureFileName;
-            } 
-            else if (sticker.type === 'golden_ball' || sticker.id.startsWith('GBA')) {
-                finalPath = "photos/golden_ball/" + pureFileName;
-            }
+            // team_photo und logo sind durch den sauberen JSON-Pfad automatisch abgedeckt!
 
             img.src = finalPath;
             container.appendChild(img);
         }
 
-        // --- CANVAS-RUBBELSCHICHT (Legt sich universell über beide Sticker-Typen) ---
+        // --- RUBBEL-EFFEKT (Funktioniert für beide Kategorien) ---
         if (sticker.shiny === "gold" || sticker.shiny === "silver") {
             totalShinyCount++;
             const canvas = document.createElement("canvas");
@@ -1209,7 +834,6 @@ function renderDrawnStickersGrid() {
 function updateActionButtonsState() {
     const marketBtn = document.getElementById("marketBtn");
     const albumBtn = document.getElementById("albumBtn");
-
     marketBtn.disabled = (remainingDuplicates.length === 0);
     albumBtn.disabled = (remainingNewStickers.length === 0);
 
@@ -1234,44 +858,33 @@ function setupScratchEffect(canvas) {
 
     function scratch(e) {
         if (!isDrawing) return;
-        
         if (e.cancelable) e.preventDefault(); 
         const rect = canvas.getBoundingClientRect();
         
         let clientX, clientY;
         if (e.touches && e.touches.length > 0) {
-            clientX = e.touches[0].clientX;
-            clientY = e.touches[0].clientY;
+            clientX = e.touches[0].clientX; clientY = e.touches[0].clientY;
         } else if (e.changedTouches && e.changedTouches.length > 0) {
-            clientX = e.changedTouches[0].clientX;
-            clientY = e.changedTouches[0].clientY;
+            clientX = e.changedTouches[0].clientX; clientY = e.changedTouches[0].clientY;
         } else {
-            clientX = e.clientX;
-            clientY = e.clientY;
+            clientX = e.clientX; clientY = e.clientY;
         }
 
-        const x = clientX - rect.left;
-        const y = clientY - rect.top;
+        const x = clientX - rect.left; const y = clientY - rect.top;
 
         ctx.globalCompositeOperation = "destination-out";
-        ctx.beginPath();
-        ctx.arc(x, y, 40, 0, Math.PI * 2); 
-        ctx.fill();
-        
+        ctx.beginPath(); ctx.arc(x, y, 40, 0, Math.PI * 2); ctx.fill();
         checkScratchPercentage();
     }
 
     function checkScratchPercentage() {
         if (canvas.dataset.cleared === "true") return;
-        
         const imgData = ctx.getImageData(0, 0, width, height);
         let pixelsCleared = 0;
         for (let i = 3; i < imgData.data.length; i += 4) {
             if (imgData.data[i] === 0) pixelsCleared++;
         }
-        const totalPixels = width * height;
-        
-        if ((pixelsCleared / totalPixels) >= 0.75) {
+        if ((pixelsCleared / (width * height)) >= 0.75) {
             canvas.dataset.cleared = "true";
             canvas.style.opacity = "0";
             setTimeout(() => {
@@ -1285,13 +898,8 @@ function setupScratchEffect(canvas) {
     canvas.addEventListener("mousemove", scratch);
     window.addEventListener("mouseup", () => isDrawing = false);
 
-    canvas.addEventListener("touchstart", (e) => { 
-        isDrawing = true; 
-        scratch(e); 
-    }, { passive: false });
-    
+    canvas.addEventListener("touchstart", (e) => { isDrawing = true; scratch(e); }, { passive: false });
     canvas.addEventListener("touchmove", scratch, { passive: false });
-    
     window.addEventListener("touchend", () => { isDrawing = false; });
     window.addEventListener("touchcancel", () => { isDrawing = false; });
 }
@@ -1305,7 +913,6 @@ function handleShinyScratchedNotification() {
 
 function processDuplicatesToMarket() {
     if (remainingDuplicates.length === 0) return;
-    
     const uid = firebase.auth().currentUser.uid;
     
     remainingDuplicates.forEach(sticker => {
@@ -1313,8 +920,7 @@ function processDuplicatesToMarket() {
         if (cardEl) cardEl.classList.add("removed-card");
 
         db.collection("market").add({
-            sticker_id: sticker.id,
-            owner_uid: uid,
+            sticker_id: sticker.id, owner_uid: uid,
             owner_name: firebase.auth().currentUser.email.split('@')[0],
             timestamp: firebase.firestore.FieldValue.serverTimestamp(),
             status: "available"
@@ -1322,17 +928,12 @@ function processDuplicatesToMarket() {
     });
 
     remainingDuplicates = [];
-    
-    if (remainingNewStickers.length === 0) {
-        setTimeout(() => { resetBoosterDashboardView(); }, 400);
-    } else {
-        updateActionButtonsState();
-    }
+    if (remainingNewStickers.length === 0) setTimeout(() => { resetBoosterDashboardView(); }, 400);
+    else updateActionButtonsState();
 }
 
 function sendNewToAlbumStapel() {
     if (remainingNewStickers.length === 0) return;
-
     const uid = firebase.auth().currentUser.uid;
     const currentStapel = currentUserData.stapel || [];
     
@@ -1342,18 +943,10 @@ function sendNewToAlbumStapel() {
         return s.id;
     });
 
-    const updatedStapel = [...currentStapel, ...newIds];
-
-    db.collection("users").doc(uid).update({
-        stapel: updatedStapel
-    }).then(() => {
+    db.collection("users").doc(uid).update({ stapel: [...currentStapel, ...newIds] }).then(() => {
         remainingNewStickers = [];
-
-        if (remainingDuplicates.length === 0) {
-            setTimeout(() => { resetBoosterDashboardView(); }, 400);
-        } else {
-            updateActionButtonsState();
-        }
+        if (remainingDuplicates.length === 0) setTimeout(() => { resetBoosterDashboardView(); }, 400);
+        else updateActionButtonsState();
     });
 }
 
@@ -1361,9 +954,7 @@ function resetBoosterDashboardView() {
     document.getElementById("stickerOverlay").style.display = "none";
     document.getElementById("actionPanel").style.display = "none";
     document.getElementById("packPile").style.display = "block";
-    currentOpenedStickers = [];
-    remainingDuplicates = [];
-    remainingNewStickers = [];
+    currentOpenedStickers = []; remainingDuplicates = []; remainingNewStickers = [];
 }
 
 function openLoginModal() { document.getElementById('loginModal').style.display = 'flex'; }
@@ -1372,42 +963,25 @@ function closeLoginModal() { document.getElementById('loginModal').style.display
 function handleAuth(type) {
     const user = document.getElementById('loginUser').value.trim();
     const pass = document.getElementById('loginPass').value;
-
-    if (user === "" || pass === "") {
-        alert("Please enter both username and password!");
-        return;
-    }
-    if (pass.length < 6) {
-        alert("Password must be at least 6 characters long!");
-        return;
-    }
+    if (user === "" || pass === "") { alert("Please enter both username and password!"); return; }
+    if (pass.length < 6) { alert("Password must be at least 6 characters long!"); return; }
 
     const fakeEmail = user.toLowerCase() + "@wc26guesser.de";
-
     if (type === 'login') {
         firebase.auth().signInWithEmailAndPassword(fakeEmail, pass)
             .then(() => closeLoginModal())
             .catch((error) => {
-                if (error.code === 'auth/user-not-found' || error.code === 'auth/invalid-credential') {
-                    autoRegister(fakeEmail, pass, user);
-                } else {
-                    alert("Incorrect password or authentication error!");
-                }
+                if (error.code === 'auth/user-not-found' || error.code === 'auth/invalid-credential') autoRegister(fakeEmail, pass, user);
+                else alert("Incorrect password or authentication error!");
             });
     } else if (type === 'register') {
         firebase.auth().createUserWithEmailAndPassword(fakeEmail, pass)
-            .then(() => {
-                alert(`Account for "${user}" successfully created!`);
-                closeLoginModal();
-            })
+            .then(() => { alert(`Account for "${user}" successfully created!`); closeLoginModal(); })
             .catch((error) => {
                 if (error.code === 'auth/email-already-in-use') {
                     firebase.auth().signInWithEmailAndPassword(fakeEmail, pass)
-                        .then(() => closeLoginModal())
-                        .catch(() => alert("This username is already taken!"));
-                } else {
-                    alert("Registration failed: " + error.message);
-                }
+                        .then(() => closeLoginModal()).catch(() => alert("This username is already taken!"));
+                } else alert("Registration failed: " + error.message);
             });
     }
 }
@@ -1416,29 +990,19 @@ function autoRegister(email, pass, originalName) {
     const modalDesc = document.getElementById('modalDesc');
     firebase.auth().createUserWithEmailAndPassword(email, pass)
         .then(() => {
-            modalDesc.innerText = "Account created";
-            modalDesc.style.color = "#00cc44";
-            setTimeout(() => {
-                closeLoginModal();
-            }, 2000);
+            modalDesc.innerText = "Account created"; modalDesc.style.color = "#00cc44";
+            setTimeout(() => { closeLoginModal(); }, 2000);
         })
         .catch(err => alert("Automatic registration failed: " + err.message));
 }
 
-function handleLogout() {
-    firebase.auth().signOut().then(() => {
-        closeLoginModal();
-    });
-}
+function handleLogout() { firebase.auth().signOut().then(() => { closeLoginModal(); }); }
 
 function startRandom() {
-    fetch("./data/worldcup_teams.json")
-        .then(r => r.json())
-        .then(data => {
-            const keys = Object.keys(data.teams);
-            const random = keys[Math.floor(Math.random() * keys.length)];
-            window.location.href = `game.html?team=${random}`;
-        });
+    fetch("./data/worldcup_teams.json").then(r => r.json()).then(data => {
+        const keys = Object.keys(data.teams);
+        window.location.href = `game.html?team=${keys[Math.floor(Math.random() * keys.length)]}`;
+    });
 }
 function openSelect() { window.location.href = "select.html"; }
 function openRandomPlayer() { window.location.href = "game_random_player.html"; }
