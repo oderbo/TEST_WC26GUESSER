@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<link rel="icon" type="image/png" href="assets/favicon.png">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<title>Sticker Album</title>
+<style>
+/* --- OFFIZIELLE TURNIER-SCHRIFT EINBINDEN --- */
+@font-face {
+    font-family: 'FWC2026';
+    src: url('assets/FWC2026.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body { 
+    margin: 0; 
+    padding: 10px 6px; 
+    font-family: 'FWC2026', Arial, sans-serif; 
+    color: white; 
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+    min-height: 100dvh;
+    width: 100%;
+    background-color: #3f57f5; 
+}
+
+/* --- OBERE LEISTE (HEADER WRAPPER) --- */
+.header-container {
+    width: 100%;
+    max-width: 1400px;
+    position: relative; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: -20px; 
+    margin-bottom: 0px;
+    height: 50px; 
+}
+
+h1 { 
+    margin: 0;
+    font-size: 22px; 
+    text-transform: uppercase;
+    text-shadow: 0 1px 3px rgba(0,0,0,0.4);
+    font-family: 'FWC2026', Arial, sans-serif;
+    letter-spacing: 1px;
+    text-align: center;
+}
+
+/* --- ABSOLUTER ZURÜCK-BUTTON --- */
+.btn-back {
+    position: absolute;
+    left: 4px; 
+    top: 50%;
+    transform: translateY(-50%); 
+    background: rgba(255, 255, 255, 0.1);
+    border: 1.5px solid rgba(255, 255, 255, 0.4);
+    color: white;
+    font-family: Arial, sans-serif; 
+    font-weight: bold;
+    
+    font-size: 14px;  
+    width: 22px;      
+    height: 22px;     
+    border-radius: 4px;
+    
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    transition: background 0.15s ease, transform 0.15s ease;
+    z-index: 100; 
+}
+
+.btn-back:hover {
+    background: rgba(255, 255, 255, 0.25);
+    transform: translateY(-50%) scale(1.05);
+}
+
+/* --- RUNDER MARKT-BUTTON (UNTEN LINKS) --- */
+.action-btn-round {
+    position: fixed;      /* Schwebt immer über dem Bildschirm */
+    bottom: 20px;         /* Abstand von unten */
+    left: 20px;           /* Abstand von links */
+    width: 60px;          /* Etwas kompakter für Handys */
+    height: 60px;
+    border-radius: 50%;
+    background-color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 6px 16px rgba(0,0,0,0.3);
+    transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.2s;
+    padding: 0;
+    z-index: 1000;        /* Liegt immer über dem restlichen Inhalt */
+}
+
+.action-btn-round:hover {
+    transform: scale(1.1);
+    box-shadow: 0 8px 22px rgba(0,0,0,0.4);
+}
+
+.action-btn-round img {
+    width: 55%;
+    height: 55%;
+    object-fit: contain;
+    display: block;
+}
+
+.btn-market-round { 
+    border: 2px solid #ffbb04; 
+}
+
+/* --- DESKTOP LAYOUT --- */
+@media (min-width: 768px) {
+    body { padding: 20px; }
+    
+    .header-container {
+        margin-top: 15px; 
+        margin-bottom: 25px;
+        height: 70px;
+    }
+    
+    h1 { font-size: 36px; } 
+    
+    .btn-back {
+        left: 0;
+        width: 36px;   
+        height: 36px;  
+        font-size: 22px; 
+        border-radius: 6px;
+        border-width: 2px;
+    }
+
+    /* Markt-Button auf Desktop etwas größer */
+    .action-btn-round {
+        width: 70px;
+        height: 70px;
+        bottom: 30px;
+        left: 30px;
+    }
+}
+</style>
+</head>
+<body>
+
+<div class="header-container">
+    <a href="index.html" class="btn-back">&lt;</a>
+    <h1>Sticker Album</h1>
+</div>
+
+<button class="action-btn-round btn-market-round" onclick="window.location.href='market.html'" title="Zum Markt">
+    <img src="assets/market_icon.png" alt="Market">
+</button>
+
+<div id="album-content" style="width: 100%; max-width: 1400px; padding-top: 20px; display: flex; flex-direction: column; align-items: center;">
+    
+</div>
+
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0

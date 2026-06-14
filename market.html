@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<link rel="icon" type="image/png" href="assets/favicon.png">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<title>Market</title>
+<style>
+/* --- OFFIZIELLE TURNIER-SCHRIFT EINBINDEN --- */
+@font-face {
+    font-family: 'FWC2026';
+    src: url('assets/FWC2026.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body { 
+    margin: 0; 
+    padding: 10px 6px; 
+    font-family: 'FWC2026', Arial, sans-serif; 
+    color: white; 
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+    min-height: 100dvh;
+    width: 100%;
+    background-color: #3f57f5; 
+}
+
+/* --- OBERE LEISTE (HEADER WRAPPER) --- */
+.header-container {
+    width: 100%;
+    max-width: 1400px;
+    position: relative; /* Wichtig für die absolute Positionierung des Buttons */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: -20px; 
+    margin-bottom: 0px;
+    height: 50px; /* Feste Höhe, damit alles auf einer Linie liegt */
+}
+
+h1 { 
+    margin: 0;
+    font-size: 22px; /* Schrifthöhe Mobile */
+    text-transform: uppercase;
+    text-shadow: 0 1px 3px rgba(0,0,0,0.4);
+    font-family: 'FWC2026', Arial, sans-serif;
+    letter-spacing: 1px;
+    text-align: center;
+}
+
+/* --- ABSOLUTER ZURÜCK-BUTTON --- */
+.btn-back {
+    position: absolute;
+    left: 4px; /* Schmiegt sich perfekt an den linken Rand */
+    top: 50%;
+    transform: translateY(-50%); /* Zentriert den Button vertikal im Header */
+    background: rgba(255, 255, 255, 0.1);
+    border: 1.5px solid rgba(255, 255, 255, 0.4);
+    color: white;
+    font-family: Arial, sans-serif; /* Arial für ein sauberes, kantiges "<" */
+    font-weight: bold;
+    
+    /* DYNAMISCHE ANPASSUNG AN DIE TEXTHÖHE: */
+    font-size: 14px;  
+    width: 22px;      
+    height: 22px;     
+    border-radius: 4px;
+    
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    transition: background 0.15s ease, transform 0.15s ease;
+    z-index: 100; /* Liegt immer über allem */
+}
+
+.btn-back:hover {
+    background: rgba(255, 255, 255, 0.25);
+    transform: translateY(-50%) scale(1.05);
+}
+
+/* --- DESKTOP LAYOUT --- */
+@media (min-width: 768px) {
+    body { padding: 20px; }
+    
+    .header-container {
+        margin-top: 15px; 
+        margin-bottom: 25px;
+        height: 70px;
+    }
+    
+    h1 { font-size: 36px; } /* Schrifthöhe auf Desktop ist 36px */
+    
+    /* --- ANPASSUNG DES BUTTONS AN DIE SCHRIFTHÖHE AUF DESKTOP --- */
+    .btn-back {
+        left: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        
+        width: 36px;   
+        height: 36px;  
+        font-size: 22px; 
+        
+        border-radius: 6px;
+        border-width: 2px;
+    }
+}
+</style>
+</head>
+<body>
+
+<div class="header-container">
+    <a href="album.html" class="btn-back">&lt;</a>
+    <h1>Market</h1>
+</div>
+
+<div id="market-content" style="width: 100%; max-width: 1400px; padding-top: 20px; display: flex; flex-direction: column; align-items: center;">
+    
+</div>
+
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+
+<script>
+// Firebase Konfiguration
+const firebaseConfig = {
+  apiKey: "AIzaSyD2KXF4jwbym0ghwMrSPFCiD-pgajGIopE",
+  authDomain: "wc26guesser-db.firebaseapp.com",
+  projectId: "wc26guesser-db",
+  storageBucket: "wc26guesser-db.firebasestorage.app",
+  messagingSenderId: "396925110064",
+  appId: "1:396925110064:web:18d8f40a30e2f0d63deaf5"
+};
+
+firebase.initializeApp(firebaseConfig);
+const db = firebase.firestore();
+
+// Später greifen wir hier auf die Markt-Daten des eingeloggten Users zu
+firebase.auth().onAuthStateChanged((user) => {
+    if (user) {
+        console.log("User angemeldet, bereite Market für UID vor:", user.uid);
+        // HIER: Funktion zum Laden der Sticker aus Firebase starten
+    } else {
+        console.log("Kein User angemeldet.");
+        // HIER: Eventuell Redirect zur Startseite
+    }
+});
+</script>
+</body>
+</html>
