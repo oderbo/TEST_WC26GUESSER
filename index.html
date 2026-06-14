@@ -342,19 +342,18 @@ body {
 .player-image-container img { width: 100%; height: 100%; object-fit: contain; display: block; }
 
 .lower-elements-wrapper {
-    position: absolute; top: 60%; bottom: 0; left: 0; right: 0; /* Bleibt bei 0, um exakt den Innenrahmen zu berühren */
+    position: absolute; top: 60%; bottom: 0; left: 0; right: 0; 
     display: flex; flex-direction: column; gap: 4px; padding-bottom: 4px; 
     box-sizing: border-box; z-index: 2;
 }
 
-/* HIER GEÄNDERT: Box-Shadow für innere Kontur + keine runden Ecken */
 .sticker-info-box {
     flex: 1; min-height: 0; width: 100%;
     background-color: var(--color-2); 
-    border-radius: 0; /* Keine runden Ecken mehr */
+    border-radius: 0; 
     display: flex; align-items: center; justify-content: center;
-    border: none; /* Äußere/Komplette Kontur entfernt */
-    box-shadow: inset 0 1.5px 0 var(--color-3), inset 0 -1.5px 0 var(--color-3); /* Nur oben & unten eine Linie nach innen */
+    border: none; 
+    box-shadow: inset 0 1.5px 0 var(--color-3), inset 0 -1.5px 0 var(--color-3); 
     box-sizing: border-box;
 }
 
@@ -400,10 +399,11 @@ body {
 
 .club-logo-small { height: 80%; width: auto; object-fit: contain; }
 
+/* NEU: Vereinsname mit dynamischer Farbe über CSS-Variablen */
 .club-name {
-    color: #000000; 
+    color: var(--dynamic-text, #ffffff); 
     font-weight: bold; font-size: 5.5cqw; 
-    -webkit-text-stroke: 0.6px #ffffff; 
+    -webkit-text-stroke: 0.3px var(--dynamic-stroke, #000000); 
     text-transform: none; letter-spacing: 0.2px; max-width: 100%; 
     display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;
     overflow: hidden; line-height: 1.1;
@@ -904,6 +904,24 @@ function openBoosterPack() {
     }, 100);
 }
 
+// NEU: Hilfsfunktion zur Helligkeitsberechnung (YIQ-Luminanz)
+function getContrastColors(hexColor) {
+    if (!hexColor) return { text: '#ffffff', stroke: '#000000' };
+    let hex = hexColor.replace('#', '');
+    if (hex.length === 3) hex = hex.split('').map(c => c + c).join('');
+    
+    const r = parseInt(hex.substr(0, 2), 16);
+    const g = parseInt(hex.substr(2, 2), 16);
+    const b = parseInt(hex.substr(4, 2), 16);
+    
+    const yiq = ((r * 299) + (g * 587) + (b * 114)) / 1000;
+    
+    // Ab einem Helligkeitswert von ca. 140 (von 255) gilt die Farbe als "hell"
+    return (yiq >= 140) 
+        ? { text: '#000000', stroke: 'transparent' } // Hell -> Text schwarz, keine Kontur
+        : { text: '#ffffff', stroke: '#000000' };    // Dunkel -> Text weiß, schwarze Kontur
+}
+
 function renderDrawnStickersGrid() {
     const grid = document.getElementById("stickerGrid");
     grid.innerHTML = "";
@@ -958,9 +976,15 @@ function renderDrawnStickersGrid() {
             const flagImg = cleanPath(sticker.flag);
             const clubImg = cleanPath(sticker.club_image);
 
-            container.style.setProperty('--color-1', sticker.color_1 || '#c10e23');
+            // NEU: Helligkeit auswerten und Variablen anlegen
+            const c1 = sticker.color_1 || '#c10e23';
+            const textContrast = getContrastColors(c1);
+
+            container.style.setProperty('--color-1', c1);
             container.style.setProperty('--color-2', sticker.color_2 || '#046a38');
             container.style.setProperty('--color-3', sticker.color_3 || '#f2a900');
+            container.style.setProperty('--dynamic-text', textContrast.text);
+            container.style.setProperty('--dynamic-stroke', textContrast.stroke);
 
             container.innerHTML += `
                 <div class="sticker-inner">
