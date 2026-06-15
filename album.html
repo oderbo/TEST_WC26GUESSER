@@ -65,8 +65,8 @@ h1 { margin: 0; font-size: 22px; text-transform: uppercase; text-shadow: 0 1px 3
 .back { transform: rotateY(180deg); border-right: 1px solid rgba(0,0,0,0.25); z-index: 1; }
 .cover-img { width: 100%; height: 100%; object-fit: cover; border-radius: 0 8px 8px 0; }
 
-/* SEITENZAHLEN (Nur unten rechts auf der Front) */
-.page-numbers-combined { position: absolute; bottom: 8px; right: 12px; font-size: 12px; font-weight: bold; color: #111111; background: rgba(255,255,255,0.7); padding: 2px 6px; border-radius: 3px; z-index: 50; }
+/* SEITENZAHLEN (Nur unten rechts auf der Front, um 20% verkleinert!) */
+.page-numbers-combined { position: absolute; bottom: 8px; right: 12px; font-size: 9.5px; font-weight: bold; color: #111111; background: rgba(255,255,255,0.7); padding: 2px 5px; border-radius: 3px; z-index: 50; }
 
 /* =========================================================================
    DYNAMISCHES SEITEN-LAYOUT (STRIKTES MATHEMATISCHES GRID)
@@ -83,11 +83,15 @@ h1 { margin: 0; font-size: 22px; text-transform: uppercase; text-shadow: 0 1px 3
 
 /* Stahlbeton-Käfig für den Team-Namen: Erlaubt kein Verdrängen des Grids! */
 .team-name-wrapper {
-    height: 12cqw; 
+    height: 10cqw; 
+    width: 68.5cqw; /* EXAKT die Breite der ersten 3 Spalten inkl. Gaps! */
     display: flex; align-items: flex-end; 
     margin-bottom: 2cqw;
 }
-.team-name { color: #111; margin: 0; text-transform: uppercase; line-height: 1; letter-spacing: -0.5px; }
+.team-name { 
+    color: #111; margin: 0; text-transform: uppercase; line-height: 1; letter-spacing: -0.5px; 
+    white-space: nowrap; /* Zwingt den Text in eine Zeile */
+}
 
 /* Header Grid (Team Foto links, Group mitte, Wappen rechts) */
 .team-header-grid {
@@ -124,10 +128,7 @@ h1 { margin: 0; font-size: 22px; text-transform: uppercase; text-shadow: 0 1px 3
     transform: translateY(var(--col-h)) rotate(-90deg);
 }
 
-/* Rotiert den Text im liegenden Kasten wieder aufrecht */
-.rotated-slot .slot-circle {
-    transform: rotate(90deg);
-}
+/* ACHTUNG: Aufgerichtete Nummer wurde entfernt, Nummer rotiert nun mit dem Rahmen -90° mit! */
 
 .slot-circle {
     width: 28px; height: 28px; border-radius: 50%; border: 1.5px solid #111111;
@@ -197,7 +198,7 @@ h1 { margin: 0; font-size: 22px; text-transform: uppercase; text-shadow: 0 1px 3
     .stack-counter { width: 32px; height: 32px; font-size: 15px; top: -12px; right: -12px; }
     .book { width: 440px; max-height: calc(100dvh - 120px); transform: translateX(-15%) scale(1.25); }
     .book.open { transform: translateX(50%) scale(1); }
-    .page-numbers-combined { bottom: 12px; right: 18px; font-size: 14px; padding: 2px 8px; border-radius: 4px;}
+    .page-numbers-combined { bottom: 12px; right: 18px; font-size: 11px; padding: 2px 6px; border-radius: 4px;}
     .book.open ~ .desk-nav-btn { display: block; }
     .desk-nav-btn.prev { left: calc(50% - 440px + 5px); } .desk-nav-btn.next { left: calc(50% + 440px - 30px); }
 }
@@ -559,8 +560,11 @@ function buildPageHTML(bp, isLeftPage) {
     if (bp.type === 'team') {
         if (isLeftPage) { 
             let nameStyle = 'font-size: 8cqw;';
-            if (bp.name.length > 12) nameStyle = 'font-size: 6.5cqw;';
-            if (bp.name.length > 18) nameStyle = 'font-size: 5cqw;';
+            if (bp.name.length > 9) nameStyle = 'font-size: 7cqw;';
+            if (bp.name.length > 12) nameStyle = 'font-size: 6cqw;';
+            if (bp.name.length > 15) nameStyle = 'font-size: 5cqw;';
+            if (bp.name.length > 18) nameStyle = 'font-size: 4cqw;';
+            if (bp.name.length > 21) nameStyle = 'font-size: 3.5cqw;';
             return `
                 <div class="page-wrapper">
                     <div class="team-name-wrapper">
