@@ -107,6 +107,7 @@ h1 {
     box-shadow: 0 2px 5px rgba(0,0,0,0.3); z-index: 10;
 }
 
+
 /* =========================================================================
    3D ALBUM ENGINE
    ========================================================================= */
@@ -134,12 +135,15 @@ h1 {
     transform: translateX(50%) scale(1);
 }
 
+/* PERFEKTE ZOOM MATRIX FÜR MOBILE */
 @media (max-width: 767px) {
     .book.zoomed-left {
-        transform: translate(100%, -8vh) scale(2);
+        /* EXAKTE MATHEMATIK: 150% Verschiebung bringt die Kanten exakt auf den alten Puffer! */
+        transform: translateX(150%) translateY(-8vh) scale(2);
     }
     .book.zoomed-right {
-        transform: translate(0%, -8vh) scale(2);
+        /* EXAKTE MATHEMATIK: -50% Verschiebung bringt die rechte Seite perfekt in den Rahmen */
+        transform: translateX(-50%) translateY(-8vh) scale(2);
     }
 }
 
@@ -162,7 +166,14 @@ h1 {
     overflow: hidden;
 }
 
-.back { transform: rotateY(180deg); }
+/* --- NEU: DIE DÜNNE LINIE (BUCHFALZ) --- */
+.front {
+    border-left: 1px solid rgba(0,0,0,0.25);
+}
+.back { 
+    transform: rotateY(180deg); 
+    border-right: 1px solid rgba(0,0,0,0.25);
+}
 
 .cover-img {
     width: 100%; height: 100%; object-fit: cover;
@@ -335,7 +346,7 @@ function updateNavArrows() {
 
 // Klick-Logik: Öffnen UND Zoomen
 book.addEventListener('click', (e) => {
-    // 1. Wenn Buch zu ist -> Öffnen (Hier ist ein Klick auf das ganze Cover okay)
+    // 1. Wenn Buch zu ist -> Öffnen
     if (currentPageIndex === 0) {
         openBook();
         return;
@@ -347,8 +358,6 @@ book.addEventListener('click', (e) => {
         
         if (!isZoomed) {
             // SICHERHEIT: Prüfen ob wirklich eine Album-Seite angeklickt wurde!
-            // .back ist IMMER die bereits umgeblätterte, linke Seite.
-            // .front ist IMMER die noch liegende, rechte Seite.
             const clickedLeftPage = e.target.closest('.back');
             const clickedRightPage = e.target.closest('.front');
             
