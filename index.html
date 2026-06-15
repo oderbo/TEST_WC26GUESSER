@@ -61,50 +61,60 @@ h1 { margin: 0; font-size: 22px; text-transform: uppercase; text-shadow: 0 1px 3
 .page-numbers-combined { position: absolute; bottom: 8px; right: 12px; font-size: 12px; font-weight: bold; color: #111111; background: rgba(255,255,255,0.7); padding: 2px 6px; border-radius: 3px; z-index: 50; }
 
 /* =========================================================================
-   DYNAMISCHES SEITEN-LAYOUT (STRIKTES 4-SPALTEN GRID)
+   DYNAMISCHES SEITEN-LAYOUT (NEUES UNIFIED 4x4 GRID FÜR PERFEKTE ALIGNMENT)
    ========================================================================= */
-.page-wrapper { width: 100%; height: 100%; padding: 4%; }
-
-/* Einheitliches Grid für alle Seiten */
-.player-grid { 
-    width: 100%; 
-    height: 100%; 
-    display: grid; 
-    grid-template-columns: repeat(4, 1fr); 
-    grid-auto-rows: min-content; /* Verhindert das vertikale Strecken! */
-    gap: 3% 2%; 
-    align-content: start; /* Fixiert alles oben */
-    padding-bottom: 5%;
+.unified-page-grid {
+    width: 100%; height: 100%; padding: 4%;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+    gap: 2%;
 }
 
-/* --- HEADER ELEMENTE (LINKE SEITE) --- */
-.header-col-1-2 { grid-column: span 2; display: flex; flex-direction: column; justify-content: flex-end; }
-.header-col-3 { grid-column: span 1; display: flex; flex-direction: column; justify-content: flex-end; align-items: center; padding-bottom: 5%; }
-.header-col-4 { grid-column: span 1; display: flex; flex-direction: column; justify-content: flex-end; }
+/* HEADER ZELLEN (Verhalten sich exakt wie ein Sticker-Platz) */
+.header-cell {
+    container-type: inline-size;
+    display: flex; flex-direction: column; justify-content: center;
+    width: 100%; height: 100%;
+}
 
-.team-name { color: #111111; margin: 0 0 4% 0; font-family: 'FWC2026', Arial, sans-serif; text-transform: uppercase; line-height: 0.9; letter-spacing: -0.5px; }
+.team-name {
+    color: #111; margin: 0; text-transform: uppercase; line-height: 1.05; letter-spacing: -0.5px;
+    word-wrap: break-word; text-align: left; padding-right: 5px;
+}
 
-.group-box { color: #111111; text-align: center; }
-.group-box span { display: block; font-size: 2.5cqw; font-weight: bold; letter-spacing: 1px; color: #333;}
-.group-box strong { display: block; font-size: 8cqw; line-height: 1; margin-top: 2px;}
+.group-cell { align-items: center; justify-content: center; text-align: center; }
+.group-cell span { display: block; font-size: 10cqw; font-weight: bold; letter-spacing: 1px; color: #111; margin-bottom: 2px;}
+.group-cell strong { display: block; font-size: 28cqw; line-height: 1; color: #111; }
+
+/* DUMMY SCHEDULE (Unten rechts, über 2 Spalten) */
+.match-schedule {
+    grid-column: span 2; 
+    display: flex; flex-direction: column; justify-content: space-evenly; padding: 5% 10%;
+}
+.schedule-line { width: 100%; height: 1.5px; background-color: rgba(255,255,255,0.6); position: relative; box-shadow: 0 1px 1px rgba(0,0,0,0.1); }
+.schedule-line::before { content: ''; position: absolute; left: -10px; top: -3.5px; width: 8px; height: 8px; border-radius: 50%; background-color: rgba(255,255,255,0.6); box-shadow: 0 1px 1px rgba(0,0,0,0.1); }
+
 
 /* PLATZHALTER & STICKER DESIGN */
 .sticker-slot {
-    position: relative; width: 100%; height: auto; /* Höhe wird durch Aspect Ratio berechnet! */
-    aspect-ratio: 1 / 1.38; 
+    position: relative; width: 100%; height: 100%; 
     border: 1.5px solid #111111; background-color: rgba(0,0,0,0.03); 
     display: flex; align-items: center; justify-content: center;
     container-type: inline-size;
 }
-.slot-landscape { aspect-ratio: 1.38 / 1; }
-
 .slot-circle {
-    width: 26px; height: 26px; border-radius: 50%; border: 1.5px solid #111111;
+    width: 28px; height: 28px; border-radius: 50%; border: 1.5px solid #111111;
     display: flex; align-items: center; justify-content: center;
-    font-size: 10px; font-weight: bold; color: #111111; background-color: #f4f1ea; font-family: Arial, sans-serif;
+    font-size: 11px; font-weight: bold; color: #111111; background-color: #f4f1ea; font-family: Arial, sans-serif;
 }
 .sticker-slot.filled { border: none; background-color: transparent; }
 .sticker-slot.filled .slot-circle { display: none; }
+
+/* GENERIC GRID FÜR SPECIALS/STADIEN */
+.generic-grid { width: 100%; height: 100%; padding: 4%; display: flex; flex-wrap: wrap; align-content: flex-start; gap: 2%; }
+.generic-grid .sticker-slot { width: 23.5%; aspect-ratio: 1 / 1.38; height: auto; margin-bottom: 2%; }
+
 
 /* --- CSS-KLASSEN FÜR STICKER DESIGN (AUS INDEX.HTML) --- */
 .sticker-wrapper { position: absolute; width: 100%; height: 100%; top: 0; left: 0; box-shadow: 0 2px 6px rgba(0,0,0,0.3); }
@@ -502,7 +512,7 @@ function buildPlayerGrid(prefix, startIdx, endIdx, startAlbumNum) {
 }
 
 function buildGenericGrid(bp) {
-    let html = '<div class="player-grid">';
+    let html = '<div class="generic-grid">';
     let currentAlbumNum = bp.startAlbumNumber;
     let sIdx = parseInt(bp.startId.replace(/\D/g, ''));
     let eIdx = parseInt(bp.endId.replace(/\D/g, ''));
@@ -518,36 +528,36 @@ function buildGenericGrid(bp) {
 
 function buildPageHTML(bp, isLeftPage) {
     if (bp.type === 'team') {
-        if (isLeftPage) {
-            let nameStyle = bp.name.length > 12 ? 'font-size: 3.5cqw;' : 'font-size: 5cqw;';
+        if (isLeftPage) { 
+            let nameStyle = bp.name.length > 10 ? 'font-size: 13cqw;' : 'font-size: 18cqw;';
             return `
-                <div class="page-wrapper" style="container-type: inline-size;">
-                    <div class="player-grid">
-                        <div class="header-col-1-2">
-                            <h2 class="team-name" style="${nameStyle}">${bp.name}</h2>
-                            ${buildSlotHTML(bp.countryCode + '001', bp.startAlbumNumber, 'slot-landscape')}
-                        </div>
-                        <div class="header-col-3 group-box">
-                            <span>GROUP</span><strong>${bp.group}</strong>
-                        </div>
-                        <div class="header-col-4">
-                            ${buildSlotHTML(bp.countryCode + '002', bp.startAlbumNumber + 1)}
-                        </div>
-                        ${buildPlayerGrid(bp.countryCode, 3, 14, bp.startAlbumNumber + 2)}
+                <div class="unified-page-grid">
+                    <div class="header-cell">
+                        <h2 class="team-name" style="${nameStyle}">${bp.name}</h2>
                     </div>
+                    ${buildSlotHTML(bp.countryCode + '001', bp.startAlbumNumber)}
+                    <div class="header-cell group-cell">
+                        <span>GROUP</span><strong>${bp.group}</strong>
+                    </div>
+                    ${buildSlotHTML(bp.countryCode + '002', bp.startAlbumNumber + 1)}
+                    
+                    ${buildPlayerGrid(bp.countryCode, 3, 14, bp.startAlbumNumber + 2)}
                 </div>`;
-        } else {
+        } else { 
             return `
-                <div class="page-wrapper">
-                    <div class="player-grid">
-                        ${buildPlayerGrid(bp.countryCode, 15, 28, bp.startAlbumNumber)}
+                <div class="unified-page-grid">
+                    ${buildPlayerGrid(bp.countryCode, 15, 28, bp.startAlbumNumber)}
+                    
+                    <div class="match-schedule">
+                        <div class="schedule-line"></div>
+                        <div class="schedule-line"></div>
+                        <div class="schedule-line"></div>
                     </div>
                 </div>`;
         }
     }
-    // Andere Seiten als Grid aufbauen
-    if (bp.type === 'cover' || bp.type === 'index') return ``;
-    return `<div class="page-wrapper">${buildGenericGrid(bp)}</div>`;
+    if (bp.type === 'cover' || bp.type === 'index') return `<div class="debug-text"><span>${bp.type}</span></div>`;
+    return buildGenericGrid(bp);
 }
 
 /* =========================================================================
