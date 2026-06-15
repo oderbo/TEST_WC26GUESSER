@@ -78,7 +78,7 @@ h1 {
    ========================================================================= */
 .sticker-stack-container {
     position: fixed; bottom: 20px; right: 20px;
-    width: 65px; height: 90px; /* Handy Größe */
+    width: 80px; height: 110px; /* Deutlich größer auf dem Handy */
     z-index: 1000; cursor: pointer;
     transition: transform 0.2s ease;
 }
@@ -90,83 +90,80 @@ h1 {
     border-radius: 4px; box-shadow: 0 4px 8px rgba(0,0,0,0.4);
     display: flex; align-items: center; justify-content: center;
 }
-/* Die künstliche Unordnung im Stapel */
 .stack-card-3 { transform: rotate(8deg) translate(3px, 3px); z-index: 1; background-color: #dddddd; }
 .stack-card-2 { transform: rotate(-5deg) translate(-2px, 1px); z-index: 2; background-color: #e5e5e5;}
-.stack-card-1 { transform: rotate(0deg); z-index: 3; } /* Oberste Karte */
+.stack-card-1 { transform: rotate(0deg); z-index: 3; }
 
 .stack-placeholder-text {
-    font-family: Arial, sans-serif; font-size: 10px; font-weight: bold; color: #aaaaaa; text-transform: uppercase;
+    font-family: Arial, sans-serif; font-size: 11px; font-weight: bold; color: #aaaaaa; text-transform: uppercase;
 }
 
 .stack-counter {
     position: absolute; top: -10px; right: -10px;
     background-color: #ff1145; color: #ffffff;
-    width: 24px; height: 24px; border-radius: 50%;
+    width: 26px; height: 26px; border-radius: 50%;
     display: flex; align-items: center; justify-content: center;
-    font-family: Arial, sans-serif; font-size: 12px; font-weight: bold;
+    font-family: Arial, sans-serif; font-size: 13px; font-weight: bold;
     box-shadow: 0 2px 5px rgba(0,0,0,0.3); z-index: 10;
 }
 
 
 /* =========================================================================
-   3D ALBUM ENGINE
+   3D ALBUM ENGINE (ZENTRIERUNG FIXIERT)
    ========================================================================= */
 #album-content {
     width: 100%; flex-grow: 1; position: relative;
-    display: flex; justify-content: center; align-items: flex-start; /* Etwas weiter oben */
-    padding-top: 5vh; perspective: 2500px; /* Die 3D Kamera */
+    display: flex; justify-content: center; align-items: flex-start;
+    padding-top: max(6vh, 20px); perspective: 2500px;
 }
 
 .book {
     position: relative;
-    /* Größe einer einzelnen Seite (Mobile First) */
-    width: 85vw; height: 120vw; /* Aspect Ratio ca 1 : 1.41 */
-    max-width: 400px; max-height: 564px;
+    /* 46vw Breite bedeutet: Offen ist es 92vw breit. Perfekter kleiner Rand! */
+    width: 46vw; 
+    aspect-ratio: 1 / 1.41;
+    /* Schützt das Album davor, den Sticker-Stapel zu berühren */
+    max-height: calc(100dvh - 200px);
+    
     transform-style: preserve-3d;
+    transform-origin: left center; /* Der Buchrücken ist links */
     transition: transform 0.8s cubic-bezier(0.4, 0.0, 0.2, 1);
     
-    /* GANZ WICHTIG: Das Buch stellt im CSS die RECHTE Seite dar.
-       Darum verschieben wir es im geschlossenen Zustand nach links in die Mitte */
-    transform: translateX(-50%);
+    /* MATHEMATIK FÜR DAS GESCHLOSSENE ALBUM:
+       Wir skalieren es auf 1.4 (etwas kleiner als vorher).
+       Um es genau in der Mitte zu halten, muss es um -20% verschoben werden. */
+    transform: translateX(-20%) scale(1.4);
 }
 
 .book.open {
-    /* Wenn es aufgeht, zentrieren wir den Buchrücken (0). 
-       Zusätzlich schrumpfen wir das Buch, da jetzt 2 Seiten nebeneinander sichtbar sind! */
-    transform: translateX(0) scale(0.52);
+    /* MATHEMATIK FÜR DAS OFFENE ALBUM:
+       Skalierung auf 1 (normale Größe).
+       Um den Rücken (links) genau in die Mitte des Handys zu holen, schieben wir es um 50% nach rechts. */
+    transform: translateX(50%) scale(1);
 }
 
 .paper {
     position: absolute; width: 100%; height: 100%; top: 0; left: 0;
     transform-style: preserve-3d;
-    transform-origin: left center; /* Blättert an der linken Kante (Buchrücken) */
+    transform-origin: left center;
     transition: transform 0.8s cubic-bezier(0.4, 0.0, 0.2, 1);
-    cursor: pointer;
-    
-    /* Hardware-Beschleunigung für flüssiges Blättern mit 28 Stickern */
-    will-change: transform; 
+    will-change: transform; /* Aktiviert den Grafik-Chip für flüssiges Blättern */
 }
 
-/* Seite aufklappen */
 .paper.flipped {
     transform: rotateY(-180deg);
 }
 
-/* Die Vorder- und Rückseite eines Blattes Papier */
 .front, .back {
     position: absolute; width: 100%; height: 100%; top: 0; left: 0;
-    backface-visibility: hidden; /* Versteckt die Rückseite, wenn sie weggedreht ist */
-    background-color: #f4f1ea; /* Panini-Papier Farbe */
-    box-shadow: inset 0 0 20px rgba(0,0,0,0.05); /* Leichter Papier-Schatten */
+    backface-visibility: hidden; 
+    background-color: #f4f1ea; 
+    box-shadow: inset 0 0 20px rgba(0,0,0,0.05);
     overflow: hidden;
 }
 
-.back {
-    transform: rotateY(180deg); /* Die Rückseite ist von Natur aus umgedreht */
-}
+.back { transform: rotateY(180deg); }
 
-/* Falz-Schatten (am Buchrücken) */
 .front::before {
     content: ''; position: absolute; top: 0; left: 0; width: 10%; height: 100%;
     background: linear-gradient(to right, rgba(0,0,0,0.15) 0%, rgba(0,0,0,0) 100%); z-index: 10; pointer-events: none;
@@ -176,13 +173,11 @@ h1 {
     background: linear-gradient(to left, rgba(0,0,0,0.15) 0%, rgba(0,0,0,0) 100%); z-index: 10; pointer-events: none;
 }
 
-/* Cover Image */
 .cover-img {
     width: 100%; height: 100%; object-fit: cover;
-    border-radius: 0 8px 8px 0; /* Leicht abgerundet außen */
+    border-radius: 0 8px 8px 0; 
 }
 
-/* Seitenzahlen */
 .page-number {
     position: absolute; bottom: 15px;
     font-size: 16px; font-weight: bold; color: #111111;
@@ -191,18 +186,20 @@ h1 {
 .page-number.left { left: 15px; }
 .page-number.right { right: 15px; }
 
-/* Navigation Buttons (Sichtbar wenn Buch offen) */
-.nav-btn {
+/* --- DESKTOP MINIMAL-PFEILE --- */
+.desk-nav-btn {
     position: absolute; top: 50%; transform: translateY(-50%);
-    background: rgba(255,255,255,0.9); border: none; border-radius: 50%;
-    width: 45px; height: 45px; font-size: 24px; font-weight: bold; color: #3f57f5;
-    cursor: pointer; box-shadow: 0 4px 10px rgba(0,0,0,0.3); z-index: 1000;
-    opacity: 0; pointer-events: none; transition: opacity 0.3s ease;
+    font-size: 42px; color: rgba(0, 0, 0, 0.35); /* Dezentes dunkles Grau */
+    cursor: pointer; z-index: 1000; display: none; /* Auf Mobile komplett versteckt */
+    font-family: sans-serif;
+    transition: color 0.2s ease;
 }
-.book.open ~ .nav-btn { opacity: 1; pointer-events: auto; }
-.nav-btn.prev { left: 10px; }
-.nav-btn.next { right: 10px; }
-
+.desk-nav-btn span {
+    display: inline-block;
+    /* Macht die Pfeile extrem schmal und zieht sie in die Höhe */
+    transform: scale(0.5, 2.5); 
+}
+.desk-nav-btn:hover { color: #000000; }
 
 /* --- DESKTOP LAYOUT --- */
 @media (min-width: 768px) {
@@ -211,19 +208,30 @@ h1 {
     .btn-back { left: 0; width: 36px; height: 36px; font-size: 22px; border-radius: 6px; border-width: 2px; }
     .action-btn-round { width: 70px; height: 70px; bottom: 30px; left: 30px; }
     
-    .sticker-stack-container { width: 90px; height: 125px; bottom: 30px; right: 30px; }
+    .sticker-stack-container { width: 100px; height: 140px; bottom: 30px; right: 30px; }
     
     #album-content { padding-top: 8vh; }
     .book {
-        width: 350px; height: 490px; /* Größer auf Desktop */
+        width: 350px; 
+        max-height: calc(100dvh - 250px);
+        /* Geschlossen auf Desktop: Leicht kleinerer Skalierungsfaktor */
+        transform: translateX(-15%) scale(1.3);
     }
     .book.open {
-        /* Auf dem Desktop ist genug Platz, wir müssen nicht so stark schrumpfen */
-        transform: translateX(0) scale(0.9);
+        transform: translateX(50%) scale(1);
     }
-    .nav-btn { width: 60px; height: 60px; font-size: 30px; }
-    .nav-btn.prev { left: 10vw; }
-    .nav-btn.next { right: 10vw; }
+    
+    /* Pfeile werden nur auf Desktop und nur beim offenen Album angezeigt */
+    .book.open ~ .desk-nav-btn { display: block; }
+    
+    .desk-nav-btn.prev {
+        /* Positioniert den Pfeil exakt knapp innerhalb der linken Papierkante */
+        left: calc(50% - 350px + 10px); 
+    }
+    .desk-nav-btn.next {
+        /* Positioniert den Pfeil exakt knapp innerhalb der rechten Papierkante */
+        left: calc(50% + 350px - 35px); 
+    }
 }
 </style>
 </head>
@@ -244,11 +252,12 @@ h1 {
     <div class="stack-card stack-card-1">
         <span class="stack-placeholder-text">Sticker</span>
     </div>
-    <div class="stack-counter" id="stackCounter">1</div> </div>
+    <div class="stack-counter" id="stackCounter">1</div> 
+</div>
 
 <div id="album-content">
     
-    <button class="nav-btn prev" onclick="flipPrev()">&lt;</button>
+    <div class="desk-nav-btn prev" onclick="flipPrev()"><span>&lt;</span></div>
 
     <div class="book" id="book">
         
@@ -280,7 +289,7 @@ h1 {
 
     </div>
 
-    <button class="nav-btn next" onclick="flipNext()">&gt;</button>
+    <div class="desk-nav-btn next" onclick="flipNext()"><span>&gt;</span></div>
 
 </div>
 
@@ -311,10 +320,9 @@ const papers = [
     document.getElementById('paper3')
 ];
 
-let currentPageIndex = 0; // 0 = Geschlossen, 1 = Erste Doppelseite, etc.
+let currentPageIndex = 0; 
 const maxPages = papers.length;
 
-// Initiales Z-Index Setup (Das oberste Blatt braucht den höchsten Z-Index)
 function setupZIndex() {
     papers.forEach((paper, index) => {
         paper.style.zIndex = maxPages - index;
@@ -322,7 +330,6 @@ function setupZIndex() {
 }
 setupZIndex();
 
-// Wenn das Buch noch zu ist, öffnet ein Klick auf das Cover das Buch automatisch.
 book.addEventListener('click', (e) => {
     if (currentPageIndex === 0) {
         openBook();
@@ -339,8 +346,6 @@ function flipNext() {
         const paper = papers[currentPageIndex];
         paper.classList.add('flipped');
         
-        // Z-Index Switch genau in der Mitte der Rotation (nach 400ms)
-        // Dadurch schiebt sich das Blatt physikalisch korrekt unter den linken Stapel
         setTimeout(() => {
             paper.style.zIndex = currentPageIndex + 1;
         }, 400);
@@ -355,13 +360,11 @@ function flipPrev() {
         const paper = papers[currentPageIndex];
         paper.classList.remove('flipped');
         
-        // Z-Index wieder umkehren
         setTimeout(() => {
             paper.style.zIndex = maxPages - currentPageIndex;
         }, 400);
 
     } else if (currentPageIndex === 1) {
-        // Buch komplett schließen
         currentPageIndex = 0;
         const paper = papers[0];
         paper.classList.remove('flipped');
@@ -374,6 +377,35 @@ function flipPrev() {
     }
 }
 
+/* =========================================================================
+   TOUCH SWIPE LOGIC (NUR MOBILE)
+   ========================================================================= */
+let touchstartX = 0;
+let touchendX = 0;
+const albumContent = document.getElementById('album-content');
+
+albumContent.addEventListener('touchstart', e => {
+    touchstartX = e.changedTouches[0].screenX;
+});
+
+albumContent.addEventListener('touchend', e => {
+    touchendX = e.changedTouches[0].screenX;
+    handleSwipe();
+});
+
+function handleSwipe() {
+    if (!book.classList.contains('open')) return;
+    
+    const swipeThreshold = 40; // Pixel, die man mindestens wischen muss
+    if (touchendX < touchstartX - swipeThreshold) {
+        // Wisch nach Links = Nächste Seite
+        flipNext();
+    }
+    if (touchendX > touchstartX + swipeThreshold) {
+        // Wisch nach Rechts = Vorherige Seite
+        flipPrev();
+    }
+}
 
 firebase.auth().onAuthStateChanged((user) => {
     if (user) {
