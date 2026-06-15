@@ -123,11 +123,9 @@ h1 {
     width: 49vw; 
     aspect-ratio: 1 / 1.41;
     max-height: calc(100dvh - 200px);
-    
     transform-style: preserve-3d;
     transform-origin: left center; 
     transition: transform 0.6s cubic-bezier(0.4, 0.0, 0.2, 1);
-    
     transform: translateX(-20%) scale(1.4);
 }
 
@@ -135,16 +133,9 @@ h1 {
     transform: translateX(50%) scale(1);
 }
 
-/* PERFEKTE ZOOM MATRIX FÜR MOBILE */
 @media (max-width: 767px) {
-    .book.zoomed-left {
-        /* EXAKTE MATHEMATIK: 150% Verschiebung bringt die Kanten exakt auf den alten Puffer! */
-        transform: translateX(150%) translateY(-8vh) scale(2);
-    }
-    .book.zoomed-right {
-        /* EXAKTE MATHEMATIK: -50% Verschiebung bringt die rechte Seite perfekt in den Rahmen */
-        transform: translateX(-50%) translateY(-8vh) scale(2);
-    }
+    .book.zoomed-left { transform: translateX(150%) translateY(-8vh) scale(2); }
+    .book.zoomed-right { transform: translateX(-50%) translateY(-8vh) scale(2); }
 }
 
 .paper {
@@ -155,9 +146,7 @@ h1 {
     will-change: transform; 
 }
 
-.paper.flipped {
-    transform: rotateY(-180deg);
-}
+.paper.flipped { transform: rotateY(-180deg); }
 
 .front, .back {
     position: absolute; width: 100%; height: 100%; top: 0; left: 0;
@@ -166,14 +155,8 @@ h1 {
     overflow: hidden;
 }
 
-/* --- NEU: DIE DÜNNE LINIE (BUCHFALZ) --- */
-.front {
-    border-left: 1px solid rgba(0,0,0,0.25);
-}
-.back { 
-    transform: rotateY(180deg); 
-    border-right: 1px solid rgba(0,0,0,0.25);
-}
+.front { border-left: 1px solid rgba(0,0,0,0.25); }
+.back { transform: rotateY(180deg); border-right: 1px solid rgba(0,0,0,0.25); }
 
 .cover-img {
     width: 100%; height: 100%; object-fit: cover;
@@ -190,19 +173,25 @@ h1 {
 .page-number.left { left: 6px; }
 .page-number.right { right: 6px; }
 
+/* NEU: Dummy-Text für die Test-Phase */
+.debug-text {
+    position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+    width: 80%; text-align: center; color: #555; font-family: Arial, sans-serif;
+    font-size: 12px;
+}
+.debug-text span {
+    display: block; font-size: 22px; font-weight: bold; color: #3f57f5; margin-bottom: 8px;
+}
+
 /* --- DESKTOP MINIMAL-PFEILE --- */
 .desk-nav-btn {
-    position: absolute; 
-    top: 50%; transform: translateY(-50%);
+    position: absolute; top: 50%; transform: translateY(-50%);
     font-size: 42px; color: rgba(0, 0, 0, 0.35); 
     cursor: pointer; z-index: 1000; display: none; 
     font-family: sans-serif;
     transition: color 0.2s ease, opacity 0.3s ease; 
 }
-.desk-nav-btn span {
-    display: inline-block;
-    transform: scale(0.5, 2.5); 
-}
+.desk-nav-btn span { display: inline-block; transform: scale(0.5, 2.5); }
 .desk-nav-btn:hover { color: #000000; }
 
 /* --- DESKTOP LAYOUT --- */
@@ -221,16 +210,16 @@ h1 {
         max-height: calc(100dvh - 120px);
         transform: translateX(-15%) scale(1.25);
     }
-    .book.open {
-        transform: translateX(50%) scale(1);
-    }
+    .book.open { transform: translateX(50%) scale(1); }
     
     .page-number { top: 12px; font-size: 14px; padding: 2px 6px; min-width: 24px; border-radius: 4px;}
     .page-number.left { left: 12px; }
     .page-number.right { right: 12px; }
     
+    .debug-text { font-size: 16px; }
+    .debug-text span { font-size: 28px; }
+
     .book.open ~ .desk-nav-btn { display: block; }
-    
     .desk-nav-btn.prev { left: calc(50% - 440px + 5px); }
     .desk-nav-btn.next { left: calc(50% + 440px - 30px); }
 }
@@ -257,41 +246,11 @@ h1 {
 </div>
 
 <div id="album-content">
-    
     <div class="desk-nav-btn prev" onclick="flipPrev()"><span>&lt;</span></div>
     
-    <div class="book" id="book">
-        
-        <div class="paper" id="paper3">
-            <div class="front">
-                <div class="page-number right">3</div>
-            </div>
-            <div class="back">
-                <div class="page-number left">4</div>
-            </div>
-        </div>
-
-        <div class="paper" id="paper2">
-            <div class="front">
-                <div class="page-number right">1</div>
-            </div>
-            <div class="back">
-                <div class="page-number left">2</div>
-            </div>
-        </div>
-
-        <div class="paper" id="paper1">
-            <div class="front">
-                <img src="assets/panini_album.png" class="cover-img" onerror="this.src='assets/Icon.png'">
-            </div>
-            <div class="back">
-                </div>
-        </div>
-
-    </div>
+    <div class="book" id="book"></div>
 
     <div class="desk-nav-btn next" onclick="flipNext()"><span>&gt;</span></div>
-
 </div>
 
 <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
@@ -307,29 +266,90 @@ const firebaseConfig = {
   messagingSenderId: "396925110064",
   appId: "1:396925110064:web:18d8f40a30e2f0d63deaf5"
 };
-
 firebase.initializeApp(firebaseConfig);
 const db = firebase.firestore();
 
 /* =========================================================================
-   3D BOOK LOGIC & ZOOM (Mobile)
+   DER DYNAMISCHE ALBUM-BLUEPRINT (Kompakt generiert aus deiner CSV)
+   ========================================================================= */
+const albumBlueprint=[{t:"cover_back"},{t:"special",id:"SPC",s:0,e:6},{t:"index"},{t:"index"},{t:"stadiums",id:"STD",s:1,e:8},{t:"stadiums",id:"STD",s:9,e:16},{t:"stadiums",id:"STD",s:17,e:24},{t:"stadiums",id:"STD",s:25,e:26},{t:"team",id:"MEX",n:"Mexico",g:"A",s:1,e:14},{t:"team",id:"MEX",n:"Mexico",g:"A",s:15,e:28},{t:"team",id:"RSA",n:"South Africa",g:"A",s:1,e:14},{t:"team",id:"RSA",n:"South Africa",g:"A",s:15,e:28},{t:"team",id:"KOR",n:"South Korea",g:"A",s:1,e:14},{t:"team",id:"KOR",n:"South Korea",g:"A",s:15,e:28},{t:"team",id:"CZE",n:"Czech Republic",g:"A",s:1,e:14},{t:"team",id:"CZE",n:"Czech Republic",g:"A",s:15,e:28},{t:"team",id:"CAN",n:"Canada",g:"B",s:1,e:14},{t:"team",id:"CAN",n:"Canada",g:"B",s:15,e:28},{t:"team",id:"BIH",n:"Bosnia and Herzegovina",g:"B",s:1,e:14},{t:"team",id:"BIH",n:"Bosnia and Herzegovina",g:"B",s:15,e:28},{t:"team",id:"QAT",n:"Qatar",g:"B",s:1,e:14},{t:"team",id:"QAT",n:"Qatar",g:"B",s:15,e:28},{t:"team",id:"SUI",n:"Switzerland",g:"B",s:1,e:14},{t:"team",id:"SUI",n:"Switzerland",g:"B",s:15,e:28},{t:"team",id:"BRA",n:"Brazil",g:"C",s:1,e:14},{t:"team",id:"BRA",n:"Brazil",g:"C",s:15,e:28},{t:"team",id:"MAR",n:"Morocco",g:"C",s:1,e:14},{t:"team",id:"MAR",n:"Morocco",g:"C",s:15,e:28},{t:"team",id:"HAI",n:"Haiti",g:"C",s:1,e:14},{t:"team",id:"HAI",n:"Haiti",g:"C",s:15,e:28},{t:"team",id:"SCO",n:"Scotland",g:"C",s:1,e:14},{t:"team",id:"SCO",n:"Scotland",g:"C",s:15,e:28},{t:"team",id:"USA",n:"USA",g:"D",s:1,e:14},{t:"team",id:"USA",n:"USA",g:"D",s:15,e:28},{t:"team",id:"PAR",n:"Paraguay",g:"D",s:1,e:14},{t:"team",id:"PAR",n:"Paraguay",g:"D",s:15,e:28},{t:"team",id:"AUS",n:"Australia",g:"D",s:1,e:14},{t:"team",id:"AUS",n:"Australia",g:"D",s:15,e:28},{t:"team",id:"TUR",n:"Turkey",g:"D",s:1,e:14},{t:"team",id:"TUR",n:"Turkey",g:"D",s:15,e:28},{t:"gboots",id:"GBO",s:1,e:6},{t:"gboots",id:"GBO",s:7,e:14},{t:"gboots",id:"GBO",s:15,e:21},{t:"gboots",id:"GBO",s:22,e:28},{t:"team",id:"GER",n:"Germany",g:"E",s:1,e:14},{t:"team",id:"GER",n:"Germany",g:"E",s:15,e:28},{t:"team",id:"CUW",n:"Curaçao",g:"E",s:1,e:14},{t:"team",id:"CUW",n:"Curaçao",g:"E",s:15,e:28},{t:"team",id:"CIV",n:"Ivory Coast",g:"E",s:1,e:14},{t:"team",id:"CIV",n:"Ivory Coast",g:"E",s:15,e:28},{t:"team",id:"ECU",n:"Ecuador",g:"E",s:1,e:14},{t:"team",id:"ECU",n:"Ecuador",g:"E",s:15,e:28},{t:"team",id:"NED",n:"Netherlands",g:"F",s:1,e:14},{t:"team",id:"NED",n:"Netherlands",g:"F",s:15,e:28},{t:"team",id:"JPN",n:"Japan",g:"F",s:1,e:14},{t:"team",id:"JPN",n:"Japan",g:"F",s:15,e:28},{t:"team",id:"SWE",n:"Sweden",g:"F",s:1,e:14},{t:"team",id:"SWE",n:"Sweden",g:"F",s:15,e:28},{t:"team",id:"TUN",n:"Tunisia",g:"F",s:1,e:14},{t:"team",id:"TUN",n:"Tunisia",g:"F",s:15,e:28},{t:"team",id:"BEL",n:"Belgium",g:"G",s:1,e:14},{t:"team",id:"BEL",n:"Belgium",g:"G",s:15,e:28},{t:"team",id:"EGY",n:"Egypt",g:"G",s:1,e:14},{t:"team",id:"EGY",n:"Egypt",g:"G",s:15,e:28},{t:"team",id:"IRN",n:"Iran",g:"G",s:1,e:14},{t:"team",id:"IRN",n:"Iran",g:"G",s:15,e:28},{t:"team",id:"NZL",n:"New Zealand",g:"G",s:1,e:14},{t:"team",id:"NZL",n:"New Zealand",g:"G",s:15,e:28},{t:"team",id:"ESP",n:"Spain",g:"H",s:1,e:14},{t:"team",id:"ESP",n:"Spain",g:"H",s:15,e:28},{t:"team",id:"CPV",n:"Cape Verde",g:"H",s:1,e:14},{t:"team",id:"CPV",n:"Cape Verde",g:"H",s:15,e:28},{t:"team",id:"KSA",n:"Saudi Arabia",g:"H",s:1,e:14},{t:"team",id:"KSA",n:"Saudi Arabia",g:"H",s:15,e:28},{t:"team",id:"URU",n:"Uruguay",g:"H",s:1,e:14},{t:"team",id:"URU",n:"Uruguay",g:"H",s:15,e:28},{t:"gball",id:"GBA",s:1,e:5},{t:"gball",id:"GBA",s:6,e:11},{t:"gball",id:"GBA",s:12,e:17},{t:"gball",id:"GBA",s:18,e:22},{t:"team",id:"FRA",n:"France",g:"I",s:1,e:14},{t:"team",id:"FRA",n:"France",g:"I",s:15,e:28},{t:"team",id:"SEN",n:"Senegal",g:"I",s:1,e:14},{t:"team",id:"SEN",n:"Senegal",g:"I",s:15,e:28},{t:"team",id:"IRQ",n:"Iraq",g:"I",s:1,e:14},{t:"team",id:"IRQ",n:"Iraq",g:"I",s:15,e:28},{t:"team",id:"NOR",n:"Norway",g:"I",s:1,e:14},{t:"team",id:"NOR",n:"Norway",g:"I",s:15,e:28},{t:"team",id:"ARG",n:"Argentina",g:"J",s:1,e:14},{t:"team",id:"ARG",n:"Argentina",g:"J",s:15,e:28},{t:"team",id:"ALG",n:"Algeria",g:"J",s:1,e:14},{t:"team",id:"ALG",n:"Algeria",g:"J",s:15,e:28},{t:"team",id:"AUT",n:"Austria",g:"J",s:1,e:14},{t:"team",id:"AUT",n:"Austria",g:"J",s:15,e:28},{t:"team",id:"JOR",n:"Jordan",g:"J",s:1,e:14},{t:"team",id:"JOR",n:"Jordan",g:"J",s:15,e:28},{t:"team",id:"POR",n:"Portugal",g:"K",s:1,e:14},{t:"team",id:"POR",n:"Portugal",g:"K",s:15,e:28},{t:"team",id:"COD",n:"DR Congo",g:"K",s:1,e:14},{t:"team",id:"COD",n:"DR Congo",g:"K",s:15,e:28},{t:"team",id:"UZB",n:"Uzbekistan",g:"K",s:1,e:14},{t:"team",id:"UZB",n:"Uzbekistan",g:"K",s:15,e:28},{t:"team",id:"COL",n:"Colombia",g:"K",s:1,e:14},{t:"team",id:"COL",n:"Colombia",g:"K",s:15,e:28},{t:"team",id:"ENG",n:"England",g:"L",s:1,e:14},{t:"team",id:"ENG",n:"England",g:"L",s:15,e:28},{t:"team",id:"CRO",n:"Croatia",g:"L",s:1,e:14},{t:"team",id:"CRO",n:"Croatia",g:"L",s:15,e:28},{t:"team",id:"GHA",n:"Ghana",g:"L",s:1,e:14},{t:"team",id:"GHA",n:"Ghana",g:"L",s:15,e:28},{t:"team",id:"PAN",n:"Panama",g:"L",s:1,e:14},{t:"team",id:"PAN",n:"Panama",g:"L",s:15,e:28},{t:"winners",id:"WIN",s:1,e:5},{t:"winners",id:"WIN",s:6,e:11},{t:"winners",id:"WIN",s:12,e:17},{t:"winners",id:"WIN",s:18,e:22}];
+
+/* =========================================================================
+   3D BOOK ENGINE (Dynamischer Aufbau)
    ========================================================================= */
 const book = document.getElementById('book');
-const papers = [
-    document.getElementById('paper1'),
-    document.getElementById('paper2'),
-    document.getElementById('paper3')
-];
-
+let papers = [];
 let currentPageIndex = 0; 
-const maxPages = papers.length;
+let maxPages = 0;
 
-function setupZIndex() {
+// Hilfsfunktion: Wandelt Blueprint-Daten in Text für den Dummy-Modus um
+function getDebugHTML(bp) {
+    if (!bp) return '';
+    const pad = (n) => String(n).padStart(3, '0');
+    if (bp.t === 'team') return `<span>Group ${bp.g}</span>${bp.n}<br>(${bp.id}${pad(bp.s)} - ${bp.id}${pad(bp.e)})`;
+    if (bp.t === 'cover_back') return `<span>Backcover</span>`;
+    if (bp.t === 'index') return `<span>Index</span>`;
+    if (bp.t === 'stadiums') return `<span>Stadiums</span>(${bp.id}${pad(bp.s)} - ${bp.id}${pad(bp.e)})`;
+    if (bp.t === 'special') return `<span>Special</span>`;
+    if (bp.t === 'gboots') return `<span>Golden Boots</span>`;
+    if (bp.t === 'gball') return `<span>Golden Ball</span>`;
+    if (bp.t === 'winners') return `<span>Winning Teams</span>`;
+    return '';
+}
+
+function initBook() {
+    book.innerHTML = '';
+    papers = [];
+    
+    // Wir brauchen 59 physische Papierblätter für 116 Seiten + Cover
+    const totalPapers = Math.ceil(albumBlueprint.length / 2) + 1;
+
+    // Wir erzeugen die Papiere. Das letzte Papier im DOM liegt optisch ganz oben!
+    for (let i = 0; i < totalPapers; i++) {
+        const paper = document.createElement('div');
+        paper.className = 'paper';
+        paper.id = `paper${i}`;
+
+        const front = document.createElement('div');
+        front.className = 'front';
+        const back = document.createElement('div');
+        back.className = 'back';
+
+        // Paper 0 ist eine Ausnahme: Vorne ist das Cover, hinten ist Blueprint Seite 0
+        if (i === 0) {
+            front.innerHTML = `<img src="assets/panini_album.png" class="cover-img" onerror="this.src='assets/Icon.png'">`;
+            back.innerHTML = `<div class="page-number left">0</div><div class="debug-text">${getDebugHTML(albumBlueprint[0])}</div>`;
+        } else {
+            // Normale Berechnung: Paper 1 = Front(1) & Back(2)
+            const frontPageIndex = (i * 2) - 1;
+            const backPageIndex = (i * 2);
+
+            if (frontPageIndex < albumBlueprint.length) {
+                front.innerHTML = `<div class="page-number right">${frontPageIndex}</div><div class="debug-text">${getDebugHTML(albumBlueprint[frontPageIndex])}</div>`;
+            }
+            if (backPageIndex < albumBlueprint.length) {
+                back.innerHTML = `<div class="page-number left">${backPageIndex}</div><div class="debug-text">${getDebugHTML(albumBlueprint[backPageIndex])}</div>`;
+            }
+        }
+
+        paper.appendChild(front);
+        paper.appendChild(back);
+        
+        // Mit prepend schieben wir jedes neue Blatt UNTER das vorherige
+        book.prepend(paper);
+        // Ins Array packen wir es so, dass paper[0] wirklich das Cover ist
+        papers.unshift(paper); 
+    }
+
+    maxPages = papers.length;
+    
     papers.forEach((paper, index) => {
         paper.style.zIndex = maxPages - index;
     });
 }
-setupZIndex();
+
+// Sofort beim Laden ausführen!
+initBook();
 
 function updateNavArrows() {
     const nextArrow = document.querySelector('.desk-nav-btn.next');
@@ -344,20 +364,15 @@ function updateNavArrows() {
     }
 }
 
-// Klick-Logik: Öffnen UND Zoomen
 book.addEventListener('click', (e) => {
-    // 1. Wenn Buch zu ist -> Öffnen
     if (currentPageIndex === 0) {
         openBook();
         return;
     }
     
-    // 2. Wenn Buch offen ist -> Zoom (Nur Mobile)
     if (window.innerWidth < 768) {
         const isZoomed = book.classList.contains('zoomed-left') || book.classList.contains('zoomed-right');
-        
         if (!isZoomed) {
-            // SICHERHEIT: Prüfen ob wirklich eine Album-Seite angeklickt wurde!
             const clickedLeftPage = e.target.closest('.back');
             const clickedRightPage = e.target.closest('.front');
             
@@ -415,7 +430,7 @@ function flipPrev() {
 }
 
 /* =========================================================================
-   TOUCH SWIPE LOGIC (2D MATRIX & GUARD)
+   TOUCH SWIPE LOGIC
    ========================================================================= */
 let touchstartX = 0;
 let touchstartY = 0;
@@ -430,7 +445,6 @@ albumContent.addEventListener('touchstart', e => {
         isDraggingSticker = true;
         return;
     }
-    
     isDraggingSticker = false;
     touchstartX = e.changedTouches[0].screenX;
     touchstartY = e.changedTouches[0].screenY;
@@ -438,7 +452,6 @@ albumContent.addEventListener('touchstart', e => {
 
 albumContent.addEventListener('touchend', e => {
     if (isDraggingSticker) return;
-    
     touchendX = e.changedTouches[0].screenX;
     touchendY = e.changedTouches[0].screenY;
     handleSwipe();
@@ -456,10 +469,8 @@ function handleSwipe() {
     const isZoomed = book.classList.contains('zoomed-left') || book.classList.contains('zoomed-right');
 
     if (absDiffX > absDiffY) {
-        // HORIZONTALES WISCHEN
         if (absDiffX > swipeThreshold) {
             if (diffX < 0) {
-                // Wisch nach Links (Von rechts nach links)
                 if (isZoomed) {
                     if (book.classList.contains('zoomed-left')) {
                         book.classList.remove('zoomed-left');
@@ -469,7 +480,6 @@ function handleSwipe() {
                     flipNext();
                 }
             } else {
-                // Wisch nach Rechts (Von links nach rechts)
                 if (isZoomed) {
                     if (book.classList.contains('zoomed-right')) {
                         book.classList.remove('zoomed-right');
@@ -481,10 +491,8 @@ function handleSwipe() {
             }
         }
     } else {
-        // VERTIKALES WISCHEN
         if (absDiffY > swipeThreshold) {
             if (diffY < 0) {
-                // Wisch nach Oben -> Schließt den Zoom!
                 if (isZoomed) {
                     book.classList.remove('zoomed-left', 'zoomed-right');
                 }
@@ -495,7 +503,7 @@ function handleSwipe() {
 
 firebase.auth().onAuthStateChanged((user) => {
     if (user) {
-        console.log("User angemeldet, bereite Album für UID vor:", user.uid);
+        console.log("User angemeldet.");
     } else {
         window.location.href = 'index.html';
     }
