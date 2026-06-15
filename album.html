@@ -17,6 +17,14 @@
 
 * {
     box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+}
+
+html, body {
+    overflow: hidden; 
+    height: 100dvh; 
+    text-size-adjust: none;
+    -webkit-text-size-adjust: none;
 }
 
 body { 
@@ -27,128 +35,195 @@ body {
     display: flex; 
     flex-direction: column; 
     align-items: center; 
-    min-height: 100dvh;
     width: 100%;
     background-color: #3f57f5; 
+    position: relative; 
 }
 
-/* --- OBERE LEISTE (HEADER WRAPPER) --- */
+/* --- OBERE LEISTE --- */
 .header-container {
-    width: 100%;
-    max-width: 1400px;
-    position: relative; 
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: -20px; 
-    margin-bottom: 0px;
-    height: 50px; 
+    width: 100%; max-width: 1400px; position: relative; 
+    display: flex; justify-content: center; align-items: center;
+    margin-top: -20px; margin-bottom: 0px; height: 50px; flex-shrink: 0; 
 }
 
 h1 { 
-    margin: 0;
-    font-size: 22px; 
-    text-transform: uppercase;
-    text-shadow: 0 1px 3px rgba(0,0,0,0.4);
-    font-family: 'FWC2026', Arial, sans-serif;
-    letter-spacing: 1px;
-    text-align: center;
+    margin: 0; font-size: 22px; text-transform: uppercase;
+    text-shadow: 0 1px 3px rgba(0,0,0,0.4); letter-spacing: 1px; text-align: center;
 }
 
-/* --- ABSOLUTER ZURÜCK-BUTTON --- */
 .btn-back {
-    position: absolute;
-    left: 4px; 
-    top: 50%;
-    transform: translateY(-50%); 
-    background: rgba(255, 255, 255, 0.1);
-    border: 1.5px solid rgba(255, 255, 255, 0.4);
-    color: white;
-    font-family: Arial, sans-serif; 
-    font-weight: bold;
-    
-    font-size: 14px;  
-    width: 22px;      
-    height: 22px;     
-    border-radius: 4px;
-    
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-decoration: none;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
-    transition: background 0.15s ease, transform 0.15s ease;
-    z-index: 100; 
+    position: absolute; left: 4px; top: 50%; transform: translateY(-50%); 
+    background: rgba(255, 255, 255, 0.1); border: 1.5px solid rgba(255, 255, 255, 0.4);
+    color: white; font-family: Arial, sans-serif; font-weight: bold;
+    font-size: 14px; width: 22px; height: 22px; border-radius: 4px;
+    cursor: pointer; display: flex; align-items: center; justify-content: center;
+    text-decoration: none; box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    transition: background 0.15s ease, transform 0.15s ease; z-index: 100; 
 }
+.btn-back:hover { background: rgba(255, 255, 255, 0.25); transform: translateY(-50%) scale(1.05); }
 
-.btn-back:hover {
-    background: rgba(255, 255, 255, 0.25);
-    transform: translateY(-50%) scale(1.05);
-}
-
-/* --- RUNDER MARKT-BUTTON (UNTEN LINKS) --- */
+/* --- MARKT-BUTTON (UNTEN LINKS) --- */
 .action-btn-round {
-    position: fixed;      
-    bottom: 20px;         
-    left: 20px;           
-    width: 60px;          
-    height: 60px;
-    border-radius: 50%;
-    background-color: #ffffff;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    position: fixed; bottom: 20px; left: 20px; width: 60px; height: 60px;
+    border-radius: 50%; background-color: #ffffff; display: flex; align-items: center; justify-content: center;
+    cursor: pointer; box-shadow: 0 6px 16px rgba(0,0,0,0.3); z-index: 1000; padding: 0;
+    border: 2px solid #ffbb04; transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+.action-btn-round:hover { transform: scale(1.1); }
+.action-btn-round img { width: 55%; height: 55%; object-fit: contain; display: block; }
+
+/* =========================================================================
+   STICKER-STAPEL (UNTEN RECHTS)
+   ========================================================================= */
+.sticker-stack-container {
+    position: fixed; bottom: 20px; right: 20px;
+    width: 65px; height: 90px; /* Handy Größe */
+    z-index: 1000; cursor: pointer;
+    transition: transform 0.2s ease;
+}
+.sticker-stack-container:hover { transform: translateY(-5px); }
+
+.stack-card {
+    position: absolute; width: 100%; height: 100%;
+    background-color: #eeeeee; border: 2px solid #ffffff;
+    border-radius: 4px; box-shadow: 0 4px 8px rgba(0,0,0,0.4);
+    display: flex; align-items: center; justify-content: center;
+}
+/* Die künstliche Unordnung im Stapel */
+.stack-card-3 { transform: rotate(8deg) translate(3px, 3px); z-index: 1; background-color: #dddddd; }
+.stack-card-2 { transform: rotate(-5deg) translate(-2px, 1px); z-index: 2; background-color: #e5e5e5;}
+.stack-card-1 { transform: rotate(0deg); z-index: 3; } /* Oberste Karte */
+
+.stack-placeholder-text {
+    font-family: Arial, sans-serif; font-size: 10px; font-weight: bold; color: #aaaaaa; text-transform: uppercase;
+}
+
+.stack-counter {
+    position: absolute; top: -10px; right: -10px;
+    background-color: #ff1145; color: #ffffff;
+    width: 24px; height: 24px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-family: Arial, sans-serif; font-size: 12px; font-weight: bold;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.3); z-index: 10;
+}
+
+
+/* =========================================================================
+   3D ALBUM ENGINE
+   ========================================================================= */
+#album-content {
+    width: 100%; flex-grow: 1; position: relative;
+    display: flex; justify-content: center; align-items: flex-start; /* Etwas weiter oben */
+    padding-top: 5vh; perspective: 2500px; /* Die 3D Kamera */
+}
+
+.book {
+    position: relative;
+    /* Größe einer einzelnen Seite (Mobile First) */
+    width: 85vw; height: 120vw; /* Aspect Ratio ca 1 : 1.41 */
+    max-width: 400px; max-height: 564px;
+    transform-style: preserve-3d;
+    transition: transform 0.8s cubic-bezier(0.4, 0.0, 0.2, 1);
+    
+    /* GANZ WICHTIG: Das Buch stellt im CSS die RECHTE Seite dar.
+       Darum verschieben wir es im geschlossenen Zustand nach links in die Mitte */
+    transform: translateX(-50%);
+}
+
+.book.open {
+    /* Wenn es aufgeht, zentrieren wir den Buchrücken (0). 
+       Zusätzlich schrumpfen wir das Buch, da jetzt 2 Seiten nebeneinander sichtbar sind! */
+    transform: translateX(0) scale(0.52);
+}
+
+.paper {
+    position: absolute; width: 100%; height: 100%; top: 0; left: 0;
+    transform-style: preserve-3d;
+    transform-origin: left center; /* Blättert an der linken Kante (Buchrücken) */
+    transition: transform 0.8s cubic-bezier(0.4, 0.0, 0.2, 1);
     cursor: pointer;
-    box-shadow: 0 6px 16px rgba(0,0,0,0.3);
-    transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.2s;
-    padding: 0;
-    z-index: 1000;        
+    
+    /* Hardware-Beschleunigung für flüssiges Blättern mit 28 Stickern */
+    will-change: transform; 
 }
 
-.action-btn-round:hover {
-    transform: scale(1.1);
-    box-shadow: 0 8px 22px rgba(0,0,0,0.4);
+/* Seite aufklappen */
+.paper.flipped {
+    transform: rotateY(-180deg);
 }
 
-.action-btn-round img {
-    width: 55%;
-    height: 55%;
-    object-fit: contain;
-    display: block;
+/* Die Vorder- und Rückseite eines Blattes Papier */
+.front, .back {
+    position: absolute; width: 100%; height: 100%; top: 0; left: 0;
+    backface-visibility: hidden; /* Versteckt die Rückseite, wenn sie weggedreht ist */
+    background-color: #f4f1ea; /* Panini-Papier Farbe */
+    box-shadow: inset 0 0 20px rgba(0,0,0,0.05); /* Leichter Papier-Schatten */
+    overflow: hidden;
 }
 
-.btn-market-round { 
-    border: 2px solid #ffbb04; 
+.back {
+    transform: rotateY(180deg); /* Die Rückseite ist von Natur aus umgedreht */
 }
+
+/* Falz-Schatten (am Buchrücken) */
+.front::before {
+    content: ''; position: absolute; top: 0; left: 0; width: 10%; height: 100%;
+    background: linear-gradient(to right, rgba(0,0,0,0.15) 0%, rgba(0,0,0,0) 100%); z-index: 10; pointer-events: none;
+}
+.back::before {
+    content: ''; position: absolute; top: 0; right: 0; width: 10%; height: 100%;
+    background: linear-gradient(to left, rgba(0,0,0,0.15) 0%, rgba(0,0,0,0) 100%); z-index: 10; pointer-events: none;
+}
+
+/* Cover Image */
+.cover-img {
+    width: 100%; height: 100%; object-fit: cover;
+    border-radius: 0 8px 8px 0; /* Leicht abgerundet außen */
+}
+
+/* Seitenzahlen */
+.page-number {
+    position: absolute; bottom: 15px;
+    font-size: 16px; font-weight: bold; color: #111111;
+    background: rgba(255,255,255,0.6); padding: 2px 8px; border-radius: 4px;
+}
+.page-number.left { left: 15px; }
+.page-number.right { right: 15px; }
+
+/* Navigation Buttons (Sichtbar wenn Buch offen) */
+.nav-btn {
+    position: absolute; top: 50%; transform: translateY(-50%);
+    background: rgba(255,255,255,0.9); border: none; border-radius: 50%;
+    width: 45px; height: 45px; font-size: 24px; font-weight: bold; color: #3f57f5;
+    cursor: pointer; box-shadow: 0 4px 10px rgba(0,0,0,0.3); z-index: 1000;
+    opacity: 0; pointer-events: none; transition: opacity 0.3s ease;
+}
+.book.open ~ .nav-btn { opacity: 1; pointer-events: auto; }
+.nav-btn.prev { left: 10px; }
+.nav-btn.next { right: 10px; }
+
 
 /* --- DESKTOP LAYOUT --- */
 @media (min-width: 768px) {
-    body { padding: 20px; }
-    
-    .header-container {
-        margin-top: 15px; 
-        margin-bottom: 25px;
-        height: 70px;
-    }
-    
+    .header-container { margin-top: 15px; margin-bottom: 25px; height: 70px; }
     h1 { font-size: 36px; } 
+    .btn-back { left: 0; width: 36px; height: 36px; font-size: 22px; border-radius: 6px; border-width: 2px; }
+    .action-btn-round { width: 70px; height: 70px; bottom: 30px; left: 30px; }
     
-    .btn-back {
-        left: 0;
-        width: 36px;   
-        height: 36px;  
-        font-size: 22px; 
-        border-radius: 6px;
-        border-width: 2px;
+    .sticker-stack-container { width: 90px; height: 125px; bottom: 30px; right: 30px; }
+    
+    #album-content { padding-top: 8vh; }
+    .book {
+        width: 350px; height: 490px; /* Größer auf Desktop */
     }
-
-    .action-btn-round {
-        width: 70px;
-        height: 70px;
-        bottom: 30px;
-        left: 30px;
+    .book.open {
+        /* Auf dem Desktop ist genug Platz, wir müssen nicht so stark schrumpfen */
+        transform: translateX(0) scale(0.9);
     }
+    .nav-btn { width: 60px; height: 60px; font-size: 30px; }
+    .nav-btn.prev { left: 10vw; }
+    .nav-btn.next { right: 10vw; }
 }
 </style>
 </head>
@@ -163,8 +238,50 @@ h1 {
     <img src="assets/market_icon.png" alt="Market">
 </button>
 
-<div id="album-content" style="width: 100%; max-width: 1400px; padding-top: 20px; display: flex; flex-direction: column; align-items: center;">
+<div class="sticker-stack-container" id="stickerStack">
+    <div class="stack-card stack-card-3"></div>
+    <div class="stack-card stack-card-2"></div>
+    <div class="stack-card stack-card-1">
+        <span class="stack-placeholder-text">Sticker</span>
+    </div>
+    <div class="stack-counter" id="stackCounter">1</div> </div>
+
+<div id="album-content">
     
+    <button class="nav-btn prev" onclick="flipPrev()">&lt;</button>
+
+    <div class="book" id="book">
+        
+        <div class="paper" id="paper3">
+            <div class="front">
+                <div class="page-number right">3</div>
+            </div>
+            <div class="back">
+                <div class="page-number left">4</div>
+            </div>
+        </div>
+
+        <div class="paper" id="paper2">
+            <div class="front">
+                <div class="page-number right">1</div>
+            </div>
+            <div class="back">
+                <div class="page-number left">2</div>
+            </div>
+        </div>
+
+        <div class="paper" id="paper1">
+            <div class="front">
+                <img src="assets/panini_album.png" class="cover-img" onerror="this.src='assets/Icon.png'">
+            </div>
+            <div class="back">
+                </div>
+        </div>
+
+    </div>
+
+    <button class="nav-btn next" onclick="flipNext()">&gt;</button>
+
 </div>
 
 <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
@@ -172,7 +289,6 @@ h1 {
 <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
 
 <script>
-// Firebase Konfiguration
 const firebaseConfig = {
   apiKey: "AIzaSyD2KXF4jwbym0ghwMrSPFCiD-pgajGIopE",
   authDomain: "wc26guesser-db.firebaseapp.com",
@@ -185,13 +301,84 @@ const firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 const db = firebase.firestore();
 
+/* =========================================================================
+   3D BOOK LOGIC
+   ========================================================================= */
+const book = document.getElementById('book');
+const papers = [
+    document.getElementById('paper1'),
+    document.getElementById('paper2'),
+    document.getElementById('paper3')
+];
+
+let currentPageIndex = 0; // 0 = Geschlossen, 1 = Erste Doppelseite, etc.
+const maxPages = papers.length;
+
+// Initiales Z-Index Setup (Das oberste Blatt braucht den höchsten Z-Index)
+function setupZIndex() {
+    papers.forEach((paper, index) => {
+        paper.style.zIndex = maxPages - index;
+    });
+}
+setupZIndex();
+
+// Wenn das Buch noch zu ist, öffnet ein Klick auf das Cover das Buch automatisch.
+book.addEventListener('click', (e) => {
+    if (currentPageIndex === 0) {
+        openBook();
+    }
+});
+
+function openBook() {
+    book.classList.add('open');
+    flipNext();
+}
+
+function flipNext() {
+    if (currentPageIndex < maxPages) {
+        const paper = papers[currentPageIndex];
+        paper.classList.add('flipped');
+        
+        // Z-Index Switch genau in der Mitte der Rotation (nach 400ms)
+        // Dadurch schiebt sich das Blatt physikalisch korrekt unter den linken Stapel
+        setTimeout(() => {
+            paper.style.zIndex = currentPageIndex + 1;
+        }, 400);
+        
+        currentPageIndex++;
+    }
+}
+
+function flipPrev() {
+    if (currentPageIndex > 1) {
+        currentPageIndex--;
+        const paper = papers[currentPageIndex];
+        paper.classList.remove('flipped');
+        
+        // Z-Index wieder umkehren
+        setTimeout(() => {
+            paper.style.zIndex = maxPages - currentPageIndex;
+        }, 400);
+
+    } else if (currentPageIndex === 1) {
+        // Buch komplett schließen
+        currentPageIndex = 0;
+        const paper = papers[0];
+        paper.classList.remove('flipped');
+        
+        setTimeout(() => {
+            paper.style.zIndex = maxPages;
+        }, 400);
+        
+        book.classList.remove('open');
+    }
+}
+
+
 firebase.auth().onAuthStateChanged((user) => {
     if (user) {
         console.log("User angemeldet, bereite Album für UID vor:", user.uid);
-        // HIER: Funktion zum Laden der Sticker aus Firebase starten
     } else {
-        console.log("Kein User angemeldet. Weiterleitung zur Startseite...");
-        // SICHERHEITS-WEITERLEITUNG:
         window.location.href = 'index.html';
     }
 });
