@@ -53,31 +53,18 @@ h1 { margin: 0; font-size: 22px; text-transform: uppercase; text-shadow: 0 1px 3
 .paper { position: absolute; width: 100%; height: 100%; top: 0; left: 0; transform-style: preserve-3d; transform-origin: left center; transition: transform 0.6s cubic-bezier(0.4, 0.0, 0.2, 1); will-change: transform; }
 .paper.flipped { transform: rotateY(-180deg); }
 
-/* --- iOS/SAFARI Z-FIGHTING FIX --- */
+/* iOS/SAFARI MIRROR FIX: Explizite z-index & webkit-backface-visibility */
 .front, .back { 
     position: absolute; width: 100%; height: 100%; top: 0; left: 0; 
     -webkit-backface-visibility: hidden; 
     backface-visibility: hidden; 
     background-color: #f4f1ea; overflow: hidden; 
     container-type: inline-size; 
-    /* Zwingt den Browser, die Seiten als echte 3D-Schichten zu behandeln */
     -webkit-transform-style: preserve-3d;
     transform-style: preserve-3d;
 }
-
-/* Der 1px Z-Schubs verhindert das Durchschimmern der anderen Buchseiten (Z-Fighting) */
-.front { 
-    border-left: 1px solid rgba(0,0,0,0.25); 
-    transform: rotateY(0deg) translateZ(1px); 
-    -webkit-transform: rotateY(0deg) translateZ(1px);
-    z-index: 2; 
-}
-.back { 
-    border-right: 1px solid rgba(0,0,0,0.25); 
-    transform: rotateY(180deg) translateZ(1px); 
-    -webkit-transform: rotateY(180deg) translateZ(1px);
-    z-index: 1; 
-}
+.front { border-left: 1px solid rgba(0,0,0,0.25); transform: rotateY(0deg) translateZ(1px); -webkit-transform: rotateY(0deg) translateZ(1px); z-index: 2; }
+.back { border-right: 1px solid rgba(0,0,0,0.25); transform: rotateY(180deg) translateZ(1px); -webkit-transform: rotateY(180deg) translateZ(1px); z-index: 1; }
 .cover-img { width: 100%; height: 100%; object-fit: cover; border-radius: 0 8px 8px 0; }
 
 /* SEITENZAHLEN (Nur unten rechts auf der Front, verkleinert) */
@@ -91,38 +78,40 @@ h1 { margin: 0; font-size: 22px; text-transform: uppercase; text-shadow: 0 1px 3
     width: 100%; height: 100%; padding: 4cqw;
     display: flex; flex-direction: column;
     
-    /* MATHEMATISCH FIXIERTE VARIABLEN: Garantiert immer gleiche Größe! */
+    /* Dynamische Hintergründe werden per JS gesetzt */
+    background-color: var(--page-bg, transparent);
+    
+    /* MATHEMATISCH FIXIERTE VARIABLEN */
     --col-w: 21.5cqw; 
     --col-h: calc(21.5cqw * 1.38);
 }
 
-/* Stahlbeton-Käfig für den Team-Namen: Erlaubt kein Verdrängen des Grids! */
 .team-name-wrapper {
     height: 10cqw; 
-    width: 68.5cqw; /* EXAKT die Breite der ersten 3 Spalten inkl. Gaps! */
+    width: 68.5cqw; 
     display: flex; align-items: flex-end; 
     margin-bottom: 2cqw;
 }
 .team-name { 
-    color: #111; margin: 0; text-transform: uppercase; line-height: 1; letter-spacing: -0.5px; 
-    white-space: nowrap; /* Zwingt den Text in eine Zeile */
+    color: var(--text-col, #111111); 
+    margin: 0; text-transform: uppercase; line-height: 1; letter-spacing: -0.5px; 
+    white-space: nowrap; 
 }
 
-/* Header Grid (Team Foto links, Group mitte, Wappen rechts) */
+/* Header Grid */
 .team-header-grid {
     width: 100%; display: grid; grid-template-columns: repeat(4, 1fr); gap: 2cqw;
     margin-bottom: 2cqw;
-    height: var(--col-h); /* Exakt so hoch wie ein normaler Sticker */
+    height: var(--col-h); 
 }
 
 .group-box {
-    display: flex; flex-direction: column; justify-content: flex-end; align-items: center; text-align: center;
-    padding-bottom: 1cqw;
+    display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center;
+    height: 100%; /* WICHTIG: Zentriert perfekt auf Y-Achse */
 }
-.group-box span { font-size: 2.5cqw; font-weight: bold; color: #111; margin-bottom: 2px;}
-.group-box strong { font-size: 7cqw; line-height: 1; color: #111; }
+.group-box span { font-size: 2.5cqw; font-weight: bold; color: var(--text-col, #111111); margin-bottom: 2px;}
+.group-box strong { font-size: 10.5cqw; line-height: 1; color: var(--text-col, #111111); } /* 50% Größer */
 
-/* Die restlichen Grid-Bereiche */
 .player-grid-bottom, .player-grid-full, .generic-grid {
     width: 100%; display: grid; grid-template-columns: repeat(4, 1fr); gap: 2cqw; align-content: start;
 }
@@ -130,23 +119,22 @@ h1 { margin: 0; font-size: 22px; text-transform: uppercase; text-shadow: 0 1px 3
 /* --- PLATZHALTER & STICKER DESIGN --- */
 .sticker-slot {
     position: relative; 
-    width: var(--col-w); height: var(--col-h); /* Zwingt jeden Kasten auf exakt diese Größe */
-    border: 1.5px solid #111111; background-color: rgba(0,0,0,0.03); 
+    width: var(--col-w); height: var(--col-h); 
+    border: 1.5px solid var(--text-col, #111111); /* Umrandung adaptiert an Textfarbe */
+    background-color: var(--slot-bg, rgba(0,0,0,0.03)); /* Füllt Box mit color_1 */
     display: flex; align-items: center; justify-content: center;
     container-type: inline-size;
     z-index: 5;
 }
-
-/* Der perfekte 90° Rotations-Modifikator */
 .rotated-slot {
     transform-origin: top left;
     transform: translateY(var(--col-h)) rotate(-90deg);
 }
-
 .slot-circle {
     width: 28px; height: 28px; border-radius: 50%; border: 1.5px solid #111111;
     display: flex; align-items: center; justify-content: center;
     font-size: 11px; font-weight: bold; color: #111111; background-color: #f4f1ea; font-family: Arial, sans-serif;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.2);
 }
 .sticker-slot.filled { border: none; background-color: transparent; }
 .sticker-slot.filled .slot-circle { display: none; }
@@ -273,6 +261,18 @@ fetch("./data/sticker_database.json")
         renderStapel();
         renderPastedStickers();
     });
+
+// Farb-Kontrast Rechner (Gibt weiß oder edles Dunkelschwarz zurück)
+function getPageTextColor(hexColor) {
+    if (!hexColor) return '#1a1a1a';
+    let hex = hexColor.replace('#', '');
+    if (hex.length === 3) hex = hex.split('').map(c => c + c).join('');
+    const r = parseInt(hex.substr(0, 2), 16);
+    const g = parseInt(hex.substr(2, 2), 16);
+    const b = parseInt(hex.substr(4, 2), 16);
+    const yiq = ((r * 299) + (g * 587) + (b * 114)) / 1000;
+    return (yiq >= 140) ? '#1a1a1a' : '#ffffff';
+}
 
 function getContrastColors(hexColor) {
     if (!hexColor) return { text: '#ffffff', stroke: '#000000' };
@@ -600,6 +600,12 @@ function buildGenericGrid(bp) {
 }
 
 function buildPageHTML(bp, isLeftPage) {
+    let wrapperStyle = "";
+    if (bp.type === 'team') {
+        let textColor = getPageTextColor(bp.color_2);
+        wrapperStyle = `--page-bg: ${bp.color_2}; --slot-bg: ${bp.color_1}; --text-col: ${textColor};`;
+    }
+
     if (bp.type === 'team') {
         if (isLeftPage) { 
             let nameStyle = 'font-size: 8cqw;';
@@ -608,8 +614,9 @@ function buildPageHTML(bp, isLeftPage) {
             if (bp.name.length > 15) nameStyle = 'font-size: 5cqw;';
             if (bp.name.length > 18) nameStyle = 'font-size: 4cqw;';
             if (bp.name.length > 21) nameStyle = 'font-size: 3.5cqw;';
+            
             return `
-                <div class="page-wrapper">
+                <div class="page-wrapper" style="${wrapperStyle}">
                     <div class="team-name-wrapper">
                         <h2 class="team-name" style="${nameStyle}">${bp.name}</h2>
                     </div>
@@ -617,7 +624,9 @@ function buildPageHTML(bp, isLeftPage) {
                         <div style="grid-column: 1; display: flex; align-items: flex-end;">
                             ${buildSlotHTML(bp.countryCode + '001', bp.startAlbumNumber, 'rotated-slot')}
                         </div>
-                        <div style="grid-column: 2;"></div>
+                        <div style="grid-column: 2; display: flex; align-items: center; justify-content: center;">
+                            <img src="${bp.flag}" style="width: 14cqw; height: 14cqw; object-fit: cover; border-radius: 50%; border: 2px solid var(--text-col); box-shadow: 0 2px 4px rgba(0,0,0,0.3);" onerror="this.style.display='none'">
+                        </div>
                         <div class="group-box" style="grid-column: 3;">
                             <span>GROUP</span><strong>${bp.group}</strong>
                         </div>
@@ -631,7 +640,7 @@ function buildPageHTML(bp, isLeftPage) {
                 </div>`;
         } else { 
             return `
-                <div class="page-wrapper">
+                <div class="page-wrapper" style="${wrapperStyle}">
                     <div style="height: 14cqw; width: 100%;"></div>
                     <div class="player-grid-full">
                         ${buildPlayerGrid(bp.countryCode, 15, 28, bp.startAlbumNumber)}
