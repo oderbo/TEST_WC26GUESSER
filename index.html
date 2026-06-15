@@ -463,14 +463,14 @@ body {
 .special-flag-wrapper {
     position: absolute;
     width: 15cqw; height: 15cqw;
-    padding: 0.8cqw; /* Erzeugt die optische Ring-Dicke */
+    padding: 0.8cqw; 
     border-radius: 50%;
     z-index: 10;
     display: flex; align-items: center; justify-content: center;
 }
 .special-flag-wrapper img {
     width: 100%; height: 100%; object-fit: cover; border-radius: 50%;
-    border: 1px solid rgba(0,0,0,0.5); /* Scharfe Kante für die Flagge */
+    border: 1px solid rgba(0,0,0,0.5); 
     display: block;
 }
 .gold-bg {
@@ -497,13 +497,13 @@ body {
     position: absolute;
     background: #ffffff;
     border: 1px solid #000000;
-    border-radius: 4px; /* Leicht abgerundet */
+    border-radius: 4px; 
     font-weight: bold;
     color: #000000;
-    font-size: 5.5cqw;
-    height: 11.25cqw; /* Exakt halb so hoch wie die Flagge */
+    font-size: 5.5cqw; 
+    height: 11.25cqw;  
     display: flex; align-items: center; justify-content: center;
-    padding: 0 8px;
+    padding: 0 8px;    
     white-space: nowrap;
     z-index: 10;
     box-shadow: 0 1px 3px rgba(0,0,0,0.3);
@@ -512,18 +512,17 @@ body {
     bottom: 2px; left: 50%; transform: translateX(-50%);
 }
 
-/* Mathematisch perfekter Container für den um 90° gedrehten Text */
 .name-wrapper-rot {
     position: absolute;
-    left: calc(2px + 5.625cqw); /* Verankert das Zentrum genau 2px von der Kante */
+    left: calc(2px + 5.625cqw); 
     top: 50%;
-    transform: translate(-50%, -50%) rotate(90deg); /* Erst zentrieren, dann drehen */
+    transform: translate(-50%, -50%) rotate(90deg); 
     z-index: 10;
 }
 .name-wrapper-rot .special-name-box {
     position: relative; 
     bottom: auto; left: auto;
-    transform: none; /* Entfernt die alte Verschiebung */
+    transform: none; 
 }
 
 /* --- RUBBEL-OVERLAY --- */
@@ -1087,7 +1086,6 @@ function renderDrawnStickersGrid() {
                 </div>
             `;
         } else {
-            // SONDERSTICKER ZUWEISUNG
             let typeClass = "container-default-special";
             if (sticker.type === 'stadium_left') typeClass = "container-stadium-left";
             else if (sticker.type === 'stadium_right') typeClass = "container-stadium-right";
@@ -1098,12 +1096,11 @@ function renderDrawnStickersGrid() {
             else if (sticker.type === 'historic_winner') typeClass = "container-historic-winner";
             else if (sticker.type === 'special_fill') typeClass = "container-special-fill";
             else if (sticker.type === 'special_edge') typeClass = "container-special-edge";
-            else if (sticker.type === 'trophy_top' || sticker.type === 'logo_top') typeClass = "container-trophy-top";
-            else if (sticker.type === 'trophy_bottom' || sticker.type === 'logo_bottom') typeClass = "container-trophy-bottom";
+            else if (sticker.type === 'trophy_top' || sticker.type === 'logo_top' || sticker.type === 'special_top') typeClass = "container-trophy-top";
+            else if (sticker.type === 'trophy_bottom' || sticker.type === 'logo_bottom' || sticker.type === 'special_bottom') typeClass = "container-trophy-bottom";
 
             container.classList.add(typeClass);
 
-            // BILD-PFAD GENERIERUNG
             let finalPath = sticker.image || "";
             if (finalPath.startsWith('./')) finalPath = finalPath.substring(2);
             const pureFileName = finalPath.substring(finalPath.lastIndexOf('/') + 1);
@@ -1113,23 +1110,14 @@ function renderDrawnStickersGrid() {
             } else if (sticker.type === 'golden_boot' || (sticker.id && sticker.id.startsWith('GBO'))) {
                 finalPath = "photos/golden_boot/" + pureFileName;
             } else if (sticker.type && sticker.type.startsWith('special')) {
-                let correctSpecialName = pureFileName;
-                if (pureFileName.startsWith('spc')) {
-                    const numberMatch = pureFileName.match(/\d+/);
-                    if (numberMatch) {
-                        const num = parseInt(numberMatch[0], 10);
-                        const formattedNum = num < 10 ? '0' + num : num;
-                        correctSpecialName = "Special_" + formattedNum + ".png";
-                    }
-                }
-                finalPath = "photos/special/" + correctSpecialName;
+                // BUGFIX: Keine automatische Umbenennung mehr. Wir nehmen den Dateinamen exakt aus der JSON.
+                finalPath = "photos/special/" + pureFileName;
             } else if (sticker.type && sticker.type.startsWith('stadium')) {
                 finalPath = "photos/stadiums/" + pureFileName;
             } else if (sticker.type === 'historic_winner') {
                 finalPath = "photos/winning_teams/" + pureFileName;
             }
 
-            // HTML FÜR ZUSATZ-ELEMENTE (Flaggen & Namen)
             let sFlag = sticker.flag ? sticker.flag.replace('./', '') : '';
             let sName = sticker.name || '';
             let specialHTML = `<img src="${finalPath}" class="special-sticker-img" onerror="this.src='assets/Icon.png'">`;
