@@ -399,7 +399,6 @@ body {
 
 .club-logo-small { height: 80%; width: auto; object-fit: contain; }
 
-/* NEU: Vereinsname mit dynamischer Farbe über CSS-Variablen */
 .club-name {
     color: var(--dynamic-text, #ffffff); 
     font-weight: bold; font-size: 5.5cqw; 
@@ -428,10 +427,14 @@ body {
     width: 100%; height: 100%; object-fit: cover; display: block;
 }
 
+/* STADIEN & TROPHY/LOGO HALF-FRAMES (KORRIGIERT: Links/Rechts getauscht) */
 .container-stadium-left .special-sticker-inner { right: 0; }
 .container-stadium-right .special-sticker-inner { left: 0; }
+.container-trophy-top .special-sticker-inner { left: 0; }
+.container-trophy-bottom .special-sticker-inner { right: 0; }
 
-.container-logo {
+/* SILBER-GLITZER HINTERGRÜNDE */
+.container-logo, .container-golden-boot {
     background: linear-gradient(135deg, #e0e0e0 0%, #ffffff 25%, #a0a0a0 50%, #f8f8f8 75%, #c0c0c0 100%) !important;
 }
 .container-logo .special-sticker-inner {
@@ -443,12 +446,84 @@ body {
     padding: 0 4px; 
 }
 
-.container-golden-boot {
-    background: linear-gradient(135deg, #e0e0e0 0%, #ffffff 25%, #a0a0a0 50%, #f8f8f8 75%, #c0c0c0 100%) !important;
+/* GOLD-GLITZER HINTERGRÜNDE */
+.container-golden-ball, .container-historic-winner, 
+.container-special-edge, .container-trophy-top, .container-trophy-bottom,
+.container-special-fill {
+    background: linear-gradient(135deg, #bf953f 0%, #fcf6ba 25%, #b38728 50%, #fbf5b7 75%, #aa771c 100%) !important;
 }
 
-.container-golden-ball, .container-historic-winner {
-    background: linear-gradient(135deg, #bf953f 0%, #fcf6ba 25%, #b38728 50%, #fbf5b7 75%, #aa771c 100%) !important;
+/* SPECIAL FILL (Kein sichtbarer Innenrahmen, wird zu einer Fläche) */
+.container-special-fill .special-sticker-inner {
+    background-color: transparent;
+    top: 0; bottom: 0; left: 0; right: 0;
+}
+
+/* --- NEUE ELEMENTE FÜR SONDERSTICKER (FLAGGEN, NAMEN, ICONS) --- */
+.special-flag-wrapper {
+    position: absolute;
+    width: 15cqw; height: 15cqw;
+    padding: 0.8cqw; /* Erzeugt die optische Ring-Dicke */
+    border-radius: 50%;
+    z-index: 10;
+    display: flex; align-items: center; justify-content: center;
+}
+.special-flag-wrapper img {
+    width: 100%; height: 100%; object-fit: cover; border-radius: 50%;
+    border: 1px solid rgba(0,0,0,0.5); /* Scharfe Kante für die Flagge */
+    display: block;
+}
+.gold-bg {
+    background: linear-gradient(135deg, #bf953f 0%, #fcf6ba 25%, #b38728 50%, #fbf5b7 75%, #aa771c 100%);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.5);
+}
+.silver-bg {
+    background: linear-gradient(135deg, #e0e0e0 0%, #ffffff 25%, #a0a0a0 50%, #f8f8f8 75%, #c0c0c0 100%);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.5);
+}
+.pos-top-right { top: 0; right: 0; }
+.pos-bottom-right { bottom: 0; right: 0; }
+.pos-bottom-left-rot { bottom: 0; left: 0; transform: rotate(90deg); }
+
+.special-icon {
+    position: absolute;
+    bottom: 0; right: 0;
+    width: 15cqw; height: 15cqw;
+    object-fit: contain;
+    z-index: 10;
+}
+
+.special-name-box {
+    position: absolute;
+    background: #ffffff;
+    border: 1px solid #000000;
+    border-radius: 4px; /* Leicht abgerundet */
+    font-weight: bold;
+    color: #000000;
+    font-size: 3.5cqw;
+    height: 7.5cqw; /* Exakt halb so hoch wie die Flagge */
+    display: flex; align-items: center; justify-content: center;
+    padding: 0 6px;
+    white-space: nowrap;
+    z-index: 10;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.3);
+}
+.pos-bottom-center {
+    bottom: 2px; left: 50%; transform: translateX(-50%);
+}
+
+/* Mathematisch perfekter Container für den um 90° gedrehten Text */
+.name-wrapper-rot {
+    position: absolute;
+    left: calc(2px + 3.75cqw); /* Verankert genau 2px von der linken Kante */
+    top: 50%;
+    transform: rotate(90deg);
+    z-index: 10;
+}
+.name-wrapper-rot .special-name-box {
+    position: relative; 
+    bottom: auto; left: auto;
+    transform: translate(-50%, -50%); /* Zentriert die Box im verankerten Punkt */
 }
 
 /* --- RUBBEL-OVERLAY --- */
@@ -904,7 +979,6 @@ function openBoosterPack() {
     }, 100);
 }
 
-// NEU: Hilfsfunktion zur Helligkeitsberechnung (YIQ-Luminanz)
 function getContrastColors(hexColor) {
     if (!hexColor) return { text: '#ffffff', stroke: '#000000' };
     let hex = hexColor.replace('#', '');
@@ -916,10 +990,9 @@ function getContrastColors(hexColor) {
     
     const yiq = ((r * 299) + (g * 587) + (b * 114)) / 1000;
     
-    // Ab einem Helligkeitswert von ca. 140 (von 255) gilt die Farbe als "hell"
     return (yiq >= 140) 
-        ? { text: '#000000', stroke: 'transparent' } // Hell -> Text schwarz, keine Kontur
-        : { text: '#ffffff', stroke: '#000000' };    // Dunkel -> Text weiß, schwarze Kontur
+        ? { text: '#000000', stroke: 'transparent' } 
+        : { text: '#ffffff', stroke: '#000000' };    
 }
 
 function renderDrawnStickersGrid() {
@@ -976,7 +1049,6 @@ function renderDrawnStickersGrid() {
             const flagImg = cleanPath(sticker.flag);
             const clubImg = cleanPath(sticker.club_image);
 
-            // NEU: Helligkeit auswerten und Variablen anlegen
             const c1 = sticker.color_1 || '#c10e23';
             const textContrast = getContrastColors(c1);
 
@@ -1015,6 +1087,7 @@ function renderDrawnStickersGrid() {
                 </div>
             `;
         } else {
+            // SONDERSTICKER ZUWEISUNG
             let typeClass = "container-default-special";
             if (sticker.type === 'stadium_left') typeClass = "container-stadium-left";
             else if (sticker.type === 'stadium_right') typeClass = "container-stadium-right";
@@ -1023,14 +1096,16 @@ function renderDrawnStickersGrid() {
             else if (sticker.type === 'golden_boot' || (sticker.id && sticker.id.startsWith('GBO'))) typeClass = "container-golden-boot";
             else if (sticker.type === 'golden_ball' || (sticker.id && sticker.id.startsWith('GBA'))) typeClass = "container-golden-ball";
             else if (sticker.type === 'historic_winner') typeClass = "container-historic-winner";
-            
+            else if (sticker.type === 'special_fill') typeClass = "container-special-fill";
+            else if (sticker.type === 'special_edge') typeClass = "container-special-edge";
+            else if (sticker.type === 'trophy_top' || sticker.type === 'logo_top') typeClass = "container-trophy-top";
+            else if (sticker.type === 'trophy_bottom' || sticker.type === 'logo_bottom') typeClass = "container-trophy-bottom";
+
             container.classList.add(typeClass);
 
+            // BILD-PFAD GENERIERUNG
             let finalPath = sticker.image || "";
-            if (finalPath.startsWith('./')) {
-                finalPath = finalPath.substring(2);
-            }
-            
+            if (finalPath.startsWith('./')) finalPath = finalPath.substring(2);
             const pureFileName = finalPath.substring(finalPath.lastIndexOf('/') + 1);
 
             if (sticker.type === 'golden_ball' || (sticker.id && sticker.id.startsWith('GBA'))) {
@@ -1054,9 +1129,35 @@ function renderDrawnStickersGrid() {
                 finalPath = "photos/winning_teams/" + pureFileName;
             }
 
+            // HTML FÜR ZUSATZ-ELEMENTE (Flaggen & Namen)
+            let sFlag = sticker.flag ? sticker.flag.replace('./', '') : '';
+            let sName = sticker.name || '';
+            let specialHTML = `<img src="${finalPath}" class="special-sticker-img" onerror="this.src='assets/Icon.png'">`;
+
+            if (sticker.type === 'golden_boot' || (sticker.id && sticker.id.startsWith('GBO'))) {
+                if(sFlag) specialHTML += `<div class="special-flag-wrapper silver-bg pos-top-right"><img src="${sFlag}" onerror="this.style.display='none'"></div>`;
+                specialHTML += `<img src="photos/golden_boot/golden_boot.png" class="special-icon pos-bottom-right" onerror="this.style.display='none'">`;
+                if(sName) specialHTML += `<div class="special-name-box pos-bottom-center">${sName}</div>`;
+            } 
+            else if (sticker.type === 'golden_ball' || (sticker.id && sticker.id.startsWith('GBA'))) {
+                if(sFlag) specialHTML += `<div class="special-flag-wrapper gold-bg pos-top-right"><img src="${sFlag}" onerror="this.style.display='none'"></div>`;
+                specialHTML += `<img src="photos/golden_ball/golden_ball.png" class="special-icon pos-bottom-right" onerror="this.style.display='none'">`;
+                if(sName) specialHTML += `<div class="special-name-box pos-bottom-center">${sName}</div>`;
+            }
+            else if (sticker.type === 'historic_winner') {
+                if(sFlag) specialHTML += `<div class="special-flag-wrapper gold-bg pos-bottom-left-rot"><img src="${sFlag}" onerror="this.style.display='none'"></div>`;
+                if(sName) specialHTML += `
+                    <div class="name-wrapper-rot">
+                        <div class="special-name-box">${sName}</div>
+                    </div>`;
+            }
+            else if (sticker.type === 'team_photo') {
+                if(sFlag) specialHTML += `<div class="special-flag-wrapper pos-bottom-left-rot" style="background: #ffffff; border: 1.5px solid #cccccc;"><img src="${sFlag}" onerror="this.style.display='none'"></div>`;
+            }
+
             container.innerHTML += `
                 <div class="special-sticker-inner">
-                    <img src="${finalPath}" class="special-sticker-img" onerror="this.src='assets/Icon.png'">
+                    ${specialHTML}
                 </div>
             `;
         }

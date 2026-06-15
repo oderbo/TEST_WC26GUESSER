@@ -10726,8 +10726,10 @@
         "id": "GBO001",
         "albumNumber": "487",
         "type": "golden_boot",
-        "name": "Golden Boot Winner 1",
-        "image": "./photos/golden_ball/GBO1.png",
+        "name": "Guillermo Stábile",
+		"year": "1930",
+        "image": "./photos/golden_boot/GBO1.png",
+		"flag": "./photos/golden_boot/argentina_flag_circle.png",
         "shiny": "silver",
         "orientation": "portrait"
     },
@@ -10735,8 +10737,10 @@
         "id": "GBO002",
         "albumNumber": "488",
         "type": "golden_boot",
-        "name": "Golden Boot Winner 2",
-        "image": "./photos/golden_ball/GBO2.png",
+        "name": "Oldřich Nejedlý",
+		"year": "1934",
+        "image": "./photos/golden_boot/GBO2.png",
+		"flag": "./photos/golden_boot/czechia_flag_circle.png",		
         "shiny": "silver",
         "orientation": "portrait"
     },
@@ -10744,8 +10748,10 @@
         "id": "GBO003",
         "albumNumber": "489",
         "type": "golden_boot",
-        "name": "Golden Boot Winner 3",
-        "image": "./photos/golden_ball/GBO3.png",
+        "name": "Leônidas",
+		"year": "1938",
+        "image": "./photos/golden_boot/GBO3.png",
+		"flag": "./photos/golden_boot/brazil_flag_circle.png",		
         "shiny": "silver",
         "orientation": "portrait"
     },
@@ -10753,8 +10759,10 @@
         "id": "GBO004",
         "albumNumber": "490",
         "type": "golden_boot",
-        "name": "Golden Boot Winner 4",
-        "image": "./photos/golden_ball/GBO4.png",
+        "name": "Ademir",
+		"year": "1950",
+        "image": "./photos/golden_boot/GBO4.png",
+		"flag": "./photos/golden_boot/brazil_flag_circle.png",
         "shiny": "silver",
         "orientation": "portrait"
     },
@@ -10762,8 +10770,10 @@
         "id": "GBO005",
         "albumNumber": "491",
         "type": "golden_boot",
-        "name": "Golden Boot Winner 5",
-        "image": "./photos/golden_ball/GBO5.png",
+        "name": "Sándor Kocsis",
+		"year": "1954",
+        "image": "./photos/golden_boot/GBO5.png",
+		"flag": "./photos/golden_boot/hungary_flag_circle.png",		
         "shiny": "silver",
         "orientation": "portrait"
     },
@@ -10771,8 +10781,10 @@
         "id": "GBO006",
         "albumNumber": "492",
         "type": "golden_boot",
-        "name": "Golden Boot Winner 6",
-        "image": "./photos/golden_ball/GBO6.png",
+        "name": "Just Fontaine",
+		"year": "1958",
+        "image": "./photos/golden_boot/GBO6.png",
+		"flag": "./photos/golden_boot/france_flag_circle.png",		
         "shiny": "silver",
         "orientation": "portrait"
     },
@@ -10780,8 +10792,10 @@
         "id": "GBO007",
         "albumNumber": "493",
         "type": "golden_boot",
-        "name": "Golden Boot Winner 7",
-        "image": "./photos/golden_ball/GBO7.png",
+        "name": "Flórián Albert",
+		"year": "1962",
+        "image": "./photos/golden_boot/GBO7.png",
+		"flag": "./photos/golden_boot/hungary_flag_circle.png",		
         "shiny": "silver",
         "orientation": "portrait"
     },
@@ -10789,8 +10803,10 @@
         "id": "GBO008",
         "albumNumber": "494",
         "type": "golden_boot",
-        "name": "Golden Boot Winner 8",
-        "image": "./photos/golden_ball/GBO8.png",
+        "name": "Valentin Ivanov",
+		"year": "1962",
+        "image": "./photos/golden_boot/GBO8.png",
+		"flag": "./photos/golden_boot/soviet_union_flag_circle.png",		
         "shiny": "silver",
         "orientation": "portrait"
     },
@@ -10798,8 +10814,10 @@
         "id": "GBO009",
         "albumNumber": "495",
         "type": "golden_boot",
-        "name": "Golden Boot Winner 9",
-        "image": "./photos/golden_ball/GBO9.png",
+        "name": "Garrincha",
+		"year": "1962",
+        "image": "./photos/golden_boot/GBO9.png",
+		"flag": "./photos/golden_boot/brazil_flag_circle.png",		
         "shiny": "silver",
         "orientation": "portrait"
     },
@@ -10807,8 +10825,10 @@
         "id": "GBO010",
         "albumNumber": "496",
         "type": "golden_boot",
-        "name": "Golden Boot Winner 10",
-        "image": "./photos/golden_ball/GBO10.png",
+        "name": "Vavá",
+		"year": "1962",
+        "image": "./photos/golden_boot/GBO10.png",
+		"flag": "./photos/golden_boot/brazil_flag_circle.png",		
         "shiny": "silver",
         "orientation": "portrait"
     },
@@ -10816,8 +10836,10 @@
         "id": "GBO011",
         "albumNumber": "497",
         "type": "golden_boot",
-        "name": "Golden Boot Winner 11",
-        "image": "./photos/golden_ball/GBO11.png",
+        "name": "Dražan Jerković",
+		"year": "1962",
+        "image": "./photos/golden_boot/GBO11.png",
+		"flag": "./photos/golden_boot/jugoslavia_flag_circle.png",		
         "shiny": "silver",
         "orientation": "portrait"
     },
@@ -10825,8 +10847,10 @@
         "id": "GBO012",
         "albumNumber": "498",
         "type": "golden_boot",
-        "name": "Golden Boot Winner 12",
-        "image": "./photos/golden_ball/GBO12.png",
+        "name": "Leonel Sánchez",
+		"year": "1962",
+        "image": "./photos/golden_boot/GBO12.png",
+		"flag": "./photos/golden_boot/chile_flag_circle.png",		
         "shiny": "silver",
         "orientation": "portrait"
     },
@@ -10834,8 +10858,10 @@
         "id": "GBO013",
         "albumNumber": "499",
         "type": "golden_boot",
-        "name": "Golden Boot Winner 13",
-        "image": "./photos/golden_ball/GBO13.png",
+        "name": "Eusébio",
+		"year": "1966",
+        "image": "./photos/golden_boot/GBO13.png",
+		"flag": "./photos/golden_boot/portugal_flag_circle.png",		
         "shiny": "silver",
         "orientation": "portrait"
     },
@@ -10843,8 +10869,10 @@
         "id": "GBO014",
         "albumNumber": "500",
         "type": "golden_boot",
-        "name": "Golden Boot Winner 14",
-        "image": "./photos/golden_ball/GBO14.png",
+        "name": "Gerd Müller",
+		"year": "1970",
+        "image": "./photos/golden_boot/GBO14.png",
+		"flag": "./photos/golden_boot/germany_flag_circle.png",		
         "shiny": "silver",
         "orientation": "portrait"
     },
@@ -10852,8 +10880,10 @@
         "id": "GBO015",
         "albumNumber": "501",
         "type": "golden_boot",
-        "name": "Golden Boot Winner 15",
-        "image": "./photos/golden_ball/GBO15.png",
+        "name": "Grzegorz Lato",
+		"year": "1974",
+        "image": "./photos/golden_boot/GBO15.png",
+		"flag": "./photos/golden_boot/poland_flag_circle.png",		
         "shiny": "silver",
         "orientation": "portrait"
     },
@@ -10861,8 +10891,10 @@
         "id": "GBO016",
         "albumNumber": "502",
         "type": "golden_boot",
-        "name": "Golden Boot Winner 16",
-        "image": "./photos/golden_ball/GBO16.png",
+        "name": "Mario Kempes",
+		"year": "1978",
+        "image": "./photos/golden_boot/GBO16.png",
+		"flag": "./photos/golden_boot/argentina_flag_circle.png",		
         "shiny": "silver",
         "orientation": "portrait"
     },
@@ -10870,8 +10902,10 @@
         "id": "GBO017",
         "albumNumber": "503",
         "type": "golden_boot",
-        "name": "Golden Boot Winner 17",
-        "image": "./photos/golden_ball/GBO17.png",
+        "name": "Paolo Rossi",
+		"year": "1982",
+        "image": "./photos/golden_boot/GBO17.png",
+		"flag": "./photos/golden_boot/italy_flag_circle.png",		
         "shiny": "silver",
         "orientation": "portrait"
     },
@@ -10879,8 +10913,10 @@
         "id": "GBO018",
         "albumNumber": "504",
         "type": "golden_boot",
-        "name": "Golden Boot Winner 18",
-        "image": "./photos/golden_ball/GBO18.png",
+        "name": "Gary Lineker",
+		"year": "1986",
+        "image": "./photos/golden_boot/GBO18.png",
+		"flag": "./photos/golden_boot/england_flag_circle.png",		
         "shiny": "silver",
         "orientation": "portrait"
     },
@@ -10888,8 +10924,10 @@
         "id": "GBO019",
         "albumNumber": "505",
         "type": "golden_boot",
-        "name": "Golden Boot Winner 19",
-        "image": "./photos/golden_ball/GBO19.png",
+        "name": "Salvatore Schillaci",
+		"year": "1990",
+        "image": "./photos/golden_boot/GBO19.png",
+		"flag": "./photos/golden_boot/italy_flag_circle.png",			
         "shiny": "silver",
         "orientation": "portrait"
     },
@@ -10897,8 +10935,10 @@
         "id": "GBO020",
         "albumNumber": "506",
         "type": "golden_boot",
-        "name": "Golden Boot Winner 20",
-        "image": "./photos/golden_ball/GBO20.png",
+        "name": "Oleg Salenko",
+		"year": "1994",
+        "image": "./photos/golden_boot/GBO20.png",
+		"flag": "./photos/golden_boot/russia_flag_circle.png",
         "shiny": "silver",
         "orientation": "portrait"
     },
@@ -10906,8 +10946,10 @@
         "id": "GBO021",
         "albumNumber": "507",
         "type": "golden_boot",
-        "name": "Golden Boot Winner 21",
-        "image": "./photos/golden_ball/GBO21.png",
+        "name": "Hristo Stoichkov",
+		"year": "1994",
+        "image": "./photos/golden_boot/GBO21.png",
+		"flag": "./photos/golden_boot/bulgaria_flag_circle.png",
         "shiny": "silver",
         "orientation": "portrait"
     },
@@ -10915,8 +10957,10 @@
         "id": "GBO022",
         "albumNumber": "508",
         "type": "golden_boot",
-        "name": "Golden Boot Winner 22",
-        "image": "./photos/golden_ball/GBO22.png",
+        "name": "Davor Šuker",
+		"year": "1998",
+        "image": "./photos/golden_boot/GBO22.png",
+		"flag": "./photos/golden_boot/croatia_flag_circle.png",
         "shiny": "silver",
         "orientation": "portrait"
     },
@@ -10924,8 +10968,10 @@
         "id": "GBO023",
         "albumNumber": "509",
         "type": "golden_boot",
-        "name": "Golden Boot Winner 23",
-        "image": "./photos/golden_ball/GBO23.png",
+        "name": "Ronaldo",
+		"year": "2002",
+        "image": "./photos/golden_boot/GBO23.png",
+		"flag": "./photos/golden_boot/brazil_flag_circle.png",
         "shiny": "silver",
         "orientation": "portrait"
     },
@@ -10933,8 +10979,10 @@
         "id": "GBO024",
         "albumNumber": "510",
         "type": "golden_boot",
-        "name": "Golden Boot Winner 24",
-        "image": "./photos/golden_ball/GBO24.png",
+        "name": "Miroslav Klose",
+		"year": "2006",
+        "image": "./photos/golden_boot/GBO24.png",
+		"flag": "./photos/golden_boot/germany_flag_circle.png",
         "shiny": "silver",
         "orientation": "portrait"
     },
@@ -10942,8 +10990,10 @@
         "id": "GBO025",
         "albumNumber": "511",
         "type": "golden_boot",
-        "name": "Golden Boot Winner 25",
-        "image": "./photos/golden_ball/GBO25.png",
+        "name": "Thomas Müller",
+		"year": "2010",
+        "image": "./photos/golden_boot/GBO25.png",
+		"flag": "./photos/golden_boot/germany_flag_circle.png",
         "shiny": "silver",
         "orientation": "portrait"
     },
@@ -10951,8 +11001,10 @@
         "id": "GBO026",
         "albumNumber": "512",
         "type": "golden_boot",
-        "name": "Golden Boot Winner 26",
-        "image": "./photos/golden_ball/GBO26.png",
+        "name": "James Rodríguez",
+		"year": "2014",
+        "image": "./photos/golden_boot/GBO26.png",
+		"flag": "./photos/golden_boot/colombia_flag_circle.png",
         "shiny": "silver",
         "orientation": "portrait"
     },
@@ -10960,8 +11012,10 @@
         "id": "GBO027",
         "albumNumber": "513",
         "type": "golden_boot",
-        "name": "Golden Boot Winner 27",
-        "image": "./photos/golden_ball/GBO27.png",
+        "name": "Harry Kane",
+		"year": "2018",
+        "image": "./photos/golden_boot/GBO27.png",
+		"flag": "./photos/golden_boot/england_flag_circle.png",
         "shiny": "silver",
         "orientation": "portrait"
     },
@@ -10969,8 +11023,10 @@
         "id": "GBO028",
         "albumNumber": "514",
         "type": "golden_boot",
-        "name": "Golden Boot Winner 28",
-        "image": "./photos/golden_ball/GBO28.png",
+        "name": "Kylian Mbappé",
+		"year": "2022",
+        "image": "./photos/golden_boot/GBO28.png",
+		"flag": "./photos/golden_boot/france_flag_circle.png",
         "shiny": "silver",
         "orientation": "portrait"
     },
@@ -19416,7 +19472,7 @@
         "color_1": "#DD052B",
         "color_2": "#1C2E63",
         "color_3": "#FFFFFF",
-        "flag": "./data/cape_verde/cabo_verde_flag_circle.png"
+        "flag": "./data/cape_verde/cabe_verde_flag_circle.png"
     },
     "CPV004": {
         "id": "CPV004",
@@ -19440,7 +19496,7 @@
         "color_1": "#DD052B",
         "color_2": "#1C2E63",
         "color_3": "#FFFFFF",
-        "flag": "./data/cape_verde/cabo_verde_flag_circle.png"
+        "flag": "./data/cape_verde/cabe_verde_flag_circle.png"
     },
     "CPV005": {
         "id": "CPV005",
@@ -19464,7 +19520,7 @@
         "color_1": "#DD052B",
         "color_2": "#1C2E63",
         "color_3": "#FFFFFF",
-        "flag": "./data/cape_verde/cabo_verde_flag_circle.png"
+        "flag": "./data/cape_verde/cabe_verde_flag_circle.png"
     },
     "CPV006": {
         "id": "CPV006",
@@ -19488,7 +19544,7 @@
         "color_1": "#DD052B",
         "color_2": "#1C2E63",
         "color_3": "#FFFFFF",
-        "flag": "./data/cape_verde/cabo_verde_flag_circle.png"
+        "flag": "./data/cape_verde/cabe_verde_flag_circle.png"
     },
     "CPV007": {
         "id": "CPV007",
@@ -19512,7 +19568,7 @@
         "color_1": "#DD052B",
         "color_2": "#1C2E63",
         "color_3": "#FFFFFF",
-        "flag": "./data/cape_verde/cabo_verde_flag_circle.png"
+        "flag": "./data/cape_verde/cabe_verde_flag_circle.png"
     },
     "CPV008": {
         "id": "CPV008",
@@ -19536,7 +19592,7 @@
         "color_1": "#DD052B",
         "color_2": "#1C2E63",
         "color_3": "#FFFFFF",
-        "flag": "./data/cape_verde/cabo_verde_flag_circle.png"
+        "flag": "./data/cape_verde/cabe_verde_flag_circle.png"
     },
     "CPV009": {
         "id": "CPV009",
@@ -19560,7 +19616,7 @@
         "color_1": "#DD052B",
         "color_2": "#1C2E63",
         "color_3": "#FFFFFF",
-        "flag": "./data/cape_verde/cabo_verde_flag_circle.png"
+        "flag": "./data/cape_verde/cabe_verde_flag_circle.png"
     },
     "CPV010": {
         "id": "CPV010",
@@ -19584,7 +19640,7 @@
         "color_1": "#DD052B",
         "color_2": "#1C2E63",
         "color_3": "#FFFFFF",
-        "flag": "./data/cape_verde/cabo_verde_flag_circle.png"
+        "flag": "./data/cape_verde/cabe_verde_flag_circle.png"
     },
     "CPV011": {
         "id": "CPV011",
@@ -19608,7 +19664,7 @@
         "color_1": "#DD052B",
         "color_2": "#1C2E63",
         "color_3": "#FFFFFF",
-        "flag": "./data/cape_verde/cabo_verde_flag_circle.png"
+        "flag": "./data/cape_verde/cabe_verde_flag_circle.png"
     },
     "CPV012": {
         "id": "CPV012",
@@ -19632,7 +19688,7 @@
         "color_1": "#DD052B",
         "color_2": "#1C2E63",
         "color_3": "#FFFFFF",
-        "flag": "./data/cape_verde/cabo_verde_flag_circle.png"
+        "flag": "./data/cape_verde/cabe_verde_flag_circle.png"
     },
     "CPV013": {
         "id": "CPV013",
@@ -19656,7 +19712,7 @@
         "color_1": "#DD052B",
         "color_2": "#1C2E63",
         "color_3": "#FFFFFF",
-        "flag": "./data/cape_verde/cabo_verde_flag_circle.png"
+        "flag": "./data/cape_verde/cabe_verde_flag_circle.png"
     },
     "CPV014": {
         "id": "CPV014",
@@ -19680,7 +19736,7 @@
         "color_1": "#DD052B",
         "color_2": "#1C2E63",
         "color_3": "#FFFFFF",
-        "flag": "./data/cape_verde/cabo_verde_flag_circle.png"
+        "flag": "./data/cape_verde/cabe_verde_flag_circle.png"
     },
     "CPV015": {
         "id": "CPV015",
@@ -19704,7 +19760,7 @@
         "color_1": "#DD052B",
         "color_2": "#1C2E63",
         "color_3": "#FFFFFF",
-        "flag": "./data/cape_verde/cabo_verde_flag_circle.png"
+        "flag": "./data/cape_verde/cabe_verde_flag_circle.png"
     },
     "CPV016": {
         "id": "CPV016",
@@ -19728,7 +19784,7 @@
         "color_1": "#DD052B",
         "color_2": "#1C2E63",
         "color_3": "#FFFFFF",
-        "flag": "./data/cape_verde/cabo_verde_flag_circle.png"
+        "flag": "./data/cape_verde/cabe_verde_flag_circle.png"
     },
     "CPV017": {
         "id": "CPV017",
@@ -19752,7 +19808,7 @@
         "color_1": "#DD052B",
         "color_2": "#1C2E63",
         "color_3": "#FFFFFF",
-        "flag": "./data/cape_verde/cabo_verde_flag_circle.png"
+        "flag": "./data/cape_verde/cabe_verde_flag_circle.png"
     },
     "CPV018": {
         "id": "CPV018",
@@ -19776,7 +19832,7 @@
         "color_1": "#DD052B",
         "color_2": "#1C2E63",
         "color_3": "#FFFFFF",
-        "flag": "./data/cape_verde/cabo_verde_flag_circle.png"
+        "flag": "./data/cape_verde/cabe_verde_flag_circle.png"
     },
     "CPV019": {
         "id": "CPV019",
@@ -19800,7 +19856,7 @@
         "color_1": "#DD052B",
         "color_2": "#1C2E63",
         "color_3": "#FFFFFF",
-        "flag": "./data/cape_verde/cabo_verde_flag_circle.png"
+        "flag": "./data/cape_verde/cabe_verde_flag_circle.png"
     },
     "CPV020": {
         "id": "CPV020",
@@ -19824,7 +19880,7 @@
         "color_1": "#DD052B",
         "color_2": "#1C2E63",
         "color_3": "#FFFFFF",
-        "flag": "./data/cape_verde/cabo_verde_flag_circle.png"
+        "flag": "./data/cape_verde/cabe_verde_flag_circle.png"
     },
     "CPV021": {
         "id": "CPV021",
@@ -19848,7 +19904,7 @@
         "color_1": "#DD052B",
         "color_2": "#1C2E63",
         "color_3": "#FFFFFF",
-        "flag": "./data/cape_verde/cabo_verde_flag_circle.png"
+        "flag": "./data/cape_verde/cabe_verde_flag_circle.png"
     },
     "CPV022": {
         "id": "CPV022",
@@ -19872,7 +19928,7 @@
         "color_1": "#DD052B",
         "color_2": "#1C2E63",
         "color_3": "#FFFFFF",
-        "flag": "./data/cape_verde/cabo_verde_flag_circle.png"
+        "flag": "./data/cape_verde/cabe_verde_flag_circle.png"
     },
     "CPV023": {
         "id": "CPV023",
@@ -19896,7 +19952,7 @@
         "color_1": "#DD052B",
         "color_2": "#1C2E63",
         "color_3": "#FFFFFF",
-        "flag": "./data/cape_verde/cabo_verde_flag_circle.png"
+        "flag": "./data/cape_verde/cabe_verde_flag_circle.png"
     },
     "CPV024": {
         "id": "CPV024",
@@ -19920,7 +19976,7 @@
         "color_1": "#DD052B",
         "color_2": "#1C2E63",
         "color_3": "#FFFFFF",
-        "flag": "./data/cape_verde/cabo_verde_flag_circle.png"
+        "flag": "./data/cape_verde/cabe_verde_flag_circle.png"
     },
     "CPV025": {
         "id": "CPV025",
@@ -19944,7 +20000,7 @@
         "color_1": "#DD052B",
         "color_2": "#1C2E63",
         "color_3": "#FFFFFF",
-        "flag": "./data/cape_verde/cabo_verde_flag_circle.png"
+        "flag": "./data/cape_verde/cabe_verde_flag_circle.png"
     },
     "CPV026": {
         "id": "CPV026",
@@ -19968,7 +20024,7 @@
         "color_1": "#DD052B",
         "color_2": "#1C2E63",
         "color_3": "#FFFFFF",
-        "flag": "./data/cape_verde/cabo_verde_flag_circle.png"
+        "flag": "./data/cape_verde/cabe_verde_flag_circle.png"
     },
     "CPV027": {
         "id": "CPV027",
@@ -19992,7 +20048,7 @@
         "color_1": "#DD052B",
         "color_2": "#1C2E63",
         "color_3": "#FFFFFF",
-        "flag": "./data/cape_verde/cabo_verde_flag_circle.png"
+        "flag": "./data/cape_verde/cabe_verde_flag_circle.png"
     },
     "CPV028": {
         "id": "CPV028",
@@ -20016,7 +20072,7 @@
         "color_1": "#DD052B",
         "color_2": "#1C2E63",
         "color_3": "#FFFFFF",
-        "flag": "./data/cape_verde/cabo_verde_flag_circle.png"
+        "flag": "./data/cape_verde/cabe_verde_flag_circle.png"
     },
     "KSA001": {
         "id": "KSA001",
@@ -21314,8 +21370,10 @@
         "id": "GBA001",
         "albumNumber": "963",
         "type": "golden_ball",
-        "name": "Golden Ball Winner 1",
-        "image": "./photos/golden_boot/GBA1.png",
+        "name": "José Nasazzi",
+		"year": "1930",
+		"flag": "./photos/golden_ball/uruguay_flag_circle.png",
+        "image": "./photos/golden_ball/GBA1.png",
         "shiny": "gold",
         "orientation": "portrait"
     },
@@ -21323,8 +21381,10 @@
         "id": "GBA002",
         "albumNumber": "964",
         "type": "golden_ball",
-        "name": "Golden Ball Winner 2",
-        "image": "./photos/golden_boot/GBA2.png",
+        "name": "Giuseppe Meazza",
+		"year": "1934",
+		"flag": "./photos/golden_ball/italy_flag_circle.png",
+        "image": "./photos/golden_ball/GBA2.png",
         "shiny": "gold",
         "orientation": "portrait"
     },
@@ -21332,8 +21392,10 @@
         "id": "GBA003",
         "albumNumber": "965",
         "type": "golden_ball",
-        "name": "Golden Ball Winner 3",
-        "image": "./photos/golden_boot/GBA3.png",
+        "name": "Leônidas",
+		"year": "1938",
+		"flag": "./photos/golden_ball/brazil_flag_circle.png",		
+        "image": "./photos/golden_ball/GBA3.png",
         "shiny": "gold",
         "orientation": "portrait"
     },
@@ -21341,8 +21403,10 @@
         "id": "GBA004",
         "albumNumber": "966",
         "type": "golden_ball",
-        "name": "Golden Ball Winner 4",
-        "image": "./photos/golden_boot/GBA4.png",
+        "name": "Zizinho",
+		"year": "1950",
+		"flag": "./photos/golden_ball/brazil_flag_circle.png",		
+        "image": "./photos/golden_ball/GBA4.png",
         "shiny": "gold",
         "orientation": "portrait"
     },
@@ -21350,8 +21414,10 @@
         "id": "GBA005",
         "albumNumber": "967",
         "type": "golden_ball",
-        "name": "Golden Ball Winner 5",
-        "image": "./photos/golden_boot/GBA5.png",
+        "name": "Ferenc Puskás",
+		"year": "1954",
+		"flag": "./photos/golden_balll/hungary_flag_circle.png",		
+        "image": "./photos/golden_ball/GBA5.png",
         "shiny": "gold",
         "orientation": "portrait"
     },
@@ -21359,8 +21425,10 @@
         "id": "GBA006",
         "albumNumber": "968",
         "type": "golden_ball",
-        "name": "Golden Ball Winner 6",
-        "image": "./photos/golden_boot/GBA6.png",
+        "name": "Pelé",
+		"year": "1958",
+		"flag": "./photos/golden_ball/brazil_flag_circle.png",		
+        "image": "./photos/golden_ball/GBA6.png",
         "shiny": "gold",
         "orientation": "portrait"
     },
@@ -21368,8 +21436,10 @@
         "id": "GBA007",
         "albumNumber": "969",
         "type": "golden_ball",
-        "name": "Golden Ball Winner 7",
-        "image": "./photos/golden_boot/GBA7.png",
+        "name": "Garrincha",
+		"year": "1962",
+		"flag": "./photos/golden_ball/brazil_flag_circle.png",		
+        "image": "./photos/golden_ball/GBA7.png",
         "shiny": "gold",
         "orientation": "portrait"
     },
@@ -21377,8 +21447,10 @@
         "id": "GBA008",
         "albumNumber": "970",
         "type": "golden_ball",
-        "name": "Golden Ball Winner 8",
-        "image": "./photos/golden_boot/GBA8.png",
+        "name": "Bobby Charlton",
+		"year": "1966",
+		"flag": "./photos/golden_ball/england_flag_circle.png",	
+        "image": "./photos/golden_ball/GBA8.png",
         "shiny": "gold",
         "orientation": "portrait"
     },
@@ -21386,8 +21458,10 @@
         "id": "GBA009",
         "albumNumber": "971",
         "type": "golden_ball",
-        "name": "Golden Ball Winner 9",
-        "image": "./photos/golden_boot/GBA9.png",
+        "name": "Pelé",
+		"year": "1970",
+		"flag": "./photos/golden_ball/brazil_flag_circle.png",			
+        "image": "./photos/golden_ball/GBA9.png",
         "shiny": "gold",
         "orientation": "portrait"
     },
@@ -21395,8 +21469,10 @@
         "id": "GBA010",
         "albumNumber": "972",
         "type": "golden_ball",
-        "name": "Golden Ball Winner 10",
-        "image": "./photos/golden_boot/GBA10.png",
+        "name": "Johan Cruyff",
+		"year": "1974",
+		"flag": "./photos/golden_ball/netherlands_flag_circle.png",			
+        "image": "./photos/golden_ball/GBA10.png",
         "shiny": "gold",
         "orientation": "portrait"
     },
@@ -21404,8 +21480,10 @@
         "id": "GBA011",
         "albumNumber": "973",
         "type": "golden_ball",
-        "name": "Golden Ball Winner 11",
-        "image": "./photos/golden_boot/GBA11.png",
+        "name": "Mario Kempes",
+		"year": "1978",
+		"flag": "./photos/golden_ball/argentina_flag_circle.png",			
+        "image": "./photos/golden_ball/GBA11.png",
         "shiny": "gold",
         "orientation": "portrait"
     },
@@ -21413,8 +21491,10 @@
         "id": "GBA012",
         "albumNumber": "974",
         "type": "golden_ball",
-        "name": "Golden Ball Winner 12",
-        "image": "./photos/golden_boot/GBA12.png",
+        "name": "Paolo Rossi",
+		"year": "1982",
+		"flag": "./photos/golden_ball/italy_flag_circle.png",			
+        "image": "./photos/golden_ball/GBA12.png",
         "shiny": "gold",
         "orientation": "portrait"
     },
@@ -21422,8 +21502,10 @@
         "id": "GBA013",
         "albumNumber": "975",
         "type": "golden_ball",
-        "name": "Golden Ball Winner 13",
-        "image": "./photos/golden_boot/GBA13.png",
+        "name": "Diego Maradona",
+		"year": "1986",
+		"flag": "./photos/golden_ball/argentina_flag_circle.png",			
+        "image": "./photos/golden_ball/GBA13.png",
         "shiny": "gold",
         "orientation": "portrait"
     },
@@ -21431,8 +21513,10 @@
         "id": "GBA014",
         "albumNumber": "976",
         "type": "golden_ball",
-        "name": "Golden Ball Winner 14",
-        "image": "./photos/golden_boot/GBA14.png",
+        "name": "Salvatore Schillaci",
+		"year": "1990",
+		"flag": "./photos/golden_ball/italy_flag_circle.png",			
+        "image": "./photos/golden_ball/GBA14.png",
         "shiny": "gold",
         "orientation": "portrait"
     },
@@ -21440,8 +21524,10 @@
         "id": "GBA015",
         "albumNumber": "977",
         "type": "golden_ball",
-        "name": "Golden Ball Winner 15",
-        "image": "./photos/golden_boot/GBA15.png",
+        "name": "Romário",
+		"year": "1994",
+		"flag": "./photos/golden_ball/brazil_flag_circle.png",			
+        "image": "./photos/golden_ball/GBA15.png",
         "shiny": "gold",
         "orientation": "portrait"
     },
@@ -21449,8 +21535,10 @@
         "id": "GBA016",
         "albumNumber": "978",
         "type": "golden_ball",
-        "name": "Golden Ball Winner 16",
-        "image": "./photos/golden_boot/GBA16.png",
+        "name": "Ronaldo",
+		"year": "1998",
+		"flag": "./photos/golden_ball/brazil_flag_circle.png",			
+        "image": "./photos/golden_ball/GBA16.png",
         "shiny": "gold",
         "orientation": "portrait"
     },
@@ -21458,8 +21546,10 @@
         "id": "GBA017",
         "albumNumber": "979",
         "type": "golden_ball",
-        "name": "Golden Ball Winner 17",
-        "image": "./photos/golden_boot/GBA17.png",
+        "name": "Oliver Kahn",
+		"year": "2002",
+		"flag": "./photos/golden_ball/germany_flag_circle.png",			
+        "image": "./photos/golden_ball/GBA17.png",
         "shiny": "gold",
         "orientation": "portrait"
     },
@@ -21467,8 +21557,10 @@
         "id": "GBA018",
         "albumNumber": "980",
         "type": "golden_ball",
-        "name": "Golden Ball Winner 18",
-        "image": "./photos/golden_boot/GBA18.png",
+        "name": "Zinedine Zidane",
+		"year": "2006",
+		"flag": "./photos/golden_ball/france_flag_circle.png",			
+        "image": "./photos/golden_ball/GBA18.png",
         "shiny": "gold",
         "orientation": "portrait"
     },
@@ -21476,8 +21568,10 @@
         "id": "GBA019",
         "albumNumber": "981",
         "type": "golden_ball",
-        "name": "Golden Ball Winner 19",
-        "image": "./photos/golden_boot/GBA19.png",
+        "name": "Diego Forlán",
+		"year": "2010",
+		"flag": "./photos/golden_ball/uruguay_flag_circle.png",			
+        "image": "./photos/golden_ball/GBA19.png",
         "shiny": "gold",
         "orientation": "portrait"
     },
@@ -21485,8 +21579,10 @@
         "id": "GBA020",
         "albumNumber": "982",
         "type": "golden_ball",
-        "name": "Golden Ball Winner 20",
-        "image": "./photos/golden_boot/GBA20.png",
+        "name": "Lionel Messi",
+		"year": "2014",
+		"flag": "./photos/golden_ball/argentina_flag_circle.png",			
+        "image": "./photos/golden_ball/GBA20.png",
         "shiny": "gold",
         "orientation": "portrait"
     },
@@ -21494,8 +21590,10 @@
         "id": "GBA021",
         "albumNumber": "983",
         "type": "golden_ball",
-        "name": "Golden Ball Winner 21",
-        "image": "./photos/golden_boot/GBA21.png",
+        "name": "Luka Modrić",
+		"year": "2018",
+		"flag": "./photos/golden_ball/croatia_flag_circle.png",			
+        "image": "./photos/golden_ball/GBA21.png",
         "shiny": "gold",
         "orientation": "portrait"
     },
@@ -21503,8 +21601,10 @@
         "id": "GBA022",
         "albumNumber": "984",
         "type": "golden_ball",
-        "name": "Golden Ball Winner 22",
-        "image": "./photos/golden_boot/GBA22.png",
+        "name": "Lionel Messi",
+		"year": "2022",
+		"flag": "./photos/golden_ball/argentina_flag_circle.png",			
+        "image": "./photos/golden_ball/GBA22.png",
         "shiny": "gold",
         "orientation": "portrait"
     },
@@ -31848,7 +31948,8 @@
         "id": "WIN001",
         "albumNumber": "1433",
         "type": "historic_winner",
-        "name": "World Cup Winner 1 - Uruguay (1930)",
+        "name": "Uruguay (1930)",
+		"flag": "./photos/winning_teams/uruguay_flag_circle.png",
         "image": "./photos/winning_teams/winners1.png",
         "shiny": "gold",
         "orientation": "landscape"
@@ -31857,7 +31958,8 @@
         "id": "WIN002",
         "albumNumber": "1434",
         "type": "historic_winner",
-        "name": "World Cup Winner 2 - Italiy (1934)",
+        "name": "Italiy (1934)",
+		"flag": "./photos/winning_teams/italy_flag_circle.png",
         "image": "./photos/winning_teams/winners2.png",
         "shiny": "gold",
         "orientation": "landscape"
@@ -31866,7 +31968,8 @@
         "id": "WIN003",
         "albumNumber": "1435",
         "type": "historic_winner",
-        "name": "World Cup Winner 3 - Italiy (1938)",
+        "name": "Italiy (1938)",
+		"flag": "./photos/winning_teams/italy_flag_circle.png",
         "image": "./photos/winning_teams/winners3.png",
         "shiny": "gold",
         "orientation": "landscape"
@@ -31875,7 +31978,8 @@
         "id": "WIN004",
         "albumNumber": "1436",
         "type": "historic_winner",
-        "name": "World Cup Winner 4 - Uruguay (1950)",
+        "name": "Uruguay (1950)",
+		"flag": "./photos/winning_teams/uruguay_flag_circle.png",
         "image": "./photos/winning_teams/winners4.png",
         "shiny": "gold",
         "orientation": "landscape"
@@ -31884,7 +31988,8 @@
         "id": "WIN005",
         "albumNumber": "1437",
         "type": "historic_winner",
-        "name": "World Cup Winner 5 - Germany (1954)",
+        "name": "Germany (1954)",
+		"flag": "./photos/winning_teams/germany_flag_circle.png",
         "image": "./photos/winning_teams/winners5.png",
         "shiny": "gold",
         "orientation": "landscape"
@@ -31893,7 +31998,8 @@
         "id": "WIN006",
         "albumNumber": "1438",
         "type": "historic_winner",
-        "name": "World Cup Winner 6 - Brazil (1958)",
+        "name": "Brazil (1958)",
+		"flag": "./photos/winning_teams/brazil_flag_circle.png",
         "image": "./photos/winning_teams/winners6.png",
         "shiny": "gold",
         "orientation": "landscape"
@@ -31902,7 +32008,8 @@
         "id": "WIN007",
         "albumNumber": "1439",
         "type": "historic_winner",
-        "name": "World Cup Winner 7 - Brazil (1962)",
+        "name": "Brazil (1962)",
+		"flag": "./photos/winning_teams/brazil_flag_circle.png",
         "image": "./photos/winning_teams/winners7.png",
         "shiny": "gold",
         "orientation": "landscape"
@@ -31911,7 +32018,8 @@
         "id": "WIN008",
         "albumNumber": "1440",
         "type": "historic_winner",
-        "name": "World Cup Winner 8 - England (1966)",
+        "name": "England (1966)",
+		"flag": "./photos/winning_teams/england_flag_circle.png",
         "image": "./photos/winning_teams/winners8.png",
         "shiny": "gold",
         "orientation": "landscape"
@@ -31920,7 +32028,8 @@
         "id": "WIN009",
         "albumNumber": "1441",
         "type": "historic_winner",
-        "name": "World Cup Winner 9 - Brazil (1970)",
+        "name": "Brazil (1970)",
+		"flag": "./photos/winning_teams/brazil_flag_circle.png",
         "image": "./photos/winning_teams/winners9.png",
         "shiny": "gold",
         "orientation": "landscape"
@@ -31929,7 +32038,8 @@
         "id": "WIN010",
         "albumNumber": "1442",
         "type": "historic_winner",
-        "name": "World Cup Winner 10 - Germany (1974)",
+        "name": "Germany (1974)",
+		"flag": "./photos/winning_teams/germany_flag_circle.png",
         "image": "./photos/winning_teams/winners10.png",
         "shiny": "gold",
         "orientation": "landscape"
@@ -31938,7 +32048,8 @@
         "id": "WIN011",
         "albumNumber": "1443",
         "type": "historic_winner",
-        "name": "World Cup Winner 11 - Argentina (1978)",
+        "name": "Argentina (1978)",
+		"flag": "./photos/winning_teams/argentina_flag_circle.png",
         "image": "./photos/winning_teams/winners11.png",
         "shiny": "gold",
         "orientation": "landscape"
@@ -31947,7 +32058,8 @@
         "id": "WIN012",
         "albumNumber": "1444",
         "type": "historic_winner",
-        "name": "World Cup Winner 12 - Italy (1982)",
+        "name": "Italy (1982)",
+		"flag": "./photos/winning_teams/italy_flag_circle.png",
         "image": "./photos/winning_teams/winners12.png",
         "shiny": "gold",
         "orientation": "landscape"
@@ -31956,7 +32068,8 @@
         "id": "WIN013",
         "albumNumber": "1445",
         "type": "historic_winner",
-        "name": "World Cup Winner 13 - Argentina (1986)",
+        "name": "Argentina (1986)",
+		"flag": "./photos/winning_teams/argentina_flag_circle.png",
         "image": "./photos/winning_teams/winners13.png",
         "shiny": "gold",
         "orientation": "landscape"
@@ -31965,7 +32078,8 @@
         "id": "WIN014",
         "albumNumber": "1446",
         "type": "historic_winner",
-        "name": "World Cup Winner 14 - Germany (1990)",
+        "name": "Germany (1990)",
+		"flag": "./photos/winning_teams/germany_flag_circle.png",
         "image": "./photos/winning_teams/winners14.png",
         "shiny": "gold",
         "orientation": "landscape"
@@ -31974,7 +32088,8 @@
         "id": "WIN015",
         "albumNumber": "1447",
         "type": "historic_winner",
-        "name": "World Cup Winner 15 - Brazil (1994)",
+        "name": "Brazil (1994)",
+		"flag": "./photos/winning_teams/brazil_flag_circle.png",
         "image": "./photos/winning_teams/winners15.png",
         "shiny": "gold",
         "orientation": "landscape"
@@ -31983,7 +32098,8 @@
         "id": "WIN016",
         "albumNumber": "1448",
         "type": "historic_winner",
-        "name": "World Cup Winner 16 - France (1998)",
+        "name": "France (1998)",
+		"flag": "./photos/winning_teams/france_flag_circle.png",
         "image": "./photos/winning_teams/winners16.png",
         "shiny": "gold",
         "orientation": "landscape"
@@ -31992,7 +32108,8 @@
         "id": "WIN017",
         "albumNumber": "1449",
         "type": "historic_winner",
-        "name": "World Cup Winner 17 - Brazil (2002)",
+        "name": "Brazil (2002)",
+		"flag": "./photos/winning_teams/brazil_flag_circle.png",
         "image": "./photos/winning_teams/winners17.png",
         "shiny": "gold",
         "orientation": "landscape"
@@ -32001,7 +32118,8 @@
         "id": "WIN018",
         "albumNumber": "1450",
         "type": "historic_winner",
-        "name": "World Cup Winner 18 - Italy (2006)",
+        "name": "Italy (2006)",
+		"flag": "./photos/winning_teams/italy_flag_circle.png",
         "image": "./photos/winning_teams/winners18.png",
         "shiny": "gold",
         "orientation": "landscape"
@@ -32010,7 +32128,8 @@
         "id": "WIN019",
         "albumNumber": "1451",
         "type": "historic_winner",
-        "name": "World Cup Winner 19 - Spain (2010)",
+        "name": "Spain (2010)",
+		"flag": "./photos/winning_teams/spain_flag_circle.png",
         "image": "./photos/winning_teams/winners19.png",
         "shiny": "gold",
         "orientation": "landscape"
@@ -32019,7 +32138,8 @@
         "id": "WIN020",
         "albumNumber": "1452",
         "type": "historic_winner",
-        "name": "World Cup Winner 20 - Germany (2014)",
+        "name": "Germany (2014)",
+		"flag": "./photos/winning_teams/germany_flag_circle.png",
         "image": "./photos/winning_teams/winners20.png",
         "shiny": "gold",
         "orientation": "landscape"
@@ -32028,7 +32148,8 @@
         "id": "WIN021",
         "albumNumber": "1453",
         "type": "historic_winner",
-        "name": "World Cup Winner 21 - France (2018)",
+        "name": "France (2018)",
+		"flag": "./photos/winning_teams/france_flag_circle.png",
         "image": "./photos/winning_teams/winners21.png",
         "shiny": "gold",
         "orientation": "landscape"
@@ -32037,7 +32158,8 @@
         "id": "WIN022",
         "albumNumber": "1454",
         "type": "historic_winner",
-        "name": "World Cup Winner 22 - Argentina (2022)",
+        "name": "Argentina (2022)",
+		"flag": "./photos/winning_teams/argentina_flag_circle.png",
         "image": "./photos/winning_teams/winners22.png",
         "shiny": "gold",
         "orientation": "landscape"
