@@ -107,6 +107,7 @@ h1 {
     box-shadow: 0 2px 5px rgba(0,0,0,0.3); z-index: 10;
 }
 
+
 /* =========================================================================
    3D ALBUM ENGINE
    ========================================================================= */
@@ -172,7 +173,7 @@ h1 {
 .page-number.left { left: 6px; }
 .page-number.right { right: 6px; }
 
-/* NEU: Angepasster Dummy-Text für die Test-Phase */
+/* Dummy-Text für die Test-Phase */
 .debug-text {
     position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
     width: 80%; text-align: center; color: #555; font-family: Arial, sans-serif;
@@ -273,7 +274,7 @@ firebase.initializeApp(firebaseConfig);
 const db = firebase.firestore();
 
 /* =========================================================================
-   DER DYNAMISCHE ALBUM-BLUEPRINT (Mit Album-Nummern!)
+   DER DYNAMISCHE ALBUM-BLUEPRINT
    ========================================================================= */
 const albumBlueprint = [
     { type: "cover" },
@@ -395,7 +396,7 @@ const albumBlueprint = [
 ];
 
 /* =========================================================================
-   3D BOOK ENGINE (Dynamischer Aufbau)
+   3D BOOK ENGINE (Dynamischer Aufbau korrigiert)
    ========================================================================= */
 const book = document.getElementById('book');
 let papers = [];
@@ -420,7 +421,7 @@ function initBook() {
     book.innerHTML = '';
     papers = [];
     
-    // Wir brauchen physische Papierblätter für das gesamte Blueprint (immer 2 Seiten pro Blatt) + 1 für Cover
+    // Wir brauchen physische Papierblätter für das gesamte Blueprint (immer 2 Seiten pro Blatt)
     const totalPapers = Math.ceil(albumBlueprint.length / 2);
 
     for (let i = 0; i <= totalPapers; i++) {
@@ -433,12 +434,10 @@ function initBook() {
         const back = document.createElement('div');
         back.className = 'back';
 
-        // Paper 0: Vorne Cover, Hinten Blueprint Seite 0
         if (i === 0) {
             front.innerHTML = `<img src="assets/panini_album.png" class="cover-img" onerror="this.src='assets/Icon.png'">`;
             back.innerHTML = `<div class="page-number left">0</div><div class="debug-text">${getDebugHTML(albumBlueprint[0])}</div>`;
         } else {
-            // Berechnung der Blueprint Indizes für Front und Back
             const frontPageIndex = (i * 2) - 1;
             const backPageIndex = (i * 2);
 
@@ -453,8 +452,9 @@ function initBook() {
         paper.appendChild(front);
         paper.appendChild(back);
         
-        book.prepend(paper);
-        papers.unshift(paper); 
+        // BUGFIX: appendChild und push garantieren die exakt richtige Reihenfolge!
+        book.appendChild(paper);
+        papers.push(paper); 
     }
 
     maxPages = papers.length;
@@ -464,7 +464,6 @@ function initBook() {
     });
 }
 
-// Sofort beim Laden ausführen!
 initBook();
 
 function updateNavArrows() {
