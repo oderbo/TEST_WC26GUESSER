@@ -57,37 +57,64 @@ h1 { margin: 0; font-size: 22px; text-transform: uppercase; text-shadow: 0 1px 3
 .back { transform: rotateY(180deg); border-right: 1px solid rgba(0,0,0,0.25); }
 .cover-img { width: 100%; height: 100%; object-fit: cover; border-radius: 0 8px 8px 0; }
 
-/* SEITENZAHLEN (Nur noch unten rechts auf der rechten Seite!) */
+/* SEITENZAHLEN */
 .page-numbers-combined { position: absolute; bottom: 8px; right: 12px; font-size: 12px; font-weight: bold; color: #111111; background: rgba(255,255,255,0.7); padding: 2px 6px; border-radius: 3px; z-index: 50; }
 
 /* =========================================================================
-   DYNAMISCHES SEITEN-LAYOUT (TEAM PAGES) - FIXIERTES RASTER
+   DYNAMISCHES SEITEN-LAYOUT (NEUES UNIFIED 4x4 GRID FÜR PERFEKTE ALIGNMENT)
    ========================================================================= */
-.page-wrapper { width: 100%; height: 100%; padding: 4%; display: flex; flex-direction: column; }
+.unified-page-grid {
+    width: 100%; height: 100%; padding: 4%;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+    gap: 2%;
+}
 
-/* --- LINKE SEITE --- */
-.team-header-grid { width: 100%; display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 2%; margin-bottom: 2%; align-items: flex-end; }
-.team-text-box { display: flex; flex-direction: column; justify-content: flex-end; padding-bottom: 5px;}
-.team-name { color: #111111; margin: 0; font-size: 5cqw; text-transform: uppercase; line-height: 1; letter-spacing: -0.5px; word-wrap: break-word;}
-.group-box { color: #111111; text-align: center; display: flex; flex-direction: column; justify-content: flex-end; padding-bottom: 5px;}
-.group-box span { display: block; font-size: 2cqw; font-weight: bold; letter-spacing: 1px; }
-.group-box strong { display: block; font-size: 6cqw; line-height: 1; margin-top: 2px;}
+/* HEADER ZELLEN (Verhalten sich exakt wie ein Sticker-Platz) */
+.header-cell {
+    container-type: inline-size;
+    display: flex; flex-direction: column; justify-content: center;
+    width: 100%; height: 100%;
+}
 
-.player-grid-bottom { width: 100%; flex-grow: 1; display: grid; grid-template-columns: repeat(4, 1fr); grid-template-rows: repeat(3, 1fr); gap: 2%; }
+.team-name {
+    color: #111; margin: 0; text-transform: uppercase; line-height: 1.05; letter-spacing: -0.5px;
+    word-wrap: break-word; text-align: left; padding-right: 5px;
+}
 
-/* --- RECHTE SEITE --- */
-.player-grid-full { width: 100%; height: 100%; display: grid; grid-template-columns: repeat(4, 1fr); grid-template-rows: repeat(4, 1fr); gap: 2%; padding-bottom: 5%; }
-.empty-schedule-space { grid-column: span 2; }
+.group-cell { align-items: center; justify-content: center; text-align: center; }
+.group-cell span { display: block; font-size: 10cqw; font-weight: bold; letter-spacing: 1px; color: #111; margin-bottom: 2px;}
+.group-cell strong { display: block; font-size: 28cqw; line-height: 1; color: #111; }
+
+/* DUMMY SCHEDULE (Unten rechts, über 2 Spalten) */
+.match-schedule {
+    grid-column: span 2; 
+    display: flex; flex-direction: column; justify-content: space-evenly; padding: 5% 10%;
+}
+.schedule-line { width: 100%; height: 1.5px; background-color: rgba(255,255,255,0.6); position: relative; box-shadow: 0 1px 1px rgba(0,0,0,0.1); }
+.schedule-line::before { content: ''; position: absolute; left: -10px; top: -3.5px; width: 8px; height: 8px; border-radius: 50%; background-color: rgba(255,255,255,0.6); box-shadow: 0 1px 1px rgba(0,0,0,0.1); }
+
 
 /* PLATZHALTER & STICKER DESIGN */
-.sticker-slot { position: relative; width: 100%; height: 100%; border: 1.5px solid #111111; background-color: rgba(0,0,0,0.03); display: flex; align-items: center; justify-content: center; container-type: inline-size; }
-.slot-circle { width: 28px; height: 28px; border-radius: 50%; border: 1.5px solid #111111; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: bold; color: #111111; background-color: #f4f1ea; font-family: Arial, sans-serif; }
+.sticker-slot {
+    position: relative; width: 100%; height: 100%; 
+    border: 1.5px solid #111111; background-color: rgba(0,0,0,0.03); 
+    display: flex; align-items: center; justify-content: center;
+    container-type: inline-size;
+}
+.slot-circle {
+    width: 28px; height: 28px; border-radius: 50%; border: 1.5px solid #111111;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 11px; font-weight: bold; color: #111111; background-color: #f4f1ea; font-family: Arial, sans-serif;
+}
 .sticker-slot.filled { border: none; background-color: transparent; }
 .sticker-slot.filled .slot-circle { display: none; }
 
 /* GENERIC GRID FÜR SPECIALS/STADIEN */
 .generic-grid { width: 100%; height: 100%; padding: 4%; display: flex; flex-wrap: wrap; align-content: flex-start; gap: 2%; }
-.generic-grid .sticker-slot { width: 23%; aspect-ratio: 1 / 1.38; height: auto; margin-bottom: 2%; }
+.generic-grid .sticker-slot { width: 23.5%; aspect-ratio: 1 / 1.38; height: auto; margin-bottom: 2%; }
+
 
 /* --- CSS-KLASSEN FÜR STICKER DESIGN (AUS INDEX.HTML) --- */
 .sticker-wrapper { position: absolute; width: 100%; height: 100%; top: 0; left: 0; box-shadow: 0 2px 6px rgba(0,0,0,0.3); }
@@ -150,8 +177,6 @@ h1 { margin: 0; font-size: 22px; text-transform: uppercase; text-shadow: 0 1px 3
     .page-numbers-combined { bottom: 12px; right: 18px; font-size: 14px; padding: 2px 8px; border-radius: 4px;}
     .book.open ~ .desk-nav-btn { display: block; }
     .desk-nav-btn.prev { left: calc(50% - 440px + 5px); } .desk-nav-btn.next { left: calc(50% + 440px - 30px); }
-    
-    .team-name { font-size: 20px; }
 }
 </style>
 </head>
@@ -503,32 +528,34 @@ function buildGenericGrid(bp) {
 
 function buildPageHTML(bp, isLeftPage) {
     if (bp.type === 'team') {
-        if (isLeftPage) { // Linke Seite
+        if (isLeftPage) { 
+            let nameStyle = bp.name.length > 10 ? 'font-size: 13cqw;' : 'font-size: 18cqw;';
             return `
-                <div class="page-wrapper" style="container-type: inline-size;">
-                    <div class="team-header-grid">
-                        <div class="team-text-box">
-                            <h2 class="team-name">${bp.name}</h2>
-                        </div>
-                        ${buildSlotHTML(bp.countryCode + '001', bp.startAlbumNumber)}
-                        <div class="group-box"><span>GROUP</span><strong>${bp.group}</strong></div>
-                        ${buildSlotHTML(bp.countryCode + '002', bp.startAlbumNumber + 1)}
+                <div class="unified-page-grid">
+                    <div class="header-cell">
+                        <h2 class="team-name" style="${nameStyle}">${bp.name}</h2>
                     </div>
-                    <div class="player-grid-bottom">
-                        ${buildPlayerGrid(bp.countryCode, 3, 14, bp.startAlbumNumber + 2)}
+                    ${buildSlotHTML(bp.countryCode + '001', bp.startAlbumNumber)}
+                    <div class="header-cell group-cell">
+                        <span>GROUP</span><strong>${bp.group}</strong>
                     </div>
+                    ${buildSlotHTML(bp.countryCode + '002', bp.startAlbumNumber + 1)}
+                    
+                    ${buildPlayerGrid(bp.countryCode, 3, 14, bp.startAlbumNumber + 2)}
                 </div>`;
-        } else { // Rechte Seite
+        } else { 
             return `
-                <div class="page-wrapper">
-                    <div class="player-grid-full">
-                        ${buildPlayerGrid(bp.countryCode, 15, 28, bp.startAlbumNumber)}
-                        <div class="empty-schedule-space"></div>
+                <div class="unified-page-grid">
+                    ${buildPlayerGrid(bp.countryCode, 15, 28, bp.startAlbumNumber)}
+                    
+                    <div class="match-schedule">
+                        <div class="schedule-line"></div>
+                        <div class="schedule-line"></div>
+                        <div class="schedule-line"></div>
                     </div>
                 </div>`;
         }
     }
-    // Dummy für andere Seiten
     if (bp.type === 'cover' || bp.type === 'index') return `<div class="debug-text"><span>${bp.type}</span></div>`;
     return buildGenericGrid(bp);
 }
@@ -554,13 +581,11 @@ function initBook() {
         } else {
             const frontPageIndex = (i * 2) - 1; const backPageIndex = (i * 2);
             if (frontPageIndex < albumBlueprint.length) {
-                // Front ist immer die RECHTE Seite im Buch
                 let combinedPageNum = `${frontPageIndex} - ${backPageIndex}`;
                 front.innerHTML = buildPageHTML(albumBlueprint[frontPageIndex], false) + 
                                   `<div class="page-numbers-combined">${combinedPageNum}</div>`;
             }
             if (backPageIndex < albumBlueprint.length) {
-                // Back ist immer die LINKE Seite im Buch
                 back.innerHTML = buildPageHTML(albumBlueprint[backPageIndex], true);
             }
         }
@@ -621,13 +646,11 @@ let dragStartX, dragStartY;
 function pasteStickerToAlbum(stickerId) {
     if (!firebase.auth().currentUser) return;
     const uid = firebase.auth().currentUser.uid;
-    // Feuer auf Firebase: Sticker einkleben und vom Stapel entfernen
     db.collection("users").doc(uid).update({
         [`album.${stickerId}`]: "pasted",
         stapel: firebase.firestore.FieldValue.arrayRemove(stickerId)
     });
     
-    // Optische Sofort-Reaktion (damit es sich flüssig anfühlt)
     const slot = document.getElementById(`slot-${stickerId}`);
     if(slot) {
         slot.innerHTML = createStickerHTML(globalStickerDatabase[stickerId]);
@@ -654,7 +677,6 @@ document.addEventListener('touchmove', (e) => {
 document.addEventListener('touchend', (e) => {
     if (!isDraggingTopSticker) return;
     
-    // Verstecke den Sticker für 1ms, um zu schauen, welcher Slot darunter liegt
     stackCard1.style.visibility = 'hidden';
     const elemBelow = document.elementFromPoint(e.changedTouches[0].clientX, e.changedTouches[0].clientY);
     stackCard1.style.visibility = 'visible';
