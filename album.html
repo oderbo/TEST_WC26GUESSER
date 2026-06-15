@@ -53,19 +53,34 @@ h1 { margin: 0; font-size: 22px; text-transform: uppercase; text-shadow: 0 1px 3
 .paper { position: absolute; width: 100%; height: 100%; top: 0; left: 0; transform-style: preserve-3d; transform-origin: left center; transition: transform 0.6s cubic-bezier(0.4, 0.0, 0.2, 1); will-change: transform; }
 .paper.flipped { transform: rotateY(-180deg); }
 
-/* iOS/SAFARI MIRROR FIX: Explizite z-index & webkit-backface-visibility */
+/* --- iOS/SAFARI Z-FIGHTING FIX --- */
 .front, .back { 
     position: absolute; width: 100%; height: 100%; top: 0; left: 0; 
     -webkit-backface-visibility: hidden; 
     backface-visibility: hidden; 
     background-color: #f4f1ea; overflow: hidden; 
     container-type: inline-size; 
+    /* Zwingt den Browser, die Seiten als echte 3D-Schichten zu behandeln */
+    -webkit-transform-style: preserve-3d;
+    transform-style: preserve-3d;
 }
-.front { border-left: 1px solid rgba(0,0,0,0.25); transform: rotateY(0deg); z-index: 2; }
-.back { transform: rotateY(180deg); border-right: 1px solid rgba(0,0,0,0.25); z-index: 1; }
+
+/* Der 1px Z-Schubs verhindert das Durchschimmern der anderen Buchseiten (Z-Fighting) */
+.front { 
+    border-left: 1px solid rgba(0,0,0,0.25); 
+    transform: rotateY(0deg) translateZ(1px); 
+    -webkit-transform: rotateY(0deg) translateZ(1px);
+    z-index: 2; 
+}
+.back { 
+    border-right: 1px solid rgba(0,0,0,0.25); 
+    transform: rotateY(180deg) translateZ(1px); 
+    -webkit-transform: rotateY(180deg) translateZ(1px);
+    z-index: 1; 
+}
 .cover-img { width: 100%; height: 100%; object-fit: cover; border-radius: 0 8px 8px 0; }
 
-/* SEITENZAHLEN (Nur unten rechts auf der Front, um 20% verkleinert!) */
+/* SEITENZAHLEN (Nur unten rechts auf der Front, verkleinert) */
 .page-numbers-combined { position: absolute; bottom: 8px; right: 12px; font-size: 9.5px; font-weight: bold; color: #111111; background: rgba(255,255,255,0.7); padding: 2px 5px; border-radius: 3px; z-index: 50; }
 
 /* =========================================================================
@@ -127,8 +142,6 @@ h1 { margin: 0; font-size: 22px; text-transform: uppercase; text-shadow: 0 1px 3
     transform-origin: top left;
     transform: translateY(var(--col-h)) rotate(-90deg);
 }
-
-/* ACHTUNG: Aufgerichtete Nummer wurde entfernt, Nummer rotiert nun mit dem Rahmen -90° mit! */
 
 .slot-circle {
     width: 28px; height: 28px; border-radius: 50%; border: 1.5px solid #111111;
