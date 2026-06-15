@@ -15,85 +15,95 @@
     font-style: normal;
 }
 
-* {
-    box-sizing: border-box;
-    -webkit-tap-highlight-color: transparent;
-}
-
-html, body {
-    overflow: hidden; 
-    height: 100dvh; 
-    text-size-adjust: none;
-    -webkit-text-size-adjust: none;
-}
-
-body { 
-    margin: 0; 
-    padding: 10px 6px; 
-    font-family: 'FWC2026', Arial, sans-serif; 
-    color: white; 
-    background-color: #3f57f5; 
-    display: flex; flex-direction: column; align-items: center; width: 100%; position: relative; 
-}
+* { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+html, body { overflow: hidden; height: 100dvh; text-size-adjust: none; -webkit-text-size-adjust: none; }
+body { margin: 0; padding: 10px 6px; font-family: 'FWC2026', Arial, sans-serif; color: white; background-color: #3f57f5; display: flex; flex-direction: column; align-items: center; width: 100%; position: relative; }
 
 /* --- OBERE LEISTE --- */
-.header-container {
-    width: 100%; max-width: 1400px; position: relative; display: flex; justify-content: center; align-items: center;
-    margin-top: -20px; margin-bottom: 0px; height: 50px; flex-shrink: 0; 
-}
+.header-container { width: 100%; max-width: 1400px; position: relative; display: flex; justify-content: center; align-items: center; margin-top: -20px; margin-bottom: 0px; height: 50px; flex-shrink: 0; }
 h1 { margin: 0; font-size: 22px; text-transform: uppercase; text-shadow: 0 1px 3px rgba(0,0,0,0.4); letter-spacing: 1px; text-align: center; }
-
-.btn-back {
-    position: absolute; left: 4px; top: 50%; transform: translateY(-50%); 
-    background: rgba(255, 255, 255, 0.1); border: 1.5px solid rgba(255, 255, 255, 0.4);
-    color: white; font-family: Arial, sans-serif; font-weight: bold; font-size: 14px; width: 22px; height: 22px; border-radius: 4px;
-    cursor: pointer; display: flex; align-items: center; justify-content: center; text-decoration: none; box-shadow: 0 2px 6px rgba(0,0,0,0.2); transition: background 0.15s ease, transform 0.15s ease; z-index: 100; 
-}
+.btn-back { position: absolute; left: 4px; top: 50%; transform: translateY(-50%); background: rgba(255, 255, 255, 0.1); border: 1.5px solid rgba(255, 255, 255, 0.4); color: white; font-family: Arial, sans-serif; font-weight: bold; font-size: 14px; width: 22px; height: 22px; border-radius: 4px; cursor: pointer; display: flex; align-items: center; justify-content: center; text-decoration: none; box-shadow: 0 2px 6px rgba(0,0,0,0.2); transition: background 0.15s ease, transform 0.15s ease; z-index: 100; }
 .btn-back:hover { background: rgba(255, 255, 255, 0.25); transform: translateY(-50%) scale(1.05); }
 
-/* --- MARKT-BUTTON (UNTEN LINKS) --- */
-.action-btn-round {
-    position: fixed; bottom: 20px; left: 20px; width: 60px; height: 60px; border-radius: 50%; background-color: #ffffff; display: flex; align-items: center; justify-content: center;
-    cursor: pointer; box-shadow: 0 6px 16px rgba(0,0,0,0.3); z-index: 1000; padding: 0; border: 2px solid #ffbb04; transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-}
+/* --- MARKT-BUTTON --- */
+.action-btn-round { position: fixed; bottom: 20px; left: 20px; width: 60px; height: 60px; border-radius: 50%; background-color: #ffffff; display: flex; align-items: center; justify-content: center; cursor: pointer; box-shadow: 0 6px 16px rgba(0,0,0,0.3); z-index: 1000; padding: 0; border: 2px solid #ffbb04; transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
 .action-btn-round:hover { transform: scale(1.1); }
 .action-btn-round img { width: 55%; height: 55%; object-fit: contain; display: block; }
 
-/* =========================================================================
-   STICKER-STAPEL (UNTEN RECHTS) + CONTAINER QUERIES FÜR FLUID DESIGN
-   ========================================================================= */
-.sticker-stack-container {
-    position: fixed; bottom: 20px; right: 20px; width: 80px; height: 110px; 
-    z-index: 1000; cursor: pointer; transition: transform 0.2s ease;
-}
+/* --- STICKER-STAPEL --- */
+.sticker-stack-container { position: fixed; bottom: 20px; right: 20px; width: 80px; height: 110px; z-index: 1000; cursor: pointer; transition: transform 0.2s ease; }
 .sticker-stack-container:hover { transform: translateY(-5px); }
-
-.stack-card {
-    position: absolute; width: 100%; height: 100%;
-    background-color: #eeeeee; border: 2px solid #ffffff;
-    border-radius: 4px; box-shadow: 0 4px 8px rgba(0,0,0,0.4);
-    display: flex; align-items: center; justify-content: center;
-    container-type: inline-size; /* WICHTIG: Erlaubt das Schrumpfen der Sticker! */
-    overflow: hidden; /* Schneidet Ecken von Specials sauber ab */
-}
+.stack-card { position: absolute; width: 100%; height: 100%; background-color: #eeeeee; border: 2px solid #ffffff; border-radius: 4px; box-shadow: 0 4px 8px rgba(0,0,0,0.4); display: flex; align-items: center; justify-content: center; container-type: inline-size; overflow: hidden; }
 .stack-card-3 { transform: rotate(8deg) translate(3px, 3px); z-index: 1; background-color: #dddddd; }
 .stack-card-2 { transform: rotate(-5deg) translate(-2px, 1px); z-index: 2; background-color: #e5e5e5;}
-.stack-card-1 { 
-    transform: rotate(0deg); z-index: 3; 
-    touch-action: none; /* Blockiert systemseitiges Scrollen beim Drag & Drop */
-}
-
+.stack-card-1 { transform: rotate(0deg); z-index: 3; touch-action: none; }
 .stack-placeholder-text { font-family: Arial, sans-serif; font-size: 11px; font-weight: bold; color: #aaaaaa; text-transform: uppercase; }
-
-.stack-counter {
-    position: absolute; top: -10px; right: -10px; background-color: #ff1145; color: #ffffff; width: 26px; height: 26px; border-radius: 50%;
-    display: flex; align-items: center; justify-content: center; font-family: Arial, sans-serif; font-size: 13px; font-weight: bold; box-shadow: 0 2px 5px rgba(0,0,0,0.3); z-index: 10;
-}
+.stack-counter { position: absolute; top: -10px; right: -10px; background-color: #ff1145; color: #ffffff; width: 26px; height: 26px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: Arial, sans-serif; font-size: 13px; font-weight: bold; box-shadow: 0 2px 5px rgba(0,0,0,0.3); z-index: 10; }
 
 /* =========================================================================
-   CSS-KLASSEN FÜR STICKER DESIGN (EXAKT AUS INDEX.HTML KOPIERT)
+   3D ALBUM ENGINE
    ========================================================================= */
-.sticker-wrapper { position: absolute; width: 100%; height: 100%; top: 0; left: 0; }
+#album-content { width: 100%; flex-grow: 1; position: relative; display: flex; justify-content: center; align-items: center; margin-top: -3vh; perspective: 2500px; }
+.book { position: relative; width: 49vw; aspect-ratio: 1 / 1.41; max-height: calc(100dvh - 200px); transform-style: preserve-3d; transform-origin: left center; transition: transform 0.6s cubic-bezier(0.4, 0.0, 0.2, 1); transform: translateX(-20%) scale(1.4); }
+.book.open { transform: translateX(50%) scale(1); }
+@media (max-width: 767px) {
+    .book.zoomed-left { transform: translateX(150%) translateY(-8vh) scale(2); }
+    .book.zoomed-right { transform: translateX(-50%) translateY(-8vh) scale(2); }
+}
+.paper { position: absolute; width: 100%; height: 100%; top: 0; left: 0; transform-style: preserve-3d; transform-origin: left center; transition: transform 0.6s cubic-bezier(0.4, 0.0, 0.2, 1); will-change: transform; }
+.paper.flipped { transform: rotateY(-180deg); }
+.front, .back { position: absolute; width: 100%; height: 100%; top: 0; left: 0; backface-visibility: hidden; background-color: #f4f1ea; overflow: hidden; }
+.front { border-left: 1px solid rgba(0,0,0,0.25); }
+.back { transform: rotateY(180deg); border-right: 1px solid rgba(0,0,0,0.25); }
+.cover-img { width: 100%; height: 100%; object-fit: cover; border-radius: 0 8px 8px 0; }
+
+/* SEITENZAHLEN (Nur noch unten rechts auf der rechten Seite!) */
+.page-numbers-combined { position: absolute; bottom: 8px; right: 12px; font-size: 12px; font-weight: bold; color: #111111; background: rgba(255,255,255,0.7); padding: 2px 6px; border-radius: 3px; }
+
+/* =========================================================================
+   DYNAMISCHES SEITEN-LAYOUT (TEAM PAGES)
+   ========================================================================= */
+.page-wrapper { padding: 4%; width: 100%; height: 100%; display: flex; flex-direction: column; }
+
+/* LINKE SEITE (Header + 3x4 Grid) */
+.team-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 2%; height: 26%; }
+.team-header-left { width: 62%; height: 100%; display: flex; flex-direction: column; justify-content: flex-end; }
+.team-name { color: #111111; margin: 0 0 2% 0; font-size: 3.5cqw; text-transform: uppercase; line-height: 1.1; letter-spacing: -0.5px; }
+.team-header-right { width: 33%; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: flex-end; }
+.group-box { color: #111111; text-align: center; margin-bottom: 2%; }
+.group-box span { display: block; font-size: 1.5cqw; font-weight: bold; letter-spacing: 1px; }
+.group-box strong { display: block; font-size: 4cqw; line-height: 1; }
+
+.player-grid { flex-grow: 1; display: grid; grid-template-columns: repeat(4, 1fr); gap: 2%; align-items: start; }
+
+/* RECHTE SEITE (4x4 Grid mit Schedule Box) */
+.match-schedule { grid-column: span 2; background-color: #222222; border-radius: 4px; padding: 4%; border: 1px solid #000; box-shadow: 2px 2px 5px rgba(0,0,0,0.2); display: flex; flex-direction: column; justify-content: space-around; }
+.schedule-line { width: 100%; height: 1px; background-color: rgba(255,255,255,0.3); position: relative; }
+.schedule-line::before { content: ''; position: absolute; left: 0; top: -5px; width: 10px; height: 10px; border-radius: 50%; background-color: #ffffff; }
+
+/* PLATZHALTER & STICKER DESIGN */
+.sticker-slot {
+    position: relative; width: 100%; aspect-ratio: 1 / 1.38; 
+    border: 1.5px solid #111111; background-color: rgba(0,0,0,0.03); 
+    display: flex; align-items: center; justify-content: center;
+    container-type: inline-size; /* WICHTIG: Damit die reingeladenen Sticker die Größe anpassen! */
+}
+.slot-landscape { aspect-ratio: 1.38 / 1; }
+.slot-circle {
+    width: 22px; height: 22px; border-radius: 50%; border: 1.5px solid #111111;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 9px; font-weight: bold; color: #111111; background-color: #f4f1ea; font-family: Arial, sans-serif;
+}
+.sticker-slot.filled { border: none; background-color: transparent; }
+.sticker-slot.filled .slot-circle { display: none; }
+
+/* GENERIC GRID FÜR SPECIALS/STADIEN */
+.generic-grid { width: 100%; height: 100%; padding: 4%; display: flex; flex-wrap: wrap; align-content: flex-start; gap: 2%; }
+.generic-grid .sticker-slot { width: 23%; margin-bottom: 2%; } /* 4 pro Reihe */
+
+
+/* --- CSS-KLASSEN FÜR STICKER DESIGN (AUS INDEX.HTML) --- */
+.sticker-wrapper { position: absolute; width: 100%; height: 100%; top: 0; left: 0; box-shadow: 0 2px 6px rgba(0,0,0,0.3); }
 .sticker-inner { position: absolute; top: 5cqw; left: 5cqw; right: 5cqw; bottom: 5cqw; background-color: var(--color-1, #c10e23); border: 2px solid var(--color-2, #046a38); outline: 2px solid var(--color-3, #f2a900); box-sizing: border-box; }
 .sticker-flag { position: absolute; top: 0; right: 0; width: 15cqw; height: 15cqw; border-radius: 50%; overflow: hidden; border: 1px solid #000000; box-sizing: border-box; z-index: 2; }
 .sticker-flag img { width: 100%; height: 100%; object-fit: cover; display: block; }
@@ -117,10 +127,8 @@ h1 { margin: 0; font-size: 22px; text-transform: uppercase; text-shadow: 0 1px 3
 .club-name { color: var(--dynamic-text, #ffffff); font-weight: bold; font-size: 5.5cqw; -webkit-text-stroke: 0.3px var(--dynamic-stroke, #000000); text-transform: none; letter-spacing: 0.2px; max-width: 100%; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; line-height: 1.1; }
 .club-logo-bottom { height: 90%; width: auto; object-fit: contain; margin-left: auto; padding-right: 2px; }
 
-/* SPECIAL STICKER CLASSES */
 .special-sticker-inner { position: absolute; top: 5cqw; left: 5cqw; right: 5cqw; bottom: 5cqw; background-color: #ffffff; display: flex; align-items: center; justify-content: center; overflow: hidden; }
 .special-sticker-img { width: 100%; height: 100%; object-fit: cover; display: block; }
-.container-stadium-left .special-sticker-inner { right: 0; } .container-stadium-right .special-sticker-inner { left: 0; } .container-trophy-top .special-sticker-inner { left: 0; } .container-trophy-bottom .special-sticker-inner { right: 0; }
 .container-logo, .container-golden-boot { background: linear-gradient(135deg, #e0e0e0 0%, #ffffff 25%, #a0a0a0 50%, #f8f8f8 75%, #c0c0c0 100%) !important; }
 .container-logo .special-sticker-inner { top: 0; bottom: 0; left: 0; right: 0; background-color: transparent; } .container-logo .special-sticker-img { object-fit: contain; padding: 0 4px; }
 .container-golden-ball, .container-historic-winner, .container-special-edge, .container-trophy-top, .container-trophy-bottom, .container-special-fill { background: linear-gradient(135deg, #bf953f 0%, #fcf6ba 25%, #b38728 50%, #fbf5b7 75%, #aa771c 100%) !important; }
@@ -137,72 +145,26 @@ h1 { margin: 0; font-size: 22px; text-transform: uppercase; text-shadow: 0 1px 3
 .name-wrapper-rot .special-name-box { position: relative; bottom: auto; left: auto; transform: none; }
 
 
-/* =========================================================================
-   3D ALBUM ENGINE
-   ========================================================================= */
-#album-content {
-    width: 100%; flex-grow: 1; position: relative; display: flex; justify-content: center; align-items: center; 
-    margin-top: -3vh; perspective: 2500px;
-}
-.book {
-    position: relative; width: 49vw; aspect-ratio: 1 / 1.41; max-height: calc(100dvh - 200px);
-    transform-style: preserve-3d; transform-origin: left center; transition: transform 0.6s cubic-bezier(0.4, 0.0, 0.2, 1);
-    transform: translateX(-20%) scale(1.4);
-}
-.book.open { transform: translateX(50%) scale(1); }
-
-@media (max-width: 767px) {
-    .book.zoomed-left { transform: translateX(150%) translateY(-8vh) scale(2); }
-    .book.zoomed-right { transform: translateX(-50%) translateY(-8vh) scale(2); }
-}
-
-.paper {
-    position: absolute; width: 100%; height: 100%; top: 0; left: 0; transform-style: preserve-3d;
-    transform-origin: left center; transition: transform 0.6s cubic-bezier(0.4, 0.0, 0.2, 1); will-change: transform; 
-}
-.paper.flipped { transform: rotateY(-180deg); }
-.front, .back {
-    position: absolute; width: 100%; height: 100%; top: 0; left: 0; backface-visibility: hidden; background-color: #f4f1ea; overflow: hidden;
-}
-.front { border-left: 1px solid rgba(0,0,0,0.25); }
-.back { transform: rotateY(180deg); border-right: 1px solid rgba(0,0,0,0.25); }
-.cover-img { width: 100%; height: 100%; object-fit: cover; border-radius: 0 8px 8px 0; }
-
-.page-number { position: absolute; top: 6px; font-size: 10px; font-weight: bold; color: #111111; background: rgba(255,255,255,0.7); padding: 1px 4px; border-radius: 3px; min-width: 16px; text-align: center; }
-.page-number.left { left: 6px; }
-.page-number.right { right: 6px; }
-
-.debug-text { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 80%; text-align: center; color: #555; font-family: Arial, sans-serif; font-size: 12px; line-height: 1.4; }
-.debug-text span { display: block; font-size: 20px; font-weight: bold; color: #3f57f5; margin-bottom: 8px; }
-.debug-text small { display: block; font-size: 10px; color: #888; margin-top: 5px; font-weight: bold; }
-
 /* --- DESKTOP MINIMAL-PFEILE --- */
-.desk-nav-btn {
-    position: absolute; top: 50%; transform: translateY(-50%); font-size: 42px; color: rgba(0, 0, 0, 0.35); cursor: pointer; z-index: 1000; display: none; font-family: sans-serif; transition: color 0.2s ease, opacity 0.3s ease; 
-}
+.desk-nav-btn { position: absolute; top: 50%; transform: translateY(-50%); font-size: 42px; color: rgba(0, 0, 0, 0.35); cursor: pointer; z-index: 1000; display: none; font-family: sans-serif; transition: color 0.2s ease, opacity 0.3s ease; }
 .desk-nav-btn span { display: inline-block; transform: scale(0.5, 2.5); }
 .desk-nav-btn:hover { color: #000000; }
 
-/* --- DESKTOP LAYOUT --- */
 @media (min-width: 768px) {
     .header-container { margin-top: 15px; margin-bottom: 25px; height: 70px; }
     h1 { font-size: 36px; } 
     .btn-back { left: 0; width: 36px; height: 36px; font-size: 22px; border-radius: 6px; border-width: 2px; }
     .action-btn-round { width: 70px; height: 70px; bottom: 30px; left: 30px; }
-    
     .sticker-stack-container { width: 130px; height: 180px; bottom: 30px; right: 30px; }
     .stack-placeholder-text { font-size: 14px; }
     .stack-counter { width: 32px; height: 32px; font-size: 15px; top: -12px; right: -12px; }
-    
     .book { width: 440px; max-height: calc(100dvh - 120px); transform: translateX(-15%) scale(1.25); }
     .book.open { transform: translateX(50%) scale(1); }
-    
-    .page-number { top: 12px; font-size: 14px; padding: 2px 6px; min-width: 24px; border-radius: 4px;}
-    .page-number.left { left: 12px; } .page-number.right { right: 12px; }
-    
-    .debug-text { font-size: 16px; } .debug-text span { font-size: 24px; } .debug-text small { font-size: 13px; }
+    .page-numbers-combined { bottom: 12px; right: 18px; font-size: 14px; padding: 2px 8px; border-radius: 4px;}
     .book.open ~ .desk-nav-btn { display: block; }
     .desk-nav-btn.prev { left: calc(50% - 440px + 5px); } .desk-nav-btn.next { left: calc(50% + 440px - 30px); }
+    
+    .team-name { font-size: 20px; }
 }
 </style>
 </head>
@@ -228,9 +190,7 @@ h1 { margin: 0; font-size: 22px; text-transform: uppercase; text-shadow: 0 1px 3
 
 <div id="album-content">
     <div class="desk-nav-btn prev" onclick="flipPrev()"><span>&lt;</span></div>
-    
     <div class="book" id="book"></div>
-
     <div class="desk-nav-btn next" onclick="flipNext()"><span>&gt;</span></div>
 </div>
 
@@ -251,20 +211,20 @@ firebase.initializeApp(firebaseConfig);
 const db = firebase.firestore();
 
 /* =========================================================================
-   DATENBANK & STICKER RENDERING (NEU!)
+   DATENBANK & STICKER RENDERING
    ========================================================================= */
 let globalStickerDatabase = null;
 let currentUserData = null;
+let bookInitialized = false;
 
-// 1. Lade globale Sticker-Datenbank
 fetch("./data/sticker_database.json")
     .then(r => r.json())
     .then(data => {
         globalStickerDatabase = data;
         renderStapel();
+        renderPastedStickers();
     });
 
-// Farbberechnung für Spieler-Sticker
 function getContrastColors(hexColor) {
     if (!hexColor) return { text: '#ffffff', stroke: '#000000' };
     let hex = hexColor.replace('#', '');
@@ -274,7 +234,6 @@ function getContrastColors(hexColor) {
     return (yiq >= 140) ? { text: '#000000', stroke: 'transparent' } : { text: '#ffffff', stroke: '#000000' };    
 }
 
-// Generiert das identische HTML wie auf der Index-Seite
 function createStickerHTML(sticker) {
     if (!sticker) return '';
     
@@ -292,73 +251,56 @@ function createStickerHTML(sticker) {
     else if (sticker.type === 'trophy_top' || sticker.type === 'logo_top' || sticker.type === 'special_top') typeClass = "container-trophy-top";
     else if (sticker.type === 'trophy_bottom' || sticker.type === 'logo_bottom' || sticker.type === 'special_bottom') typeClass = "container-trophy-bottom";
 
-    let inlineStyle = "";
-    let innerHTML = "";
+    let inlineStyle = ""; let innerHTML = "";
     const cleanPath = (p) => p && p.startsWith('./') ? p.substring(2) : (p || '');
 
     if (sticker.type === "player") {
-        const fName = sticker.first_name ? sticker.first_name.trim() : "";
-        const lName = sticker.last_name ? sticker.last_name.trim() : "";
+        const fName = sticker.first_name ? sticker.first_name.trim() : ""; const lName = sticker.last_name ? sticker.last_name.trim() : "";
         const fullName = lName ? `${fName} ${lName}` : fName;
-        
         let ageStr = "";
         if (sticker.birthdate) {
             const parts = sticker.birthdate.split('.');
             if (parts.length === 3) {
-                const dob = new Date(parts[2], parseInt(parts[1]) - 1, parts[0]);
-                const today = new Date();
-                let age = today.getFullYear() - dob.getFullYear();
-                const m = today.getMonth() - dob.getMonth();
+                const dob = new Date(parts[2], parseInt(parts[1]) - 1, parts[0]); const today = new Date();
+                let age = today.getFullYear() - dob.getFullYear(); const m = today.getMonth() - dob.getMonth();
                 if (m < 0 || (m === 0 && today.getDate() < dob.getDate())) age--;
                 ageStr = ` (${age})`;
             }
         }
-        const birthAndAge = (sticker.birthdate ? sticker.birthdate : "") + ageStr;
         let posClassStr = sticker.posClass ? sticker.posClass.replace('pos-', '') : "mf";
-        
-        const playerImg = cleanPath(sticker.image);
-        const flagImg = cleanPath(sticker.flag);
-        const clubImg = cleanPath(sticker.club_image);
-        
-        const c1 = sticker.color_1 || '#c10e23';
-        const textContrast = getContrastColors(c1);
-        
+        const c1 = sticker.color_1 || '#c10e23'; const textContrast = getContrastColors(c1);
         inlineStyle = `--color-1: ${c1}; --color-2: ${sticker.color_2 || '#046a38'}; --color-3: ${sticker.color_3 || '#f2a900'}; --dynamic-text: ${textContrast.text}; --dynamic-stroke: ${textContrast.stroke};`;
         
         innerHTML = `
             <div class="sticker-inner">
-                <div class="sticker-flag"><img src="${flagImg}" onerror="this.style.display='none'"></div>
-                <div class="bg-svg-2"></div>
-                <div class="bg-svg-6"></div>
-                <div class="player-image-container"><img src="${playerImg}" onerror="this.src='assets/Icon.png'"></div>
+                <div class="sticker-flag"><img src="${cleanPath(sticker.flag)}" onerror="this.style.display='none'"></div>
+                <div class="bg-svg-2"></div><div class="bg-svg-6"></div>
+                <div class="player-image-container"><img src="${cleanPath(sticker.image)}" onerror="this.src='assets/Icon.png'"></div>
                 <div class="lower-elements-wrapper">
                     <div class="sticker-info-box"><div class="player-name">${fullName}</div></div>
                     <div class="sticker-meta-container">
                         <div class="meta-box meta-box-left">${sticker.jersey_number || '-'}</div>
-                        <div class="meta-box meta-box-center">${birthAndAge}</div>
+                        <div class="meta-box meta-box-center">${(sticker.birthdate || "") + ageStr}</div>
                         <div class="meta-box meta-box-right">${sticker.height || '-'}</div>
                     </div>
                     <div class="bottom-info-bar">
                         <div class="pos-box" data-pos="${posClassStr}">${sticker.position || '-'}</div>
-                        <img class="club-logo-small" src="${clubImg}" onerror="this.style.display='none'">
+                        <img class="club-logo-small" src="${cleanPath(sticker.club_image)}" onerror="this.style.display='none'">
                         <div class="club-name">${sticker.club_name || '-'}</div>
                         <img class="club-logo-bottom" src="assets/WC_logo.png" onerror="this.style.display='none'">
                     </div>
                 </div>
-            </div>
-        `;
+            </div>`;
     } else {
         let finalPath = cleanPath(sticker.image);
         const pureFileName = finalPath.substring(finalPath.lastIndexOf('/') + 1);
-
         if (sticker.type === 'golden_ball' || (sticker.id && sticker.id.startsWith('GBA'))) finalPath = "photos/golden_ball/" + pureFileName;
         else if (sticker.type === 'golden_boot' || (sticker.id && sticker.id.startsWith('GBO'))) finalPath = "photos/golden_boot/" + pureFileName;
         else if (sticker.type && sticker.type.startsWith('special')) finalPath = "photos/special/" + pureFileName;
         else if (sticker.type && sticker.type.startsWith('stadium')) finalPath = "photos/stadiums/" + pureFileName;
         else if (sticker.type === 'historic_winner') finalPath = "photos/winning_teams/" + pureFileName;
 
-        let sFlag = cleanPath(sticker.flag);
-        let sName = sticker.name || '';
+        let sFlag = cleanPath(sticker.flag); let sName = sticker.name || '';
         let specialHTML = `<img src="${finalPath}" class="special-sticker-img" onerror="this.src='assets/Icon.png'">`;
 
         if (sticker.type === 'golden_boot' || (sticker.id && sticker.id.startsWith('GBO'))) {
@@ -375,119 +317,47 @@ function createStickerHTML(sticker) {
         } else if (sticker.type === 'team_photo') {
             if(sFlag) specialHTML += `<div class="special-flag-wrapper pos-bottom-left-rot" style="background: #ffffff; border: 1.5px solid #cccccc;"><img src="${sFlag}" onerror="this.style.display='none'"></div>`;
         }
-
         innerHTML = `<div class="special-sticker-inner">${specialHTML}</div>`;
     }
-
     return `<div class="sticker-wrapper ${typeClass}" style="${inlineStyle}">${innerHTML}</div>`;
 }
 
-// Rendert den Stapel unten rechts
 function renderStapel() {
     if (!globalStickerDatabase || !currentUserData) return;
     const stapel = currentUserData.stapel || [];
     document.getElementById('stackCounter').innerText = stapel.length;
 
-    const c1 = document.getElementById('stackCard1');
-    const c2 = document.getElementById('stackCard2');
-
+    const c1 = document.getElementById('stackCard1'); const c2 = document.getElementById('stackCard2');
     if (stapel.length > 0) {
         const s1 = globalStickerDatabase[stapel[0]];
-        if (s1) {
-            c1.innerHTML = createStickerHTML(s1);
-            c1.style.border = "none"; 
-            c1.style.backgroundColor = "transparent";
-        }
+        if (s1) { c1.innerHTML = createStickerHTML(s1); c1.style.border = "none"; c1.style.backgroundColor = "transparent"; }
     } else {
-        c1.innerHTML = '<span class="stack-placeholder-text">LEER</span>';
-        c1.style.border = ""; 
-        c1.style.backgroundColor = "";
+        c1.innerHTML = '<span class="stack-placeholder-text">LEER</span>'; c1.style.border = ""; c1.style.backgroundColor = "";
     }
-
     if (stapel.length > 1) {
         const s2 = globalStickerDatabase[stapel[1]];
-        if (s2) {
-            c2.innerHTML = createStickerHTML(s2);
-            c2.style.border = "none";
-            c2.style.backgroundColor = "transparent";
-        }
+        if (s2) { c2.innerHTML = createStickerHTML(s2); c2.style.border = "none"; c2.style.backgroundColor = "transparent"; }
     } else {
-        c2.innerHTML = '';
-        c2.style.border = "";
-        c2.style.backgroundColor = "";
+        c2.innerHTML = ''; c2.style.border = ""; c2.style.backgroundColor = "";
     }
 }
 
-
-/* =========================================================================
-   DRAG & DROP ENGINE FÜR DEN OBERSTEN STICKER
-   ========================================================================= */
-const stackCard1 = document.getElementById('stackCard1');
-let isDraggingTopSticker = false;
-let dragStartX, dragStartY;
-
-// 1. TOUCH (Mobile)
-stackCard1.addEventListener('touchstart', (e) => {
-    const stapel = currentUserData?.stapel || [];
-    if (stapel.length === 0) return;
+// Durchsucht das ganze Buch und füllt Rahmen, deren Sticker in der DB als "pasted" markiert sind
+function renderPastedStickers() {
+    if (!globalStickerDatabase || !currentUserData || !currentUserData.album) return;
+    const albumData = currentUserData.album;
     
-    isDraggingTopSticker = true;
-    isDraggingSticker = true; // Blockiert das Album-Wischen
-    
-    stackCard1.style.transition = 'none';
-    stackCard1.style.zIndex = 9999;
-    
-    dragStartX = e.touches[0].clientX;
-    dragStartY = e.touches[0].clientY;
-}, {passive: false});
+    for (const [stickerId, status] of Object.entries(albumData)) {
+        if (status === "pasted") {
+            const slot = document.getElementById(`slot-${stickerId}`);
+            if (slot && !slot.classList.contains('filled')) {
+                slot.innerHTML = createStickerHTML(globalStickerDatabase[stickerId]);
+                slot.classList.add('filled');
+            }
+        }
+    }
+}
 
-document.addEventListener('touchmove', (e) => {
-    if (!isDraggingTopSticker) return;
-    e.preventDefault(); // Blockiert Scrollen des Browsers
-    
-    let currentX = e.touches[0].clientX - dragStartX;
-    let currentY = e.touches[0].clientY - dragStartY;
-    stackCard1.style.transform = `translate(${currentX}px, ${currentY}px) scale(1.1) rotate(0deg)`;
-}, {passive: false});
-
-document.addEventListener('touchend', (e) => {
-    if (!isDraggingTopSticker) return;
-    isDraggingTopSticker = false;
-    setTimeout(() => isDraggingSticker = false, 50);
-
-    stackCard1.style.transition = 'transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275)';
-    stackCard1.style.transform = 'translate(0px, 0px) rotate(0deg) scale(1)';
-    setTimeout(() => { if(!isDraggingTopSticker) stackCard1.style.zIndex = 3; }, 400);
-});
-
-// 2. MOUSE (Desktop)
-stackCard1.addEventListener('mousedown', (e) => {
-    const stapel = currentUserData?.stapel || [];
-    if (stapel.length === 0) return;
-    isDraggingTopSticker = true;
-    isDraggingSticker = true; 
-    stackCard1.style.transition = 'none';
-    stackCard1.style.zIndex = 9999;
-    dragStartX = e.clientX;
-    dragStartY = e.clientY;
-});
-
-document.addEventListener('mousemove', (e) => {
-    if (!isDraggingTopSticker) return;
-    e.preventDefault();
-    let currentX = e.clientX - dragStartX;
-    let currentY = e.clientY - dragStartY;
-    stackCard1.style.transform = `translate(${currentX}px, ${currentY}px) scale(1.1) rotate(0deg)`;
-});
-
-document.addEventListener('mouseup', (e) => {
-    if (!isDraggingTopSticker) return;
-    isDraggingTopSticker = false;
-    setTimeout(() => isDraggingSticker = false, 50);
-    stackCard1.style.transition = 'transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275)';
-    stackCard1.style.transform = 'translate(0px, 0px) rotate(0deg) scale(1)';
-    setTimeout(() => { if(!isDraggingTopSticker) stackCard1.style.zIndex = 3; }, 400);
-});
 
 /* =========================================================================
    DER DYNAMISCHE ALBUM-BLUEPRINT
@@ -612,47 +482,110 @@ const albumBlueprint = [
 ];
 
 /* =========================================================================
+   HTML GENERATOREN
+   ========================================================================= */
+function buildSlotHTML(stickerId, albumNumber, extraClass = "") {
+    return `<div class="sticker-slot ${extraClass}" id="slot-${stickerId}" data-id="${stickerId}">
+                <div class="slot-circle">${albumNumber}</div>
+            </div>`;
+}
+
+function buildPlayerGrid(prefix, startIdx, endIdx, startAlbumNum) {
+    let html = '';
+    let currentAlbumNum = startAlbumNum;
+    for(let i = startIdx; i <= endIdx; i++) {
+        let sid = prefix + String(i).padStart(3, '0');
+        html += buildSlotHTML(sid, currentAlbumNum);
+        currentAlbumNum++;
+    }
+    return html;
+}
+
+function buildGenericGrid(bp) {
+    let html = '<div class="generic-grid">';
+    let currentAlbumNum = bp.startAlbumNumber;
+    let sIdx = parseInt(bp.startId.replace(/\D/g, ''));
+    let eIdx = parseInt(bp.endId.replace(/\D/g, ''));
+    let prefix = bp.startId.replace(/[0-9]/g, '');
+    for(let i = sIdx; i <= eIdx; i++) {
+        let sid = prefix + String(i).padStart(3, '0');
+        html += buildSlotHTML(sid, currentAlbumNum);
+        currentAlbumNum++;
+    }
+    html += '</div>';
+    return html;
+}
+
+function buildPageHTML(bp, isLeftPage) {
+    if (bp.type === 'team') {
+        if (isLeftPage) { // Linke Seite (Slots 001 bis 014)
+            let nameStyle = bp.name.length > 12 ? 'font-size: 2.8cqw; line-height: 1.1;' : '';
+            return `
+                <div class="page-wrapper">
+                    <div class="team-header">
+                        <div class="team-header-left">
+                            <h2 class="team-name" style="${nameStyle}">${bp.name}</h2>
+                            ${buildSlotHTML(bp.countryCode + '001', bp.startAlbumNumber, 'slot-landscape')}
+                        </div>
+                        <div class="team-header-right">
+                            <div class="group-box"><span>GROUP</span><strong>${bp.group}</strong></div>
+                            ${buildSlotHTML(bp.countryCode + '002', bp.startAlbumNumber + 1)}
+                        </div>
+                    </div>
+                    <div class="player-grid">
+                        ${buildPlayerGrid(bp.countryCode, 3, 14, bp.startAlbumNumber + 2)}
+                    </div>
+                </div>`;
+        } else { // Rechte Seite (Slots 015 bis 028)
+            return `
+                <div class="page-wrapper">
+                    <div class="player-grid">
+                        ${buildPlayerGrid(bp.countryCode, 15, 26, bp.startAlbumNumber)}
+                        ${buildPlayerGrid(bp.countryCode, 27, 28, bp.startAlbumNumber + 12)}
+                        <div class="match-schedule">
+                            <div class="schedule-line"></div>
+                            <div class="schedule-line"></div>
+                            <div class="schedule-line"></div>
+                        </div>
+                    </div>
+                </div>`;
+        }
+    }
+    // Dummy für andere Seiten
+    if (bp.type === 'cover' || bp.type === 'index') return `<div class="debug-text"><span>${bp.type}</span></div>`;
+    return buildGenericGrid(bp);
+}
+
+/* =========================================================================
    3D BOOK ENGINE
    ========================================================================= */
 const book = document.getElementById('book');
-let papers = [];
-let currentPageIndex = 0; 
-let maxPages = 0;
-
-function getDebugHTML(bp) {
-    if (!bp) return '';
-    if (bp.type === 'team') return `<span>Group ${bp.group}</span>${bp.name}<br>(${bp.startId} - ${bp.endId})<br><small>Sticker: ${bp.startAlbumNumber} - ${bp.endAlbumNumber}</small>`;
-    if (bp.type === 'cover') return `<span>Backcover</span>`;
-    if (bp.type === 'index') return `<span>Index</span>`;
-    if (bp.type === 'stadiums') return `<span>Stadiums</span><br>(${bp.startId} - ${bp.endId})<br><small>Sticker: ${bp.startAlbumNumber} - ${bp.endAlbumNumber}</small>`;
-    if (bp.type === 'special') return `<span>Special</span><br>(${bp.startId} - ${bp.endId})<br><small>Sticker: ${bp.startAlbumNumber} - ${bp.endAlbumNumber}</small>`;
-    if (bp.type === 'golden_boots') return `<span>Golden Boots</span><br>(${bp.startId} - ${bp.endId})<br><small>Sticker: ${bp.startAlbumNumber} - ${bp.endAlbumNumber}</small>`;
-    if (bp.type === 'golden_ball') return `<span>Golden Ball</span><br>(${bp.startId} - ${bp.endId})<br><small>Sticker: ${bp.startAlbumNumber} - ${bp.endAlbumNumber}</small>`;
-    if (bp.type === 'winning_teams') return `<span>Winning Teams</span><br>(${bp.startId} - ${bp.endId})<br><small>Sticker: ${bp.startAlbumNumber} - ${bp.endAlbumNumber}</small>`;
-    return '';
-}
+let papers = []; let currentPageIndex = 0; let maxPages = 0;
 
 function initBook() {
-    book.innerHTML = '';
-    papers = [];
+    book.innerHTML = ''; papers = [];
     const totalPapers = Math.ceil(albumBlueprint.length / 2);
 
     for (let i = 0; i <= totalPapers; i++) {
-        const paper = document.createElement('div');
-        paper.className = 'paper';
-        paper.id = `paper${i}`;
-
+        const paper = document.createElement('div'); paper.className = 'paper'; paper.id = `paper${i}`;
         const front = document.createElement('div'); front.className = 'front';
         const back = document.createElement('div'); back.className = 'back';
 
         if (i === 0) {
             front.innerHTML = `<img src="assets/panini_album.png" class="cover-img" onerror="this.src='assets/Icon.png'">`;
-            back.innerHTML = `<div class="page-number left">0</div><div class="debug-text">${getDebugHTML(albumBlueprint[0])}</div>`;
+            back.innerHTML = buildPageHTML(albumBlueprint[0], true);
         } else {
-            const frontPageIndex = (i * 2) - 1;
-            const backPageIndex = (i * 2);
-            if (frontPageIndex < albumBlueprint.length) front.innerHTML = `<div class="page-number right">${frontPageIndex}</div><div class="debug-text">${getDebugHTML(albumBlueprint[frontPageIndex])}</div>`;
-            if (backPageIndex < albumBlueprint.length) back.innerHTML = `<div class="page-number left">${backPageIndex}</div><div class="debug-text">${getDebugHTML(albumBlueprint[backPageIndex])}</div>`;
+            const frontPageIndex = (i * 2) - 1; const backPageIndex = (i * 2);
+            if (frontPageIndex < albumBlueprint.length) {
+                // Front ist immer die RECHTE Seite im Buch
+                let combinedPageNum = `${frontPageIndex} - ${backPageIndex}`;
+                front.innerHTML = buildPageHTML(albumBlueprint[frontPageIndex], false) + 
+                                  `<div class="page-numbers-combined">${combinedPageNum}</div>`;
+            }
+            if (backPageIndex < albumBlueprint.length) {
+                // Back ist immer die LINKE Seite im Buch
+                back.innerHTML = buildPageHTML(albumBlueprint[backPageIndex], true);
+            }
         }
         paper.appendChild(front); paper.appendChild(back);
         book.appendChild(paper); papers.push(paper); 
@@ -660,7 +593,6 @@ function initBook() {
     maxPages = papers.length;
     papers.forEach((paper, index) => { paper.style.zIndex = maxPages - index; });
 }
-initBook();
 
 function updateNavArrows() {
     const nextArrow = document.querySelector('.desk-nav-btn.next');
@@ -683,7 +615,6 @@ book.addEventListener('click', (e) => {
 });
 
 function openBook() { book.classList.add('open'); flipNext(); }
-
 function flipNext() {
     if (currentPageIndex < maxPages - 1) {
         const paper = papers[currentPageIndex]; paper.classList.add('flipped');
@@ -691,7 +622,6 @@ function flipNext() {
         currentPageIndex++; updateNavArrows(); 
     }
 }
-
 function flipPrev() {
     if (currentPageIndex > 1) {
         currentPageIndex--; const paper = papers[currentPageIndex]; paper.classList.remove('flipped');
@@ -705,12 +635,127 @@ function flipPrev() {
 }
 
 /* =========================================================================
+   DRAG & DROP ENGINE & FIREBASE
+   ========================================================================= */
+const stackCard1 = document.getElementById('stackCard1');
+let isDraggingTopSticker = false; let isDraggingSticker = false;
+let dragStartX, dragStartY;
+
+function pasteStickerToAlbum(stickerId) {
+    if (!firebase.auth().currentUser) return;
+    const uid = firebase.auth().currentUser.uid;
+    // Feuer auf Firebase: Sticker einkleben und vom Stapel entfernen
+    db.collection("users").doc(uid).update({
+        [`album.${stickerId}`]: "pasted",
+        stapel: firebase.firestore.FieldValue.arrayRemove(stickerId)
+    });
+    
+    // Optische Sofort-Reaktion (damit es sich flüssig anfühlt)
+    const slot = document.getElementById(`slot-${stickerId}`);
+    if(slot) {
+        slot.innerHTML = createStickerHTML(globalStickerDatabase[stickerId]);
+        slot.classList.add('filled');
+    }
+}
+
+// TOUCH (Mobile)
+stackCard1.addEventListener('touchstart', (e) => {
+    const stapel = currentUserData?.stapel || [];
+    if (stapel.length === 0) return;
+    isDraggingTopSticker = true; isDraggingSticker = true; 
+    stackCard1.style.transition = 'none'; stackCard1.style.zIndex = 9999;
+    dragStartX = e.touches[0].clientX; dragStartY = e.touches[0].clientY;
+}, {passive: false});
+
+document.addEventListener('touchmove', (e) => {
+    if (!isDraggingTopSticker) return;
+    e.preventDefault(); 
+    let currentX = e.touches[0].clientX - dragStartX; let currentY = e.touches[0].clientY - dragStartY;
+    stackCard1.style.transform = `translate(${currentX}px, ${currentY}px) scale(1.1) rotate(0deg)`;
+}, {passive: false});
+
+document.addEventListener('touchend', (e) => {
+    if (!isDraggingTopSticker) return;
+    
+    // Verstecke den Sticker für 1ms, um zu schauen, welcher Slot darunter liegt
+    stackCard1.style.visibility = 'hidden';
+    const elemBelow = document.elementFromPoint(e.changedTouches[0].clientX, e.changedTouches[0].clientY);
+    stackCard1.style.visibility = 'visible';
+
+    let droppedOnSlot = false;
+    if (elemBelow) {
+        const slot = elemBelow.closest('.sticker-slot');
+        if (slot) {
+            const topStickerId = currentUserData.stapel[0];
+            if (slot.dataset.id === topStickerId && !slot.classList.contains('filled')) {
+                droppedOnSlot = true;
+                pasteStickerToAlbum(topStickerId);
+            }
+        }
+    }
+
+    isDraggingTopSticker = false; setTimeout(() => isDraggingSticker = false, 50);
+
+    if(!droppedOnSlot) {
+        stackCard1.style.transition = 'transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275)';
+        stackCard1.style.transform = 'translate(0px, 0px) rotate(0deg) scale(1)';
+        setTimeout(() => { if(!isDraggingTopSticker) stackCard1.style.zIndex = 3; }, 400);
+    } else {
+        stackCard1.style.transform = 'translate(0px, 0px) rotate(0deg) scale(1)';
+        stackCard1.style.zIndex = 3;
+    }
+});
+
+// MOUSE (Desktop)
+stackCard1.addEventListener('mousedown', (e) => {
+    const stapel = currentUserData?.stapel || [];
+    if (stapel.length === 0) return;
+    isDraggingTopSticker = true; isDraggingSticker = true; 
+    stackCard1.style.transition = 'none'; stackCard1.style.zIndex = 9999;
+    dragStartX = e.clientX; dragStartY = e.clientY;
+});
+document.addEventListener('mousemove', (e) => {
+    if (!isDraggingTopSticker) return;
+    e.preventDefault();
+    let currentX = e.clientX - dragStartX; let currentY = e.clientY - dragStartY;
+    stackCard1.style.transform = `translate(${currentX}px, ${currentY}px) scale(1.1) rotate(0deg)`;
+});
+document.addEventListener('mouseup', (e) => {
+    if (!isDraggingTopSticker) return;
+
+    stackCard1.style.visibility = 'hidden';
+    const elemBelow = document.elementFromPoint(e.clientX, e.clientY);
+    stackCard1.style.visibility = 'visible';
+
+    let droppedOnSlot = false;
+    if (elemBelow) {
+        const slot = elemBelow.closest('.sticker-slot');
+        if (slot) {
+            const topStickerId = currentUserData.stapel[0];
+            if (slot.dataset.id === topStickerId && !slot.classList.contains('filled')) {
+                droppedOnSlot = true;
+                pasteStickerToAlbum(topStickerId);
+            }
+        }
+    }
+
+    isDraggingTopSticker = false; setTimeout(() => isDraggingSticker = false, 50);
+
+    if(!droppedOnSlot) {
+        stackCard1.style.transition = 'transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275)';
+        stackCard1.style.transform = 'translate(0px, 0px) rotate(0deg) scale(1)';
+        setTimeout(() => { if(!isDraggingTopSticker) stackCard1.style.zIndex = 3; }, 400);
+    } else {
+        stackCard1.style.transform = 'translate(0px, 0px) rotate(0deg) scale(1)';
+        stackCard1.style.zIndex = 3;
+    }
+});
+
+/* =========================================================================
    TOUCH SWIPE LOGIC
    ========================================================================= */
 let touchstartX = 0; let touchstartY = 0; let touchendX = 0; let touchendY = 0;
-let isDraggingSticker = false;
 const albumContent = document.getElementById('album-content');
-
 albumContent.addEventListener('touchstart', e => {
     if (e.target.closest('#stickerStack')) { isDraggingSticker = true; return; }
     isDraggingSticker = false; touchstartX = e.changedTouches[0].screenX; touchstartY = e.changedTouches[0].screenY;
@@ -719,7 +764,6 @@ albumContent.addEventListener('touchend', e => {
     if (isDraggingSticker) return;
     touchendX = e.changedTouches[0].screenX; touchendY = e.changedTouches[0].screenY; handleSwipe();
 });
-
 function handleSwipe() {
     if (!book.classList.contains('open')) return;
     const diffX = touchendX - touchstartX; const diffY = touchendY - touchstartY;
@@ -746,12 +790,19 @@ function handleSwipe() {
     }
 }
 
+// Init
+initBook();
+
 firebase.auth().onAuthStateChanged((user) => {
     if (user) {
         db.collection("users").doc(user.uid).onSnapshot((doc) => {
             if (doc.exists) {
                 currentUserData = doc.data();
-                renderStapel(); // Rendert den Stapel neu, wenn Daten da sind
+                if (!bookInitialized) {
+                    renderPastedStickers();
+                    bookInitialized = true;
+                }
+                renderStapel();
             }
         });
     } else {
