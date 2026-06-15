@@ -44,7 +44,11 @@ h1 { margin: 0; font-size: 22px; text-transform: uppercase; text-shadow: 0 1px 3
    3D ALBUM ENGINE
    ========================================================================= */
 #album-content { width: 100%; flex-grow: 1; position: relative; display: flex; justify-content: center; align-items: center; margin-top: -3vh; perspective: 2500px; }
-.book { position: relative; width: 49vw; aspect-ratio: 1 / 1.41; max-height: calc(100dvh - 200px); transform-style: preserve-3d; transform-origin: left center; transition: transform 0.6s cubic-bezier(0.4, 0.0, 0.2, 1); transform: translateX(-20%) scale(1.4); }
+.book { 
+    position: relative; width: 49vw; 
+    aspect-ratio: 1 / 1.45; /* Leicht gestreckt für perfektes Raster-Fitting */
+    max-height: calc(100dvh - 200px); transform-style: preserve-3d; transform-origin: left center; transition: transform 0.6s cubic-bezier(0.4, 0.0, 0.2, 1); transform: translateX(-20%) scale(1.4); 
+}
 .book.open { transform: translateX(50%) scale(1); }
 @media (max-width: 767px) {
     .book.zoomed-left { transform: translateX(150%) translateY(-8vh) scale(2); }
@@ -57,52 +61,58 @@ h1 { margin: 0; font-size: 22px; text-transform: uppercase; text-shadow: 0 1px 3
 .back { transform: rotateY(180deg); border-right: 1px solid rgba(0,0,0,0.25); }
 .cover-img { width: 100%; height: 100%; object-fit: cover; border-radius: 0 8px 8px 0; }
 
-/* SEITENZAHLEN */
+/* SEITENZAHLEN (Nur unten rechts auf der Front) */
 .page-numbers-combined { position: absolute; bottom: 8px; right: 12px; font-size: 12px; font-weight: bold; color: #111111; background: rgba(255,255,255,0.7); padding: 2px 6px; border-radius: 3px; z-index: 50; }
 
 /* =========================================================================
-   DYNAMISCHES SEITEN-LAYOUT (NEUES UNIFIED 4x4 GRID FÜR PERFEKTE ALIGNMENT)
+   DYNAMISCHES SEITEN-LAYOUT (STRIKTES MATHEMATISCHES GRID)
    ========================================================================= */
-.unified-page-grid {
-    width: 100%; height: 100%; padding: 4%;
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: repeat(4, 1fr);
-    gap: 2%;
-}
-
-/* HEADER ZELLEN (Verhalten sich exakt wie ein Sticker-Platz) */
-.header-cell {
+.page-wrapper {
     container-type: inline-size;
-    display: flex; flex-direction: column; justify-content: center;
-    width: 100%; height: 100%;
+    width: 100%; height: 100%; padding: 3cqw;
+    display: flex; flex-direction: column;
+    
+    /* MATHEMATISCH FIXIERTE VARIABLEN: Garantiert immer gleiche Größe! */
+    --col-w: 22cqw; 
+    --col-h: calc(22cqw * 1.38);
 }
 
-.team-name {
-    color: #111; margin: 0; text-transform: uppercase; line-height: 1.05; letter-spacing: -0.5px;
-    word-wrap: break-word; text-align: left; padding-right: 5px;
+.team-name { color: #111; margin: 0 0 2cqw 0; font-size: 8cqw; text-transform: uppercase; line-height: 1; letter-spacing: -0.5px; }
+
+/* Header Grid (Team Foto, Group, Wappen) */
+.team-header-grid {
+    width: 100%; display: grid; grid-template-columns: repeat(4, 1fr); gap: 2cqw;
+    margin-bottom: 2cqw;
+    height: var(--col-h); /* Exakt so hoch wie ein normaler Sticker */
 }
 
-.group-cell { align-items: center; justify-content: center; text-align: center; }
-.group-cell span { display: block; font-size: 10cqw; font-weight: bold; letter-spacing: 1px; color: #111; margin-bottom: 2px;}
-.group-cell strong { display: block; font-size: 28cqw; line-height: 1; color: #111; }
-
-/* DUMMY SCHEDULE (Unten rechts, über 2 Spalten) */
-.match-schedule {
-    grid-column: span 2; 
-    display: flex; flex-direction: column; justify-content: space-evenly; padding: 5% 10%;
+.group-box {
+    display: flex; flex-direction: column; justify-content: flex-end; align-items: center; text-align: center;
+    padding-bottom: 1cqw;
 }
-.schedule-line { width: 100%; height: 1.5px; background-color: rgba(255,255,255,0.6); position: relative; box-shadow: 0 1px 1px rgba(0,0,0,0.1); }
-.schedule-line::before { content: ''; position: absolute; left: -10px; top: -3.5px; width: 8px; height: 8px; border-radius: 50%; background-color: rgba(255,255,255,0.6); box-shadow: 0 1px 1px rgba(0,0,0,0.1); }
+.group-box span { font-size: 2.5cqw; font-weight: bold; color: #111; margin-bottom: 2px;}
+.group-box strong { font-size: 7cqw; line-height: 1; color: #111; }
 
+/* Die restlichen Grid-Bereiche */
+.player-grid-bottom, .player-grid-full, .generic-grid {
+    width: 100%; display: grid; grid-template-columns: repeat(4, 1fr); gap: 2cqw; align-content: start;
+}
 
-/* PLATZHALTER & STICKER DESIGN */
+/* --- PLATZHALTER & STICKER DESIGN --- */
 .sticker-slot {
-    position: relative; width: 100%; height: 100%; 
+    position: relative; 
+    width: var(--col-w); height: var(--col-h); /* Zwingt jeden Kasten auf exakt diese Größe */
     border: 1.5px solid #111111; background-color: rgba(0,0,0,0.03); 
     display: flex; align-items: center; justify-content: center;
     container-type: inline-size;
 }
+
+/* Der 90° Rotations-Modifikator */
+.rotated-slot {
+    transform: rotate(-90deg);
+    transform-origin: left bottom;
+}
+
 .slot-circle {
     width: 28px; height: 28px; border-radius: 50%; border: 1.5px solid #111111;
     display: flex; align-items: center; justify-content: center;
@@ -110,10 +120,6 @@ h1 { margin: 0; font-size: 22px; text-transform: uppercase; text-shadow: 0 1px 3
 }
 .sticker-slot.filled { border: none; background-color: transparent; }
 .sticker-slot.filled .slot-circle { display: none; }
-
-/* GENERIC GRID FÜR SPECIALS/STADIEN */
-.generic-grid { width: 100%; height: 100%; padding: 4%; display: flex; flex-wrap: wrap; align-content: flex-start; gap: 2%; }
-.generic-grid .sticker-slot { width: 23.5%; aspect-ratio: 1 / 1.38; height: auto; margin-bottom: 2%; }
 
 
 /* --- CSS-KLASSEN FÜR STICKER DESIGN (AUS INDEX.HTML) --- */
@@ -158,6 +164,7 @@ h1 { margin: 0; font-size: 22px; text-transform: uppercase; text-shadow: 0 1px 3
 .name-wrapper-rot { position: absolute; left: calc(2px + 5.625cqw); top: 50%; transform: translate(-50%, -50%) rotate(90deg); z-index: 10; }
 .name-wrapper-rot .special-name-box { position: relative; bottom: auto; left: auto; transform: none; }
 
+.debug-text { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 80%; text-align: center; color: #555; font-family: Arial, sans-serif; font-size: 12px; line-height: 1.4; }
 
 /* --- DESKTOP MINIMAL-PFEILE --- */
 .desk-nav-btn { position: absolute; top: 50%; transform: translateY(-50%); font-size: 42px; color: rgba(0, 0, 0, 0.35); cursor: pointer; z-index: 1000; display: none; font-family: sans-serif; transition: color 0.2s ease, opacity 0.3s ease; }
@@ -512,7 +519,7 @@ function buildPlayerGrid(prefix, startIdx, endIdx, startAlbumNum) {
 }
 
 function buildGenericGrid(bp) {
-    let html = '<div class="generic-grid">';
+    let html = '<div class="page-wrapper"><div class="generic-grid">';
     let currentAlbumNum = bp.startAlbumNumber;
     let sIdx = parseInt(bp.startId.replace(/\D/g, ''));
     let eIdx = parseInt(bp.endId.replace(/\D/g, ''));
@@ -522,41 +529,42 @@ function buildGenericGrid(bp) {
         html += buildSlotHTML(sid, currentAlbumNum);
         currentAlbumNum++;
     }
-    html += '</div>';
+    html += '</div></div>';
     return html;
 }
 
 function buildPageHTML(bp, isLeftPage) {
     if (bp.type === 'team') {
         if (isLeftPage) { 
-            let nameStyle = bp.name.length > 10 ? 'font-size: 13cqw;' : 'font-size: 18cqw;';
+            let nameStyle = bp.name.length > 15 ? 'font-size: 6cqw;' : 'font-size: 8cqw;';
             return `
-                <div class="unified-page-grid">
-                    <div class="header-cell">
-                        <h2 class="team-name" style="${nameStyle}">${bp.name}</h2>
+                <div class="page-wrapper">
+                    <h2 class="team-name" style="${nameStyle}">${bp.name}</h2>
+                    <div class="team-header-grid">
+                        <div style="grid-column: 1; display: flex; align-items: flex-end;">
+                            ${buildSlotHTML(bp.countryCode + '001', bp.startAlbumNumber, 'rotated-slot')}
+                        </div>
+                        <div style="grid-column: 2;"></div>
+                        <div class="group-box" style="grid-column: 3;">
+                            <span>GROUP</span><strong>${bp.group}</strong>
+                        </div>
+                        <div style="grid-column: 4; display: flex; align-items: flex-end;">
+                            ${buildSlotHTML(bp.countryCode + '002', bp.startAlbumNumber + 1)}
+                        </div>
                     </div>
-                    ${buildSlotHTML(bp.countryCode + '001', bp.startAlbumNumber)}
-                    <div class="header-cell group-cell">
-                        <span>GROUP</span><strong>${bp.group}</strong>
+                    <div class="player-grid-bottom">
+                        ${buildPlayerGrid(bp.countryCode, 3, 14, bp.startAlbumNumber + 2)}
                     </div>
-                    ${buildSlotHTML(bp.countryCode + '002', bp.startAlbumNumber + 1)}
-                    
-                    ${buildPlayerGrid(bp.countryCode, 3, 14, bp.startAlbumNumber + 2)}
                 </div>`;
         } else { 
             return `
-                <div class="unified-page-grid">
-                    ${buildPlayerGrid(bp.countryCode, 15, 28, bp.startAlbumNumber)}
-                    
-                    <div class="match-schedule">
-                        <div class="schedule-line"></div>
-                        <div class="schedule-line"></div>
-                        <div class="schedule-line"></div>
-                    </div>
+                <div class="page-wrapper">
+                    <div class="player-grid-full">
+                        ${buildPlayerGrid(bp.countryCode, 15, 28, bp.startAlbumNumber)}
+                        </div>
                 </div>`;
         }
     }
-    if (bp.type === 'cover' || bp.type === 'index') return `<div class="debug-text"><span>${bp.type}</span></div>`;
     return buildGenericGrid(bp);
 }
 
@@ -658,7 +666,6 @@ function pasteStickerToAlbum(stickerId) {
     }
 }
 
-// TOUCH (Mobile)
 stackCard1.addEventListener('touchstart', (e) => {
     const stapel = currentUserData?.stapel || [];
     if (stapel.length === 0) return;
@@ -705,7 +712,6 @@ document.addEventListener('touchend', (e) => {
     }
 });
 
-// MOUSE (Desktop)
 stackCard1.addEventListener('mousedown', (e) => {
     const stapel = currentUserData?.stapel || [];
     if (stapel.length === 0) return;
