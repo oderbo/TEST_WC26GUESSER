@@ -107,7 +107,6 @@ h1 {
     box-shadow: 0 2px 5px rgba(0,0,0,0.3); z-index: 10;
 }
 
-
 /* =========================================================================
    3D ALBUM ENGINE
    ========================================================================= */
@@ -173,14 +172,17 @@ h1 {
 .page-number.left { left: 6px; }
 .page-number.right { right: 6px; }
 
-/* NEU: Dummy-Text für die Test-Phase */
+/* NEU: Angepasster Dummy-Text für die Test-Phase */
 .debug-text {
     position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
     width: 80%; text-align: center; color: #555; font-family: Arial, sans-serif;
-    font-size: 12px;
+    font-size: 12px; line-height: 1.4;
 }
 .debug-text span {
-    display: block; font-size: 22px; font-weight: bold; color: #3f57f5; margin-bottom: 8px;
+    display: block; font-size: 20px; font-weight: bold; color: #3f57f5; margin-bottom: 8px;
+}
+.debug-text small {
+    display: block; font-size: 10px; color: #888; margin-top: 5px; font-weight: bold;
 }
 
 /* --- DESKTOP MINIMAL-PFEILE --- */
@@ -217,7 +219,8 @@ h1 {
     .page-number.right { right: 12px; }
     
     .debug-text { font-size: 16px; }
-    .debug-text span { font-size: 28px; }
+    .debug-text span { font-size: 24px; }
+    .debug-text small { font-size: 13px; }
 
     .book.open ~ .desk-nav-btn { display: block; }
     .desk-nav-btn.prev { left: calc(50% - 440px + 5px); }
@@ -270,9 +273,126 @@ firebase.initializeApp(firebaseConfig);
 const db = firebase.firestore();
 
 /* =========================================================================
-   DER DYNAMISCHE ALBUM-BLUEPRINT (Kompakt generiert aus deiner CSV)
+   DER DYNAMISCHE ALBUM-BLUEPRINT (Mit Album-Nummern!)
    ========================================================================= */
-const albumBlueprint=[{t:"cover_back"},{t:"special",id:"SPC",s:0,e:6},{t:"index"},{t:"index"},{t:"stadiums",id:"STD",s:1,e:8},{t:"stadiums",id:"STD",s:9,e:16},{t:"stadiums",id:"STD",s:17,e:24},{t:"stadiums",id:"STD",s:25,e:26},{t:"team",id:"MEX",n:"Mexico",g:"A",s:1,e:14},{t:"team",id:"MEX",n:"Mexico",g:"A",s:15,e:28},{t:"team",id:"RSA",n:"South Africa",g:"A",s:1,e:14},{t:"team",id:"RSA",n:"South Africa",g:"A",s:15,e:28},{t:"team",id:"KOR",n:"South Korea",g:"A",s:1,e:14},{t:"team",id:"KOR",n:"South Korea",g:"A",s:15,e:28},{t:"team",id:"CZE",n:"Czech Republic",g:"A",s:1,e:14},{t:"team",id:"CZE",n:"Czech Republic",g:"A",s:15,e:28},{t:"team",id:"CAN",n:"Canada",g:"B",s:1,e:14},{t:"team",id:"CAN",n:"Canada",g:"B",s:15,e:28},{t:"team",id:"BIH",n:"Bosnia and Herzegovina",g:"B",s:1,e:14},{t:"team",id:"BIH",n:"Bosnia and Herzegovina",g:"B",s:15,e:28},{t:"team",id:"QAT",n:"Qatar",g:"B",s:1,e:14},{t:"team",id:"QAT",n:"Qatar",g:"B",s:15,e:28},{t:"team",id:"SUI",n:"Switzerland",g:"B",s:1,e:14},{t:"team",id:"SUI",n:"Switzerland",g:"B",s:15,e:28},{t:"team",id:"BRA",n:"Brazil",g:"C",s:1,e:14},{t:"team",id:"BRA",n:"Brazil",g:"C",s:15,e:28},{t:"team",id:"MAR",n:"Morocco",g:"C",s:1,e:14},{t:"team",id:"MAR",n:"Morocco",g:"C",s:15,e:28},{t:"team",id:"HAI",n:"Haiti",g:"C",s:1,e:14},{t:"team",id:"HAI",n:"Haiti",g:"C",s:15,e:28},{t:"team",id:"SCO",n:"Scotland",g:"C",s:1,e:14},{t:"team",id:"SCO",n:"Scotland",g:"C",s:15,e:28},{t:"team",id:"USA",n:"USA",g:"D",s:1,e:14},{t:"team",id:"USA",n:"USA",g:"D",s:15,e:28},{t:"team",id:"PAR",n:"Paraguay",g:"D",s:1,e:14},{t:"team",id:"PAR",n:"Paraguay",g:"D",s:15,e:28},{t:"team",id:"AUS",n:"Australia",g:"D",s:1,e:14},{t:"team",id:"AUS",n:"Australia",g:"D",s:15,e:28},{t:"team",id:"TUR",n:"Turkey",g:"D",s:1,e:14},{t:"team",id:"TUR",n:"Turkey",g:"D",s:15,e:28},{t:"gboots",id:"GBO",s:1,e:6},{t:"gboots",id:"GBO",s:7,e:14},{t:"gboots",id:"GBO",s:15,e:21},{t:"gboots",id:"GBO",s:22,e:28},{t:"team",id:"GER",n:"Germany",g:"E",s:1,e:14},{t:"team",id:"GER",n:"Germany",g:"E",s:15,e:28},{t:"team",id:"CUW",n:"Curaçao",g:"E",s:1,e:14},{t:"team",id:"CUW",n:"Curaçao",g:"E",s:15,e:28},{t:"team",id:"CIV",n:"Ivory Coast",g:"E",s:1,e:14},{t:"team",id:"CIV",n:"Ivory Coast",g:"E",s:15,e:28},{t:"team",id:"ECU",n:"Ecuador",g:"E",s:1,e:14},{t:"team",id:"ECU",n:"Ecuador",g:"E",s:15,e:28},{t:"team",id:"NED",n:"Netherlands",g:"F",s:1,e:14},{t:"team",id:"NED",n:"Netherlands",g:"F",s:15,e:28},{t:"team",id:"JPN",n:"Japan",g:"F",s:1,e:14},{t:"team",id:"JPN",n:"Japan",g:"F",s:15,e:28},{t:"team",id:"SWE",n:"Sweden",g:"F",s:1,e:14},{t:"team",id:"SWE",n:"Sweden",g:"F",s:15,e:28},{t:"team",id:"TUN",n:"Tunisia",g:"F",s:1,e:14},{t:"team",id:"TUN",n:"Tunisia",g:"F",s:15,e:28},{t:"team",id:"BEL",n:"Belgium",g:"G",s:1,e:14},{t:"team",id:"BEL",n:"Belgium",g:"G",s:15,e:28},{t:"team",id:"EGY",n:"Egypt",g:"G",s:1,e:14},{t:"team",id:"EGY",n:"Egypt",g:"G",s:15,e:28},{t:"team",id:"IRN",n:"Iran",g:"G",s:1,e:14},{t:"team",id:"IRN",n:"Iran",g:"G",s:15,e:28},{t:"team",id:"NZL",n:"New Zealand",g:"G",s:1,e:14},{t:"team",id:"NZL",n:"New Zealand",g:"G",s:15,e:28},{t:"team",id:"ESP",n:"Spain",g:"H",s:1,e:14},{t:"team",id:"ESP",n:"Spain",g:"H",s:15,e:28},{t:"team",id:"CPV",n:"Cape Verde",g:"H",s:1,e:14},{t:"team",id:"CPV",n:"Cape Verde",g:"H",s:15,e:28},{t:"team",id:"KSA",n:"Saudi Arabia",g:"H",s:1,e:14},{t:"team",id:"KSA",n:"Saudi Arabia",g:"H",s:15,e:28},{t:"team",id:"URU",n:"Uruguay",g:"H",s:1,e:14},{t:"team",id:"URU",n:"Uruguay",g:"H",s:15,e:28},{t:"gball",id:"GBA",s:1,e:5},{t:"gball",id:"GBA",s:6,e:11},{t:"gball",id:"GBA",s:12,e:17},{t:"gball",id:"GBA",s:18,e:22},{t:"team",id:"FRA",n:"France",g:"I",s:1,e:14},{t:"team",id:"FRA",n:"France",g:"I",s:15,e:28},{t:"team",id:"SEN",n:"Senegal",g:"I",s:1,e:14},{t:"team",id:"SEN",n:"Senegal",g:"I",s:15,e:28},{t:"team",id:"IRQ",n:"Iraq",g:"I",s:1,e:14},{t:"team",id:"IRQ",n:"Iraq",g:"I",s:15,e:28},{t:"team",id:"NOR",n:"Norway",g:"I",s:1,e:14},{t:"team",id:"NOR",n:"Norway",g:"I",s:15,e:28},{t:"team",id:"ARG",n:"Argentina",g:"J",s:1,e:14},{t:"team",id:"ARG",n:"Argentina",g:"J",s:15,e:28},{t:"team",id:"ALG",n:"Algeria",g:"J",s:1,e:14},{t:"team",id:"ALG",n:"Algeria",g:"J",s:15,e:28},{t:"team",id:"AUT",n:"Austria",g:"J",s:1,e:14},{t:"team",id:"AUT",n:"Austria",g:"J",s:15,e:28},{t:"team",id:"JOR",n:"Jordan",g:"J",s:1,e:14},{t:"team",id:"JOR",n:"Jordan",g:"J",s:15,e:28},{t:"team",id:"POR",n:"Portugal",g:"K",s:1,e:14},{t:"team",id:"POR",n:"Portugal",g:"K",s:15,e:28},{t:"team",id:"COD",n:"DR Congo",g:"K",s:1,e:14},{t:"team",id:"COD",n:"DR Congo",g:"K",s:15,e:28},{t:"team",id:"UZB",n:"Uzbekistan",g:"K",s:1,e:14},{t:"team",id:"UZB",n:"Uzbekistan",g:"K",s:15,e:28},{t:"team",id:"COL",n:"Colombia",g:"K",s:1,e:14},{t:"team",id:"COL",n:"Colombia",g:"K",s:15,e:28},{t:"team",id:"ENG",n:"England",g:"L",s:1,e:14},{t:"team",id:"ENG",n:"England",g:"L",s:15,e:28},{t:"team",id:"CRO",n:"Croatia",g:"L",s:1,e:14},{t:"team",id:"CRO",n:"Croatia",g:"L",s:15,e:28},{t:"team",id:"GHA",n:"Ghana",g:"L",s:1,e:14},{t:"team",id:"GHA",n:"Ghana",g:"L",s:15,e:28},{t:"team",id:"PAN",n:"Panama",g:"L",s:1,e:14},{t:"team",id:"PAN",n:"Panama",g:"L",s:15,e:28},{t:"winners",id:"WIN",s:1,e:5},{t:"winners",id:"WIN",s:6,e:11},{t:"winners",id:"WIN",s:12,e:17},{t:"winners",id:"WIN",s:18,e:22}];
+const albumBlueprint = [
+    { type: "cover" },
+    { type: "special", startId: "SPC000", endId: "SPC006", startAlbumNumber: "00", endAlbumNumber: 6 },
+    { type: "index" },
+    { type: "index" },
+    { type: "stadiums", startId: "STD001", endId: "STD008", startAlbumNumber: 7, endAlbumNumber: 14 },
+    { type: "stadiums", startId: "STD009", endId: "STD016", startAlbumNumber: 15, endAlbumNumber: 22 },
+    { type: "stadiums", startId: "STD017", endId: "STD024", startAlbumNumber: 23, endAlbumNumber: 30 },
+    { type: "stadiums", startId: "STD025", endId: "STD026", startAlbumNumber: 31, endAlbumNumber: 32 },
+    { type: "team", countryCode: "MEX", name: "Mexico", group: "A", startId: "MEX001", endId: "MEX014", startAlbumNumber: 33, endAlbumNumber: 46 },
+    { type: "team", countryCode: "MEX", name: "Mexico", group: "A", startId: "MEX015", endId: "MEX028", startAlbumNumber: 47, endAlbumNumber: 60 },
+    { type: "team", countryCode: "RSA", name: "South Africa", group: "A", startId: "RSA001", endId: "RSA014", startAlbumNumber: 61, endAlbumNumber: 74 },
+    { type: "team", countryCode: "RSA", name: "South Africa", group: "A", startId: "RSA015", endId: "RSA028", startAlbumNumber: 75, endAlbumNumber: 88 },
+    { type: "team", countryCode: "KOR", name: "South Korea", group: "A", startId: "KOR001", endId: "KOR014", startAlbumNumber: 89, endAlbumNumber: 102 },
+    { type: "team", countryCode: "KOR", name: "South Korea", group: "A", startId: "KOR015", endId: "KOR028", startAlbumNumber: 103, endAlbumNumber: 116 },
+    { type: "team", countryCode: "CZE", name: "Czech Republic", group: "A", startId: "CZE001", endId: "CZE014", startAlbumNumber: 117, endAlbumNumber: 130 },
+    { type: "team", countryCode: "CZE", name: "Czech Republic", group: "A", startId: "CZE015", endId: "CZE028", startAlbumNumber: 131, endAlbumNumber: 144 },
+    { type: "team", countryCode: "CAN", name: "Canada", group: "B", startId: "CAN001", endId: "CAN014", startAlbumNumber: 145, endAlbumNumber: 158 },
+    { type: "team", countryCode: "CAN", name: "Canada", group: "B", startId: "CAN015", endId: "CAN028", startAlbumNumber: 159, endAlbumNumber: 172 },
+    { type: "team", countryCode: "BIH", name: "Bosnia and Herzegovina", group: "B", startId: "BIH001", endId: "BIH014", startAlbumNumber: 173, endAlbumNumber: 186 },
+    { type: "team", countryCode: "BIH", name: "Bosnia and Herzegovina", group: "B", startId: "BIH015", endId: "BIH028", startAlbumNumber: 187, endAlbumNumber: 200 },
+    { type: "team", countryCode: "QAT", name: "Qatar", group: "B", startId: "QAT001", endId: "QAT014", startAlbumNumber: 201, endAlbumNumber: 214 },
+    { type: "team", countryCode: "QAT", name: "Qatar", group: "B", startId: "QAT015", endId: "QAT028", startAlbumNumber: 215, endAlbumNumber: 228 },
+    { type: "team", countryCode: "SUI", name: "Switzerland", group: "B", startId: "SUI001", endId: "SUI014", startAlbumNumber: 229, endAlbumNumber: 242 },
+    { type: "team", countryCode: "SUI", name: "Switzerland", group: "B", startId: "SUI015", endId: "SUI028", startAlbumNumber: 243, endAlbumNumber: 256 },
+    { type: "team", countryCode: "BRA", name: "Brazil", group: "C", startId: "BRA001", endId: "BRA014", startAlbumNumber: 257, endAlbumNumber: 270 },
+    { type: "team", countryCode: "BRA", name: "Brazil", group: "C", startId: "BRA015", endId: "BRA028", startAlbumNumber: 271, endAlbumNumber: 284 },
+    { type: "team", countryCode: "MAR", name: "Morocco", group: "C", startId: "MAR001", endId: "MAR014", startAlbumNumber: 285, endAlbumNumber: 298 },
+    { type: "team", countryCode: "MAR", name: "Morocco", group: "C", startId: "MAR015", endId: "MAR028", startAlbumNumber: 299, endAlbumNumber: 312 },
+    { type: "team", countryCode: "HAI", name: "Haiti", group: "C", startId: "HAI001", endId: "HAI014", startAlbumNumber: 313, endAlbumNumber: 326 },
+    { type: "team", countryCode: "HAI", name: "Haiti", group: "C", startId: "HAI015", endId: "HAI028", startAlbumNumber: 327, endAlbumNumber: 340 },
+    { type: "team", countryCode: "SCO", name: "Scotland", group: "C", startId: "SCO001", endId: "SCO014", startAlbumNumber: 341, endAlbumNumber: 354 },
+    { type: "team", countryCode: "SCO", name: "Scotland", group: "C", startId: "SCO015", endId: "SCO028", startAlbumNumber: 355, endAlbumNumber: 368 },
+    { type: "team", countryCode: "USA", name: "USA", group: "D", startId: "USA001", endId: "USA014", startAlbumNumber: 369, endAlbumNumber: 382 },
+    { type: "team", countryCode: "USA", name: "USA", group: "D", startId: "USA015", endId: "USA028", startAlbumNumber: 383, endAlbumNumber: 396 },
+    { type: "team", countryCode: "PAR", name: "Paraguay", group: "D", startId: "PAR001", endId: "PAR014", startAlbumNumber: 397, endAlbumNumber: 410 },
+    { type: "team", countryCode: "PAR", name: "Paraguay", group: "D", startId: "PAR015", endId: "PAR028", startAlbumNumber: 411, endAlbumNumber: 424 },
+    { type: "team", countryCode: "AUS", name: "Australia", group: "D", startId: "AUS001", endId: "AUS014", startAlbumNumber: 425, endAlbumNumber: 438 },
+    { type: "team", countryCode: "AUS", name: "Australia", group: "D", startId: "AUS015", endId: "AUS028", startAlbumNumber: 439, endAlbumNumber: 452 },
+    { type: "team", countryCode: "TUR", name: "Turkey", group: "D", startId: "TUR001", endId: "TUR014", startAlbumNumber: 453, endAlbumNumber: 466 },
+    { type: "team", countryCode: "TUR", name: "Turkey", group: "D", startId: "TUR015", endId: "TUR028", startAlbumNumber: 467, endAlbumNumber: 480 },
+    { type: "golden_boots", startId: "GBO001", endId: "GBO006", startAlbumNumber: 481, endAlbumNumber: 486 },
+    { type: "golden_boots", startId: "GBO007", endId: "GBO014", startAlbumNumber: 487, endAlbumNumber: 494 },
+    { type: "golden_boots", startId: "GBO015", endId: "GBO021", startAlbumNumber: 495, endAlbumNumber: 501 },
+    { type: "golden_boots", startId: "GBO022", endId: "GBO028", startAlbumNumber: 502, endAlbumNumber: 508 },
+    { type: "team", countryCode: "GER", name: "Germany", group: "E", startId: "GER001", endId: "GER014", startAlbumNumber: 509, endAlbumNumber: 522 },
+    { type: "team", countryCode: "GER", name: "Germany", group: "E", startId: "GER015", endId: "GER028", startAlbumNumber: 523, endAlbumNumber: 536 },
+    { type: "team", countryCode: "CUW", name: "Curaçao", group: "E", startId: "CUW001", endId: "CUW014", startAlbumNumber: 537, endAlbumNumber: 550 },
+    { type: "team", countryCode: "CUW", name: "Curaçao", group: "E", startId: "CUW015", endId: "CUW028", startAlbumNumber: 551, endAlbumNumber: 564 },
+    { type: "team", countryCode: "CIV", name: "Ivory Coast", group: "E", startId: "CIV001", endId: "CIV014", startAlbumNumber: 565, endAlbumNumber: 578 },
+    { type: "team", countryCode: "CIV", name: "Ivory Coast", group: "E", startId: "CIV015", endId: "CIV028", startAlbumNumber: 579, endAlbumNumber: 592 },
+    { type: "team", countryCode: "ECU", name: "Ecuador", group: "E", startId: "ECU001", endId: "ECU014", startAlbumNumber: 593, endAlbumNumber: 606 },
+    { type: "team", countryCode: "ECU", name: "Ecuador", group: "E", startId: "ECU015", endId: "ECU028", startAlbumNumber: 607, endAlbumNumber: 620 },
+    { type: "team", countryCode: "NED", name: "Netherlands", group: "F", startId: "NED001", endId: "NED014", startAlbumNumber: 621, endAlbumNumber: 634 },
+    { type: "team", countryCode: "NED", name: "Netherlands", group: "F", startId: "NED015", endId: "NED028", startAlbumNumber: 635, endAlbumNumber: 648 },
+    { type: "team", countryCode: "JPN", name: "Japan", group: "F", startId: "JPN001", endId: "JPN014", startAlbumNumber: 649, endAlbumNumber: 662 },
+    { type: "team", countryCode: "JPN", name: "Japan", group: "F", startId: "JPN015", endId: "JPN028", startAlbumNumber: 663, endAlbumNumber: 676 },
+    { type: "team", countryCode: "SWE", name: "Sweden", group: "F", startId: "SWE001", endId: "SWE014", startAlbumNumber: 677, endAlbumNumber: 690 },
+    { type: "team", countryCode: "SWE", name: "Sweden", group: "F", startId: "SWE015", endId: "SWE028", startAlbumNumber: 691, endAlbumNumber: 704 },
+    { type: "team", countryCode: "TUN", name: "Tunisia", group: "F", startId: "TUN001", endId: "TUN014", startAlbumNumber: 705, endAlbumNumber: 718 },
+    { type: "team", countryCode: "TUN", name: "Tunisia", group: "F", startId: "TUN015", endId: "TUN028", startAlbumNumber: 719, endAlbumNumber: 732 },
+    { type: "team", countryCode: "BEL", name: "Belgium", group: "G", startId: "BEL001", endId: "BEL014", startAlbumNumber: 733, endAlbumNumber: 746 },
+    { type: "team", countryCode: "BEL", name: "Belgium", group: "G", startId: "BEL015", endId: "BEL028", startAlbumNumber: 747, endAlbumNumber: 760 },
+    { type: "team", countryCode: "EGY", name: "Egypt", group: "G", startId: "EGY001", endId: "EGY014", startAlbumNumber: 761, endAlbumNumber: 774 },
+    { type: "team", countryCode: "EGY", name: "Egypt", group: "G", startId: "EGY015", endId: "EGY028", startAlbumNumber: 775, endAlbumNumber: 788 },
+    { type: "team", countryCode: "IRN", name: "Iran", group: "G", startId: "IRN001", endId: "IRN014", startAlbumNumber: 789, endAlbumNumber: 802 },
+    { type: "team", countryCode: "IRN", name: "Iran", group: "G", startId: "IRN015", endId: "IRN028", startAlbumNumber: 803, endAlbumNumber: 816 },
+    { type: "team", countryCode: "NZL", name: "New Zealand", group: "G", startId: "NZL001", endId: "NZL014", startAlbumNumber: 817, endAlbumNumber: 830 },
+    { type: "team", countryCode: "NZL", name: "New Zealand", group: "G", startId: "NZL015", endId: "NZL028", startAlbumNumber: 831, endAlbumNumber: 844 },
+    { type: "team", countryCode: "ESP", name: "Spain", group: "H", startId: "ESP001", endId: "ESP014", startAlbumNumber: 845, endAlbumNumber: 858 },
+    { type: "team", countryCode: "ESP", name: "Spain", group: "H", startId: "ESP015", endId: "ESP028", startAlbumNumber: 859, endAlbumNumber: 872 },
+    { type: "team", countryCode: "CPV", name: "Cape Verde", group: "H", startId: "CPV001", endId: "CPV014", startAlbumNumber: 873, endAlbumNumber: 886 },
+    { type: "team", countryCode: "CPV", name: "Cape Verde", group: "H", startId: "CPV015", endId: "CPV028", startAlbumNumber: 887, endAlbumNumber: 900 },
+    { type: "team", countryCode: "KSA", name: "Saudi Arabia", group: "H", startId: "KSA001", endId: "KSA014", startAlbumNumber: 901, endAlbumNumber: 914 },
+    { type: "team", countryCode: "KSA", name: "Saudi Arabia", group: "H", startId: "KSA015", endId: "KSA028", startAlbumNumber: 915, endAlbumNumber: 928 },
+    { type: "team", countryCode: "URU", name: "Uruguay", group: "H", startId: "URU001", endId: "URU014", startAlbumNumber: 929, endAlbumNumber: 942 },
+    { type: "team", countryCode: "URU", name: "Uruguay", group: "H", startId: "URU015", endId: "URU028", startAlbumNumber: 943, endAlbumNumber: 956 },
+    { type: "golden_ball", startId: "GBA001", endId: "GBA005", startAlbumNumber: 957, endAlbumNumber: 961 },
+    { type: "golden_ball", startId: "GBA006", endId: "GBA011", startAlbumNumber: 962, endAlbumNumber: 967 },
+    { type: "golden_ball", startId: "GBA012", endId: "GBA017", startAlbumNumber: 968, endAlbumNumber: 973 },
+    { type: "golden_ball", startId: "GBA018", endId: "GBA022", startAlbumNumber: 974, endAlbumNumber: 978 },
+    { type: "team", countryCode: "FRA", name: "France", group: "I", startId: "FRA001", endId: "FRA014", startAlbumNumber: 979, endAlbumNumber: 992 },
+    { type: "team", countryCode: "FRA", name: "France", group: "I", startId: "FRA015", endId: "FRA028", startAlbumNumber: 993, endAlbumNumber: 1006 },
+    { type: "team", countryCode: "SEN", name: "Senegal", group: "I", startId: "SEN001", endId: "SEN014", startAlbumNumber: 1007, endAlbumNumber: 1020 },
+    { type: "team", countryCode: "SEN", name: "Senegal", group: "I", startId: "SEN015", endId: "SEN028", startAlbumNumber: 1021, endAlbumNumber: 1034 },
+    { type: "team", countryCode: "IRQ", name: "Iraq", group: "I", startId: "IRQ001", endId: "IRQ014", startAlbumNumber: 1035, endAlbumNumber: 1048 },
+    { type: "team", countryCode: "IRQ", name: "Iraq", group: "I", startId: "IRQ015", endId: "IRQ028", startAlbumNumber: 1049, endAlbumNumber: 1062 },
+    { type: "team", countryCode: "NOR", name: "Norway", group: "I", startId: "NOR001", endId: "NOR014", startAlbumNumber: 1063, endAlbumNumber: 1076 },
+    { type: "team", countryCode: "NOR", name: "Norway", group: "I", startId: "NOR015", endId: "NOR028", startAlbumNumber: 1077, endAlbumNumber: 1090 },
+    { type: "team", countryCode: "ARG", name: "Argentina", group: "J", startId: "ARG001", endId: "ARG014", startAlbumNumber: 1091, endAlbumNumber: 1104 },
+    { type: "team", countryCode: "ARG", name: "Argentina", group: "J", startId: "ARG015", endId: "ARG028", startAlbumNumber: 1105, endAlbumNumber: 1118 },
+    { type: "team", countryCode: "ALG", name: "Algeria", group: "J", startId: "ALG001", endId: "ALG014", startAlbumNumber: 1119, endAlbumNumber: 1132 },
+    { type: "team", countryCode: "ALG", name: "Algeria", group: "J", startId: "ALG015", endId: "ALG028", startAlbumNumber: 1133, endAlbumNumber: 1146 },
+    { type: "team", countryCode: "AUT", name: "Austria", group: "J", startId: "AUT001", endId: "AUT014", startAlbumNumber: 1147, endAlbumNumber: 1160 },
+    { type: "team", countryCode: "AUT", name: "Austria", group: "J", startId: "AUT015", endId: "AUT028", startAlbumNumber: 1161, endAlbumNumber: 1174 },
+    { type: "team", countryCode: "JOR", name: "Jordan", group: "J", startId: "JOR001", endId: "JOR014", startAlbumNumber: 1175, endAlbumNumber: 1188 },
+    { type: "team", countryCode: "JOR", name: "Jordan", group: "J", startId: "JOR015", endId: "JOR028", startAlbumNumber: 1189, endAlbumNumber: 1202 },
+    { type: "team", countryCode: "POR", name: "Portugal", group: "K", startId: "POR001", endId: "POR014", startAlbumNumber: 1203, endAlbumNumber: 1216 },
+    { type: "team", countryCode: "POR", name: "Portugal", group: "K", startId: "POR015", endId: "POR028", startAlbumNumber: 1217, endAlbumNumber: 1230 },
+    { type: "team", countryCode: "COD", name: "DR Congo", group: "K", startId: "COD001", endId: "COD014", startAlbumNumber: 1231, endAlbumNumber: 1244 },
+    { type: "team", countryCode: "COD", name: "DR Congo", group: "K", startId: "COD015", endId: "COD028", startAlbumNumber: 1245, endAlbumNumber: 1258 },
+    { type: "team", countryCode: "UZB", name: "Uzbekistan", group: "K", startId: "UZB001", endId: "UZB014", startAlbumNumber: 1259, endAlbumNumber: 1272 },
+    { type: "team", countryCode: "UZB", name: "Uzbekistan", group: "K", startId: "UZB015", endId: "UZB028", startAlbumNumber: 1273, endAlbumNumber: 1286 },
+    { type: "team", countryCode: "COL", name: "Colombia", group: "K", startId: "COL001", endId: "COL014", startAlbumNumber: 1287, endAlbumNumber: 1300 },
+    { type: "team", countryCode: "COL", name: "Colombia", group: "K", startId: "COL015", endId: "COL028", startAlbumNumber: 1301, endAlbumNumber: 1314 },
+    { type: "team", countryCode: "ENG", name: "England", group: "L", startId: "ENG001", endId: "ENG014", startAlbumNumber: 1315, endAlbumNumber: 1328 },
+    { type: "team", countryCode: "ENG", name: "England", group: "L", startId: "ENG015", endId: "ENG028", startAlbumNumber: 1329, endAlbumNumber: 1342 },
+    { type: "team", countryCode: "CRO", name: "Croatia", group: "L", startId: "CRO001", endId: "CRO014", startAlbumNumber: 1343, endAlbumNumber: 1356 },
+    { type: "team", countryCode: "CRO", name: "Croatia", group: "L", startId: "CRO015", endId: "CRO028", startAlbumNumber: 1357, endAlbumNumber: 1370 },
+    { type: "team", countryCode: "GHA", name: "Ghana", group: "L", startId: "GHA001", endId: "GHA014", startAlbumNumber: 1371, endAlbumNumber: 1384 },
+    { type: "team", countryCode: "GHA", name: "Ghana", group: "L", startId: "GHA015", endId: "GHA028", startAlbumNumber: 1385, endAlbumNumber: 1398 },
+    { type: "team", countryCode: "PAN", name: "Panama", group: "L", startId: "PAN001", endId: "PAN014", startAlbumNumber: 1399, endAlbumNumber: 1412 },
+    { type: "team", countryCode: "PAN", name: "Panama", group: "L", startId: "PAN015", endId: "PAN028", startAlbumNumber: 1413, endAlbumNumber: 1426 },
+    { type: "winning_teams", startId: "WIN001", endId: "WIN005", startAlbumNumber: 1427, endAlbumNumber: 1431 },
+    { type: "winning_teams", startId: "WIN006", endId: "WIN011", startAlbumNumber: 1432, endAlbumNumber: 1437 },
+    { type: "winning_teams", startId: "WIN012", endId: "WIN017", startAlbumNumber: 1438, endAlbumNumber: 1443 },
+    { type: "winning_teams", startId: "WIN018", endId: "WIN022", startAlbumNumber: 1444, endAlbumNumber: 1448 }
+];
 
 /* =========================================================================
    3D BOOK ENGINE (Dynamischer Aufbau)
@@ -285,15 +405,14 @@ let maxPages = 0;
 // Hilfsfunktion: Wandelt Blueprint-Daten in Text für den Dummy-Modus um
 function getDebugHTML(bp) {
     if (!bp) return '';
-    const pad = (n) => String(n).padStart(3, '0');
-    if (bp.t === 'team') return `<span>Group ${bp.g}</span>${bp.n}<br>(${bp.id}${pad(bp.s)} - ${bp.id}${pad(bp.e)})`;
-    if (bp.t === 'cover_back') return `<span>Backcover</span>`;
-    if (bp.t === 'index') return `<span>Index</span>`;
-    if (bp.t === 'stadiums') return `<span>Stadiums</span>(${bp.id}${pad(bp.s)} - ${bp.id}${pad(bp.e)})`;
-    if (bp.t === 'special') return `<span>Special</span>`;
-    if (bp.t === 'gboots') return `<span>Golden Boots</span>`;
-    if (bp.t === 'gball') return `<span>Golden Ball</span>`;
-    if (bp.t === 'winners') return `<span>Winning Teams</span>`;
+    if (bp.type === 'team') return `<span>Group ${bp.group}</span>${bp.name}<br>(${bp.startId} - ${bp.endId})<br><small>Sticker: ${bp.startAlbumNumber} - ${bp.endAlbumNumber}</small>`;
+    if (bp.type === 'cover') return `<span>Backcover</span>`;
+    if (bp.type === 'index') return `<span>Index</span>`;
+    if (bp.type === 'stadiums') return `<span>Stadiums</span><br>(${bp.startId} - ${bp.endId})<br><small>Sticker: ${bp.startAlbumNumber} - ${bp.endAlbumNumber}</small>`;
+    if (bp.type === 'special') return `<span>Special</span><br>(${bp.startId} - ${bp.endId})<br><small>Sticker: ${bp.startAlbumNumber} - ${bp.endAlbumNumber}</small>`;
+    if (bp.type === 'golden_boots') return `<span>Golden Boots</span><br>(${bp.startId} - ${bp.endId})<br><small>Sticker: ${bp.startAlbumNumber} - ${bp.endAlbumNumber}</small>`;
+    if (bp.type === 'golden_ball') return `<span>Golden Ball</span><br>(${bp.startId} - ${bp.endId})<br><small>Sticker: ${bp.startAlbumNumber} - ${bp.endAlbumNumber}</small>`;
+    if (bp.type === 'winning_teams') return `<span>Winning Teams</span><br>(${bp.startId} - ${bp.endId})<br><small>Sticker: ${bp.startAlbumNumber} - ${bp.endAlbumNumber}</small>`;
     return '';
 }
 
@@ -301,11 +420,10 @@ function initBook() {
     book.innerHTML = '';
     papers = [];
     
-    // Wir brauchen 59 physische Papierblätter für 116 Seiten + Cover
-    const totalPapers = Math.ceil(albumBlueprint.length / 2) + 1;
+    // Wir brauchen physische Papierblätter für das gesamte Blueprint (immer 2 Seiten pro Blatt) + 1 für Cover
+    const totalPapers = Math.ceil(albumBlueprint.length / 2);
 
-    // Wir erzeugen die Papiere. Das letzte Papier im DOM liegt optisch ganz oben!
-    for (let i = 0; i < totalPapers; i++) {
+    for (let i = 0; i <= totalPapers; i++) {
         const paper = document.createElement('div');
         paper.className = 'paper';
         paper.id = `paper${i}`;
@@ -315,12 +433,12 @@ function initBook() {
         const back = document.createElement('div');
         back.className = 'back';
 
-        // Paper 0 ist eine Ausnahme: Vorne ist das Cover, hinten ist Blueprint Seite 0
+        // Paper 0: Vorne Cover, Hinten Blueprint Seite 0
         if (i === 0) {
             front.innerHTML = `<img src="assets/panini_album.png" class="cover-img" onerror="this.src='assets/Icon.png'">`;
             back.innerHTML = `<div class="page-number left">0</div><div class="debug-text">${getDebugHTML(albumBlueprint[0])}</div>`;
         } else {
-            // Normale Berechnung: Paper 1 = Front(1) & Back(2)
+            // Berechnung der Blueprint Indizes für Front und Back
             const frontPageIndex = (i * 2) - 1;
             const backPageIndex = (i * 2);
 
@@ -335,9 +453,7 @@ function initBook() {
         paper.appendChild(front);
         paper.appendChild(back);
         
-        // Mit prepend schieben wir jedes neue Blatt UNTER das vorherige
         book.prepend(paper);
-        // Ins Array packen wir es so, dass paper[0] wirklich das Cover ist
         papers.unshift(paper); 
     }
 
