@@ -44,11 +44,7 @@ h1 { margin: 0; font-size: 22px; text-transform: uppercase; text-shadow: 0 1px 3
    3D ALBUM ENGINE
    ========================================================================= */
 #album-content { width: 100%; flex-grow: 1; position: relative; display: flex; justify-content: center; align-items: center; margin-top: -3vh; perspective: 2500px; }
-.book { 
-    position: relative; width: 49vw; 
-    aspect-ratio: 1 / 1.45; /* Leicht gestreckt für perfektes Raster-Fitting */
-    max-height: calc(100dvh - 200px); transform-style: preserve-3d; transform-origin: left center; transition: transform 0.6s cubic-bezier(0.4, 0.0, 0.2, 1); transform: translateX(-20%) scale(1.4); 
-}
+.book { position: relative; width: 49vw; aspect-ratio: 1 / 1.41; max-height: calc(100dvh - 200px); transform-style: preserve-3d; transform-origin: left center; transition: transform 0.6s cubic-bezier(0.4, 0.0, 0.2, 1); transform: translateX(-20%) scale(1.4); }
 .book.open { transform: translateX(50%) scale(1); }
 @media (max-width: 767px) {
     .book.zoomed-left { transform: translateX(150%) translateY(-8vh) scale(2); }
@@ -56,7 +52,13 @@ h1 { margin: 0; font-size: 22px; text-transform: uppercase; text-shadow: 0 1px 3
 }
 .paper { position: absolute; width: 100%; height: 100%; top: 0; left: 0; transform-style: preserve-3d; transform-origin: left center; transition: transform 0.6s cubic-bezier(0.4, 0.0, 0.2, 1); will-change: transform; }
 .paper.flipped { transform: rotateY(-180deg); }
-.front, .back { position: absolute; width: 100%; height: 100%; top: 0; left: 0; backface-visibility: hidden; background-color: #f4f1ea; overflow: hidden; }
+
+/* WICHTIGER FIX: Front und Back sind jetzt Container, dadurch fliegen die Sticker nicht aus dem Buch! */
+.front, .back { 
+    position: absolute; width: 100%; height: 100%; top: 0; left: 0; 
+    backface-visibility: hidden; background-color: #f4f1ea; overflow: hidden; 
+    container-type: inline-size; 
+}
 .front { border-left: 1px solid rgba(0,0,0,0.25); }
 .back { transform: rotateY(180deg); border-right: 1px solid rgba(0,0,0,0.25); }
 .cover-img { width: 100%; height: 100%; object-fit: cover; border-radius: 0 8px 8px 0; }
@@ -68,18 +70,17 @@ h1 { margin: 0; font-size: 22px; text-transform: uppercase; text-shadow: 0 1px 3
    DYNAMISCHES SEITEN-LAYOUT (STRIKTES MATHEMATISCHES GRID)
    ========================================================================= */
 .page-wrapper {
-    container-type: inline-size;
-    width: 100%; height: 100%; padding: 3cqw;
+    width: 100%; height: 100%; padding: 4cqw;
     display: flex; flex-direction: column;
     
     /* MATHEMATISCH FIXIERTE VARIABLEN: Garantiert immer gleiche Größe! */
-    --col-w: 22cqw; 
-    --col-h: calc(22cqw * 1.38);
+    --col-w: 21.5cqw; 
+    --col-h: calc(21.5cqw * 1.38);
 }
 
 .team-name { color: #111; margin: 0 0 2cqw 0; font-size: 8cqw; text-transform: uppercase; line-height: 1; letter-spacing: -0.5px; }
 
-/* Header Grid (Team Foto, Group, Wappen) */
+/* Header Grid (Team Foto links, Group mitte, Wappen rechts) */
 .team-header-grid {
     width: 100%; display: grid; grid-template-columns: repeat(4, 1fr); gap: 2cqw;
     margin-bottom: 2cqw;
@@ -105,12 +106,13 @@ h1 { margin: 0; font-size: 22px; text-transform: uppercase; text-shadow: 0 1px 3
     border: 1.5px solid #111111; background-color: rgba(0,0,0,0.03); 
     display: flex; align-items: center; justify-content: center;
     container-type: inline-size;
+    z-index: 5;
 }
 
-/* Der 90° Rotations-Modifikator */
+/* Der perfekte 90° Rotations-Modifikator */
 .rotated-slot {
-    transform: rotate(-90deg);
-    transform-origin: left bottom;
+    transform-origin: top left;
+    transform: translateY(var(--col-h)) rotate(-90deg);
 }
 
 .slot-circle {
@@ -349,7 +351,13 @@ function renderStapel() {
     const c1 = document.getElementById('stackCard1'); const c2 = document.getElementById('stackCard2');
     if (stapel.length > 0) {
         const s1 = globalStickerDatabase[stapel[0]];
-        if (s1) { c1.innerHTML = createStickerHTML(s1); c1.style.border = "none"; c1.style.backgroundColor = "transparent"; }
+        if (s1) { 
+            c1.innerHTML = createStickerHTML(s1); 
+            c1.style.border = "none"; c1.style.backgroundColor = "transparent"; 
+        } else {
+            c1.innerHTML = '<span class="stack-placeholder-text">LEER</span>'; 
+            c1.style.border = ""; c1.style.backgroundColor = "";
+        }
     } else {
         c1.innerHTML = '<span class="stack-placeholder-text">LEER</span>'; c1.style.border = ""; c1.style.backgroundColor = "";
     }
@@ -508,8 +516,7 @@ function buildSlotHTML(stickerId, albumNumber, extraClass = "") {
 }
 
 function buildPlayerGrid(prefix, startIdx, endIdx, startAlbumNum) {
-    let html = '';
-    let currentAlbumNum = startAlbumNum;
+    let html = ''; let currentAlbumNum = startAlbumNum;
     for(let i = startIdx; i <= endIdx; i++) {
         let sid = prefix + String(i).padStart(3, '0');
         html += buildSlotHTML(sid, currentAlbumNum);
@@ -521,8 +528,8 @@ function buildPlayerGrid(prefix, startIdx, endIdx, startAlbumNum) {
 function buildGenericGrid(bp) {
     let html = '<div class="page-wrapper"><div class="generic-grid">';
     let currentAlbumNum = bp.startAlbumNumber;
-    let sIdx = parseInt(bp.startId.replace(/\D/g, ''));
-    let eIdx = parseInt(bp.endId.replace(/\D/g, ''));
+    let sIdx = parseInt(bp.startId.replace(/\D/g, ''), 10);
+    let eIdx = parseInt(bp.endId.replace(/\D/g, ''), 10);
     let prefix = bp.startId.replace(/[0-9]/g, '');
     for(let i = sIdx; i <= eIdx; i++) {
         let sid = prefix + String(i).padStart(3, '0');
@@ -561,10 +568,11 @@ function buildPageHTML(bp, isLeftPage) {
                 <div class="page-wrapper">
                     <div class="player-grid-full">
                         ${buildPlayerGrid(bp.countryCode, 15, 28, bp.startAlbumNumber)}
-                        </div>
+                    </div>
                 </div>`;
         }
     }
+    if (bp.type === 'cover' || bp.type === 'index') return `<div class="debug-text"><span>${bp.type}</span></div>`;
     return buildGenericGrid(bp);
 }
 
@@ -575,33 +583,37 @@ const book = document.getElementById('book');
 let papers = []; let currentPageIndex = 0; let maxPages = 0;
 
 function initBook() {
-    book.innerHTML = ''; papers = [];
-    const totalPapers = Math.ceil(albumBlueprint.length / 2);
+    try {
+        book.innerHTML = ''; papers = [];
+        const totalPapers = Math.ceil(albumBlueprint.length / 2);
 
-    for (let i = 0; i <= totalPapers; i++) {
-        const paper = document.createElement('div'); paper.className = 'paper'; paper.id = `paper${i}`;
-        const front = document.createElement('div'); front.className = 'front';
-        const back = document.createElement('div'); back.className = 'back';
+        for (let i = 0; i <= totalPapers; i++) {
+            const paper = document.createElement('div'); paper.className = 'paper'; paper.id = `paper${i}`;
+            const front = document.createElement('div'); front.className = 'front';
+            const back = document.createElement('div'); back.className = 'back';
 
-        if (i === 0) {
-            front.innerHTML = `<img src="assets/panini_album.png" class="cover-img" onerror="this.src='assets/Icon.png'">`;
-            back.innerHTML = buildPageHTML(albumBlueprint[0], true);
-        } else {
-            const frontPageIndex = (i * 2) - 1; const backPageIndex = (i * 2);
-            if (frontPageIndex < albumBlueprint.length) {
-                let combinedPageNum = `${frontPageIndex} - ${backPageIndex}`;
-                front.innerHTML = buildPageHTML(albumBlueprint[frontPageIndex], false) + 
-                                  `<div class="page-numbers-combined">${combinedPageNum}</div>`;
+            if (i === 0) {
+                front.innerHTML = `<img src="assets/panini_album.png" class="cover-img" onerror="this.src='assets/Icon.png'">`;
+                back.innerHTML = buildPageHTML(albumBlueprint[0], true);
+            } else {
+                const frontPageIndex = (i * 2) - 1; const backPageIndex = (i * 2);
+                if (frontPageIndex < albumBlueprint.length) {
+                    let combinedPageNum = `${frontPageIndex} - ${backPageIndex}`;
+                    front.innerHTML = buildPageHTML(albumBlueprint[frontPageIndex], false) + 
+                                      `<div class="page-numbers-combined">${combinedPageNum}</div>`;
+                }
+                if (backPageIndex < albumBlueprint.length) {
+                    back.innerHTML = buildPageHTML(albumBlueprint[backPageIndex], true);
+                }
             }
-            if (backPageIndex < albumBlueprint.length) {
-                back.innerHTML = buildPageHTML(albumBlueprint[backPageIndex], true);
-            }
+            paper.appendChild(front); paper.appendChild(back);
+            book.appendChild(paper); papers.push(paper); 
         }
-        paper.appendChild(front); paper.appendChild(back);
-        book.appendChild(paper); papers.push(paper); 
+        maxPages = papers.length;
+        papers.forEach((paper, index) => { paper.style.zIndex = maxPages - index; });
+    } catch(e) {
+        console.error("Error building book:", e);
     }
-    maxPages = papers.length;
-    papers.forEach((paper, index) => { paper.style.zIndex = maxPages - index; });
 }
 
 function updateNavArrows() {
