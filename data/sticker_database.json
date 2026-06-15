@@ -4,7 +4,7 @@
         "albumNumber": "00",
         "type": "special_fill",
         "name": "FIFA World Cup 2026 Stamp",
-        "image": "./photos/specials/spc00.png",
+        "image": "./photos/special/spc00.png",
         "shiny": "gold",
         "orientation": "portrait"
     },
@@ -13,7 +13,7 @@
         "albumNumber": "1",
         "type": "special_top",
         "name": "WC Trophy (Top)",
-        "image": "./photos/specials/spc001.png",
+        "image": "./photos/special/spc001.png",
         "shiny": "gold",
         "orientation": "landscape",
         "part": "top"
@@ -23,7 +23,7 @@
         "albumNumber": "2",
         "type": "special_bottom",
         "name": "WC Trophy (Bottom)",
-        "image": "./photos/specials/spc002.png",
+        "image": "./photos/special/spc002.png",
         "shiny": "gold",
         "orientation": "landscape",
         "part": "bottom"
@@ -33,7 +33,7 @@
         "albumNumber": "3",
         "type": "special_edge",
         "name": "Oli in Gold",
-        "image": "./photos/specials/spc003.png",
+        "image": "./photos/special/spc003.png",
         "shiny": "gold",
         "orientation": "portrait"
     },
@@ -42,7 +42,7 @@
         "albumNumber": "4",
         "type": "special_fill",
         "name": "Official Match Ball",
-        "image": "./photos/specials/spc004.png",
+        "image": "./photos/special/spc004.png",
         "shiny": "gold",
         "orientation": "portrait"
     },
@@ -51,7 +51,7 @@
         "albumNumber": "5",
         "type": "special_top",
         "name": "WC Logo (Top)",
-        "image": "./photos/specials/spc005.png",
+        "image": "./photos/special/spc005.png",
         "shiny": "gold",
         "orientation": "landscape",
         "part": "top"
@@ -61,7 +61,7 @@
         "albumNumber": "5",
         "type": "special_bottom",
         "name": "WC Logo (Bottom)",
-        "image": "./photos/specials/spc006.png",
+        "image": "./photos/special/spc006.png",
         "shiny": "gold",
         "orientation": "landscape",
         "part": "bottom"
