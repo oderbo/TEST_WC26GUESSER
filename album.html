@@ -78,7 +78,7 @@ h1 {
    ========================================================================= */
 .sticker-stack-container {
     position: fixed; bottom: 20px; right: 20px;
-    width: 120px; height: 165px; 
+    width: 80px; height: 110px; 
     z-index: 1000; cursor: pointer;
     transition: transform 0.2s ease;
 }
@@ -107,26 +107,25 @@ h1 {
     box-shadow: 0 2px 5px rgba(0,0,0,0.3); z-index: 10;
 }
 
-
 /* =========================================================================
    3D ALBUM ENGINE
    ========================================================================= */
 #album-content {
     width: 100%; flex-grow: 1; position: relative;
     display: flex; justify-content: center; align-items: center; 
-    margin-top: -20vh; 
+    margin-top: -3vh; 
     perspective: 2500px;
 }
 
 .book {
     position: relative;
-    width: 46vw; 
+    width: 49vw; 
     aspect-ratio: 1 / 1.41;
     max-height: calc(100dvh - 200px);
     
     transform-style: preserve-3d;
     transform-origin: left center; 
-    transition: transform 0.8s cubic-bezier(0.4, 0.0, 0.2, 1);
+    transition: transform 0.6s cubic-bezier(0.4, 0.0, 0.2, 1);
     
     transform: translateX(-20%) scale(1.4);
 }
@@ -135,11 +134,20 @@ h1 {
     transform: translateX(50%) scale(1);
 }
 
+@media (max-width: 767px) {
+    .book.zoomed-left {
+        transform: translate(100%, -8vh) scale(2);
+    }
+    .book.zoomed-right {
+        transform: translate(0%, -8vh) scale(2);
+    }
+}
+
 .paper {
     position: absolute; width: 100%; height: 100%; top: 0; left: 0;
     transform-style: preserve-3d;
     transform-origin: left center;
-    transition: transform 0.8s cubic-bezier(0.4, 0.0, 0.2, 1);
+    transition: transform 0.6s cubic-bezier(0.4, 0.0, 0.2, 1);
     will-change: transform; 
 }
 
@@ -178,7 +186,6 @@ h1 {
     font-size: 42px; color: rgba(0, 0, 0, 0.35); 
     cursor: pointer; z-index: 1000; display: none; 
     font-family: sans-serif;
-    /* NEU: Opacity in der Transition für weiches Ein/Ausblenden ergänzt */
     transition: color 0.2s ease, opacity 0.3s ease; 
 }
 .desk-nav-btn span {
@@ -294,7 +301,7 @@ firebase.initializeApp(firebaseConfig);
 const db = firebase.firestore();
 
 /* =========================================================================
-   3D BOOK LOGIC
+   3D BOOK LOGIC & ZOOM (Mobile)
    ========================================================================= */
 const book = document.getElementById('book');
 const papers = [
@@ -313,7 +320,6 @@ function setupZIndex() {
 }
 setupZIndex();
 
-// Prüft, ob der rechte Pfeil ausgeblendet werden muss
 function updateNavArrows() {
     const nextArrow = document.querySelector('.desk-nav-btn.next');
     if (nextArrow) {
@@ -327,9 +333,31 @@ function updateNavArrows() {
     }
 }
 
+// Klick-Logik: Öffnen UND Zoomen
 book.addEventListener('click', (e) => {
+    // 1. Wenn Buch zu ist -> Öffnen (Hier ist ein Klick auf das ganze Cover okay)
     if (currentPageIndex === 0) {
         openBook();
+        return;
+    }
+    
+    // 2. Wenn Buch offen ist -> Zoom (Nur Mobile)
+    if (window.innerWidth < 768) {
+        const isZoomed = book.classList.contains('zoomed-left') || book.classList.contains('zoomed-right');
+        
+        if (!isZoomed) {
+            // SICHERHEIT: Prüfen ob wirklich eine Album-Seite angeklickt wurde!
+            // .back ist IMMER die bereits umgeblätterte, linke Seite.
+            // .front ist IMMER die noch liegende, rechte Seite.
+            const clickedLeftPage = e.target.closest('.back');
+            const clickedRightPage = e.target.closest('.front');
+            
+            if (clickedLeftPage) {
+                book.classList.add('zoomed-left');
+            } else if (clickedRightPage) {
+                book.classList.add('zoomed-right');
+            }
+        }
     }
 });
 
@@ -339,18 +367,16 @@ function openBook() {
 }
 
 function flipNext() {
-    // GEÄNDERT: Wir erlauben das Blättern nur bis "maxPages - 1",
-    // damit die letzte rechte Seite (das Backcover) liegen bleibt!
     if (currentPageIndex < maxPages - 1) {
         const paper = papers[currentPageIndex];
         paper.classList.add('flipped');
         
         setTimeout(() => {
             paper.style.zIndex = currentPageIndex + 1;
-        }, 400);
+        }, 300);
         
         currentPageIndex++;
-        updateNavArrows(); // Pfeile prüfen
+        updateNavArrows(); 
     }
 }
 
@@ -362,49 +388,99 @@ function flipPrev() {
         
         setTimeout(() => {
             paper.style.zIndex = maxPages - currentPageIndex;
-        }, 400);
-        updateNavArrows(); // Pfeile prüfen
+        }, 300);
+        updateNavArrows(); 
 
     } else if (currentPageIndex === 1) {
-        // Buch komplett schließen
         currentPageIndex = 0;
         const paper = papers[0];
         paper.classList.remove('flipped');
         
         setTimeout(() => {
             paper.style.zIndex = maxPages;
-        }, 400);
+        }, 300);
         
         book.classList.remove('open');
-        updateNavArrows(); // Pfeile prüfen
+        updateNavArrows(); 
     }
 }
 
 /* =========================================================================
-   TOUCH SWIPE LOGIC (NUR MOBILE)
+   TOUCH SWIPE LOGIC (2D MATRIX & GUARD)
    ========================================================================= */
 let touchstartX = 0;
+let touchstartY = 0;
 let touchendX = 0;
+let touchendY = 0;
+let isDraggingSticker = false;
+
 const albumContent = document.getElementById('album-content');
 
 albumContent.addEventListener('touchstart', e => {
+    if (e.target.closest('#stickerStack')) {
+        isDraggingSticker = true;
+        return;
+    }
+    
+    isDraggingSticker = false;
     touchstartX = e.changedTouches[0].screenX;
+    touchstartY = e.changedTouches[0].screenY;
 });
 
 albumContent.addEventListener('touchend', e => {
+    if (isDraggingSticker) return;
+    
     touchendX = e.changedTouches[0].screenX;
+    touchendY = e.changedTouches[0].screenY;
     handleSwipe();
 });
 
 function handleSwipe() {
     if (!book.classList.contains('open')) return;
     
+    const diffX = touchendX - touchstartX;
+    const diffY = touchendY - touchstartY;
+    const absDiffX = Math.abs(diffX);
+    const absDiffY = Math.abs(diffY);
+    
     const swipeThreshold = 40; 
-    if (touchendX < touchstartX - swipeThreshold) {
-        flipNext();
-    }
-    if (touchendX > touchstartX + swipeThreshold) {
-        flipPrev();
+    const isZoomed = book.classList.contains('zoomed-left') || book.classList.contains('zoomed-right');
+
+    if (absDiffX > absDiffY) {
+        // HORIZONTALES WISCHEN
+        if (absDiffX > swipeThreshold) {
+            if (diffX < 0) {
+                // Wisch nach Links (Von rechts nach links)
+                if (isZoomed) {
+                    if (book.classList.contains('zoomed-left')) {
+                        book.classList.remove('zoomed-left');
+                        book.classList.add('zoomed-right');
+                    }
+                } else {
+                    flipNext();
+                }
+            } else {
+                // Wisch nach Rechts (Von links nach rechts)
+                if (isZoomed) {
+                    if (book.classList.contains('zoomed-right')) {
+                        book.classList.remove('zoomed-right');
+                        book.classList.add('zoomed-left');
+                    }
+                } else {
+                    flipPrev();
+                }
+            }
+        }
+    } else {
+        // VERTIKALES WISCHEN
+        if (absDiffY > swipeThreshold) {
+            if (diffY < 0) {
+                // Wisch nach Oben -> Schließt den Zoom!
+                if (isZoomed) {
+                    book.classList.remove('zoomed-left', 'zoomed-right');
+                }
+            }
+        }
     }
 }
 
