@@ -485,9 +485,7 @@ function renderStapel() {
             const sticker = globalStickerDatabase[stapel[i]];
             if (sticker) { 
                 card.innerHTML = `<div class="stack-card-inner">
-                                    <div class="stack-front">
-                                        ${createStickerHTML(sticker)}
-                                    </div>
+                                    <div class="stack-front">${createStickerHTML(sticker)}</div>
                                     <div class="stack-back">${sticker.albumNumber}</div>
                                   </div>`;
                 card.classList.remove('is-flipped');
@@ -1190,9 +1188,7 @@ function handleSwipe() {
 // Init
 initBook();
 
-let pendingOffersCount = 0; 
-
-function updateAlbumBadges() {
+function updateAlbumBadges(pendingOffersCount) {
     const badgeRed = document.getElementById("album-badge-offers");
     const badgeGreen = document.getElementById("album-badge-claims");
     
@@ -1221,7 +1217,12 @@ firebase.auth().onAuthStateChanged((user) => {
                     bookInitialized = true;
                 }
                 renderStapel();
-                updateAlbumBadges();
+                
+                // Traded-Stickers Badge sofort aktualisieren, wenn sich das Profil ändert!
+                db.collection("trade_requests")
+                  .where("receiver_uid", "==", user.uid)
+                  .where("status", "==", "pending")
+                  .get().then(snap => updateAlbumBadges(snap.size)).catch(() => updateAlbumBadges(0));
             }
         });
 
@@ -1230,8 +1231,7 @@ firebase.auth().onAuthStateChanged((user) => {
           .where("receiver_uid", "==", user.uid)
           .where("status", "==", "pending")
           .onSnapshot((snapshot) => {
-              pendingOffersCount = snapshot.size;
-              updateAlbumBadges();
+              updateAlbumBadges(snapshot.size);
           });
     } else {
         window.location.href = 'index.html';
