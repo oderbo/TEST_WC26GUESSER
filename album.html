@@ -152,6 +152,9 @@ h1 { margin: 0; font-size: 22px; font-family: 'FWC2026', Arial, sans-serif; text
     --text-col: #FFD700;
     --slot-color: #FFD700;
 }
+@media (max-width: 767px) {
+    .dark-page { background-size: 6px 6px; }
+}
 
 /* ÜBERSCHRIFTEN NUTZEN FWC2026 */
 .special-title { font-family: 'FWC2026', Arial, sans-serif; color: #FFD700; text-transform: uppercase; font-size: 7cqw; margin: 0 0 2cqw 0; text-align: center; letter-spacing: 2px; text-shadow: 0 2px 4px rgba(0,0,0,0.5); }
@@ -339,7 +342,7 @@ let globalStickerDatabase = null;
 let currentUserData = null;
 let bookInitialized = false;
 let globalIndexEntries = [];
-let pendingOffersCount = 0; // Für den roten Badge
+let pendingOffersCount = 0;
 
 fetch("./data/sticker_database.json")
     .then(r => r.json())
@@ -818,17 +821,18 @@ function buildPageHTML(bp, isLeftPage) {
     
     if (bp.type === 'cover_back') {
         return `
-        <div class="page-wrapper dark-page" style="justify-content: center; padding: 6cqw;">
-            <h2 class="special-title" style="font-size: 6cqw; margin-bottom: 4cqw; text-align: center;">HOW TO PLAY</h2>
-            <ul style="color: white; font-family: Arial, sans-serif; font-size: 3.2cqw; line-height: 1.8; padding-left: 5cqw; margin: 0;">
+        <div class="page-wrapper dark-page" style="display: flex; flex-direction: column; height: 100%; padding: 6cqw 5cqw;">
+            <h2 class="special-title" style="font-size: 6.5cqw; margin: 0; text-align: center; flex-shrink: 0;">HOW TO PLAY</h2>
+            <ul style="color: white; font-family: Arial, sans-serif; font-size: 3.2cqw; line-height: 1.5; padding-left: 5cqw; margin: 0; display: flex; flex-direction: column; justify-content: space-evenly; flex-grow: 1;">
                 <li>Swipe left or right to change the page</li>
                 <li>Tap on page to zoom</li>
                 <li>Swipe up on zoomed page to un-zoom</li>
                 <li>Drag and drop sticker</li>
                 <li>Click on country on indexpage to jump to page</li>
-                <li>Press index button to jump to indexpage</li>
-                <li style="color: #00cc44; margin-top: 3cqw; font-weight: bold;">GET 2 Sticker Packs on first time 50% progress in PICK A NATION game</li>
-                <li style="color: #00cc44; font-weight: bold;">GET 3 Packs on 100% for first time</li>
+                <li>Press <span style="display:inline-flex; vertical-align: middle; width: 2.2em; height: 2.2em; border-radius: 50%; border: 1.5px solid #ffbb04; background-color: #ffffff; align-items: center; justify-content: center; font-size: 0.6em; font-weight: bold; color: #111; margin: 0 0.2em;">INDEX</span> to jump to indexpage</li>
+                <li style="color: #00cc44; font-weight: bold;">GET 2 <img src="assets/booster_pack_front.png" style="height: 1.6em; vertical-align: middle; margin: 0 0.2em;"> for every 50% progress in <img src="assets/country_pick_button.jpg" style="height: 1.6em; border-radius: 0.2em; vertical-align: middle; margin: 0 0.2em; box-shadow: 0 1px 3px rgba(0,0,0,0.5);"></li>
+                <li style="color: #00cc44; font-weight: bold;">GET 3 <img src="assets/booster_pack_front.png" style="height: 1.6em; vertical-align: middle; margin: 0 0.2em;"> for every 100% in <img src="assets/country_pick_button.jpg" style="height: 1.6em; border-radius: 0.2em; vertical-align: middle; margin: 0 0.2em; box-shadow: 0 1px 3px rgba(0,0,0,0.5);"></li>
+                <li style="color: #FFD700; font-weight: bold;">TRADE your Sticker at <span style="display:inline-flex; vertical-align: middle; width: 1.8em; height: 1.8em; border-radius: 50%; border: 1.5px solid #ffbb04; background-color: #ffffff; align-items: center; justify-content: center; margin: 0 0.2em;"><img src="assets/market_icon.png" style="width: 60%; height: 60%; object-fit: contain;"></span></li>
             </ul>
         </div>`;
     }
@@ -838,28 +842,28 @@ function buildPageHTML(bp, isLeftPage) {
         <div class="page-wrapper dark-page" style="position: relative;">
             <h2 class="title-wc26" style="position: absolute; top: 0; left: 0;">WC26</h2>
             
-            <div style="position: absolute; top: 22cqw; left: 4cqw;">
+            <div style="position: absolute; top: 28cqw; left: 4cqw;">
                 <div class="rotated-slot-wrapper">${buildSlotHTML('SPC001', '1', 'rotated-slot')}</div>
             </div>
-            <div style="position: absolute; top: calc(22cqw + var(--col-w)); left: 4cqw;">
+            <div style="position: absolute; top: calc(28cqw + var(--col-w) + 2cqw); left: 4cqw;">
                 <div class="rotated-slot-wrapper">${buildSlotHTML('SPC002', '2', 'rotated-slot')}</div>
             </div>
 
-            <div style="position: absolute; top: 22cqw; right: 4cqw;">
+            <div style="position: absolute; top: 28cqw; right: 4cqw;">
                 <div class="rotated-slot-wrapper">${buildSlotHTML('SPC005', '5', 'rotated-slot')}</div>
             </div>
-            <div style="position: absolute; top: calc(22cqw + var(--col-w)); right: 4cqw;">
+            <div style="position: absolute; top: calc(28cqw + var(--col-w) + 2cqw); right: 4cqw;">
                 <div class="rotated-slot-wrapper">${buildSlotHTML('SPC006', '6', 'rotated-slot')}</div>
             </div>
 
-            <div style="position: absolute; top: calc(22cqw + var(--col-w) * 2 + 4cqw); left: 50%; transform: translateX(-50%);">
+            <div style="position: absolute; top: calc(28cqw + var(--col-w) * 2 + 6cqw); left: 50%; transform: translateX(-50%);">
                 <div class="rotated-slot-wrapper">${buildSlotHTML('SPC004', '4', 'rotated-slot')}</div>
             </div>
 
-            <div style="position: absolute; bottom: 8cqw; left: 4cqw;">
+            <div style="position: absolute; bottom: 6cqw; left: 4cqw;">
                 <div class="rotated-slot-wrapper">${buildSlotHTML('SPC000', '00', 'rotated-slot')}</div>
             </div>
-            <div style="position: absolute; bottom: 8cqw; right: 4cqw;">
+            <div style="position: absolute; bottom: 6cqw; right: 4cqw;">
                 ${buildSlotHTML('SPC003', '3')}
             </div>
         </div>`;
@@ -1188,7 +1192,9 @@ function handleSwipe() {
 // Init
 initBook();
 
-function updateAlbumBadges(pendingOffersCount) {
+let pendingOffersCount = 0;
+
+function updateAlbumBadges() {
     const badgeRed = document.getElementById("album-badge-offers");
     const badgeGreen = document.getElementById("album-badge-claims");
     
@@ -1218,20 +1224,25 @@ firebase.auth().onAuthStateChanged((user) => {
                 }
                 renderStapel();
                 
-                // Traded-Stickers Badge sofort aktualisieren, wenn sich das Profil ändert!
                 db.collection("trade_requests")
                   .where("receiver_uid", "==", user.uid)
                   .where("status", "==", "pending")
-                  .get().then(snap => updateAlbumBadges(snap.size)).catch(() => updateAlbumBadges(0));
+                  .get().then(snap => {
+                      pendingOffersCount = snap.size;
+                      updateAlbumBadges();
+                  }).catch(() => {
+                      pendingOffersCount = 0;
+                      updateAlbumBadges();
+                  });
             }
         });
 
-        // Listener für ausstehende Tauschanfragen
         db.collection("trade_requests")
           .where("receiver_uid", "==", user.uid)
           .where("status", "==", "pending")
           .onSnapshot((snapshot) => {
-              updateAlbumBadges(snapshot.size);
+              pendingOffersCount = snapshot.size;
+              updateAlbumBadges();
           });
     } else {
         window.location.href = 'index.html';
