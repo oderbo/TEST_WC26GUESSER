@@ -39,16 +39,23 @@ h1 { margin: 0; font-size: 22px; text-transform: uppercase; text-shadow: 0 1px 3
 .btn-back { position: absolute; left: 4px; top: 50%; transform: translateY(-50%); background: rgba(255, 255, 255, 0.1); border: 1.5px solid rgba(255, 255, 255, 0.4); color: white; font-family: Arial, sans-serif; font-weight: bold; font-size: 14px; width: 22px; height: 22px; border-radius: 4px; cursor: pointer; display: flex; align-items: center; justify-content: center; text-decoration: none; box-shadow: 0 2px 6px rgba(0,0,0,0.2); transition: background 0.15s ease, transform 0.15s ease; z-index: 100; }
 .btn-back:hover { background: rgba(255, 255, 255, 0.25); transform: translateY(-50%) scale(1.05); }
 
-/* --- MARKT-BUTTON --- */
-.action-btn-round { position: fixed; bottom: 20px; left: 20px; width: 60px; height: 60px; border-radius: 50%; background-color: #ffffff; display: flex; align-items: center; justify-content: center; cursor: pointer; box-shadow: 0 6px 16px rgba(0,0,0,0.3); z-index: 1000; padding: 0; border: 2px solid #ffbb04; transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+/* --- BUTTONS UNTEN LINKS --- */
+.action-btn-round { position: fixed; left: 20px; width: 60px; height: 60px; border-radius: 50%; background-color: #ffffff; display: flex; align-items: center; justify-content: center; cursor: pointer; box-shadow: 0 6px 16px rgba(0,0,0,0.3); z-index: 1000; padding: 0; border: 2px solid #ffbb04; transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
 .action-btn-round:hover { transform: scale(1.1); }
-.action-btn-round img { width: 55%; height: 55%; object-fit: contain; display: block; }
+.action-btn-round img, .action-btn-round svg { width: 55%; height: 55%; object-fit: contain; display: block; }
+
+.btn-market-round { bottom: 20px; }
+.btn-index-round { bottom: 90px; }
 
 /* --- STICKER-STAPEL (3D FLIP) --- */
 .sticker-stack-container { position: fixed; bottom: 20px; right: 20px; width: 80px; height: 110px; z-index: 1000; cursor: pointer; transition: transform 0.2s ease; perspective: 1000px; }
 .sticker-stack-container:hover { transform: translateY(-5px); }
 
 .stack-card { position: absolute; width: 100%; height: 100%; background: transparent; display: flex; align-items: center; justify-content: center; container-type: inline-size; }
+
+/* Zwingt den iOS Touch IMMER auf die Karte, ignoriert Bilder/Texte innen */
+.stack-card * { pointer-events: none !important; }
+
 .stack-card-inner { position: relative; width: 100%; height: 100%; transition: transform 0.4s cubic-bezier(0.4, 0.0, 0.2, 1); transform-style: preserve-3d; border-radius: 4px; box-shadow: 0 4px 8px rgba(0,0,0,0.4); }
 .stack-card.is-flipped .stack-card-inner { transform: rotateY(180deg); }
 
@@ -64,6 +71,7 @@ h1 { margin: 0; font-size: 22px; text-transform: uppercase; text-shadow: 0 1px 3
     -webkit-transform: rotateY(0deg) translate3d(0,0,0); 
     z-index: 2; 
 }
+.stack-front * { backface-visibility: hidden; -webkit-backface-visibility: hidden; }
 
 .stack-back { 
     transform: rotateY(180deg) translate3d(0,0,0); 
@@ -145,7 +153,7 @@ h1 { margin: 0; font-size: 22px; text-transform: uppercase; text-shadow: 0 1px 3
 /* Die restlichen Grid-Bereiche */
 .player-grid-bottom, .player-grid-full { width: 100%; display: grid; grid-template-columns: repeat(4, 1fr); gap: 2cqw; align-content: start; }
 
-/* SPECIAL GRID (Gleichmäßige Verteilung) */
+/* SPECIAL GRID */
 .special-grid { display: flex; flex-wrap: wrap; justify-content: space-evenly; align-content: space-evenly; height: 100%; width: 100%; gap: 2cqw; padding-bottom: 5cqw;}
 
 /* --- STADIUM SEITE --- */
@@ -180,7 +188,7 @@ h1 { margin: 0; font-size: 22px; text-transform: uppercase; text-shadow: 0 1px 3
 .sticker-slot.filled { border: none; background-color: transparent !important; }
 .sticker-slot.filled .slot-circle { display: none; }
 
-/* --- CSS-KLASSEN FÜR STICKER DESIGN (AUS INDEX.HTML) --- */
+/* --- CSS-KLASSEN FÜR STICKER DESIGN --- */
 .sticker-wrapper { position: absolute; width: 100%; height: 100%; top: 0; left: 0; box-shadow: 0 2px 6px rgba(0,0,0,0.3); }
 .sticker-inner { position: absolute; top: 5cqw; left: 5cqw; right: 5cqw; bottom: 5cqw; background-color: var(--color-1, #c10e23); border: 2px solid var(--color-2, #046a38); outline: 2px solid var(--color-3, #f2a900); box-sizing: border-box; }
 .sticker-flag { position: absolute; top: 0; right: 0; width: 15cqw; height: 15cqw; border-radius: 50%; overflow: hidden; border: 1px solid #000000; box-sizing: border-box; z-index: 2; }
@@ -233,7 +241,9 @@ h1 { margin: 0; font-size: 22px; text-transform: uppercase; text-shadow: 0 1px 3
     .header-container { margin-top: 15px; margin-bottom: 25px; height: 70px; }
     h1 { font-size: 36px; } 
     .btn-back { left: 0; width: 36px; height: 36px; font-size: 22px; border-radius: 6px; border-width: 2px; }
-    .action-btn-round { width: 70px; height: 70px; bottom: 30px; left: 30px; }
+    .action-btn-round { width: 70px; height: 70px; left: 30px; }
+    .btn-market-round { bottom: 30px; }
+    .btn-index-round { bottom: 115px; }
     .sticker-stack-container { width: 130px; height: 180px; bottom: 30px; right: 30px; }
     .stack-placeholder-text { font-size: 14px; }
     .stack-counter { top: -20px; right: -20px; width: 32px; height: 32px; font-size: 15px; }
@@ -252,6 +262,13 @@ h1 { margin: 0; font-size: 22px; text-transform: uppercase; text-shadow: 0 1px 3
     <a href="index.html" class="btn-back">&lt;</a>
     <h1>Sticker Album</h1>
 </div>
+
+<button class="action-btn-round btn-index-round" onclick="turnToSpread(2, event)" title="Zum Inhaltsverzeichnis">
+    <svg viewBox="0 0 24 24" width="55%" height="55%" fill="none" stroke="#111" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="19" y1="12" x2="5" y2="12"></line>
+        <polyline points="12 19 5 12 12 5"></polyline>
+    </svg>
+</button>
 
 <button class="action-btn-round btn-market-round" onclick="window.location.href='market.html'" title="Zum Markt">
     <img src="assets/market_icon.png" alt="Market">
@@ -430,8 +447,6 @@ function renderStapel() {
                 card.innerHTML = `<div class="stack-card-inner">
                                     <div class="stack-front">
                                         ${createStickerHTML(sticker)}
-                                        <!-- Unsichtbares Schutzschild, das iOS Klicks perfekt abfängt -->
-                                        <div style="position:absolute; inset:0; z-index:999;"></div>
                                     </div>
                                     <div class="stack-back">${sticker.albumNumber}</div>
                                   </div>`;
@@ -800,7 +815,7 @@ function buildPageHTML(bp, isLeftPage) {
                         <div class="index-grid">`;
         entries.forEach(e => {
             let icon = e.flag ? `<img src="${e.flag}" class="index-flag">` : `<div class="index-flag-placeholder"></div>`;
-            html += `<div class="index-entry" onclick="turnToSpread(${e.spread})">
+            html += `<div class="index-entry" onclick="turnToSpread(${e.spread}, event)">
                         ${icon}
                         <span class="index-label">${e.label}</span>
                      </div>`;
@@ -898,9 +913,12 @@ function flipPrev() {
     }
 }
 
-function turnToSpread(targetSpread) {
+function turnToSpread(targetSpread, e = null) {
+    if (e) e.stopPropagation();
     if (targetSpread > maxPages - 1) return;
     if (currentPageIndex === 0 && targetSpread > 0) book.classList.add('open');
+    
+    book.classList.remove('zoomed-left', 'zoomed-right');
     
     for(let i=0; i<papers.length; i++) {
         if (i < targetSpread) {
