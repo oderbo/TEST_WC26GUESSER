@@ -30,17 +30,21 @@ h1 { margin: 0; font-size: 22px; text-transform: uppercase; text-shadow: 0 1px 3
 .action-btn-round:hover { transform: scale(1.1); }
 .action-btn-round img { width: 55%; height: 55%; object-fit: contain; display: block; }
 
-/* --- STICKER-STAPEL --- */
-.sticker-stack-container { position: fixed; bottom: 20px; right: 20px; width: 80px; height: 110px; z-index: 1000; cursor: pointer; transition: transform 0.2s ease; }
+/* --- STICKER-STAPEL (NEU MIT 3D FLIP) --- */
+.sticker-stack-container { position: fixed; bottom: 20px; right: 20px; width: 80px; height: 110px; z-index: 1000; cursor: pointer; transition: transform 0.2s ease; perspective: 1000px; }
 .sticker-stack-container:hover { transform: translateY(-5px); }
-.stack-card { position: absolute; width: 100%; height: 100%; background-color: transparent; display: flex; align-items: center; justify-content: center; container-type: inline-size; overflow: hidden; }
+
+.stack-card { position: absolute; width: 100%; height: 100%; background: transparent; display: flex; align-items: center; justify-content: center; container-type: inline-size; }
+.stack-card-inner { position: relative; width: 100%; height: 100%; transition: transform 0.4s cubic-bezier(0.4, 0.0, 0.2, 1); transform-style: preserve-3d; border-radius: 4px; box-shadow: 0 4px 8px rgba(0,0,0,0.4); }
+.stack-card.is-flipped .stack-card-inner { transform: rotateY(180deg); }
+.stack-front, .stack-back { position: absolute; width: 100%; height: 100%; backface-visibility: hidden; -webkit-backface-visibility: hidden; border-radius: 4px; overflow: hidden; background-color: #eeeeee; }
+.stack-back { transform: rotateY(180deg); background-color: #e0e0e0; display: flex; align-items: center; justify-content: center; font-size: 28px; font-weight: bold; color: #111; font-family: Arial, sans-serif; border: 2.5px solid #fff; }
+
 .stack-card-3 { transform: rotate(8deg) translate(3px, 3px); z-index: 1; }
 .stack-card-2 { transform: rotate(-5deg) translate(-2px, 1px); z-index: 2; }
 .stack-card-1 { transform: rotate(0deg); z-index: 3; touch-action: none; }
 
-/* Dummy Card Design, falls Stapel leer ist */
 .stack-dummy { background-color: #eeeeee; border: 2px solid #ffffff; border-radius: 4px; box-shadow: 0 4px 8px rgba(0,0,0,0.4); width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; }
-
 .stack-placeholder-text { font-family: Arial, sans-serif; font-size: 11px; font-weight: bold; color: #aaaaaa; text-transform: uppercase; }
 .stack-counter { position: absolute; top: -10px; right: -10px; background-color: #ff1145; color: #ffffff; width: 26px; height: 26px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: Arial, sans-serif; font-size: 13px; font-weight: bold; box-shadow: 0 2px 5px rgba(0,0,0,0.3); z-index: 10; }
 
@@ -57,7 +61,6 @@ h1 { margin: 0; font-size: 22px; text-transform: uppercase; text-shadow: 0 1px 3
 .paper { position: absolute; width: 100%; height: 100%; top: 0; left: 0; transform-style: preserve-3d; transform-origin: left center; transition: transform 0.6s cubic-bezier(0.4, 0.0, 0.2, 1); will-change: transform; }
 .paper.flipped { transform: rotateY(-180deg); }
 
-/* iOS/SAFARI Z-FIGHTING FIX: Explizite z-index & webkit-backface-visibility + 1px 3D-Schubs */
 .front, .back { 
     position: absolute; width: 100%; height: 100%; top: 0; left: 0; 
     -webkit-backface-visibility: hidden; backface-visibility: hidden; 
@@ -68,57 +71,72 @@ h1 { margin: 0; font-size: 22px; text-transform: uppercase; text-shadow: 0 1px 3
 .back { border-right: 1px solid rgba(0,0,0,0.25); transform: rotateY(180deg) translateZ(1px); -webkit-transform: rotateY(180deg) translateZ(1px); z-index: 1; }
 .cover-img { width: 100%; height: 100%; object-fit: cover; border-radius: 0 8px 8px 0; }
 
-/* SEITENZAHLEN (Nur unten rechts auf der Front, verkleinert) */
-.page-numbers-combined { position: absolute; bottom: 8px; right: 12px; font-size: 9.5px; font-weight: bold; color: #111111; background: rgba(255,255,255,0.7); padding: 2px 5px; border-radius: 3px; z-index: 50; }
+/* SEITENZAHLEN (Links für Rückseiten, Rechts für Vorderseiten) */
+.page-number-left { position: absolute; bottom: 8px; left: 12px; font-size: 14px; font-weight: bold; color: var(--text-col, #111); z-index: 50; }
+.page-number-right { position: absolute; bottom: 8px; right: 12px; font-size: 14px; font-weight: bold; color: var(--text-col, #111); z-index: 50; }
 
 /* =========================================================================
-   DYNAMISCHES SEITEN-LAYOUT (STRIKTES MATHEMATISCHES GRID)
+   DYNAMISCHES SEITEN-LAYOUT
    ========================================================================= */
 .page-wrapper {
     container-type: inline-size;
     width: 100%; height: 100%; padding: 4cqw;
     display: flex; flex-direction: column;
-    
     background-color: var(--page-bg, transparent);
-    
-    /* MATHEMATISCH FIXIERTE VARIABLEN: Garantiert immer gleiche Größe! */
     --col-w: 21.5cqw; 
     --col-h: calc(21.5cqw * 1.38);
 }
 
-/* Stahlbeton-Käfig für den Team-Namen */
+/* DUNKLE TEXTUR SEITEN (Special, Golden, Winning) */
+.dark-page {
+    background-color: #1e1e1e !important;
+    background-image: radial-gradient(#3a3a3a 1px, transparent 1px);
+    background-size: 12px 12px;
+    --text-col: #FFD700;
+    --slot-color: #FFD700;
+}
+.special-title { color: #FFD700; text-transform: uppercase; font-size: 6cqw; margin: 0 0 2cqw 0; text-align: center; letter-spacing: 2px; text-shadow: 0 2px 4px rgba(0,0,0,0.5); }
+
+/* --- INDEX SEITE --- */
+.index-wrapper { padding: 5cqw; height: 100%; overflow-y: auto; }
+.index-grid { display: grid; grid-template-columns: 1fr; gap: 1.5cqw; }
+.index-entry { display: flex; align-items: center; background: rgba(255,255,255,0.08); padding: 1cqw 3cqw; border-radius: 8px; cursor: pointer; border: 1px solid rgba(255,255,255,0.2); transition: background 0.2s; }
+.index-entry:hover { background: rgba(255,255,255,0.15); }
+.index-flag { width: 4cqw; height: 4cqw; border-radius: 50%; object-fit: cover; margin-right: 3cqw; border: 1px solid #fff; }
+.index-flag-placeholder { width: 4cqw; height: 4cqw; border-radius: 50%; margin-right: 3cqw; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); }
+.index-label { flex-grow: 1; font-weight: bold; font-size: 2.8cqw; color: #fff; text-transform: uppercase; text-shadow: 0 1px 2px rgba(0,0,0,0.4); }
+.index-page-indicator { font-weight: bold; color: #FFD700; font-size: 2.5cqw; }
+
+/* --- TEAM SEITE --- */
 .team-name-wrapper { height: 10cqw; width: 68.5cqw; display: flex; align-items: flex-end; margin-bottom: 2cqw; }
 .team-name { color: var(--text-col, #111111); margin: 0; text-transform: uppercase; line-height: 1; letter-spacing: -0.5px; white-space: nowrap; }
 
-/* Header Grid (Team Foto, Flag, Group, Wappen) */
-.team-header-grid {
-    width: 100%; margin-bottom: 2cqw; height: var(--col-h); 
-    display: grid; 
-    grid-template-columns: var(--col-h) 1fr var(--col-w) var(--col-w); /* Exakte Matrix! */
-    gap: 2cqw;
-}
+/* Team Header (Perfekt positioniert für Flagge & Group) */
+.team-header-container { position: relative; width: 100%; height: var(--col-h); margin-bottom: 2cqw; }
+.th-photo { position: absolute; left: 0; bottom: 0; }
+.th-wappen { position: absolute; right: 0; bottom: 0; }
+.th-group { position: absolute; right: calc(var(--col-w) + 2cqw); bottom: 0; width: var(--col-w); height: var(--col-w); display: flex; flex-direction: column; justify-content: center; align-items: center; }
+.th-group span { font-size: 2.5cqw; font-weight: bold; color: var(--text-col, #111); margin-bottom: -1px;}
+.th-group strong { font-size: 10.5cqw; line-height: 1; color: var(--text-col, #111); }
+.th-flag { position: absolute; left: calc(var(--col-h) + 2cqw); right: calc(var(--col-w) * 2 + 4cqw); bottom: 0; height: var(--col-w); display: flex; align-items: center; justify-content: center; }
 
-.group-box { display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; }
-.group-box span { font-size: 2.5cqw; font-weight: bold; color: var(--text-col, #111111); margin-bottom: -1px;}
-.group-box strong { font-size: 10.5cqw; line-height: 1; color: var(--text-col, #111111); }
+.player-grid-bottom, .player-grid-full, .special-grid { width: 100%; display: grid; grid-template-columns: repeat(4, 1fr); gap: 2cqw; align-content: start; }
+.special-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 3cqw; padding-top: 2cqw;}
 
-/* Die restlichen Grid-Bereiche */
-.player-grid-bottom, .player-grid-full, .generic-grid {
-    width: 100%; display: grid; grid-template-columns: repeat(4, 1fr); gap: 2cqw; align-content: start;
-}
+/* --- STADIUM SEITE --- */
+.stadium-row { display: flex; width: 100%; height: var(--col-h); gap: 2cqw; margin-bottom: 2cqw; }
+.stadium-title-box { flex-grow: 1; display: flex; align-items: center; padding: 0 4cqw; border: 1.5px solid var(--slot-color, #111); background: transparent; font-weight: bold; font-size: 4cqw; text-transform: uppercase; color: var(--text-col, #111);}
+.stadium-title-box.left { border-radius: 50px 0 0 50px; border-right: none; justify-content: flex-end; text-align: right;}
+.stadium-title-box.right { border-radius: 0 50px 50px 0; border-left: none; justify-content: flex-start; text-align: left;}
 
 /* --- PLATZHALTER & STICKER DESIGN --- */
 .sticker-slot {
-    position: relative; 
-    width: var(--col-w); height: var(--col-h); 
+    position: relative; width: var(--col-w); height: var(--col-h); 
     border: 1.5px solid var(--slot-color, #111111); 
-    background-color: transparent; /* TRANSPARENT! */
+    background-color: transparent; 
     display: flex; align-items: center; justify-content: center;
-    container-type: inline-size;
-    z-index: 5;
+    container-type: inline-size; z-index: 5;
 }
-
-/* Der perfekte 90° Rotations-Modifikator */
 .rotated-slot-wrapper { width: var(--col-h); height: var(--col-w); position: relative; }
 .rotated-slot {
     position: absolute; top: 50%; left: 50%;
@@ -126,21 +144,15 @@ h1 { margin: 0; font-size: 22px; text-transform: uppercase; text-shadow: 0 1px 3
     transform: translate(-50%, -50%) rotate(-90deg);
 }
 
-/* ZWINGT DEN KREIS WIEDER AUFRECHT */
-.rotated-slot .slot-circle { transform: rotate(90deg); }
-
 .slot-circle {
     width: 28px; height: 28px; border-radius: 50%; 
     border: 1.5px solid var(--slot-color, #111111);
     display: flex; align-items: center; justify-content: center;
-    font-size: 11px; font-weight: bold; 
-    color: var(--slot-color, #111111); 
-    background-color: transparent; /* TRANSPARENT! */
-    font-family: Arial, sans-serif;
+    font-size: 11px; font-weight: bold; color: var(--slot-color, #111111); 
+    background-color: transparent; font-family: Arial, sans-serif;
 }
 .sticker-slot.filled { border: none; background-color: transparent; }
 .sticker-slot.filled .slot-circle { display: none; }
-
 
 /* --- CSS-KLASSEN FÜR STICKER DESIGN (AUS INDEX.HTML) --- */
 .sticker-wrapper { position: absolute; width: 100%; height: 100%; top: 0; left: 0; box-shadow: 0 2px 6px rgba(0,0,0,0.3); }
@@ -184,8 +196,6 @@ h1 { margin: 0; font-size: 22px; text-transform: uppercase; text-shadow: 0 1px 3
 .name-wrapper-rot { position: absolute; left: calc(2px + 5.625cqw); top: 50%; transform: translate(-50%, -50%) rotate(90deg); z-index: 10; }
 .name-wrapper-rot .special-name-box { position: relative; bottom: auto; left: auto; transform: none; }
 
-.debug-text { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 80%; text-align: center; color: #555; font-family: Arial, sans-serif; font-size: 12px; line-height: 1.4; }
-
 /* --- DESKTOP MINIMAL-PFEILE --- */
 .desk-nav-btn { position: absolute; top: 50%; transform: translateY(-50%); font-size: 42px; color: rgba(0, 0, 0, 0.35); cursor: pointer; z-index: 1000; display: none; font-family: sans-serif; transition: color 0.2s ease, opacity 0.3s ease; }
 .desk-nav-btn span { display: inline-block; transform: scale(0.5, 2.5); }
@@ -201,7 +211,8 @@ h1 { margin: 0; font-size: 22px; text-transform: uppercase; text-shadow: 0 1px 3
     .stack-counter { width: 32px; height: 32px; font-size: 15px; top: -12px; right: -12px; }
     .book { width: 440px; max-height: calc(100dvh - 120px); transform: translateX(-15%) scale(1.25); }
     .book.open { transform: translateX(50%) scale(1); }
-    .page-numbers-combined { bottom: 12px; right: 18px; font-size: 11px; padding: 2px 6px; border-radius: 4px;}
+    .page-number-left, .page-number-right { font-size: 16px; bottom: 12px; }
+    .page-number-left { left: 16px; } .page-number-right { right: 16px; }
     .book.open ~ .desk-nav-btn { display: block; }
     .desk-nav-btn.prev { left: calc(50% - 440px + 5px); } .desk-nav-btn.next { left: calc(50% + 440px - 30px); }
 }
@@ -255,6 +266,7 @@ const db = firebase.firestore();
 let globalStickerDatabase = null;
 let currentUserData = null;
 let bookInitialized = false;
+let globalIndexEntries = [];
 
 fetch("./data/sticker_database.json")
     .then(r => r.json())
@@ -286,7 +298,6 @@ function getContrastColors(hexColor) {
 
 function createStickerHTML(sticker) {
     if (!sticker) return '';
-    
     let typeClass = "container-default-special";
     if (sticker.type === "player") typeClass = "container-player";
     else if (sticker.type === 'stadium_left') typeClass = "container-stadium-left";
@@ -388,12 +399,13 @@ function renderStapel() {
         if (stapel.length > i) {
             const sticker = globalStickerDatabase[stapel[i]];
             if (sticker) { 
-                card.innerHTML = createStickerHTML(sticker); 
-                card.style.border = "none"; 
-                card.style.backgroundColor = "transparent";
+                card.innerHTML = `<div class="stack-card-inner">
+                                    <div class="stack-front">${createStickerHTML(sticker)}</div>
+                                    <div class="stack-back">${sticker.albumNumber}</div>
+                                  </div>`;
+                card.classList.remove('is-flipped');
                 card.style.display = "flex"; 
             } else {
-                card.innerHTML = ''; 
                 card.style.display = "none"; 
             }
         } else {
@@ -423,19 +435,18 @@ function renderPastedStickers() {
 }
 
 /* =========================================================================
-   DER DYNAMISCHE ALBUM-BLUEPRINT
+   DER DYNAMISCHE ALBUM-BLUEPRINT (KORRIGIERT & INDEXIERT)
    ========================================================================= */
 const albumBlueprint = [
-    { type: "cover" },
-    { type: "special", startId: "SPC000", endId: "SPC006", startAlbumNumber: "00", endAlbumNumber: 6 },
-    { type: "index" },
-    { type: "index" },
+    { type: "cover_back" }, // Page 0
+    { type: "special", startId: "SPC000", endId: "SPC006", startAlbumNumber: "00", endAlbumNumber: 6 }, // Page 1
+    { type: "index_left" }, // Page 2
+    { type: "index_right" }, // Page 3
     { type: "stadiums", startId: "STD001", endId: "STD008", startAlbumNumber: 7, endAlbumNumber: 14 },
     { type: "stadiums", startId: "STD009", endId: "STD016", startAlbumNumber: 15, endAlbumNumber: 22 },
     { type: "stadiums", startId: "STD017", endId: "STD024", startAlbumNumber: 23, endAlbumNumber: 30 },
     { type: "stadiums", startId: "STD025", endId: "STD032", startAlbumNumber: 31, endAlbumNumber: 38 },
     
-    // Group A
     { type: "team", countryCode: "MEX", name: "Mexico", group: "A", startId: "MEX001", endId: "MEX014", startAlbumNumber: 39, endAlbumNumber: 52, flag: "data/mexico/mexico_flag_circle.png", color_1: "#006847", color_2: "#CE1126", color_3: "#FFFFFF" },
     { type: "team", countryCode: "MEX", name: "Mexico", group: "A", startId: "MEX015", endId: "MEX028", startAlbumNumber: 53, endAlbumNumber: 66, flag: "data/mexico/mexico_flag_circle.png", color_1: "#006847", color_2: "#CE1126", color_3: "#FFFFFF" },
     { type: "team", countryCode: "RSA", name: "South Africa", group: "A", startId: "RSA001", endId: "RSA014", startAlbumNumber: 67, endAlbumNumber: 80, flag: "data/south_africa/south_africa_flag_circle.png", color_1: "#FFC525", color_2: "#01963A", color_3: "#000000" },
@@ -445,7 +456,6 @@ const albumBlueprint = [
     { type: "team", countryCode: "CZE", name: "Czech Republic", group: "A", startId: "CZE001", endId: "CZE014", startAlbumNumber: 123, endAlbumNumber: 136, flag: "data/czechia/czechia_flag_circle.png", color_1: "#ED1B2C", color_2: "#11457E", color_3: "#FFFFFF" },
     { type: "team", countryCode: "CZE", name: "Czech Republic", group: "A", startId: "CZE015", endId: "CZE028", startAlbumNumber: 137, endAlbumNumber: 150, flag: "data/czechia/czechia_flag_circle.png", color_1: "#ED1B2C", color_2: "#11457E", color_3: "#FFFFFF" },
     
-    // Group B
     { type: "team", countryCode: "CAN", name: "Canada", group: "B", startId: "CAN001", endId: "CAN014", startAlbumNumber: 151, endAlbumNumber: 164, flag: "data/canada/canada_flag_circle.png", color_1: "#D80621", color_2: "#FFFFFF", color_3: "#000000" },
     { type: "team", countryCode: "CAN", name: "Canada", group: "B", startId: "CAN015", endId: "CAN028", startAlbumNumber: 165, endAlbumNumber: 178, flag: "data/canada/canada_flag_circle.png", color_1: "#D80621", color_2: "#FFFFFF", color_3: "#000000" },
     { type: "team", countryCode: "BIH", name: "Bosnia and Herzegovina", group: "B", startId: "BIH001", endId: "BIH014", startAlbumNumber: 179, endAlbumNumber: 192, flag: "data/bosnia_herzegovina/bosnia_herzegovina_flag_circle.png", color_1: "#002F6C", color_2: "#FFCD00", color_3: "#FFFFFF" },
@@ -455,7 +465,6 @@ const albumBlueprint = [
     { type: "team", countryCode: "SUI", name: "Switzerland", group: "B", startId: "SUI001", endId: "SUI014", startAlbumNumber: 235, endAlbumNumber: 248, flag: "data/switzerland/switzerland_flag_circle.png", color_1: "#FFFFFF", color_2: "#DA291C", color_3: "#000000" },
     { type: "team", countryCode: "SUI", name: "Switzerland", group: "B", startId: "SUI015", endId: "SUI028", startAlbumNumber: 249, endAlbumNumber: 262, flag: "data/switzerland/switzerland_flag_circle.png", color_1: "#FFFFFF", color_2: "#DA291C", color_3: "#000000" },
     
-    // Group C
     { type: "team", countryCode: "BRA", name: "Brazil", group: "C", startId: "BRA001", endId: "BRA014", startAlbumNumber: 263, endAlbumNumber: 276, flag: "data/brazil/brazil_flag_circle.png", color_1: "#FFDC02", color_2: "#009B3A", color_3: "#002776" },
     { type: "team", countryCode: "BRA", name: "Brazil", group: "C", startId: "BRA015", endId: "BRA028", startAlbumNumber: 277, endAlbumNumber: 290, flag: "data/brazil/brazil_flag_circle.png", color_1: "#FFDC02", color_2: "#009B3A", color_3: "#002776" },
     { type: "team", countryCode: "MAR", name: "Morocco", group: "C", startId: "MAR001", endId: "MAR014", startAlbumNumber: 291, endAlbumNumber: 304, flag: "data/morocco/morocco_flag_circle.png", color_1: "#C1272D", color_2: "#006233", color_3: "#FFFFFF" },
@@ -465,7 +474,6 @@ const albumBlueprint = [
     { type: "team", countryCode: "SCO", name: "Scotland", group: "C", startId: "SCO001", endId: "SCO014", startAlbumNumber: 347, endAlbumNumber: 360, flag: "data/scotland/scotland_flag_circle.png", color_1: "#005EB8", color_2: "#FFFFFF", color_3: "#000000" },
     { type: "team", countryCode: "SCO", name: "Scotland", group: "C", startId: "SCO015", endId: "SCO028", startAlbumNumber: 361, endAlbumNumber: 374, flag: "data/scotland/scotland_flag_circle.png", color_1: "#005EB8", color_2: "#FFFFFF", color_3: "#000000" },
     
-    // Group D
     { type: "team", countryCode: "USA", name: "USA", group: "D", startId: "USA001", endId: "USA014", startAlbumNumber: 375, endAlbumNumber: 388, flag: "data/usa/usa_flag_circle.png", color_1: "#B31942", color_2: "#0A3161", color_3: "#FFFFFF" },
     { type: "team", countryCode: "USA", name: "USA", group: "D", startId: "USA015", endId: "USA028", startAlbumNumber: 389, endAlbumNumber: 402, flag: "data/usa/usa_flag_circle.png", color_1: "#B31942", color_2: "#0A3161", color_3: "#FFFFFF" },
     { type: "team", countryCode: "PAR", name: "Paraguay", group: "D", startId: "PAR001", endId: "PAR014", startAlbumNumber: 403, endAlbumNumber: 416, flag: "data/paraguay/paraguay_flag_circle.png", color_1: "#D52B1E", color_2: "#0038A8", color_3: "#FFFFFF" },
@@ -475,13 +483,11 @@ const albumBlueprint = [
     { type: "team", countryCode: "TUR", name: "Turkey", group: "D", startId: "TUR001", endId: "TUR014", startAlbumNumber: 459, endAlbumNumber: 472, flag: "data/turkey/turkey_flag_circle.png", color_1: "#E30A17", color_2: "#FFFFFF", color_3: "#000000" },
     { type: "team", countryCode: "TUR", name: "Turkey", group: "D", startId: "TUR015", endId: "TUR028", startAlbumNumber: 473, endAlbumNumber: 486, flag: "data/turkey/turkey_flag_circle.png", color_1: "#E30A17", color_2: "#FFFFFF", color_3: "#000000" },
     
-    // Golden Boots
     { type: "golden_boots", startId: "GBO001", endId: "GBO006", startAlbumNumber: 487, endAlbumNumber: 492 },
     { type: "golden_boots", startId: "GBO007", endId: "GBO014", startAlbumNumber: 493, endAlbumNumber: 500 },
     { type: "golden_boots", startId: "GBO015", endId: "GBO021", startAlbumNumber: 501, endAlbumNumber: 507 },
     { type: "golden_boots", startId: "GBO022", endId: "GBO028", startAlbumNumber: 508, endAlbumNumber: 514 },
     
-    // Group E
     { type: "team", countryCode: "GER", name: "Germany", group: "E", startId: "GER001", endId: "GER014", startAlbumNumber: 515, endAlbumNumber: 528, flag: "data/germany/germany_flag_circle.png", color_1: "#000000", color_2: "#FFFFFF", color_3: "#FFCE00" },
     { type: "team", countryCode: "GER", name: "Germany", group: "E", startId: "GER015", endId: "GER028", startAlbumNumber: 529, endAlbumNumber: 542, flag: "data/germany/germany_flag_circle.png", color_1: "#000000", color_2: "#FFFFFF", color_3: "#FFCE00" },
     { type: "team", countryCode: "CUW", name: "Curaçao", group: "E", startId: "CUW001", endId: "CUW014", startAlbumNumber: 543, endAlbumNumber: 556, flag: "data/curacao/curacao_flag_circle.png", color_1: "#002B7F", color_2: "#F9E814", color_3: "#FFFFFF" },
@@ -491,7 +497,6 @@ const albumBlueprint = [
     { type: "team", countryCode: "ECU", name: "Ecuador", group: "E", startId: "ECU001", endId: "ECU014", startAlbumNumber: 599, endAlbumNumber: 612, flag: "data/ecuador/ecuador_flag_circle.png", color_1: "#FFDD00", color_2: "#034EA2", color_3: "#ED1C24" },
     { type: "team", countryCode: "ECU", name: "Ecuador", group: "E", startId: "ECU015", endId: "ECU028", startAlbumNumber: 613, endAlbumNumber: 626, flag: "data/ecuador/ecuador_flag_circle.png", color_1: "#FFDD00", color_2: "#034EA2", color_3: "#ED1C24" },
     
-    // Group F
     { type: "team", countryCode: "NED", name: "Netherlands", group: "F", startId: "NED001", endId: "NED014", startAlbumNumber: 627, endAlbumNumber: 640, flag: "data/netherlands/netherlands_flag_circle.png", color_1: "#F36C21", color_2: "#FFFFFF", color_3: "#000000" },
     { type: "team", countryCode: "NED", name: "Netherlands", group: "F", startId: "NED015", endId: "NED028", startAlbumNumber: 641, endAlbumNumber: 654, flag: "data/netherlands/netherlands_flag_circle.png", color_1: "#F36C21", color_2: "#FFFFFF", color_3: "#000000" },
     { type: "team", countryCode: "JPN", name: "Japan", group: "F", startId: "JPN001", endId: "JPN014", startAlbumNumber: 655, endAlbumNumber: 668, flag: "data/japan/japan_flag_circle.png", color_1: "#000555", color_2: "#FFFFFF", color_3: "#000000" },
@@ -501,7 +506,6 @@ const albumBlueprint = [
     { type: "team", countryCode: "TUN", name: "Tunisia", group: "F", startId: "TUN001", endId: "TUN014", startAlbumNumber: 711, endAlbumNumber: 724, flag: "data/tunisia/tunisia_flag_circle.png", color_1: "#E70013", color_2: "#FFFFFF", color_3: "#000000" },
     { type: "team", countryCode: "TUN", name: "Tunisia", group: "F", startId: "TUN015", endId: "TUN028", startAlbumNumber: 725, endAlbumNumber: 738, flag: "data/tunisia/tunisia_flag_circle.png", color_1: "#E70013", color_2: "#FFFFFF", color_3: "#000000" },
     
-    // Group G
     { type: "team", countryCode: "BEL", name: "Belgium", group: "G", startId: "BEL001", endId: "BEL014", startAlbumNumber: 739, endAlbumNumber: 752, flag: "data/belgium/belgium_flag_circle.png", color_1: "#E30613", color_2: "#000000", color_3: "#FDDA24" },
     { type: "team", countryCode: "BEL", name: "Belgium", group: "G", startId: "BEL015", endId: "BEL028", startAlbumNumber: 753, endAlbumNumber: 766, flag: "data/belgium/belgium_flag_circle.png", color_1: "#E30613", color_2: "#000000", color_3: "#FDDA24" },
     { type: "team", countryCode: "EGY", name: "Egypt", group: "G", startId: "EGY001", endId: "EGY014", startAlbumNumber: 767, endAlbumNumber: 780, flag: "data/egypt/egypt_flag_circle.png", color_1: "#CE1126", color_2: "#000000", color_3: "#FFFFFF" },
@@ -511,23 +515,20 @@ const albumBlueprint = [
     { type: "team", countryCode: "NZL", name: "New Zealand", group: "G", startId: "NZL001", endId: "NZL014", startAlbumNumber: 823, endAlbumNumber: 836, flag: "data/new_zealand/new_zealand_flag_circle.png", color_1: "#000000", color_2: "#FFFFFF", color_3: "#000000" },
     { type: "team", countryCode: "NZL", name: "New Zealand", group: "G", startId: "NZL015", endId: "NZL028", startAlbumNumber: 837, endAlbumNumber: 850, flag: "data/new_zealand/new_zealand_flag_circle.png", color_1: "#000000", color_2: "#FFFFFF", color_3: "#000000" },
     
-    // Group H
     { type: "team", countryCode: "ESP", name: "Spain", group: "H", startId: "ESP001", endId: "ESP014", startAlbumNumber: 851, endAlbumNumber: 864, flag: "data/spain/spain_flag_circle.png", color_1: "#FF0028", color_2: "#FFC908", color_3: "#000000" },
     { type: "team", countryCode: "ESP", name: "Spain", group: "H", startId: "ESP015", endId: "ESP028", startAlbumNumber: 865, endAlbumNumber: 878, flag: "data/spain/spain_flag_circle.png", color_1: "#FF0028", color_2: "#FFC908", color_3: "#000000" },
-    { type: "team", countryCode: "CPV", name: "Cape Verde", group: "H", startId: "CPV001", endId: "CPV014", startAlbumNumber: 879, endAlbumNumber: 892, flag: "data/cabo_verde/cabo_verde_flag_circle.png", color_1: "#003893", color_2: "#CF2027", color_3: "#FFFFFF" },
-    { type: "team", countryCode: "CPV", name: "Cape Verde", group: "H", startId: "CPV015", endId: "CPV028", startAlbumNumber: 893, endAlbumNumber: 906, flag: "data/cabo_verde/cabo_verde_flag_circle.png", color_1: "#003893", color_2: "#CF2027", color_3: "#FFFFFF" },
+    { type: "team", countryCode: "CPV", name: "Cape Verde", group: "H", startId: "CPV001", endId: "CPV014", startAlbumNumber: 879, endAlbumNumber: 892, flag: "data/cape_verde/cape_verde_flag_circle.png", color_1: "#003893", color_2: "#CF2027", color_3: "#FFFFFF" },
+    { type: "team", countryCode: "CPV", name: "Cape Verde", group: "H", startId: "CPV015", endId: "CPV028", startAlbumNumber: 893, endAlbumNumber: 906, flag: "data/cape_verde/cape_verde_flag_circle.png", color_1: "#003893", color_2: "#CF2027", color_3: "#FFFFFF" },
     { type: "team", countryCode: "KSA", name: "Saudi Arabia", group: "H", startId: "KSA001", endId: "KSA014", startAlbumNumber: 907, endAlbumNumber: 920, flag: "data/saudi_arabia/saudi_arabia_flag_circle.png", color_1: "#006C35", color_2: "#FFFFFF", color_3: "#000000" },
     { type: "team", countryCode: "KSA", name: "Saudi Arabia", group: "H", startId: "KSA015", endId: "KSA028", startAlbumNumber: 921, endAlbumNumber: 934, flag: "data/saudi_arabia/saudi_arabia_flag_circle.png", color_1: "#006C35", color_2: "#FFFFFF", color_3: "#000000" },
     { type: "team", countryCode: "URU", name: "Uruguay", group: "H", startId: "URU001", endId: "URU014", startAlbumNumber: 935, endAlbumNumber: 948, flag: "data/uruguay/uruguay_flag_circle.png", color_1: "#0081C6", color_2: "#FFFFFF", color_3: "#000000" },
     { type: "team", countryCode: "URU", name: "Uruguay", group: "H", startId: "URU015", endId: "URU028", startAlbumNumber: 949, endAlbumNumber: 962, flag: "data/uruguay/uruguay_flag_circle.png", color_1: "#0081C6", color_2: "#FFFFFF", color_3: "#000000" },
     
-    // Golden Ball
     { type: "golden_ball", startId: "GBA001", endId: "GBA005", startAlbumNumber: 963, endAlbumNumber: 967 },
     { type: "golden_ball", startId: "GBA006", endId: "GBA011", startAlbumNumber: 968, endAlbumNumber: 973 },
     { type: "golden_ball", startId: "GBA012", endId: "GBA017", startAlbumNumber: 974, endAlbumNumber: 979 },
     { type: "golden_ball", startId: "GBA018", endId: "GBA022", startAlbumNumber: 980, endAlbumNumber: 984 },
     
-    // Group I
     { type: "team", countryCode: "FRA", name: "France", group: "I", startId: "FRA001", endId: "FRA014", startAlbumNumber: 985, endAlbumNumber: 998, flag: "data/france/france_flag_circle.png", color_1: "#002654", color_2: "#ED2939", color_3: "#FFFFFF" },
     { type: "team", countryCode: "FRA", name: "France", group: "I", startId: "FRA015", endId: "FRA028", startAlbumNumber: 999, endAlbumNumber: 1012, flag: "data/france/france_flag_circle.png", color_1: "#002654", color_2: "#ED2939", color_3: "#FFFFFF" },
     { type: "team", countryCode: "SEN", name: "Senegal", group: "I", startId: "SEN001", endId: "SEN014", startAlbumNumber: 1013, endAlbumNumber: 1026, flag: "data/senegal/senegal_flag_circle.png", color_1: "#00853F", color_2: "#FDEF42", color_3: "#E31B23" },
@@ -537,7 +538,6 @@ const albumBlueprint = [
     { type: "team", countryCode: "NOR", name: "Norway", group: "I", startId: "NOR001", endId: "NOR014", startAlbumNumber: 1069, endAlbumNumber: 1082, flag: "data/norway/norway_flag_circle.png", color_1: "#BA0C2F", color_2: "#00205B", color_3: "#FFFFFF" },
     { type: "team", countryCode: "NOR", name: "Norway", group: "I", startId: "NOR015", endId: "NOR028", startAlbumNumber: 1083, endAlbumNumber: 1096, flag: "data/norway/norway_flag_circle.png", color_1: "#BA0C2F", color_2: "#00205B", color_3: "#FFFFFF" },
     
-    // Group J
     { type: "team", countryCode: "ARG", name: "Argentina", group: "J", startId: "ARG001", endId: "ARG014", startAlbumNumber: 1097, endAlbumNumber: 1110, flag: "data/argentina/argentina_flag_circle.png", color_1: "#43A1D5", color_2: "#FFFFFF", color_3: "#000000" },
     { type: "team", countryCode: "ARG", name: "Argentina", group: "J", startId: "ARG015", endId: "ARG028", startAlbumNumber: 1111, endAlbumNumber: 1124, flag: "data/argentina/argentina_flag_circle.png", color_1: "#43A1D5", color_2: "#FFFFFF", color_3: "#000000" },
     { type: "team", countryCode: "ALG", name: "Algeria", group: "J", startId: "ALG001", endId: "ALG014", startAlbumNumber: 1125, endAlbumNumber: 1138, flag: "data/algeria/algeria_flag_circle.png", color_1: "#4F9A44", color_2: "#DB1F26", color_3: "#FFFFFF" },
@@ -547,7 +547,6 @@ const albumBlueprint = [
     { type: "team", countryCode: "JOR", name: "Jordan", group: "J", startId: "JOR001", endId: "JOR014", startAlbumNumber: 1181, endAlbumNumber: 1194, flag: "data/jordan/jordan_flag_circle.png", color_1: "#000000", color_2: "#CE1126", color_3: "#FFFFFF" },
     { type: "team", countryCode: "JOR", name: "Jordan", group: "J", startId: "JOR015", endId: "JOR028", startAlbumNumber: 1195, endAlbumNumber: 1208, flag: "data/jordan/jordan_flag_circle.png", color_1: "#000000", color_2: "#CE1126", color_3: "#FFFFFF" },
     
-    // Group K
     { type: "team", countryCode: "POR", name: "Portugal", group: "K", startId: "POR001", endId: "POR014", startAlbumNumber: 1209, endAlbumNumber: 1222, flag: "data/portugal/portugal_flag_circle.png", color_1: "#E42518", color_2: "#046A38", color_3: "#FFCE00" },
     { type: "team", countryCode: "POR", name: "Portugal", group: "K", startId: "POR015", endId: "POR028", startAlbumNumber: 1223, endAlbumNumber: 1236, flag: "data/portugal/portugal_flag_circle.png", color_1: "#E42518", color_2: "#046A38", color_3: "#FFCE00" },
     { type: "team", countryCode: "COD", name: "DR Congo", group: "K", startId: "COD001", endId: "COD014", startAlbumNumber: 1237, endAlbumNumber: 1250, flag: "data/dr_congo/dr_congo_flag_circle.png", color_1: "#007FFF", color_2: "#CE1021", color_3: "#F7D116" },
@@ -557,7 +556,6 @@ const albumBlueprint = [
     { type: "team", countryCode: "COL", name: "Colombia", group: "K", startId: "COL001", endId: "COL014", startAlbumNumber: 1293, endAlbumNumber: 1306, flag: "data/colombia/colombia_flag_circle.png", color_1: "#FCD116", color_2: "#003893", color_3: "#CE1126" },
     { type: "team", countryCode: "COL", name: "Colombia", group: "K", startId: "COL015", endId: "COL028", startAlbumNumber: 1307, endAlbumNumber: 1320, flag: "data/colombia/colombia_flag_circle.png", color_1: "#FCD116", color_2: "#003893", color_3: "#CE1126" },
     
-    // Group L
     { type: "team", countryCode: "ENG", name: "England", group: "L", startId: "ENG001", endId: "ENG014", startAlbumNumber: 1321, endAlbumNumber: 1334, flag: "data/england/england_flag_circle.png", color_1: "#FFFFFF", color_2: "#CE1124", color_3: "#000000" },
     { type: "team", countryCode: "ENG", name: "England", group: "L", startId: "ENG015", endId: "ENG028", startAlbumNumber: 1335, endAlbumNumber: 1348, flag: "data/england/england_flag_circle.png", color_1: "#FFFFFF", color_2: "#CE1124", color_3: "#000000" },
     { type: "team", countryCode: "CRO", name: "Croatia", group: "L", startId: "CRO001", endId: "CRO014", startAlbumNumber: 1349, endAlbumNumber: 1362, flag: "data/croatia/croatia_flag_circle.png", color_1: "#FF0000", color_2: "#FFFFFF", color_3: "#000000" },
@@ -567,12 +565,37 @@ const albumBlueprint = [
     { type: "team", countryCode: "PAN", name: "Panama", group: "L", startId: "PAN001", endId: "PAN014", startAlbumNumber: 1405, endAlbumNumber: 1418, flag: "data/panama/panama_flag_circle.png", color_1: "#DA291C", color_2: "#002A8F", color_3: "#FFFFFF" },
     { type: "team", countryCode: "PAN", name: "Panama", group: "L", startId: "PAN015", endId: "PAN028", startAlbumNumber: 1419, endAlbumNumber: 1432, flag: "data/panama/panama_flag_circle.png", color_1: "#DA291C", color_2: "#002A8F", color_3: "#FFFFFF" },
     
-    // Winning Teams
     { type: "winning_teams", startId: "WIN001", endId: "WIN005", startAlbumNumber: 1433, endAlbumNumber: 1437 },
     { type: "winning_teams", startId: "WIN006", endId: "WIN011", startAlbumNumber: 1438, endAlbumNumber: 1443 },
     { type: "winning_teams", startId: "WIN012", endId: "WIN017", startAlbumNumber: 1444, endAlbumNumber: 1449 },
     { type: "winning_teams", startId: "WIN018", endId: "WIN022", startAlbumNumber: 1450, endAlbumNumber: 1454 }
 ];
+
+/* =========================================================================
+   INDEX GENERIERUNG
+   ========================================================================= */
+const indexEntries = [];
+let currentPageIndexMap = 4; 
+for (let i = 4; i < albumBlueprint.length; i += 2) {
+    let bpL = albumBlueprint[i];
+    let spread = Math.floor(i / 2) + 1;
+    let pageNum = i; 
+    let label = ""; let flag = "";
+    
+    if (bpL.type === 'team') {
+        label = bpL.name; flag = bpL.flag;
+    } else if (bpL.type === 'stadiums') {
+        label = i === 4 ? "Stadiums I" : "Stadiums II"; 
+    } else if (bpL.type === 'golden_boots') {
+        label = "Golden Boots";
+    } else if (bpL.type === 'golden_ball') {
+        label = "Golden Ball";
+    } else if (bpL.type === 'winning_teams') {
+        label = i === 116 ? "Winning Teams I" : "Winning Teams II";
+    }
+    
+    if (label) indexEntries.push({ label, flag, spread, pageNum });
+}
 
 /* =========================================================================
    HTML GENERATOREN
@@ -594,29 +617,120 @@ function buildPlayerGrid(prefix, startIdx, endIdx, startAlbumNum) {
     return html;
 }
 
-function buildGenericGrid(bp) {
-    let html = '<div class="page-wrapper"><div class="generic-grid">';
+function buildStadiumPage(bp) {
+    let html = '<div class="page-wrapper"><div class="stadium-grid">';
+    let currentAlbumNum = bp.startAlbumNumber;
+    let sidNum = parseInt(bp.startId.replace(/\D/g, ''), 10);
+    
+    const names = [
+        "BMO Stadium", "BC Place", "AT&T Stadium", "Mercedes-Benz",
+        "MetLife Stadium", "Gillette Stadium", "NRG Stadium", "SoFi Stadium",
+        "Arrowhead", "Hard Rock", "Lincoln Fin.", "Levi's Stadium",
+        "Lumen Field", "Estadio BBVA", "Estadio Azteca", "Estadio Akron"
+    ];
+
+    for(let row=0; row<4; row++) {
+        let nameIdx = Math.floor((currentAlbumNum - 7) / 2); 
+        let sName = names[nameIdx] || "Stadium";
+        let sid1 = "STD" + String(sidNum).padStart(3, '0');
+        let sid2 = "STD" + String(sidNum+1).padStart(3, '0');
+        
+        let titleDiv = `<div class="stadium-title-box ${row%2===0 ? 'left' : 'right'}"><span>${sName}</span></div>`;
+        let slotsDiv = buildSlotHTML(sid1, currentAlbumNum) + buildSlotHTML(sid2, currentAlbumNum+1);
+        
+        html += `<div class="stadium-row">`;
+        if (row%2===0) html += titleDiv + slotsDiv;
+        else html += slotsDiv + titleDiv;
+        html += `</div>`;
+        
+        currentAlbumNum += 2;
+        sidNum += 2;
+    }
+    html += '</div></div>';
+    return html;
+}
+
+function buildGenericGrid(bp, rotateAll = false) {
+    let html = `<div class="page-wrapper dark-page">`;
+    if (bp.type === 'golden_boots' && bp.startId === 'GBO001') html += `<h2 class="special-title">Golden Boots</h2>`;
+    if (bp.type === 'golden_ball' && bp.startId === 'GBA001') html += `<h2 class="special-title">Golden Ball</h2>`;
+    if (bp.type === 'winning_teams' && bp.startId === 'WIN001') html += `<h2 class="special-title">Winning Teams</h2>`;
+    
+    html += '<div class="special-grid">';
     let currentAlbumNum = bp.startAlbumNumber;
     let sIdx = parseInt(bp.startId.replace(/\D/g, ''), 10);
     let eIdx = parseInt(bp.endId.replace(/\D/g, ''), 10);
     let prefix = bp.startId.replace(/[0-9]/g, '');
     for(let i = sIdx; i <= eIdx; i++) {
         let sid = prefix + String(i).padStart(3, '0');
-        html += buildSlotHTML(sid, currentAlbumNum);
+        if(rotateAll) {
+            html += `<div class="rotated-slot-wrapper">${buildSlotHTML(sid, currentAlbumNum, 'rotated-slot')}</div>`;
+        } else {
+            html += buildSlotHTML(sid, currentAlbumNum);
+        }
         currentAlbumNum++;
     }
     html += '</div></div>';
     return html;
 }
 
-function buildPageHTML(bp, isLeftPage) {
-    let wrapperStyle = "";
-    if (bp.type === 'team') {
-        let textColor = getPageTextColor(bp.color_2);
-        wrapperStyle = `--page-bg: ${bp.color_2}; --slot-color: ${bp.color_1}; --text-col: ${textColor};`;
+function buildPageHTML(bp, isLeftPage, pageIndex) {
+    if (bp.type === 'cover_back') {
+        return `<div class="page-wrapper dark-page"></div>`;
+    }
+    if (bp.type === 'special') {
+        return `
+        <div class="page-wrapper dark-page" style="position: relative;">
+            <div style="position: absolute; top: 10cqw; left: 8cqw;">
+                <div class="rotated-slot-wrapper">${buildSlotHTML('SPC001', '1', 'rotated-slot')}</div>
+            </div>
+            <div style="position: absolute; top: calc(10cqw + var(--col-w) + 1cqw); left: 8cqw;">
+                <div class="rotated-slot-wrapper">${buildSlotHTML('SPC002', '2', 'rotated-slot')}</div>
+            </div>
+            <div style="position: absolute; top: 10cqw; right: 8cqw;">
+                <div class="rotated-slot-wrapper">${buildSlotHTML('SPC005', '5', 'rotated-slot')}</div>
+            </div>
+            <div style="position: absolute; top: calc(10cqw + var(--col-w) + 1cqw); right: 8cqw;">
+                <div class="rotated-slot-wrapper">${buildSlotHTML('SPC006', '6', 'rotated-slot')}</div>
+            </div>
+            <div style="position: absolute; top: 45cqw; left: 50%; transform: translateX(-50%);">
+                <div class="rotated-slot-wrapper">${buildSlotHTML('SPC004', '4', 'rotated-slot')}</div>
+            </div>
+            <div style="position: absolute; bottom: 8cqw; left: 8cqw;">
+                <div class="rotated-slot-wrapper">${buildSlotHTML('SPC000', '00', 'rotated-slot')}</div>
+            </div>
+            <div style="position: absolute; bottom: 8cqw; right: 8cqw;">
+                <div class="rotated-slot-wrapper">${buildSlotHTML('SPC003', '3', 'rotated-slot')}</div>
+            </div>
+        </div>`;
+    }
+    
+    if (bp.type === 'index_left' || bp.type === 'index_right') {
+        let isLeft = bp.type === 'index_left';
+        let half = Math.ceil(indexEntries.length / 2);
+        let entries = isLeft ? indexEntries.slice(0, half) : indexEntries.slice(half);
+
+        let html = `<div class="page-wrapper index-wrapper dark-page">
+                        <h2 class="special-title" style="margin-top:0;">${isLeft ? 'Index' : ''}</h2>
+                        <div class="index-grid">`;
+        entries.forEach(e => {
+            let icon = e.flag ? `<img src="${e.flag}" class="index-flag">` : `<div class="index-flag-placeholder"></div>`;
+            html += `<div class="index-entry" onclick="turnToSpread(${e.spread})">
+                        ${icon}
+                        <span class="index-label">${e.label}</span>
+                        <span class="index-page-indicator">${e.pageNum} - ${e.pageNum + 1}</span>
+                     </div>`;
+        });
+        html += `</div></div>`;
+        return html;
     }
 
+    if (bp.type === 'stadiums') return buildStadiumPage(bp);
+
     if (bp.type === 'team') {
+        let textColor = getPageTextColor(bp.color_2);
+        let wrapperStyle = `--page-bg: ${bp.color_2}; --slot-color: ${bp.color_1}; --text-col: ${textColor};`;
+
         if (isLeftPage) { 
             let nameStyle = 'font-size: 8cqw;';
             if (bp.name.length > 9) nameStyle = 'font-size: 7cqw;';
@@ -630,17 +744,19 @@ function buildPageHTML(bp, isLeftPage) {
                     <div class="team-name-wrapper">
                         <h2 class="team-name" style="${nameStyle}">${bp.name}</h2>
                     </div>
-                    <div class="team-header-grid">
-                        <div class="rotated-slot-wrapper" style="grid-column: 1; align-self: end;">
-                            ${buildSlotHTML(bp.countryCode + '001', bp.startAlbumNumber, 'rotated-slot')}
+                    <div class="team-header-container">
+                        <div class="th-photo">
+                            <div class="rotated-slot-wrapper">
+                                ${buildSlotHTML(bp.countryCode + '001', bp.startAlbumNumber, 'rotated-slot')}
+                            </div>
                         </div>
-                        <div style="grid-column: 2; display: flex; align-items: center; justify-content: center; height: var(--col-w); align-self: end;">
+                        <div class="th-flag">
                             <img src="${bp.flag}" style="width: 14cqw; height: 14cqw; object-fit: cover; border-radius: 50%; border: 2.5px solid var(--text-col); box-shadow: 0 3px 6px rgba(0,0,0,0.3);" onerror="this.style.display='none'">
                         </div>
-                        <div class="group-box" style="grid-column: 3; height: var(--col-w); align-self: end;">
+                        <div class="th-group group-box">
                             <span>GROUP</span><strong>${bp.group}</strong>
                         </div>
-                        <div style="grid-column: 4; align-self: end;">
+                        <div class="th-wappen">
                             ${buildSlotHTML(bp.countryCode + '002', bp.startAlbumNumber + 1)}
                         </div>
                     </div>
@@ -658,8 +774,11 @@ function buildPageHTML(bp, isLeftPage) {
                 </div>`;
         }
     }
-    if (bp.type === 'cover' || bp.type === 'index') return `<div class="debug-text"><span>${bp.type}</span></div>`;
-    return buildGenericGrid(bp);
+    
+    if (bp.type === 'golden_boots' || bp.type === 'golden_ball') return buildGenericGrid(bp, false);
+    if (bp.type === 'winning_teams') return buildGenericGrid(bp, true);
+    
+    return `<div class="debug-text"><span>${bp.type}</span></div>`;
 }
 
 /* =========================================================================
@@ -669,37 +788,33 @@ const book = document.getElementById('book');
 let papers = []; let currentPageIndex = 0; let maxPages = 0;
 
 function initBook() {
-    try {
-        book.innerHTML = ''; papers = [];
-        const totalPapers = Math.ceil(albumBlueprint.length / 2);
+    book.innerHTML = ''; papers = [];
+    const totalPapers = Math.ceil(albumBlueprint.length / 2);
 
-        for (let i = 0; i <= totalPapers; i++) {
-            const paper = document.createElement('div'); paper.className = 'paper'; paper.id = `paper${i}`;
-            const front = document.createElement('div'); front.className = 'front';
-            const back = document.createElement('div'); back.className = 'back';
+    for (let i = 0; i <= totalPapers; i++) {
+        const paper = document.createElement('div'); paper.className = 'paper'; paper.id = `paper${i}`;
+        const front = document.createElement('div'); front.className = 'front';
+        const back = document.createElement('div'); back.className = 'back';
 
-            if (i === 0) {
-                front.innerHTML = `<img src="assets/panini_album.png" class="cover-img" onerror="this.src='assets/Icon.png'">`;
-                back.innerHTML = buildPageHTML(albumBlueprint[0], true);
-            } else {
-                const frontPageIndex = (i * 2) - 1; const backPageIndex = (i * 2);
-                if (frontPageIndex < albumBlueprint.length) {
-                    let combinedPageNum = `${frontPageIndex} - ${backPageIndex}`;
-                    front.innerHTML = buildPageHTML(albumBlueprint[frontPageIndex], false) + 
-                                      `<div class="page-numbers-combined">${combinedPageNum}</div>`;
-                }
-                if (backPageIndex < albumBlueprint.length) {
-                    back.innerHTML = buildPageHTML(albumBlueprint[backPageIndex], true);
-                }
+        if (i === 0) {
+            front.innerHTML = `<img src="assets/panini_album.png" class="cover-img" onerror="this.src='assets/Icon.png'">`;
+            back.innerHTML = buildPageHTML(albumBlueprint[0], true, 0);
+        } else {
+            const frontPageIndex = (i * 2) - 1; const backPageIndex = (i * 2);
+            if (frontPageIndex < albumBlueprint.length) {
+                front.innerHTML = buildPageHTML(albumBlueprint[frontPageIndex], false, frontPageIndex) + 
+                                  `<div class="page-number-right">${frontPageIndex}</div>`;
             }
-            paper.appendChild(front); paper.appendChild(back);
-            book.appendChild(paper); papers.push(paper); 
+            if (backPageIndex < albumBlueprint.length) {
+                back.innerHTML = buildPageHTML(albumBlueprint[backPageIndex], true, backPageIndex) +
+                                 `<div class="page-number-left">${backPageIndex}</div>`;
+            }
         }
-        maxPages = papers.length;
-        papers.forEach((paper, index) => { paper.style.zIndex = maxPages - index; });
-    } catch(e) {
-        console.error("Error building book:", e);
+        paper.appendChild(front); paper.appendChild(back);
+        book.appendChild(paper); papers.push(paper); 
     }
+    maxPages = papers.length;
+    papers.forEach((paper, index) => { paper.style.zIndex = maxPages - index; });
 }
 
 function updateNavArrows() {
@@ -723,6 +838,7 @@ book.addEventListener('click', (e) => {
 });
 
 function openBook() { book.classList.add('open'); flipNext(); }
+
 function flipNext() {
     if (currentPageIndex < maxPages - 1) {
         const paper = papers[currentPageIndex]; paper.classList.add('flipped');
@@ -730,6 +846,7 @@ function flipNext() {
         currentPageIndex++; updateNavArrows(); 
     }
 }
+
 function flipPrev() {
     if (currentPageIndex > 1) {
         currentPageIndex--; const paper = papers[currentPageIndex]; paper.classList.remove('flipped');
@@ -742,12 +859,31 @@ function flipPrev() {
     }
 }
 
+// Sprung-Funktion für das Inhaltsverzeichnis
+function turnToSpread(targetSpread) {
+    if (targetSpread > maxPages - 1) return;
+    if (currentPageIndex === 0 && targetSpread > 0) book.classList.add('open');
+    
+    for(let i=0; i<papers.length; i++) {
+        if (i < targetSpread) {
+            papers[i].classList.add('flipped');
+            papers[i].style.zIndex = i + 1;
+        } else {
+            papers[i].classList.remove('flipped');
+            papers[i].style.zIndex = maxPages - i;
+        }
+    }
+    currentPageIndex = targetSpread;
+    updateNavArrows();
+}
+
 /* =========================================================================
    DRAG & DROP ENGINE & FIREBASE
    ========================================================================= */
 const stackCard1 = document.getElementById('stackCard1');
 let isDraggingTopSticker = false; let isDraggingSticker = false;
 let dragStartX, dragStartY;
+let isClick = true;
 
 function pasteStickerToAlbum(stickerId) {
     if (!firebase.auth().currentUser) return;
@@ -767,7 +903,7 @@ function pasteStickerToAlbum(stickerId) {
 stackCard1.addEventListener('touchstart', (e) => {
     const stapel = currentUserData?.stapel || [];
     if (stapel.length === 0) return;
-    isDraggingTopSticker = true; isDraggingSticker = true; 
+    isDraggingTopSticker = true; isDraggingSticker = true; isClick = true;
     stackCard1.style.transition = 'none'; stackCard1.style.zIndex = 9999;
     dragStartX = e.touches[0].clientX; dragStartY = e.touches[0].clientY;
 }, {passive: false});
@@ -776,12 +912,19 @@ document.addEventListener('touchmove', (e) => {
     if (!isDraggingTopSticker) return;
     e.preventDefault(); 
     let currentX = e.touches[0].clientX - dragStartX; let currentY = e.touches[0].clientY - dragStartY;
+    if (Math.abs(currentX) > 5 || Math.abs(currentY) > 5) isClick = false;
     stackCard1.style.transform = `translate(${currentX}px, ${currentY}px) scale(1.1) rotate(0deg)`;
 }, {passive: false});
 
 document.addEventListener('touchend', (e) => {
     if (!isDraggingTopSticker) return;
     
+    if (isClick) {
+        stackCard1.classList.toggle('is-flipped');
+        isDraggingTopSticker = false; setTimeout(() => isDraggingSticker = false, 50);
+        return;
+    }
+
     stackCard1.style.visibility = 'hidden';
     const elemBelow = document.elementFromPoint(e.changedTouches[0].clientX, e.changedTouches[0].clientY);
     stackCard1.style.visibility = 'visible';
@@ -813,7 +956,7 @@ document.addEventListener('touchend', (e) => {
 stackCard1.addEventListener('mousedown', (e) => {
     const stapel = currentUserData?.stapel || [];
     if (stapel.length === 0) return;
-    isDraggingTopSticker = true; isDraggingSticker = true; 
+    isDraggingTopSticker = true; isDraggingSticker = true; isClick = true;
     stackCard1.style.transition = 'none'; stackCard1.style.zIndex = 9999;
     dragStartX = e.clientX; dragStartY = e.clientY;
 });
@@ -821,10 +964,17 @@ document.addEventListener('mousemove', (e) => {
     if (!isDraggingTopSticker) return;
     e.preventDefault();
     let currentX = e.clientX - dragStartX; let currentY = e.clientY - dragStartY;
+    if (Math.abs(currentX) > 5 || Math.abs(currentY) > 5) isClick = false;
     stackCard1.style.transform = `translate(${currentX}px, ${currentY}px) scale(1.1) rotate(0deg)`;
 });
 document.addEventListener('mouseup', (e) => {
     if (!isDraggingTopSticker) return;
+
+    if (isClick) {
+        stackCard1.classList.toggle('is-flipped');
+        isDraggingTopSticker = false; setTimeout(() => isDraggingSticker = false, 50);
+        return;
+    }
 
     stackCard1.style.visibility = 'hidden';
     const elemBelow = document.elementFromPoint(e.clientX, e.clientY);
