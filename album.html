@@ -24,18 +24,27 @@
     user-select: none;           
 }
 
-/* Verhindert das native Ghost-Dragging & die iOS 16 Bilderkennung (Live Text) komplett! */
+/* Verhindert das native Ghost-Dragging & die iOS Bilderkennung komplett! */
 img {
     -webkit-user-drag: none;
     pointer-events: none; 
 }
 
 html, body { overflow: hidden; height: 100dvh; text-size-adjust: none; -webkit-text-size-adjust: none; }
-body { margin: 0; padding: 10px 6px; font-family: 'FWC2026', Arial, sans-serif; color: white; background-color: #3f57f5; display: flex; flex-direction: column; align-items: center; width: 100%; position: relative; }
+
+/* STANDARD-SCHRIFT FÜR DIE GESAMTE APP: Arial */
+body { 
+    margin: 0; padding: 10px 6px; font-family: Arial, sans-serif; 
+    color: white; background-color: #3f57f5; display: flex; flex-direction: column; 
+    align-items: center; width: 100%; position: relative; 
+}
 
 /* --- OBERE LEISTE --- */
 .header-container { width: 100%; max-width: 1400px; position: relative; display: flex; justify-content: center; align-items: center; margin-top: -20px; margin-bottom: 0px; height: 50px; flex-shrink: 0; }
-h1 { margin: 0; font-size: 22px; text-transform: uppercase; text-shadow: 0 1px 3px rgba(0,0,0,0.4); letter-spacing: 1px; text-align: center; }
+
+/* TITEL NUTZT WEITERHIN FWC2026 */
+h1 { margin: 0; font-size: 22px; font-family: 'FWC2026', Arial, sans-serif; text-transform: uppercase; text-shadow: 0 1px 3px rgba(0,0,0,0.4); letter-spacing: 1px; text-align: center; }
+
 .btn-back { position: absolute; left: 4px; top: 50%; transform: translateY(-50%); background: rgba(255, 255, 255, 0.1); border: 1.5px solid rgba(255, 255, 255, 0.4); color: white; font-family: Arial, sans-serif; font-weight: bold; font-size: 14px; width: 22px; height: 22px; border-radius: 4px; cursor: pointer; display: flex; align-items: center; justify-content: center; text-decoration: none; box-shadow: 0 2px 6px rgba(0,0,0,0.2); transition: background 0.15s ease, transform 0.15s ease; z-index: 100; }
 .btn-back:hover { background: rgba(255, 255, 255, 0.25); transform: translateY(-50%) scale(1.05); }
 
@@ -47,27 +56,25 @@ h1 { margin: 0; font-size: 22px; text-transform: uppercase; text-shadow: 0 1px 3
 .btn-market-round { bottom: 20px; }
 .btn-index-round { bottom: 90px; }
 
-/* --- STICKER-STAPEL (3D FLIP, KEIN HOVER MEHR) --- */
+/* BADGES FÜR MARKET BUTTON */
+.market-badge {
+    position: absolute; width: 22px; height: 22px; border-radius: 50%;
+    color: white; font-family: Arial, sans-serif; font-weight: bold; font-size: 11px;
+    display: flex; align-items: center; justify-content: center;
+    border: 2px solid white; box-shadow: 0 2px 4px rgba(0,0,0,0.4); z-index: 10;
+}
+.market-badge-red { top: -6px; right: -6px; background-color: #ff1145; }
+.market-badge-green { top: -6px; left: -6px; background-color: #00cc44; }
+
+/* --- STICKER-STAPEL (3D FLIP) --- */
 .sticker-stack-container { position: fixed; bottom: 20px; right: 20px; width: 80px; height: 110px; z-index: 1000; cursor: pointer; perspective: 1000px; }
 
 /* Anzeige der Sticker-Nummer links vom Stapel */
 .stack-current-number {
-    position: absolute;
-    left: -42px;
-    bottom: 5px;
-    width: 34px;
-    height: 22px;
-    border: 1.5px solid rgba(255,255,255,0.8);
-    border-radius: 6px;
-    background-color: rgba(0,0,0,0.15);
-    display: none; /* wird per JS gesteuert */
-    align-items: center;
-    justify-content: center;
-    font-family: Arial, sans-serif;
-    font-size: 11px;
-    font-weight: bold;
-    color: #ffffff;
-    z-index: 10;
+    position: absolute; left: -42px; bottom: 5px; width: 34px; height: 22px;
+    border: 1.5px solid rgba(255,255,255,0.8); border-radius: 6px; background-color: rgba(0,0,0,0.15);
+    display: none; align-items: center; justify-content: center;
+    font-family: Arial, sans-serif; font-size: 11px; font-weight: bold; color: #ffffff; z-index: 10;
 }
 
 .stack-card { position: absolute; width: 100%; height: 100%; background: transparent; display: flex; align-items: center; justify-content: center; container-type: inline-size; }
@@ -78,7 +85,6 @@ h1 { margin: 0; font-size: 22px; text-transform: uppercase; text-shadow: 0 1px 3
 .stack-card-inner { position: relative; width: 100%; height: 100%; transition: transform 0.4s cubic-bezier(0.4, 0.0, 0.2, 1); transform-style: preserve-3d; border-radius: 4px; box-shadow: 0 4px 8px rgba(0,0,0,0.4); }
 .stack-card.is-flipped .stack-card-inner { transform: rotateY(180deg); }
 
-/* Hardware-Fix für iOS: translate3d fängt die Box-Schatten und z-index auf! */
 .stack-front, .stack-back { 
     position: absolute; width: 100%; height: 100%; 
     backface-visibility: hidden; -webkit-backface-visibility: hidden; 
@@ -86,17 +92,11 @@ h1 { margin: 0; font-size: 22px; text-transform: uppercase; text-shadow: 0 1px 3
     -webkit-transform-style: preserve-3d; transform-style: preserve-3d;
 }
 .stack-front { 
-    transform: rotateY(0deg) translate3d(0,0,0); 
-    -webkit-transform: rotateY(0deg) translate3d(0,0,0); 
-    z-index: 2; 
+    transform: rotateY(0deg) translate3d(0,0,0); -webkit-transform: rotateY(0deg) translate3d(0,0,0); z-index: 2; 
 }
-.stack-front * { backface-visibility: hidden; -webkit-backface-visibility: hidden; }
-
 .stack-back { 
-    transform: rotateY(180deg) translate3d(0,0,0); 
-    -webkit-transform: rotateY(180deg) translate3d(0,0,0); 
-    background-color: #e0e0e0; display: flex; align-items: center; justify-content: center; font-size: 28px; font-weight: bold; color: #111; font-family: Arial, sans-serif; border: 2.5px solid #fff; 
-    z-index: 1; 
+    transform: rotateY(180deg) translate3d(0,0,0); -webkit-transform: rotateY(180deg) translate3d(0,0,0); 
+    background-color: #e0e0e0; display: flex; align-items: center; justify-content: center; font-size: 28px; font-weight: bold; color: #111; font-family: Arial, sans-serif; border: 2.5px solid #fff; z-index: 1; 
 }
 
 .stack-card-3 { transform: rotate(8deg) translate(3px, 3px); z-index: 1; }
@@ -120,7 +120,6 @@ h1 { margin: 0; font-size: 22px; text-transform: uppercase; text-shadow: 0 1px 3
 .paper { position: absolute; width: 100%; height: 100%; top: 0; left: 0; transform-style: preserve-3d; transform-origin: left center; transition: transform 0.6s cubic-bezier(0.4, 0.0, 0.2, 1); will-change: transform; }
 .paper.flipped { transform: rotateY(-180deg); }
 
-/* iOS/SAFARI Z-FIGHTING FIX FÜR DAS BUCH */
 .front, .back { 
     position: absolute; width: 100%; height: 100%; top: 0; left: 0; 
     -webkit-backface-visibility: hidden; backface-visibility: hidden; 
@@ -131,7 +130,6 @@ h1 { margin: 0; font-size: 22px; text-transform: uppercase; text-shadow: 0 1px 3
 .back { border-right: 1px solid rgba(0,0,0,0.25); transform: rotateY(180deg) translateZ(1px); -webkit-transform: rotateY(180deg) translateZ(1px); z-index: 1; }
 .cover-img { width: 100%; height: 100%; object-fit: cover; border-radius: 0 8px 8px 0; }
 
-/* SEITENZAHLEN */
 .page-number-left { position: absolute; bottom: 8px; left: 12px; font-size: 14px; font-weight: bold; color: var(--text-col, #111); z-index: 50; }
 .page-number-right { position: absolute; bottom: 8px; right: 12px; font-size: 14px; font-weight: bold; color: var(--text-col, #111); z-index: 50; }
 
@@ -147,7 +145,6 @@ h1 { margin: 0; font-size: 22px; text-transform: uppercase; text-shadow: 0 1px 3
     --col-h: calc(21.5cqw * 1.38);
 }
 
-/* DUNKLE TEXTUR SEITEN (Special, Golden, Winning) */
 .dark-page {
     background-color: #1e1e1e !important;
     background-image: radial-gradient(#3a3a3a 1px, transparent 1px);
@@ -155,19 +152,10 @@ h1 { margin: 0; font-size: 22px; text-transform: uppercase; text-shadow: 0 1px 3
     --text-col: #FFD700;
     --slot-color: #FFD700;
 }
-.special-title { color: #FFD700; text-transform: uppercase; font-size: 7cqw; margin: 0 0 2cqw 0; text-align: center; letter-spacing: 2px; text-shadow: 0 2px 4px rgba(0,0,0,0.5); }
 
-/* Glänzender XXL Gold Titel für WC26 auf Seite 1 */
-.title-wc26 {
-    font-size: 16cqw;
-    font-weight: bold;
-    width: 100%; text-align: center; margin: 0; padding-top: 1cqw;
-    background: linear-gradient(to bottom, #FFDF73, #D4AF37, #997A15);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    text-shadow: 0px 4px 10px rgba(0,0,0,0.6);
-    letter-spacing: 2cqw;
-}
+/* ÜBERSCHRIFTEN NUTZEN FWC2026 */
+.special-title { font-family: 'FWC2026', Arial, sans-serif; color: #FFD700; text-transform: uppercase; font-size: 7cqw; margin: 0 0 2cqw 0; text-align: center; letter-spacing: 2px; text-shadow: 0 2px 4px rgba(0,0,0,0.5); }
+.title-wc26 { font-family: 'FWC2026', Arial, sans-serif; font-size: 16cqw; font-weight: bold; width: 100%; text-align: center; margin: 0; padding-top: 1cqw; background: linear-gradient(to bottom, #FFDF73, #D4AF37, #997A15); -webkit-background-clip: text; -webkit-text-fill-color: transparent; text-shadow: 0px 4px 10px rgba(0,0,0,0.6); letter-spacing: 2cqw; }
 
 /* --- INDEX SEITE --- */
 .index-wrapper { padding: 4cqw; height: 100%; }
@@ -179,12 +167,10 @@ h1 { margin: 0; font-size: 22px; text-transform: uppercase; text-shadow: 0 1px 3
 
 /* --- TEAM SEITE --- */
 .team-name-wrapper { height: 10cqw; width: 68.5cqw; display: flex; align-items: flex-end; margin-bottom: 2cqw; }
-.team-name { color: var(--text-col, #111111); margin: 0; text-transform: uppercase; line-height: 1; letter-spacing: -0.5px; white-space: nowrap; }
+/* TEAM-NAME AUCH FWC2026! */
+.team-name { font-family: 'FWC2026', Arial, sans-serif; color: var(--text-col, #111111); margin: 0; text-transform: uppercase; line-height: 1; letter-spacing: -0.5px; white-space: nowrap; }
 
-/* Die restlichen Grid-Bereiche */
 .player-grid-bottom, .player-grid-full { width: 100%; display: grid; grid-template-columns: repeat(4, 1fr); gap: 2cqw; align-content: start; }
-
-/* SPECIAL GRID (Gleichmäßige Verteilung über gesamte Seite) */
 .special-grid { display: flex; flex-wrap: wrap; justify-content: space-evenly; align-content: space-around; flex-grow: 1; width: 100%; gap: 2cqw; padding-bottom: 5cqw;}
 
 /* --- STADIUM SEITE --- */
@@ -236,7 +222,10 @@ h1 { margin: 0; font-size: 22px; text-transform: uppercase; text-shadow: 0 1px 3
 .player-image-container img { width: 100%; height: 100%; object-fit: contain; display: block; }
 .lower-elements-wrapper { position: absolute; top: 60%; bottom: 0; left: 0; right: 0; display: flex; flex-direction: column; gap: 4px; padding-bottom: 4px; box-sizing: border-box; z-index: 2; }
 .sticker-info-box { flex: 1; min-height: 0; width: 100%; background-color: var(--color-2); display: flex; align-items: center; justify-content: center; box-shadow: inset 0 1.5px 0 var(--color-3), inset 0 -1.5px 0 var(--color-3); box-sizing: border-box; }
-.player-name { color: #ffffff; font-weight: bold; text-align: center; white-space: normal; padding: 0 4px; font-size: 5.8cqw; line-height: 1.1; text-shadow: 1px 1px 2px rgba(0,0,0,0.5); }
+
+/* NUR HIER BEIM SPIELERNAMEN DIE SONDERSCHRIFT */
+.player-name { font-family: 'FWC2026', Arial, sans-serif; color: #ffffff; font-weight: bold; text-align: center; white-space: normal; padding: 0 4px; font-size: 5.8cqw; line-height: 1.1; text-shadow: 1px 1px 2px rgba(0,0,0,0.5); }
+
 .sticker-meta-container { flex: 0.8; min-height: 0; width: 100%; display: flex; gap: 2px; box-sizing: border-box; }
 .meta-box { background-color: #ffffff; border: 1px solid #000000; color: #000000; display: flex; align-items: center; justify-content: center; font-weight: bold; text-align: center; font-size: 5.2cqw; box-sizing: border-box; line-height: 1; }
 .meta-box-left { width: 16%; border-radius: 0 6px 6px 0; border-left: none; }
@@ -261,7 +250,7 @@ h1 { margin: 0; font-size: 22px; text-transform: uppercase; text-shadow: 0 1px 3
 .silver-bg { background: linear-gradient(135deg, #e0e0e0 0%, #ffffff 25%, #a0a0a0 50%, #f8f8f8 75%, #c0c0c0 100%); box-shadow: 0 1px 3px rgba(0,0,0,0.5); }
 .pos-top-right { top: 0; right: 0; } .pos-bottom-right { bottom: 0; right: 0; } .pos-bottom-left-rot { bottom: 0; left: 0; transform: rotate(90deg); }
 .special-icon { position: absolute; bottom: 0; right: 0; width: 15cqw; height: 15cqw; object-fit: contain; z-index: 10; }
-.special-name-box { position: absolute; background: #ffffff; border: 1px solid #000000; border-radius: 4px; font-weight: bold; color: #000000; font-size: 5.5cqw; height: 11.25cqw; display: flex; align-items: center; justify-content: center; padding: 0 8px; white-space: nowrap; z-index: 10; box-shadow: 0 1px 3px rgba(0,0,0,0.3); }
+.special-name-box { position: absolute; background: #ffffff; border: 1px solid #000000; border-radius: 4px; font-weight: bold; color: #000000; font-size: 5.5cqw; height: 11.25cqw; display: flex; align-items: center; justify-content: center; padding: 0 8px; white-space: nowrap; z-index: 10; box-shadow: 0 1px 3px rgba(0,0,0,0.3); font-family: Arial, sans-serif; }
 .pos-bottom-center { bottom: 2px; left: 50%; transform: translateX(-50%); }
 .name-wrapper-rot { position: absolute; left: calc(2px + 5.625cqw); top: 50%; transform: translate(-50%, -50%) rotate(90deg); z-index: 10; }
 .name-wrapper-rot .special-name-box { position: relative; bottom: auto; left: auto; transform: none; }
@@ -301,14 +290,14 @@ h1 { margin: 0; font-size: 22px; text-transform: uppercase; text-shadow: 0 1px 3
 </div>
 
 <button class="action-btn-round btn-index-round" onclick="turnToSpread(2, event)" title="Zum Inhaltsverzeichnis">
-    <svg viewBox="0 0 24 24" width="55%" height="55%" fill="none" stroke="#111" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-        <line x1="19" y1="12" x2="5" y2="12"></line>
-        <polyline points="12 19 5 12 12 5"></polyline>
-    </svg>
+    <span style="font-family: Arial, sans-serif; font-size: 11px; font-weight: bold; color: #111;">INDEX</span>
 </button>
 
 <button class="action-btn-round btn-market-round" onclick="window.location.href='market.html'" title="Zum Markt">
     <img src="assets/market_icon.png" alt="Market">
+    <!-- Badges für den Market Button -->
+    <div id="album-badge-offers" class="market-badge market-badge-red" style="display:none;">0</div>
+    <div id="album-badge-claims" class="market-badge market-badge-green" style="display:none;">0</div>
 </button>
 
 <div class="sticker-stack-container" id="stickerStack">
@@ -350,6 +339,7 @@ let globalStickerDatabase = null;
 let currentUserData = null;
 let bookInitialized = false;
 let globalIndexEntries = [];
+let pendingOffersCount = 0; // Für den roten Badge
 
 fetch("./data/sticker_database.json")
     .then(r => r.json())
@@ -495,7 +485,9 @@ function renderStapel() {
             const sticker = globalStickerDatabase[stapel[i]];
             if (sticker) { 
                 card.innerHTML = `<div class="stack-card-inner">
-                                    <div class="stack-front">${createStickerHTML(sticker)}</div>
+                                    <div class="stack-front">
+                                        ${createStickerHTML(sticker)}
+                                    </div>
                                     <div class="stack-back">${sticker.albumNumber}</div>
                                   </div>`;
                 card.classList.remove('is-flipped');
@@ -612,8 +604,8 @@ const albumBlueprint = [
     
     { type: "team", countryCode: "ESP", name: "Spain", group: "H", startId: "ESP001", endId: "ESP014", startAlbumNumber: 851, endAlbumNumber: 864, flag: "data/spain/spain_flag_circle.png", color_1: "#FF0028", color_2: "#FFC908", color_3: "#000000" },
     { type: "team", countryCode: "ESP", name: "Spain", group: "H", startId: "ESP015", endId: "ESP028", startAlbumNumber: 865, endAlbumNumber: 878, flag: "data/spain/spain_flag_circle.png", color_1: "#FF0028", color_2: "#FFC908", color_3: "#000000" },
-    { type: "team", countryCode: "CPV", name: "Cape Verde", group: "H", startId: "CPV001", endId: "CPV014", startAlbumNumber: 879, endAlbumNumber: 892, flag: "data/cape_verde/cape_verde_flag_circle.png", color_1: "#003893", color_2: "#CF2027", color_3: "#FFFFFF" },
-    { type: "team", countryCode: "CPV", name: "Cape Verde", group: "H", startId: "CPV015", endId: "CPV028", startAlbumNumber: 893, endAlbumNumber: 906, flag: "data/cape_verde/cape_verde_flag_circle.png", color_1: "#003893", color_2: "#CF2027", color_3: "#FFFFFF" },
+    { type: "team", countryCode: "CPV", name: "Cape Verde", group: "H", startId: "CPV001", endId: "CPV014", startAlbumNumber: 879, endAlbumNumber: 892, flag: "data/cabo_verde/cabo_verde_flag_circle.png", color_1: "#003893", color_2: "#CF2027", color_3: "#FFFFFF" },
+    { type: "team", countryCode: "CPV", name: "Cape Verde", group: "H", startId: "CPV015", endId: "CPV028", startAlbumNumber: 893, endAlbumNumber: 906, flag: "data/cabo_verde/cabo_verde_flag_circle.png", color_1: "#003893", color_2: "#CF2027", color_3: "#FFFFFF" },
     { type: "team", countryCode: "KSA", name: "Saudi Arabia", group: "H", startId: "KSA001", endId: "KSA014", startAlbumNumber: 907, endAlbumNumber: 920, flag: "data/saudi_arabia/saudi_arabia_flag_circle.png", color_1: "#006C35", color_2: "#FFFFFF", color_3: "#000000" },
     { type: "team", countryCode: "KSA", name: "Saudi Arabia", group: "H", startId: "KSA015", endId: "KSA028", startAlbumNumber: 921, endAlbumNumber: 934, flag: "data/saudi_arabia/saudi_arabia_flag_circle.png", color_1: "#006C35", color_2: "#FFFFFF", color_3: "#000000" },
     { type: "team", countryCode: "URU", name: "Uruguay", group: "H", startId: "URU001", endId: "URU014", startAlbumNumber: 935, endAlbumNumber: 948, flag: "data/uruguay/uruguay_flag_circle.png", color_1: "#0081C6", color_2: "#FFFFFF", color_3: "#000000" },
@@ -827,7 +819,20 @@ function buildPageHTML(bp, isLeftPage) {
     }
     
     if (bp.type === 'cover_back') {
-        return `<div class="page-wrapper dark-page"></div>`;
+        return `
+        <div class="page-wrapper dark-page" style="justify-content: center; padding: 6cqw;">
+            <h2 class="special-title" style="font-size: 6cqw; margin-bottom: 4cqw; text-align: center;">HOW TO PLAY</h2>
+            <ul style="color: white; font-family: Arial, sans-serif; font-size: 3.2cqw; line-height: 1.8; padding-left: 5cqw; margin: 0;">
+                <li>Swipe left or right to change the page</li>
+                <li>Tap on page to zoom</li>
+                <li>Swipe up on zoomed page to un-zoom</li>
+                <li>Drag and drop sticker</li>
+                <li>Click on country on indexpage to jump to page</li>
+                <li>Press index button to jump to indexpage</li>
+                <li style="color: #00cc44; margin-top: 3cqw; font-weight: bold;">GET 2 Sticker Packs on first time 50% progress in PICK A NATION game</li>
+                <li style="color: #00cc44; font-weight: bold;">GET 3 Packs on 100% for first time</li>
+            </ul>
+        </div>`;
     }
     
     if (bp.type === 'special') {
@@ -1185,6 +1190,27 @@ function handleSwipe() {
 // Init
 initBook();
 
+let pendingOffersCount = 0; 
+
+function updateAlbumBadges() {
+    const badgeRed = document.getElementById("album-badge-offers");
+    const badgeGreen = document.getElementById("album-badge-claims");
+    
+    if (pendingOffersCount > 0) {
+        badgeRed.innerText = pendingOffersCount;
+        badgeRed.style.display = "flex";
+    } else {
+        badgeRed.style.display = "none";
+    }
+    
+    if (currentUserData && currentUserData.traded_stickers && currentUserData.traded_stickers.length > 0) {
+        badgeGreen.innerText = currentUserData.traded_stickers.length;
+        badgeGreen.style.display = "flex";
+    } else {
+        badgeGreen.style.display = "none";
+    }
+}
+
 firebase.auth().onAuthStateChanged((user) => {
     if (user) {
         db.collection("users").doc(user.uid).onSnapshot((doc) => {
@@ -1195,8 +1221,18 @@ firebase.auth().onAuthStateChanged((user) => {
                     bookInitialized = true;
                 }
                 renderStapel();
+                updateAlbumBadges();
             }
         });
+
+        // Listener für ausstehende Tauschanfragen
+        db.collection("trade_requests")
+          .where("receiver_uid", "==", user.uid)
+          .where("status", "==", "pending")
+          .onSnapshot((snapshot) => {
+              pendingOffersCount = snapshot.size;
+              updateAlbumBadges();
+          });
     } else {
         window.location.href = 'index.html';
     }
