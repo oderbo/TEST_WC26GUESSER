@@ -341,8 +341,6 @@ const db = firebase.firestore();
 let globalStickerDatabase = null;
 let currentUserData = null;
 let bookInitialized = false;
-let globalIndexEntries = [];
-let pendingOffersCount = 0;
 
 fetch("./data/sticker_database.json")
     .then(r => r.json())
@@ -350,7 +348,8 @@ fetch("./data/sticker_database.json")
         globalStickerDatabase = data;
         renderStapel();
         renderPastedStickers();
-    });
+    })
+    .catch(err => console.error("Datenbank konnte nicht geladen werden:", err));
 
 function getPageTextColor(hexColor) {
     if (!hexColor) return '#1a1a1a';
@@ -1194,7 +1193,11 @@ initBook();
 
 let pendingOffersCount = 0;
 
-function updateAlbumBadges() {
+function updateAlbumBadges(offersCount = null) {
+    if (offersCount !== null) {
+        pendingOffersCount = offersCount;
+    }
+    
     const badgeRed = document.getElementById("album-badge-offers");
     const badgeGreen = document.getElementById("album-badge-claims");
     
@@ -1223,26 +1226,18 @@ firebase.auth().onAuthStateChanged((user) => {
                     bookInitialized = true;
                 }
                 renderStapel();
-                
-                db.collection("trade_requests")
-                  .where("receiver_uid", "==", user.uid)
-                  .where("status", "==", "pending")
-                  .get().then(snap => {
-                      pendingOffersCount = snap.size;
-                      updateAlbumBadges();
-                  }).catch(() => {
-                      pendingOffersCount = 0;
-                      updateAlbumBadges();
-                  });
+                updateAlbumBadges();
             }
         });
 
+        // Listener für ausstehende Tauschanfragen
         db.collection("trade_requests")
           .where("receiver_uid", "==", user.uid)
           .where("status", "==", "pending")
           .onSnapshot((snapshot) => {
-              pendingOffersCount = snapshot.size;
-              updateAlbumBadges();
+              updateAlbumBadges(snapshot.size);
+          }, (error) => {
+              console.error("Fehler beim Abrufen der Trade-Anfragen:", error);
           });
     } else {
         window.location.href = 'index.html';
