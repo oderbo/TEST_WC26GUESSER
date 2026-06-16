@@ -20,13 +20,9 @@ html, body { overflow: hidden; height: 100dvh; text-size-adjust: none; -webkit-t
 body { margin: 0; padding: 10px 6px; font-family: 'FWC2026', Arial, sans-serif; color: white; background-color: #3f57f5; display: flex; flex-direction: column; align-items: center; width: 100%; position: relative; }
 
 /* --- OBERE LEISTE --- */
-.header-container { width: 100%; max-width: 1400px; position: relative; display: flex; justify-content: center; align-items: center; margin-top: -20px; margin-bottom: 0px; height: 50px; flex-shrink: 0; transition: opacity 0.3s ease; }
+.header-container { width: 100%; max-width: 1400px; position: relative; display: flex; justify-content: center; align-items: center; margin-top: -20px; margin-bottom: 0px; height: 50px; flex-shrink: 0; }
 h1 { margin: 0; font-size: 22px; text-transform: uppercase; text-shadow: 0 1px 3px rgba(0,0,0,0.4); letter-spacing: 1px; text-align: center; }
-
-/* ZOOM VERHALTEN: Versteckt den Back-Button bei Zoom */
-body.zoom-active .btn-back { opacity: 0; pointer-events: none; }
-
-.btn-back { position: absolute; left: 4px; top: 50%; transform: translateY(-50%); background: rgba(255, 255, 255, 0.1); border: 1.5px solid rgba(255, 255, 255, 0.4); color: white; font-family: Arial, sans-serif; font-weight: bold; font-size: 14px; width: 22px; height: 22px; border-radius: 4px; cursor: pointer; display: flex; align-items: center; justify-content: center; text-decoration: none; box-shadow: 0 2px 6px rgba(0,0,0,0.2); transition: opacity 0.3s ease, background 0.15s ease, transform 0.15s ease; z-index: 100; }
+.btn-back { position: absolute; left: 4px; top: 50%; transform: translateY(-50%); background: rgba(255, 255, 255, 0.1); border: 1.5px solid rgba(255, 255, 255, 0.4); color: white; font-family: Arial, sans-serif; font-weight: bold; font-size: 14px; width: 22px; height: 22px; border-radius: 4px; cursor: pointer; display: flex; align-items: center; justify-content: center; text-decoration: none; box-shadow: 0 2px 6px rgba(0,0,0,0.2); transition: background 0.15s ease, transform 0.15s ease; z-index: 100; }
 .btn-back:hover { background: rgba(255, 255, 255, 0.25); transform: translateY(-50%) scale(1.05); }
 
 /* --- MARKT-BUTTON --- */
@@ -37,10 +33,11 @@ body.zoom-active .btn-back { opacity: 0; pointer-events: none; }
 /* --- STICKER-STAPEL --- */
 .sticker-stack-container { position: fixed; bottom: 20px; right: 20px; width: 80px; height: 110px; z-index: 1000; cursor: pointer; transition: transform 0.2s ease; }
 .sticker-stack-container:hover { transform: translateY(-5px); }
-.stack-card { position: absolute; width: 100%; height: 100%; background-color: transparent; border-radius: 4px; box-shadow: 0 4px 8px rgba(0,0,0,0.4); display: flex; align-items: center; justify-content: center; container-type: inline-size; overflow: hidden; }
-.stack-card-3 { transform: rotate(8deg) translate(3px, 3px); z-index: 1; }
-.stack-card-2 { transform: rotate(-5deg) translate(-2px, 1px); z-index: 2; }
+.stack-card { position: absolute; width: 100%; height: 100%; background-color: #eeeeee; border: 2px solid #ffffff; border-radius: 4px; box-shadow: 0 4px 8px rgba(0,0,0,0.4); display: flex; align-items: center; justify-content: center; container-type: inline-size; overflow: hidden; }
+.stack-card-3 { transform: rotate(8deg) translate(3px, 3px); z-index: 1; background-color: #dddddd; }
+.stack-card-2 { transform: rotate(-5deg) translate(-2px, 1px); z-index: 2; background-color: #e5e5e5;}
 .stack-card-1 { transform: rotate(0deg); z-index: 3; touch-action: none; }
+.stack-placeholder-text { font-family: Arial, sans-serif; font-size: 11px; font-weight: bold; color: #aaaaaa; text-transform: uppercase; }
 .stack-counter { position: absolute; top: -10px; right: -10px; background-color: #ff1145; color: #ffffff; width: 26px; height: 26px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: Arial, sans-serif; font-size: 13px; font-weight: bold; box-shadow: 0 2px 5px rgba(0,0,0,0.3); z-index: 10; }
 
 /* =========================================================================
@@ -56,19 +53,21 @@ body.zoom-active .btn-back { opacity: 0; pointer-events: none; }
 .paper { position: absolute; width: 100%; height: 100%; top: 0; left: 0; transform-style: preserve-3d; transform-origin: left center; transition: transform 0.6s cubic-bezier(0.4, 0.0, 0.2, 1); will-change: transform; }
 .paper.flipped { transform: rotateY(-180deg); }
 
-/* iOS/SAFARI MIRROR FIX */
+/* iOS/SAFARI MIRROR FIX: Explizite z-index & webkit-backface-visibility */
 .front, .back { 
     position: absolute; width: 100%; height: 100%; top: 0; left: 0; 
-    -webkit-backface-visibility: hidden; backface-visibility: hidden; 
+    -webkit-backface-visibility: hidden; 
+    backface-visibility: hidden; 
     background-color: #f4f1ea; overflow: hidden; 
     container-type: inline-size; 
-    -webkit-transform-style: preserve-3d; transform-style: preserve-3d;
+    -webkit-transform-style: preserve-3d;
+    transform-style: preserve-3d;
 }
 .front { border-left: 1px solid rgba(0,0,0,0.25); transform: rotateY(0deg) translateZ(1px); -webkit-transform: rotateY(0deg) translateZ(1px); z-index: 2; }
 .back { border-right: 1px solid rgba(0,0,0,0.25); transform: rotateY(180deg) translateZ(1px); -webkit-transform: rotateY(180deg) translateZ(1px); z-index: 1; }
 .cover-img { width: 100%; height: 100%; object-fit: cover; border-radius: 0 8px 8px 0; }
 
-/* SEITENZAHLEN */
+/* SEITENZAHLEN (Nur unten rechts auf der Front, verkleinert) */
 .page-numbers-combined { position: absolute; bottom: 8px; right: 12px; font-size: 9.5px; font-weight: bold; color: #111111; background: rgba(255,255,255,0.7); padding: 2px 5px; border-radius: 3px; z-index: 50; }
 
 /* =========================================================================
@@ -79,6 +78,7 @@ body.zoom-active .btn-back { opacity: 0; pointer-events: none; }
     width: 100%; height: 100%; padding: 4cqw;
     display: flex; flex-direction: column;
     
+    /* Dynamische Hintergründe werden per JS gesetzt */
     background-color: var(--page-bg, transparent);
     
     /* MATHEMATISCH FIXIERTE VARIABLEN */
@@ -93,78 +93,49 @@ body.zoom-active .btn-back { opacity: 0; pointer-events: none; }
     margin-bottom: 2cqw;
 }
 .team-name { 
-    color: var(--header-text-col, #111111); 
+    color: var(--text-col, #111111); 
     margin: 0; text-transform: uppercase; line-height: 1; letter-spacing: -0.5px; 
     white-space: nowrap; 
 }
 
-/* ABSOLUTER HEADER (Garantiert perfekte Geometrie der Elemente) */
-.abs-header {
-    position: relative; width: 100%; height: var(--col-h); margin-bottom: 2cqw;
+/* Header Grid */
+.team-header-grid {
+    width: 100%; display: grid; grid-template-columns: repeat(4, 1fr); gap: 2cqw;
+    margin-bottom: 2cqw;
+    height: var(--col-h); 
 }
 
-.abs-team-photo { position: absolute; left: 0; bottom: 0; }
-.abs-wappen { position: absolute; right: 0; bottom: 0; }
-
-.abs-group {
-    position: absolute;
-    /* Exakt in Spalte 3 platziert */
-    left: calc(var(--col-w) * 2 + 4cqw); 
-    width: var(--col-w);
-    /* Gleiche Oberkante wie das gedrehte Teamfoto */
-    top: calc(var(--col-h) - var(--col-w)); 
-    display: flex; flex-direction: column; justify-content: flex-start; align-items: center; text-align: center;
+.group-box {
+    display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center;
+    height: 100%; /* WICHTIG: Zentriert perfekt auf Y-Achse */
 }
-.abs-group span { font-size: 2.5cqw; font-weight: bold; color: var(--header-text-col, #111111); margin-bottom: 2px;}
-.abs-group strong { font-size: 15cqw; line-height: 1; color: var(--header-text-col, #111111); }
-
-.abs-flag {
-    position: absolute;
-    /* Horizontale Mitte zwischen rechtem Rand Foto (var(--col-h)) und rechtem Rand Spalte 3 (var(--col-w)*3 + 4cqw = 68.5cqw) */
-    left: calc((var(--col-h) + 68.5cqw) / 2); 
-    /* Vertikale Mitte des Team-Fotos */
-    top: calc(var(--col-h) - var(--col-w) / 2);
-    transform: translate(-50%, -50%);
-    width: 14cqw; height: 14cqw;
-    border-radius: 50%; object-fit: cover;
-    border: 1.5px solid var(--header-text-col, #111);
-    box-shadow: 0 2px 4px rgba(0,0,0,0.3);
-}
+.group-box span { font-size: 2.5cqw; font-weight: bold; color: var(--text-col, #111111); margin-bottom: 2px;}
+.group-box strong { font-size: 10.5cqw; line-height: 1; color: var(--text-col, #111111); } /* 50% Größer */
 
 .player-grid-bottom, .player-grid-full, .generic-grid {
     width: 100%; display: grid; grid-template-columns: repeat(4, 1fr); gap: 2cqw; align-content: start;
 }
 
-/* --- PLATZHALTER DESIGN --- */
+/* --- PLATZHALTER & STICKER DESIGN --- */
 .sticker-slot {
     position: relative; 
     width: var(--col-w); height: var(--col-h); 
-    border: 1.5px solid var(--slot-border-col, #111111); 
-    background-color: transparent; 
+    border: 1.5px solid var(--text-col, #111111); /* Umrandung adaptiert an Textfarbe */
+    background-color: var(--slot-bg, rgba(0,0,0,0.03)); /* Füllt Box mit color_1 */
     display: flex; align-items: center; justify-content: center;
     container-type: inline-size;
     z-index: 5;
 }
-
 .rotated-slot {
     transform-origin: top left;
     transform: translateY(var(--col-h)) rotate(-90deg);
 }
-
-/* Dreht die Zahl im liegenden Slot wieder aufrecht */
-.rotated-slot .slot-circle {
-    transform: rotate(90deg);
-}
-
 .slot-circle {
-    width: 28px; height: 28px; border-radius: 50%; 
-    border: 1.5px solid var(--slot-border-col, #111111);
+    width: 28px; height: 28px; border-radius: 50%; border: 1.5px solid #111111;
     display: flex; align-items: center; justify-content: center;
-    font-size: 11px; font-weight: bold; 
-    color: var(--slot-border-col, #111111); 
-    background-color: transparent; font-family: Arial, sans-serif;
+    font-size: 11px; font-weight: bold; color: #111111; background-color: #f4f1ea; font-family: Arial, sans-serif;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.2);
 }
-
 .sticker-slot.filled { border: none; background-color: transparent; }
 .sticker-slot.filled .slot-circle { display: none; }
 
@@ -245,8 +216,14 @@ body.zoom-active .btn-back { opacity: 0; pointer-events: none; }
     <img src="assets/market_icon.png" alt="Market">
 </button>
 
-<div class="sticker-stack-container" id="stickerStack" style="display: none;">
+<div class="sticker-stack-container" id="stickerStack">
+    <div class="stack-card stack-card-3" id="stackCard3"></div>
+    <div class="stack-card stack-card-2" id="stackCard2"></div>
+    <div class="stack-card stack-card-1" id="stackCard1">
+        <span class="stack-placeholder-text">Lade...</span>
     </div>
+    <div class="stack-counter" id="stackCounter">0</div> 
+</div>
 
 <div id="album-content">
     <div class="desk-nav-btn prev" onclick="flipPrev()"><span>&lt;</span></div>
@@ -344,22 +321,22 @@ function createStickerHTML(sticker) {
         inlineStyle = `--color-1: ${c1}; --color-2: ${sticker.color_2 || '#046a38'}; --color-3: ${sticker.color_3 || '#f2a900'}; --dynamic-text: ${textContrast.text}; --dynamic-stroke: ${textContrast.stroke};`;
         
         innerHTML = `
-            <div class=\"sticker-inner\">
-                <div class=\"sticker-flag\"><img src=\"${cleanPath(sticker.flag)}\" onerror=\"this.style.display='none'\"></div>
-                <div class=\"bg-svg-2\"></div><div class=\"bg-svg-6\"></div>
-                <div class=\"player-image-container\"><img src=\"${cleanPath(sticker.image)}\" onerror=\"this.src='assets/Icon.png'\"></div>
-                <div class=\"lower-elements-wrapper\">
-                    <div class=\"sticker-info-box\"><div class=\"player-name\">${fullName}</div></div>
-                    <div class=\"sticker-meta-container\">
-                        <div class=\"meta-box meta-box-left\">${sticker.jersey_number || '-'}</div>
-                        <div class=\"meta-box meta-box-center\">${(sticker.birthdate || \"\") + ageStr}</div>
-                        <div class=\"meta-box meta-box-right\">${sticker.height || '-'}</div>
+            <div class="sticker-inner">
+                <div class="sticker-flag"><img src="${cleanPath(sticker.flag)}" onerror="this.style.display='none'"></div>
+                <div class="bg-svg-2"></div><div class="bg-svg-6"></div>
+                <div class="player-image-container"><img src="${cleanPath(sticker.image)}" onerror="this.src='assets/Icon.png'"></div>
+                <div class="lower-elements-wrapper">
+                    <div class="sticker-info-box"><div class="player-name">${fullName}</div></div>
+                    <div class="sticker-meta-container">
+                        <div class="meta-box meta-box-left">${sticker.jersey_number || '-'}</div>
+                        <div class="meta-box meta-box-center">${(sticker.birthdate || "") + ageStr}</div>
+                        <div class="meta-box meta-box-right">${sticker.height || '-'}</div>
                     </div>
-                    <div class=\"bottom-info-bar\">
-                        <div class=\"pos-box\" data-pos=\"${posClassStr}\">${sticker.position || '-'}</div>
-                        <img class=\"club-logo-small\" src=\"${cleanPath(sticker.club_image)}\" onerror=\"this.style.display='none'\">
-                        <div class=\"club-name\">${sticker.club_name || '-'}</div>
-                        <img class=\"club-logo-bottom\" src=\"assets/WC_logo.png\" onerror=\"this.style.display='none'\">
+                    <div class="bottom-info-bar">
+                        <div class="pos-box" data-pos="${posClassStr}">${sticker.position || '-'}</div>
+                        <img class="club-logo-small" src="${cleanPath(sticker.club_image)}" onerror="this.style.display='none'">
+                        <div class="club-name">${sticker.club_name || '-'}</div>
+                        <img class="club-logo-bottom" src="assets/WC_logo.png" onerror="this.style.display='none'">
                     </div>
                 </div>
             </div>`;
@@ -397,27 +374,27 @@ function createStickerHTML(sticker) {
 function renderStapel() {
     if (!globalStickerDatabase || !currentUserData) return;
     const stapel = currentUserData.stapel || [];
-    const stackContainer = document.getElementById('stickerStack');
-    
-    if (stapel.length === 0) {
-        stackContainer.style.display = 'none';
-        return;
-    }
-    
-    stackContainer.style.display = 'block';
-    let html = '';
-    
-    const maxCards = Math.min(stapel.length, 3);
-    for(let i = maxCards - 1; i >= 0; i--) {
-        const sticker = globalStickerDatabase[stapel[i]];
-        if(sticker) {
-            html += `<div class="stack-card stack-card-${i+1}" id="stackCard${i+1}" style="border:none; background:transparent;">
-                        ${createStickerHTML(sticker)}
-                     </div>`;
+    document.getElementById('stackCounter').innerText = stapel.length;
+
+    const c1 = document.getElementById('stackCard1'); const c2 = document.getElementById('stackCard2');
+    if (stapel.length > 0) {
+        const s1 = globalStickerDatabase[stapel[0]];
+        if (s1) { 
+            c1.innerHTML = createStickerHTML(s1); 
+            c1.style.border = "none"; c1.style.backgroundColor = "transparent"; 
+        } else {
+            c1.innerHTML = '<span class="stack-placeholder-text">LEER</span>'; 
+            c1.style.border = ""; c1.style.backgroundColor = "";
         }
+    } else {
+        c1.innerHTML = '<span class="stack-placeholder-text">LEER</span>'; c1.style.border = ""; c1.style.backgroundColor = "";
     }
-    html += `<div class="stack-counter" id="stackCounter">${stapel.length}</div>`;
-    stackContainer.innerHTML = html;
+    if (stapel.length > 1) {
+        const s2 = globalStickerDatabase[stapel[1]];
+        if (s2) { c2.innerHTML = createStickerHTML(s2); c2.style.border = "none"; c2.style.backgroundColor = "transparent"; }
+    } else {
+        c2.innerHTML = ''; c2.style.border = ""; c2.style.backgroundColor = "";
+    }
 }
 
 function renderPastedStickers() {
@@ -626,7 +603,7 @@ function buildPageHTML(bp, isLeftPage) {
     let wrapperStyle = "";
     if (bp.type === 'team') {
         let textColor = getPageTextColor(bp.color_2);
-        wrapperStyle = `--page-bg: ${bp.color_2}; --slot-border-col: ${bp.color_1}; --header-text-col: ${textColor};`;
+        wrapperStyle = `--page-bg: ${bp.color_2}; --slot-bg: ${bp.color_1}; --text-col: ${textColor};`;
     }
 
     if (bp.type === 'team') {
@@ -643,23 +620,20 @@ function buildPageHTML(bp, isLeftPage) {
                     <div class="team-name-wrapper">
                         <h2 class="team-name" style="${nameStyle}">${bp.name}</h2>
                     </div>
-                    
-                    <div class="abs-header">
-                        <div class="abs-team-photo">
+                    <div class="team-header-grid">
+                        <div style="grid-column: 1; display: flex; align-items: flex-end;">
                             ${buildSlotHTML(bp.countryCode + '001', bp.startAlbumNumber, 'rotated-slot')}
                         </div>
-                        <div class="abs-flag">
-                            <img src="${bp.flag}" style="width: 100%; height: 100%; border-radius: 50%; object-fit: cover;" onerror="this.style.display='none'">
+                        <div style="grid-column: 2; display: flex; align-items: center; justify-content: center;">
+                            <img src="${bp.flag}" style="width: 14cqw; height: 14cqw; object-fit: cover; border-radius: 50%; border: 2px solid var(--text-col); box-shadow: 0 2px 4px rgba(0,0,0,0.3);" onerror="this.style.display='none'">
                         </div>
-                        <div class="abs-group">
-                            <span>GROUP</span>
-                            <strong>${bp.group}</strong>
+                        <div class="group-box" style="grid-column: 3;">
+                            <span>GROUP</span><strong>${bp.group}</strong>
                         </div>
-                        <div class="abs-wappen">
+                        <div style="grid-column: 4; display: flex; align-items: flex-end;">
                             ${buildSlotHTML(bp.countryCode + '002', bp.startAlbumNumber + 1)}
                         </div>
                     </div>
-
                     <div class="player-grid-bottom">
                         ${buildPlayerGrid(bp.countryCode, 3, 14, bp.startAlbumNumber + 2)}
                     </div>
@@ -667,7 +641,7 @@ function buildPageHTML(bp, isLeftPage) {
         } else { 
             return `
                 <div class="page-wrapper" style="${wrapperStyle}">
-                    <div style="height: calc(10cqw + var(--col-h) + 2cqw); width: 100%;"></div>
+                    <div style="height: 14cqw; width: 100%;"></div>
                     <div class="player-grid-full">
                         ${buildPlayerGrid(bp.countryCode, 15, 28, bp.startAlbumNumber)}
                     </div>
@@ -732,13 +706,8 @@ book.addEventListener('click', (e) => {
         const isZoomed = book.classList.contains('zoomed-left') || book.classList.contains('zoomed-right');
         if (!isZoomed) {
             const clickedLeftPage = e.target.closest('.back'); const clickedRightPage = e.target.closest('.front');
-            if (clickedLeftPage) {
-                book.classList.add('zoomed-left');
-                document.body.classList.add('zoom-active');
-            } else if (clickedRightPage) {
-                book.classList.add('zoomed-right');
-                document.body.classList.add('zoom-active');
-            }
+            if (clickedLeftPage) book.classList.add('zoomed-left');
+            else if (clickedRightPage) book.classList.add('zoomed-right');
         }
     }
 });
@@ -766,8 +735,7 @@ function flipPrev() {
 /* =========================================================================
    DRAG & DROP ENGINE & FIREBASE
    ========================================================================= */
-const stackContainer = document.getElementById('stickerStack');
-let dragTarget = null;
+const stackCard1 = document.getElementById('stackCard1');
 let isDraggingTopSticker = false; let isDraggingSticker = false;
 let dragStartX, dragStartY;
 
@@ -786,29 +754,27 @@ function pasteStickerToAlbum(stickerId) {
     }
 }
 
-stackContainer.addEventListener('touchstart', (e) => {
-    dragTarget = e.target.closest('.stack-card-1');
-    if (!dragTarget) return;
+stackCard1.addEventListener('touchstart', (e) => {
     const stapel = currentUserData?.stapel || [];
     if (stapel.length === 0) return;
     isDraggingTopSticker = true; isDraggingSticker = true; 
-    dragTarget.style.transition = 'none'; dragTarget.style.zIndex = 9999;
+    stackCard1.style.transition = 'none'; stackCard1.style.zIndex = 9999;
     dragStartX = e.touches[0].clientX; dragStartY = e.touches[0].clientY;
 }, {passive: false});
 
 document.addEventListener('touchmove', (e) => {
-    if (!isDraggingTopSticker || !dragTarget) return;
+    if (!isDraggingTopSticker) return;
     e.preventDefault(); 
     let currentX = e.touches[0].clientX - dragStartX; let currentY = e.touches[0].clientY - dragStartY;
-    dragTarget.style.transform = `translate(${currentX}px, ${currentY}px) scale(1.1) rotate(0deg)`;
+    stackCard1.style.transform = `translate(${currentX}px, ${currentY}px) scale(1.1) rotate(0deg)`;
 }, {passive: false});
 
 document.addEventListener('touchend', (e) => {
-    if (!isDraggingTopSticker || !dragTarget) return;
+    if (!isDraggingTopSticker) return;
     
-    dragTarget.style.visibility = 'hidden';
+    stackCard1.style.visibility = 'hidden';
     const elemBelow = document.elementFromPoint(e.changedTouches[0].clientX, e.changedTouches[0].clientY);
-    dragTarget.style.visibility = 'visible';
+    stackCard1.style.visibility = 'visible';
 
     let droppedOnSlot = false;
     if (elemBelow) {
@@ -825,37 +791,34 @@ document.addEventListener('touchend', (e) => {
     isDraggingTopSticker = false; setTimeout(() => isDraggingSticker = false, 50);
 
     if(!droppedOnSlot) {
-        dragTarget.style.transition = 'transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275)';
-        dragTarget.style.transform = 'translate(0px, 0px) rotate(0deg) scale(1)';
-        const safeTarget = dragTarget;
-        setTimeout(() => { if(safeTarget) safeTarget.style.zIndex = 3; }, 400);
-        dragTarget = null;
+        stackCard1.style.transition = 'transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275)';
+        stackCard1.style.transform = 'translate(0px, 0px) rotate(0deg) scale(1)';
+        setTimeout(() => { if(!isDraggingTopSticker) stackCard1.style.zIndex = 3; }, 400);
     } else {
-        dragTarget = null;
+        stackCard1.style.transform = 'translate(0px, 0px) rotate(0deg) scale(1)';
+        stackCard1.style.zIndex = 3;
     }
 });
 
-stackContainer.addEventListener('mousedown', (e) => {
-    dragTarget = e.target.closest('.stack-card-1');
-    if (!dragTarget) return;
+stackCard1.addEventListener('mousedown', (e) => {
     const stapel = currentUserData?.stapel || [];
     if (stapel.length === 0) return;
     isDraggingTopSticker = true; isDraggingSticker = true; 
-    dragTarget.style.transition = 'none'; dragTarget.style.zIndex = 9999;
+    stackCard1.style.transition = 'none'; stackCard1.style.zIndex = 9999;
     dragStartX = e.clientX; dragStartY = e.clientY;
 });
 document.addEventListener('mousemove', (e) => {
-    if (!isDraggingTopSticker || !dragTarget) return;
+    if (!isDraggingTopSticker) return;
     e.preventDefault();
     let currentX = e.clientX - dragStartX; let currentY = e.clientY - dragStartY;
-    dragTarget.style.transform = `translate(${currentX}px, ${currentY}px) scale(1.1) rotate(0deg)`;
+    stackCard1.style.transform = `translate(${currentX}px, ${currentY}px) scale(1.1) rotate(0deg)`;
 });
 document.addEventListener('mouseup', (e) => {
-    if (!isDraggingTopSticker || !dragTarget) return;
+    if (!isDraggingTopSticker) return;
 
-    dragTarget.style.visibility = 'hidden';
+    stackCard1.style.visibility = 'hidden';
     const elemBelow = document.elementFromPoint(e.clientX, e.clientY);
-    dragTarget.style.visibility = 'visible';
+    stackCard1.style.visibility = 'visible';
 
     let droppedOnSlot = false;
     if (elemBelow) {
@@ -872,13 +835,12 @@ document.addEventListener('mouseup', (e) => {
     isDraggingTopSticker = false; setTimeout(() => isDraggingSticker = false, 50);
 
     if(!droppedOnSlot) {
-        dragTarget.style.transition = 'transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275)';
-        dragTarget.style.transform = 'translate(0px, 0px) rotate(0deg) scale(1)';
-        const safeTarget = dragTarget;
-        setTimeout(() => { if(safeTarget) safeTarget.style.zIndex = 3; }, 400);
-        dragTarget = null;
+        stackCard1.style.transition = 'transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275)';
+        stackCard1.style.transform = 'translate(0px, 0px) rotate(0deg) scale(1)';
+        setTimeout(() => { if(!isDraggingTopSticker) stackCard1.style.zIndex = 3; }, 400);
     } else {
-        dragTarget = null;
+        stackCard1.style.transform = 'translate(0px, 0px) rotate(0deg) scale(1)';
+        stackCard1.style.zIndex = 3;
     }
 });
 
@@ -916,10 +878,7 @@ function handleSwipe() {
         }
     } else {
         if (absDiffY > swipeThreshold) {
-            if (diffY < 0 && isZoomed) {
-                book.classList.remove('zoomed-left', 'zoomed-right');
-                document.body.classList.remove('zoom-active');
-            }
+            if (diffY < 0 && isZoomed) book.classList.remove('zoomed-left', 'zoomed-right');
         }
     }
 }
