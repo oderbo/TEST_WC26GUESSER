@@ -17,11 +17,12 @@
 
 * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
 
+/* WICHTIGER iOS APP FIX: Verhindert Textmarkierung, Lupe und Speichern-Menüs */
 html, body { 
-    overflow-x: hidden; 
-    text-size-adjust: none; 
-    -webkit-text-size-adjust: none; 
+    overflow-x: hidden; text-size-adjust: none; -webkit-text-size-adjust: none; 
+    -webkit-touch-callout: none; -webkit-user-select: none; user-select: none;
 }
+img { -webkit-user-drag: none; pointer-events: none; }
 
 body { 
     margin: 0; padding: 15px 10px; font-family: 'FWC2026', Arial, sans-serif; 
@@ -31,7 +32,7 @@ body {
 
 /* --- HEADER --- */
 .header-container { 
-    width: 100%; max-width: 1400px; position: relative; display: flex; 
+    width: 100%; max-width: 600px; position: relative; display: flex; 
     justify-content: center; align-items: center; margin-bottom: 20px; height: 50px; flex-shrink: 0; 
 }
 h1 { margin: 0; font-size: 24px; text-transform: uppercase; text-shadow: 0 1px 3px rgba(0,0,0,0.4); letter-spacing: 1px; text-align: center; }
@@ -40,24 +41,33 @@ h1 { margin: 0; font-size: 24px; text-transform: uppercase; text-shadow: 0 1px 3
     position: absolute; left: 0; top: 50%; transform: translateY(-50%); 
     background: rgba(255, 255, 255, 0.1); border: 1.5px solid rgba(255, 255, 255, 0.4); 
     color: white; font-family: Arial, sans-serif; font-weight: bold; font-size: 16px; 
-    width: 30px; height: 30px; border-radius: 6px; cursor: pointer; 
+    width: 34px; height: 34px; border-radius: 6px; cursor: pointer; 
     display: flex; align-items: center; justify-content: center; text-decoration: none; 
 }
 
 /* --- OFFERS BUTTON --- */
 .btn-offers {
-    width: 100%; max-width: 600px; background: linear-gradient(135deg, #FFD700, #ffbb04);
-    color: #111; font-family: 'FWC2026', Arial, sans-serif; font-size: 18px;
-    font-weight: bold; text-transform: uppercase; border: none; border-radius: 8px;
-    padding: 15px; box-shadow: 0 4px 10px rgba(0,0,0,0.3); cursor: pointer;
+    position: relative; width: 100%; max-width: 600px; background: linear-gradient(135deg, #FFD700, #ffbb04);
+    color: #111; font-family: 'FWC2026', Arial, sans-serif; font-size: 16px; letter-spacing: 1px;
+    font-weight: bold; text-transform: uppercase; border: 2px solid #fff; border-radius: 8px;
+    padding: 14px; box-shadow: 0 4px 10px rgba(0,0,0,0.3); cursor: pointer;
     margin-bottom: 25px; transition: transform 0.2s;
 }
 .btn-offers:active { transform: scale(0.97); }
 
+.badge {
+    position: absolute; top: -10px; right: -10px; width: 28px; height: 28px; border-radius: 50%;
+    color: white; font-family: Arial, sans-serif; font-weight: bold; font-size: 14px;
+    display: flex; align-items: center; justify-content: center;
+    border: 2px solid white; box-shadow: 0 2px 4px rgba(0,0,0,0.4); z-index: 10;
+}
+.badge-red { background-color: #ff1145; }
+.badge-green { background-color: #00cc44; }
+
 /* --- MARKET GRID --- */
 .market-grid {
     width: 100%; max-width: 600px; display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); gap: 15px;
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); gap: 15px; padding-bottom: 40px;
 }
 
 .user-card {
@@ -77,33 +87,40 @@ h1 { margin: 0; font-size: 24px; text-transform: uppercase; text-shadow: 0 1px 3
     border: 2px solid #fff; box-shadow: 0 2px 4px rgba(0,0,0,0.3);
 }
 
-/* --- TRADE MODAL --- */
-#tradeModal {
+/* --- MODALS (ALLGEMEIN) --- */
+.modal-overlay {
     position: fixed; top: 0; left: 0; right: 0; bottom: 0; background-color: #222222;
     z-index: 2000; display: none; flex-direction: column; align-items: center; padding: 20px 10px;
 }
-.trade-header {
+.modal-header {
     width: 100%; max-width: 600px; display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;
 }
-.trade-btn { padding: 10px 15px; font-weight: bold; border-radius: 8px; border: none; font-size: 14px; cursor: pointer; text-transform: uppercase; font-family: 'FWC2026', sans-serif; }
-.btn-close { background: #ff1145; color: white; order: 1; }
-.trade-title { font-size: 20px; color: white; margin: 0; text-align: center; order: 2; flex-grow: 1; }
-.btn-send { background: #00cc44; color: white; transition: 0.2s ease; order: 3; }
+.modal-title { font-size: 20px; color: white; margin: 0; text-align: center; flex-grow: 1; padding: 0 10px;}
+.btn-action { padding: 10px 15px; font-weight: bold; border-radius: 8px; border: none; font-size: 14px; cursor: pointer; text-transform: uppercase; font-family: 'FWC2026', sans-serif; }
+.btn-close { background: #ff1145; color: white; }
+.btn-send { background: #00cc44; color: white; transition: 0.2s ease; }
 .btn-send:disabled { background: #555555; color: #888888; cursor: not-allowed; }
 
-.trade-info { font-family: Arial, sans-serif; font-size: 14px; color: #aaaaaa; text-align: center; margin-bottom: 20px; }
-.trade-info span { color: #00cc44; font-weight: bold; font-size: 16px; }
+.modal-info { font-family: Arial, sans-serif; font-size: 15px; color: #dddddd; text-align: center; margin-bottom: 20px; line-height: 1.4;}
+.modal-info strong { color: #FFD700; font-size: 16px; }
 
-.trade-grid-wrapper { 
-    width: 100%; max-width: 600px; flex-grow: 1; 
-    max-height: 70vh; /* Ab der 3. Zeile erzwingt das automatisch ein sauberes Scrollen! */
-    overflow-y: auto; padding: 5px; 
+.grid-scroll-wrapper { 
+    width: 100%; max-width: 600px; flex-grow: 1; max-height: 70vh; overflow-y: auto; padding: 5px; 
 }
-
 .trade-grid {
     display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; padding-bottom: 40px;
 }
 
+/* --- ANGEBOTE LISTE MODAL --- */
+.offer-list-card {
+    background: #ffffff; border-radius: 8px; padding: 15px; margin-bottom: 15px;
+    display: flex; justify-content: space-between; align-items: center; box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
+.offer-list-card div { font-family: Arial, sans-serif; color: #111; font-size: 15px; }
+.offer-list-card strong { color: #ff1145; font-size: 18px;}
+.btn-view-offer { background: #3f57f5; color: white; border: none; padding: 8px 12px; border-radius: 6px; font-weight: bold; cursor: pointer; font-family: 'FWC2026', sans-serif;}
+
+/* --- STICKER SLOTS IN MODALS --- */
 .trade-slot {
     width: 100%; aspect-ratio: 1 / 1.38; position: relative; cursor: pointer;
     container-type: inline-size; transition: transform 0.2s ease;
@@ -113,8 +130,9 @@ h1 { margin: 0; font-size: 24px; text-transform: uppercase; text-shadow: 0 1px 3
     content: ''; position: absolute; inset: -3px; border: 4px solid #00cc44; border-radius: 4px; z-index: 100;
     box-shadow: 0 0 12px rgba(0, 204, 68, 0.8); pointer-events: none;
 }
+.trade-slot.claim-slot { cursor: default; }
 
-/* --- STICKER CSS --- */
+/* --- STICKER CSS (1:1 aus Album Engine) --- */
 .sticker-wrapper { position: absolute; width: 100%; height: 100%; top: 0; left: 0; box-shadow: 0 2px 6px rgba(0,0,0,0.3); pointer-events: none; }
 .sticker-inner { position: absolute; top: 5cqw; left: 5cqw; right: 5cqw; bottom: 5cqw; background-color: var(--color-1, #c10e23); border: 2px solid var(--color-2, #046a38); outline: 2px solid var(--color-3, #f2a900); box-sizing: border-box; pointer-events: none; }
 .sticker-flag { position: absolute; top: 0; right: 0; width: 15cqw; height: 15cqw; border-radius: 50%; overflow: hidden; border: 1px solid #000000; box-sizing: border-box; z-index: 2; pointer-events: none;}
@@ -156,7 +174,6 @@ h1 { margin: 0; font-size: 24px; text-transform: uppercase; text-shadow: 0 1px 3
 .pos-bottom-center { bottom: 2px; left: 50%; transform: translateX(-50%); }
 .name-wrapper-rot { position: absolute; left: calc(2px + 5.625cqw); top: 50%; transform: translate(-50%, -50%) rotate(90deg); z-index: 10; pointer-events: none; }
 .name-wrapper-rot .special-name-box { position: relative; bottom: auto; left: auto; transform: none; }
-
 </style>
 </head>
 <body>
@@ -166,27 +183,60 @@ h1 { margin: 0; font-size: 24px; text-transform: uppercase; text-shadow: 0 1px 3
     <h1>Marktplatz</h1>
 </div>
 
-<button class="btn-offers" onclick="alert('Das Angebots-Menü kommt im nächsten Schritt!')">Angebote ansehen</button>
+<button class="btn-offers" onclick="handleOffersClick()">
+    Angebote ansehen
+    <div id="badge-offers" class="badge badge-red" style="display:none;">0</div>
+    <div id="badge-claims" class="badge badge-green" style="display:none;">0</div>
+</button>
 
 <div id="market-content" class="market-grid">
     <div style="color:white; grid-column: 1 / -1; text-align: center; font-size: 18px;">Lade Markt...</div>
 </div>
 
-<div id="tradeModal">
-    <div class="trade-header">
-        <button class="trade-btn btn-close" onclick="closeTradeModal()">✖ Schließen</button>
-        <h2 class="trade-title" id="tradeModalTitle">Tauschen</h2>
-        <button class="trade-btn btn-send" id="btnSendTrade" onclick="sendTradeRequest()" disabled>Senden</button>
+<div id="tradeModal" class="modal-overlay">
+    <div class="modal-header">
+        <button class="btn-action btn-close" onclick="closeTradeModal()">✖ Zurück</button>
+        <h2 class="modal-title" id="tradeModalTitle">Tauschen</h2>
+        <button class="btn-action btn-send" id="btnSendTrade" onclick="sendTradeRequest()" disabled>Senden</button>
     </div>
-    
-    <div class="trade-info" id="tradeModalInfo">
-        Du kannst max. <span id="tradeMaxCount">0</span> Sticker anfragen.
+    <div class="modal-info" id="tradeModalInfo">Du kannst max. <strong id="tradeMaxCount">0</strong> Sticker anfragen.</div>
+    <div class="grid-scroll-wrapper">
+        <div class="trade-grid" id="tradeStickerGrid"></div>
     </div>
+</div>
 
-    <div class="trade-grid-wrapper">
-        <div class="trade-grid" id="tradeStickerGrid">
-            </div>
+<div id="offersListModal" class="modal-overlay">
+    <div class="modal-header">
+        <button class="btn-action btn-close" onclick="closeOffersListModal()">✖ Schließen</button>
+        <h2 class="modal-title">Angebote</h2>
+        <div style="width:70px;"></div> </div>
+    <div class="grid-scroll-wrapper" id="offersListContent">
+        </div>
+</div>
+
+<div id="answerOfferModal" class="modal-overlay">
+    <div class="modal-header">
+        <button class="btn-action btn-close" onclick="closeAnswerOfferModal()">✖ Zurück</button>
+        <h2 class="modal-title" id="answerOfferTitle">Angebot</h2>
+        <button class="btn-action btn-send" id="btnConfirmOffer" onclick="confirmOffer()" disabled>Bestätigen</button>
     </div>
+    <div class="modal-info">
+        <span id="answerOfferText"></span><br>Wähle <strong id="answerOfferMax">0</strong> Sticker aus:
+    </div>
+    <div class="grid-scroll-wrapper">
+        <div class="trade-grid" id="answerOfferGrid"></div>
+    </div>
+</div>
+
+<div id="claimModal" class="modal-overlay">
+    <div class="modal-header" style="justify-content: center;">
+        <h2 class="modal-title" style="color: #00cc44; font-size: 24px; text-shadow: 0 2px 4px rgba(0,0,0,0.5);">Tausch Erfolgreich!</h2>
+    </div>
+    <div class="modal-info">Du hast neue Sticker erhalten.</div>
+    <div class="grid-scroll-wrapper">
+        <div class="trade-grid" id="claimStickerGrid"></div>
+    </div>
+    <button class="btn-offers" style="margin-top: 20px;" onclick="claimTradedStickers()">Zum Stapel hinzufügen</button>
 </div>
 
 <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
@@ -211,12 +261,17 @@ let currentMyOwnedSet = new Set();
 let currentMyUniqueStapel = [];
 let myMarketStickers = [];
 
-// Trade Status Variablen
+// Trade Variablen (Senden)
 let tradeTargetUser = null;
-let tradeAvailableStickers = [];
 let tradeSelectedStickers = [];
 let tradeMaxSelection = 0;
 let tradeWhatTheyNeedFromMe = [];
+
+// Trade Variablen (Empfangen / Answer)
+let pendingOffers = [];
+let currentActiveOffer = null;
+let answerSelectedStickers = [];
+let answerRequiredCount = 0;
 
 fetch("./data/sticker_database.json")
     .then(r => r.json())
@@ -228,6 +283,7 @@ fetch("./data/sticker_database.json")
 function initMarketAuth() {
     firebase.auth().onAuthStateChanged((user) => {
         if (user) {
+            // 1. User Profil Listener (Stapel & Traded Stickers)
             db.collection("users").doc(user.uid).onSnapshot((doc) => {
                 if (doc.exists) {
                     currentUserData = doc.data(); 
@@ -239,15 +295,60 @@ function initMarketAuth() {
                     currentMyOwnedSet = new Set([...stapel, ...pasted]);
                     currentMyUniqueStapel = [...new Set(stapel)];
 
+                    updateBadges();
                     loadMarketUsers();
                 }
             });
+
+            // 2. Eingehende Trade Requests Listener
+            db.collection("trade_requests")
+              .where("receiver_uid", "==", user.uid)
+              .where("status", "==", "pending")
+              .onSnapshot((snapshot) => {
+                  pendingOffers = [];
+                  snapshot.forEach(doc => pendingOffers.push({id: doc.id, ...doc.data()}));
+                  updateBadges();
+              });
+
         } else {
             window.location.href = 'index.html';
         }
     });
 }
 
+/* --- BADGE & NAVIGATION LOGIK --- */
+function updateBadges() {
+    const badgeRed = document.getElementById("badge-offers");
+    const badgeGreen = document.getElementById("badge-claims");
+    
+    badgeRed.style.display = "none";
+    badgeGreen.style.display = "none";
+
+    // Prio 1: Traded Stickers (Grün) abholen
+    if (currentUserData && currentUserData.traded_stickers && currentUserData.traded_stickers.length > 0) {
+        badgeGreen.innerText = currentUserData.traded_stickers.length;
+        badgeGreen.style.display = "flex";
+        return; 
+    }
+
+    // Prio 2: Offene Anfragen (Rot) beantworten
+    if (pendingOffers.length > 0) {
+        badgeRed.innerText = pendingOffers.length;
+        badgeRed.style.display = "flex";
+    }
+}
+
+function handleOffersClick() {
+    if (currentUserData && currentUserData.traded_stickers && currentUserData.traded_stickers.length > 0) {
+        openClaimModal(currentUserData.traded_stickers);
+    } else if (pendingOffers.length > 0) {
+        openOffersListModal();
+    } else {
+        alert("Du hast aktuell keine Angebote oder abzuholenden Sticker.");
+    }
+}
+
+/* --- MARKT LOGIK (LADEN) --- */
 function loadMarketUsers() {
     const uid = firebase.auth().currentUser.uid;
     const grid = document.getElementById("market-content");
@@ -272,7 +373,6 @@ function loadMarketUsers() {
         });
 
         const otherUids = Object.keys(othersMarketStickers);
-        
         if (otherUids.length === 0) {
             grid.innerHTML = '<div style="color:white; font-size:18px; grid-column: 1 / -1; text-align:center;">Aktuell gibt es keine anderen Spieler auf dem Markt.</div>';
             return;
@@ -295,9 +395,11 @@ function loadMarketUsers() {
                 const theirPasted = Object.keys(theirAlbum).filter(k => theirAlbum[k] === "pasted");
                 const theirOwnedSet = new Set([...theirStapel, ...theirPasted]);
 
+                // Filter 1: Was brauche ich von IHM?
                 const whatINeedFromThem = marketData.stickers.filter(id => !currentMyOwnedSet.has(id));
                 const uniqueWhatINeed = [...new Set(whatINeedFromThem)];
 
+                // Filter 2: Was braucht er von MIR?
                 const whatTheyNeedFromMe = myMarketStickers.filter(id => !theirOwnedSet.has(id));
                 const uniqueWhatTheyNeed = [...new Set(whatTheyNeedFromMe)];
                 
@@ -309,13 +411,11 @@ function loadMarketUsers() {
                     const card = document.createElement('div');
                     card.className = 'user-card';
                     
-                    if (matchCount === 0) {
-                        card.style.opacity = "0.7"; 
-                    }
+                    if (matchCount === 0) card.style.opacity = "0.7"; 
                     
                     card.onclick = () => {
                         if (matchCount === 0) {
-                            alert("Dieser Spieler hat zwar Sticker für dich, aber er braucht keinen deiner doppelten Sticker. Ein Tausch ist daher leider ausgeschlossen.");
+                            alert("Dieser Spieler hat zwar Sticker für dich, aber er braucht keinen deiner doppelten Sticker. Ein Tausch ist nicht möglich.");
                         } else {
                             openTradeModal(otherUid, marketData.owner_name || userB.username || "Spieler", matchCount, uniqueWhatINeed, uniqueWhatTheyNeed);
                         }
@@ -334,20 +434,15 @@ function loadMarketUsers() {
             });
             
             if (!hasUsers) {
-                grid.innerHTML = '<div style="color:white; font-size:18px; grid-column: 1 / -1; text-align:center;">Aktuell gibt es keine passenden Angebote auf dem Markt, die dir noch fehlen.</div>';
+                grid.innerHTML = '<div style="color:white; font-size:18px; grid-column: 1 / -1; text-align:center;">Niemand bietet aktuell Sticker an, die dir noch fehlen.</div>';
             }
-        }).catch(err => {
-            console.error("Fehler beim Abrufen der User-Daten: ", err);
-            grid.innerHTML = '<div style="color:white; font-size:18px; grid-column: 1 / -1; text-align:center;">Fehler beim Laden der Spielerdaten.</div>';
         });
-
-    }).catch(err => {
-        console.error("Fehler beim Laden des Marktes: ", err);
-        grid.innerHTML = '<div style="color:white; font-size:18px; grid-column: 1 / -1; text-align:center;">Fehler beim Aufbau der Verbindung zum Markt.</div>';
     });
 }
 
-/* --- TRADE MODAL LOGIK --- */
+/* =========================================================================
+   MODAL 1: SEND TRADE (User A schickt Angebot)
+   ========================================================================= */
 function openTradeModal(targetUid, targetName, matchCount, availableStickers, whatTheyNeedFromMeArr) {
     tradeTargetUser = { uid: targetUid, name: targetName };
     tradeAvailableStickers = availableStickers;
@@ -367,11 +462,20 @@ function openTradeModal(targetUid, targetName, matchCount, availableStickers, wh
         if (stickerData) {
             const slot = document.createElement('div');
             slot.className = 'trade-slot';
-            slot.id = `trade-slot-${stickerId}`;
             slot.innerHTML = createStickerHTML(stickerData);
-            
-            slot.onclick = () => toggleStickerSelection(stickerId, slot);
-            
+            slot.onclick = () => {
+                const idx = tradeSelectedStickers.indexOf(stickerId);
+                if (idx > -1) {
+                    tradeSelectedStickers.splice(idx, 1);
+                    slot.classList.remove('selected');
+                } else {
+                    if (tradeSelectedStickers.length < tradeMaxSelection) {
+                        tradeSelectedStickers.push(stickerId);
+                        slot.classList.add('selected');
+                    }
+                }
+                document.getElementById("btnSendTrade").disabled = tradeSelectedStickers.length === 0;
+            };
             grid.appendChild(slot);
         }
     });
@@ -381,33 +485,6 @@ function openTradeModal(targetUid, targetName, matchCount, availableStickers, wh
 
 function closeTradeModal() {
     document.getElementById("tradeModal").style.display = "none";
-    tradeTargetUser = null;
-    tradeSelectedStickers = [];
-}
-
-function toggleStickerSelection(stickerId, slotElement) {
-    const idx = tradeSelectedStickers.indexOf(stickerId);
-    
-    if (idx > -1) {
-        tradeSelectedStickers.splice(idx, 1);
-        slotElement.classList.remove('selected');
-    } else {
-        if (tradeSelectedStickers.length < tradeMaxSelection) {
-            tradeSelectedStickers.push(stickerId);
-            slotElement.classList.add('selected');
-        } else {
-            const info = document.getElementById("tradeModalInfo");
-            info.style.color = "#ff1145";
-            info.style.transform = "scale(1.05)";
-            info.style.transition = "transform 0.2s";
-            setTimeout(() => {
-                info.style.color = "#aaaaaa";
-                info.style.transform = "scale(1)";
-            }, 300);
-        }
-    }
-    
-    document.getElementById("btnSendTrade").disabled = tradeSelectedStickers.length === 0;
 }
 
 function sendTradeRequest() {
@@ -434,18 +511,192 @@ function sendTradeRequest() {
         created_at: firebase.firestore.FieldValue.serverTimestamp(),
         expires_at: firebase.firestore.Timestamp.fromDate(expiryDate)
     }).then(() => {
-        alert(`Tauschanfrage an ${tradeTargetUser.name} erfolgreich gesendet!`);
+        alert(`Anfrage erfolgreich gesendet!`);
         closeTradeModal();
         btn.innerText = "Senden";
-    }).catch((error) => {
-        console.error("Fehler beim Senden: ", error);
-        alert("Es gab einen Fehler beim Senden der Anfrage. Bitte probiere es noch einmal.");
+    }).catch(err => {
+        alert("Fehler beim Senden.");
         btn.innerText = "Senden";
         btn.disabled = false;
     });
 }
 
-/* --- STICKER RENDER ENGINE --- */
+/* =========================================================================
+   MODAL 2 & 3: OFFERS LIST & ANSWER OFFER (User B antwortet)
+   ========================================================================= */
+function openOffersListModal() {
+    const listContent = document.getElementById("offersListContent");
+    listContent.innerHTML = '';
+    
+    pendingOffers.forEach(offer => {
+        const card = document.createElement('div');
+        card.className = 'offer-list-card';
+        card.innerHTML = `
+            <div>Angebot von <strong>${offer.sender_name}</strong><br>Möchte ${offer.requested_stickers.length} Sticker.</div>
+            <button class="btn-view-offer">Ansehen</button>
+        `;
+        card.onclick = () => openAnswerOfferModal(offer);
+        listContent.appendChild(card);
+    });
+    
+    document.getElementById("offersListModal").style.display = "flex";
+}
+
+function closeOffersListModal() {
+    document.getElementById("offersListModal").style.display = "none";
+}
+
+function openAnswerOfferModal(offer) {
+    currentActiveOffer = offer;
+    answerRequiredCount = offer.requested_stickers.length;
+    answerSelectedStickers = [];
+    
+    document.getElementById("answerOfferTitle").innerText = `${offer.sender_name}'s Angebot`;
+    document.getElementById("answerOfferText").innerText = `${offer.sender_name} möchte ${answerRequiredCount} Sticker von dir haben.`;
+    document.getElementById("answerOfferMax").innerText = answerRequiredCount;
+    document.getElementById("btnConfirmOffer").disabled = true;
+    
+    const grid = document.getElementById("answerOfferGrid");
+    grid.innerHTML = '';
+    
+    offer.offered_stickers.forEach(stickerId => {
+        const stickerData = globalStickerDatabase[stickerId];
+        if (stickerData) {
+            const slot = document.createElement('div');
+            slot.className = 'trade-slot';
+            slot.innerHTML = createStickerHTML(stickerData);
+            
+            slot.onclick = () => {
+                const idx = answerSelectedStickers.indexOf(stickerId);
+                if (idx > -1) {
+                    answerSelectedStickers.splice(idx, 1);
+                    slot.classList.remove('selected');
+                } else {
+                    if (answerSelectedStickers.length < answerRequiredCount) {
+                        answerSelectedStickers.push(stickerId);
+                        slot.classList.add('selected');
+                    }
+                }
+                document.getElementById("btnConfirmOffer").disabled = (answerSelectedStickers.length !== answerRequiredCount);
+            };
+            grid.appendChild(slot);
+        }
+    });
+    
+    closeOffersListModal();
+    document.getElementById("answerOfferModal").style.display = "flex";
+}
+
+function closeAnswerOfferModal() {
+    document.getElementById("answerOfferModal").style.display = "none";
+    currentActiveOffer = null;
+    if (pendingOffers.length > 0) openOffersListModal();
+}
+
+function confirmOffer() {
+    if (answerSelectedStickers.length !== answerRequiredCount) return;
+    
+    const btn = document.getElementById("btnConfirmOffer");
+    btn.innerText = "Tausche...";
+    btn.disabled = true;
+
+    const requestRef = db.collection("trade_requests").doc(currentActiveOffer.id);
+    const myUid = firebase.auth().currentUser.uid;
+    const senderUid = currentActiveOffer.sender_uid;
+    
+    const myUserRef = db.collection("users").doc(myUid);
+    const senderUserRef = db.collection("users").doc(senderUid);
+
+    db.runTransaction((transaction) => {
+        return Promise.all([
+            transaction.get(myUserRef),
+            transaction.get(senderUserRef),
+            transaction.get(requestRef)
+        ]).then((docs) => {
+            const myDoc = docs[0];
+            const senderDoc = docs[1];
+            const reqDoc = docs[2];
+
+            if (!myDoc.exists || !senderDoc.exists || !reqDoc.exists) throw "Dokument fehlt";
+
+            let myStapel = myDoc.data().stapel || [];
+            let senderStapel = senderDoc.data().stapel || [];
+            let myTraded = myDoc.data().traded_stickers || [];
+            let senderTraded = senderDoc.data().traded_stickers || [];
+
+            const requestedBySender = reqDoc.data().requested_stickers; 
+            const selectedByMe = answerSelectedStickers; 
+
+            // Helfer um EXAKT einen zu entfernen (nicht alle Duplikate derselben ID)
+            const removeOne = (arr, item) => {
+                const idx = arr.indexOf(item);
+                if (idx > -1) arr.splice(idx, 1);
+            };
+
+            // 1. Vom Stapel abziehen
+            requestedBySender.forEach(s => removeOne(myStapel, s));
+            selectedByMe.forEach(s => removeOne(senderStapel, s));
+
+            // 2. In Traded Box werfen
+            senderTraded.push(...requestedBySender);
+            myTraded.push(...selectedByMe);
+
+            transaction.update(myUserRef, { stapel: myStapel, traded_stickers: myTraded });
+            transaction.update(senderUserRef, { stapel: senderStapel, traded_stickers: senderTraded });
+            transaction.delete(requestRef);
+        });
+    }).then(() => {
+        document.getElementById("answerOfferModal").style.display = "none";
+        btn.innerText = "Bestätigen";
+        // Die Snapshot-Listener rufen automatisch openClaimModal auf durch die grünen Badges!
+        openClaimModal(answerSelectedStickers);
+    }).catch((err) => {
+        console.error("Trade error:", err);
+        alert("Tausch fehlgeschlagen. Der Spieler hat die Sticker evtl. nicht mehr.");
+        btn.innerText = "Bestätigen";
+        btn.disabled = false;
+    });
+}
+
+/* =========================================================================
+   MODAL 4: CLAIM MODAL (Traded Stickers in Stapel aufnehmen)
+   ========================================================================= */
+function openClaimModal(stickerArray) {
+    const grid = document.getElementById("claimStickerGrid");
+    grid.innerHTML = '';
+    
+    stickerArray.forEach(stickerId => {
+        const stickerData = globalStickerDatabase[stickerId];
+        if (stickerData) {
+            const slot = document.createElement('div');
+            slot.className = 'trade-slot claim-slot';
+            slot.innerHTML = createStickerHTML(stickerData);
+            grid.appendChild(slot);
+        }
+    });
+    
+    document.getElementById("claimModal").style.display = "flex";
+}
+
+function claimTradedStickers() {
+    const uid = firebase.auth().currentUser.uid;
+    let currentStapel = currentUserData.stapel || [];
+    let traded = currentUserData.traded_stickers || [];
+    
+    currentStapel.push(...traded);
+    
+    db.collection("users").doc(uid).update({
+        stapel: currentStapel,
+        traded_stickers: []
+    }).then(() => {
+        document.getElementById("claimModal").style.display = "none";
+    }).catch(err => {
+        alert("Fehler beim Hinzufügen zum Stapel!");
+    });
+}
+
+
+/* --- STICKER RENDER ENGINE HILFSFUNKTIONEN --- */
 function getContrastColors(hexColor) {
     if (!hexColor) return { text: '#ffffff', stroke: '#000000' };
     let hex = hexColor.replace('#', '');
