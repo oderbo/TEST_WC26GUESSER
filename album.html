@@ -818,7 +818,7 @@ function buildPageHTML(bp, isLeftPage) {
         }
     }
     
-    if (bp.type === 'cover_back') {
+	if (bp.type === 'cover_back') {
         return `
         <div class="page-wrapper dark-page" style="display: flex; flex-direction: column; height: 100%; padding: 6cqw 5cqw;">
             <h2 class="special-title" style="font-size: 6.5cqw; margin: 0; text-align: center; flex-shrink: 0;">HOW TO PLAY</h2>
@@ -831,6 +831,7 @@ function buildPageHTML(bp, isLeftPage) {
                 <li>Press <span style="display:inline-flex; vertical-align: middle; width: 2.2em; height: 2.2em; border-radius: 50%; border: 1.5px solid #ffbb04; background-color: #ffffff; align-items: center; justify-content: center; font-size: 0.6em; font-weight: bold; color: #111; margin: 0 0.2em;">INDEX</span> to jump to indexpage</li>
                 <li style="color: #00cc44; font-weight: bold;">GET 2 <img src="assets/booster_pack_front.png" style="height: 1.6em; vertical-align: middle; margin: 0 0.2em;"> for every 50% progress in <img src="assets/country_pick_button.jpg" style="height: 1.6em; border-radius: 0.2em; vertical-align: middle; margin: 0 0.2em; box-shadow: 0 1px 3px rgba(0,0,0,0.5);"></li>
                 <li style="color: #00cc44; font-weight: bold;">GET 3 <img src="assets/booster_pack_front.png" style="height: 1.6em; vertical-align: middle; margin: 0 0.2em;"> for every 100% in <img src="assets/country_pick_button.jpg" style="height: 1.6em; border-radius: 0.2em; vertical-align: middle; margin: 0 0.2em; box-shadow: 0 1px 3px rgba(0,0,0,0.5);"></li>
+                <li style="color: #00a2ff; font-weight: bold;">GET 1 <img src="assets/booster_pack_front.png" style="height: 1.6em; vertical-align: middle; margin: 0 0.2em;"> every <strong>4</strong> hours</li>
                 <li style="color: #FFD700; font-weight: bold;">TRADE your Sticker at <span style="display:inline-flex; vertical-align: middle; width: 1.8em; height: 1.8em; border-radius: 50%; border: 1.5px solid #ffbb04; background-color: #ffffff; align-items: center; justify-content: center; margin: 0 0.2em;"><img src="assets/market_icon.png" style="width: 60%; height: 60%; object-fit: contain;"></span></li>
             </ul>
         </div>`;

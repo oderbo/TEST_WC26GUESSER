@@ -124,7 +124,7 @@ body {
 }
 
 .score-circle-svg {
-    transform: rotate(-90deg); /* Dreht Startpunkt auf 12 Uhr (0 Uhr) */
+    transform: rotate(-90deg); 
     width: 100%;
     height: 100%;
 }
@@ -407,7 +407,6 @@ input {
     transition: all 0.3s ease;
 }
 
-/* Klassen für das dynamische Game-Over Feedback */
 input.game-over-output {
     background: rgba(15, 17, 21, 0.9) !important;
     color: #ffffff !important;
@@ -533,6 +532,54 @@ input:disabled:not(.game-over-output) {
     margin-bottom: 8px;
     color: var(--popup-text) !important;
     line-height: 1.1;
+}
+
+/* ======================================================== */
+/* ANIMIERTER PACK BELOHNUNGS SCREEN                         */
+/* ======================================================== */
+#packRewardOverlay {
+    position: fixed; top: 0; left: 0; width: 100vw; height: 100dvh;
+    background-color: rgba(0,0,0,0.85); z-index: 50000;
+    display: none; flex-direction: column; align-items: center; justify-content: center;
+}
+
+.reward-title {
+    font-family: Arial, sans-serif; font-size: 24px; font-weight: bold; color: #FFD700;
+    margin-bottom: 30px; text-transform: uppercase; text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+    text-align: center;
+}
+
+.pack-reward-container {
+    position: relative; width: 160px; height: 224px; margin-bottom: 40px;
+}
+
+.reward-pack-animated {
+    position: absolute; width: 100%; height: 100%;
+    background-image: url('assets/booster_pack_front.png');
+    background-size: cover; background-position: center;
+    opacity: 0; transform: scale(0.1) rotate(-40deg);
+}
+
+@keyframes packSlamIn {
+    0% { opacity: 0; transform: scale(3) rotate(-50deg) translate(100px, -200px); filter: blur(4px); }
+    70% { opacity: 1; transform: scale(0.95) rotate(5deg); filter: none; }
+    100% { opacity: 1; transform: scale(1) rotate(var(--rot)); box-shadow: 0 10px 25px rgba(0,0,0,0.6); }
+}
+
+.btn-reward-claim {
+    width: 64px; height: 64px; border-radius: 50%; background-color: #00cc44;
+    border: none; display: none; align-items: center; justify-content: center;
+    cursor: pointer; box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+    animation: pulseGlow 1.5s infinite alternate;
+}
+.btn-reward-claim svg {
+    width: 55%; height: 55%; fill: none; stroke: #111111; stroke-width: 4;
+    stroke-linecap: round; stroke-linejoin: round;
+}
+
+@keyframes pulseGlow {
+    from { box-shadow: 0 0 4px #00cc44; transform: scale(1); }
+    to { box-shadow: 0 0 16px #00cc44; transform: scale(1.06); }
 }
 
 /* ======================================================== */
@@ -753,7 +800,6 @@ input:disabled:not(.game-over-output) {
         <h2 id="name" style="margin: 10px 0 5px 0;"></h2>
         <div class="timer id-timer-desktop">03:00</div>
         
-        <!-- Engine-Score-Kreis Desktop -->
         <div class="score-circle-wrapper" id="scoreContainerDesktop"></div>
         
         <div class="btn-container-desktop">
@@ -774,7 +820,6 @@ input:disabled:not(.game-over-output) {
             <button id="btnFinishMobile" class="btn-finish">Stop</button>
         </div>
 
-        <!-- Engine-Score-Kreis Mobile (rutscht per margin-left: auto ganz nach rechts vor die Kärtchen) -->
         <div class="score-circle-wrapper" id="scoreContainerMobile"></div>
 
         <div class="mobile-right-content">
@@ -819,13 +864,21 @@ input:disabled:not(.game-over-output) {
     </div>
 </div>
 
-<!-- FIREBASE INTEGRATION -->
+<div id="packRewardOverlay">
+    <div class="reward-title" id="rewardTitleText">Milestone Reached!</div>
+    <div class="pack-reward-container" id="rewardPacksWrapper"></div>
+    <button class="btn-reward-claim" id="btnRewardClaim" onclick="addPacksToDatabaseStapel()">
+        <svg viewBox="0 0 24 24">
+            <polyline points="20 6 9 17 4 12"></polyline>
+        </svg>
+    </button>
+</div>
+
 <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
 
 <script>
-// Firebase Konfiguration
 const firebaseConfig = {
   apiKey: "AIzaSyD2KXF4jwbym0ghwMrSPFCiD-pgajGIopE",
   authDomain: "wc26guesser-db.firebaseapp.com",
@@ -862,12 +915,12 @@ const game = {
     time: 180,
     finished: false,
     currentScore: 0,
-    highscore: 0
+    highscore: 0 // Wird synchron geladen
 };
 
 const teamKey = new URLSearchParams(location.search).get("team") || "spain";
+let calculatedPacksToAward = 0; // Temporärer Speicher für die Logik
 
-// Firebase Auth Tracker, um Highscore synchron abzufragen
 firebase.auth().onAuthStateChanged((user) => {
     if (user) {
         db.collection("users").doc(user.uid).collection("highscores").doc(teamKey).get()
@@ -926,7 +979,6 @@ function initGameEngine() {
         
         document.getElementById("name").innerText = team.teamName;
 
-        // Erstelle SVG-Kreise für Desktop und Mobile im DOM
         buildScoreSVGElements(c1, c2);
         updateScoreVisuals();
 
@@ -936,17 +988,14 @@ function initGameEngine() {
     });
 }
 
-// Erstellt die mathematischen SVGs dynamisch mit korrekten Farb-Zuweisungen
 function buildScoreSVGElements(color1, color2) {
-    const totalCircumference = 2 * Math.PI * 15; // Radius 15 -> Umfang ~94.24
+    const totalCircumference = 2 * Math.PI * 15;
 
     const svgHTML = `
         <svg class="score-circle-svg" viewBox="0 0 36 36">
             <circle class="score-circle-bg" cx="18" cy="18" r="15" fill="${color1}" />
-            <!-- Statischer Highscore-Ring (Weiß, dünn) -->
             <circle class="ring-highscore" cx="18" cy="18" r="15" fill="none" stroke="#ffffff" stroke-width="0.8" 
                     stroke-dasharray="${totalCircumference}" stroke-dashoffset="${totalCircumference}" />
-            <!-- Live-Tracking-Ring (Grün leuchtend) -->
             <circle class="ring-current ring-current-glow" cx="18" cy="18" r="15" fill="none" stroke="#00ff66" stroke-width="1.2" 
                     stroke-dasharray="${totalCircumference}" stroke-dashoffset="${totalCircumference}" />
         </svg>
@@ -957,24 +1006,19 @@ function buildScoreSVGElements(color1, color2) {
     document.getElementById("scoreContainerMobile").innerHTML = svgHTML;
 }
 
-// Berechnet die Ring-Abdeckungen (0 bis 26 Spieler) live im UI
 function updateScoreVisuals() {
     const totalCircumference = 2 * Math.PI * 15;
     const maxPlayers = 26;
 
-    // Schutzgrenzen einhalten (0 - 26)
     const displayScore = Math.min(game.currentScore, maxPlayers);
     const displayHighscore = Math.min(game.highscore, maxPlayers);
 
-    // Berechne Offsets für die Kreis-Bänder
     const currentOffset = totalCircumference - (displayScore / maxPlayers) * totalCircumference;
     const highscoreOffset = totalCircumference - (displayHighscore / maxPlayers) * totalCircumference;
 
-    // Aktualisiere alle Ringe im DOM (Desktop + Mobile)
     document.querySelectorAll(".ring-current").forEach(el => el.style.strokeDashoffset = currentOffset);
     document.querySelectorAll(".ring-highscore").forEach(el => el.style.strokeDashoffset = highscoreOffset);
     
-    // Zahl im Kreis aktualisieren
     document.querySelectorAll(".score-circle-text").forEach(el => el.innerText = game.currentScore);
 }
 
@@ -1250,7 +1294,7 @@ document.getElementById("input").addEventListener("input", (e) => {
         e.target.value = "";
         
         game.currentScore++;
-        updateScoreVisuals(); // Live-Update der Ringe im Header
+        updateScoreVisuals();
         
         const targetCircle = document.querySelector(`.circle[data-jersey="${p.jersey_number}"]`);
         if(targetCircle) {
@@ -1326,49 +1370,138 @@ function setupFinishButtons() {
     document.getElementById("btnFinishMobile").addEventListener("click", handler);
 }
 
+/* SMART REWARD DETECTION ENGINE FOR MILESTONES */
 function endGame() {
     game.finished = true;
-    
-    // Berechne die prozentuale Leistung
     const totalPlayers = 26; 
     const percentage = Math.round((game.currentScore / totalPlayers) * 100);
     
     const inputField = document.getElementById("input");
     if(inputField) {
-        inputField.disabled = false; // Kurz auf false, um Text reinzuschreiben
+        inputField.disabled = false;
         inputField.classList.add("game-over-output");
-        
-        // Text-Ausgabe generieren
         inputField.value = `Ergebnis: ${game.currentScore}/${totalPlayers} Spieler erraten (${percentage}%)`;
-        
-        // Visuelles Highlight bei 100% (Grün leuchtend)
-        if (percentage === 100) {
-            inputField.classList.add("glow-green");
-        }
-        
-        inputField.disabled = true; // Wieder sperren
+        if (percentage === 100) inputField.classList.add("glow-green");
+        inputField.disabled = true;
         inputField.blur();
     }
     
     document.getElementById("btnFinishDesktop").style.display = "none";
     document.getElementById("btnFinishMobile").style.display = "none";
     
-    // Cloud Firestore Highscore-Abgleich und Save-Prozess
+    // SMART DETECTOR FÜR DIE BELOHNUNGEN
+    calculatedPacksToAward = 0;
+    let earned50 = false;
+    let earned100 = false;
+
+    // Bedingung 1: 50% erstmalig geknackt (min. 13 Spieler)
+    if (game.currentScore >= 13 && game.highscore < 13) {
+        calculatedPacksToAward += 2;
+        earned50 = true;
+    }
+    // Bedingung 2: 100% erstmalig geknackt (exakt 26 Spieler)
+    if (game.currentScore === 26 && game.highscore < 26) {
+        calculatedPacksToAward += 3;
+        earned100 = true;
+    }
+
     const user = firebase.auth().currentUser;
-    if (user && game.currentScore > game.highscore) {
-        db.collection("users").doc(user.uid).collection("highscores").doc(teamKey).set({
-            score: game.currentScore,
-            updatedAt: firebase.firestore.FieldValue.serverTimestamp()
-        }, { merge: true })
-        .then(() => {
-            console.log("Neuer Rekord erfolgreich in Cloud Firestore registriert!");
-        })
-        .catch(err => console.error("Datenbank-Fehler beim Sichern des Rekords:", err));
+    if (user) {
+        // Highscore aktualisieren, falls höher
+        if (game.currentScore > game.highscore) {
+            db.collection("users").doc(user.uid).collection("highscores").doc(teamKey).set({
+                score: game.currentScore,
+                updatedAt: firebase.firestore.FieldValue.serverTimestamp()
+            }, { merge: true });
+        }
+
+        // Falls Packs gewonnen wurden, triggere die Slam-In Animation
+        if (calculatedPacksToAward > 0) {
+            setTimeout(() => {
+                triggerPackRewardAnimation(calculatedPacksToAward, earned50, earned100);
+            }, 1200);
+        }
     }
 
     if(game.teamDetails) {
         renderPitch(game.teamDetails);
     }
+}
+
+/* DIE GEWÜNSCHTE SLAM-IN PACK ANIMATION */
+function triggerPackRewardAnimation(packCount, earned50, earned100) {
+    const overlay = document.getElementById("packRewardOverlay");
+    const title = document.getElementById("rewardTitleText");
+    const wrapper = document.getElementById("rewardPacksWrapper");
+    const claimBtn = document.getElementById("btnRewardClaim");
+
+    wrapper.innerHTML = "";
+    claimBtn.style.display = "none";
+
+    if (earned50 && earned100) {
+        title.innerText = "Masterclass! +5 Packs";
+    } else if (earned100) {
+        title.innerText = "100% Complete! +3 Packs";
+    } else {
+        title.innerText = "50% Milestone! +2 Packs";
+    }
+
+    overlay.style.display = "flex";
+
+    // Reihum die Päckchen auf den Bildschirm klatschen lassen
+    for (let i = 0; i < packCount; i++) {
+        setTimeout(() => {
+            const pack = document.createElement("div");
+            pack.className = "reward-pack-animated";
+            
+            // Zufälliger Rotations-Versatz für coolen Fächer-Stapel-Look
+            const randomRot = (Math.random() * 20 - 10) + (i * 2);
+            pack.style.setProperty("--rot", `${randomRot}deg`);
+            pack.style.zIndex = i + 1;
+            
+            // Margins für 3D-Stapeleffekt verschieben
+            pack.style.top = `${i * -6}px`;
+            pack.style.left = `${i * 4}px`;
+
+            wrapper.appendChild(pack);
+
+            // Force reflow
+            pack.offsetHeight;
+            pack.style.animation = "packSlamIn 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.15) forwards";
+
+            // Wenn das letzte Pack gelandet ist, blende den grünen Haken ein
+            if (i === packCount - 1) {
+                setTimeout(() => {
+                    claimBtn.style.display = "flex";
+                }, 400);
+            }
+        }, i * 300); // 300ms Taktung für das Nacheinander-Klatschen
+    }
+}
+
+function addPacksToDatabaseStapel() {
+    const user = firebase.auth().currentUser;
+    if (!user || calculatedPacksToAward === 0) return;
+
+    const userRef = db.collection("users").doc(user.uid);
+
+    db.runTransaction((transaction) => {
+        return transaction.get(userRef).then((userDoc) => {
+            if (!userDoc.exists) return;
+            
+            const currentPacks = userDoc.data().packs_available || 0;
+            const newTotal = currentPacks + calculatedPacksToAward;
+
+            transaction.update(userRef, { packs_available: newTotal });
+        });
+    }).then(() => {
+        // Schließe das Overlay flüssig
+        document.getElementById("packRewardOverlay").style.display = "none";
+        calculatedPacksToAward = 0;
+    }).catch(err => {
+        console.error("Fehler beim Gutschreiben der Packs:", err);
+        document.getElementById("packRewardOverlay").style.display = "none";
+    });
 }
 
 function openPlayerModal(p) {
@@ -1407,7 +1540,6 @@ function openPlayerModal(p) {
 
 function closeModal() {
     document.getElementById("playerModal").classList.remove("active");
-    
     if (activeMoveHandler) {
         document.removeEventListener("mousemove", activeMoveHandler);
         activeMoveHandler = null;
