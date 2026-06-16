@@ -47,9 +47,28 @@ h1 { margin: 0; font-size: 22px; text-transform: uppercase; text-shadow: 0 1px 3
 .btn-market-round { bottom: 20px; }
 .btn-index-round { bottom: 90px; }
 
-/* --- STICKER-STAPEL (3D FLIP) --- */
-.sticker-stack-container { position: fixed; bottom: 20px; right: 20px; width: 80px; height: 110px; z-index: 1000; cursor: pointer; transition: transform 0.2s ease; perspective: 1000px; }
-.sticker-stack-container:hover { transform: translateY(-5px); }
+/* --- STICKER-STAPEL (3D FLIP, KEIN HOVER MEHR) --- */
+.sticker-stack-container { position: fixed; bottom: 20px; right: 20px; width: 80px; height: 110px; z-index: 1000; cursor: pointer; perspective: 1000px; }
+
+/* Anzeige der Sticker-Nummer links vom Stapel */
+.stack-current-number {
+    position: absolute;
+    left: -42px;
+    bottom: 5px;
+    width: 34px;
+    height: 22px;
+    border: 1.5px solid rgba(255,255,255,0.8);
+    border-radius: 6px;
+    background-color: rgba(0,0,0,0.15);
+    display: none; /* wird per JS gesteuert */
+    align-items: center;
+    justify-content: center;
+    font-family: Arial, sans-serif;
+    font-size: 11px;
+    font-weight: bold;
+    color: #ffffff;
+    z-index: 10;
+}
 
 .stack-card { position: absolute; width: 100%; height: 100%; background: transparent; display: flex; align-items: center; justify-content: center; container-type: inline-size; }
 
@@ -204,7 +223,7 @@ h1 { margin: 0; font-size: 22px; text-transform: uppercase; text-shadow: 0 1px 3
 .sticker-wrapper { position: absolute; width: 100%; height: 100%; top: 0; left: 0; box-shadow: 0 2px 6px rgba(0,0,0,0.3); }
 .sticker-inner { position: absolute; top: 5cqw; left: 5cqw; right: 5cqw; bottom: 5cqw; background-color: var(--color-1, #c10e23); border: 2px solid var(--color-2, #046a38); outline: 2px solid var(--color-3, #f2a900); box-sizing: border-box; }
 
-/* NEU: Stadien nahtlos aneinanderkleben! */
+/* Stadien nahtlos aneinanderkleben! */
 .container-stadium-left .special-sticker-inner { right: 0; border-radius: 4px 0 0 4px; border-right: none; }
 .container-stadium-right .special-sticker-inner { left: 0; border-radius: 0 4px 4px 0; border-left: none; }
 
@@ -264,6 +283,7 @@ h1 { margin: 0; font-size: 22px; text-transform: uppercase; text-shadow: 0 1px 3
     .sticker-stack-container { width: 130px; height: 180px; bottom: 30px; right: 30px; }
     .stack-placeholder-text { font-size: 14px; }
     .stack-counter { top: -20px; right: -20px; width: 32px; height: 32px; font-size: 15px; }
+    .stack-current-number { left: -50px; width: 40px; height: 26px; font-size: 13px; }
     .book { width: 440px; max-height: calc(100dvh - 120px); transform: translateX(-15%) scale(1.25); }
     .book.open { transform: translateX(50%) scale(1); }
     .page-number-left, .page-number-right { font-size: 16px; bottom: 12px; }
@@ -292,6 +312,7 @@ h1 { margin: 0; font-size: 22px; text-transform: uppercase; text-shadow: 0 1px 3
 </button>
 
 <div class="sticker-stack-container" id="stickerStack">
+    <div id="stackCurrentNumber" class="stack-current-number"></div>
     <div class="stack-card stack-card-3" id="stackCard3"></div>
     <div class="stack-card stack-card-2" id="stackCard2"></div>
     <div class="stack-card stack-card-1" id="stackCard1">
@@ -328,6 +349,7 @@ const db = firebase.firestore();
 let globalStickerDatabase = null;
 let currentUserData = null;
 let bookInitialized = false;
+let globalIndexEntries = [];
 
 fetch("./data/sticker_database.json")
     .then(r => r.json())
@@ -448,6 +470,8 @@ function renderStapel() {
     if (!globalStickerDatabase || !currentUserData) return;
     const stapel = currentUserData.stapel || [];
     document.getElementById('stackCounter').innerText = stapel.length;
+    
+    const numDisplay = document.getElementById('stackCurrentNumber');
 
     const cards = [
         document.getElementById('stackCard1'),
@@ -455,15 +479,23 @@ function renderStapel() {
         document.getElementById('stackCard3')
     ];
 
+    if (stapel.length > 0) {
+        const sticker = globalStickerDatabase[stapel[0]];
+        if (sticker) {
+            numDisplay.innerText = sticker.albumNumber;
+            numDisplay.style.display = 'flex';
+        }
+    } else {
+        numDisplay.style.display = 'none';
+    }
+
     for (let i = 0; i < 3; i++) {
         const card = cards[i];
         if (stapel.length > i) {
             const sticker = globalStickerDatabase[stapel[i]];
             if (sticker) { 
                 card.innerHTML = `<div class="stack-card-inner">
-                                    <div class="stack-front">
-                                        ${createStickerHTML(sticker)}
-                                    </div>
+                                    <div class="stack-front">${createStickerHTML(sticker)}</div>
                                     <div class="stack-back">${sticker.albumNumber}</div>
                                   </div>`;
                 card.classList.remove('is-flipped');
@@ -761,20 +793,20 @@ function buildPageHTML(bp, isLeftPage) {
                     </div>
                     
                     <div style="position: relative; width: 100%; height: var(--col-h); margin-bottom: 2cqw;">
-                        <div style="position: absolute; left: 0; top: 0;">
+                        <div style="position: absolute; left: 0; bottom: 0; width: var(--col-h); height: var(--col-w);">
                             <div class="rotated-slot-wrapper">${buildSlotHTML(bp.countryCode + '001', bp.startAlbumNumber, 'rotated-slot')}</div>
                         </div>
                         
-                        <div style="position: absolute; left: calc(var(--col-h) + 1cqw); width: calc(47cqw - var(--col-h) - 1cqw); height: var(--col-h); display: flex; align-items: center; justify-content: center;">
+                        <div style="position: absolute; left: calc(var(--col-h) + 1cqw); width: calc(47cqw - var(--col-h) - 1cqw); height: var(--col-w); bottom: 0; display: flex; align-items: center; justify-content: center;">
                             <img src="${bp.flag}" style="width: 12cqw; height: 12cqw; object-fit: cover; border-radius: 50%; border: 2.5px solid var(--slot-color); box-shadow: 0 3px 6px rgba(0,0,0,0.3);" onerror="this.style.display='none'">
                         </div>
 
-                        <div style="position: absolute; left: 47cqw; width: var(--col-w); height: var(--col-h); display: flex; flex-direction: column; justify-content: center; align-items: center;">
+                        <div style="position: absolute; left: 47cqw; width: var(--col-w); height: var(--col-w); bottom: 0; display: flex; flex-direction: column; justify-content: center; align-items: center;">
                             <span style="font-size: 2.5cqw; font-weight: bold; color: var(--text-col); margin-bottom: 2px;">GROUP</span>
                             <strong style="font-size: 10.5cqw; line-height: 1; color: var(--text-col);">${bp.group}</strong>
                         </div>
 
-                        <div style="position: absolute; left: 70.5cqw; width: var(--col-w); height: var(--col-h);">
+                        <div style="position: absolute; right: 0; bottom: 0; width: var(--col-w); height: var(--col-h);">
                             ${buildSlotHTML(bp.countryCode + '002', bp.startAlbumNumber + 1)}
                         </div>
                     </div>
