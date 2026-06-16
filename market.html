@@ -25,7 +25,7 @@ html, body {
 img { -webkit-user-drag: none; pointer-events: none; }
 
 body { 
-    margin: 0; padding: 15px 10px; font-family: Arial, sans-serif; /* STANDARDSCHRIFT! */
+    margin: 0; padding: 15px 10px; font-family: Arial, sans-serif; 
     color: white; background-color: #3f57f5; display: flex; flex-direction: column; 
     align-items: center; min-height: 100dvh; width: 100%;
 }
@@ -200,6 +200,7 @@ h1 { margin: 0; font-size: 24px; font-family: 'FWC2026', Arial, sans-serif; text
     <div style="color:white; grid-column: 1 / -1; text-align: center; font-size: 18px;">Lade Markt...</div>
 </div>
 
+<!-- 1. SEND TRADE MODAL (User A wählt bei User B aus) -->
 <div id="tradeModal" class="modal-overlay">
     <h2 class="modal-title" id="tradeModalTitle">Tauschen</h2>
     
@@ -217,6 +218,7 @@ h1 { margin: 0; font-size: 24px; font-family: 'FWC2026', Arial, sans-serif; text
     </div>
 </div>
 
+<!-- 2. OFFERS LIST MODAL (User B sieht eingegangene Anfragen) -->
 <div id="offersListModal" class="modal-overlay">
     <h2 class="modal-title">Angebote</h2>
     <div class="modal-header">
@@ -226,6 +228,7 @@ h1 { margin: 0; font-size: 24px; font-family: 'FWC2026', Arial, sans-serif; text
     <div class="grid-scroll-wrapper" id="offersListContent"></div>
 </div>
 
+<!-- 3. ANSWER OFFER MODAL (User B beantwortet das Angebot von User A) -->
 <div id="answerOfferModal" class="modal-overlay">
     <h2 class="modal-title" id="answerOfferTitle">Angebot</h2>
     
@@ -243,6 +246,7 @@ h1 { margin: 0; font-size: 24px; font-family: 'FWC2026', Arial, sans-serif; text
     </div>
 </div>
 
+<!-- 4. CLAIM MODAL (Pack Opening Feeling für getauschte Sticker) -->
 <div id="claimModal" class="modal-overlay">
     <h2 class="modal-title" style="color: #00cc44; font-size: 26px;">Tausch Erfolgreich!</h2>
     <div class="modal-info" style="margin-top: 10px;">Du hast neue Sticker erhalten.</div>
@@ -522,11 +526,12 @@ function sendTradeRequest() {
         created_at: firebase.firestore.FieldValue.serverTimestamp(),
         expires_at: firebase.firestore.Timestamp.fromDate(expiryDate)
     }).then(() => {
-        alert(`Anfrage erfolgreich gesendet!`);
+        // KEIN SUCCESS-POPUP MEHR, NUR FLÜSSIG SCHLIESSEN
         closeTradeModal();
         btn.innerText = "Senden";
     }).catch(err => {
-        alert("Fehler beim Senden.");
+        // FEHLER-POPUP BLEIBT ERHALTEN
+        alert("Fehler beim Senden der Anfrage. Versuche es später noch einmal.");
         btn.innerText = "Senden";
         btn.disabled = false;
     });
@@ -604,6 +609,7 @@ function closeAnswerOfferModal() {
     if (pendingOffers.length > 0) openOffersListModal();
 }
 
+/* DIE TRANSKTIONS- UND BEREINIGUNGSFUNKTION */
 function confirmOffer() {
     if (answerSelectedStickers.length !== answerRequiredCount) return;
     
@@ -638,7 +644,6 @@ function confirmOffer() {
             const requestedBySender = reqDoc.data().requested_stickers; 
             const selectedByMe = answerSelectedStickers; 
 
-            // Helfer um EXAKT einen zu entfernen
             const removeOne = (arr, item) => {
                 const idx = arr.indexOf(item);
                 if (idx > -1) arr.splice(idx, 1);
@@ -648,7 +653,7 @@ function confirmOffer() {
             requestedBySender.forEach(s => removeOne(myStapel, s));
             selectedByMe.forEach(s => removeOne(senderStapel, s));
 
-            // 2. In Traded Box werfen
+            // 2. In Traded Box werfen (Die Sticker wechseln den Besitzer!)
             senderTraded.push(...requestedBySender);
             myTraded.push(...selectedByMe);
 
@@ -666,9 +671,17 @@ function confirmOffer() {
         openClaimModal(answerSelectedStickers);
     }).catch((err) => {
         console.error("Trade error:", err);
-        alert("Tausch fehlgeschlagen. Der Spieler hat die Sticker evtl. nicht mehr.");
+        // NEU: WENN DER TAUSCH FEHLSCHLÄGT -> LÖSCHE DIE ANFRAGE AUS DER DATENBANK
+        if (currentActiveOffer && currentActiveOffer.id) {
+            db.collection("trade_requests").doc(currentActiveOffer.id).delete().catch(e => console.error("Error deleting request:", e));
+        }
+
+        alert("Tausch fehlgeschlagen. Der Spieler hat die Sticker eventuell nicht mehr. Die Anfrage wurde abgebrochen.");
+        
+        document.getElementById("answerOfferModal").style.display = "none";
         btn.innerText = "Bestätigen";
         btn.disabled = false;
+        currentActiveOffer = null;
     });
 }
 
