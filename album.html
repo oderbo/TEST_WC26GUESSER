@@ -15,7 +15,21 @@
     font-style: normal;
 }
 
-* { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+/* WICHTIGER iOS APP FIX: Verhindert Textmarkierung, Lupe und Speichern-Menüs */
+* { 
+    box-sizing: border-box; 
+    -webkit-tap-highlight-color: transparent; 
+    -webkit-touch-callout: none; 
+    -webkit-user-select: none;   
+    user-select: none;           
+}
+
+/* Verhindert das native Ghost-Dragging & die iOS 16 Bilderkennung (Live Text) komplett! */
+img {
+    -webkit-user-drag: none;
+    pointer-events: none; 
+}
+
 html, body { overflow: hidden; height: 100dvh; text-size-adjust: none; -webkit-text-size-adjust: none; }
 body { margin: 0; padding: 10px 6px; font-family: 'FWC2026', Arial, sans-serif; color: white; background-color: #3f57f5; display: flex; flex-direction: column; align-items: center; width: 100%; position: relative; }
 
@@ -30,7 +44,7 @@ h1 { margin: 0; font-size: 22px; text-transform: uppercase; text-shadow: 0 1px 3
 .action-btn-round:hover { transform: scale(1.1); }
 .action-btn-round img { width: 55%; height: 55%; object-fit: contain; display: block; }
 
-/* --- STICKER-STAPEL (NEU MIT 3D FLIP) --- */
+/* --- STICKER-STAPEL (3D FLIP) --- */
 .sticker-stack-container { position: fixed; bottom: 20px; right: 20px; width: 80px; height: 110px; z-index: 1000; cursor: pointer; transition: transform 0.2s ease; perspective: 1000px; }
 .sticker-stack-container:hover { transform: translateY(-5px); }
 
@@ -46,7 +60,7 @@ h1 { margin: 0; font-size: 22px; text-transform: uppercase; text-shadow: 0 1px 3
 
 .stack-dummy { background-color: #eeeeee; border: 2px solid #ffffff; border-radius: 4px; box-shadow: 0 4px 8px rgba(0,0,0,0.4); width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; }
 .stack-placeholder-text { font-family: Arial, sans-serif; font-size: 11px; font-weight: bold; color: #aaaaaa; text-transform: uppercase; }
-.stack-counter { position: absolute; top: -15px; right: -15px; background-color: #ff1145; color: #ffffff; width: 26px; height: 26px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: Arial, sans-serif; font-size: 13px; font-weight: bold; box-shadow: 0 2px 5px rgba(0,0,0,0.3); z-index: 10; }
+.stack-counter { position: absolute; top: -18px; right: -18px; background-color: #ff1145; color: #ffffff; width: 26px; height: 26px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: Arial, sans-serif; font-size: 13px; font-weight: bold; box-shadow: 0 2px 5px rgba(0,0,0,0.3); z-index: 10; }
 
 /* =========================================================================
    3D ALBUM ENGINE
@@ -61,7 +75,7 @@ h1 { margin: 0; font-size: 22px; text-transform: uppercase; text-shadow: 0 1px 3
 .paper { position: absolute; width: 100%; height: 100%; top: 0; left: 0; transform-style: preserve-3d; transform-origin: left center; transition: transform 0.6s cubic-bezier(0.4, 0.0, 0.2, 1); will-change: transform; }
 .paper.flipped { transform: rotateY(-180deg); }
 
-/* iOS/SAFARI Z-FIGHTING FIX: Explizite z-index & webkit-backface-visibility + 1px 3D-Schubs */
+/* iOS/SAFARI Z-FIGHTING FIX */
 .front, .back { 
     position: absolute; width: 100%; height: 100%; top: 0; left: 0; 
     -webkit-backface-visibility: hidden; backface-visibility: hidden; 
@@ -72,7 +86,7 @@ h1 { margin: 0; font-size: 22px; text-transform: uppercase; text-shadow: 0 1px 3
 .back { border-right: 1px solid rgba(0,0,0,0.25); transform: rotateY(180deg) translateZ(1px); -webkit-transform: rotateY(180deg) translateZ(1px); z-index: 1; }
 .cover-img { width: 100%; height: 100%; object-fit: cover; border-radius: 0 8px 8px 0; }
 
-/* SEITENZAHLEN (Links für Rückseiten, Rechts für Vorderseiten) */
+/* SEITENZAHLEN (Neu: Links für linke Seite, Rechts für rechte Seite) */
 .page-number-left { position: absolute; bottom: 8px; left: 12px; font-size: 14px; font-weight: bold; color: var(--text-col, #111); z-index: 50; }
 .page-number-right { position: absolute; bottom: 8px; right: 12px; font-size: 14px; font-weight: bold; color: var(--text-col, #111); z-index: 50; }
 
@@ -100,28 +114,20 @@ h1 { margin: 0; font-size: 22px; text-transform: uppercase; text-shadow: 0 1px 3
 
 /* --- INDEX SEITE --- */
 .index-wrapper { padding: 4cqw; height: 100%; }
-.index-grid { display: grid; grid-template-columns: repeat(4, 1fr); grid-template-rows: repeat(7, 1fr); gap: 1cqw; width: 100%; height: 100%; align-items: center; justify-items: center; }
+.index-grid { display: grid; grid-template-columns: repeat(3, 1fr); grid-template-rows: repeat(7, 1fr); gap: 1cqw; width: 100%; height: 100%; align-items: center; justify-items: center; }
 .index-entry { display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; cursor: pointer; }
-.index-flag { width: 4.5cqw; height: 4.5cqw; border-radius: 50%; object-fit: cover; border: 1px solid rgba(255,255,255,0.3); margin-bottom: 0.5cqw; }
-.index-flag-placeholder { width: 4.5cqw; height: 4.5cqw; border-radius: 50%; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); margin-bottom: 0.5cqw; }
-.index-label { font-size: 1.8cqw; font-weight: bold; color: #fff; text-transform: uppercase; text-shadow: 0 1px 2px rgba(0,0,0,0.4); line-height: 1.1; }
+.index-flag { width: 9cqw; height: 9cqw; border-radius: 50%; object-fit: cover; border: 1.5px solid rgba(255,255,255,0.3); margin-bottom: 0.5cqw; }
+.index-flag-placeholder { width: 9cqw; height: 9cqw; border-radius: 50%; background: rgba(255,255,255,0.1); border: 1.5px solid rgba(255,255,255,0.2); margin-bottom: 0.5cqw; }
+.index-label { font-size: 2.8cqw; font-weight: bold; color: #fff; text-transform: uppercase; text-shadow: 0 1px 2px rgba(0,0,0,0.4); line-height: 1.1; }
 
 /* --- TEAM SEITE --- */
 .team-name-wrapper { height: 10cqw; width: 68.5cqw; display: flex; align-items: flex-end; margin-bottom: 2cqw; }
 .team-name { color: var(--text-col, #111111); margin: 0; text-transform: uppercase; line-height: 1; letter-spacing: -0.5px; white-space: nowrap; }
 
-/* Team Header (Perfekt positioniert für Flagge & Group) */
-.team-header-container { position: relative; width: 100%; height: var(--col-h); margin-bottom: 2cqw; }
-.th-photo { position: absolute; left: 0; bottom: 0; }
-.th-wappen { position: absolute; right: 0; bottom: 0; }
-.th-group { position: absolute; right: calc(var(--col-w) + 2cqw); bottom: 0; width: var(--col-w); height: var(--col-w); display: flex; flex-direction: column; justify-content: center; align-items: center; }
-.th-group span { font-size: 2.5cqw; font-weight: bold; color: var(--text-col, #111); margin-bottom: -1px;}
-.th-group strong { font-size: 10.5cqw; line-height: 1; color: var(--text-col, #111); }
-.th-flag { position: absolute; left: calc(var(--col-h) + 2cqw); right: calc(var(--col-w) * 2 + 4cqw); bottom: 0; height: var(--col-w); display: flex; align-items: center; justify-content: center; }
-
+/* Die restlichen Grid-Bereiche */
 .player-grid-bottom, .player-grid-full { width: 100%; display: grid; grid-template-columns: repeat(4, 1fr); gap: 2cqw; align-content: start; }
 
-/* SPECIAL GRID (Gleichmäßige Verteilung) */
+/* SPECIAL GRID (Gleichmäßige Verteilung über die Seite) */
 .special-grid { display: flex; flex-wrap: wrap; justify-content: space-evenly; align-content: space-evenly; height: 100%; width: 100%; gap: 2cqw; padding-bottom: 5cqw;}
 
 /* --- STADIUM SEITE --- */
@@ -134,7 +140,7 @@ h1 { margin: 0; font-size: 22px; text-transform: uppercase; text-shadow: 0 1px 3
 .sticker-slot {
     position: relative; width: var(--col-w); height: var(--col-h); 
     border: 1.5px solid var(--slot-color, #111111); 
-    background-color: transparent; 
+    background-color: transparent !important; 
     display: flex; align-items: center; justify-content: center;
     container-type: inline-size; z-index: 5;
 }
@@ -151,9 +157,9 @@ h1 { margin: 0; font-size: 22px; text-transform: uppercase; text-shadow: 0 1px 3
     border: 1.5px solid var(--slot-color, #111111);
     display: flex; align-items: center; justify-content: center;
     font-size: 11px; font-weight: bold; color: var(--slot-color, #111111); 
-    background-color: transparent; font-family: Arial, sans-serif;
+    background-color: transparent !important; font-family: Arial, sans-serif;
 }
-.sticker-slot.filled { border: none; background-color: transparent; }
+.sticker-slot.filled { border: none; background-color: transparent !important; }
 .sticker-slot.filled .slot-circle { display: none; }
 
 /* --- CSS-KLASSEN FÜR STICKER DESIGN (AUS INDEX.HTML) --- */
@@ -198,6 +204,8 @@ h1 { margin: 0; font-size: 22px; text-transform: uppercase; text-shadow: 0 1px 3
 .name-wrapper-rot { position: absolute; left: calc(2px + 5.625cqw); top: 50%; transform: translate(-50%, -50%) rotate(90deg); z-index: 10; }
 .name-wrapper-rot .special-name-box { position: relative; bottom: auto; left: auto; transform: none; }
 
+.debug-text { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 80%; text-align: center; color: #555; font-family: Arial, sans-serif; font-size: 12px; line-height: 1.4; }
+
 /* --- DESKTOP MINIMAL-PFEILE --- */
 .desk-nav-btn { position: absolute; top: 50%; transform: translateY(-50%); font-size: 42px; color: rgba(0, 0, 0, 0.35); cursor: pointer; z-index: 1000; display: none; font-family: sans-serif; transition: color 0.2s ease, opacity 0.3s ease; }
 .desk-nav-btn span { display: inline-block; transform: scale(0.5, 2.5); }
@@ -210,7 +218,7 @@ h1 { margin: 0; font-size: 22px; text-transform: uppercase; text-shadow: 0 1px 3
     .action-btn-round { width: 70px; height: 70px; bottom: 30px; left: 30px; }
     .sticker-stack-container { width: 130px; height: 180px; bottom: 30px; right: 30px; }
     .stack-placeholder-text { font-size: 14px; }
-    .stack-counter { top: -18px; right: -18px; width: 32px; height: 32px; font-size: 15px; }
+    .stack-counter { top: -20px; right: -20px; width: 32px; height: 32px; font-size: 15px; }
     .book { width: 440px; max-height: calc(100dvh - 120px); transform: translateX(-15%) scale(1.25); }
     .book.open { transform: translateX(50%) scale(1); }
     .page-number-left, .page-number-right { font-size: 16px; bottom: 12px; }
@@ -519,8 +527,8 @@ const albumBlueprint = [
     
     { type: "team", countryCode: "ESP", name: "Spain", group: "H", startId: "ESP001", endId: "ESP014", startAlbumNumber: 851, endAlbumNumber: 864, flag: "data/spain/spain_flag_circle.png", color_1: "#FF0028", color_2: "#FFC908", color_3: "#000000" },
     { type: "team", countryCode: "ESP", name: "Spain", group: "H", startId: "ESP015", endId: "ESP028", startAlbumNumber: 865, endAlbumNumber: 878, flag: "data/spain/spain_flag_circle.png", color_1: "#FF0028", color_2: "#FFC908", color_3: "#000000" },
-    { type: "team", countryCode: "CPV", name: "Cape Verde", group: "H", startId: "CPV001", endId: "CPV014", startAlbumNumber: 879, endAlbumNumber: 892, flag: "data/cape_verde/cape_verde_flag_circle.png", color_1: "#003893", color_2: "#CF2027", color_3: "#FFFFFF" },
-    { type: "team", countryCode: "CPV", name: "Cape Verde", group: "H", startId: "CPV015", endId: "CPV028", startAlbumNumber: 893, endAlbumNumber: 906, flag: "data/cape_verde/cape_verde_flag_circle.png", color_1: "#003893", color_2: "#CF2027", color_3: "#FFFFFF" },
+    { type: "team", countryCode: "CPV", name: "Cape Verde", group: "H", startId: "CPV001", endId: "CPV014", startAlbumNumber: 879, endAlbumNumber: 892, flag: "data/cabo_verde/cabo_verde_flag_circle.png", color_1: "#003893", color_2: "#CF2027", color_3: "#FFFFFF" },
+    { type: "team", countryCode: "CPV", name: "Cape Verde", group: "H", startId: "CPV015", endId: "CPV028", startAlbumNumber: 893, endAlbumNumber: 906, flag: "data/cabo_verde/cabo_verde_flag_circle.png", color_1: "#003893", color_2: "#CF2027", color_3: "#FFFFFF" },
     { type: "team", countryCode: "KSA", name: "Saudi Arabia", group: "H", startId: "KSA001", endId: "KSA014", startAlbumNumber: 907, endAlbumNumber: 920, flag: "data/saudi_arabia/saudi_arabia_flag_circle.png", color_1: "#006C35", color_2: "#FFFFFF", color_3: "#000000" },
     { type: "team", countryCode: "KSA", name: "Saudi Arabia", group: "H", startId: "KSA015", endId: "KSA028", startAlbumNumber: 921, endAlbumNumber: 934, flag: "data/saudi_arabia/saudi_arabia_flag_circle.png", color_1: "#006C35", color_2: "#FFFFFF", color_3: "#000000" },
     { type: "team", countryCode: "URU", name: "Uruguay", group: "H", startId: "URU001", endId: "URU014", startAlbumNumber: 935, endAlbumNumber: 948, flag: "data/uruguay/uruguay_flag_circle.png", color_1: "#0081C6", color_2: "#FFFFFF", color_3: "#000000" },
@@ -677,28 +685,96 @@ function buildGenericGrid(bp, rotateAll = false) {
 }
 
 function buildPageHTML(bp, isLeftPage) {
+    let wrapperStyle = "";
+    if (bp.type === 'team') {
+        let textColor = getPageTextColor(bp.color_2);
+        wrapperStyle = `--page-bg: ${bp.color_2}; --slot-color: ${bp.color_1}; --text-col: ${textColor};`;
+    }
+
+    if (bp.type === 'team') {
+        if (isLeftPage) { 
+            let nameStyle = 'font-size: 8cqw;';
+            if (bp.name.length > 9) nameStyle = 'font-size: 7cqw;';
+            if (bp.name.length > 12) nameStyle = 'font-size: 6cqw;';
+            if (bp.name.length > 15) nameStyle = 'font-size: 5cqw;';
+            if (bp.name.length > 18) nameStyle = 'font-size: 4cqw;';
+            if (bp.name.length > 21) nameStyle = 'font-size: 3.5cqw;';
+            
+            return `
+                <div class="page-wrapper" style="${wrapperStyle}">
+                    <div class="team-name-wrapper">
+                        <h2 class="team-name" style="${nameStyle}">${bp.name}</h2>
+                    </div>
+                    
+                    <div style="position: relative; width: 100%; height: var(--col-h); margin-bottom: 2cqw;">
+                        <!-- Team Photo Rotated -->
+                        <div style="position: absolute; left: 0; top: 0;">
+                            <div class="rotated-slot-wrapper">${buildSlotHTML(bp.countryCode + '001', bp.startAlbumNumber, 'rotated-slot')}</div>
+                        </div>
+                        
+                        <!-- Flag centered exactly between Team Photo and Group Box -->
+                        <div style="position: absolute; left: calc(var(--col-h) + 1cqw); width: calc(47cqw - var(--col-h) - 1cqw); height: var(--col-h); display: flex; align-items: center; justify-content: center;">
+                            <img src="${bp.flag}" style="width: 12cqw; height: 12cqw; object-fit: cover; border-radius: 50%; border: 2.5px solid var(--slot-color); box-shadow: 0 3px 6px rgba(0,0,0,0.3);" onerror="this.style.display='none'">
+                        </div>
+
+                        <!-- Group Box exactly above Column 3 -->
+                        <div style="position: absolute; left: 47cqw; width: var(--col-w); height: var(--col-h); display: flex; flex-direction: column; justify-content: center; align-items: center;">
+                            <span style="font-size: 2.5cqw; font-weight: bold; color: var(--text-col); margin-bottom: 2px;">GROUP</span>
+                            <strong style="font-size: 10.5cqw; line-height: 1; color: var(--text-col);">${bp.group}</strong>
+                        </div>
+
+                        <!-- Wappen exactly above Column 4 -->
+                        <div style="position: absolute; left: 70.5cqw; width: var(--col-w); height: var(--col-h);">
+                            ${buildSlotHTML(bp.countryCode + '002', bp.startAlbumNumber + 1)}
+                        </div>
+                    </div>
+                    
+                    <div class="player-grid-bottom">
+                        ${buildPlayerGrid(bp.countryCode, 3, 14, bp.startAlbumNumber + 2)}
+                    </div>
+                </div>`;
+        } else { 
+            return `
+                <div class="page-wrapper" style="${wrapperStyle}">
+                    <div style="height: 14cqw; width: 100%;"></div>
+                    <div class="player-grid-full">
+                        ${buildPlayerGrid(bp.countryCode, 15, 28, bp.startAlbumNumber)}
+                    </div>
+                </div>`;
+        }
+    }
+    
     if (bp.type === 'cover_back') {
         return `<div class="page-wrapper dark-page"></div>`;
     }
+    
     if (bp.type === 'special') {
         return `
         <div class="page-wrapper dark-page" style="position: relative;">
-            <h2 class="special-title" style="position: absolute; top: 2cqw; left: 0; width: 100%; text-align: center; margin: 0; font-size: 8cqw; letter-spacing: 4px;">WC26</h2>
-            <div style="position: absolute; top: 18cqw; left: 6cqw;">
+            <h2 class="special-title" style="position: absolute; top: 3cqw; left: 0; width: 100%; text-align: center; margin: 0; font-size: 8cqw; letter-spacing: 4px;">WC26</h2>
+            
+            <div style="position: absolute; top: 15cqw; left: 4cqw;">
                 <div class="rotated-slot-wrapper">${buildSlotHTML('SPC001', '1', 'rotated-slot')}</div>
+            </div>
+            <div style="position: absolute; top: calc(15cqw + var(--col-w)); left: 4cqw;">
                 <div class="rotated-slot-wrapper">${buildSlotHTML('SPC002', '2', 'rotated-slot')}</div>
             </div>
-            <div style="position: absolute; top: 18cqw; right: 6cqw;">
+
+            <div style="position: absolute; top: 15cqw; right: 4cqw;">
                 <div class="rotated-slot-wrapper">${buildSlotHTML('SPC005', '5', 'rotated-slot')}</div>
+            </div>
+            <div style="position: absolute; top: calc(15cqw + var(--col-w)); right: 4cqw;">
                 <div class="rotated-slot-wrapper">${buildSlotHTML('SPC006', '6', 'rotated-slot')}</div>
             </div>
-            <div style="position: absolute; top: 55%; left: 50%; transform: translate(-50%, -50%);">
+
+            <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
                 ${buildSlotHTML('SPC003', '3')}
             </div>
-            <div style="position: absolute; bottom: 8cqw; left: 6cqw;">
+
+            <div style="position: absolute; bottom: 8cqw; left: 4cqw;">
                 <div class="rotated-slot-wrapper">${buildSlotHTML('SPC000', '00', 'rotated-slot')}</div>
             </div>
-            <div style="position: absolute; bottom: 8cqw; right: 6cqw;">
+            <div style="position: absolute; bottom: 8cqw; right: 4cqw;">
                 <div class="rotated-slot-wrapper">${buildSlotHTML('SPC004', '4', 'rotated-slot')}</div>
             </div>
         </div>`;
@@ -723,56 +799,6 @@ function buildPageHTML(bp, isLeftPage) {
         return html;
     }
 
-    if (bp.type === 'stadiums') return buildStadiumPage(bp);
-
-    if (bp.type === 'team') {
-        let textColor = getPageTextColor(bp.color_2);
-        let wrapperStyle = `--page-bg: ${bp.color_2}; --slot-color: ${bp.color_1}; --text-col: ${textColor};`;
-
-        if (isLeftPage) { 
-            let nameStyle = 'font-size: 8cqw;';
-            if (bp.name.length > 9) nameStyle = 'font-size: 7cqw;';
-            if (bp.name.length > 12) nameStyle = 'font-size: 6cqw;';
-            if (bp.name.length > 15) nameStyle = 'font-size: 5cqw;';
-            if (bp.name.length > 18) nameStyle = 'font-size: 4cqw;';
-            if (bp.name.length > 21) nameStyle = 'font-size: 3.5cqw;';
-            
-            return `
-                <div class="page-wrapper" style="${wrapperStyle}">
-                    <div class="team-name-wrapper">
-                        <h2 class="team-name" style="${nameStyle}">${bp.name}</h2>
-                    </div>
-                    <div class="team-header-container">
-                        <div class="th-photo">
-                            <div class="rotated-slot-wrapper">
-                                ${buildSlotHTML(bp.countryCode + '001', bp.startAlbumNumber, 'rotated-slot')}
-                            </div>
-                        </div>
-                        <div class="th-flag">
-                            <img src="${bp.flag}" style="width: 14cqw; height: 14cqw; object-fit: cover; border-radius: 50%; border: 2.5px solid var(--text-col); box-shadow: 0 3px 6px rgba(0,0,0,0.3);" onerror="this.style.display='none'">
-                        </div>
-                        <div class="th-group group-box">
-                            <span>GROUP</span><strong>${bp.group}</strong>
-                        </div>
-                        <div class="th-wappen">
-                            ${buildSlotHTML(bp.countryCode + '002', bp.startAlbumNumber + 1)}
-                        </div>
-                    </div>
-                    <div class="player-grid-bottom">
-                        ${buildPlayerGrid(bp.countryCode, 3, 14, bp.startAlbumNumber + 2)}
-                    </div>
-                </div>`;
-        } else { 
-            return `
-                <div class="page-wrapper" style="${wrapperStyle}">
-                    <div style="height: 14cqw; width: 100%;"></div>
-                    <div class="player-grid-full">
-                        ${buildPlayerGrid(bp.countryCode, 15, 28, bp.startAlbumNumber)}
-                    </div>
-                </div>`;
-        }
-    }
-    
     if (bp.type === 'golden_boots' || bp.type === 'golden_ball' || bp.type === 'winning_teams') return buildGenericGrid(bp, bp.type === 'winning_teams');
     
     return `<div class="debug-text"><span>${bp.type}</span></div>`;
@@ -900,19 +926,25 @@ function pasteStickerToAlbum(stickerId) {
     }
 }
 
+function getTouchPos(e) {
+    return e.changedTouches ? e.changedTouches[0] : e;
+}
+
 stackCard1.addEventListener('touchstart', (e) => {
     const stapel = currentUserData?.stapel || [];
     if (stapel.length === 0) return;
     isDraggingTopSticker = true; isDraggingSticker = true; isClick = true;
     stackCard1.style.transition = 'none'; stackCard1.style.zIndex = 9999;
-    dragStartX = e.touches[0].clientX; dragStartY = e.touches[0].clientY;
+    const pos = getTouchPos(e);
+    dragStartX = pos.clientX; dragStartY = pos.clientY;
 }, {passive: false});
 
 document.addEventListener('touchmove', (e) => {
     if (!isDraggingTopSticker) return;
     e.preventDefault(); 
-    let currentX = e.touches[0].clientX - dragStartX; let currentY = e.touches[0].clientY - dragStartY;
-    if (Math.abs(currentX) > 15 || Math.abs(currentY) > 15) isClick = false;
+    const pos = getTouchPos(e);
+    let currentX = pos.clientX - dragStartX; let currentY = pos.clientY - dragStartY;
+    if (Math.abs(currentX) > 10 || Math.abs(currentY) > 10) isClick = false;
     stackCard1.style.transform = `translate(${currentX}px, ${currentY}px) scale(1.1) rotate(0deg)`;
 }, {passive: false});
 
@@ -929,7 +961,8 @@ document.addEventListener('touchend', (e) => {
     }
 
     stackCard1.style.visibility = 'hidden';
-    const elemBelow = document.elementFromPoint(e.changedTouches[0].clientX, e.changedTouches[0].clientY);
+    const pos = getTouchPos(e);
+    const elemBelow = document.elementFromPoint(pos.clientX, pos.clientY);
     stackCard1.style.visibility = 'visible';
 
     let droppedOnSlot = false;
@@ -968,7 +1001,7 @@ document.addEventListener('mousemove', (e) => {
     if (!isDraggingTopSticker) return;
     e.preventDefault();
     let currentX = e.clientX - dragStartX; let currentY = e.clientY - dragStartY;
-    if (Math.abs(currentX) > 15 || Math.abs(currentY) > 15) isClick = false;
+    if (Math.abs(currentX) > 10 || Math.abs(currentY) > 10) isClick = false;
     stackCard1.style.transform = `translate(${currentX}px, ${currentY}px) scale(1.1) rotate(0deg)`;
 });
 document.addEventListener('mouseup', (e) => {
