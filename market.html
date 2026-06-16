@@ -193,6 +193,7 @@ h1 { margin: 0; font-size: 24px; text-transform: uppercase; text-shadow: 0 1px 3
     <div style="color:white; grid-column: 1 / -1; text-align: center; font-size: 18px;">Lade Markt...</div>
 </div>
 
+<!-- 1. SEND TRADE MODAL (User A wählt bei User B aus) -->
 <div id="tradeModal" class="modal-overlay">
     <div class="modal-header">
         <button class="btn-action btn-close" onclick="closeTradeModal()">✖ Zurück</button>
@@ -205,15 +206,17 @@ h1 { margin: 0; font-size: 24px; text-transform: uppercase; text-shadow: 0 1px 3
     </div>
 </div>
 
+<!-- 2. OFFERS LIST MODAL (User B sieht eingegangene Anfragen) -->
 <div id="offersListModal" class="modal-overlay">
     <div class="modal-header">
         <button class="btn-action btn-close" onclick="closeOffersListModal()">✖ Schließen</button>
         <h2 class="modal-title">Angebote</h2>
-        <div style="width:70px;"></div> </div>
-    <div class="grid-scroll-wrapper" id="offersListContent">
-        </div>
+        <div style="width:70px;"></div>
+    </div>
+    <div class="grid-scroll-wrapper" id="offersListContent"></div>
 </div>
 
+<!-- 3. ANSWER OFFER MODAL (User B beantwortet das Angebot von User A) -->
 <div id="answerOfferModal" class="modal-overlay">
     <div class="modal-header">
         <button class="btn-action btn-close" onclick="closeAnswerOfferModal()">✖ Zurück</button>
@@ -228,6 +231,7 @@ h1 { margin: 0; font-size: 24px; text-transform: uppercase; text-shadow: 0 1px 3
     </div>
 </div>
 
+<!-- 4. CLAIM MODAL (Pack Opening Feeling für getauschte Sticker) -->
 <div id="claimModal" class="modal-overlay">
     <div class="modal-header" style="justify-content: center;">
         <h2 class="modal-title" style="color: #00cc44; font-size: 24px; text-shadow: 0 2px 4px rgba(0,0,0,0.5);">Tausch Erfolgreich!</h2>
@@ -263,6 +267,7 @@ let myMarketStickers = [];
 
 // Trade Variablen (Senden)
 let tradeTargetUser = null;
+let tradeAvailableStickers = [];
 let tradeSelectedStickers = [];
 let tradeMaxSelection = 0;
 let tradeWhatTheyNeedFromMe = [];
@@ -283,7 +288,7 @@ fetch("./data/sticker_database.json")
 function initMarketAuth() {
     firebase.auth().onAuthStateChanged((user) => {
         if (user) {
-            // 1. User Profil Listener (Stapel & Traded Stickers)
+            // 1. User Profil Listener
             db.collection("users").doc(user.uid).onSnapshot((doc) => {
                 if (doc.exists) {
                     currentUserData = doc.data(); 
@@ -324,14 +329,12 @@ function updateBadges() {
     badgeRed.style.display = "none";
     badgeGreen.style.display = "none";
 
-    // Prio 1: Traded Stickers (Grün) abholen
     if (currentUserData && currentUserData.traded_stickers && currentUserData.traded_stickers.length > 0) {
         badgeGreen.innerText = currentUserData.traded_stickers.length;
         badgeGreen.style.display = "flex";
         return; 
     }
 
-    // Prio 2: Offene Anfragen (Rot) beantworten
     if (pendingOffers.length > 0) {
         badgeRed.innerText = pendingOffers.length;
         badgeRed.style.display = "flex";
@@ -395,11 +398,9 @@ function loadMarketUsers() {
                 const theirPasted = Object.keys(theirAlbum).filter(k => theirAlbum[k] === "pasted");
                 const theirOwnedSet = new Set([...theirStapel, ...theirPasted]);
 
-                // Filter 1: Was brauche ich von IHM?
                 const whatINeedFromThem = marketData.stickers.filter(id => !currentMyOwnedSet.has(id));
                 const uniqueWhatINeed = [...new Set(whatINeedFromThem)];
 
-                // Filter 2: Was braucht er von MIR?
                 const whatTheyNeedFromMe = myMarketStickers.filter(id => !theirOwnedSet.has(id));
                 const uniqueWhatTheyNeed = [...new Set(whatTheyNeedFromMe)];
                 
@@ -593,6 +594,7 @@ function closeAnswerOfferModal() {
     if (pendingOffers.length > 0) openOffersListModal();
 }
 
+/* DIE TRANSKTIONS- UND BEREINIGUNGSFUNKTION */
 function confirmOffer() {
     if (answerSelectedStickers.length !== answerRequiredCount) return;
     
@@ -627,7 +629,7 @@ function confirmOffer() {
             const requestedBySender = reqDoc.data().requested_stickers; 
             const selectedByMe = answerSelectedStickers; 
 
-            // Helfer um EXAKT einen zu entfernen (nicht alle Duplikate derselben ID)
+            // Helfer um EXAKT einen zu entfernen
             const removeOne = (arr, item) => {
                 const idx = arr.indexOf(item);
                 if (idx > -1) arr.splice(idx, 1);
@@ -637,7 +639,7 @@ function confirmOffer() {
             requestedBySender.forEach(s => removeOne(myStapel, s));
             selectedByMe.forEach(s => removeOne(senderStapel, s));
 
-            // 2. In Traded Box werfen
+            // 2. In Traded Box werfen (Die Sticker wechseln den Besitzer!)
             senderTraded.push(...requestedBySender);
             myTraded.push(...selectedByMe);
 
@@ -646,15 +648,35 @@ function confirmOffer() {
             transaction.delete(requestRef);
         });
     }).then(() => {
+        // NEU: Säubere den globalen Markt, damit getauschte Sticker verschwinden!
+        cleanupMarket(myUid, answerSelectedStickers);
+        cleanupMarket(senderUid, currentActiveOffer.requested_stickers);
+
         document.getElementById("answerOfferModal").style.display = "none";
         btn.innerText = "Bestätigen";
-        // Die Snapshot-Listener rufen automatisch openClaimModal auf durch die grünen Badges!
+        
         openClaimModal(answerSelectedStickers);
     }).catch((err) => {
         console.error("Trade error:", err);
-        alert("Tausch fehlgeschlagen. Der Spieler hat die Sticker evtl. nicht mehr.");
+        alert("Tausch fehlgeschlagen. Der Spieler hat die Sticker eventuell nicht mehr.");
         btn.innerText = "Bestätigen";
         btn.disabled = false;
+    });
+}
+
+function cleanupMarket(ownerUid, stickerIds) {
+    stickerIds.forEach(stickerId => {
+        db.collection("market")
+          .where("owner_uid", "==", ownerUid)
+          .where("sticker_id", "==", stickerId)
+          .where("status", "==", "available")
+          .limit(1)
+          .get()
+          .then(snap => {
+              snap.forEach(doc => {
+                  db.collection("market").doc(doc.id).update({ status: "traded" });
+              });
+          });
     });
 }
 
@@ -694,7 +716,6 @@ function claimTradedStickers() {
         alert("Fehler beim Hinzufügen zum Stapel!");
     });
 }
-
 
 /* --- STICKER RENDER ENGINE HILFSFUNKTIONEN --- */
 function getContrastColors(hexColor) {
