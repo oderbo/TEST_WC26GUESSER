@@ -15,116 +15,242 @@
     font-style: normal;
 }
 
-* {
-    box-sizing: border-box;
+* { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+
+html, body { 
+    overflow-x: hidden; 
+    text-size-adjust: none; 
+    -webkit-text-size-adjust: none; 
 }
 
 body { 
     margin: 0; 
-    padding: 10px 6px; 
+    padding: 15px 10px; 
     font-family: 'FWC2026', Arial, sans-serif; 
     color: white; 
+    background-color: #3f57f5; 
     display: flex; 
     flex-direction: column; 
     align-items: center; 
     min-height: 100dvh;
     width: 100%;
-    background-color: #3f57f5; 
 }
 
-/* --- OBERE LEISTE (HEADER WRAPPER) --- */
-.header-container {
+/* --- HEADER --- */
+.header-container { 
+    width: 100%; max-width: 1400px; position: relative; 
+    display: flex; justify-content: center; align-items: center; 
+    margin-bottom: 20px; height: 50px; flex-shrink: 0; 
+}
+h1 { margin: 0; font-size: 24px; text-transform: uppercase; text-shadow: 0 1px 3px rgba(0,0,0,0.4); letter-spacing: 1px; text-align: center; }
+
+.btn-back { 
+    position: absolute; left: 0; top: 50%; transform: translateY(-50%); 
+    background: rgba(255, 255, 255, 0.1); border: 1.5px solid rgba(255, 255, 255, 0.4); 
+    color: white; font-family: Arial, sans-serif; font-weight: bold; font-size: 16px; 
+    width: 30px; height: 30px; border-radius: 6px; cursor: pointer; 
+    display: flex; align-items: center; justify-content: center; text-decoration: none; 
+}
+
+/* --- OFFERS BUTTON --- */
+.btn-offers {
     width: 100%;
-    max-width: 1400px;
-    position: relative; /* Wichtig für die absolute Positionierung des Buttons */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: -20px; 
-    margin-bottom: 0px;
-    height: 50px; /* Feste Höhe, damit alles auf einer Linie liegt */
-}
-
-h1 { 
-    margin: 0;
-    font-size: 22px; /* Schrifthöhe Mobile */
-    text-transform: uppercase;
-    text-shadow: 0 1px 3px rgba(0,0,0,0.4);
+    max-width: 600px;
+    background: linear-gradient(135deg, #FFD700, #ffbb04);
+    color: #111;
     font-family: 'FWC2026', Arial, sans-serif;
-    letter-spacing: 1px;
-    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+    text-transform: uppercase;
+    border: none;
+    border-radius: 8px;
+    padding: 15px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    cursor: pointer;
+    margin-bottom: 25px;
+    transition: transform 0.2s;
+}
+.btn-offers:active { transform: scale(0.97); }
+
+/* --- MARKET GRID --- */
+.market-grid {
+    width: 100%;
+    max-width: 600px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    gap: 15px;
 }
 
-/* --- ABSOLUTER ZURÜCK-BUTTON --- */
-.btn-back {
-    position: absolute;
-    left: 4px; /* Schmiegt sich perfekt an den linken Rand */
-    top: 50%;
-    transform: translateY(-50%); /* Zentriert den Button vertikal im Header */
-    background: rgba(255, 255, 255, 0.1);
-    border: 1.5px solid rgba(255, 255, 255, 0.4);
-    color: white;
-    font-family: Arial, sans-serif; /* Arial für ein sauberes, kantiges "<" */
-    font-weight: bold;
-    
-    /* DYNAMISCHE ANPASSUNG AN DIE TEXTHÖHE: */
-    font-size: 14px;  
-    width: 22px;      
-    height: 22px;     
-    border-radius: 4px;
-    
+.user-card {
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 10px;
+    aspect-ratio: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
     cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+    transition: transform 0.2s;
+}
+.user-card:active { transform: scale(0.95); }
+.user-name {
+    color: #111;
+    font-size: 14px;
+    font-family: Arial, sans-serif;
+    font-weight: bold;
+    text-align: center;
+    word-break: break-word;
+}
+.user-icon {
+    width: 40px; height: 40px; margin-bottom: 8px; border-radius: 50%; background: #eee; display: flex; align-items: center; justify-content: center; font-size: 20px;
+}
+
+.match-badge {
+    position: absolute;
+    top: -6px;
+    right: -6px;
+    background-color: #ff1145;
+    color: #ffffff;
+    font-family: Arial, sans-serif;
+    font-size: 13px;
+    font-weight: bold;
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    text-decoration: none;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
-    transition: background 0.15s ease, transform 0.15s ease;
-    z-index: 100; /* Liegt immer über allem */
+    border: 2px solid #fff;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.3);
 }
 
-.btn-back:hover {
-    background: rgba(255, 255, 255, 0.25);
-    transform: translateY(-50%) scale(1.05);
+/* --- TRADE MODAL --- */
+#tradeModal {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-color: #222222;
+    z-index: 2000;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px 10px;
+}
+.trade-header {
+    width: 100%; max-width: 600px;
+    display: flex; justify-content: space-between; align-items: center;
+    margin-bottom: 15px;
+}
+.trade-btn {
+    padding: 10px 15px; font-weight: bold; border-radius: 8px; border: none; font-size: 14px; cursor: pointer; text-transform: uppercase; font-family: 'FWC2026', sans-serif;
+}
+.btn-close { background: #ff1145; color: white; }
+.btn-send { background: #00cc44; color: white; transition: 0.2s ease; }
+.btn-send:disabled { background: #555555; color: #888888; cursor: not-allowed; }
+
+.trade-title { font-size: 20px; color: white; margin: 0; text-align: center; flex-grow: 1; }
+.trade-info { font-family: Arial, sans-serif; font-size: 14px; color: #aaaaaa; text-align: center; margin-bottom: 20px; }
+.trade-info span { color: #00cc44; font-weight: bold; font-size: 16px; }
+
+.trade-grid-wrapper {
+    width: 100%; max-width: 600px; flex-grow: 1; overflow-y: auto; padding: 5px;
 }
 
-/* --- DESKTOP LAYOUT --- */
-@media (min-width: 768px) {
-    body { padding: 20px; }
-    
-    .header-container {
-        margin-top: 15px; 
-        margin-bottom: 25px;
-        height: 70px;
-    }
-    
-    h1 { font-size: 36px; } /* Schrifthöhe auf Desktop ist 36px */
-    
-    /* --- ANPASSUNG DES BUTTONS AN DIE SCHRIFTHÖHE AUF DESKTOP --- */
-    .btn-back {
-        left: 0;
-        top: 50%;
-        transform: translateY(-50%);
-        
-        width: 36px;   
-        height: 36px;  
-        font-size: 22px; 
-        
-        border-radius: 6px;
-        border-width: 2px;
-    }
+/* Exaktes 3-Spalten Layout wie gefordert */
+.trade-grid {
+    display: grid; 
+    grid-template-columns: repeat(3, 1fr); 
+    gap: 3cqw;
+    padding-bottom: 40px;
 }
+
+.trade-slot {
+    width: 100%; aspect-ratio: 1 / 1.38;
+    position: relative; cursor: pointer;
+    container-type: inline-size;
+    transition: transform 0.2s ease;
+}
+.trade-slot.selected { transform: scale(1.03); }
+.trade-slot.selected::after {
+    content: ''; position: absolute; inset: -3px; 
+    border: 4px solid #00cc44; border-radius: 4px; z-index: 100;
+    box-shadow: 0 0 12px rgba(0, 204, 68, 0.8);
+    pointer-events: none;
+}
+
+/* --- STICKER CSS (1:1 aus Album) --- */
+.sticker-wrapper { position: absolute; width: 100%; height: 100%; top: 0; left: 0; box-shadow: 0 2px 6px rgba(0,0,0,0.3); }
+.sticker-inner { position: absolute; top: 5cqw; left: 5cqw; right: 5cqw; bottom: 5cqw; background-color: var(--color-1, #c10e23); border: 2px solid var(--color-2, #046a38); outline: 2px solid var(--color-3, #f2a900); box-sizing: border-box; pointer-events: none; }
+.sticker-flag { position: absolute; top: 0; right: 0; width: 15cqw; height: 15cqw; border-radius: 50%; overflow: hidden; border: 1px solid #000000; box-sizing: border-box; z-index: 2; pointer-events: none;}
+.sticker-flag img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.bg-svg-2, .bg-svg-6 { position: absolute; width: 76%; height: 40%; background-repeat: no-repeat; background-size: contain; pointer-events: none;}
+.bg-svg-2 { top: 0; left: 0; background-image: url('assets/2.svg'); background-position: left top; filter: drop-shadow(0px 0px 0px var(--color-2)); }
+.bg-svg-6 { bottom: 40%; right: 0; background-image: url('assets/6.svg'); background-position: right bottom; }
+.player-image-container { position: absolute; bottom: 40%; height: 60%; left: 0; width: 100%; z-index: 1; pointer-events: none;}
+.player-image-container img { width: 100%; height: 100%; object-fit: contain; display: block; }
+.lower-elements-wrapper { position: absolute; top: 60%; bottom: 0; left: 0; right: 0; display: flex; flex-direction: column; gap: 4px; padding-bottom: 4px; box-sizing: border-box; z-index: 2; pointer-events: none;}
+.sticker-info-box { flex: 1; min-height: 0; width: 100%; background-color: var(--color-2); display: flex; align-items: center; justify-content: center; box-shadow: inset 0 1.5px 0 var(--color-3), inset 0 -1.5px 0 var(--color-3); box-sizing: border-box; }
+.player-name { color: #ffffff; font-weight: bold; text-align: center; white-space: normal; padding: 0 4px; font-size: 5.8cqw; line-height: 1.1; text-shadow: 1px 1px 2px rgba(0,0,0,0.5); }
+.sticker-meta-container { flex: 0.8; min-height: 0; width: 100%; display: flex; gap: 2px; box-sizing: border-box; }
+.meta-box { background-color: #ffffff; border: 1px solid #000000; color: #000000; display: flex; align-items: center; justify-content: center; font-weight: bold; text-align: center; font-size: 5.2cqw; box-sizing: border-box; line-height: 1; }
+.meta-box-left { width: 16%; border-radius: 0 6px 6px 0; border-left: none; }
+.meta-box-center { flex: 1; border-radius: 6px; font-size: 4.8cqw; }
+.meta-box-right { width: 25%; border-radius: 6px 0 0 6px; border-right: none; }
+.bottom-info-bar { flex: 1; min-height: 0; width: 100%; display: flex; align-items: center; gap: 4px; }
+.pos-box { height: 100%; aspect-ratio: 1 / 1; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 7cqw; line-height: 1; border-radius: 0 5px 5px 0; border-top: 1px solid rgba(0,0,0,0.2); border-bottom: 1px solid rgba(0,0,0,0.2); border-right: 1px solid rgba(0,0,0,0.2); border-left: none; box-shadow: 2px 0 5px rgba(255, 255, 255, 0.4); box-sizing: border-box; padding: 0; text-transform: uppercase; }
+.pos-box[data-pos="at"] { background-color: #ff1145; color: #ffffff; } .pos-box[data-pos="mf"] { background-color: #28a745; color: #ffffff; } .pos-box[data-pos="df"] { background-color: #ffc107; color: #ffffff; } .pos-box[data-pos="gk"] { background-color: #007bff; color: #ffffff; } 
+.club-logo-small { height: 80%; width: auto; object-fit: contain; }
+.club-name { color: var(--dynamic-text, #ffffff); font-weight: bold; font-size: 5.5cqw; -webkit-text-stroke: 0.3px var(--dynamic-stroke, #000000); text-transform: none; letter-spacing: 0.2px; max-width: 100%; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; line-height: 1.1; }
+.club-logo-bottom { height: 90%; width: auto; object-fit: contain; margin-left: auto; padding-right: 2px; }
+
+.special-sticker-inner { position: absolute; top: 5cqw; left: 5cqw; right: 5cqw; bottom: 5cqw; background-color: #ffffff; display: flex; align-items: center; justify-content: center; overflow: hidden; pointer-events: none;}
+.special-sticker-img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.container-logo, .container-golden-boot { background: linear-gradient(135deg, #e0e0e0 0%, #ffffff 25%, #a0a0a0 50%, #f8f8f8 75%, #c0c0c0 100%) !important; }
+.container-logo .special-sticker-inner { top: 0; bottom: 0; left: 0; right: 0; background-color: transparent; } .container-logo .special-sticker-img { object-fit: contain; padding: 0 4px; }
+.container-golden-ball, .container-historic-winner, .container-special-edge, .container-trophy-top, .container-trophy-bottom, .container-special-fill { background: linear-gradient(135deg, #bf953f 0%, #fcf6ba 25%, #b38728 50%, #fbf5b7 75%, #aa771c 100%) !important; }
+.container-special-fill .special-sticker-inner { background-color: transparent; top: 0; bottom: 0; left: 0; right: 0; } .container-special-fill .special-sticker-img { width: calc(100% - 4px); margin: 0 auto; }
+.special-flag-wrapper { position: absolute; width: 15cqw; height: 15cqw; padding: 0.8cqw; border-radius: 50%; z-index: 10; display: flex; align-items: center; justify-content: center; }
+.special-flag-wrapper img { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; border: 1px solid rgba(0,0,0,0.5); display: block; }
+.gold-bg { background: linear-gradient(135deg, #bf953f 0%, #fcf6ba 25%, #b38728 50%, #fbf5b7 75%, #aa771c 100%); box-shadow: 0 1px 3px rgba(0,0,0,0.5); }
+.silver-bg { background: linear-gradient(135deg, #e0e0e0 0%, #ffffff 25%, #a0a0a0 50%, #f8f8f8 75%, #c0c0c0 100%); box-shadow: 0 1px 3px rgba(0,0,0,0.5); }
+.pos-top-right { top: 0; right: 0; } .pos-bottom-right { bottom: 0; right: 0; } .pos-bottom-left-rot { bottom: 0; left: 0; transform: rotate(90deg); }
+.special-icon { position: absolute; bottom: 0; right: 0; width: 15cqw; height: 15cqw; object-fit: contain; z-index: 10; }
+.special-name-box { position: absolute; background: #ffffff; border: 1px solid #000000; border-radius: 4px; font-weight: bold; color: #000000; font-size: 5.5cqw; height: 11.25cqw; display: flex; align-items: center; justify-content: center; padding: 0 8px; white-space: nowrap; z-index: 10; box-shadow: 0 1px 3px rgba(0,0,0,0.3); }
+.pos-bottom-center { bottom: 2px; left: 50%; transform: translateX(-50%); }
+.name-wrapper-rot { position: absolute; left: calc(2px + 5.625cqw); top: 50%; transform: translate(-50%, -50%) rotate(90deg); z-index: 10; }
+.name-wrapper-rot .special-name-box { position: relative; bottom: auto; left: auto; transform: none; }
+
 </style>
 </head>
 <body>
 
 <div class="header-container">
     <a href="album.html" class="btn-back">&lt;</a>
-    <h1>Market</h1>
+    <h1>Marktplatz</h1>
 </div>
 
-<div id="market-content" style="width: 100%; max-width: 1400px; padding-top: 20px; display: flex; flex-direction: column; align-items: center;">
+<button class="btn-offers" onclick="alert('Das Angebots-Menü kommt im nächsten Schritt!')">Angebote ansehen</button>
+
+<div id="market-content" class="market-grid">
+    </div>
+
+<div id="tradeModal">
+    <div class="trade-header">
+        <button class="trade-btn btn-close" onclick="closeTradeModal()">✖ Schließen</button>
+        <h2 class="trade-title" id="tradeModalTitle">Tauschen</h2>
+        <button class="trade-btn btn-send" id="btnSendTrade" onclick="sendTradeRequest()" disabled>Senden</button>
+    </div>
     
+    <div class="trade-info" id="tradeModalInfo">
+        Wähle bis zu <span id="tradeMaxCount">0</span> Sticker aus.
+    </div>
+
+    <div class="trade-grid-wrapper">
+        <div class="trade-grid" id="tradeStickerGrid">
+            </div>
+    </div>
 </div>
 
 <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
@@ -132,7 +258,6 @@ h1 {
 <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
 
 <script>
-// Firebase Konfiguration
 const firebaseConfig = {
   apiKey: "AIzaSyD2KXF4jwbym0ghwMrSPFCiD-pgajGIopE",
   authDomain: "wc26guesser-db.firebaseapp.com",
@@ -141,21 +266,295 @@ const firebaseConfig = {
   messagingSenderId: "396925110064",
   appId: "1:396925110064:web:18d8f40a30e2f0d63deaf5"
 };
-
 firebase.initializeApp(firebaseConfig);
 const db = firebase.firestore();
 
-// Später greifen wir hier auf die Markt-Daten des eingeloggten Users zu
-firebase.auth().onAuthStateChanged((user) => {
-    if (user) {
-        console.log("User angemeldet, bereite Market für UID vor:", user.uid);
-        // HIER: Funktion zum Laden der Sticker aus Firebase starten
+let globalStickerDatabase = null;
+let currentUserData = null;
+let currentMyOwnedSet = new Set();
+let currentMyUniqueStapel = [];
+
+// Trade Status Variablen
+let tradeTargetUser = null;
+let tradeAvailableStickers = [];
+let tradeSelectedStickers = [];
+let tradeMaxSelection = 0;
+let tradeWhatTheyNeedFromMe = [];
+
+fetch("./data/sticker_database.json")
+    .then(r => r.json())
+    .then(data => {
+        globalStickerDatabase = data;
+        initMarketAuth();
+    });
+
+function initMarketAuth() {
+    firebase.auth().onAuthStateChanged((user) => {
+        if (user) {
+            db.collection("users").doc(user.uid).onSnapshot((doc) => {
+                if (doc.exists) {
+                    currentUserData = doc.data();
+                    
+                    // Berechne einmalig, was ich besitze (Stapel + Eingeklebt) und was mein reiner Stapel ist
+                    const stapel = currentUserData.stapel || [];
+                    const album = currentUserData.album || {};
+                    const pasted = Object.keys(album).filter(k => album[k] === "pasted");
+                    
+                    currentMyOwnedSet = new Set([...stapel, ...pasted]);
+                    currentMyUniqueStapel = [...new Set(stapel)];
+
+                    loadMarketUsers();
+                }
+            });
+        } else {
+            window.location.href = 'index.html';
+        }
+    });
+}
+
+function loadMarketUsers() {
+    const uid = firebase.auth().currentUser.uid;
+    const grid = document.getElementById("market-content");
+    
+    // Wir holen alle User. Bei tausenden Usern würde man später Limits oder Queries einbauen.
+    db.collection("users").get().then((querySnapshot) => {
+        grid.innerHTML = '';
+        
+        querySnapshot.forEach((doc) => {
+            if (doc.id === uid) return; // Mich selbst überspringen
+            
+            const userB = doc.data();
+            const theirStapel = userB.stapel || [];
+            const theirAlbum = userB.album || {};
+            
+            // 1. Was brauche ICH von IHM? (Er hat es im Stapel, ich habe es NICHT)
+            const theirUniqueStapel = [...new Set(theirStapel)];
+            const whatINeedFromThem = theirUniqueStapel.filter(id => !currentMyOwnedSet.has(id));
+            
+            // 2. Was braucht ER von MIR? (Ich habe es im Stapel, er hat es NICHT)
+            const theirOwnedSet = new Set([...theirStapel, ...Object.keys(theirAlbum).filter(k => theirAlbum[k] === "pasted")]);
+            const whatTheyNeedFromMe = currentMyUniqueStapel.filter(id => !theirOwnedSet.has(id));
+            
+            const matchCount = whatTheyNeedFromMe.length;
+            
+            // Nur User anzeigen, mit denen ein beidseitiger Tausch möglich ist
+            if (whatINeedFromThem.length > 0 && matchCount > 0) {
+                const card = document.createElement('div');
+                card.className = 'user-card';
+                card.onclick = () => openTradeModal(doc.id, userB.username || "Spieler", matchCount, whatINeedFromThem, whatTheyNeedFromMe);
+                
+                const initial = (userB.username || "S").charAt(0).toUpperCase();
+                
+                card.innerHTML = `
+                    <div class="match-badge">${matchCount}</div>
+                    <div class="user-icon">${initial}</div>
+                    <div class="user-name">${userB.username || "Spieler"}</div>
+                `;
+                grid.appendChild(card);
+            }
+        });
+    });
+}
+
+/* --- TRADE MODAL LOGIK --- */
+function openTradeModal(targetUid, targetName, matchCount, availableStickers, whatTheyNeedFromMeArr) {
+    tradeTargetUser = { uid: targetUid, name: targetName };
+    tradeAvailableStickers = availableStickers;
+    tradeWhatTheyNeedFromMe = whatTheyNeedFromMeArr;
+    tradeMaxSelection = matchCount;
+    tradeSelectedStickers = [];
+    
+    document.getElementById("tradeModalTitle").innerText = `Mit ${targetName} tauschen`;
+    document.getElementById("tradeMaxCount").innerText = matchCount;
+    document.getElementById("btnSendTrade").disabled = true;
+    
+    const grid = document.getElementById("tradeStickerGrid");
+    grid.innerHTML = '';
+    
+    availableStickers.forEach(stickerId => {
+        const stickerData = globalStickerDatabase[stickerId];
+        if (stickerData) {
+            const slot = document.createElement('div');
+            slot.className = 'trade-slot';
+            slot.id = `trade-slot-${stickerId}`;
+            slot.innerHTML = createStickerHTML(stickerData);
+            
+            slot.onclick = () => toggleStickerSelection(stickerId, slot);
+            
+            grid.appendChild(slot);
+        }
+    });
+    
+    document.getElementById("tradeModal").style.display = "flex";
+}
+
+function closeTradeModal() {
+    document.getElementById("tradeModal").style.display = "none";
+    tradeTargetUser = null;
+    tradeSelectedStickers = [];
+}
+
+function toggleStickerSelection(stickerId, slotElement) {
+    const idx = tradeSelectedStickers.indexOf(stickerId);
+    
+    if (idx > -1) {
+        // Abwählen
+        tradeSelectedStickers.splice(idx, 1);
+        slotElement.classList.remove('selected');
     } else {
-        console.log("Kein User angemeldet. Weiterleitung zur Startseite...");
-        // SICHERHEITS-WEITERLEITUNG:
-        window.location.href = 'index.html';
+        // Auswählen (wenn Limit noch nicht erreicht)
+        if (tradeSelectedStickers.length < tradeMaxSelection) {
+            tradeSelectedStickers.push(stickerId);
+            slotElement.classList.add('selected');
+        } else {
+            // Visuelles Feedback, dass Maximum erreicht ist
+            const info = document.getElementById("tradeModalInfo");
+            info.style.color = "#ff1145";
+            info.style.transform = "scale(1.05)";
+            setTimeout(() => {
+                info.style.color = "#aaaaaa";
+                info.style.transform = "scale(1)";
+            }, 300);
+        }
     }
-});
+    
+    // Button aktualisieren
+    document.getElementById("btnSendTrade").disabled = tradeSelectedStickers.length === 0;
+}
+
+function sendTradeRequest() {
+    if (tradeSelectedStickers.length === 0) return;
+    
+    const uid = firebase.auth().currentUser.uid;
+    const btn = document.getElementById("btnSendTrade");
+    btn.innerText = "Sende...";
+    btn.disabled = true;
+    
+    const expiryDate = new Date();
+    expiryDate.setHours(expiryDate.getHours() + 24);
+
+    db.collection("trade_requests").add({
+        sender_uid: uid,
+        sender_name: currentUserData.username || "Spieler",
+        receiver_uid: tradeTargetUser.uid,
+        receiver_name: tradeTargetUser.name,
+        requested_stickers: tradeSelectedStickers,
+        offered_stickers: tradeWhatTheyNeedFromMe, // Wir übergeben dem Empfänger alle unsere relevanten Duplikate als Auswahlpool
+        status: "pending",
+        created_at: firebase.firestore.FieldValue.serverTimestamp(),
+        expires_at: firebase.firestore.Timestamp.fromDate(expiryDate)
+    }).then(() => {
+        alert("Tauschanfrage erfolgreich gesendet!");
+        closeTradeModal();
+        btn.innerText = "Senden";
+    }).catch((error) => {
+        console.error("Fehler beim Senden: ", error);
+        alert("Fehler beim Senden der Anfrage.");
+        btn.innerText = "Senden";
+        btn.disabled = false;
+    });
+}
+
+
+/* =========================================================================
+   STICKER RENDER ENGINE (1:1 aus Album übernommen)
+   ========================================================================= */
+function getContrastColors(hexColor) {
+    if (!hexColor) return { text: '#ffffff', stroke: '#000000' };
+    let hex = hexColor.replace('#', '');
+    if (hex.length === 3) hex = hex.split('').map(c => c + c).join('');
+    const r = parseInt(hex.substr(0, 2), 16); const g = parseInt(hex.substr(2, 2), 16); const b = parseInt(hex.substr(4, 2), 16);
+    const yiq = ((r * 299) + (g * 587) + (b * 114)) / 1000;
+    return (yiq >= 140) ? { text: '#000000', stroke: 'transparent' } : { text: '#ffffff', stroke: '#000000' };    
+}
+
+function createStickerHTML(sticker) {
+    if (!sticker) return '';
+    let typeClass = "container-default-special";
+    if (sticker.type === "player") typeClass = "container-player";
+    else if (sticker.type === 'stadium_left') typeClass = "container-stadium-left";
+    else if (sticker.type === 'stadium_right') typeClass = "container-stadium-right";
+    else if (sticker.type === 'team_photo') typeClass = "container-team-photo";
+    else if (sticker.type === 'logo') typeClass = "container-logo";
+    else if (sticker.type === 'golden_boot' || (sticker.id && sticker.id.startsWith('GBO'))) typeClass = "container-golden-boot";
+    else if (sticker.type === 'golden_ball' || (sticker.id && sticker.id.startsWith('GBA'))) typeClass = "container-golden-ball";
+    else if (sticker.type === 'historic_winner') typeClass = "container-historic-winner";
+    else if (sticker.type === 'special_fill') typeClass = "container-special-fill";
+    else if (sticker.type === 'special_edge') typeClass = "container-special-edge";
+    else if (sticker.type === 'trophy_top' || sticker.type === 'logo_top' || sticker.type === 'special_top') typeClass = "container-trophy-top";
+    else if (sticker.type === 'trophy_bottom' || sticker.type === 'logo_bottom' || sticker.type === 'special_bottom') typeClass = "container-trophy-bottom";
+
+    let inlineStyle = ""; let innerHTML = "";
+    const cleanPath = (p) => p && p.startsWith('./') ? p.substring(2) : (p || '');
+
+    if (sticker.type === "player") {
+        const fName = sticker.first_name ? sticker.first_name.trim() : ""; const lName = sticker.last_name ? sticker.last_name.trim() : "";
+        const fullName = lName ? `${fName} ${lName}` : fName;
+        let ageStr = "";
+        if (sticker.birthdate) {
+            const parts = sticker.birthdate.split('.');
+            if (parts.length === 3) {
+                const dob = new Date(parts[2], parseInt(parts[1]) - 1, parts[0]); const today = new Date();
+                let age = today.getFullYear() - dob.getFullYear(); const m = today.getMonth() - dob.getMonth();
+                if (m < 0 || (m === 0 && today.getDate() < dob.getDate())) age--;
+                ageStr = ` (${age})`;
+            }
+        }
+        let posClassStr = sticker.posClass ? sticker.posClass.replace('pos-', '') : "mf";
+        const c1 = sticker.color_1 || '#c10e23'; const textContrast = getContrastColors(c1);
+        inlineStyle = `--color-1: ${c1}; --color-2: ${sticker.color_2 || '#046a38'}; --color-3: ${sticker.color_3 || '#f2a900'}; --dynamic-text: ${textContrast.text}; --dynamic-stroke: ${textContrast.stroke};`;
+        
+        innerHTML = `
+            <div class="sticker-inner">
+                <div class="sticker-flag"><img src="${cleanPath(sticker.flag)}" onerror="this.style.display='none'"></div>
+                <div class="bg-svg-2"></div><div class="bg-svg-6"></div>
+                <div class="player-image-container"><img src="${cleanPath(sticker.image)}" onerror="this.src='assets/Icon.png'"></div>
+                <div class="lower-elements-wrapper">
+                    <div class="sticker-info-box"><div class="player-name">${fullName}</div></div>
+                    <div class="sticker-meta-container">
+                        <div class="meta-box meta-box-left">${sticker.jersey_number || '-'}</div>
+                        <div class="meta-box meta-box-center">${(sticker.birthdate || "") + ageStr}</div>
+                        <div class="meta-box meta-box-right">${sticker.height || '-'}</div>
+                    </div>
+                    <div class="bottom-info-bar">
+                        <div class="pos-box" data-pos="${posClassStr}">${sticker.position || '-'}</div>
+                        <img class="club-logo-small" src="${cleanPath(sticker.club_image)}" onerror="this.style.display='none'">
+                        <div class="club-name">${sticker.club_name || '-'}</div>
+                        <img class="club-logo-bottom" src="assets/WC_logo.png" onerror="this.style.display='none'">
+                    </div>
+                </div>
+            </div>`;
+    } else {
+        let finalPath = cleanPath(sticker.image);
+        const pureFileName = finalPath.substring(finalPath.lastIndexOf('/') + 1);
+        if (sticker.type === 'golden_ball' || (sticker.id && sticker.id.startsWith('GBA'))) finalPath = "photos/golden_ball/" + pureFileName;
+        else if (sticker.type === 'golden_boot' || (sticker.id && sticker.id.startsWith('GBO'))) finalPath = "photos/golden_boot/" + pureFileName;
+        else if (sticker.type && sticker.type.startsWith('special')) finalPath = "photos/special/" + pureFileName;
+        else if (sticker.type && sticker.type.startsWith('stadium')) finalPath = "photos/stadiums/" + pureFileName;
+        else if (sticker.type === 'historic_winner') finalPath = "photos/winning_teams/" + pureFileName;
+
+        let sFlag = cleanPath(sticker.flag); let sName = sticker.name || '';
+        let specialHTML = `<img src="${finalPath}" class="special-sticker-img" onerror="this.src='assets/Icon.png'">`;
+
+        if (sticker.type === 'golden_boot' || (sticker.id && sticker.id.startsWith('GBO'))) {
+            if(sFlag) specialHTML += `<div class="special-flag-wrapper silver-bg pos-top-right"><img src="${sFlag}" onerror="this.style.display='none'"></div>`;
+            specialHTML += `<img src="photos/golden_boot/golden_boot.png" class="special-icon pos-bottom-right" onerror="this.style.display='none'">`;
+            if(sName) specialHTML += `<div class="special-name-box pos-bottom-center">${sName}</div>`;
+        } else if (sticker.type === 'golden_ball' || (sticker.id && sticker.id.startsWith('GBA'))) {
+            if(sFlag) specialHTML += `<div class="special-flag-wrapper gold-bg pos-top-right"><img src="${sFlag}" onerror="this.style.display='none'"></div>`;
+            specialHTML += `<img src="photos/golden_ball/golden_ball.png" class="special-icon pos-bottom-right" onerror="this.style.display='none'">`;
+            if(sName) specialHTML += `<div class="special-name-box pos-bottom-center">${sName}</div>`;
+        } else if (sticker.type === 'historic_winner') {
+            if(sFlag) specialHTML += `<div class="special-flag-wrapper gold-bg pos-bottom-left-rot"><img src="${sFlag}" onerror="this.style.display='none'"></div>`;
+            if(sName) specialHTML += `<div class="name-wrapper-rot"><div class="special-name-box">${sName}</div></div>`;
+        } else if (sticker.type === 'team_photo') {
+            if(sFlag) specialHTML += `<div class="special-flag-wrapper pos-bottom-left-rot" style="background: #ffffff; border: 1.5px solid #cccccc;"><img src="${sFlag}" onerror="this.style.display='none'"></div>`;
+        }
+        innerHTML = `<div class="special-sticker-inner">${specialHTML}</div>`;
+    }
+    return `<div class="sticker-wrapper ${typeClass}" style="${inlineStyle}">${innerHTML}</div>`;
+}
+
 </script>
 </body>
 </html>
