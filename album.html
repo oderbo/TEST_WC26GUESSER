@@ -44,15 +44,11 @@ h1 { margin: 0; font-size: 22px; text-transform: uppercase; text-shadow: 0 1px 3
 .action-btn-round:hover { transform: scale(1.1); }
 .action-btn-round img { width: 55%; height: 55%; object-fit: contain; display: block; }
 
-/* --- STICKER-STAPEL (PERFEKTIERT FÜR iOS) --- */
+/* --- STICKER-STAPEL (3D FLIP) --- */
 .sticker-stack-container { position: fixed; bottom: 20px; right: 20px; width: 80px; height: 110px; z-index: 1000; cursor: pointer; transition: transform 0.2s ease; perspective: 1000px; }
 .sticker-stack-container:hover { transform: translateY(-5px); }
 
 .stack-card { position: absolute; width: 100%; height: 100%; background: transparent; display: flex; align-items: center; justify-content: center; container-type: inline-size; }
-
-/* Zwingt den iOS Touch IMMER auf die Karte, ignoriert Bilder/Texte innen */
-.stack-card * { pointer-events: none !important; }
-
 .stack-card-inner { position: relative; width: 100%; height: 100%; transition: transform 0.4s cubic-bezier(0.4, 0.0, 0.2, 1); transform-style: preserve-3d; border-radius: 4px; box-shadow: 0 4px 8px rgba(0,0,0,0.4); }
 .stack-card.is-flipped .stack-card-inner { transform: rotateY(180deg); }
 
@@ -68,7 +64,6 @@ h1 { margin: 0; font-size: 22px; text-transform: uppercase; text-shadow: 0 1px 3
     -webkit-transform: rotateY(0deg) translate3d(0,0,0); 
     z-index: 2; 
 }
-.stack-front * { backface-visibility: hidden; -webkit-backface-visibility: hidden; }
 
 .stack-back { 
     transform: rotateY(180deg) translate3d(0,0,0); 
@@ -150,7 +145,7 @@ h1 { margin: 0; font-size: 22px; text-transform: uppercase; text-shadow: 0 1px 3
 /* Die restlichen Grid-Bereiche */
 .player-grid-bottom, .player-grid-full { width: 100%; display: grid; grid-template-columns: repeat(4, 1fr); gap: 2cqw; align-content: start; }
 
-/* SPECIAL GRID */
+/* SPECIAL GRID (Gleichmäßige Verteilung) */
 .special-grid { display: flex; flex-wrap: wrap; justify-content: space-evenly; align-content: space-evenly; height: 100%; width: 100%; gap: 2cqw; padding-bottom: 5cqw;}
 
 /* --- STADIUM SEITE --- */
@@ -185,7 +180,7 @@ h1 { margin: 0; font-size: 22px; text-transform: uppercase; text-shadow: 0 1px 3
 .sticker-slot.filled { border: none; background-color: transparent !important; }
 .sticker-slot.filled .slot-circle { display: none; }
 
-/* --- CSS-KLASSEN FÜR STICKER DESIGN --- */
+/* --- CSS-KLASSEN FÜR STICKER DESIGN (AUS INDEX.HTML) --- */
 .sticker-wrapper { position: absolute; width: 100%; height: 100%; top: 0; left: 0; box-shadow: 0 2px 6px rgba(0,0,0,0.3); }
 .sticker-inner { position: absolute; top: 5cqw; left: 5cqw; right: 5cqw; bottom: 5cqw; background-color: var(--color-1, #c10e23); border: 2px solid var(--color-2, #046a38); outline: 2px solid var(--color-3, #f2a900); box-sizing: border-box; }
 .sticker-flag { position: absolute; top: 0; right: 0; width: 15cqw; height: 15cqw; border-radius: 50%; overflow: hidden; border: 1px solid #000000; box-sizing: border-box; z-index: 2; }
@@ -241,7 +236,7 @@ h1 { margin: 0; font-size: 22px; text-transform: uppercase; text-shadow: 0 1px 3
     .action-btn-round { width: 70px; height: 70px; bottom: 30px; left: 30px; }
     .sticker-stack-container { width: 130px; height: 180px; bottom: 30px; right: 30px; }
     .stack-placeholder-text { font-size: 14px; }
-    .stack-counter { top: -18px; right: -18px; width: 32px; height: 32px; font-size: 15px; }
+    .stack-counter { top: -20px; right: -20px; width: 32px; height: 32px; font-size: 15px; }
     .book { width: 440px; max-height: calc(100dvh - 120px); transform: translateX(-15%) scale(1.25); }
     .book.open { transform: translateX(50%) scale(1); }
     .page-number-left, .page-number-right { font-size: 16px; bottom: 12px; }
@@ -433,7 +428,11 @@ function renderStapel() {
             const sticker = globalStickerDatabase[stapel[i]];
             if (sticker) { 
                 card.innerHTML = `<div class="stack-card-inner">
-                                    <div class="stack-front">${createStickerHTML(sticker)}</div>
+                                    <div class="stack-front">
+                                        ${createStickerHTML(sticker)}
+                                        <!-- Unsichtbares Schutzschild, das iOS Klicks perfekt abfängt -->
+                                        <div style="position:absolute; inset:0; z-index:999;"></div>
+                                    </div>
                                     <div class="stack-back">${sticker.albumNumber}</div>
                                   </div>`;
                 card.classList.remove('is-flipped');
@@ -471,10 +470,10 @@ function renderPastedStickers() {
    DER DYNAMISCHE ALBUM-BLUEPRINT
    ========================================================================= */
 const albumBlueprint = [
-    { type: "cover_back" }, // Page 0
-    { type: "special", startId: "SPC000", endId: "SPC006", startAlbumNumber: "00", endAlbumNumber: 6 }, // Page 1
-    { type: "index_left" }, // Page 2
-    { type: "index_right" }, // Page 3
+    { type: "cover_back" }, 
+    { type: "special", startId: "SPC000", endId: "SPC006", startAlbumNumber: "00", endAlbumNumber: 6 }, 
+    { type: "index_left" }, 
+    { type: "index_right" }, 
     { type: "stadiums", startId: "STD001", endId: "STD008", startAlbumNumber: 7, endAlbumNumber: 14 },
     { type: "stadiums", startId: "STD009", endId: "STD016", startAlbumNumber: 15, endAlbumNumber: 22 },
     { type: "stadiums", startId: "STD017", endId: "STD024", startAlbumNumber: 23, endAlbumNumber: 30 },
@@ -550,8 +549,8 @@ const albumBlueprint = [
     
     { type: "team", countryCode: "ESP", name: "Spain", group: "H", startId: "ESP001", endId: "ESP014", startAlbumNumber: 851, endAlbumNumber: 864, flag: "data/spain/spain_flag_circle.png", color_1: "#FF0028", color_2: "#FFC908", color_3: "#000000" },
     { type: "team", countryCode: "ESP", name: "Spain", group: "H", startId: "ESP015", endId: "ESP028", startAlbumNumber: 865, endAlbumNumber: 878, flag: "data/spain/spain_flag_circle.png", color_1: "#FF0028", color_2: "#FFC908", color_3: "#000000" },
-    { type: "team", countryCode: "CPV", name: "Cape Verde", group: "H", startId: "CPV001", endId: "CPV014", startAlbumNumber: 879, endAlbumNumber: 892, flag: "data/cape_verde/cape_verde_flag_circle.png", color_1: "#003893", color_2: "#CF2027", color_3: "#FFFFFF" },
-    { type: "team", countryCode: "CPV", name: "Cape Verde", group: "H", startId: "CPV015", endId: "CPV028", startAlbumNumber: 893, endAlbumNumber: 906, flag: "data/cape_verde/cape_verde_flag_circle.png", color_1: "#003893", color_2: "#CF2027", color_3: "#FFFFFF" },
+    { type: "team", countryCode: "CPV", name: "Cape Verde", group: "H", startId: "CPV001", endId: "CPV014", startAlbumNumber: 879, endAlbumNumber: 892, flag: "data/cabo_verde/cabo_verde_flag_circle.png", color_1: "#003893", color_2: "#CF2027", color_3: "#FFFFFF" },
+    { type: "team", countryCode: "CPV", name: "Cape Verde", group: "H", startId: "CPV015", endId: "CPV028", startAlbumNumber: 893, endAlbumNumber: 906, flag: "data/cabo_verde/cabo_verde_flag_circle.png", color_1: "#003893", color_2: "#CF2027", color_3: "#FFFFFF" },
     { type: "team", countryCode: "KSA", name: "Saudi Arabia", group: "H", startId: "KSA001", endId: "KSA014", startAlbumNumber: 907, endAlbumNumber: 920, flag: "data/saudi_arabia/saudi_arabia_flag_circle.png", color_1: "#006C35", color_2: "#FFFFFF", color_3: "#000000" },
     { type: "team", countryCode: "KSA", name: "Saudi Arabia", group: "H", startId: "KSA015", endId: "KSA028", startAlbumNumber: 921, endAlbumNumber: 934, flag: "data/saudi_arabia/saudi_arabia_flag_circle.png", color_1: "#006C35", color_2: "#FFFFFF", color_3: "#000000" },
     { type: "team", countryCode: "URU", name: "Uruguay", group: "H", startId: "URU001", endId: "URU014", startAlbumNumber: 935, endAlbumNumber: 948, flag: "data/uruguay/uruguay_flag_circle.png", color_1: "#0081C6", color_2: "#FFFFFF", color_3: "#000000" },
@@ -770,30 +769,22 @@ function buildPageHTML(bp, isLeftPage) {
     if (bp.type === 'special') {
         return `
         <div class="page-wrapper dark-page" style="position: relative;">
-            <h2 class="special-title" style="position: absolute; top: 3cqw; left: 0; width: 100%; text-align: center; margin: 0; font-size: 8cqw; letter-spacing: 4px;">WC26</h2>
-            
-            <div style="position: absolute; top: 15cqw; left: 4cqw;">
+            <h2 class="special-title" style="position: absolute; top: 2cqw; left: 0; width: 100%; text-align: center; margin: 0; font-size: 8cqw; letter-spacing: 4px;">WC26</h2>
+            <div style="position: absolute; top: 18cqw; left: 6cqw;">
                 <div class="rotated-slot-wrapper">${buildSlotHTML('SPC001', '1', 'rotated-slot')}</div>
-            </div>
-            <div style="position: absolute; top: calc(15cqw + var(--col-w)); left: 4cqw;">
                 <div class="rotated-slot-wrapper">${buildSlotHTML('SPC002', '2', 'rotated-slot')}</div>
             </div>
-
-            <div style="position: absolute; top: 15cqw; right: 4cqw;">
+            <div style="position: absolute; top: 18cqw; right: 6cqw;">
                 <div class="rotated-slot-wrapper">${buildSlotHTML('SPC005', '5', 'rotated-slot')}</div>
-            </div>
-            <div style="position: absolute; top: calc(15cqw + var(--col-w)); right: 4cqw;">
                 <div class="rotated-slot-wrapper">${buildSlotHTML('SPC006', '6', 'rotated-slot')}</div>
             </div>
-
-            <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
+            <div style="position: absolute; top: 55%; left: 50%; transform: translate(-50%, -50%);">
                 ${buildSlotHTML('SPC003', '3')}
             </div>
-
-            <div style="position: absolute; bottom: 8cqw; left: 4cqw;">
+            <div style="position: absolute; bottom: 8cqw; left: 6cqw;">
                 <div class="rotated-slot-wrapper">${buildSlotHTML('SPC000', '00', 'rotated-slot')}</div>
             </div>
-            <div style="position: absolute; bottom: 8cqw; right: 4cqw;">
+            <div style="position: absolute; bottom: 8cqw; right: 6cqw;">
                 <div class="rotated-slot-wrapper">${buildSlotHTML('SPC004', '4', 'rotated-slot')}</div>
             </div>
         </div>`;
@@ -817,6 +808,8 @@ function buildPageHTML(bp, isLeftPage) {
         html += `</div></div>`;
         return html;
     }
+
+    if (bp.type === 'stadiums') return buildStadiumPage(bp);
 
     if (bp.type === 'golden_boots' || bp.type === 'golden_ball' || bp.type === 'winning_teams') return buildGenericGrid(bp, bp.type === 'winning_teams');
     
