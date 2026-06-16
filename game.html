@@ -535,17 +535,33 @@ input:disabled:not(.game-over-output) {
 }
 
 /* ======================================================== */
-/* ANIMIERTER PACK BELOHNUNGS SCREEN                         */
+/* ANIMIERTER PACK BELOHNUNGS SCREEN (KORRIGIERT)            */
 /* ======================================================== */
 #packRewardOverlay {
-    position: fixed; top: 0; left: 0; width: 100vw; height: 100dvh;
-    background-color: rgba(0,0,0,0.85); z-index: 50000;
-    display: none; flex-direction: column; align-items: center; justify-content: center;
+    position: fixed; 
+    top: 0; 
+    left: 0; 
+    width: 100vw; 
+    height: 100dvh;
+    background-color: transparent; /* Absolut transparent gemacht! */
+    z-index: 50000;
+    display: none; 
+    flex-direction: column; 
+    align-items: center; 
+    justify-content: center;
+    backdrop-filter: none; /* Kein Weichzeichner-Effekt */
+    -webkit-backdrop-filter: none;
+    pointer-events: none; /* Klicks gehen durch das Overlay auf das Feld */
+}
+
+/* Die Steuerelemente müssen wieder Klicks abfangen */
+.reward-title, .pack-reward-container, .btn-reward-claim {
+    pointer-events: auto;
 }
 
 .reward-title {
     font-family: Arial, sans-serif; font-size: 24px; font-weight: bold; color: #FFD700;
-    margin-bottom: 30px; text-transform: uppercase; text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+    margin-bottom: 30px; text-transform: uppercase; text-shadow: 0 2px 8px rgba(0,0,0,0.9); /* Schatten verstärkt wegen Sichtbarkeit */
     text-align: center;
 }
 
@@ -566,14 +582,15 @@ input:disabled:not(.game-over-output) {
     100% { opacity: 1; transform: scale(1) rotate(var(--rot)); box-shadow: 0 10px 25px rgba(0,0,0,0.6); }
 }
 
+/* Neuer Haken: Grün mit dünnem schwarzen Rand */
 .btn-reward-claim {
     width: 64px; height: 64px; border-radius: 50%; background-color: #00cc44;
-    border: none; display: none; align-items: center; justify-content: center;
+    border: 2px solid #000000; display: none; align-items: center; justify-content: center;
     cursor: pointer; box-shadow: 0 4px 15px rgba(0,0,0,0.4);
     animation: pulseGlow 1.5s infinite alternate;
 }
 .btn-reward-claim svg {
-    width: 55%; height: 55%; fill: none; stroke: #111111; stroke-width: 4;
+    width: 55%; height: 55%; fill: none; stroke: #000000; stroke-width: 4;
     stroke-linecap: round; stroke-linejoin: round;
 }
 
@@ -915,11 +932,11 @@ const game = {
     time: 180,
     finished: false,
     currentScore: 0,
-    highscore: 0 // Wird synchron geladen
+    highscore: 0 
 };
 
 const teamKey = new URLSearchParams(location.search).get("team") || "spain";
-let calculatedPacksToAward = 0; // Temporärer Speicher für die Logik
+let calculatedPacksToAward = 0; 
 
 firebase.auth().onAuthStateChanged((user) => {
     if (user) {
@@ -1370,7 +1387,6 @@ function setupFinishButtons() {
     document.getElementById("btnFinishMobile").addEventListener("click", handler);
 }
 
-/* SMART REWARD DETECTION ENGINE FOR MILESTONES */
 function endGame() {
     game.finished = true;
     const totalPlayers = 26; 
@@ -1389,17 +1405,14 @@ function endGame() {
     document.getElementById("btnFinishDesktop").style.display = "none";
     document.getElementById("btnFinishMobile").style.display = "none";
     
-    // SMART DETECTOR FÜR DIE BELOHNUNGEN
     calculatedPacksToAward = 0;
     let earned50 = false;
     let earned100 = false;
 
-    // Bedingung 1: 50% erstmalig geknackt (min. 13 Spieler)
     if (game.currentScore >= 13 && game.highscore < 13) {
         calculatedPacksToAward += 2;
         earned50 = true;
     }
-    // Bedingung 2: 100% erstmalig geknackt (exakt 26 Spieler)
     if (game.currentScore === 26 && game.highscore < 26) {
         calculatedPacksToAward += 3;
         earned100 = true;
@@ -1407,7 +1420,6 @@ function endGame() {
 
     const user = firebase.auth().currentUser;
     if (user) {
-        // Highscore aktualisieren, falls höher
         if (game.currentScore > game.highscore) {
             db.collection("users").doc(user.uid).collection("highscores").doc(teamKey).set({
                 score: game.currentScore,
@@ -1415,7 +1427,6 @@ function endGame() {
             }, { merge: true });
         }
 
-        // Falls Packs gewonnen wurden, triggere die Slam-In Animation
         if (calculatedPacksToAward > 0) {
             setTimeout(() => {
                 triggerPackRewardAnimation(calculatedPacksToAward, earned50, earned100);
@@ -1428,7 +1439,6 @@ function endGame() {
     }
 }
 
-/* DIE GEWÜNSCHTE SLAM-IN PACK ANIMATION */
 function triggerPackRewardAnimation(packCount, earned50, earned100) {
     const overlay = document.getElementById("packRewardOverlay");
     const title = document.getElementById("rewardTitleText");
@@ -1448,34 +1458,29 @@ function triggerPackRewardAnimation(packCount, earned50, earned100) {
 
     overlay.style.display = "flex";
 
-    // Reihum die Päckchen auf den Bildschirm klatschen lassen
     for (let i = 0; i < packCount; i++) {
         setTimeout(() => {
             const pack = document.createElement("div");
             pack.className = "reward-pack-animated";
             
-            // Zufälliger Rotations-Versatz für coolen Fächer-Stapel-Look
             const randomRot = (Math.random() * 20 - 10) + (i * 2);
             pack.style.setProperty("--rot", `${randomRot}deg`);
             pack.style.zIndex = i + 1;
             
-            // Margins für 3D-Stapeleffekt verschieben
             pack.style.top = `${i * -6}px`;
             pack.style.left = `${i * 4}px`;
 
             wrapper.appendChild(pack);
 
-            // Force reflow
             pack.offsetHeight;
             pack.style.animation = "packSlamIn 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.15) forwards";
 
-            // Wenn das letzte Pack gelandet ist, blende den grünen Haken ein
             if (i === packCount - 1) {
                 setTimeout(() => {
                     claimBtn.style.display = "flex";
                 }, 400);
             }
-        }, i * 300); // 300ms Taktung für das Nacheinander-Klatschen
+        }, i * 300); 
     }
 }
 
@@ -1495,7 +1500,6 @@ function addPacksToDatabaseStapel() {
             transaction.update(userRef, { packs_available: newTotal });
         });
     }).then(() => {
-        // Schließe das Overlay flüssig
         document.getElementById("packRewardOverlay").style.display = "none";
         calculatedPacksToAward = 0;
     }).catch(err => {
@@ -1529,7 +1533,7 @@ function openPlayerModal(p) {
                 <span>${age} Yrs</span> • 
                 <span>${p.height || "—"}</span>
             </div>
-            <div class="club-row">
+            <div class="collapse-row">
                 <img class="club-icon" src="./data/${game.team.folder}/clubs/${clubClean}.png" onerror="this.style.display='none'" alt="">
                 <span>${p.club || "No Club"}</span>
             </div>
