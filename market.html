@@ -17,7 +17,11 @@
 
 * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
 
-html, body { overflow-x: hidden; text-size-adjust: none; -webkit-text-size-adjust: none; }
+html, body { 
+    overflow-x: hidden; 
+    text-size-adjust: none; 
+    -webkit-text-size-adjust: none; 
+}
 
 body { 
     margin: 0; padding: 15px 10px; font-family: 'FWC2026', Arial, sans-serif; 
@@ -25,7 +29,7 @@ body {
     align-items: center; min-height: 100dvh; width: 100%;
 }
 
-/* --- OBERE LEISTE --- */
+/* --- HEADER --- */
 .header-container { 
     width: 100%; max-width: 1400px; position: relative; display: flex; 
     justify-content: center; align-items: center; margin-bottom: 20px; height: 50px; flex-shrink: 0; 
@@ -64,7 +68,7 @@ h1 { margin: 0; font-size: 24px; text-transform: uppercase; text-shadow: 0 1px 3
 }
 .user-card:active { transform: scale(0.95); }
 .user-name { color: #111; font-size: 14px; font-family: Arial, sans-serif; font-weight: bold; text-align: center; word-break: break-word; }
-.user-icon { width: 40px; height: 40px; margin-bottom: 8px; border-radius: 50%; background: #eee; display: flex; align-items: center; justify-content: center; font-size: 20px; }
+.user-icon { width: 40px; height: 40px; margin-bottom: 8px; border-radius: 50%; background: #eee; display: flex; align-items: center; justify-content: center; font-size: 20px; color: #111; }
 
 .match-badge {
     position: absolute; top: -6px; right: -6px; background-color: #ff1145; color: #ffffff;
@@ -90,7 +94,11 @@ h1 { margin: 0; font-size: 24px; text-transform: uppercase; text-shadow: 0 1px 3
 .trade-info { font-family: Arial, sans-serif; font-size: 14px; color: #aaaaaa; text-align: center; margin-bottom: 20px; }
 .trade-info span { color: #00cc44; font-weight: bold; font-size: 16px; }
 
-.trade-grid-wrapper { width: 100%; max-width: 600px; flex-grow: 1; overflow-y: auto; padding: 5px; }
+.trade-grid-wrapper { 
+    width: 100%; max-width: 600px; flex-grow: 1; 
+    max-height: 70vh; /* Ab der 3. Zeile erzwingt das automatisch ein sauberes Scrollen! */
+    overflow-y: auto; padding: 5px; 
+}
 
 .trade-grid {
     display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; padding-bottom: 40px;
@@ -106,8 +114,8 @@ h1 { margin: 0; font-size: 24px; text-transform: uppercase; text-shadow: 0 1px 3
     box-shadow: 0 0 12px rgba(0, 204, 68, 0.8); pointer-events: none;
 }
 
-/* --- STICKER CSS --- */
-.sticker-wrapper { position: absolute; width: 100%; height: 100%; top: 0; left: 0; box-shadow: 0 2px 6px rgba(0,0,0,0.3); }
+/* --- STICKER CSS (1:1 aus Album Engine) --- */
+.sticker-wrapper { position: absolute; width: 100%; height: 100%; top: 0; left: 0; box-shadow: 0 2px 6px rgba(0,0,0,0.3); pointer-events: none; }
 .sticker-inner { position: absolute; top: 5cqw; left: 5cqw; right: 5cqw; bottom: 5cqw; background-color: var(--color-1, #c10e23); border: 2px solid var(--color-2, #046a38); outline: 2px solid var(--color-3, #f2a900); box-sizing: border-box; pointer-events: none; }
 .sticker-flag { position: absolute; top: 0; right: 0; width: 15cqw; height: 15cqw; border-radius: 50%; overflow: hidden; border: 1px solid #000000; box-sizing: border-box; z-index: 2; pointer-events: none;}
 .sticker-flag img { width: 100%; height: 100%; object-fit: cover; display: block; }
@@ -131,38 +139,39 @@ h1 { margin: 0; font-size: 24px; text-transform: uppercase; text-shadow: 0 1px 3
 .club-name { color: var(--dynamic-text, #ffffff); font-weight: bold; font-size: 5.5cqw; -webkit-text-stroke: 0.3px var(--dynamic-stroke, #000000); text-transform: none; letter-spacing: 0.2px; max-width: 100%; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; line-height: 1.1; }
 .club-logo-bottom { height: 90%; width: auto; object-fit: contain; margin-left: auto; padding-right: 2px; }
 
-/* SPECIAL STICKER */
 .special-sticker-inner { position: absolute; top: 5cqw; left: 5cqw; right: 5cqw; bottom: 5cqw; background-color: #ffffff; display: flex; align-items: center; justify-content: center; overflow: hidden; pointer-events: none;}
-.special-sticker-img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.special-sticker-img { width: 100%; height: 100%; object-fit: cover; display: block; pointer-events: none; }
 .container-logo, .container-golden-boot { background: linear-gradient(135deg, #e0e0e0 0%, #ffffff 25%, #a0a0a0 50%, #f8f8f8 75%, #c0c0c0 100%) !important; }
 .container-logo .special-sticker-inner { top: 0; bottom: 0; left: 0; right: 0; background-color: transparent; } .container-logo .special-sticker-img { object-fit: contain; padding: 0 4px; }
 .container-golden-ball, .container-historic-winner, .container-special-edge, .container-trophy-top, .container-trophy-bottom, .container-special-fill { background: linear-gradient(135deg, #bf953f 0%, #fcf6ba 25%, #b38728 50%, #fbf5b7 75%, #aa771c 100%) !important; }
 .container-special-fill .special-sticker-inner { background-color: transparent; top: 0; bottom: 0; left: 0; right: 0; } .container-special-fill .special-sticker-img { width: calc(100% - 4px); margin: 0 auto; }
-.special-flag-wrapper { position: absolute; width: 15cqw; height: 15cqw; padding: 0.8cqw; border-radius: 50%; z-index: 10; display: flex; align-items: center; justify-content: center; }
-.special-flag-wrapper img { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; border: 1px solid rgba(0,0,0,0.5); display: block; }
+.special-flag-wrapper { position: absolute; width: 15cqw; height: 15cqw; padding: 0.8cqw; border-radius: 50%; z-index: 10; display: flex; align-items: center; justify-content: center; pointer-events: none; }
+.special-flag-wrapper img { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; border: 1px solid rgba(0,0,0,0.5); display: block; pointer-events: none; }
 .gold-bg { background: linear-gradient(135deg, #bf953f 0%, #fcf6ba 25%, #b38728 50%, #fbf5b7 75%, #aa771c 100%); box-shadow: 0 1px 3px rgba(0,0,0,0.5); }
 .silver-bg { background: linear-gradient(135deg, #e0e0e0 0%, #ffffff 25%, #a0a0a0 50%, #f8f8f8 75%, #c0c0c0 100%); box-shadow: 0 1px 3px rgba(0,0,0,0.5); }
 .pos-top-right { top: 0; right: 0; } .pos-bottom-right { bottom: 0; right: 0; } .pos-bottom-left-rot { bottom: 0; left: 0; transform: rotate(90deg); }
-.special-icon { position: absolute; bottom: 0; right: 0; width: 15cqw; height: 15cqw; object-fit: contain; z-index: 10; }
-.special-name-box { position: absolute; background: #ffffff; border: 1px solid #000000; border-radius: 4px; font-weight: bold; color: #000000; font-size: 5.5cqw; height: 11.25cqw; display: flex; align-items: center; justify-content: center; padding: 0 8px; white-space: nowrap; z-index: 10; box-shadow: 0 1px 3px rgba(0,0,0,0.3); }
+.special-icon { position: absolute; bottom: 0; right: 0; width: 15cqw; height: 15cqw; object-fit: contain; z-index: 10; pointer-events: none; }
+.special-name-box { position: absolute; background: #ffffff; border: 1px solid #000000; border-radius: 4px; font-weight: bold; color: #000000; font-size: 5.5cqw; height: 11.25cqw; display: flex; align-items: center; justify-content: center; padding: 0 8px; white-space: nowrap; z-index: 10; box-shadow: 0 1px 3px rgba(0,0,0,0.3); pointer-events: none; }
 .pos-bottom-center { bottom: 2px; left: 50%; transform: translateX(-50%); }
-.name-wrapper-rot { position: absolute; left: calc(2px + 5.625cqw); top: 50%; transform: translate(-50%, -50%) rotate(90deg); z-index: 10; }
+.name-wrapper-rot { position: absolute; left: calc(2px + 5.625cqw); top: 50%; transform: translate(-50%, -50%) rotate(90deg); z-index: 10; pointer-events: none; }
 .name-wrapper-rot .special-name-box { position: relative; bottom: auto; left: auto; transform: none; }
+
 </style>
 </head>
 <body>
 
 <div class="header-container">
-    <a href="album.html" class="btn-back">&lt;</a>
-    <h1>Market</h1>
+    <a href="index.html" class="btn-back">&lt;</a>
+    <h1>Marktplatz</h1>
 </div>
 
 <button class="btn-offers" onclick="alert('Das Angebots-Menü kommt im nächsten Schritt!')">Angebote ansehen</button>
 
 <div id="market-content" class="market-grid">
-    <div style="color:white; grid-column: 1 / -1; text-align: center;">Lade Markt...</div>
+    <div style="color:white; grid-column: 1 / -1; text-align: center; font-size: 18px;">Lade Markt...</div>
 </div>
 
+<!-- TRADE MODAL (OVERLAY) -->
 <div id="tradeModal">
     <div class="trade-header">
         <button class="trade-btn btn-close" onclick="closeTradeModal()">✖ Schließen</button>
@@ -176,7 +185,8 @@ h1 { margin: 0; font-size: 24px; text-transform: uppercase; text-shadow: 0 1px 3
 
     <div class="trade-grid-wrapper">
         <div class="trade-grid" id="tradeStickerGrid">
-            </div>
+            <!-- Sticker werden hier dynamisch eingefügt -->
+        </div>
     </div>
 </div>
 
@@ -193,12 +203,13 @@ const firebaseConfig = {
   messagingSenderId: "396925110064",
   appId: "1:396925110064:web:18d8f40a30e2f0d63deaf5"
 };
-
 firebase.initializeApp(firebaseConfig);
 const db = firebase.firestore();
 
 let globalStickerDatabase = null;
+let currentUserData = null;
 let currentMyOwnedSet = new Set();
+let currentMyUniqueStapel = [];
 let myMarketStickers = [];
 
 // Trade Status Variablen
@@ -220,14 +231,15 @@ function initMarketAuth() {
         if (user) {
             db.collection("users").doc(user.uid).onSnapshot((doc) => {
                 if (doc.exists) {
-                    const currentUserData = doc.data();
+                    currentUserData = doc.data(); 
                     
                     const stapel = currentUserData.stapel || [];
                     const album = currentUserData.album || {};
                     const pasted = Object.keys(album).filter(k => album[k] === "pasted");
                     
                     currentMyOwnedSet = new Set([...stapel, ...pasted]);
-                    
+                    currentMyUniqueStapel = [...new Set(stapel)];
+
                     loadMarketUsers();
                 }
             });
@@ -241,6 +253,7 @@ function loadMarketUsers() {
     const uid = firebase.auth().currentUser.uid;
     const grid = document.getElementById("market-content");
 
+    // 1. Zuerst alle verfügbaren Sticker auf dem Markt abrufen
     db.collection("market").where("status", "==", "available").get().then((marketSnapshot) => {
         myMarketStickers = [];
         let othersMarketStickers = {}; 
@@ -260,68 +273,83 @@ function loadMarketUsers() {
             }
         });
 
-        db.collection("users").get().then((userSnapshot) => {
-            grid.innerHTML = ''; 
-            
-            const usersData = {};
-            userSnapshot.forEach((doc) => { usersData[doc.id] = doc.data(); });
+        const otherUids = Object.keys(othersMarketStickers);
+        
+        if (otherUids.length === 0) {
+            grid.innerHTML = '<div style="color:white; font-size:18px; grid-column: 1 / -1; text-align:center;">Aktuell gibt es keine anderen Spieler auf dem Markt.</div>';
+            return;
+        }
 
+        // 2. Sicherheitskonformes Abfragen der relevanten User (Promise.all statt Collection-Get)
+        Promise.all(otherUids.map(id => db.collection("users").doc(id).get().catch(e => null)))
+        .then((userSnapshots) => {
+            grid.innerHTML = ''; 
             let hasUsers = false;
-            for (const [otherUid, marketData] of Object.entries(othersMarketStickers)) {
-                const userB = usersData[otherUid];
-                if (!userB) continue; 
+
+            userSnapshots.forEach((userDoc) => {
+                if (!userDoc || !userDoc.exists) return; 
+                
+                const otherUid = userDoc.id;
+                const userB = userDoc.data();
+                const marketData = othersMarketStickers[otherUid];
                 
                 const theirStapel = userB.stapel || [];
                 const theirAlbum = userB.album || {};
                 const theirPasted = Object.keys(theirAlbum).filter(k => theirAlbum[k] === "pasted");
                 const theirOwnedSet = new Set([...theirStapel, ...theirPasted]);
 
-                // Was brauche ICH von ihm?
+                // Filter 1: Welche seiner angebotenen Sticker habe ICH NOCH NICHT?
                 const whatINeedFromThem = marketData.stickers.filter(id => !currentMyOwnedSet.has(id));
                 const uniqueWhatINeed = [...new Set(whatINeedFromThem)];
 
-                // Was braucht ER von MIR?
+                // Filter 2: Welche meiner angebotenen Sticker hat ER NOCH NICHT?
                 const whatTheyNeedFromMe = myMarketStickers.filter(id => !theirOwnedSet.has(id));
                 const uniqueWhatTheyNeed = [...new Set(whatTheyNeedFromMe)];
                 
                 const matchCount = uniqueWhatTheyNeed.length; 
                 const iNeedCount = uniqueWhatINeed.length;    
 
-                hasUsers = true;
-                const card = document.createElement('div');
-                card.className = 'user-card';
-                card.onclick = () => {
-                    if (iNeedCount === 0) {
-                        alert("Dieser Spieler hat keine Sticker auf dem Markt, die dir noch fehlen.");
-                    } else if (matchCount === 0) {
-                        alert("Dieser Spieler hat zwar Sticker für dich, aber er braucht keinen deiner doppelten Sticker. Tausch nicht möglich.");
-                    } else {
-                        openTradeModal(otherUid, marketData.owner_name || "Spieler", matchCount, uniqueWhatINeed, uniqueWhatTheyNeed);
-                    }
-                };
-                
-                const initial = (marketData.owner_name || "S").charAt(0).toUpperCase();
-                
-                let badgeHTML = '';
+                // Wir rendern die User-Karte NUR, wenn der Spieler auch wirklich Sticker hat, die wir brauchen!
                 if (iNeedCount > 0) {
-                    badgeHTML = `<div class="match-badge">${iNeedCount}</div>`;
+                    hasUsers = true;
+                    const card = document.createElement('div');
+                    card.className = 'user-card';
+                    
+                    if (matchCount === 0) {
+                        card.style.opacity = "0.7"; // Leicht ausgrauen, wenn wir ihm nichts bieten können
+                    }
+                    
+                    card.onclick = () => {
+                        if (matchCount === 0) {
+                            alert("Dieser Spieler hat zwar Sticker für dich, aber er braucht keinen deiner doppelten Sticker. Ein Tausch ist daher leider ausgeschlossen.");
+                        } else {
+                            openTradeModal(otherUid, marketData.owner_name || userB.username || "Spieler", matchCount, uniqueWhatINeed, uniqueWhatTheyNeed);
+                        }
+                    };
+                    
+                    const displayName = marketData.owner_name || userB.username || "Spieler";
+                    const initial = displayName.charAt(0).toUpperCase();
+                    
+                    card.innerHTML = `
+                        <div class="match-badge">${iNeedCount}</div>
+                        <div class="user-icon">${initial}</div>
+                        <div class="user-name">${displayName}</div>
+                    `;
+                    grid.appendChild(card);
                 }
-
-                card.innerHTML = `
-                    ${badgeHTML}
-                    <div class="user-icon">${initial}</div>
-                    <div class="user-name">${marketData.owner_name || "Spieler"}</div>
-                `;
-                grid.appendChild(card);
-            }
+            });
             
             if (!hasUsers) {
-                grid.innerHTML = '<div style="color:white; font-size:18px; grid-column: 1 / -1; text-align:center;">Aktuell gibt es keine passenden Angebote auf dem Markt.</div>';
+                grid.innerHTML = '<div style="color:white; font-size:18px; grid-column: 1 / -1; text-align:center;">Aktuell gibt es keine passenden Angebote auf dem Markt, die dir noch fehlen.</div>';
             }
+        }).catch(err => {
+            console.error("Fehler beim Abrufen der User-Daten: ", err);
+            grid.innerHTML = '<div style="color:white; font-size:18px; grid-column: 1 / -1; text-align:center;">Fehler beim Laden der Spielerdaten.</div>';
         });
+
     }).catch(err => {
         console.error("Fehler beim Laden des Marktes: ", err);
-        grid.innerHTML = '<div style="color:white; grid-column: 1 / -1; text-align:center;">Fehler beim Laden.</div>';
+        grid.innerHTML = '<div style="color:white; font-size:18px; grid-column: 1 / -1; text-align:center;">Fehler beim Aufbau der Verbindung zum Markt.</div>';
     });
 }
 
@@ -333,7 +361,7 @@ function openTradeModal(targetUid, targetName, matchCount, availableStickers, wh
     tradeMaxSelection = matchCount;
     tradeSelectedStickers = [];
     
-    document.getElementById("tradeModalTitle").innerText = `Mit ${targetName} tauschen`;
+    document.getElementById("tradeModalTitle").innerText = `Tausch mit ${targetName}`;
     document.getElementById("tradeMaxCount").innerText = matchCount;
     document.getElementById("btnSendTrade").disabled = true;
     
@@ -348,6 +376,7 @@ function openTradeModal(targetUid, targetName, matchCount, availableStickers, wh
             slot.id = `trade-slot-${stickerId}`;
             slot.innerHTML = createStickerHTML(stickerData);
             
+            // Klick auf den Slot zum Markieren
             slot.onclick = () => toggleStickerSelection(stickerId, slot);
             
             grid.appendChild(slot);
@@ -398,10 +427,12 @@ function sendTradeRequest() {
     
     const expiryDate = new Date();
     expiryDate.setHours(expiryDate.getHours() + 24);
+    
+    const myName = currentUserData.username || firebase.auth().currentUser.email.split('@')[0];
 
     db.collection("trade_requests").add({
         sender_uid: uid,
-        sender_name: firebase.auth().currentUser.email.split('@')[0],
+        sender_name: myName,
         receiver_uid: tradeTargetUser.uid,
         receiver_name: tradeTargetUser.name,
         requested_stickers: tradeSelectedStickers,
@@ -410,18 +441,18 @@ function sendTradeRequest() {
         created_at: firebase.firestore.FieldValue.serverTimestamp(),
         expires_at: firebase.firestore.Timestamp.fromDate(expiryDate)
     }).then(() => {
-        alert("Tauschanfrage erfolgreich gesendet!");
+        alert(`Tauschanfrage an ${tradeTargetUser.name} erfolgreich gesendet!`);
         closeTradeModal();
         btn.innerText = "Senden";
     }).catch((error) => {
         console.error("Fehler beim Senden: ", error);
-        alert("Fehler beim Senden der Anfrage.");
+        alert("Es gab einen Fehler beim Senden der Anfrage. Bitte probiere es noch einmal.");
         btn.innerText = "Senden";
         btn.disabled = false;
     });
 }
 
-/* --- STICKER RENDER ENGINE (Extrahiert aus Album/Index) --- */
+/* --- STICKER RENDER ENGINE HILFSFUNKTIONEN --- */
 function getContrastColors(hexColor) {
     if (!hexColor) return { text: '#ffffff', stroke: '#000000' };
     let hex = hexColor.replace('#', '');
@@ -430,94 +461,6 @@ function getContrastColors(hexColor) {
     const yiq = ((r * 299) + (g * 587) + (b * 114)) / 1000;
     return (yiq >= 140) ? { text: '#000000', stroke: 'transparent' } : { text: '#ffffff', stroke: '#000000' };    
 }
-
-function createStickerHTML(sticker) {
-    if (!sticker) return '';
-    let typeClass = "container-default-special";
-    if (sticker.type === "player") typeClass = "container-player";
-    else if (sticker.type === 'stadium_left') typeClass = "container-stadium-left";
-    else if (sticker.type === 'stadium_right') typeClass = "container-stadium-right";
-    else if (sticker.type === 'team_photo') typeClass = "container-team-photo";
-    else if (sticker.type === 'logo') typeClass = "container-logo";
-    else if (sticker.type === 'golden_boot' || (sticker.id && sticker.id.startsWith('GBO'))) typeClass = "container-golden-boot";
-    else if (sticker.type === 'golden_ball' || (sticker.id && sticker.id.startsWith('GBA'))) typeClass = "container-golden-ball";
-    else if (sticker.type === 'historic_winner') typeClass = "container-historic-winner";
-    else if (sticker.type === 'special_fill') typeClass = "container-special-fill";
-    else if (sticker.type === 'special_edge') typeClass = "container-special-edge";
-    else if (sticker.type === 'trophy_top' || sticker.type === 'logo_top' || sticker.type === 'special_top') typeClass = "container-trophy-top";
-    else if (sticker.type === 'trophy_bottom' || sticker.type === 'logo_bottom' || sticker.type === 'special_bottom') typeClass = "container-trophy-bottom";
-
-    let inlineStyle = ""; let innerHTML = "";
-    const cleanPath = (p) => p && p.startsWith('./') ? p.substring(2) : (p || '');
-
-    if (sticker.type === "player") {
-        const fName = sticker.first_name ? sticker.first_name.trim() : ""; const lName = sticker.last_name ? sticker.last_name.trim() : "";
-        const fullName = lName ? `${fName} ${lName}` : fName;
-        let ageStr = "";
-        if (sticker.birthdate) {
-            const parts = sticker.birthdate.split('.');
-            if (parts.length === 3) {
-                const dob = new Date(parts[2], parseInt(parts[1]) - 1, parts[0]); const today = new Date();
-                let age = today.getFullYear() - dob.getFullYear(); const m = today.getMonth() - dob.getMonth();
-                if (m < 0 || (m === 0 && today.getDate() < dob.getDate())) age--;
-                ageStr = ` (${age})`;
-            }
-        }
-        let posClassStr = sticker.posClass ? sticker.posClass.replace('pos-', '') : "mf";
-        const c1 = sticker.color_1 || '#c10e23'; const textContrast = getContrastColors(c1);
-        inlineStyle = `--color-1: ${c1}; --color-2: ${sticker.color_2 || '#046a38'}; --color-3: ${sticker.color_3 || '#f2a900'}; --dynamic-text: ${textContrast.text}; --dynamic-stroke: ${textContrast.stroke};`;
-        
-        innerHTML = `
-            <div class="sticker-inner">
-                <div class="sticker-flag"><img src="${cleanPath(sticker.flag)}" onerror="this.style.display='none'"></div>
-                <div class="bg-svg-2"></div><div class="bg-svg-6"></div>
-                <div class="player-image-container"><img src="${cleanPath(sticker.image)}" onerror="this.src='assets/Icon.png'"></div>
-                <div class="lower-elements-wrapper">
-                    <div class="sticker-info-box"><div class="player-name">${fullName}</div></div>
-                    <div class="sticker-meta-container">
-                        <div class="meta-box meta-box-left">${sticker.jersey_number || '-'}</div>
-                        <div class="meta-box meta-box-center">${(sticker.birthdate || "") + ageStr}</div>
-                        <div class="meta-box meta-box-right">${sticker.height || '-'}</div>
-                    </div>
-                    <div class="bottom-info-bar">
-                        <div class="pos-box" data-pos="${posClassStr}">${sticker.position || '-'}</div>
-                        <img class="club-logo-small" src="${cleanPath(sticker.club_image)}" onerror="this.style.display='none'">
-                        <div class="club-name">${sticker.club_name || '-'}</div>
-                        <img class="club-logo-bottom" src="assets/WC_logo.png" onerror="this.style.display='none'">
-                    </div>
-                </div>
-            </div>`;
-    } else {
-        let finalPath = cleanPath(sticker.image);
-        const pureFileName = finalPath.substring(finalPath.lastIndexOf('/') + 1);
-        if (sticker.type === 'golden_ball' || (sticker.id && sticker.id.startsWith('GBA'))) finalPath = "photos/golden_ball/" + pureFileName;
-        else if (sticker.type === 'golden_boot' || (sticker.id && sticker.id.startsWith('GBO'))) finalPath = "photos/golden_boot/" + pureFileName;
-        else if (sticker.type && sticker.type.startsWith('special')) finalPath = "photos/special/" + pureFileName;
-        else if (sticker.type && sticker.type.startsWith('stadium')) finalPath = "photos/stadiums/" + pureFileName;
-        else if (sticker.type === 'historic_winner') finalPath = "photos/winning_teams/" + pureFileName;
-
-        let sFlag = cleanPath(sticker.flag); let sName = sticker.name || '';
-        let specialHTML = `<img src="${finalPath}" class="special-sticker-img" onerror="this.src='assets/Icon.png'">`;
-
-        if (sticker.type === 'golden_boot' || (sticker.id && sticker.id.startsWith('GBO'))) {
-            if(sFlag) specialHTML += `<div class="special-flag-wrapper silver-bg pos-top-right"><img src="${sFlag}" onerror="this.style.display='none'"></div>`;
-            specialHTML += `<img src="photos/golden_boot/golden_boot.png" class="special-icon pos-bottom-right" onerror="this.style.display='none'">`;
-            if(sName) specialHTML += `<div class="special-name-box pos-bottom-center">${sName}</div>`;
-        } else if (sticker.type === 'golden_ball' || (sticker.id && sticker.id.startsWith('GBA'))) {
-            if(sFlag) specialHTML += `<div class="special-flag-wrapper gold-bg pos-top-right"><img src="${sFlag}" onerror="this.style.display='none'"></div>`;
-            specialHTML += `<img src="photos/golden_ball/golden_ball.png" class="special-icon pos-bottom-right" onerror="this.style.display='none'">`;
-            if(sName) specialHTML += `<div class="special-name-box pos-bottom-center">${sName}</div>`;
-        } else if (sticker.type === 'historic_winner') {
-            if(sFlag) specialHTML += `<div class="special-flag-wrapper gold-bg pos-bottom-left-rot"><img src="${sFlag}" onerror="this.style.display='none'"></div>`;
-            if(sName) specialHTML += `<div class="name-wrapper-rot"><div class="special-name-box">${sName}</div></div>`;
-        } else if (sticker.type === 'team_photo') {
-            if(sFlag) specialHTML += `<div class="special-flag-wrapper pos-bottom-left-rot" style="background: #ffffff; border: 1.5px solid #cccccc;"><img src="${sFlag}" onerror="this.style.display='none'"></div>`;
-        }
-        innerHTML = `<div class="special-sticker-inner">${specialHTML}</div>`;
-    }
-    return `<div class="sticker-wrapper ${typeClass}" style="${inlineStyle}">${innerHTML}</div>`;
-}
-
 </script>
 </body>
 </html>
