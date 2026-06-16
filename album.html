@@ -33,10 +33,14 @@ h1 { margin: 0; font-size: 22px; text-transform: uppercase; text-shadow: 0 1px 3
 /* --- STICKER-STAPEL --- */
 .sticker-stack-container { position: fixed; bottom: 20px; right: 20px; width: 80px; height: 110px; z-index: 1000; cursor: pointer; transition: transform 0.2s ease; }
 .sticker-stack-container:hover { transform: translateY(-5px); }
-.stack-card { position: absolute; width: 100%; height: 100%; background-color: #eeeeee; border: 2px solid #ffffff; border-radius: 4px; box-shadow: 0 4px 8px rgba(0,0,0,0.4); display: flex; align-items: center; justify-content: center; container-type: inline-size; overflow: hidden; }
-.stack-card-3 { transform: rotate(8deg) translate(3px, 3px); z-index: 1; background-color: #dddddd; }
-.stack-card-2 { transform: rotate(-5deg) translate(-2px, 1px); z-index: 2; background-color: #e5e5e5;}
+.stack-card { position: absolute; width: 100%; height: 100%; background-color: transparent; display: flex; align-items: center; justify-content: center; container-type: inline-size; overflow: hidden; }
+.stack-card-3 { transform: rotate(8deg) translate(3px, 3px); z-index: 1; }
+.stack-card-2 { transform: rotate(-5deg) translate(-2px, 1px); z-index: 2; }
 .stack-card-1 { transform: rotate(0deg); z-index: 3; touch-action: none; }
+
+/* Dummy Card Design, falls Stapel leer ist */
+.stack-dummy { background-color: #eeeeee; border: 2px solid #ffffff; border-radius: 4px; box-shadow: 0 4px 8px rgba(0,0,0,0.4); width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; }
+
 .stack-placeholder-text { font-family: Arial, sans-serif; font-size: 11px; font-weight: bold; color: #aaaaaa; text-transform: uppercase; }
 .stack-counter { position: absolute; top: -10px; right: -10px; background-color: #ff1145; color: #ffffff; width: 26px; height: 26px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: Arial, sans-serif; font-size: 13px; font-weight: bold; box-shadow: 0 2px 5px rgba(0,0,0,0.3); z-index: 10; }
 
@@ -53,15 +57,12 @@ h1 { margin: 0; font-size: 22px; text-transform: uppercase; text-shadow: 0 1px 3
 .paper { position: absolute; width: 100%; height: 100%; top: 0; left: 0; transform-style: preserve-3d; transform-origin: left center; transition: transform 0.6s cubic-bezier(0.4, 0.0, 0.2, 1); will-change: transform; }
 .paper.flipped { transform: rotateY(-180deg); }
 
-/* iOS/SAFARI MIRROR FIX: Explizite z-index & webkit-backface-visibility */
+/* iOS/SAFARI Z-FIGHTING FIX: Explizite z-index & webkit-backface-visibility + 1px 3D-Schubs */
 .front, .back { 
     position: absolute; width: 100%; height: 100%; top: 0; left: 0; 
-    -webkit-backface-visibility: hidden; 
-    backface-visibility: hidden; 
-    background-color: #f4f1ea; overflow: hidden; 
-    container-type: inline-size; 
-    -webkit-transform-style: preserve-3d;
-    transform-style: preserve-3d;
+    -webkit-backface-visibility: hidden; backface-visibility: hidden; 
+    background-color: #f4f1ea; overflow: hidden; container-type: inline-size; 
+    -webkit-transform-style: preserve-3d; transform-style: preserve-3d;
 }
 .front { border-left: 1px solid rgba(0,0,0,0.25); transform: rotateY(0deg) translateZ(1px); -webkit-transform: rotateY(0deg) translateZ(1px); z-index: 2; }
 .back { border-right: 1px solid rgba(0,0,0,0.25); transform: rotateY(180deg) translateZ(1px); -webkit-transform: rotateY(180deg) translateZ(1px); z-index: 1; }
@@ -78,40 +79,30 @@ h1 { margin: 0; font-size: 22px; text-transform: uppercase; text-shadow: 0 1px 3
     width: 100%; height: 100%; padding: 4cqw;
     display: flex; flex-direction: column;
     
-    /* Dynamische Hintergründe werden per JS gesetzt */
     background-color: var(--page-bg, transparent);
     
-    /* MATHEMATISCH FIXIERTE VARIABLEN */
+    /* MATHEMATISCH FIXIERTE VARIABLEN: Garantiert immer gleiche Größe! */
     --col-w: 21.5cqw; 
     --col-h: calc(21.5cqw * 1.38);
 }
 
-.team-name-wrapper {
-    height: 10cqw; 
-    width: 68.5cqw; 
-    display: flex; align-items: flex-end; 
-    margin-bottom: 2cqw;
-}
-.team-name { 
-    color: var(--text-col, #111111); 
-    margin: 0; text-transform: uppercase; line-height: 1; letter-spacing: -0.5px; 
-    white-space: nowrap; 
-}
+/* Stahlbeton-Käfig für den Team-Namen */
+.team-name-wrapper { height: 10cqw; width: 68.5cqw; display: flex; align-items: flex-end; margin-bottom: 2cqw; }
+.team-name { color: var(--text-col, #111111); margin: 0; text-transform: uppercase; line-height: 1; letter-spacing: -0.5px; white-space: nowrap; }
 
-/* Header Grid */
+/* Header Grid (Team Foto, Flag, Group, Wappen) */
 .team-header-grid {
-    width: 100%; display: grid; grid-template-columns: repeat(4, 1fr); gap: 2cqw;
-    margin-bottom: 2cqw;
-    height: var(--col-h); 
+    width: 100%; margin-bottom: 2cqw; height: var(--col-h); 
+    display: grid; 
+    grid-template-columns: var(--col-h) 1fr var(--col-w) var(--col-w); /* Exakte Matrix! */
+    gap: 2cqw;
 }
 
-.group-box {
-    display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center;
-    height: 100%; /* WICHTIG: Zentriert perfekt auf Y-Achse */
-}
-.group-box span { font-size: 2.5cqw; font-weight: bold; color: var(--text-col, #111111); margin-bottom: 2px;}
-.group-box strong { font-size: 10.5cqw; line-height: 1; color: var(--text-col, #111111); } /* 50% Größer */
+.group-box { display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; }
+.group-box span { font-size: 2.5cqw; font-weight: bold; color: var(--text-col, #111111); margin-bottom: -1px;}
+.group-box strong { font-size: 10.5cqw; line-height: 1; color: var(--text-col, #111111); }
 
+/* Die restlichen Grid-Bereiche */
 .player-grid-bottom, .player-grid-full, .generic-grid {
     width: 100%; display: grid; grid-template-columns: repeat(4, 1fr); gap: 2cqw; align-content: start;
 }
@@ -120,21 +111,32 @@ h1 { margin: 0; font-size: 22px; text-transform: uppercase; text-shadow: 0 1px 3
 .sticker-slot {
     position: relative; 
     width: var(--col-w); height: var(--col-h); 
-    border: 1.5px solid var(--text-col, #111111); /* Umrandung adaptiert an Textfarbe */
-    background-color: var(--slot-bg, rgba(0,0,0,0.03)); /* Füllt Box mit color_1 */
+    border: 1.5px solid var(--slot-color, #111111); 
+    background-color: transparent; /* TRANSPARENT! */
     display: flex; align-items: center; justify-content: center;
     container-type: inline-size;
     z-index: 5;
 }
+
+/* Der perfekte 90° Rotations-Modifikator */
+.rotated-slot-wrapper { width: var(--col-h); height: var(--col-w); position: relative; }
 .rotated-slot {
-    transform-origin: top left;
-    transform: translateY(var(--col-h)) rotate(-90deg);
+    position: absolute; top: 50%; left: 50%;
+    width: var(--col-w); height: var(--col-h); 
+    transform: translate(-50%, -50%) rotate(-90deg);
 }
+
+/* ZWINGT DEN KREIS WIEDER AUFRECHT */
+.rotated-slot .slot-circle { transform: rotate(90deg); }
+
 .slot-circle {
-    width: 28px; height: 28px; border-radius: 50%; border: 1.5px solid #111111;
+    width: 28px; height: 28px; border-radius: 50%; 
+    border: 1.5px solid var(--slot-color, #111111);
     display: flex; align-items: center; justify-content: center;
-    font-size: 11px; font-weight: bold; color: #111111; background-color: #f4f1ea; font-family: Arial, sans-serif;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+    font-size: 11px; font-weight: bold; 
+    color: var(--slot-color, #111111); 
+    background-color: transparent; /* TRANSPARENT! */
+    font-family: Arial, sans-serif;
 }
 .sticker-slot.filled { border: none; background-color: transparent; }
 .sticker-slot.filled .slot-circle { display: none; }
@@ -220,7 +222,7 @@ h1 { margin: 0; font-size: 22px; text-transform: uppercase; text-shadow: 0 1px 3
     <div class="stack-card stack-card-3" id="stackCard3"></div>
     <div class="stack-card stack-card-2" id="stackCard2"></div>
     <div class="stack-card stack-card-1" id="stackCard1">
-        <span class="stack-placeholder-text">Lade...</span>
+        <div class="stack-dummy"><span class="stack-placeholder-text">Lade...</span></div>
     </div>
     <div class="stack-counter" id="stackCounter">0</div> 
 </div>
@@ -262,7 +264,6 @@ fetch("./data/sticker_database.json")
         renderPastedStickers();
     });
 
-// Farb-Kontrast Rechner (Gibt weiß oder edles Dunkelschwarz zurück)
 function getPageTextColor(hexColor) {
     if (!hexColor) return '#1a1a1a';
     let hex = hexColor.replace('#', '');
@@ -376,24 +377,33 @@ function renderStapel() {
     const stapel = currentUserData.stapel || [];
     document.getElementById('stackCounter').innerText = stapel.length;
 
-    const c1 = document.getElementById('stackCard1'); const c2 = document.getElementById('stackCard2');
-    if (stapel.length > 0) {
-        const s1 = globalStickerDatabase[stapel[0]];
-        if (s1) { 
-            c1.innerHTML = createStickerHTML(s1); 
-            c1.style.border = "none"; c1.style.backgroundColor = "transparent"; 
+    const cards = [
+        document.getElementById('stackCard1'),
+        document.getElementById('stackCard2'),
+        document.getElementById('stackCard3')
+    ];
+
+    for (let i = 0; i < 3; i++) {
+        const card = cards[i];
+        if (stapel.length > i) {
+            const sticker = globalStickerDatabase[stapel[i]];
+            if (sticker) { 
+                card.innerHTML = createStickerHTML(sticker); 
+                card.style.border = "none"; 
+                card.style.backgroundColor = "transparent";
+                card.style.display = "flex"; 
+            } else {
+                card.innerHTML = ''; 
+                card.style.display = "none"; 
+            }
         } else {
-            c1.innerHTML = '<span class="stack-placeholder-text">LEER</span>'; 
-            c1.style.border = ""; c1.style.backgroundColor = "";
+            if(i === 0 && stapel.length === 0) {
+               card.innerHTML = '<div class="stack-dummy"><span class="stack-placeholder-text">LEER</span></div>'; 
+               card.style.display = "flex"; 
+            } else {
+               card.style.display = "none"; 
+            }
         }
-    } else {
-        c1.innerHTML = '<span class="stack-placeholder-text">LEER</span>'; c1.style.border = ""; c1.style.backgroundColor = "";
-    }
-    if (stapel.length > 1) {
-        const s2 = globalStickerDatabase[stapel[1]];
-        if (s2) { c2.innerHTML = createStickerHTML(s2); c2.style.border = "none"; c2.style.backgroundColor = "transparent"; }
-    } else {
-        c2.innerHTML = ''; c2.style.border = ""; c2.style.backgroundColor = "";
     }
 }
 
@@ -603,7 +613,7 @@ function buildPageHTML(bp, isLeftPage) {
     let wrapperStyle = "";
     if (bp.type === 'team') {
         let textColor = getPageTextColor(bp.color_2);
-        wrapperStyle = `--page-bg: ${bp.color_2}; --slot-bg: ${bp.color_1}; --text-col: ${textColor};`;
+        wrapperStyle = `--page-bg: ${bp.color_2}; --slot-color: ${bp.color_1}; --text-col: ${textColor};`;
     }
 
     if (bp.type === 'team') {
@@ -621,16 +631,16 @@ function buildPageHTML(bp, isLeftPage) {
                         <h2 class="team-name" style="${nameStyle}">${bp.name}</h2>
                     </div>
                     <div class="team-header-grid">
-                        <div style="grid-column: 1; display: flex; align-items: flex-end;">
+                        <div class="rotated-slot-wrapper" style="grid-column: 1; align-self: end;">
                             ${buildSlotHTML(bp.countryCode + '001', bp.startAlbumNumber, 'rotated-slot')}
                         </div>
-                        <div style="grid-column: 2; display: flex; align-items: center; justify-content: center;">
-                            <img src="${bp.flag}" style="width: 14cqw; height: 14cqw; object-fit: cover; border-radius: 50%; border: 2px solid var(--text-col); box-shadow: 0 2px 4px rgba(0,0,0,0.3);" onerror="this.style.display='none'">
+                        <div style="grid-column: 2; display: flex; align-items: center; justify-content: center; height: var(--col-w); align-self: end;">
+                            <img src="${bp.flag}" style="width: 14cqw; height: 14cqw; object-fit: cover; border-radius: 50%; border: 2.5px solid var(--text-col); box-shadow: 0 3px 6px rgba(0,0,0,0.3);" onerror="this.style.display='none'">
                         </div>
-                        <div class="group-box" style="grid-column: 3;">
+                        <div class="group-box" style="grid-column: 3; height: var(--col-w); align-self: end;">
                             <span>GROUP</span><strong>${bp.group}</strong>
                         </div>
-                        <div style="grid-column: 4; display: flex; align-items: flex-end;">
+                        <div style="grid-column: 4; align-self: end;">
                             ${buildSlotHTML(bp.countryCode + '002', bp.startAlbumNumber + 1)}
                         </div>
                     </div>
