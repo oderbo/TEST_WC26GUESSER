@@ -25,7 +25,7 @@ html, body {
 img { -webkit-user-drag: none; pointer-events: none; }
 
 body { 
-    margin: 0; padding: 15px 10px; font-family: 'FWC2026', Arial, sans-serif; 
+    margin: 0; padding: 15px 10px; font-family: Arial, sans-serif; /* STANDARDSCHRIFT! */
     color: white; background-color: #3f57f5; display: flex; flex-direction: column; 
     align-items: center; min-height: 100dvh; width: 100%;
 }
@@ -35,7 +35,7 @@ body {
     width: 100%; max-width: 600px; position: relative; display: flex; 
     justify-content: center; align-items: center; margin-bottom: 20px; height: 50px; flex-shrink: 0; 
 }
-h1 { margin: 0; font-size: 24px; text-transform: uppercase; text-shadow: 0 1px 3px rgba(0,0,0,0.4); letter-spacing: 1px; text-align: center; }
+h1 { margin: 0; font-size: 24px; font-family: 'FWC2026', Arial, sans-serif; text-transform: uppercase; text-shadow: 0 1px 3px rgba(0,0,0,0.4); letter-spacing: 1px; text-align: center; }
 
 .btn-back { 
     position: absolute; left: 0; top: 50%; transform: translateY(-50%); 
@@ -48,7 +48,7 @@ h1 { margin: 0; font-size: 24px; text-transform: uppercase; text-shadow: 0 1px 3
 /* --- OFFERS BUTTON --- */
 .btn-offers {
     position: relative; width: 100%; max-width: 600px; background: linear-gradient(135deg, #FFD700, #ffbb04);
-    color: #111; font-family: 'FWC2026', Arial, sans-serif; font-size: 16px; letter-spacing: 1px;
+    color: #111; font-family: Arial, sans-serif; font-size: 16px; letter-spacing: 1px;
     font-weight: bold; text-transform: uppercase; border: 2px solid #fff; border-radius: 8px;
     padding: 14px; box-shadow: 0 4px 10px rgba(0,0,0,0.3); cursor: pointer;
     margin-bottom: 25px; transition: transform 0.2s;
@@ -92,11 +92,14 @@ h1 { margin: 0; font-size: 24px; text-transform: uppercase; text-shadow: 0 1px 3
     position: fixed; top: 0; left: 0; right: 0; bottom: 0; background-color: #222222;
     z-index: 2000; display: none; flex-direction: column; align-items: center; padding: 20px 10px;
 }
+.modal-title { 
+    font-size: 22px; color: white; margin: 0 0 15px 0; text-align: center; width: 100%; 
+    font-family: 'FWC2026', Arial, sans-serif; text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+}
 .modal-header {
     width: 100%; max-width: 600px; display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;
 }
-.modal-title { font-size: 20px; color: white; margin: 0; text-align: center; flex-grow: 1; padding: 0 10px;}
-.btn-action { padding: 10px 15px; font-weight: bold; border-radius: 8px; border: none; font-size: 14px; cursor: pointer; text-transform: uppercase; font-family: 'FWC2026', sans-serif; }
+.btn-action { padding: 10px 15px; font-family: Arial, sans-serif; font-weight: bold; border-radius: 8px; border: none; font-size: 14px; cursor: pointer; text-transform: uppercase; }
 .btn-close { background: #ff1145; color: white; }
 .btn-send { background: #00cc44; color: white; transition: 0.2s ease; }
 .btn-send:disabled { background: #555555; color: #888888; cursor: not-allowed; }
@@ -105,7 +108,7 @@ h1 { margin: 0; font-size: 24px; text-transform: uppercase; text-shadow: 0 1px 3
 .modal-info strong { color: #FFD700; font-size: 16px; }
 
 .grid-scroll-wrapper { 
-    width: 100%; max-width: 600px; flex-grow: 1; max-height: 70vh; overflow-y: auto; padding: 5px; 
+    width: 100%; max-width: 600px; flex-grow: 1; max-height: 65vh; overflow-y: auto; padding: 5px; 
 }
 .trade-grid {
     display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; padding-bottom: 40px;
@@ -118,7 +121,7 @@ h1 { margin: 0; font-size: 24px; text-transform: uppercase; text-shadow: 0 1px 3
 }
 .offer-list-card div { font-family: Arial, sans-serif; color: #111; font-size: 15px; }
 .offer-list-card strong { color: #ff1145; font-size: 18px;}
-.btn-view-offer { background: #3f57f5; color: white; border: none; padding: 8px 12px; border-radius: 6px; font-weight: bold; cursor: pointer; font-family: 'FWC2026', sans-serif;}
+.btn-view-offer { background: #3f57f5; color: white; border: none; padding: 8px 12px; border-radius: 6px; font-weight: bold; cursor: pointer; font-family: Arial, sans-serif;}
 
 /* --- STICKER SLOTS IN MODALS --- */
 .trade-slot {
@@ -144,7 +147,10 @@ h1 { margin: 0; font-size: 24px; text-transform: uppercase; text-shadow: 0 1px 3
 .player-image-container img { width: 100%; height: 100%; object-fit: contain; display: block; }
 .lower-elements-wrapper { position: absolute; top: 60%; bottom: 0; left: 0; right: 0; display: flex; flex-direction: column; gap: 4px; padding-bottom: 4px; box-sizing: border-box; z-index: 2; pointer-events: none;}
 .sticker-info-box { flex: 1; min-height: 0; width: 100%; background-color: var(--color-2); display: flex; align-items: center; justify-content: center; box-shadow: inset 0 1.5px 0 var(--color-3), inset 0 -1.5px 0 var(--color-3); box-sizing: border-box; }
-.player-name { color: #ffffff; font-weight: bold; text-align: center; white-space: normal; padding: 0 4px; font-size: 5.8cqw; line-height: 1.1; text-shadow: 1px 1px 2px rgba(0,0,0,0.5); }
+
+/* HIER IST DIE SONDERSCHRIFT FÜR DEN SPIELERNAMEN! */
+.player-name { font-family: 'FWC2026', Arial, sans-serif; color: #ffffff; font-weight: bold; text-align: center; white-space: normal; padding: 0 4px; font-size: 5.8cqw; line-height: 1.1; text-shadow: 1px 1px 2px rgba(0,0,0,0.5); }
+
 .sticker-meta-container { flex: 0.8; min-height: 0; width: 100%; display: flex; gap: 2px; box-sizing: border-box; }
 .meta-box { background-color: #ffffff; border: 1px solid #000000; color: #000000; display: flex; align-items: center; justify-content: center; font-weight: bold; text-align: center; font-size: 5.2cqw; box-sizing: border-box; line-height: 1; }
 .meta-box-left { width: 16%; border-radius: 0 6px 6px 0; border-left: none; }
@@ -170,10 +176,11 @@ h1 { margin: 0; font-size: 24px; text-transform: uppercase; text-shadow: 0 1px 3
 .silver-bg { background: linear-gradient(135deg, #e0e0e0 0%, #ffffff 25%, #a0a0a0 50%, #f8f8f8 75%, #c0c0c0 100%); box-shadow: 0 1px 3px rgba(0,0,0,0.5); }
 .pos-top-right { top: 0; right: 0; } .pos-bottom-right { bottom: 0; right: 0; } .pos-bottom-left-rot { bottom: 0; left: 0; transform: rotate(90deg); }
 .special-icon { position: absolute; bottom: 0; right: 0; width: 15cqw; height: 15cqw; object-fit: contain; z-index: 10; pointer-events: none; }
-.special-name-box { position: absolute; background: #ffffff; border: 1px solid #000000; border-radius: 4px; font-weight: bold; color: #000000; font-size: 5.5cqw; height: 11.25cqw; display: flex; align-items: center; justify-content: center; padding: 0 8px; white-space: nowrap; z-index: 10; box-shadow: 0 1px 3px rgba(0,0,0,0.3); pointer-events: none; }
+.special-name-box { position: absolute; background: #ffffff; border: 1px solid #000000; border-radius: 4px; font-weight: bold; color: #000000; font-size: 5.5cqw; height: 11.25cqw; display: flex; align-items: center; justify-content: center; padding: 0 8px; white-space: nowrap; z-index: 10; box-shadow: 0 1px 3px rgba(0,0,0,0.3); pointer-events: none; font-family: Arial, sans-serif; }
 .pos-bottom-center { bottom: 2px; left: 50%; transform: translateX(-50%); }
 .name-wrapper-rot { position: absolute; left: calc(2px + 5.625cqw); top: 50%; transform: translate(-50%, -50%) rotate(90deg); z-index: 10; pointer-events: none; }
 .name-wrapper-rot .special-name-box { position: relative; bottom: auto; left: auto; transform: none; }
+
 </style>
 </head>
 <body>
@@ -193,50 +200,52 @@ h1 { margin: 0; font-size: 24px; text-transform: uppercase; text-shadow: 0 1px 3
     <div style="color:white; grid-column: 1 / -1; text-align: center; font-size: 18px;">Lade Markt...</div>
 </div>
 
-<!-- 1. SEND TRADE MODAL (User A wählt bei User B aus) -->
 <div id="tradeModal" class="modal-overlay">
+    <h2 class="modal-title" id="tradeModalTitle">Tauschen</h2>
+    
     <div class="modal-header">
-        <button class="btn-action btn-close" onclick="closeTradeModal()">✖ Zurück</button>
-        <h2 class="modal-title" id="tradeModalTitle">Tauschen</h2>
+        <button class="btn-action btn-close" onclick="closeTradeModal()">Zurück</button>
         <button class="btn-action btn-send" id="btnSendTrade" onclick="sendTradeRequest()" disabled>Senden</button>
     </div>
-    <div class="modal-info" id="tradeModalInfo">Du kannst max. <strong id="tradeMaxCount">0</strong> Sticker anfragen.</div>
+    
+    <div class="modal-info" id="tradeModalInfo">
+        Du kannst max. <strong id="tradeMaxCount">0</strong> Sticker anfragen.
+    </div>
+
     <div class="grid-scroll-wrapper">
         <div class="trade-grid" id="tradeStickerGrid"></div>
     </div>
 </div>
 
-<!-- 2. OFFERS LIST MODAL (User B sieht eingegangene Anfragen) -->
 <div id="offersListModal" class="modal-overlay">
+    <h2 class="modal-title">Angebote</h2>
     <div class="modal-header">
-        <button class="btn-action btn-close" onclick="closeOffersListModal()">✖ Schließen</button>
-        <h2 class="modal-title">Angebote</h2>
+        <button class="btn-action btn-close" onclick="closeOffersListModal()">Zurück</button>
         <div style="width:70px;"></div>
     </div>
     <div class="grid-scroll-wrapper" id="offersListContent"></div>
 </div>
 
-<!-- 3. ANSWER OFFER MODAL (User B beantwortet das Angebot von User A) -->
 <div id="answerOfferModal" class="modal-overlay">
+    <h2 class="modal-title" id="answerOfferTitle">Angebot</h2>
+    
     <div class="modal-header">
-        <button class="btn-action btn-close" onclick="closeAnswerOfferModal()">✖ Zurück</button>
-        <h2 class="modal-title" id="answerOfferTitle">Angebot</h2>
+        <button class="btn-action btn-close" onclick="closeAnswerOfferModal()">Zurück</button>
         <button class="btn-action btn-send" id="btnConfirmOffer" onclick="confirmOffer()" disabled>Bestätigen</button>
     </div>
+    
     <div class="modal-info">
         <span id="answerOfferText"></span><br>Wähle <strong id="answerOfferMax">0</strong> Sticker aus:
     </div>
+    
     <div class="grid-scroll-wrapper">
         <div class="trade-grid" id="answerOfferGrid"></div>
     </div>
 </div>
 
-<!-- 4. CLAIM MODAL (Pack Opening Feeling für getauschte Sticker) -->
 <div id="claimModal" class="modal-overlay">
-    <div class="modal-header" style="justify-content: center;">
-        <h2 class="modal-title" style="color: #00cc44; font-size: 24px; text-shadow: 0 2px 4px rgba(0,0,0,0.5);">Tausch Erfolgreich!</h2>
-    </div>
-    <div class="modal-info">Du hast neue Sticker erhalten.</div>
+    <h2 class="modal-title" style="color: #00cc44; font-size: 26px;">Tausch Erfolgreich!</h2>
+    <div class="modal-info" style="margin-top: 10px;">Du hast neue Sticker erhalten.</div>
     <div class="grid-scroll-wrapper">
         <div class="trade-grid" id="claimStickerGrid"></div>
     </div>
@@ -497,7 +506,8 @@ function sendTradeRequest() {
     btn.disabled = true;
     
     const expiryDate = new Date();
-    expiryDate.setHours(expiryDate.getHours() + 24);
+    // NACH 12 STUNDEN ABLAUFEN!
+    expiryDate.setHours(expiryDate.getHours() + 12);
     
     const myName = currentUserData.username || firebase.auth().currentUser.email.split('@')[0];
 
@@ -552,7 +562,7 @@ function openAnswerOfferModal(offer) {
     answerRequiredCount = offer.requested_stickers.length;
     answerSelectedStickers = [];
     
-    document.getElementById("answerOfferTitle").innerText = `${offer.sender_name}'s Angebot`;
+    document.getElementById("answerOfferTitle").innerText = `Tausch mit ${offer.sender_name}`;
     document.getElementById("answerOfferText").innerText = `${offer.sender_name} möchte ${answerRequiredCount} Sticker von dir haben.`;
     document.getElementById("answerOfferMax").innerText = answerRequiredCount;
     document.getElementById("btnConfirmOffer").disabled = true;
@@ -594,7 +604,6 @@ function closeAnswerOfferModal() {
     if (pendingOffers.length > 0) openOffersListModal();
 }
 
-/* DIE TRANSKTIONS- UND BEREINIGUNGSFUNKTION */
 function confirmOffer() {
     if (answerSelectedStickers.length !== answerRequiredCount) return;
     
@@ -639,7 +648,7 @@ function confirmOffer() {
             requestedBySender.forEach(s => removeOne(myStapel, s));
             selectedByMe.forEach(s => removeOne(senderStapel, s));
 
-            // 2. In Traded Box werfen (Die Sticker wechseln den Besitzer!)
+            // 2. In Traded Box werfen
             senderTraded.push(...requestedBySender);
             myTraded.push(...selectedByMe);
 
@@ -648,7 +657,6 @@ function confirmOffer() {
             transaction.delete(requestRef);
         });
     }).then(() => {
-        // NEU: Säubere den globalen Markt, damit getauschte Sticker verschwinden!
         cleanupMarket(myUid, answerSelectedStickers);
         cleanupMarket(senderUid, currentActiveOffer.requested_stickers);
 
@@ -658,7 +666,7 @@ function confirmOffer() {
         openClaimModal(answerSelectedStickers);
     }).catch((err) => {
         console.error("Trade error:", err);
-        alert("Tausch fehlgeschlagen. Der Spieler hat die Sticker eventuell nicht mehr.");
+        alert("Tausch fehlgeschlagen. Der Spieler hat die Sticker evtl. nicht mehr.");
         btn.innerText = "Bestätigen";
         btn.disabled = false;
     });
