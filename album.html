@@ -841,8 +841,7 @@ function buildPageHTML(bp, isLeftPage) {
     }
 
 	if (bp.type === 'team') {
-        // color_3 wird als --bg-deco genutzt, position: relative sorgt für perfekte Kanten-Ausrichtung
-        let wrapperStyle = `--page-bg: ${bp.color_2}; --slot-color: ${bp.color_1}; --text-col: ${getPageTextColor(bp.color_2)}; --bg-deco: ${bp.color_3 || '#f2a900'}; position: relative;`;
+        let wrapperStyle = `--page-bg: ${bp.color_2}; --slot-color: ${bp.color_1}; --text-col: ${getPageTextColor(bp.color_2)}; --bg-deco: ${bp.color_3 || '#f2a900'}; position: relative; overflow: hidden;`;
 
         if (isLeftPage) { 
             let nameStyle = 'font-size: 8cqw;';
@@ -854,14 +853,10 @@ function buildPageHTML(bp, isLeftPage) {
             
             return `
                 <div class="page-wrapper" style="${wrapperStyle}">
-                    <svg style="position: absolute; top: 0; left: 0; height: 66%; pointer-events: none; z-index: 0; overflow: visible;" viewBox="0 0 800 800">
-                        <text x="0" y="800" font-family="'WC26', Arial, sans-serif" font-size="1000" fill="var(--bg-deco)">2</text>
-                    </svg>
-
-                    <svg style="position: absolute; bottom: 0; right: 0; height: 66%; pointer-events: none; z-index: 0; overflow: visible;" viewBox="0 0 800 800">
-                        <text x="800" y="800" text-anchor="end" font-family="'WC26', Arial, sans-serif" font-size="1000" fill="var(--bg-deco)">6</text>
-                    </svg>
-
+                    <div style="position: absolute; top: -4cqw; left: -4cqw; font-family: 'WC26', Arial, sans-serif; font-size: 90cqw; color: var(--bg-deco); line-height: 0.72; z-index: 0; pointer-events: none; margin: 0; padding: 0;">2</div>
+                    
+                    <div style="position: absolute; bottom: -4cqw; right: -4cqw; font-family: 'WC26', Arial, sans-serif; font-size: 90cqw; color: var(--bg-deco); line-height: 0.72; z-index: 0; pointer-events: none; margin: 0; padding: 0; text-align: right;">6</div>
+                    
                     <div class="team-name-wrapper" style="position: relative; z-index: 10;">
                         <h2 class="team-name" style="${nameStyle}">${bp.name}</h2>
                     </div>
@@ -892,9 +887,9 @@ function buildPageHTML(bp, isLeftPage) {
         } else { 
             return `
                 <div class="page-wrapper" style="${wrapperStyle}">
-                    <svg style="position: absolute; top: 0; right: 0; width: 33cqw; height: 100%; pointer-events: none; z-index: 0; overflow: visible;" preserveAspectRatio="none" viewBox="0 0 800 1000">
-                        <text x="-1000" y="800" transform="rotate(-90)" font-family="'WC26', Arial, sans-serif" font-size="1000" fill="var(--bg-deco)" lengthAdjust="spacingAndGlyphs" textLength="1000">${bp.countryCode}</text>
-                    </svg>
+                    <div style="position: absolute; right: -4cqw; bottom: -4cqw; transform-origin: bottom right; transform: rotate(-90deg) translateY(100%); font-family: 'WC26', Arial, sans-serif; font-size: 38cqw; color: var(--bg-deco); line-height: 0.72; z-index: 0; pointer-events: none; white-space: nowrap; margin: 0; padding: 0; letter-spacing: 0.5cqw;">
+                        ${bp.countryCode}
+                    </div>
 
                     <div style="height: 14cqw; width: 100%; position: relative; z-index: 10;"></div>
                     <div class="player-grid-full" style="position: relative; z-index: 10;">
