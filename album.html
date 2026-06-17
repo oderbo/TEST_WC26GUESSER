@@ -173,30 +173,13 @@ h1 { margin: 0; font-size: 22px; font-family: 'FWC2026', Arial, sans-serif; text
 /* ÜBERSCHRIFTEN NUTZEN FWC2026 */
 .special-title { font-family: 'FWC2026', Arial, sans-serif; color: #FFD700; text-transform: uppercase; font-size: 7cqw; margin: 0 0 2cqw 0; text-align: center; letter-spacing: 2px; text-shadow: 0 2px 4px rgba(0,0,0,0.5); }
 
-/* ANGEPASSTE WC26 TITEL SCHRIFT (Weiß mit goldenem Rand) */
-.title-wc26 { 
-    font-family: 'FWC2026', Arial, sans-serif; 
-    font-size: 16cqw; 
-    font-weight: bold; 
-    width: 100%; text-align: center; margin: 0; padding-top: 1cqw; 
-    color: #ffffff;
-    -webkit-text-fill-color: #ffffff; 
-    -webkit-text-stroke: 1px #D4AF37; 
-    text-shadow: 0px 4px 10px rgba(212, 175, 55, 0.6), 0px 0px 15px rgba(255, 215, 0, 0.4); 
-    letter-spacing: 2cqw; 
-    background: none;
-}
-
-/* TUTORIAL ZAHLEN MIT REGENBOGEN-KONTUR */
-.rainbow-number {
-    font-size: 24cqw;
-    line-height: 0.8;
-    margin: -1.5cqw 0;
-    background: var(--rainbow-grad);
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: #ffffff; /* Füllt die Zahl mit Weiß, wie der Seitenhintergrund */
-    -webkit-text-stroke: 1.5cqw transparent; /* Dies ist die ~3% Kontur, die den Regenbogen durchscheinen lässt */
+/* HELLES GRAU FÜR TUTORIAL ZAHLEN (Hintergrund abgeschnitten) */
+.bg-number {
+    font-size: 38cqw;
+    line-height: 0.72;
+    margin: 0;
+    color: #e8e8e8;
+    font-family: 'FWC2026', Arial, sans-serif;
 }
 
 /* --- INDEX SEITE --- */
@@ -204,7 +187,7 @@ h1 { margin: 0; font-size: 22px; font-family: 'FWC2026', Arial, sans-serif; text
 .index-grid { 
     display: grid; 
     grid-template-columns: repeat(4, 1fr); 
-    grid-auto-rows: 1fr; 
+    grid-template-rows: repeat(7, 1fr); 
     gap: 1cqw; width: 100%; height: 100%; align-items: center; justify-items: center; 
 }
 .index-entry { display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; cursor: pointer; }
@@ -247,9 +230,10 @@ h1 { margin: 0; font-size: 22px; font-family: 'FWC2026', Arial, sans-serif; text
 }
 .rotated-slot .slot-circle { transform: rotate(90deg); }
 
-/* Klassen um aneinanderklebende Sticker perfekt zu verbinden */
-.spc-top-slot { border-right: none !important; }
-.spc-bottom-slot { border-left: none !important; }
+/* Klassen um aneinanderklebende Sticker perfekt zu verbinden.
+   (Durch die -90 Grad Rotation ist der visuell "untere" Rand technisch der linke!) */
+.spc-top-slot { border-left: none !important; }
+.spc-bottom-slot { border-right: none !important; }
 
 .slot-circle {
     width: 28px; height: 28px; border-radius: 50%; 
@@ -275,9 +259,9 @@ h1 { margin: 0; font-size: 22px; font-family: 'FWC2026', Arial, sans-serif; text
 }
 .sticker-inner { position: absolute; top: 5cqw; left: 5cqw; right: 5cqw; bottom: 5cqw; background-color: var(--color-1, #c10e23); border: 1.25cqw solid var(--color-2, #046a38); outline: 1.25cqw solid var(--color-3, #f2a900); box-sizing: border-box; }
 
-/* Spezifische Entfernung der Ecken für zusammengeklebte WC26 Sticker */
-#slot-SPC001 .special-sticker-inner, #slot-SPC005 .special-sticker-inner { right: 0; border-radius: 1cqw 0 0 1cqw; border-right: none; }
-#slot-SPC002 .special-sticker-inner, #slot-SPC006 .special-sticker-inner { left: 0; border-radius: 0 1cqw 1cqw 0; border-left: none; }
+/* Spezifische Entfernung der Ecken für zusammengeklebte WC26 Sticker (Rotation beachtet) */
+#slot-SPC001 .special-sticker-inner, #slot-SPC005 .special-sticker-inner { left: 0; border-radius: 0 1cqw 1cqw 0; border-left: none; }
+#slot-SPC002 .special-sticker-inner, #slot-SPC006 .special-sticker-inner { right: 0; border-radius: 1cqw 0 0 1cqw; border-right: none; }
 
 /* Stadien nahtlos aneinanderkleben! */
 .container-stadium-left .special-sticker-inner { right: 0; border-radius: 1cqw 0 0 1cqw; border-right: none; }
@@ -903,10 +887,13 @@ function buildPageHTML(bp, isLeftPage) {
     if (bp.type === 'cover_back') {
         return `
         <div class="page-wrapper" style="background-color: #ffffff; display: flex; flex-direction: row; padding: 0; height: 100%; overflow: hidden;">
-            <div style="width: 25%; display: flex; flex-direction: column; align-items: center; justify-content: space-around; overflow: hidden; font-family: 'FWC2026', Arial, sans-serif; padding: 2cqw 0;">
-                <div class="rainbow-number">2</div><div class="rainbow-number">6</div>
-                <div class="rainbow-number">2</div><div class="rainbow-number">6</div>
-                <div class="rainbow-number">2</div>
+            <div style="width: 25%; display: flex; flex-direction: column; align-items: center; justify-content: flex-start; overflow: hidden; padding: 0;">
+                <div class="bg-number">2</div>
+                <div class="bg-number">6</div>
+                <div class="bg-number">2</div>
+                <div class="bg-number">6</div>
+                <div class="bg-number">2</div>
+                <div class="bg-number">6</div>
             </div>
             
             <div style="width: 50%; padding: 6cqw 0; display: flex; flex-direction: column; z-index: 5;">
@@ -920,15 +907,18 @@ function buildPageHTML(bp, isLeftPage) {
                     <li>Press <span style="display:inline-flex; vertical-align: middle; width: 2.2em; height: 2.2em; border-radius: 50%; border: 1.5px solid #ffbb04; background-color: #ffffff; align-items: center; justify-content: center; font-size: 0.4em; font-weight: bold; color: #111; margin: 0 0.2em;">INDEX</span> to jump to indexpage</li>
                     <li style="color: #009933;">GET 2 <img src="assets/booster_pack_front.png" style="height: 1.6em; vertical-align: middle; margin: 0 0.2em;"> for every 50% progress in <img src="assets/country_pick_button.jpg" style="height: 1.6em; border-radius: 0.2em; vertical-align: middle; margin: 0 0.2em; box-shadow: 0 1px 3px rgba(0,0,0,0.5);"></li>
                     <li style="color: #009933;">GET 3 <img src="assets/booster_pack_front.png" style="height: 1.6em; vertical-align: middle; margin: 0 0.2em;"> for every 100% in <img src="assets/country_pick_button.jpg" style="height: 1.6em; border-radius: 0.2em; vertical-align: middle; margin: 0 0.2em; box-shadow: 0 1px 3px rgba(0,0,0,0.5);"></li>
-                    <li style="color: #0077cc;">GET 1 <img src="assets/favicon.png" style="height: 1.5em; vertical-align: middle; margin: 0 0.2em; box-shadow: 0 1px 3px rgba(0,0,0,0.4);"> every <strong>4</strong> hours</li>
+                    <li style="color: #0077cc;">GET 1 <img src="assets/booster_pack_front.png" style="height: 1.5em; vertical-align: middle; margin: 0 0.2em; box-shadow: 0 1px 3px rgba(0,0,0,0.4);"> every <strong>4</strong> hours</li>
                     <li style="color: #d4af37;">TRADE your Sticker at <span style="display:inline-flex; vertical-align: middle; width: 1.8em; height: 1.8em; border-radius: 50%; border: 1.5px solid #ffbb04; background-color: #ffffff; align-items: center; justify-content: center; margin: 0 0.2em;"><img src="assets/market_icon.png" style="width: 60%; height: 60%; object-fit: contain;"></span></li>
                 </ul>
             </div>
 
-            <div style="width: 25%; display: flex; flex-direction: column; align-items: center; justify-content: space-around; overflow: hidden; font-family: 'FWC2026', Arial, sans-serif; padding: 2cqw 0;">
-                <div class="rainbow-number">6</div><div class="rainbow-number">2</div>
-                <div class="rainbow-number">6</div><div class="rainbow-number">2</div>
-                <div class="rainbow-number">6</div>
+            <div style="width: 25%; display: flex; flex-direction: column; align-items: center; justify-content: flex-start; overflow: hidden; padding: 0;">
+                <div class="bg-number">6</div>
+                <div class="bg-number">2</div>
+                <div class="bg-number">6</div>
+                <div class="bg-number">2</div>
+                <div class="bg-number">6</div>
+                <div class="bg-number">2</div>
             </div>
         </div>`;
     }
@@ -936,42 +926,54 @@ function buildPageHTML(bp, isLeftPage) {
     if (bp.type === 'special') {
         return `
         <div class="page-wrapper dark-page rainbow-border-page" style="position: relative;">
-            <h2 class="title-wc26" style="position: absolute; top: 2cqw; left: 0;">WC26</h2>
+            <h2 style="position: absolute; top: 10%; left: 10%; width: 80%; text-align: center; color: #ffffff; font-family: 'FWC2026', Arial, sans-serif; font-size: 16cqw; margin: 0; text-shadow: none;">WC26</h2>
             
-            <div style="position: absolute; top: 20cqw; left: 4cqw;">
+            <div style="position: absolute; top: 28%; left: 50%; transform: translateX(-50%);">
                 <div class="rotated-slot-wrapper">${buildSlotHTML('SPC001', '1', 'rotated-slot spc-top-slot')}</div>
             </div>
-            <div style="position: absolute; top: calc(20cqw + var(--col-w)); left: 4cqw;">
+            <div style="position: absolute; top: calc(28% + var(--col-w)); left: 50%; transform: translateX(-50%);">
                 <div class="rotated-slot-wrapper">${buildSlotHTML('SPC002', '2', 'rotated-slot spc-bottom-slot')}</div>
             </div>
 
-            <div style="position: absolute; top: 20cqw; right: 4cqw;">
-                <div class="rotated-slot-wrapper">${buildSlotHTML('SPC005', '5', 'rotated-slot spc-top-slot')}</div>
-            </div>
-            <div style="position: absolute; top: calc(20cqw + var(--col-w)); right: 4cqw;">
-                <div class="rotated-slot-wrapper">${buildSlotHTML('SPC006', '6', 'rotated-slot spc-bottom-slot')}</div>
-            </div>
-
-            <div style="position: absolute; top: calc(20cqw + var(--col-w) * 2 + 3cqw); left: 50%; transform: translateX(-50%);">
-                <div class="rotated-slot-wrapper">${buildSlotHTML('SPC004', '4', 'rotated-slot')}</div>
-            </div>
-
-            <div style="position: absolute; bottom: 6cqw; left: 4cqw;">
+            <div style="position: absolute; bottom: calc(25px + 2%); left: 4cqw;">
                 <div class="rotated-slot-wrapper">${buildSlotHTML('SPC000', '00', 'rotated-slot')}</div>
             </div>
-            <div style="position: absolute; bottom: 6cqw; right: 4cqw;">
-                ${buildSlotHTML('SPC003', '3')}
+            <div style="position: absolute; bottom: calc(25px + 2% + var(--col-w) + 5%); left: 4cqw;">
+                <div class="rotated-slot-wrapper">${buildSlotHTML('SPC003', '3', 'rotated-slot')}</div>
+            </div>
+
+            <div style="position: absolute; bottom: calc(25px + 2%); right: 4cqw;">
+                <div class="rotated-slot-wrapper">${buildSlotHTML('SPC004', '4', 'rotated-slot')}</div>
+            </div>
+            <div style="position: absolute; bottom: calc(25px + 2% + var(--col-w) + 5%); right: 4cqw;">
+                <div class="rotated-slot-wrapper">${buildSlotHTML('SPC006', '6', 'rotated-slot spc-bottom-slot')}</div>
+            </div>
+            <div style="position: absolute; bottom: calc(25px + 2% + var(--col-w)*2 + 5%); right: 4cqw;">
+                <div class="rotated-slot-wrapper">${buildSlotHTML('SPC005', '5', 'rotated-slot spc-top-slot')}</div>
+            </div>
+            
+            <div style="position: absolute; right: calc(4cqw + var(--col-h) + 1cqw); bottom: calc(25px + 2% + var(--col-w) + 5%); height: calc(var(--col-w) * 2); display: flex; flex-direction: column; justify-content: space-between; align-items: flex-end;">
+                <div style="font-family: 'FWC2026', Arial, sans-serif; color: #ffffff; font-size: 14cqw; line-height: 0.75;">WE</div>
+                <div style="font-family: 'FWC2026', Arial, sans-serif; color: #ffffff; font-size: 9.5cqw; line-height: 0.75;">ARE</div>
             </div>
         </div>`;
     }
     
     if (bp.type === 'index_left' || bp.type === 'index_right') {
         let isLeft = bp.type === 'index_left';
-        let half = Math.ceil(indexEntries.length / 2);
-        let entries = isLeft ? indexEntries.slice(0, half) : indexEntries.slice(half);
+        // Genau 24 auf der linken Seite, damit oben für INDEX Platz bleibt. Rest (28 Stück) rechts.
+        let entries = isLeft ? indexEntries.slice(0, 24) : indexEntries.slice(24);
 
         let html = `<div class="page-wrapper index-wrapper dark-page rainbow-border-page">
                         <div class="index-grid">`;
+                        
+        if (isLeft) {
+            // Nimmt genau eine komplette 4er Zeile oben ein!
+            html += `<div style="grid-column: 1 / span 4; display: flex; align-items: center; justify-content: center; width: 100%; height: 100%;">
+                        <span style="font-family: 'FWC2026', Arial, sans-serif; font-size: 8cqw; color: #ffffff; text-shadow: 0 2px 4px rgba(0,0,0,0.5);">INDEX</span>
+                     </div>`;
+        }
+        
         entries.forEach(e => {
             let icon = e.flag ? `<img src="${e.flag}" class="index-flag" style="background-color: ${e.bg}; border-color: ${e.border}; box-shadow: 0 0 6px ${e.border};" onerror="this.src='assets/Icon.png'">` : `<div class="index-flag-placeholder"></div>`;
             html += `<div class="index-entry" onclick="turnToSpread(${e.spread}, event)">
