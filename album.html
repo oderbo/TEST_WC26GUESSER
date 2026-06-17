@@ -643,8 +643,8 @@ const albumBlueprint = [
     { type: "golden_boots", startId: "GBO015", endId: "GBO021", startAlbumNumber: 501, endAlbumNumber: 507 },
     { type: "golden_boots", startId: "GBO022", endId: "GBO028", startAlbumNumber: 508, endAlbumNumber: 514 },
     
-    { type: "team", countryCode: "GER", name: "Germany", group: "E", startId: "GER001", endId: "GER014", startAlbumNumber: 515, endAlbumNumber: 528, flag: "data/germany/germany_flag_circle.png", color_1: "#000000", color_2: "#FFFFFF", color_3: "#FFCE00" },
-    { type: "team", countryCode: "GER", name: "Germany", group: "E", startId: "GER015", endId: "GER028", startAlbumNumber: 529, endAlbumNumber: 542, flag: "data/germany/germany_flag_circle.png", color_1: "#000000", color_2: "#FFFFFF", color_3: "#FFCE00" },
+    { type: "team", countryCode: "GER", name: "Germany", group: "E", startId: "GER001", endId: "GER014", startAlbumNumber: 515, endAlbumNumber: 528, flag: "data/germany/germany_flag_circle.png", color_1: "#000000", color_2: "#FFFFFF", color_3: "#A9936F" },
+    { type: "team", countryCode: "GER", name: "Germany", group: "E", startId: "GER015", endId: "GER028", startAlbumNumber: 529, endAlbumNumber: 542, flag: "data/germany/germany_flag_circle.png", color_1: "#000000", color_2: "#FFFFFF", color_3: "#A9936F" },
     { type: "team", countryCode: "CUW", name: "Curaçao", group: "E", startId: "CUW001", endId: "CUW014", startAlbumNumber: 543, endAlbumNumber: 556, flag: "data/curacao/curacao_flag_circle.png", color_1: "#002B7F", color_2: "#F9E814", color_3: "#FFFFFF" },
     { type: "team", countryCode: "CUW", name: "Curaçao", group: "E", startId: "CUW015", endId: "CUW028", startAlbumNumber: 557, endAlbumNumber: 570, flag: "data/curacao/curacao_flag_circle.png", color_1: "#002B7F", color_2: "#F9E814", color_3: "#FFFFFF" },
     { type: "team", countryCode: "CIV", name: "Ivory Coast", group: "E", startId: "CIV001", endId: "CIV014", startAlbumNumber: 571, endAlbumNumber: 584, flag: "data/ivory_coast/ivory_coast_flag_circle.png", color_1: "#FF8200", color_2: "#009A44", color_3: "#FFFFFF" },
@@ -840,7 +840,10 @@ function buildPageHTML(bp, isLeftPage) {
         wrapperStyle = `--page-bg: ${bp.color_2}; --slot-color: ${bp.color_1}; --text-col: ${textColor};`;
     }
 
-    if (bp.type === 'team') {
+	if (bp.type === 'team') {
+        // color_3 wird hier als CSS-Variable --bg-deco bereitgestellt
+        let wrapperStyle = `--page-bg: ${bp.color_2}; --slot-color: ${bp.color_1}; --text-col: ${getPageTextColor(bp.color_2)}; --bg-deco: ${bp.color_3 || '#f2a900'};`;
+
         if (isLeftPage) { 
             let nameStyle = 'font-size: 8cqw;';
             if (bp.name.length > 9) nameStyle = 'font-size: 7cqw;';
@@ -851,8 +854,9 @@ function buildPageHTML(bp, isLeftPage) {
             
             return `
                 <div class="page-wrapper" style="${wrapperStyle}">
-                    <div style="position: absolute; top: -3.5cqw; left: 0; font-family: 'WC26', Arial, sans-serif; font-size: 130cqw; color: var(--slot-color); line-height: 0.72; z-index: 0; pointer-events: none;">2</div>
-                    <div style="position: absolute; bottom: -2cqw; right: 0; font-family: 'WC26', Arial, sans-serif; font-size: 130cqw; color: var(--slot-color); line-height: 0.72; z-index: 0; pointer-events: none;">6</div>
+                    <div style="position: absolute; top: 0; left: 0; height: 66%; font-family: 'WC26', Arial, sans-serif; font-size: 90cqw; color: var(--bg-deco); line-height: 0.72; z-index: 0; pointer-events: none; overflow: hidden;">2</div>
+                    
+                    <div style="position: absolute; bottom: 0; right: 0; height: 66%; font-family: 'WC26', Arial, sans-serif; font-size: 90cqw; color: var(--bg-deco); line-height: 0.72; z-index: 0; pointer-events: none; display: flex; align-items: flex-end; overflow: hidden;">6</div>
                     
                     <div class="team-name-wrapper" style="position: relative; z-index: 10;">
                         <h2 class="team-name" style="${nameStyle}">${bp.name}</h2>
@@ -884,7 +888,7 @@ function buildPageHTML(bp, isLeftPage) {
         } else { 
             return `
                 <div class="page-wrapper" style="${wrapperStyle}">
-                    <div style="position: absolute; right: 0; bottom: 0; transform-origin: bottom right; transform: rotate(-90deg); font-family: 'WC26', Arial, sans-serif; font-size: 45cqw; color: var(--slot-color); line-height: 0.75; margin-bottom: -1cqw; letter-spacing: 0.5cqw; z-index: 0; pointer-events: none; white-space: nowrap;">
+                    <div style="position: absolute; right: 0; bottom: 0; width: 100dvh; height: 35cqw; transform-origin: bottom right; transform: translateX(calc(-100% + 35cqw)) rotate(-90deg); font-family: 'WC26', Arial, sans-serif; font-size: 35cqw; color: var(--bg-deco); line-height: 1; z-index: 0; pointer-events: none; white-space: nowrap; text-align: right; padding-right: 4cqw;">
                         ${bp.countryCode}
                     </div>
 
