@@ -156,6 +156,42 @@ h1 { margin: 0; font-size: 22px; font-family: 'FWC2026', Arial, sans-serif; text
     .dark-page { background-size: 6px 6px; }
 }
 
+/* --- RAINBOW BORDER BACKGROUND (Zusatz für spezielle Seiten) --- */
+.rainbow-border-page {
+    position: relative;
+    /* Exakte Farben und Verteilung aus deiner Vorlage */
+    background: linear-gradient(130deg, 
+        #6B00FF 0%, #6B00FF 10%, 
+        #005B52 10%, #005B52 20%, 
+        #52FFFF 20%, #52FFFF 36%, 
+        #A8FF00 36%, #A8FF00 56%, 
+        #E60000 56%, #E60000 70%, 
+        #2740FF 70%, #2740FF 85%, 
+        #FF4B00 85%, #FF4B00 100%) !important;
+    z-index: 1;
+}
+
+.rainbow-border-page::before {
+    content: "";
+    position: absolute;
+    /* Abstand zum Rand = Dicke des bunten Rahmens */
+    top: 2cqw;
+    left: 2cqw;
+    right: 2cqw;
+    bottom: 2cqw;
+    /* Die schwarze innere Fläche mit leichtem Punkt-Muster */
+    background-color: #000000;
+    background-image: radial-gradient(#3a3a3a 1px, transparent 1px);
+    background-size: 12px 12px;
+    border-radius: 5cqw;
+    z-index: -1;
+}
+
+@media (max-width: 767px) {
+    .rainbow-border-page::before { background-size: 6px 6px; }
+}
+
+
 /* ÜBERSCHRIFTEN NUTZEN FWC2026 */
 .special-title { font-family: 'FWC2026', Arial, sans-serif; color: #FFD700; text-transform: uppercase; font-size: 7cqw; margin: 0 0 2cqw 0; text-align: center; letter-spacing: 2px; text-shadow: 0 2px 4px rgba(0,0,0,0.5); }
 .title-wc26 { font-family: 'FWC2026', Arial, sans-serif; font-size: 16cqw; font-weight: bold; width: 100%; text-align: center; margin: 0; padding-top: 1cqw; background: linear-gradient(to bottom, #FFDF73, #D4AF37, #997A15); -webkit-background-clip: text; -webkit-text-fill-color: transparent; text-shadow: 0px 4px 10px rgba(0,0,0,0.6); letter-spacing: 2cqw; }
@@ -768,7 +804,10 @@ function buildStadiumPage(bp) {
 }
 
 function buildGenericGrid(bp, rotateAll = false) {
-    let html = `<div class="page-wrapper dark-page">`;
+    let isRainbow = (bp.type === 'golden_boots' || bp.type === 'golden_ball' || bp.type === 'winning_teams');
+    let rainbowClass = isRainbow ? " rainbow-border-page" : "";
+    let html = `<div class="page-wrapper dark-page${rainbowClass}">`;
+    
     if (bp.type === 'golden_boots' && bp.startId === 'GBO001') html += `<h2 class="special-title">Golden Boots</h2>`;
     if (bp.type === 'golden_ball' && bp.startId === 'GBA001') html += `<h2 class="special-title">Golden Ball</h2>`;
     if (bp.type === 'winning_teams' && bp.startId === 'WIN001') html += `<h2 class="special-title">Winning Teams</h2>`;
@@ -849,7 +888,7 @@ function buildPageHTML(bp, isLeftPage) {
     
     if (bp.type === 'cover_back') {
         return `
-        <div class="page-wrapper dark-page" style="display: flex; flex-direction: column; height: 100%; padding: 6cqw 5cqw;">
+        <div class="page-wrapper dark-page rainbow-border-page" style="display: flex; flex-direction: column; height: 100%; padding: 6cqw 5cqw;">
             <h2 class="special-title" style="font-size: 6.5cqw; margin: 0; text-align: center; flex-shrink: 0;">HOW TO PLAY</h2>
             <ul style="color: white; font-family: Arial, sans-serif; font-size: 3.2cqw; line-height: 1.5; padding-left: 5cqw; margin: 0; display: flex; flex-direction: column; justify-content: space-evenly; flex-grow: 1;">
                 <li>Swipe left or right to change the page</li>
@@ -903,7 +942,7 @@ function buildPageHTML(bp, isLeftPage) {
         let half = Math.ceil(indexEntries.length / 2);
         let entries = isLeft ? indexEntries.slice(0, half) : indexEntries.slice(half);
 
-        let html = `<div class="page-wrapper index-wrapper dark-page">
+        let html = `<div class="page-wrapper index-wrapper dark-page rainbow-border-page">
                         <div class="index-grid">`;
         entries.forEach(e => {
             let icon = e.flag ? `<img src="${e.flag}" class="index-flag" style="background-color: ${e.bg}; border-color: ${e.border}; box-shadow: 0 0 6px ${e.border};" onerror="this.src='assets/Icon.png'">` : `<div class="index-flag-placeholder"></div>`;
