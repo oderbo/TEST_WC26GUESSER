@@ -309,7 +309,9 @@ function initMarketAuth() {
                     const album = currentUserData.album || {};
                     const pasted = Object.keys(album).filter(k => album[k] === "pasted");
                     
-                    currentMyOwnedSet = new Set([...stapel, ...pasted]);
+                    // NEU: Traded-Stickers zum Besitz hinzufügen!
+                    const traded = currentUserData.traded_stickers || [];
+                    currentMyOwnedSet = new Set([...stapel, ...pasted, ...traded]);
                     currentMyUniqueStapel = [...new Set(stapel)];
 
                     updateBadges();
@@ -429,7 +431,7 @@ function loadMarketUsers() {
             const otherUid = userDoc.id;
             const userB = userDoc.data();
             
-            // Name sicherstellen (Sucht nach username, name oder nutzt Platzhalter)
+            // Name sicherstellen
             const displayName = userB.username || userB.name || "Spieler";
             
             const theirAvailableStickers = othersMarketStickers[otherUid] || [];
@@ -437,7 +439,9 @@ function loadMarketUsers() {
             const theirStapel = userB.stapel || [];
             const theirAlbum = userB.album || {};
             const theirPasted = Object.keys(theirAlbum).filter(k => theirAlbum[k] === "pasted");
-            const theirOwnedSet = new Set([...theirStapel, ...theirPasted]);
+            // NEU: Traded-Stickers des Gegners hinzufügen!
+            const theirTraded = userB.traded_stickers || [];
+            const theirOwnedSet = new Set([...theirStapel, ...theirPasted, ...theirTraded]);
 
             const whatINeedFromThem = theirAvailableStickers.filter(id => !currentMyOwnedSet.has(id));
             const uniqueWhatINeed = [...new Set(whatINeedFromThem)];
@@ -451,7 +455,6 @@ function loadMarketUsers() {
             const card = document.createElement('div');
             card.className = 'user-card';
             
-            // Abfangen der verschiedenen Zustände für ALLE User
             if (theirAvailableStickers.length === 0) {
                 card.style.opacity = "0.5"; 
                 card.onclick = () => alert(`${displayName} hat aktuell gar keine Sticker auf dem Markt.`);
@@ -740,9 +743,12 @@ function confirmOffer() {
             });
         });
     }).then(() => {
-        cleanupMarket(myUid, answerSelectedStickers);
-        cleanupMarket(senderUid, currentActiveOffer.requested_stickers);
-
+        // NEU: Wir warten, bis beide Cleanups in der Datenbank FERTIG sind!
+        return Promise.all([
+            cleanupMarket(myUid, answerSelectedStickers),
+            cleanupMarket(senderUid, currentActiveOffer.requested_stickers)
+        ]);
+    }).then(() => {
         document.getElementById("answerOfferModal").style.display = "none";
         btn.innerText = "Bestätigen";
         
@@ -769,19 +775,22 @@ function confirmOffer() {
 }
 
 function cleanupMarket(ownerUid, stickerIds) {
-    stickerIds.forEach(stickerId => {
-        db.collection("market")
+    const promises = stickerIds.map(stickerId => {
+        return db.collection("market")
           .where("owner_uid", "==", ownerUid)
           .where("sticker_id", "==", stickerId)
           .where("status", "==", "available")
           .limit(1)
           .get()
           .then(snap => {
+              const updatePromises = [];
               snap.forEach(doc => {
-                  db.collection("market").doc(doc.id).update({ status: "traded" });
+                  updatePromises.push(db.collection("market").doc(doc.id).update({ status: "traded" }));
               });
+              return Promise.all(updatePromises);
           });
     });
+    return Promise.all(promises);
 }
 
 /* =========================================================================
