@@ -928,45 +928,42 @@ function buildPageHTML(bp, isLeftPage) {
         </div>`;
     }
     
-if (bp.type === 'special') {
-		return `
-		<div class="page-wrapper dark-page rainbow-border-page" style="position: relative;">
-			<h2 style="position: absolute; top: 1%; left: 10%; width: 80%; text-align: center; color: #ffffff; font-family: 'WC26', Arial, sans-serif; font-size: 16cqw; margin: 0; text-shadow: none;">WC26</h2>
-			
-			<div style="position: absolute; top: calc(4% + 13cqw + 5%); left: 50%; transform: translateX(-50%);">
-				<div class="rotated-slot-wrapper">${buildSlotHTML('SPC001', '1', 'rotated-slot spc-top-slot')}</div>
-			</div>
-            <div style="position: absolute; top: calc(4% + 13cqw + 5% + var(--col-w)); left: 50%; transform: translateX(-50%);">
-                <div class="rotated-slot-wrapper">${buildSlotHTML('SPC002', '2', 'rotated-slot spc-bottom-slot')}</div>
-            </div>
+	if (bp.type === 'special') {
+			return `
+			<div class="page-wrapper dark-page rainbow-border-page" style="position: relative;">
+				<h2 style="position: absolute; top: 4%; left: 10%; width: 80%; text-align: center; color: #ffffff; font-family: 'FWC2026', Arial, sans-serif; font-size: 16cqw; margin: 0; text-shadow: none;">WC26</h2>
+				
+				<div style="position: absolute; top: calc(4% + 16cqw + 5%); left: 50%; transform: translateX(-50%);">
+					<div class="rotated-slot-wrapper">${buildSlotHTML('SPC001', '1', 'rotated-slot spc-top-slot')}</div>
+				</div>
+				<div style="position: absolute; top: calc(4% + 16cqw + 5% + var(--col-w)); left: 50%; transform: translateX(-50%);">
+					<div class="rotated-slot-wrapper">${buildSlotHTML('SPC002', '2', 'rotated-slot spc-bottom-slot')}</div>
+				</div>
 
-            <div style="position: absolute; bottom: calc(25px + 2%); left: 4cqw;">
-                <div class="rotated-slot-wrapper">${buildSlotHTML('SPC000', '00', 'rotated-slot')}</div>
-            </div>
-            <div style="position: absolute; bottom: calc(25px + 2% + var(--col-w) + 5%); left: 4cqw;">
-                ${buildSlotHTML('SPC003', '3')}
-            </div>
+				<div style="position: absolute; bottom: calc(25px + 2%); left: 4cqw;">
+					<div class="rotated-slot-wrapper">${buildSlotHTML('SPC000', '00', 'rotated-slot')}</div>
+				</div>
+				<div style="position: absolute; bottom: calc(25px + 2% + var(--col-w) + 5%); left: 4cqw;">
+					${buildSlotHTML('SPC003', '3')}
+				</div>
 
-            <div style="position: absolute; bottom: calc(25px + 2%); right: 4cqw;">
-                <div class="rotated-slot-wrapper">${buildSlotHTML('SPC004', '4', 'rotated-slot')}</div>
-            </div>
-            <div style="position: absolute; bottom: calc(25px + 2% + var(--col-w) + 5%); right: 4cqw;">
-                <div class="rotated-slot-wrapper">${buildSlotHTML('SPC006', '6', 'rotated-slot spc-bottom-slot')}</div>
-            </div>
-            <div style="position: absolute; bottom: calc(25px + 2% + var(--col-w)*2 + 5%); right: 4cqw;">
-                <div class="rotated-slot-wrapper">${buildSlotHTML('SPC005', '5', 'rotated-slot spc-top-slot')}</div>
-            </div>
-            
-            <!-- KORREKTUR: Der Text-Container nutzt jetzt die exakte Höhe der Boxen 5 und 6 (var(--col-w) * 2) -->
-            <div style="position: absolute; right: calc(4cqw + var(--col-h) + 1cqw); bottom: calc(25px + 2% + var(--col-w) + 5%); height: calc(var(--col-w) * 2); display: flex; flex-direction: column; justify-content: space-between; align-items: flex-end;">
-                <!-- WE klebt oben (Oberkante 5), Höhe berechnet sich dynamisch abzüglich eines winzigen Spalts (0.5cqw) -->
-                <div style="font-family: 'WC26', Arial, sans-serif; color: #ffffff; font-size: 14cqw; line-height: 0.72; height: calc(var(--col-w) - 0.25cqw); display: flex; align-items: flex-start;">WE</div>
-                <!-- ARE klebt unten (Unterkante 6), Höhe ebenfalls angepasst -->
-                <div style="font-family: 'WC26', Arial, sans-serif; color: #ffffff; font-size: 9.5cqw; line-height: 0.72; height: calc(var(--col-w) - 0.25cqw); display: flex; align-items: flex-end;">ARE</div>
-            </div>
-		</div>`;
-	}
-    
+				<div style="position: absolute; bottom: calc(25px + 2%); right: 4cqw;">
+					<div class="rotated-slot-wrapper">${buildSlotHTML('SPC004', '4', 'rotated-slot')}</div>
+				</div>
+				<div style="position: absolute; bottom: calc(25px + 2% + var(--col-w) + 5%); right: 4cqw;">
+					<div class="rotated-slot-wrapper">${buildSlotHTML('SPC006', '6', 'rotated-slot spc-bottom-slot')}</div>
+				</div>
+				<div style="position: absolute; bottom: calc(25px + 2% + var(--col-w)*2 + 5%); right: 4cqw;">
+					<div class="rotated-slot-wrapper">${buildSlotHTML('SPC005', '5', 'rotated-slot spc-top-slot')}</div>
+				</div>
+				
+				<div style="position: absolute; right: calc(4cqw + var(--col-h) + 1cqw); bottom: calc(25px + 2% + var(--col-w) + 5%); height: calc(var(--col-w) * 2); display: flex; flex-direction: column; justify-content: space-between; align-items: flex-end; width: 30cqw;">
+					<div style="font-family: 'WC2026', Arial, sans-serif; color: #ffffff; font-size: 26cqw; line-height: 0.65; height: calc(var(--col-w) - 0.5cqw); display: flex; align-items: flex-start; overflow: visible;">WE</div>
+					<div style="font-family: 'WC2026', Arial, sans-serif; color: #ffffff; font-size: 18.5cqw; line-height: 0.65; height: calc(var(--col-w) - 0.5cqw); display: flex; align-items: flex-end; overflow: visible;">ARE</div>
+				</div>
+			</div>`;
+		}
+		
     if (bp.type === 'index_left' || bp.type === 'index_right') {
         let isLeft = bp.type === 'index_left';
         // Genau 24 auf der linken Seite, damit oben für INDEX Platz bleibt. Rest (28 Stück) rechts.
