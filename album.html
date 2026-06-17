@@ -16,7 +16,7 @@
 }
 @font-face {
     font-family: 'WC2026';
-    src: url('assets/WC2026.otf') format('opentype');
+    src: url('assets/WC26.otf') format('opentype'); /* KORREKTUR: Name angepasst */
     font-weight: normal;
     font-style: normal;
 }
@@ -913,7 +913,7 @@ function buildPageHTML(bp, isLeftPage) {
                     <li style="color: #009933;">GET 2 <img src="assets/booster_pack_front.png" style="height: 1.6em; vertical-align: middle; margin: 0 0.2em;"> for every 50% progress in <img src="assets/country_pick_button.jpg" style="height: 1.6em; border-radius: 0.2em; vertical-align: middle; margin: 0 0.2em; box-shadow: 0 1px 3px rgba(0,0,0,0.5);"></li>
                     <li style="color: #009933;">GET 3 <img src="assets/booster_pack_front.png" style="height: 1.6em; vertical-align: middle; margin: 0 0.2em;"> for every 100% in <img src="assets/country_pick_button.jpg" style="height: 1.6em; border-radius: 0.2em; vertical-align: middle; margin: 0 0.2em; box-shadow: 0 1px 3px rgba(0,0,0,0.5);"></li>
                     <li style="color: #0077cc;">GET 1 <img src="assets/booster_pack_front.png" style="height: 1.5em; vertical-align: middle; margin: 0 0.2em; box-shadow: 0 1px 3px rgba(0,0,0,0.4);"> every <strong>4</strong> hours</li>
-                    <li style="color: #d4af37;">TRADE your Sticker at <span style="display:inline-flex; vertical-align: middle; width: 1.8em; height: 1.8em; border-radius: 50%; border: 1.5px solid #ffbb04; background-color: #ffffff; align-items: center; justify-content: center; margin: 0 0.2em;"><img src="assets/market_icon.png" style="width: 60%; height: 60%; object-fit: contain;"></span></li>
+                    <li style="color: #d4af37;">TRADE your Stickers at <span style="display:inline-flex; vertical-align: middle; width: 1.8em; height: 1.8em; border-radius: 50%; border: 1.5px solid #ffbb04; background-color: #ffffff; align-items: center; justify-content: center; margin: 0 0.2em;"><img src="assets/market_icon.png" style="width: 60%; height: 60%; object-fit: contain;"></span></li>
                 </ul>
             </div>
 
@@ -933,10 +933,10 @@ function buildPageHTML(bp, isLeftPage) {
 		<div class="page-wrapper dark-page rainbow-border-page" style="position: relative;">
 			<h2 style="position: absolute; top: 4%; left: 10%; width: 80%; text-align: center; color: #ffffff; font-family: 'FWC2026', Arial, sans-serif; font-size: 16cqw; margin: 0; text-shadow: none;">WC26</h2>
 			
-			<div style="position: absolute; top: calc(2% + 16cqw + 5%); left: 50%; transform: translateX(-50%);">
+			<div style="position: absolute; top: calc(4% + 16cqw + 5%); left: 50%; transform: translateX(-50%);">
 				<div class="rotated-slot-wrapper">${buildSlotHTML('SPC001', '1', 'rotated-slot spc-top-slot')}</div>
 			</div>
-            <div style="position: absolute; top: calc(28% + var(--col-w)); left: 50%; transform: translateX(-50%);">
+            <div style="position: absolute; top: calc(4% + 16cqw + 5% + var(--col-w)); left: 50%; transform: translateX(-50%);">
                 <div class="rotated-slot-wrapper">${buildSlotHTML('SPC002', '2', 'rotated-slot spc-bottom-slot')}</div>
             </div>
 
@@ -944,7 +944,7 @@ function buildPageHTML(bp, isLeftPage) {
                 <div class="rotated-slot-wrapper">${buildSlotHTML('SPC000', '00', 'rotated-slot')}</div>
             </div>
             <div style="position: absolute; bottom: calc(25px + 2% + var(--col-w) + 5%); left: 4cqw;">
-                <div class="rotated-slot-wrapper">${buildSlotHTML('SPC003', '3', 'rotated-slot')}</div>
+                ${buildSlotHTML('SPC003', '3')}
             </div>
 
             <div style="position: absolute; bottom: calc(25px + 2%); right: 4cqw;">
@@ -961,8 +961,8 @@ function buildPageHTML(bp, isLeftPage) {
                 <div style="font-family: 'WC2026', Arial, sans-serif; color: #ffffff; font-size: 14cqw; line-height: 0.75;">WE</div>
                 <div style="font-family: 'WC2026', Arial, sans-serif; color: #ffffff; font-size: 9.5cqw; line-height: 0.75;">ARE</div>
             </div>
-        </div>`;
-    }
+		</div>`;
+	}
     
     if (bp.type === 'index_left' || bp.type === 'index_right') {
         let isLeft = bp.type === 'index_left';
