@@ -78,8 +78,6 @@ h1 { margin: 0; font-size: 22px; font-family: 'FWC2026', Arial, sans-serif; text
 }
 
 .stack-card { position: absolute; width: 100%; height: 100%; background: transparent; display: flex; align-items: center; justify-content: center; container-type: inline-size; }
-
-/* Zwingt den iOS Touch IMMER auf die Karte, ignoriert Bilder/Texte innen */
 .stack-card * { pointer-events: none !important; }
 
 .stack-card-inner { position: relative; width: 100%; height: 100%; transition: transform 0.4s cubic-bezier(0.4, 0.0, 0.2, 1); transform-style: preserve-3d; border-radius: 4px; box-shadow: 0 4px 8px rgba(0,0,0,0.4); }
@@ -91,13 +89,8 @@ h1 { margin: 0; font-size: 22px; font-family: 'FWC2026', Arial, sans-serif; text
     border-radius: 4px; overflow: hidden; background-color: #eeeeee; 
     -webkit-transform-style: preserve-3d; transform-style: preserve-3d;
 }
-.stack-front { 
-    transform: rotateY(0deg) translate3d(0,0,0); -webkit-transform: rotateY(0deg) translate3d(0,0,0); z-index: 2; 
-}
-.stack-back { 
-    transform: rotateY(180deg) translate3d(0,0,0); -webkit-transform: rotateY(180deg) translate3d(0,0,0); 
-    background-color: #e0e0e0; display: flex; align-items: center; justify-content: center; font-size: 28px; font-weight: bold; color: #111; font-family: Arial, sans-serif; border: 2.5px solid #fff; z-index: 1; 
-}
+.stack-front { transform: rotateY(0deg) translate3d(0,0,0); -webkit-transform: rotateY(0deg) translate3d(0,0,0); z-index: 2; }
+.stack-back { transform: rotateY(180deg) translate3d(0,0,0); -webkit-transform: rotateY(180deg) translate3d(0,0,0); background-color: #e0e0e0; display: flex; align-items: center; justify-content: center; font-size: 28px; font-weight: bold; color: #111; font-family: Arial, sans-serif; border: 2.5px solid #fff; z-index: 1; }
 
 .stack-card-3 { transform: rotate(8deg) translate(3px, 3px); z-index: 1; }
 .stack-card-2 { transform: rotate(-5deg) translate(-2px, 1px); z-index: 2; }
@@ -134,8 +127,19 @@ h1 { margin: 0; font-size: 22px; font-family: 'FWC2026', Arial, sans-serif; text
 .page-number-right { position: absolute; bottom: 8px; right: 12px; font-size: 14px; font-weight: bold; color: var(--text-col, #111); z-index: 50; }
 
 /* =========================================================================
-   DYNAMISCHES SEITEN-LAYOUT
+   DYNAMISCHES SEITEN-LAYOUT & REGENBOGEN
    ========================================================================= */
+:root {
+    --rainbow-grad: linear-gradient(130deg, 
+        #6B00FF 0%, #6B00FF 10%, 
+        #005B52 10%, #005B52 20%, 
+        #52FFFF 20%, #52FFFF 36%, 
+        #A8FF00 36%, #A8FF00 56%, 
+        #E60000 56%, #E60000 70%, 
+        #2740FF 70%, #2740FF 85%, 
+        #FF4B00 85%, #FF4B00 100%);
+}
+
 .page-wrapper {
     container-type: inline-size;
     width: 100%; height: 100%; padding: 4cqw;
@@ -146,65 +150,70 @@ h1 { margin: 0; font-size: 22px; font-family: 'FWC2026', Arial, sans-serif; text
 }
 
 .dark-page {
-    background-color: #1e1e1e !important;
-    background-image: radial-gradient(#3a3a3a 1px, transparent 1px);
-    background-size: 12px 12px;
+    background-color: #000000 !important;
     --text-col: #FFD700;
     --slot-color: #FFD700;
 }
-@media (max-width: 767px) {
-    .dark-page { background-size: 6px 6px; }
-}
 
-/* --- RAINBOW BORDER BACKGROUND (Zusatz für spezielle Seiten) --- */
 .rainbow-border-page {
     position: relative;
-    /* Exakte Farben und Verteilung aus deiner Vorlage */
-    background: linear-gradient(130deg, 
-        #6B00FF 0%, #6B00FF 10%, 
-        #005B52 10%, #005B52 20%, 
-        #52FFFF 20%, #52FFFF 36%, 
-        #A8FF00 36%, #A8FF00 56%, 
-        #E60000 56%, #E60000 70%, 
-        #2740FF 70%, #2740FF 85%, 
-        #FF4B00 85%, #FF4B00 100%) !important;
+    background: var(--rainbow-grad) !important;
     z-index: 1;
 }
 
 .rainbow-border-page::before {
     content: "";
     position: absolute;
-    top: 2cqw;
-    left: 2cqw;
-    right: 2cqw;
-    bottom: 2cqw;
+    top: 1.5cqw; left: 1.5cqw; right: 1.5cqw; bottom: 1.5cqw;
     background-color: #000000;
-    background-image: radial-gradient(#3a3a3a 1px, transparent 1px); /* Das erzeugt die Punkte */
-    background-size: 12px 12px; /* Größe der Punkte */
     border-radius: 5cqw;
     z-index: -1;
 }
 
-@media (max-width: 767px) {
-    .rainbow-border-page::before { background-size: 6px 6px; } /* Verkleinerung für Handy */
-}
-
-
 /* ÜBERSCHRIFTEN NUTZEN FWC2026 */
 .special-title { font-family: 'FWC2026', Arial, sans-serif; color: #FFD700; text-transform: uppercase; font-size: 7cqw; margin: 0 0 2cqw 0; text-align: center; letter-spacing: 2px; text-shadow: 0 2px 4px rgba(0,0,0,0.5); }
-.title-wc26 { font-family: 'FWC2026', Arial, sans-serif; font-size: 16cqw; font-weight: bold; width: 100%; text-align: center; margin: 0; padding-top: 1cqw; background: linear-gradient(to bottom, #FFDF73, #D4AF37, #997A15); -webkit-background-clip: text; -webkit-text-fill-color: transparent; text-shadow: 0px 4px 10px rgba(0,0,0,0.6); letter-spacing: 2cqw; }
+
+/* ANGEPASSTE WC26 TITEL SCHRIFT (Weiß mit goldenem Rand) */
+.title-wc26 { 
+    font-family: 'FWC2026', Arial, sans-serif; 
+    font-size: 16cqw; 
+    font-weight: bold; 
+    width: 100%; text-align: center; margin: 0; padding-top: 1cqw; 
+    color: #ffffff;
+    -webkit-text-fill-color: #ffffff; 
+    -webkit-text-stroke: 1px #D4AF37; 
+    text-shadow: 0px 4px 10px rgba(212, 175, 55, 0.6), 0px 0px 15px rgba(255, 215, 0, 0.4); 
+    letter-spacing: 2cqw; 
+    background: none;
+}
+
+/* TUTORIAL ZAHLEN MIT REGENBOGEN-KONTUR */
+.rainbow-number {
+    font-size: 24cqw;
+    line-height: 0.8;
+    margin: -1.5cqw 0;
+    background: var(--rainbow-grad);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: #ffffff; /* Füllt die Zahl mit Weiß, wie der Seitenhintergrund */
+    -webkit-text-stroke: 1.5cqw transparent; /* Dies ist die ~3% Kontur, die den Regenbogen durchscheinen lässt */
+}
 
 /* --- INDEX SEITE --- */
 .index-wrapper { padding: 4cqw; height: 100%; }
-.index-grid { display: grid; grid-template-columns: repeat(3, 1fr); grid-template-rows: repeat(7, 1fr); gap: 1cqw; width: 100%; height: 100%; align-items: center; justify-items: center; }
+.index-grid { 
+    display: grid; 
+    grid-template-columns: repeat(4, 1fr); 
+    grid-auto-rows: 1fr; 
+    gap: 1cqw; width: 100%; height: 100%; align-items: center; justify-items: center; 
+}
 .index-entry { display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; cursor: pointer; }
-.index-flag { width: 9cqw; height: 9cqw; border-radius: 50%; object-fit: contain; margin-bottom: 0.8cqw; }
-.index-flag-placeholder { width: 9cqw; height: 9cqw; border-radius: 50%; background: rgba(255,255,255,0.1); border: 1.5px solid rgba(255,255,255,0.2); margin-bottom: 0.8cqw; }
+.index-flag { width: 11.5cqw; height: 11.5cqw; border-radius: 50%; object-fit: contain; margin-bottom: 0.8cqw; }
+.index-flag-placeholder { width: 11.5cqw; height: 11.5cqw; border-radius: 50%; background: rgba(255,255,255,0.1); border: 1.5px solid rgba(255,255,255,0.2); margin-bottom: 0.8cqw; }
 .index-label { font-size: 2.8cqw; font-weight: bold; color: #fff; text-transform: uppercase; text-shadow: 0 1px 2px rgba(0,0,0,0.4); line-height: 1.1; }
 
 /* --- TEAM SEITE --- */
 .team-name-wrapper { height: 10cqw; width: 68.5cqw; display: flex; align-items: flex-end; margin-bottom: 2cqw; }
-/* TEAM-NAME AUCH FWC2026! */
 .team-name { font-family: 'FWC2026', Arial, sans-serif; color: var(--text-col, #111111); margin: 0; text-transform: uppercase; line-height: 1; letter-spacing: -0.5px; white-space: nowrap; }
 
 .player-grid-bottom, .player-grid-full { width: 100%; display: grid; grid-template-columns: repeat(4, 1fr); gap: 2cqw; align-content: start; }
@@ -219,9 +228,9 @@ h1 { margin: 0; font-size: 22px; font-family: 'FWC2026', Arial, sans-serif; text
 /* --- PLATZHALTER & STICKER DESIGN --- */
 .sticker-slot {
     position: relative; 
-    width: var(--col-w); /* Die Breite richtet sich dynamisch nach dem Grid */
-    height: auto !important; /* WICHTIG: Überschreibt var(--col-h), der Browser rechnet nun selbst */
-    aspect-ratio: 1 / 1.38 !important; /* Die heilige Ratio */
+    width: var(--col-w); 
+    height: auto !important; 
+    aspect-ratio: 1 / 1.38 !important; 
     border: 1px solid var(--slot-color, #111111); 
     background-color: transparent !important; 
     display: flex; 
@@ -238,6 +247,10 @@ h1 { margin: 0; font-size: 22px; font-family: 'FWC2026', Arial, sans-serif; text
 }
 .rotated-slot .slot-circle { transform: rotate(90deg); }
 
+/* Klassen um aneinanderklebende Sticker perfekt zu verbinden */
+.spc-top-slot { border-right: none !important; }
+.spc-bottom-slot { border-left: none !important; }
+
 .slot-circle {
     width: 28px; height: 28px; border-radius: 50%; 
     border: 1px solid var(--slot-color, #111111);
@@ -252,7 +265,7 @@ h1 { margin: 0; font-size: 22px; font-family: 'FWC2026', Arial, sans-serif; text
 .sticker-wrapper { 
     position: absolute; 
     width: 100%; 
-    height: 100%; /* Hier sind 100% korrekt, da der Slot darüber nun perfekt geformt ist */
+    height: 100%; 
     top: 0; 
     left: 0; 
     box-shadow: 0 2px 6px rgba(0,0,0,0.3); 
@@ -261,6 +274,10 @@ h1 { margin: 0; font-size: 22px; font-family: 'FWC2026', Arial, sans-serif; text
     container-type: inline-size !important; 
 }
 .sticker-inner { position: absolute; top: 5cqw; left: 5cqw; right: 5cqw; bottom: 5cqw; background-color: var(--color-1, #c10e23); border: 1.25cqw solid var(--color-2, #046a38); outline: 1.25cqw solid var(--color-3, #f2a900); box-sizing: border-box; }
+
+/* Spezifische Entfernung der Ecken für zusammengeklebte WC26 Sticker */
+#slot-SPC001 .special-sticker-inner, #slot-SPC005 .special-sticker-inner { right: 0; border-radius: 1cqw 0 0 1cqw; border-right: none; }
+#slot-SPC002 .special-sticker-inner, #slot-SPC006 .special-sticker-inner { left: 0; border-radius: 0 1cqw 1cqw 0; border-left: none; }
 
 /* Stadien nahtlos aneinanderkleben! */
 .container-stadium-left .special-sticker-inner { right: 0; border-radius: 1cqw 0 0 1cqw; border-right: none; }
@@ -276,7 +293,6 @@ h1 { margin: 0; font-size: 22px; font-family: 'FWC2026', Arial, sans-serif; text
 .lower-elements-wrapper { position: absolute; top: 60%; bottom: 0; left: 0; right: 0; display: flex; flex-direction: column; gap: 1.2cqw; padding-bottom: 1.2cqw; box-sizing: border-box; z-index: 2; }
 .sticker-info-box { flex: 1; min-height: 0; width: 100%; background-color: var(--color-2); display: flex; align-items: center; justify-content: center; box-shadow: inset 0 0.5cqw 0 var(--color-3), inset 0 -0.5cqw 0 var(--color-3); box-sizing: border-box; }
 
-/* SPIELERNAME: Standardmäßig größer, bricht bei Überbreite perfekt um */
 .player-name { 
     font-family: Arial, sans-serif !important; 
     color: #ffffff; 
@@ -886,43 +902,57 @@ function buildPageHTML(bp, isLeftPage) {
     
     if (bp.type === 'cover_back') {
         return `
-        <div class="page-wrapper dark-page rainbow-border-page" style="display: flex; flex-direction: column; height: 100%; padding: 6cqw 5cqw;">
-            <h2 class="special-title" style="font-size: 6.5cqw; margin: 0; text-align: center; flex-shrink: 0;">HOW TO PLAY</h2>
-            <ul style="color: white; font-family: Arial, sans-serif; font-size: 3.2cqw; line-height: 1.5; padding-left: 5cqw; margin: 0; display: flex; flex-direction: column; justify-content: space-evenly; flex-grow: 1;">
-                <li>Swipe left or right to change the page</li>
-                <li>Tap on page to zoom</li>
-                <li>Swipe up on zoomed page to un-zoom</li>
-                <li>Drag and drop sticker</li>
-                <li>Click on country on indexpage to jump to page</li>
-                <li>Press <span style="display:inline-flex; vertical-align: middle; width: 2.2em; height: 2.2em; border-radius: 50%; border: 1.5px solid #ffbb04; background-color: #ffffff; align-items: center; justify-content: center; font-size: 0.4em; font-weight: bold; color: #111; margin: 0 0.2em;">INDEX</span> to jump to indexpage</li>
-                <li style="color: #00cc44; font-weight: bold;">GET 2 <img src="assets/booster_pack_front.png" style="height: 1.6em; vertical-align: middle; margin: 0 0.2em;"> for every 50% progress in <img src="assets/country_pick_button.jpg" style="height: 1.6em; border-radius: 0.2em; vertical-align: middle; margin: 0 0.2em; box-shadow: 0 1px 3px rgba(0,0,0,0.5);"></li>
-                <li style="color: #00cc44; font-weight: bold;">GET 3 <img src="assets/booster_pack_front.png" style="height: 1.6em; vertical-align: middle; margin: 0 0.2em;"> for every 100% in <img src="assets/country_pick_button.jpg" style="height: 1.6em; border-radius: 0.2em; vertical-align: middle; margin: 0 0.2em; box-shadow: 0 1px 3px rgba(0,0,0,0.5);"></li>
-                <li style="color: #00a2ff; font-weight: bold;">GET 1 <img src="assets/favicon.png" style="height: 1.5em; vertical-align: middle; margin: 0 0.2em; box-shadow: 0 1px 3px rgba(0,0,0,0.4);"> every <strong>4</strong> hours</li>
-                <li style="color: #FFD700; font-weight: bold;">TRADE your Sticker at <span style="display:inline-flex; vertical-align: middle; width: 1.8em; height: 1.8em; border-radius: 50%; border: 1.5px solid #ffbb04; background-color: #ffffff; align-items: center; justify-content: center; margin: 0 0.2em;"><img src="assets/market_icon.png" style="width: 60%; height: 60%; object-fit: contain;"></span></li>
-            </ul>
+        <div class="page-wrapper" style="background-color: #ffffff; display: flex; flex-direction: row; padding: 0; height: 100%; overflow: hidden;">
+            <div style="width: 25%; display: flex; flex-direction: column; align-items: center; justify-content: space-around; overflow: hidden; font-family: 'FWC2026', Arial, sans-serif; padding: 2cqw 0;">
+                <div class="rainbow-number">2</div><div class="rainbow-number">6</div>
+                <div class="rainbow-number">2</div><div class="rainbow-number">6</div>
+                <div class="rainbow-number">2</div>
+            </div>
+            
+            <div style="width: 50%; padding: 6cqw 0; display: flex; flex-direction: column; z-index: 5;">
+                <h2 class="special-title" style="color: #111111; text-shadow: 0 1px 2px rgba(0,0,0,0.2); font-size: 5.5cqw;">HOW TO PLAY</h2>
+                <ul style="color: #111111; font-family: Arial, sans-serif; font-size: 3cqw; line-height: 1.4; padding-left: 5cqw; margin: 0; display: flex; flex-direction: column; justify-content: space-evenly; flex-grow: 1; font-weight: bold;">
+                    <li>Swipe left or right to change the page</li>
+                    <li>Tap on page to zoom</li>
+                    <li>Swipe up on zoomed page to un-zoom</li>
+                    <li>Drag and drop sticker</li>
+                    <li>Click on country on indexpage to jump to page</li>
+                    <li>Press <span style="display:inline-flex; vertical-align: middle; width: 2.2em; height: 2.2em; border-radius: 50%; border: 1.5px solid #ffbb04; background-color: #ffffff; align-items: center; justify-content: center; font-size: 0.4em; font-weight: bold; color: #111; margin: 0 0.2em;">INDEX</span> to jump to indexpage</li>
+                    <li style="color: #009933;">GET 2 <img src="assets/booster_pack_front.png" style="height: 1.6em; vertical-align: middle; margin: 0 0.2em;"> for every 50% progress in <img src="assets/country_pick_button.jpg" style="height: 1.6em; border-radius: 0.2em; vertical-align: middle; margin: 0 0.2em; box-shadow: 0 1px 3px rgba(0,0,0,0.5);"></li>
+                    <li style="color: #009933;">GET 3 <img src="assets/booster_pack_front.png" style="height: 1.6em; vertical-align: middle; margin: 0 0.2em;"> for every 100% in <img src="assets/country_pick_button.jpg" style="height: 1.6em; border-radius: 0.2em; vertical-align: middle; margin: 0 0.2em; box-shadow: 0 1px 3px rgba(0,0,0,0.5);"></li>
+                    <li style="color: #0077cc;">GET 1 <img src="assets/favicon.png" style="height: 1.5em; vertical-align: middle; margin: 0 0.2em; box-shadow: 0 1px 3px rgba(0,0,0,0.4);"> every <strong>4</strong> hours</li>
+                    <li style="color: #d4af37;">TRADE your Sticker at <span style="display:inline-flex; vertical-align: middle; width: 1.8em; height: 1.8em; border-radius: 50%; border: 1.5px solid #ffbb04; background-color: #ffffff; align-items: center; justify-content: center; margin: 0 0.2em;"><img src="assets/market_icon.png" style="width: 60%; height: 60%; object-fit: contain;"></span></li>
+                </ul>
+            </div>
+
+            <div style="width: 25%; display: flex; flex-direction: column; align-items: center; justify-content: space-around; overflow: hidden; font-family: 'FWC2026', Arial, sans-serif; padding: 2cqw 0;">
+                <div class="rainbow-number">6</div><div class="rainbow-number">2</div>
+                <div class="rainbow-number">6</div><div class="rainbow-number">2</div>
+                <div class="rainbow-number">6</div>
+            </div>
         </div>`;
     }
     
     if (bp.type === 'special') {
         return `
-        <div class="page-wrapper dark-page" style="position: relative;">
-            <h2 class="title-wc26" style="position: absolute; top: 0; left: 0;">WC26</h2>
+        <div class="page-wrapper dark-page rainbow-border-page" style="position: relative;">
+            <h2 class="title-wc26" style="position: absolute; top: 2cqw; left: 0;">WC26</h2>
             
-            <div style="position: absolute; top: 28cqw; left: 4cqw;">
-                <div class="rotated-slot-wrapper">${buildSlotHTML('SPC001', '1', 'rotated-slot')}</div>
+            <div style="position: absolute; top: 20cqw; left: 4cqw;">
+                <div class="rotated-slot-wrapper">${buildSlotHTML('SPC001', '1', 'rotated-slot spc-top-slot')}</div>
             </div>
-            <div style="position: absolute; top: calc(28cqw + var(--col-w) + 2cqw); left: 4cqw;">
-                <div class="rotated-slot-wrapper">${buildSlotHTML('SPC002', '2', 'rotated-slot')}</div>
-            </div>
-
-            <div style="position: absolute; top: 28cqw; right: 4cqw;">
-                <div class="rotated-slot-wrapper">${buildSlotHTML('SPC005', '5', 'rotated-slot')}</div>
-            </div>
-            <div style="position: absolute; top: calc(28cqw + var(--col-w) + 2cqw); right: 4cqw;">
-                <div class="rotated-slot-wrapper">${buildSlotHTML('SPC006', '6', 'rotated-slot')}</div>
+            <div style="position: absolute; top: calc(20cqw + var(--col-w)); left: 4cqw;">
+                <div class="rotated-slot-wrapper">${buildSlotHTML('SPC002', '2', 'rotated-slot spc-bottom-slot')}</div>
             </div>
 
-            <div style="position: absolute; top: calc(28cqw + var(--col-w) * 2 + 6cqw); left: 50%; transform: translateX(-50%);">
+            <div style="position: absolute; top: 20cqw; right: 4cqw;">
+                <div class="rotated-slot-wrapper">${buildSlotHTML('SPC005', '5', 'rotated-slot spc-top-slot')}</div>
+            </div>
+            <div style="position: absolute; top: calc(20cqw + var(--col-w)); right: 4cqw;">
+                <div class="rotated-slot-wrapper">${buildSlotHTML('SPC006', '6', 'rotated-slot spc-bottom-slot')}</div>
+            </div>
+
+            <div style="position: absolute; top: calc(20cqw + var(--col-w) * 2 + 3cqw); left: 50%; transform: translateX(-50%);">
                 <div class="rotated-slot-wrapper">${buildSlotHTML('SPC004', '4', 'rotated-slot')}</div>
             </div>
 
