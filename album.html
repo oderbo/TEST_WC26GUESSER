@@ -184,12 +184,17 @@ h1 { margin: 0; font-size: 22px; font-family: 'FWC2026', Arial, sans-serif; text
 
 /* --- PLATZHALTER & STICKER DESIGN --- */
 .sticker-slot {
-    position: relative; width: var(--col-w); height: var(--col-h); 
-    aspect-ratio: 1 / 1.38 !important; /* iOS CSS-CONTAINMENT FIX */
-    border: 1px solid var(--slot-color, #111111); 
+    position: relative; 
+    width: var(--col-w); /* Die Breite richtet sich dynamisch nach dem Grid */
+    height: auto !important; /* WICHTIG: Überschreibt var(--col-h), der Browser rechnet nun selbst */
+    aspect-ratio: 1 / 1.38 !important; /* Die heilige Ratio */
+    border: 1.5px solid var(--slot-color, #111111); 
     background-color: transparent !important; 
-    display: flex; align-items: center; justify-content: center;
-    container-type: inline-size; z-index: 5;
+    display: flex; 
+    align-items: center; 
+    justify-content: center;
+    container-type: inline-size; 
+    z-index: 5;
 }
 .rotated-slot-wrapper { width: var(--col-h); height: var(--col-w); position: relative; }
 .rotated-slot {
@@ -211,10 +216,15 @@ h1 { margin: 0; font-size: 22px; font-family: 'FWC2026', Arial, sans-serif; text
 
 /* --- CSS-KLASSEN FÜR STICKER DESIGN --- */
 .sticker-wrapper { 
-    position: absolute; width: 100%; height: 100%; top: 0; left: 0; 
-    box-shadow: 0 2px 6px rgba(0,0,0,0.3); pointer-events: none; 
-    aspect-ratio: 1 / 1.38 !important; /* iOS CSS-CONTAINMENT FIX */
-    container-type: inline-size !important; /* iOS CSS-CONTAINMENT FIX */
+    position: absolute; 
+    width: 100%; 
+    height: 100%; /* Hier sind 100% korrekt, da der Slot darüber nun perfekt geformt ist */
+    top: 0; 
+    left: 0; 
+    box-shadow: 0 2px 6px rgba(0,0,0,0.3); 
+    pointer-events: none; 
+    aspect-ratio: 1 / 1.38 !important; 
+    container-type: inline-size !important; 
 }
 .sticker-inner { position: absolute; top: 5cqw; left: 5cqw; right: 5cqw; bottom: 5cqw; background-color: var(--color-1, #c10e23); border: 2px solid var(--color-2, #046a38); outline: 2px solid var(--color-3, #f2a900); box-sizing: border-box; }
 
