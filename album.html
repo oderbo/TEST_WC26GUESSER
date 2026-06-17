@@ -174,21 +174,19 @@ h1 { margin: 0; font-size: 22px; font-family: 'FWC2026', Arial, sans-serif; text
 .rainbow-border-page::before {
     content: "";
     position: absolute;
-    /* Abstand zum Rand = Dicke des bunten Rahmens */
     top: 2cqw;
     left: 2cqw;
     right: 2cqw;
     bottom: 2cqw;
-    /* Die schwarze innere Fläche mit leichtem Punkt-Muster */
     background-color: #000000;
-    background-image: radial-gradient(#3a3a3a 1px, transparent 1px);
-    background-size: 12px 12px;
+    background-image: radial-gradient(#3a3a3a 1px, transparent 1px); /* Das erzeugt die Punkte */
+    background-size: 12px 12px; /* Größe der Punkte */
     border-radius: 5cqw;
     z-index: -1;
 }
 
 @media (max-width: 767px) {
-    .rainbow-border-page::before { background-size: 6px 6px; }
+    .rainbow-border-page::before { background-size: 6px 6px; } /* Verkleinerung für Handy */
 }
 
 
