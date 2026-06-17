@@ -810,7 +810,17 @@ firebase.auth().onAuthStateChanged((user) => {
 function startUserSync(uid) {
     db.collection("users").doc(uid).onSnapshot((doc) => {
         if (!doc.exists) {
+            // Aktuellen Firebase-User abrufen, um an die Anmeldedaten zu kommen
+            const authUser = firebase.auth().currentUser;
+            let generatedName = "Spieler";
+            
+            // Nimmt den Teil vor dem @-Zeichen der E-Mail als Standard-Namen
+            if (authUser && authUser.email) {
+                generatedName = authUser.email.split('@')[0];
+            }
+
             db.collection("users").doc(uid).set({
+                username: generatedName, // <-- HIER WIRD DER NAME JETZT GESPEICHERT!
                 packs_available: 7,
                 last_pack_claimed: firebase.firestore.FieldValue.serverTimestamp(),
                 album: {},
