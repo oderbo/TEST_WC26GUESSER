@@ -841,6 +841,7 @@ function buildPageHTML(bp, isLeftPage) {
     }
 
 	if (bp.type === 'team') {
+        // color_3 (--bg-deco) wird für die Zahlen genutzt, overflow: hidden schneidet alles ab, was über die Seite ragt
         let wrapperStyle = `--page-bg: ${bp.color_2}; --slot-color: ${bp.color_1}; --text-col: ${getPageTextColor(bp.color_2)}; --bg-deco: ${bp.color_3 || '#f2a900'}; position: relative; overflow: hidden;`;
 
         if (isLeftPage) { 
@@ -853,9 +854,7 @@ function buildPageHTML(bp, isLeftPage) {
             
             return `
                 <div class="page-wrapper" style="${wrapperStyle}">
-                    <div style="position: absolute; top: -4cqw; left: -4cqw; font-family: 'WC26', Arial, sans-serif; font-size: 90cqw; color: var(--bg-deco); line-height: 0.72; z-index: 0; pointer-events: none; margin: 0; padding: 0;">2</div>
-                    
-                    <div style="position: absolute; bottom: -4cqw; right: -4cqw; font-family: 'WC26', Arial, sans-serif; font-size: 90cqw; color: var(--bg-deco); line-height: 0.72; z-index: 0; pointer-events: none; margin: 0; padding: 0; text-align: right;">6</div>
+                    <div style="position: absolute; right: -4cqw; top: 50%; transform: translateY(-50%); font-family: 'WC26', Arial, sans-serif; font-size: 160cqw; color: var(--bg-deco); line-height: 0.72; z-index: 0; pointer-events: none; margin: 0; padding: 0;">2</div>
                     
                     <div class="team-name-wrapper" style="position: relative; z-index: 10;">
                         <h2 class="team-name" style="${nameStyle}">${bp.name}</h2>
@@ -887,9 +886,7 @@ function buildPageHTML(bp, isLeftPage) {
         } else { 
             return `
                 <div class="page-wrapper" style="${wrapperStyle}">
-                    <div style="position: absolute; right: -4cqw; bottom: -4cqw; transform-origin: bottom right; transform: rotate(-90deg) translateY(100%); font-family: 'WC26', Arial, sans-serif; font-size: 38cqw; color: var(--bg-deco); line-height: 0.72; z-index: 0; pointer-events: none; white-space: nowrap; margin: 0; padding: 0; letter-spacing: 0.5cqw;">
-                        ${bp.countryCode}
-                    </div>
+                    <div style="position: absolute; left: -4cqw; top: 50%; transform: translateY(-50%); font-family: 'WC26', Arial, sans-serif; font-size: 160cqw; color: var(--bg-deco); line-height: 0.72; z-index: 0; pointer-events: none; margin: 0; padding: 0;">6</div>
 
                     <div style="height: 14cqw; width: 100%; position: relative; z-index: 10;"></div>
                     <div class="player-grid-full" style="position: relative; z-index: 10;">
