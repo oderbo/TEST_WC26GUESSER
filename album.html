@@ -211,7 +211,7 @@ h1 { margin: 0; font-size: 22px; font-family: 'FWC2026', Arial, sans-serif; text
     font-size: 11px; font-weight: bold; color: var(--slot-color, #111111); 
     background-color: transparent !important; font-family: Arial, sans-serif;
 }
-.sticker-slot.filled { border: none; background-color: transparent !important; }
+.sticker-slot.filled { border: none; background-color: #000000 !important; }
 .sticker-slot.filled .slot-circle { display: none; }
 
 /* --- CSS-KLASSEN FÜR STICKER DESIGN --- */
@@ -242,8 +242,20 @@ h1 { margin: 0; font-size: 22px; font-family: 'FWC2026', Arial, sans-serif; text
 .lower-elements-wrapper { position: absolute; top: 60%; bottom: 0; left: 0; right: 0; display: flex; flex-direction: column; gap: 1.2cqw; padding-bottom: 1.2cqw; box-sizing: border-box; z-index: 2; }
 .sticker-info-box { flex: 1; min-height: 0; width: 100%; background-color: var(--color-2); display: flex; align-items: center; justify-content: center; box-shadow: inset 0 0.5cqw 0 var(--color-3), inset 0 -0.5cqw 0 var(--color-3); box-sizing: border-box; }
 
-/* NUR HIER BEIM SPIELERNAMEN DIE SONDERSCHRIFT */
-.player-name { font-family: Arial, sans-serif; color: #ffffff; font-weight: bold; text-align: center; white-space: normal; padding: 0 1.2cqw; font-size: 5.8cqw; line-height: 1.1; text-shadow: 0.3cqw 0.3cqw 0.5cqw rgba(0,0,0,0.5); }
+/* SPIELERNAME: Standardmäßig größer, bricht bei Überbreite perfekt um */
+.player-name { 
+    font-family: Arial, sans-serif !important; 
+    color: #ffffff; 
+    font-weight: bold; 
+    text-align: center; 
+    white-space: normal; 
+    word-break: break-word;
+    padding: 0 1.2cqw;
+    font-size: 6.6cqw;
+    line-height: 0.95; 
+    text-shadow: 0.3cqw 0.3cqw 0.5cqw rgba(0,0,0,0.5); 
+    max-width: 100%;
+}
 
 .sticker-meta-container { flex: 0.8; min-height: 0; width: 100%; display: flex; gap: 0.6cqw; box-sizing: border-box; }
 .meta-box { background-color: #ffffff; border: 1.8cqw solid #000000; color: #000000; display: flex; align-items: center; justify-content: center; font-weight: bold; text-align: center; font-size: 5.2cqw; box-sizing: border-box; line-height: 1; }
@@ -269,7 +281,7 @@ h1 { margin: 0; font-size: 22px; font-family: 'FWC2026', Arial, sans-serif; text
 .silver-bg { background: linear-gradient(135deg, #e0e0e0 0%, #ffffff 25%, #a0a0a0 50%, #f8f8f8 75%, #c0c0c0 100%); box-shadow: 0 0.3cqw 0.9cqw rgba(0,0,0,0.5); }
 .pos-top-right { top: 0; right: 0; } .pos-bottom-right { bottom: 0; right: 0; } .pos-bottom-left-rot { bottom: 0; left: 0; transform: rotate(90deg); }
 .special-icon { position: absolute; bottom: 0; right: 0; width: 15cqw; height: 15cqw; object-fit: contain; z-index: 10; }
-.special-name-box { position: absolute; background: #ffffff; border: 0.3cqw solid #000000; border-radius: 1.2cqw; font-weight: bold; color: #000000; font-size: 5.5cqw; height: 11.25cqw; display: flex; align-items: center; justify-content: center; padding: 0 2.4cqw; white-space: nowrap; z-index: 10; box-shadow: 0 0.3cqw 0.9cqw rgba(0,0,0,0.3); font-family: Arial, sans-serif; }
+.special-name-box { position: absolute; background: #ffffff; border: 0.3cqw solid #000000; border-radius: 1.2cqw; font-weight: bold; color: #000000; font-size: 6.5cqw; height: 11.25cqw; display: flex; align-items: center; justify-content: center; height: auto !important; padding: 0 2.5cqw 4.0cqw; white-space: nowrap; z-index: 10; box-shadow: 0 0.3cqw 0.9cqw rgba(0,0,0,0.3); font-family: Arial, sans-serif; }
 .pos-bottom-center { bottom: 0.6cqw; left: 50%; transform: translateX(-50%); }
 .name-wrapper-rot { position: absolute; left: calc(0.6cqw + 5.625cqw); top: 50%; transform: translate(-50%, -50%) rotate(90deg); z-index: 10; }
 .name-wrapper-rot .special-name-box { position: relative; bottom: auto; left: auto; transform: none; }
