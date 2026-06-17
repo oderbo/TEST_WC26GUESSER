@@ -15,8 +15,8 @@
     font-style: normal;
 }
 @font-face {
-    font-family: 'WC2026';
-    src: url('assets/WC26.otf') format('opentype'); /* KORREKTUR: Name angepasst */
+    font-family: 'WC26';
+    src: url('assets/WC26.otf') format('opentype');
     font-weight: normal;
     font-style: normal;
 }
@@ -184,7 +184,7 @@ h1 { margin: 0; font-size: 22px; font-family: 'FWC2026', Arial, sans-serif; text
     line-height: 0.72;
     margin: 0;
     color: #e8e8e8;
-    font-family: 'WC2026', Arial, sans-serif;
+    font-family: 'WC26', Arial, sans-serif;
 }
 
 /* --- INDEX SEITE --- */
@@ -931,7 +931,7 @@ function buildPageHTML(bp, isLeftPage) {
 	if (bp.type === 'special') {
 			return `
 			<div class="page-wrapper dark-page rainbow-border-page" style="position: relative;">
-				<h2 style="position: absolute; top: 1%; left: 10%; width: 80%; text-align: center; color: #ffffff; font-family: 'WC26', Arial, sans-serif; font-size: 16cqw; margin: 0; text-shadow: none;">WC26</h2>
+				<h2 style="position: absolute; top: 4%; left: 10%; width: 80%; text-align: center; color: #ffffff; font-family: 'WC26', Arial, sans-serif; font-size: 16cqw; margin: 0; text-shadow: none;">WC26</h2>
 				
 				<div style="position: absolute; top: calc(4% + 13cqw + 5%); left: 50%; transform: translateX(-50%);">
 					<div class="rotated-slot-wrapper">${buildSlotHTML('SPC001', '1', 'rotated-slot spc-top-slot')}</div>
@@ -957,10 +957,14 @@ function buildPageHTML(bp, isLeftPage) {
 					<div class="rotated-slot-wrapper">${buildSlotHTML('SPC005', '5', 'rotated-slot spc-top-slot')}</div>
 				</div>
 				
-				<div style="position: absolute; right: calc(4cqw + var(--col-h) + 0.3cqw); bottom: calc(25px + 2% + var(--col-w) + 5%); height: calc(var(--col-w) * 2); display: flex; flex-direction: column; justify-content: space-between; align-items: flex-start;">
-					<div style="font-family: 'WC26', Arial, sans-serif; color: #ffffff; font-size: 31cqw; line-height: 0.68; margin: 0; padding: 0; letter-spacing: -0.2cqw;">WE</div>
-					<div style="font-family: 'WC26', Arial, sans-serif; color: #ffffff; font-size: 23cqw; line-height: 0.68; margin: 0; padding: 0; letter-spacing: -0.2cqw;">ARE</div>
-				</div>
+                <div style="position: absolute; right: calc(4cqw + var(--col-h) + 1cqw); bottom: calc(25px + 2% + var(--col-w) + 5%); height: calc(var(--col-w) * 2); width: 33cqw; display: flex; flex-direction: column; justify-content: space-between;">
+                    <svg width="100%" height="48.5%" preserveAspectRatio="none" viewBox="0 0 100 100" style="overflow: visible;">
+                        <text x="0" y="85" font-family="'WC26', Arial, sans-serif" font-size="95" fill="#ffffff" lengthAdjust="spacingAndGlyphs" textLength="100">WE</text>
+                    </svg>
+                    <svg width="100%" height="48.5%" preserveAspectRatio="none" viewBox="0 0 100 100" style="overflow: visible;">
+                        <text x="0" y="85" font-family="'WC26', Arial, sans-serif" font-size="95" fill="#ffffff" lengthAdjust="spacingAndGlyphs" textLength="100">ARE</text>
+                    </svg>
+                </div>
 			</div>`;
 		}
     
