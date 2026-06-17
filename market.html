@@ -368,11 +368,12 @@ function loadMarketUsers() {
     const uid = firebase.auth().currentUser.uid;
     const grid = document.getElementById("market-content");
 
-    // Lade Markt UND offene Tauschanfragen gleichzeitig
+    // Lade ALLE User, den Markt UND offene Tauschanfragen gleichzeitig
+    const usersPromise = db.collection("users").get(); 
     const marketPromise = db.collection("market").where("status", "==", "available").get();
     const tradesPromise = db.collection("trade_requests").where("status", "==", "pending").get();
 
-    Promise.all([marketPromise, tradesPromise]).then(([marketSnap, tradesSnap]) => {
+    Promise.all([usersPromise, marketPromise, tradesPromise]).then(([usersSnap, marketSnap, tradesSnap]) => {
         let lockedStickersByOwner = {}; 
         let now = new Date();
 
@@ -382,14 +383,11 @@ function loadMarketUsers() {
             const expiresAt = trade.expires_at ? trade.expires_at.toDate() : new Date(0);
 
             if (expiresAt < now) {
-                // Tausch abgelaufen -> Löschen!
                 db.collection("trade_requests").doc(doc.id).delete();
             } else {
-                // Sticker des Empfängers sperren
                 if (!lockedStickersByOwner[trade.receiver_uid]) lockedStickersByOwner[trade.receiver_uid] = [];
                 lockedStickersByOwner[trade.receiver_uid].push(...trade.requested_stickers);
 
-                // Sticker des Senders sperren
                 if (!lockedStickersByOwner[trade.sender_uid]) lockedStickersByOwner[trade.sender_uid] = [];
                 lockedStickersByOwner[trade.sender_uid].push(...trade.offered_stickers);
             }
@@ -398,99 +396,93 @@ function loadMarketUsers() {
         myMarketStickers = [];
         let othersMarketStickers = {};
 
-        // 2. Markt-Sticker einlesen, aber gesperrte überspringen
+        // 2. Markt-Sticker einlesen
         marketSnap.forEach((doc) => {
             const data = doc.data();
             const ownerId = data.owner_uid;
             const stickerId = data.sticker_id;
 
-            // Prüfen, ob dieser spezifische Sticker gerade in einem Trade hängt
             if (lockedStickersByOwner[ownerId]) {
                 const lockIndex = lockedStickersByOwner[ownerId].indexOf(stickerId);
                 if (lockIndex > -1) {
-                    lockedStickersByOwner[ownerId].splice(lockIndex, 1); // Einmal sperren konsumieren
-                    return; // Überspringen! Wird nicht auf dem Markt angezeigt.
+                    lockedStickersByOwner[ownerId].splice(lockIndex, 1);
+                    return; 
                 }
             }
 
             if (ownerId === uid) {
                 myMarketStickers.push(stickerId);
             } else {
-                if (!othersMarketStickers[ownerId]) {
-                    othersMarketStickers[ownerId] = { owner_name: data.owner_name, stickers: [] };
-                }
-                othersMarketStickers[ownerId].stickers.push(stickerId);
+                if (!othersMarketStickers[ownerId]) othersMarketStickers[ownerId] = [];
+                othersMarketStickers[ownerId].push(stickerId);
             }
         });
 
-        const otherUids = Object.keys(othersMarketStickers);
-        if (otherUids.length === 0) {
-            grid.innerHTML = '<div style="color:white; font-size:18px; grid-column: 1 / -1; text-align:center;">Aktuell gibt es keine anderen Spieler auf dem Markt.</div>';
-            return;
-        }
+        grid.innerHTML = ''; 
+        let hasUsers = false;
 
-        // 3. User-Daten laden und ALLE anzeigen
-        Promise.all(otherUids.map(id => db.collection("users").doc(id).get().catch(e => null)))
-        .then((userSnapshots) => {
-            grid.innerHTML = ''; 
-            let hasUsers = false;
-
-            userSnapshots.forEach((userDoc) => {
-                if (!userDoc || !userDoc.exists) return; 
-                hasUsers = true;
-                
-                const otherUid = userDoc.id;
-                const userB = userDoc.data();
-                const marketData = othersMarketStickers[otherUid];
-                
-                const theirStapel = userB.stapel || [];
-                const theirAlbum = userB.album || {};
-                const theirPasted = Object.keys(theirAlbum).filter(k => theirAlbum[k] === "pasted");
-                const theirOwnedSet = new Set([...theirStapel, ...theirPasted]);
-
-                const whatINeedFromThem = marketData.stickers.filter(id => !currentMyOwnedSet.has(id));
-                const uniqueWhatINeed = [...new Set(whatINeedFromThem)];
-
-                const whatTheyNeedFromMe = myMarketStickers.filter(id => !theirOwnedSet.has(id));
-                const uniqueWhatTheyNeed = [...new Set(whatTheyNeedFromMe)];
-                
-                const matchCount = uniqueWhatTheyNeed.length; 
-                const iNeedCount = uniqueWhatINeed.length;    
-
-                const card = document.createElement('div');
-                card.className = 'user-card';
-                
-                // JEDER USER WIRD ANGEZEIGT! Wenn kein Tausch möglich, opacity runter und Alert setzen.
-                if (matchCount === 0 || iNeedCount === 0) {
-                    card.style.opacity = "0.6"; 
-                    card.onclick = () => {
-                        if (iNeedCount === 0) {
-                            alert("Dieser Spieler hat aktuell keine Sticker auf dem Markt, die dir noch fehlen.");
-                        } else {
-                            alert("Dieser Spieler hat zwar Sticker für dich, braucht aber keinen deiner doppelten. Ein Tausch ist nicht möglich.");
-                        }
-                    };
-                } else {
-                    card.onclick = () => {
-                        openTradeModal(otherUid, marketData.owner_name || userB.username || "Spieler", matchCount, uniqueWhatINeed, uniqueWhatTheyNeed);
-                    };
-                }
-                
-                const displayName = marketData.owner_name || userB.username || "Spieler";
-                const initial = displayName.charAt(0).toUpperCase();
-                
-                card.innerHTML = `
-                    ${iNeedCount > 0 ? `<div class="match-badge">${iNeedCount}</div>` : ''}
-                    <div class="user-icon">${initial}</div>
-                    <div class="user-name">${displayName}</div>
-                `;
-                grid.appendChild(card);
-            });
+        // 3. ALLE User durchgehen und anzeigen
+        usersSnap.forEach((userDoc) => {
+            if (userDoc.id === uid) return; // Sich selbst überspringen
+            hasUsers = true;
             
-            if (!hasUsers) {
-                grid.innerHTML = '<div style="color:white; font-size:18px; grid-column: 1 / -1; text-align:center;">Niemand bietet aktuell Sticker an.</div>';
+            const otherUid = userDoc.id;
+            const userB = userDoc.data();
+            
+            // Name sicherstellen (Sucht nach username, name oder nutzt Platzhalter)
+            const displayName = userB.username || userB.name || "Spieler";
+            
+            const theirAvailableStickers = othersMarketStickers[otherUid] || [];
+            
+            const theirStapel = userB.stapel || [];
+            const theirAlbum = userB.album || {};
+            const theirPasted = Object.keys(theirAlbum).filter(k => theirAlbum[k] === "pasted");
+            const theirOwnedSet = new Set([...theirStapel, ...theirPasted]);
+
+            const whatINeedFromThem = theirAvailableStickers.filter(id => !currentMyOwnedSet.has(id));
+            const uniqueWhatINeed = [...new Set(whatINeedFromThem)];
+
+            const whatTheyNeedFromMe = myMarketStickers.filter(id => !theirOwnedSet.has(id));
+            const uniqueWhatTheyNeed = [...new Set(whatTheyNeedFromMe)];
+            
+            const matchCount = uniqueWhatTheyNeed.length; 
+            const iNeedCount = uniqueWhatINeed.length;    
+
+            const card = document.createElement('div');
+            card.className = 'user-card';
+            
+            // Abfangen der verschiedenen Zustände für ALLE User
+            if (theirAvailableStickers.length === 0) {
+                card.style.opacity = "0.5"; 
+                card.onclick = () => alert(`${displayName} hat aktuell gar keine Sticker auf dem Markt.`);
+            } else if (matchCount === 0 || iNeedCount === 0) {
+                card.style.opacity = "0.6"; 
+                card.onclick = () => {
+                    if (iNeedCount === 0) {
+                        alert(`${displayName} hat aktuell keine Sticker auf dem Markt, die dir noch fehlen.`);
+                    } else {
+                        alert(`${displayName} hat zwar Sticker für dich, braucht aber keinen deiner doppelten. Ein Tausch ist nicht möglich.`);
+                    }
+                };
+            } else {
+                card.onclick = () => {
+                    openTradeModal(otherUid, displayName, matchCount, uniqueWhatINeed, uniqueWhatTheyNeed);
+                };
             }
+            
+            const initial = displayName.charAt(0).toUpperCase();
+            
+            card.innerHTML = `
+                ${iNeedCount > 0 ? `<div class="match-badge">${iNeedCount}</div>` : ''}
+                <div class="user-icon">${initial}</div>
+                <div class="user-name">${displayName}</div>
+            `;
+            grid.appendChild(card);
         });
+        
+        if (!hasUsers) {
+            grid.innerHTML = '<div style="color:white; font-size:18px; grid-column: 1 / -1; text-align:center;">Es sind noch keine anderen Spieler registriert.</div>';
+        }
     });
 }
 
@@ -554,7 +546,6 @@ function sendTradeRequest() {
     
     const myName = currentUserData.username || firebase.auth().currentUser.email.split('@')[0];
 
-    // FIX: Nur exakt so viele eigene Sticker anbieten, wie auch angefragt werden!
     const amountToOffer = tradeSelectedStickers.length;
     const finalOfferedStickers = tradeWhatTheyNeedFromMe.slice(0, amountToOffer);
 
@@ -564,14 +555,13 @@ function sendTradeRequest() {
         receiver_uid: tradeTargetUser.uid,
         receiver_name: tradeTargetUser.name,
         requested_stickers: tradeSelectedStickers,
-        offered_stickers: finalOfferedStickers, // HIER das abgeschnittene Array nutzen
+        offered_stickers: finalOfferedStickers, 
         status: "pending",
         created_at: firebase.firestore.FieldValue.serverTimestamp(),
         expires_at: firebase.firestore.Timestamp.fromDate(expiryDate)
     }).then(() => {
         closeTradeModal();
         btn.innerText = "Senden";
-        // WICHTIG: Markt direkt neu laden, damit die Sticker als "Gesperrt" verschwinden!
         loadMarketUsers(); 
     }).catch(err => {
         alert("Fehler beim Senden der Anfrage. Versuche es später noch einmal.");
@@ -606,7 +596,6 @@ function closeOffersListModal() {
 }
 
 function openAnswerOfferModal(offer) {
-    // 1. LIVE CHECK RACE CONDITION: Brauche ich die angebotenen Sticker überhaupt noch?
     const stillNeeded = offer.offered_stickers.filter(id => !currentMyOwnedSet.has(id));
 
     if (stillNeeded.length === 0) {
@@ -617,14 +606,12 @@ function openAnswerOfferModal(offer) {
         return;
     }
 
-    // 2. KÜRZEN: Wenn ich weniger brauche, kürze ich das, was ich hergebe (die letzten streichen)
     let validRequested = offer.requested_stickers;
     if (stillNeeded.length < offer.requested_stickers.length) {
         validRequested = offer.requested_stickers.slice(0, stillNeeded.length);
         alert(`Hinweis: Du hast in der Zwischenzeit bereits angebotene Sticker gezogen. Der Tausch wurde automatisch von ${offer.requested_stickers.length} auf ${stillNeeded.length} Sticker reduziert.`);
     }
 
-    // Wir speichern das validierte Offer zwischen
     currentActiveOffer = offer;
     currentActiveOffer.offered_stickers = stillNeeded;
     currentActiveOffer.requested_stickers = validRequested;
@@ -640,7 +627,6 @@ function openAnswerOfferModal(offer) {
     const grid = document.getElementById("answerOfferGrid");
     grid.innerHTML = '';
     
-    // Grid aufbauen mit den NOCH BENÖTIGTEN Stickern
     currentActiveOffer.offered_stickers.forEach(stickerId => {
         const stickerData = globalStickerDatabase[stickerId];
         if (stickerData) {
@@ -675,18 +661,16 @@ function closeAnswerOfferModal() {
     if (pendingOffers.length > 0) openOffersListModal();
 }
 
-// NEU: ABLEHNEN FUNKTION
 function rejectOffer() {
     if (!currentActiveOffer) return;
     if (confirm("Möchtest du dieses Angebot wirklich ablehnen? Die Sticker werden wieder für den Markt freigegeben.")) {
         db.collection("trade_requests").doc(currentActiveOffer.id).delete().then(() => {
             closeAnswerOfferModal();
-            loadMarketUsers(); // Markt direkt aktualisieren
+            loadMarketUsers(); 
         }).catch(e => console.error("Fehler beim Ablehnen:", e));
     }
 }
 
-/* DIE TRANSKTIONS- UND BEREINIGUNGSFUNKTION (MIT SAFETY CHECK) */
 function confirmOffer() {
     if (answerSelectedStickers.length !== answerRequiredCount) return;
     
@@ -718,11 +702,9 @@ function confirmOffer() {
             let myTraded = myDoc.data().traded_stickers || [];
             let senderTraded = senderDoc.data().traded_stickers || [];
 
-            // WICHTIG: Hier nehmen wir NICHT reqDoc.data(), sondern unsere gekürzten lokalen Arrays!
             const requestedBySender = currentActiveOffer.requested_stickers; 
             const selectedByMe = answerSelectedStickers; 
 
-            // STRIKTE ENTFERNUNGS-FUNKTION (Gibt false zurück, wenn Sticker fehlt)
             const removeOneStrict = (arr, item) => {
                 const idx = arr.indexOf(item);
                 if (idx > -1) {
@@ -732,20 +714,30 @@ function confirmOffer() {
                 return false;
             };
 
-            // 1. Vom Stapel abziehen UND AUF FEHLER PRÜFEN!
             let missingStickers = false;
             requestedBySender.forEach(s => { if (!removeOneStrict(myStapel, s)) missingStickers = true; });
             selectedByMe.forEach(s => { if (!removeOneStrict(senderStapel, s)) missingStickers = true; });
 
             if (missingStickers) throw "Ein benötigter Sticker befindet sich nicht mehr im Stapel (Transaktion abgebrochen).";
 
-            // 2. In Traded Box werfen (Die Sticker wechseln den Besitzer!)
             senderTraded.push(...requestedBySender);
             myTraded.push(...selectedByMe);
 
             transaction.update(myUserRef, { stapel: myStapel, traded_stickers: myTraded });
             transaction.update(senderUserRef, { stapel: senderStapel, traded_stickers: senderTraded });
             transaction.delete(requestRef);
+            
+            // NEU: Historie für die Firebase-Datenbank aufzeichnen!
+            const myName = currentUserData.username || currentUserData.name || "Spieler B";
+            db.collection("trade_history").add({
+                timestamp: firebase.firestore.FieldValue.serverTimestamp(),
+                user_a_uid: senderUid,
+                user_a_name: currentActiveOffer.sender_name,
+                user_a_received: requestedBySender,
+                user_b_uid: myUid,
+                user_b_name: myName,
+                user_b_received: selectedByMe
+            });
         });
     }).then(() => {
         cleanupMarket(myUid, answerSelectedStickers);
@@ -754,11 +746,10 @@ function confirmOffer() {
         document.getElementById("answerOfferModal").style.display = "none";
         btn.innerText = "Bestätigen";
         
-        loadMarketUsers(); // Markt aktualisieren
+        loadMarketUsers(); 
         openClaimModal(answerSelectedStickers);
     }).catch((err) => {
         console.error("Trade error:", err);
-        // WENN DER TAUSCH FEHLSCHLÄGT -> LÖSCHE DIE ANFRAGE AUS DER DATENBANK
         if (currentActiveOffer && currentActiveOffer.id) {
             db.collection("trade_requests").doc(currentActiveOffer.id).delete().catch(e => console.error("Error deleting request:", e));
         }
