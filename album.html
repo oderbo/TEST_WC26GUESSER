@@ -915,14 +915,14 @@ function buildGenericGrid(bp, rotateAll = false) {
     let html = `<div class="page-wrapper dark-page${rainbowClass}" style="position: relative;">`;
 
 	// 1. Titel-Bereich aufbauen (falls vorhanden)
-    let topBoundary = '0.5vh'; 
-    if (title) {
-        html += `<div style="position: absolute; top: 1.25vh; left: 0; width: 100%; text-align: center; z-index: 10;">
-                    <h2 class="special-title" style="margin-bottom: 0.5cqw;">${title}</h2>
-                    <h3 style="font-family: 'FWC2026', Arial, sans-serif; color: #ffffff; font-size: 3.5cqw; margin: 0; text-transform: none; text-shadow: 0 1px 2px rgba(0,0,0,0.6);">${subtitle}</h3>
-                 </div>`;
-        topBoundary = 'calc(1.25vh + 11cqw + 1.25vh)'; 
-    }
+	let topBoundary = '0.5vh'; 
+	if (title) {
+		html += `<div style="position: absolute; top: 1.25vh; left: 0; width: 100%; text-align: center; z-index: 10;">
+					<h2 class="special-title" style="margin-bottom: 0.5cqw;">${title}</h2>
+					<h3 style="font-family: 'FWC2026', Arial, sans-serif; color: #ffffff; font-size: 3cqw; margin: 0; margin-top: -0.8cqw; text-transform: none; text-shadow: 0 1px 2px rgba(0,0,0,0.6);">${subtitle}</h3>
+				 </div>`;
+		topBoundary = 'calc(1.25vh + 11cqw + 1.25vh)'; 
+}	
 
 	// 2. Zigzag-Container platzieren (Zieht die Boxen bis haarscharf über die Seitenzahlen)
     html += `<div class="zigzag-container" style="top: ${topBoundary}; bottom: 18px;">`;
