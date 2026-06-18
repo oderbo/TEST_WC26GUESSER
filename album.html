@@ -914,18 +914,18 @@ function buildGenericGrid(bp, rotateAll = false) {
     let rainbowClass = isRainbow ? " rainbow-border-page" : "";
     let html = `<div class="page-wrapper dark-page${rainbowClass}" style="position: relative;">`;
 
-    // 1. Titel-Bereich aufbauen (falls vorhanden)
-    let topBoundary = '2vh'; // Start oben, wenn keine Überschrift
+	// 1. Titel-Bereich aufbauen (falls vorhanden)
+    let topBoundary = '0.5vh'; // Fast ganz am oberen Rand, wenn keine Überschrift da ist
     if (title) {
-        html += `<div style="position: absolute; top: 2vh; left: 0; width: 100%; text-align: center; z-index: 10;">
+        html += `<div style="position: absolute; top: 1vh; left: 0; width: 100%; text-align: center; z-index: 10;">
                     <h2 class="special-title" style="margin-bottom: 0.5cqw;">${title}</h2>
                     <h3 style="font-family: 'FWC2026', Arial, sans-serif; color: #ffffff; font-size: 3.5cqw; margin: 0; text-transform: none; text-shadow: 0 1px 2px rgba(0,0,0,0.6);">${subtitle}</h3>
                  </div>`;
-        topBoundary = 'calc(2vh + 11cqw + 2vh)'; // Unterhalb der Titel platzieren
+        topBoundary = 'calc(1vh + 11cqw + 1vh)'; // Zieht den Bereich extrem nah an den Untertitel heran
     }
 
-    // 2. Zigzag-Container platzieren (Bottom Boundary 1% über der Seitenzahl)
-    html += `<div class="zigzag-container" style="top: ${topBoundary}; bottom: calc(25px + 1vh);">`;
+	// 2. Zigzag-Container platzieren (Zieht die Boxen bis haarscharf über die Seitenzahlen)
+    html += `<div class="zigzag-container" style="top: ${topBoundary}; bottom: 18px;">`;
 
     let currentAlbumNum = bp.startAlbumNumber;
     let sIdx = parseInt(bp.startId.replace(/\D/g, ''), 10);
