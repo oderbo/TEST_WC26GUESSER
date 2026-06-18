@@ -884,7 +884,7 @@ function buildGenericGrid(bp, rotateAll = false, isLeftPage) {
         
         // Verhindere Overflow durch exakte prozentuale Verteilung von 15% bis 80% (Zentren)
         // Dadurch ragt die unterste Box nie über die Seitenzahlen.
-        let percent = numItems > 1 ? 15 + (itemIndex / (numItems - 1)) * 65 : 50;
+        let percent = numItems > 1 ? 5 + (itemIndex / (numItems - 1)) * 80 : 50;
 
         let stickerWidth = rotateAll ? 'var(--col-h)' : 'var(--col-w)';
         let stickerHeight = rotateAll ? 'var(--col-w)' : 'var(--col-h)';
@@ -894,7 +894,7 @@ function buildGenericGrid(bp, rotateAll = false, isLeftPage) {
         // Leere Boxen haben keinen künstlichen Glitzer-Hintergrund mehr, nur den Rahmen.
         let stickerSlotHtml = rotateAll ? 
             `<div class="rotated-slot-wrapper" style="width: var(--col-h); height: var(--col-w);">
-                <div class="sticker-slot rotated-slot" id="slot-${sid}" data-id="${sid}" style="border: 1.5px solid ${borderColorHex};">
+                <div class="sticker-slot rotated-slot" id="slot-${sid}" data-id="${sid}" style="border: 1px solid ${borderColorHex};">
                     <div class="slot-circle" style="color: ${borderColorHex}; border-color: ${borderColorHex}; transform: rotate(90deg);">${currentAlbumNum}</div>
                 </div>
              </div>` : 
@@ -924,7 +924,7 @@ function buildGenericGrid(bp, rotateAll = false, isLeftPage) {
                     ${stickerSlotHtml}
                 </div>
                 
-                <div style="height: ${infoHeight}; width: ${infoWidth}; background-color: ${bgColor}; border-radius: ${outerRadius}; box-shadow: 0 4px 8px rgba(0,0,0,0.5); z-index: 1; border: 1.5px solid ${borderColorHex}; ${borderSide}">
+                <div style="height: ${infoHeight}; width: ${infoWidth}; background-color: ${bgColor}; border-radius: ${outerRadius}; box-shadow: 0 4px 8px rgba(0,0,0,0.5); z-index: 1; border: 1px solid ${borderColorHex}; ${borderSide}">
                     ${innerInfoContent}
                 </div>
 
