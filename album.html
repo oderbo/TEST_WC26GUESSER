@@ -915,13 +915,13 @@ function buildGenericGrid(bp, rotateAll = false) {
     let html = `<div class="page-wrapper dark-page${rainbowClass}" style="position: relative;">`;
 
 	// 1. Titel-Bereich aufbauen (falls vorhanden)
-    let topBoundary = '0.5vh'; // Fast ganz am oberen Rand, wenn keine Überschrift da ist
+    let topBoundary = '0.5vh'; 
     if (title) {
-        html += `<div style="position: absolute; top: 1vh; left: 0; width: 100%; text-align: center; z-index: 10;">
+        html += `<div style="position: absolute; top: 1.25vh; left: 0; width: 100%; text-align: center; z-index: 10;">
                     <h2 class="special-title" style="margin-bottom: 0.5cqw;">${title}</h2>
                     <h3 style="font-family: 'FWC2026', Arial, sans-serif; color: #ffffff; font-size: 3.5cqw; margin: 0; text-transform: none; text-shadow: 0 1px 2px rgba(0,0,0,0.6);">${subtitle}</h3>
                  </div>`;
-        topBoundary = 'calc(1vh + 11cqw + 1vh)'; // Zieht den Bereich extrem nah an den Untertitel heran
+        topBoundary = 'calc(1.25vh + 11cqw + 1.25vh)'; 
     }
 
 	// 2. Zigzag-Container platzieren (Zieht die Boxen bis haarscharf über die Seitenzahlen)
@@ -1194,6 +1194,9 @@ function initBook() {
         book.innerHTML = ''; papers = [];
         const totalPapers = Math.ceil(albumBlueprint.length / 2);
 
+        // Liste der Seiten-Typen, die KEINE Seitenzahl haben sollen
+        const hideNumbersOn = ['index_left', 'index_right', 'golden_boots', 'golden_ball', 'winning_teams'];
+
         for (let i = 0; i <= totalPapers; i++) {
             const paper = document.createElement('div'); paper.className = 'paper'; paper.id = `paper${i}`;
             const front = document.createElement('div'); front.className = 'front';
@@ -1204,13 +1207,19 @@ function initBook() {
                 back.innerHTML = buildPageHTML(albumBlueprint[0], true);
             } else {
                 const frontPageIndex = (i * 2) - 1; const backPageIndex = (i * 2);
+                
+                // Rechte Seite (Front)
                 if (frontPageIndex < albumBlueprint.length) {
-                    front.innerHTML = buildPageHTML(albumBlueprint[frontPageIndex], false) + 
-                                      `<div class="page-number-right">${frontPageIndex}</div>`;
+                    let bp = albumBlueprint[frontPageIndex];
+                    let pageNumHtml = hideNumbersOn.includes(bp.type) ? '' : `<div class="page-number-right">${frontPageIndex}</div>`;
+                    front.innerHTML = buildPageHTML(bp, false) + pageNumHtml;
                 }
+                
+                // Linke Seite (Back)
                 if (backPageIndex < albumBlueprint.length) {
-                    back.innerHTML = buildPageHTML(albumBlueprint[backPageIndex], true) +
-                                     `<div class="page-number-left">${backPageIndex}</div>`;
+                    let bp = albumBlueprint[backPageIndex];
+                    let pageNumHtml = hideNumbersOn.includes(bp.type) ? '' : `<div class="page-number-left">${backPageIndex}</div>`;
+                    back.innerHTML = buildPageHTML(bp, true) + pageNumHtml;
                 }
             }
             paper.appendChild(front); paper.appendChild(back);
