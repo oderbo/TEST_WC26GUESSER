@@ -414,6 +414,7 @@ fetch("./data/sticker_database.json")
     .then(r => r.json())
     .then(data => {
         globalStickerDatabase = data;
+        initBook(); // WICHTIG: Das Album wird erst gebaut, wenn die Infos da sind!
         renderStapel();
         renderPastedStickers();
     })
@@ -806,29 +807,119 @@ function buildStadiumPage(bp) {
     return html;
 }
 
-function buildGenericGrid(bp, rotateAll = false) {
-    let isRainbow = (bp.type === 'golden_boots' || bp.type === 'golden_ball' || bp.type === 'winning_teams');
-    let rainbowClass = isRainbow ? " rainbow-border-page" : "";
-    let html = `<div class="page-wrapper dark-page${rainbowClass}">`;
+function buildGenericGrid(bp, rotateAll = false, isLeftPage) {
+    let rainbowClass = " rainbow-border-page";
+    let html = `<div class="page-wrapper dark-page${rainbowClass}" style="padding: 4cqw 6cqw; position: relative; z-index: 1;">`;
     
-    if (bp.type === 'golden_boots' && bp.startId === 'GBO001') html += `<h2 class="special-title">Golden Boots</h2>`;
-    if (bp.type === 'golden_ball' && bp.startId === 'GBA001') html += `<h2 class="special-title">Golden Ball</h2>`;
-    if (bp.type === 'winning_teams' && bp.startId === 'WIN001') html += `<h2 class="special-title">Winning Teams</h2>`;
+    // 1. ÜBERSCHRIFTEN & UNTERTITEL (Nur auf der linken Startseite)
+    let titleHtml = "";
+    if (isLeftPage) {
+        if (bp.type === 'golden_boots' && bp.startId === 'GBO001') {
+            titleHtml = `<div style="text-align: center; margin-bottom: 2cqw; margin-top: 1cqw;">
+                            <h2 class="special-title" style="margin: 0; line-height: 1;">GOLDEN BOOT</h2>
+                            <div style="font-family: 'FWC2026', Arial, sans-serif; color: white; font-size: 3.5cqw; letter-spacing: 1px; margin-top: 0.5cqw;">Best Goalscorer</div>
+                         </div>`;
+        } else if (bp.type === 'golden_ball' && bp.startId === 'GBA001') {
+            titleHtml = `<div style="text-align: center; margin-bottom: 2cqw; margin-top: 1cqw;">
+                            <h2 class="special-title" style="margin: 0; line-height: 1;">GOLDEN BALL</h2>
+                            <div style="font-family: 'FWC2026', Arial, sans-serif; color: white; font-size: 3.5cqw; letter-spacing: 1px; margin-top: 0.5cqw;">Player of the Tournament</div>
+                         </div>`;
+        } else if (bp.type === 'winning_teams' && bp.startId === 'WIN001') {
+            titleHtml = `<div style="text-align: center; margin-bottom: 2cqw; margin-top: 1cqw;">
+                            <h2 class="special-title" style="margin: 0; line-height: 1;">WINNING TEAMS</h2>
+                            <div style="font-family: 'FWC2026', Arial, sans-serif; color: white; font-size: 3.5cqw; letter-spacing: 1px; margin-top: 0.5cqw;">Winner of the Tournament</div>
+                         </div>`;
+        }
+    }
     
-    html += '<div class="special-grid">';
+    html += titleHtml;
+    
+    // Container für die vertikale Verteilung (space-evenly sorgt für perfekten Abstand zu den Seitenzahlen)
+    html += `<div style="display: flex; flex-direction: column; justify-content: space-evenly; flex-grow: 1; width: 100%; position: relative; z-index: 10; padding-bottom: 3cqw;">`;
+    
     let currentAlbumNum = bp.startAlbumNumber;
     let sIdx = parseInt(bp.startId.replace(/\D/g, ''), 10);
     let eIdx = parseInt(bp.endId.replace(/\D/g, ''), 10);
     let prefix = bp.startId.replace(/[0-9]/g, '');
+    
+    let itemIndex = 0;
+    const infoColors = ['#450B0B','#39008E','#10164B','#002E26','#800000','#6B5199','#1D3099','#007732','#992500','#6F3F76','#145A91','#6A8C00','#995F4E','#8B1339','#3B9881','#8E9929'];
+    
+    // Farben für die Ränder ermitteln
+    let isGold = (bp.type === 'golden_ball' || bp.type === 'winning_teams');
+    let borderColorHex = isGold ? '#FFD700' : '#C0C0C0';
+    let borderGradient = isGold ? 'linear-gradient(135deg, #bf953f 0%, #fcf6ba 25%, #b38728 50%, #fbf5b7 75%, #aa771c 100%)' : 'linear-gradient(135deg, #e0e0e0 0%, #ffffff 25%, #a0a0a0 50%, #f8f8f8 75%, #c0c0c0 100%)';
+
     for(let i = sIdx; i <= eIdx; i++) {
         let sid = prefix + String(i).padStart(3, '0');
-        if(rotateAll) {
-            html += `<div class="rotated-slot-wrapper">${buildSlotHTML(sid, currentAlbumNum, 'rotated-slot')}</div>`;
-        } else {
-            html += buildSlotHTML(sid, currentAlbumNum);
-        }
+        let isLeft = (itemIndex % 2 === 0); // Zig-Zag Logik
+        
+        // Infos aus DB holen
+        let sData = globalStickerDatabase ? globalStickerDatabase[sid] : null;
+        let sName = sData ? sData.name : "Unknown";
+        let sYear = sData ? sData.year : "----";
+        let sFlag = sData ? sData.flag : "assets/Icon.png";
+        
+        let colorIdx = i % infoColors.length;
+        let bgColor = infoColors[colorIdx];
+
+        // Layout Variablen für das Zig-Zag
+        let alignClass = isLeft ? 'flex-start' : 'flex-end';
+        let rowDirection = isLeft ? 'row' : 'row-reverse';
+        let outerRadius = isLeft ? '0 3.5cqw 3.5cqw 0' : '3.5cqw 0 0 3.5cqw';
+        let innerRadius = isLeft ? '0 2.9cqw 2.9cqw 0' : '2.9cqw 0 0 2.9cqw';
+        let paddingSide = isLeft ? 'padding-left: 0;' : 'padding-right: 0;';
+
+        // Maße für Hochformat (Portrait) und Querformat (Landscape)
+        let stickerWidth = rotateAll ? 'var(--col-h)' : 'var(--col-w)';
+        let stickerHeight = rotateAll ? 'var(--col-w)' : 'var(--col-h)';
+        let infoWidth = rotateAll ? '40cqw' : '23cqw';
+        let infoHeight = rotateAll ? 'var(--col-w)' : 'calc(var(--col-h) - 3cqw)';
+
+        // Der Leere Slot (mit Gold/Silber Ring)
+        let stickerSlotHtml = rotateAll ? 
+            `<div class="rotated-slot-wrapper" style="width: 100%; height: 100%;">
+                <div class="sticker-slot rotated-slot" id="slot-${sid}" data-id="${sid}" style="width: 100% !important; height: 100% !important; border: none;">
+                    <div class="slot-circle" style="border-color: ${borderColorHex}; color: ${borderColorHex}; transform: rotate(90deg);">${currentAlbumNum}</div>
+                </div>
+             </div>` : 
+            `<div class="sticker-slot" id="slot-${sid}" data-id="${sid}" style="width: 100% !important; height: 100% !important; border: none;">
+                <div class="slot-circle" style="border-color: ${borderColorHex}; color: ${borderColorHex};">${currentAlbumNum}</div>
+             </div>`;
+
+        // Der Inhalt der Info-Box (Landscape vs Portrait)
+        let innerInfoContent = rotateAll ? 
+            `<img src="${sFlag}" style="width: 9cqw; height: 9cqw; border-radius: 50%; border: 0.3cqw solid white; object-fit: cover; flex-shrink: 0;" onerror="this.style.display='none'">
+             <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; width: 65%;">
+                <span style="font-family: 'FWC2026', Arial, sans-serif; color: white; font-size: 3.8cqw; text-align: center; line-height: 1.1; text-shadow: 0 1px 3px rgba(0,0,0,0.6);">${sName}</span>
+                <span style="font-family: 'FWC2026', Arial, sans-serif; color: white; font-size: 3.8cqw; text-align: center; margin-top: 1cqw; text-shadow: 0 1px 3px rgba(0,0,0,0.6);">${sYear}</span>
+             </div>` :
+            `<span style="font-family: 'FWC2026', Arial, sans-serif; color: white; font-size: 3.3cqw; text-align: center; line-height: 1.1; text-shadow: 0 1px 3px rgba(0,0,0,0.6);">${sName}</span>
+             <span style="font-family: 'FWC2026', Arial, sans-serif; color: white; font-size: 3.3cqw; text-align: center; text-shadow: 0 1px 3px rgba(0,0,0,0.6);">${sYear}</span>
+             <img src="${sFlag}" style="width: 9cqw; height: 9cqw; border-radius: 50%; border: 0.3cqw solid white; object-fit: cover;" onerror="this.style.display='none'">`;
+
+        // Alles zusammensetzen
+        html += `
+            <div style="display: flex; flex-direction: ${rowDirection}; align-items: center; align-self: ${alignClass}; position: relative;">
+                
+                <div style="position: relative; width: ${stickerWidth}; height: ${stickerHeight}; background: ${borderGradient}; padding: 0.6cqw; border-radius: 0.5cqw; box-shadow: 0 4px 8px rgba(0,0,0,0.5); z-index: 2;">
+                    <div style="position: relative; width: 100%; height: 100%; background: #000;">
+                        ${stickerSlotHtml}
+                    </div>
+                </div>
+                
+                <div style="height: ${infoHeight}; width: ${infoWidth}; background: ${borderGradient}; padding: 0.6cqw; ${paddingSide} border-radius: ${outerRadius}; box-shadow: 0 4px 8px rgba(0,0,0,0.5); z-index: 1;">
+                    <div style="width: 100%; height: 100%; background-color: ${bgColor}; border-radius: ${innerRadius}; display: flex; flex-direction: ${rotateAll ? 'row' : 'column'}; align-items: center; justify-content: space-evenly; padding: 1cqw;">
+                        ${innerInfoContent}
+                    </div>
+                </div>
+
+            </div>
+        `;
         currentAlbumNum++;
+        itemIndex++;
     }
+    
     html += '</div></div>';
     return html;
 }
@@ -1005,7 +1096,7 @@ function buildPageHTML(bp, isLeftPage) {
 
     if (bp.type === 'stadiums') return buildStadiumPage(bp);
 
-    if (bp.type === 'golden_boots' || bp.type === 'golden_ball' || bp.type === 'winning_teams') return buildGenericGrid(bp, bp.type === 'winning_teams');
+    if (bp.type === 'golden_boots' || bp.type === 'golden_ball' || bp.type === 'winning_teams') return buildGenericGrid(bp, bp.type === 'winning_teams', isLeftPage);
     
     return `<div class="debug-text"><span>${bp.type}</span></div>`;
 }
@@ -1304,9 +1395,6 @@ function handleSwipe() {
         }
     }
 }
-
-// Init
-initBook();
 
 pendingOffersCount = 0;
 
