@@ -176,7 +176,7 @@ h1 { margin: 0; font-size: 22px; font-family: 'FWC2026', Arial, sans-serif; text
 }
 
 /* ÜBERSCHRIFTEN NUTZEN FWC2026 */
-.special-title { font-family: 'FWC2026', Arial, sans-serif; color: #FFD700; text-transform: uppercase; font-size: 7cqw; margin: 0 0 2cqw 0; text-align: center; letter-spacing: 2px; text-shadow: 0 2px 4px rgba(0,0,0,0.5); }
+.special-title { font-family: 'FWC2026', Arial, sans-serif; color: #FFD700; text-transform: uppercase; font-size: 7cqw; margin: 0; text-align: center; letter-spacing: 2px; }
 
 /* HELLES GRAU FÜR TUTORIAL ZAHLEN (Hintergrund abgeschnitten) */
 .bg-number {
@@ -227,6 +227,10 @@ h1 { margin: 0; font-size: 22px; font-family: 'FWC2026', Arial, sans-serif; text
     container-type: inline-size; 
     z-index: 5;
 }
+/* NEU: Landscape Slot & Sticker Größen für Winning Teams */
+.landscape-slot { aspect-ratio: 1.38 / 1 !important; width: var(--col-h) !important; height: var(--col-w) !important; }
+.landscape-sticker { aspect-ratio: 1.38 / 1 !important; }
+
 .rotated-slot-wrapper { width: var(--col-h); height: var(--col-w); position: relative; }
 .rotated-slot {
     position: absolute; top: 50%; left: 50%;
@@ -235,8 +239,6 @@ h1 { margin: 0; font-size: 22px; font-family: 'FWC2026', Arial, sans-serif; text
 }
 .rotated-slot .slot-circle { transform: rotate(90deg); }
 
-/* Klassen um aneinanderklebende Sticker perfekt zu verbinden.
-   (Durch die -90 Grad Rotation ist der visuell "untere" Rand technisch der linke!) */
 .spc-top-slot { border-left: none !important; }
 .spc-bottom-slot { border-right: none !important; }
 
@@ -264,11 +266,9 @@ h1 { margin: 0; font-size: 22px; font-family: 'FWC2026', Arial, sans-serif; text
 }
 .sticker-inner { position: absolute; top: 5cqw; left: 5cqw; right: 5cqw; bottom: 5cqw; background-color: var(--color-1, #c10e23); border: 1.25cqw solid var(--color-2, #046a38); outline: 1.25cqw solid var(--color-3, #f2a900); box-sizing: border-box; }
 
-/* Spezifische Entfernung der Ecken für zusammengeklebte WC26 Sticker (Rotation beachtet) */
 #slot-SPC001 .special-sticker-inner, #slot-SPC005 .special-sticker-inner { left: 0; border-radius: 0 1cqw 1cqw 0; border-left: none; }
 #slot-SPC002 .special-sticker-inner, #slot-SPC006 .special-sticker-inner { right: 0; border-radius: 1cqw 0 0 1cqw; border-right: none; }
 
-/* Stadien nahtlos aneinanderkleben! */
 .container-stadium-left .special-sticker-inner { right: 0; border-radius: 1cqw 0 0 1cqw; border-right: none; }
 .container-stadium-right .special-sticker-inner { left: 0; border-radius: 0 1cqw 1cqw 0; border-left: none; }
 
@@ -322,8 +322,6 @@ h1 { margin: 0; font-size: 22px; font-family: 'FWC2026', Arial, sans-serif; text
 .special-icon { position: absolute; bottom: 0; right: 0; width: 15cqw; height: 15cqw; object-fit: contain; z-index: 10; }
 .special-name-box { position: absolute; background: #ffffff; border: 0.15cqw solid #000000; border-radius: 5cqw; font-weight: bold; color: #000000; font-size: 6.5cqw; height: 11.25cqw; display: flex; align-items: center; justify-content: center; height: auto !important; padding: 1.8cqw 1.8cqw; white-space: nowrap; z-index: 10; box-shadow: 0 0.3cqw 0.9cqw rgba(0,0,0,0.3); font-family: Arial, sans-serif; }
 .pos-bottom-center { bottom: 1cqw; left: 50%; transform: translateX(-50%); }
-.name-wrapper-rot { position: absolute; left: calc(1.5cqw + 5.625cqw); top: 50%; transform: translate(-50%, -50%) rotate(90deg); z-index: 10; }
-.name-wrapper-rot .special-name-box { position: relative; bottom: auto; left: auto; transform: none; }
 
 .debug-text { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 80%; text-align: center; color: #555; font-family: Arial, sans-serif; font-size: 12px; line-height: 1.4; }
 
@@ -369,7 +367,7 @@ h1 { margin: 0; font-size: 22px; font-family: 'FWC2026', Arial, sans-serif; text
     <div id="album-badge-claims" class="market-badge market-badge-green" style="display:none;">0</div>
 </button>
 
-<div class="sticker-stack-container" id="stickerStack">
+<div class="sticker-stack-container" id="stickerStack" style="display: none;">
     <div id="stackCurrentNumber" class="stack-current-number"></div>
     <div class="stack-card stack-card-3" id="stackCard3"></div>
     <div class="stack-card stack-card-2" id="stackCard2"></div>
@@ -404,21 +402,23 @@ const db = firebase.firestore();
 /* =========================================================================
    DATENBANK & STICKER RENDERING
    ========================================================================= */
-let globalStickerDatabase = null;
+let globalStickerDatabase = {};
 let currentUserData = null;
 let bookInitialized = false;
 let globalIndexEntries = [];
 let pendingOffersCount = 0;
 
-fetch("./data/sticker_database.json")
-    .then(r => r.json())
-    .then(data => {
-        globalStickerDatabase = data;
-        initBook(); // WICHTIG: Das Album wird erst gebaut, wenn die Infos da sind!
-        renderStapel();
-        renderPastedStickers();
-    })
-    .catch(err => console.error("Datenbank konnte nicht geladen werden:", err));
+Promise.all([
+    fetch("./data/sticker_database.json").then(r => r.json()).catch(() => ({})),
+    fetch("./photos/info.json").then(r => r.json()).catch(e => { console.warn("info.json nicht gefunden", e); return {}; })
+])
+.then(([mainData, infoData]) => {
+    globalStickerDatabase = { ...mainData, ...infoData };
+    initBook(); 
+    renderStapel();
+    renderPastedStickers();
+})
+.catch(err => console.error("Datenbank konnte nicht geladen werden:", err));
 
 function getPageTextColor(hexColor) {
     if (!hexColor) return '#1a1a1a';
@@ -443,18 +443,22 @@ function getContrastColors(hexColor) {
 function createStickerHTML(sticker) {
     if (!sticker) return '';
     let typeClass = "container-default-special";
-    if (sticker.type === "player") typeClass = "container-player";
-    else if (sticker.type === 'stadium_left') typeClass = "container-stadium-left";
-    else if (sticker.type === 'stadium_right') typeClass = "container-stadium-right";
-    else if (sticker.type === 'team_photo') typeClass = "container-team-photo";
-    else if (sticker.type === 'logo') typeClass = "container-logo";
-    else if (sticker.type === 'golden_boot' || (sticker.id && sticker.id.startsWith('GBO'))) typeClass = "container-golden-boot";
-    else if (sticker.type === 'golden_ball' || (sticker.id && sticker.id.startsWith('GBA'))) typeClass = "container-golden-ball";
-    else if (sticker.type === 'historic_winner') typeClass = "container-historic-winner";
-    else if (sticker.type === 'special_fill') typeClass = "container-special-fill";
-    else if (sticker.type === 'special_edge') typeClass = "container-special-edge";
-    else if (sticker.type === 'trophy_top' || sticker.type === 'logo_top' || sticker.type === 'special_top') typeClass = "container-trophy-top";
-    else if (sticker.type === 'trophy_bottom' || sticker.type === 'logo_bottom' || sticker.type === 'special_bottom') typeClass = "container-trophy-bottom";
+    
+    // Füge Landscape Klasse hinzu, falls in Info.json hinterlegt!
+    if (sticker.orientation === 'landscape') typeClass += " landscape-sticker";
+    
+    if (sticker.type === "player") typeClass += " container-player";
+    else if (sticker.type === 'stadium_left') typeClass += " container-stadium-left";
+    else if (sticker.type === 'stadium_right') typeClass += " container-stadium-right";
+    else if (sticker.type === 'team_photo') typeClass += " container-team-photo";
+    else if (sticker.type === 'logo') typeClass += " container-logo";
+    else if (sticker.type === 'golden_boot' || (sticker.id && sticker.id.startsWith('GBO'))) typeClass += " container-golden-boot";
+    else if (sticker.type === 'golden_ball' || (sticker.id && sticker.id.startsWith('GBA'))) typeClass += " container-golden-ball";
+    else if (sticker.type === 'historic_winner') typeClass += " container-historic-winner";
+    else if (sticker.type === 'special_fill') typeClass += " container-special-fill";
+    else if (sticker.type === 'special_edge') typeClass += " container-special-edge";
+    else if (sticker.type === 'trophy_top' || sticker.type === 'logo_top' || sticker.type === 'special_top') typeClass += " container-trophy-top";
+    else if (sticker.type === 'trophy_bottom' || sticker.type === 'logo_bottom' || sticker.type === 'special_bottom') typeClass += " container-trophy-bottom";
 
     let inlineStyle = ""; let innerHTML = "";
     const cleanPath = (p) => p && p.startsWith('./') ? p.substring(2) : (p || '');
@@ -517,8 +521,9 @@ function createStickerHTML(sticker) {
             specialHTML += `<img src="photos/golden_ball/golden_ball.png" class="special-icon pos-bottom-right" onerror="this.style.display='none'">`;
             if(sName) specialHTML += `<div class="special-name-box pos-bottom-center">${sName}</div>`;
         } else if (sticker.type === 'historic_winner') {
-            if(sFlag) specialHTML += `<div class="special-flag-wrapper gold-bg pos-bottom-left-rot"><img src="${sFlag}" onerror="this.style.display='none'"></div>`;
-            if(sName) specialHTML += `<div class="name-wrapper-rot"><div class="special-name-box">${sName}</div></div>`;
+            // Echte Landscape Platzierung ohne Rotation!
+            if(sFlag) specialHTML += `<div class="special-flag-wrapper gold-bg" style="bottom: 1cqw; right: 1cqw; position: absolute;"><img src="${sFlag}" onerror="this.style.display='none'"></div>`;
+            if(sName) specialHTML += `<div class="special-name-box" style="bottom: 1.5cqw; right: 17cqw; height: auto; padding: 1cqw 2cqw;">${sName}</div>`;
         } else if (sticker.type === 'team_photo') {
             if(sFlag) specialHTML += `<div class="special-flag-wrapper pos-bottom-left-rot" style="background: #ffffff; border: 1.5px solid #cccccc;"><img src="${sFlag}" onerror="this.style.display='none'"></div>`;
         }
@@ -529,9 +534,19 @@ function createStickerHTML(sticker) {
 
 function renderStapel() {
     if (!globalStickerDatabase || !currentUserData) return;
-    const stapel = currentUserData.stapel || [];
-    document.getElementById('stackCounter').innerText = stapel.length;
     
+    const stapel = currentUserData.stapel || [];
+    const stackContainer = document.getElementById('stickerStack');
+    
+    // KOMPLETT AUSBLENDEN wenn leer
+    if (stapel.length === 0) {
+        stackContainer.style.display = 'none';
+        return;
+    } else {
+        stackContainer.style.display = 'block';
+    }
+    
+    document.getElementById('stackCounter').innerText = stapel.length;
     const numDisplay = document.getElementById('stackCurrentNumber');
 
     const cards = [
@@ -546,8 +561,6 @@ function renderStapel() {
             numDisplay.innerText = sticker.albumNumber;
             numDisplay.style.display = 'flex';
         }
-    } else {
-        numDisplay.style.display = 'none';
     }
 
     for (let i = 0; i < 3; i++) {
@@ -565,12 +578,7 @@ function renderStapel() {
                 card.style.display = "none"; 
             }
         } else {
-            if(i === 0 && stapel.length === 0) {
-               card.innerHTML = '<div class="stack-dummy"><span class="stack-placeholder-text">LEER</span></div>'; 
-               card.style.display = "flex"; 
-            } else {
-               card.style.display = "none"; 
-            }
+            card.style.display = "none"; 
         }
     }
 }
@@ -809,33 +817,29 @@ function buildStadiumPage(bp) {
 
 function buildGenericGrid(bp, rotateAll = false, isLeftPage) {
     let rainbowClass = " rainbow-border-page";
-    let html = `<div class="page-wrapper dark-page${rainbowClass}" style="padding: 4cqw 6cqw; position: relative; z-index: 1;">`;
+    let html = `<div class="page-wrapper dark-page${rainbowClass}" style="padding: 4cqw 6cqw; position: relative; z-index: 1; display: flex; flex-direction: column;">`;
     
-    // 1. ÜBERSCHRIFTEN & UNTERTITEL (Nur auf der linken Startseite)
-    let titleHtml = "";
+    let isGold = (bp.type === 'golden_ball' || bp.type === 'winning_teams');
+    let borderColorHex = isGold ? '#FFD700' : '#C0C0C0';
+    let titleGradient = isGold 
+        ? 'linear-gradient(135deg, #bf953f 0%, #fcf6ba 25%, #b38728 50%, #fbf5b7 75%, #aa771c 100%)' 
+        : 'linear-gradient(135deg, #e0e0e0 0%, #ffffff 25%, #a0a0a0 50%, #f8f8f8 75%, #c0c0c0 100%)';
+    
+    // 1. ÜBERSCHRIFTEN & UNTERTITEL
     if (isLeftPage) {
-        if (bp.type === 'golden_boots' && bp.startId === 'GBO001') {
-            titleHtml = `<div style="text-align: center; margin-bottom: 2cqw; margin-top: 1cqw;">
-                            <h2 class="special-title" style="margin: 0; line-height: 1;">GOLDEN BOOT</h2>
-                            <div style="font-family: 'FWC2026', Arial, sans-serif; color: white; font-size: 3.5cqw; letter-spacing: 1px; margin-top: 0.5cqw;">Best Goalscorer</div>
-                         </div>`;
-        } else if (bp.type === 'golden_ball' && bp.startId === 'GBA001') {
-            titleHtml = `<div style="text-align: center; margin-bottom: 2cqw; margin-top: 1cqw;">
-                            <h2 class="special-title" style="margin: 0; line-height: 1;">GOLDEN BALL</h2>
-                            <div style="font-family: 'FWC2026', Arial, sans-serif; color: white; font-size: 3.5cqw; letter-spacing: 1px; margin-top: 0.5cqw;">Player of the Tournament</div>
-                         </div>`;
-        } else if (bp.type === 'winning_teams' && bp.startId === 'WIN001') {
-            titleHtml = `<div style="text-align: center; margin-bottom: 2cqw; margin-top: 1cqw;">
-                            <h2 class="special-title" style="margin: 0; line-height: 1;">WINNING TEAMS</h2>
-                            <div style="font-family: 'FWC2026', Arial, sans-serif; color: white; font-size: 3.5cqw; letter-spacing: 1px; margin-top: 0.5cqw;">Winner of the Tournament</div>
-                         </div>`;
+        let titleText = ""; let subText = "";
+        if (bp.type === 'golden_boots') { titleText = "GOLDEN BOOT"; subText = "Best Goalscorer"; }
+        if (bp.type === 'golden_ball') { titleText = "GOLDEN BALL"; subText = "Player of the Tournament"; }
+        if (bp.type === 'winning_teams') { titleText = "WINNING TEAMS"; subText = "Winner of the Tournament"; }
+        
+        if (titleText) {
+            html += `
+            <div style="text-align: center; margin-bottom: 2cqw; margin-top: 1cqw; flex-shrink: 0;">
+                <h2 class="special-title" style="margin: 0; line-height: 1; background: ${titleGradient}; -webkit-background-clip: text; -webkit-text-fill-color: transparent; text-shadow: none;">${titleText}</h2>
+                <div style="font-family: 'FWC2026', Arial, sans-serif; color: white; font-size: 3.5cqw; letter-spacing: 1px; margin-top: 0.5cqw;">${subText}</div>
+            </div>`;
         }
     }
-    
-    html += titleHtml;
-    
-    // Container für die vertikale Verteilung (space-evenly sorgt für perfekten Abstand zu den Seitenzahlen)
-    html += `<div style="display: flex; flex-direction: column; justify-content: space-evenly; flex-grow: 1; width: 100%; position: relative; z-index: 10; padding-bottom: 3cqw;">`;
     
     let currentAlbumNum = bp.startAlbumNumber;
     let sIdx = parseInt(bp.startId.replace(/\D/g, ''), 10);
@@ -845,82 +849,111 @@ function buildGenericGrid(bp, rotateAll = false, isLeftPage) {
     let itemIndex = 0;
     const infoColors = ['#450B0B','#39008E','#10164B','#002E26','#800000','#6B5199','#1D3099','#007732','#992500','#6F3F76','#145A91','#6A8C00','#995F4E','#8B1339','#3B9881','#8E9929'];
     
-    // Farben für die Ränder ermitteln
-    let isGold = (bp.type === 'golden_ball' || bp.type === 'winning_teams');
-    let borderColorHex = isGold ? '#FFD700' : '#C0C0C0';
-    let borderGradient = isGold ? 'linear-gradient(135deg, #bf953f 0%, #fcf6ba 25%, #b38728 50%, #fbf5b7 75%, #aa771c 100%)' : 'linear-gradient(135deg, #e0e0e0 0%, #ffffff 25%, #a0a0a0 50%, #f8f8f8 75%, #c0c0c0 100%)';
+    // Logik: Ist es eine Landscape-Kategorie (Winning Teams)?
+    let isLandscape = rotateAll;
 
-    for(let i = sIdx; i <= eIdx; i++) {
-        let sid = prefix + String(i).padStart(3, '0');
-        let isLeft = (itemIndex % 2 === 0); // Zig-Zag Logik
+    if (isLandscape) {
+        // --- 1-SPALTIGES ZIG-ZAG (Breite Boxen für Landscape) ---
+        html += `<div style="display: flex; flex-direction: column; justify-content: flex-start; gap: 3cqw; width: 100%; flex-grow: 1; margin-top: 2cqw; padding-bottom: 6cqw;">`;
         
-        // Infos aus DB holen
-        let sData = globalStickerDatabase ? globalStickerDatabase[sid] : null;
-        let sName = sData ? sData.name : "Unknown";
-        let sYear = sData ? sData.year : "----";
-        let sFlag = sData ? sData.flag : "assets/Icon.png";
-        
-        let colorIdx = i % infoColors.length;
-        let bgColor = infoColors[colorIdx];
-
-        // Layout Variablen für das Zig-Zag
-        let alignClass = isLeft ? 'flex-start' : 'flex-end';
-        let rowDirection = isLeft ? 'row' : 'row-reverse';
-        let outerRadius = isLeft ? '0 3.5cqw 3.5cqw 0' : '3.5cqw 0 0 3.5cqw';
-        let innerRadius = isLeft ? '0 2.9cqw 2.9cqw 0' : '2.9cqw 0 0 2.9cqw';
-        let paddingSide = isLeft ? 'padding-left: 0;' : 'padding-right: 0;';
-
-        // Maße für Hochformat (Portrait) und Querformat (Landscape)
-        let stickerWidth = rotateAll ? 'var(--col-h)' : 'var(--col-w)';
-        let stickerHeight = rotateAll ? 'var(--col-w)' : 'var(--col-h)';
-        let infoWidth = rotateAll ? '40cqw' : '23cqw';
-        let infoHeight = rotateAll ? 'var(--col-w)' : 'calc(var(--col-h) - 3cqw)';
-
-        // Der Leere Slot (mit Gold/Silber Ring)
-        let stickerSlotHtml = rotateAll ? 
-            `<div class="rotated-slot-wrapper" style="width: 100%; height: 100%;">
-                <div class="sticker-slot rotated-slot" id="slot-${sid}" data-id="${sid}" style="width: 100% !important; height: 100% !important; border: none;">
-                    <div class="slot-circle" style="border-color: ${borderColorHex}; color: ${borderColorHex}; transform: rotate(90deg);">${currentAlbumNum}</div>
-                </div>
-             </div>` : 
-            `<div class="sticker-slot" id="slot-${sid}" data-id="${sid}" style="width: 100% !important; height: 100% !important; border: none;">
+        for(let i = sIdx; i <= eIdx; i++) {
+            let sid = prefix + String(i).padStart(3, '0');
+            let isLeft = (itemIndex % 2 === 0);
+            
+            let sData = globalStickerDatabase ? globalStickerDatabase[sid] : null;
+            let sName = sData ? sData.name : "Unknown";
+            let sYear = sData ? sData.year : "----";
+            let sFlag = sData ? sData.flag : "assets/Icon.png";
+            
+            let colorIdx = itemIndex % infoColors.length;
+            let bgColor = infoColors[colorIdx];
+            
+            let rowDirection = isLeft ? 'row' : 'row-reverse';
+            let alignClass = isLeft ? 'flex-start' : 'flex-end';
+            let outerRadius = isLeft ? '0 3.5cqw 3.5cqw 0' : '3.5cqw 0 0 3.5cqw';
+            
+            let stickerSlotHtml = `
+            <div class="sticker-slot landscape-slot" id="slot-${sid}" data-id="${sid}" style="border: 1.5px solid ${borderColorHex}; background-color: transparent !important; display: flex; align-items: center; justify-content: center;">
                 <div class="slot-circle" style="border-color: ${borderColorHex}; color: ${borderColorHex};">${currentAlbumNum}</div>
+            </div>`;
+            
+            let innerInfoContent = `
+             <img src="${sFlag}" style="width: 10cqw; height: 10cqw; border-radius: 50%; border: 0.3cqw solid white; object-fit: cover; flex-shrink: 0;" onerror="this.style.display='none'">
+             <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; margin: 0 3cqw; flex-grow: 1;">
+                <span style="font-family: 'FWC2026', Arial, sans-serif; color: white; font-size: 3.0cqw; text-align: center; line-height: 1.1;">${sName}</span>
+                <span style="font-family: 'FWC2026', Arial, sans-serif; color: white; font-size: 2.6cqw; text-align: center; margin-top: 1cqw;">${sYear}</span>
              </div>`;
-
-        // Der Inhalt der Info-Box (Landscape vs Portrait)
-        let innerInfoContent = rotateAll ? 
-            `<img src="${sFlag}" style="width: 9cqw; height: 9cqw; border-radius: 50%; border: 0.3cqw solid white; object-fit: cover; flex-shrink: 0;" onerror="this.style.display='none'">
-             <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; width: 65%;">
-                <span style="font-family: 'FWC2026', Arial, sans-serif; color: white; font-size: 3.8cqw; text-align: center; line-height: 1.1; text-shadow: 0 1px 3px rgba(0,0,0,0.6);">${sName}</span>
-                <span style="font-family: 'FWC2026', Arial, sans-serif; color: white; font-size: 3.8cqw; text-align: center; margin-top: 1cqw; text-shadow: 0 1px 3px rgba(0,0,0,0.6);">${sYear}</span>
-             </div>` :
-            `<span style="font-family: 'FWC2026', Arial, sans-serif; color: white; font-size: 3.3cqw; text-align: center; line-height: 1.1; text-shadow: 0 1px 3px rgba(0,0,0,0.6);">${sName}</span>
-             <span style="font-family: 'FWC2026', Arial, sans-serif; color: white; font-size: 3.3cqw; text-align: center; text-shadow: 0 1px 3px rgba(0,0,0,0.6);">${sYear}</span>
-             <img src="${sFlag}" style="width: 9cqw; height: 9cqw; border-radius: 50%; border: 0.3cqw solid white; object-fit: cover;" onerror="this.style.display='none'">`;
-
-        // Alles zusammensetzen
-        html += `
-            <div style="display: flex; flex-direction: ${rowDirection}; align-items: center; align-self: ${alignClass}; position: relative;">
+             
+            html += `
+            <div style="display: flex; flex-direction: ${rowDirection}; align-items: stretch; align-self: ${alignClass}; width: 85%;">
+                <div style="position: relative; width: var(--col-h); height: var(--col-w); flex-shrink: 0; z-index: 2;">
+                    ${stickerSlotHtml}
+                </div>
+                <div style="flex-grow: 1; border: 0.5cqw solid ${bgColor}; ${isLeft ? 'border-left: none;' : 'border-right: none;'} border-radius: ${outerRadius}; background: #000; display: flex; flex-direction: row; align-items: center; justify-content: flex-start; padding: 1cqw 2cqw; z-index: 1;">
+                    ${innerInfoContent}
+                </div>
+            </div>`;
+            
+            currentAlbumNum++; itemIndex++;
+        }
+        html += `</div>`;
+    } else {
+        // --- 2-SPALTIGES ZIG-ZAG (Platzsparend für Hochformat) ---
+        let leftItems = []; let rightItems = [];
+        for(let i = sIdx; i <= eIdx; i++) {
+            let sid = prefix + String(i).padStart(3, '0');
+            if (itemIndex % 2 === 0) leftItems.push({sid, num: currentAlbumNum, idx: itemIndex});
+            else rightItems.push({sid, num: currentAlbumNum, idx: itemIndex});
+            currentAlbumNum++; itemIndex++;
+        }
+        
+        let buildCol = (items, isLeftCol) => {
+            let colHtml = '';
+            items.forEach(item => {
+                let sData = globalStickerDatabase ? globalStickerDatabase[item.sid] : null;
+                let sName = sData ? sData.name : "Unknown";
+                let sYear = sData ? sData.year : "----";
+                let sFlag = sData ? sData.flag : "assets/Icon.png";
+                let bgColor = infoColors[item.idx % infoColors.length];
                 
-                <div style="position: relative; width: ${stickerWidth}; height: ${stickerHeight}; background: ${borderGradient}; padding: 0.6cqw; border-radius: 0.5cqw; box-shadow: 0 4px 8px rgba(0,0,0,0.5); z-index: 2;">
-                    <div style="position: relative; width: 100%; height: 100%; background: #000;">
+                let rowDirection = isLeftCol ? 'row' : 'row-reverse';
+                let outerRadius = isLeftCol ? '0 3.5cqw 3.5cqw 0' : '3.5cqw 0 0 3.5cqw';
+                
+                let stickerSlotHtml = `
+                <div class="sticker-slot" id="slot-${item.sid}" data-id="${item.sid}" style="border: 1.5px solid ${borderColorHex}; background-color: transparent !important; display: flex; align-items: center; justify-content: center;">
+                    <div class="slot-circle" style="border-color: ${borderColorHex}; color: ${borderColorHex};">${item.num}</div>
+                </div>`;
+                
+                let innerInfoContent = `
+                 <span style="font-family: 'FWC2026', Arial, sans-serif; color: white; font-size: 2.6cqw; text-align: center; line-height: 1.1;">${sName}</span>
+                 <span style="font-family: 'FWC2026', Arial, sans-serif; color: white; font-size: 2.4cqw; text-align: center; margin-top: 0.5cqw;">${sYear}</span>
+                 <img src="${sFlag}" style="width: 8cqw; height: 8cqw; border-radius: 50%; border: 0.3cqw solid white; object-fit: cover; margin-top: 1cqw;" onerror="this.style.display='none'">`;
+                
+                colHtml += `
+                <div style="display: flex; flex-direction: ${rowDirection}; align-items: stretch; width: 100%;">
+                    <div style="position: relative; width: var(--col-w); height: var(--col-h); flex-shrink: 0; z-index: 2;">
                         ${stickerSlotHtml}
                     </div>
-                </div>
-                
-                <div style="height: ${infoHeight}; width: ${infoWidth}; background: ${borderGradient}; padding: 0.6cqw; ${paddingSide} border-radius: ${outerRadius}; box-shadow: 0 4px 8px rgba(0,0,0,0.5); z-index: 1;">
-                    <div style="width: 100%; height: 100%; background-color: ${bgColor}; border-radius: ${innerRadius}; display: flex; flex-direction: ${rotateAll ? 'row' : 'column'}; align-items: center; justify-content: space-evenly; padding: 1cqw;">
+                    <div style="flex-grow: 1; border: 0.5cqw solid ${bgColor}; ${isLeftCol ? 'border-left: none;' : 'border-right: none;'} border-radius: ${outerRadius}; background: #000; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 1cqw; z-index: 1;">
                         ${innerInfoContent}
                     </div>
-                </div>
-
+                </div>`;
+            });
+            return colHtml;
+        };
+        
+        html += `
+        <div style="display: flex; flex-direction: row; justify-content: space-between; width: 100%; flex-grow: 1; margin-top: 2cqw; padding-bottom: 6cqw;">
+            <div style="width: 48%; display: flex; flex-direction: column; justify-content: flex-start; gap: 3cqw;">
+                ${buildCol(leftItems, true)}
             </div>
-        `;
-        currentAlbumNum++;
-        itemIndex++;
+            <div style="width: 48%; display: flex; flex-direction: column; justify-content: flex-start; gap: 3cqw; padding-top: 10cqw;">
+                ${buildCol(rightItems, false)}
+            </div>
+        </div>`;
     }
     
-    html += '</div></div>';
+    html += '</div>';
     return html;
 }
 
@@ -932,7 +965,6 @@ function buildPageHTML(bp, isLeftPage) {
     }
 
 	if (bp.type === 'team') {
-        // color_3 (--bg-deco) wird für die Zahlen genutzt, overflow: hidden schneidet alles ab, was über die Seite ragt
         let wrapperStyle = `--page-bg: ${bp.color_2}; --slot-color: ${bp.color_1}; --text-col: ${getPageTextColor(bp.color_2)}; --bg-deco: ${bp.color_3 || '#f2a900'}; position: relative; overflow: hidden;`;
 
         if (isLeftPage) { 
@@ -1427,7 +1459,6 @@ firebase.auth().onAuthStateChanged((user) => {
             if (doc.exists) {
                 currentUserData = doc.data();
                 if (!bookInitialized) {
-                    renderPastedStickers();
                     bookInitialized = true;
                 }
                 renderStapel();
