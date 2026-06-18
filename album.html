@@ -156,8 +156,8 @@ h1 { margin: 0; font-size: 22px; font-family: 'FWC2026', Arial, sans-serif; text
 
 .dark-page {
     background-color: #000000 !important;
-    --text-col: #FFFFFF;
-    --slot-color: rgba(255, 255, 255, 0.4);
+    --text-col: #FFD700;
+    --slot-color: #FFD700;
 }
 
 .rainbow-border-page {
@@ -176,21 +176,7 @@ h1 { margin: 0; font-size: 22px; font-family: 'FWC2026', Arial, sans-serif; text
 }
 
 /* ÜBERSCHRIFTEN NUTZEN FWC2026 */
-.special-title { font-family: 'FWC2026', Arial, sans-serif; text-transform: uppercase; font-size: 7cqw; margin: 0 0 2cqw 0; text-align: center; letter-spacing: 2px; text-shadow: 0 2px 4px rgba(0,0,0,0.5); }
-
-/* Glitzernde Texte für Golden Boot & Golden Ball */
-.shiny-text-gold {
-    background: linear-gradient(135deg, #bf953f 0%, #fcf6ba 25%, #b38728 50%, #fbf5b7 75%, #aa771c 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    color: #FFD700;
-}
-.shiny-text-silver {
-    background: linear-gradient(135deg, #e0e0e0 0%, #ffffff 25%, #a0a0a0 50%, #f8f8f8 75%, #c0c0c0 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    color: #C0C0C0;
-}
+.special-title { font-family: 'FWC2026', Arial, sans-serif; color: #FFD700; text-transform: uppercase; font-size: 7cqw; margin: 0 0 2cqw 0; text-align: center; letter-spacing: 2px; text-shadow: 0 2px 4px rgba(0,0,0,0.5); }
 
 /* HELLES GRAU FÜR TUTORIAL ZAHLEN (Hintergrund abgeschnitten) */
 .bg-number {
@@ -249,7 +235,8 @@ h1 { margin: 0; font-size: 22px; font-family: 'FWC2026', Arial, sans-serif; text
 }
 .rotated-slot .slot-circle { transform: rotate(90deg); }
 
-/* Klassen um aneinanderklebende Sticker perfekt zu verbinden. */
+/* Klassen um aneinanderklebende Sticker perfekt zu verbinden.
+   (Durch die -90 Grad Rotation ist der visuell "untere" Rand technisch der linke!) */
 .spc-top-slot { border-left: none !important; }
 .spc-bottom-slot { border-right: none !important; }
 
@@ -275,9 +262,9 @@ h1 { margin: 0; font-size: 22px; font-family: 'FWC2026', Arial, sans-serif; text
     aspect-ratio: 1 / 1.38 !important; 
     container-type: inline-size !important; 
 }
-.sticker-inner { position: absolute; top: 5cqw; left: 5cqw; right: 5cqw; bottom: 5cqw; background-color: var(--color-1, #c10e23); border: 1.25cqw solid var(--color-2, #046a38); outline: 1.25cqw solid var(--color-3, #f2a900); outline-offset: -0.1cqw; box-sizing: border-box; pointer-events: none; }
+.sticker-inner { position: absolute; top: 5cqw; left: 5cqw; right: 5cqw; bottom: 5cqw; background-color: var(--color-1, #c10e23); border: 1.25cqw solid var(--color-2, #046a38); outline: 1.25cqw solid var(--color-3, #f2a900); box-sizing: border-box; }
 
-/* Spezifische Entfernung der Ecken für zusammengeklebte WC26 Sticker */
+/* Spezifische Entfernung der Ecken für zusammengeklebte WC26 Sticker (Rotation beachtet) */
 #slot-SPC001 .special-sticker-inner, #slot-SPC005 .special-sticker-inner { left: 0; border-radius: 0 1cqw 1cqw 0; border-left: none; }
 #slot-SPC002 .special-sticker-inner, #slot-SPC006 .special-sticker-inner { right: 0; border-radius: 1cqw 0 0 1cqw; border-right: none; }
 
@@ -285,46 +272,57 @@ h1 { margin: 0; font-size: 22px; font-family: 'FWC2026', Arial, sans-serif; text
 .container-stadium-left .special-sticker-inner { right: 0; border-radius: 1cqw 0 0 1cqw; border-right: none; }
 .container-stadium-right .special-sticker-inner { left: 0; border-radius: 0 1cqw 1cqw 0; border-left: none; }
 
-.sticker-flag { position: absolute; top: 0; right: 0; width: 15cqw; height: 15cqw; border-radius: 50%; overflow: hidden; border: 1px solid #000000; box-sizing: border-box; z-index: 2; pointer-events: none;}
+.sticker-flag { position: absolute; top: 0; right: 0; width: 15cqw; height: 15cqw; border-radius: 50%; overflow: hidden; border: 0.3cqw solid #000000; box-sizing: border-box; z-index: 2; }
 .sticker-flag img { width: 100%; height: 100%; object-fit: cover; display: block; }
-.bg-svg-2, .bg-svg-6 { position: absolute; width: 76%; height: 40%; background-repeat: no-repeat; background-size: contain; pointer-events: none;}
+.bg-svg-2, .bg-svg-6 { position: absolute; width: 76%; height: 40%; background-repeat: no-repeat; background-size: contain; }
 .bg-svg-2 { top: 0; left: 0; background-image: url('assets/2.svg'); background-position: left top; filter: drop-shadow(0px 0px 0px var(--color-2)); }
 .bg-svg-6 { bottom: 40%; right: 0; background-image: url('assets/6.svg'); background-position: right bottom; }
-.player-image-container { position: absolute; bottom: 40%; height: 60%; left: 0; width: 100%; z-index: 1; pointer-events: none;}
+.player-image-container { position: absolute; bottom: 40%; height: 60%; left: 0; width: 100%; z-index: 1; }
 .player-image-container img { width: 100%; height: 100%; object-fit: contain; display: block; }
-.lower-elements-wrapper { position: absolute; top: 60%; bottom: 0; left: 0; right: 0; display: flex; flex-direction: column; gap: 4px; padding-bottom: 4px; box-sizing: border-box; z-index: 2; pointer-events: none;}
-.sticker-info-box { flex: 1; min-height: 0; width: 100%; background-color: var(--color-2); display: flex; align-items: center; justify-content: center; box-shadow: inset 0 1.5px 0 var(--color-3), inset 0 -1.5px 0 var(--color-3); box-sizing: border-box; }
+.lower-elements-wrapper { position: absolute; top: 60%; bottom: 0; left: 0; right: 0; display: flex; flex-direction: column; gap: 1.2cqw; padding-bottom: 1.2cqw; box-sizing: border-box; z-index: 2; }
+.sticker-info-box { flex: 1; min-height: 0; width: 100%; background-color: var(--color-2); display: flex; align-items: center; justify-content: center; box-shadow: inset 0 0.5cqw 0 var(--color-3), inset 0 -0.5cqw 0 var(--color-3); box-sizing: border-box; }
 
-.player-name { font-family: Arial, sans-serif !important; color: #ffffff; font-weight: bold; text-align: center; white-space: normal; word-break: break-word; padding: 0 4px; font-size: 6.6cqw; line-height: 1.05; text-shadow: 1px 1px 2px rgba(0,0,0,0.5); max-width: 100%; }
+.player-name { 
+    font-family: Arial, sans-serif !important; 
+    color: #ffffff; 
+    font-weight: bold; 
+    text-align: center; 
+    white-space: normal; 
+    word-break: break-word;
+    padding: 0 1.2cqw;
+    font-size: 6.6cqw;
+    line-height: 0.95; 
+    text-shadow: 0.3cqw 0.3cqw 0.5cqw rgba(0,0,0,0.5); 
+    max-width: 100%;
+}
 
-.sticker-meta-container { flex: 0.8; min-height: 0; width: 100%; display: flex; gap: 2px; box-sizing: border-box; }
-.meta-box { background-color: #ffffff; border: 1px solid #000000; color: #000000; display: flex; align-items: center; justify-content: center; font-weight: bold; text-align: center; font-size: 5.2cqw; box-sizing: border-box; line-height: 1; }
-.meta-box-left { width: 16%; border-radius: 0 6px 6px 0; border-left: none; }
-.meta-box-center { flex: 1; border-radius: 6px; font-size: 4.8cqw; }
-.meta-box-right { width: 25%; border-radius: 6px 0 0 6px; border-right: none; }
-.bottom-info-bar { flex: 1; min-height: 0; width: 100%; display: flex; align-items: center; gap: 4px; }
-.pos-box { height: 100%; aspect-ratio: 1 / 1; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 7cqw; line-height: 1; border-radius: 0 5px 5px 0; border-top: 1px solid rgba(0,0,0,0.2); border-bottom: 1px solid rgba(0,0,0,0.2); border-right: 1px solid rgba(0,0,0,0.2); border-left: none; box-shadow: 2px 0 5px rgba(255, 255, 255, 0.4); box-sizing: border-box; padding: 0; text-transform: uppercase; }
+.sticker-meta-container { flex: 0.8; min-height: 0; width: 100%; display: flex; gap: 0.6cqw; box-sizing: border-box; }
+.meta-box { background-color: #ffffff; border: 1.8cqw solid #000000; color: #000000; display: flex; align-items: center; justify-content: center; font-weight: bold; text-align: center; font-size: 5.2cqw; box-sizing: border-box; line-height: 1; }
+.meta-box-left { width: 16%; border-radius: 0 1.8cqw 1.8cqw 0; border-left: none; }
+.meta-box-center { flex: 1; border-radius: 1.8cqw; font-size: 4.8cqw; }
+.meta-box-right { width: 25%; border-radius: 1.8cqw 0 0 1.8cqw; border-right: none; }
+.bottom-info-bar { flex: 1; min-height: 0; width: 100%; display: flex; align-items: center; gap: 1cqw; }
+.pos-box { height: 100%; aspect-ratio: 1 / 1; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 7cqw; line-height: 1; border-radius: 0 1.5cqw 1.5cqw 0; border-top: 0.3cqw solid rgba(0,0,0,0.2); border-bottom: 0.3cqw solid rgba(0,0,0,0.2); border-right: 0.3cqw solid rgba(0,0,0,0.2); border-left: none; box-shadow: 0.6cqw 0 1.5cqw rgba(255, 255, 255, 0.4); box-sizing: border-box; padding: 0; text-transform: uppercase; }
 .pos-box[data-pos="at"] { background-color: #ff1145; color: #ffffff; } .pos-box[data-pos="mf"] { background-color: #28a745; color: #ffffff; } .pos-box[data-pos="df"] { background-color: #ffc107; color: #ffffff; } .pos-box[data-pos="gk"] { background-color: #007bff; color: #ffffff; } 
 .club-logo-small { height: 80%; width: auto; object-fit: contain; }
-.club-name { color: var(--dynamic-text, #ffffff); font-family: Arial, sans-serif !important; font-weight: bold; font-size: 5.5cqw; text-transform: none; letter-spacing: 0.2px; max-width: 100%; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; line-height: 1.1; }
-.club-logo-bottom { height: 90%; width: auto; object-fit: contain; margin-left: auto; padding-right: 2px; }
+.club-name { color: var(--dynamic-text, #ffffff); font-weight: bold; font-size: 5.5cqw; text-transform: none; letter-spacing: 0.06cqw; max-width: 100%; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; line-height: 1.1; }
+.club-logo-bottom { height: 90%; width: auto; object-fit: contain; margin-left: auto; padding-right: 0.6cqw; }
 
-/* SPECIAL STICKER */
-.special-sticker-inner { position: absolute; top: 5cqw; left: 5cqw; right: 5cqw; bottom: 5cqw; background-color: #ffffff; display: flex; align-items: center; justify-content: center; overflow: hidden; pointer-events: none;}
-.special-sticker-img { width: 100%; height: 100%; object-fit: cover; display: block; pointer-events: none; }
+.special-sticker-inner { position: absolute; top: 5cqw; left: 5cqw; right: 5cqw; bottom: 5cqw; background-color: #ffffff; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+.special-sticker-img { width: 100%; height: 100%; object-fit: cover; display: block; }
 .container-logo, .container-golden-boot { background: linear-gradient(135deg, #e0e0e0 0%, #ffffff 25%, #a0a0a0 50%, #f8f8f8 75%, #c0c0c0 100%) !important; }
-.container-logo .special-sticker-inner { top: 0; bottom: 0; left: 0; right: 0; background-color: transparent; } .container-logo .special-sticker-img { object-fit: contain; padding: 0 4px; }
+.container-logo .special-sticker-inner { top: 0; bottom: 0; left: 0; right: 0; background-color: transparent; } .container-logo .special-sticker-img { object-fit: contain; padding: 0 1.2cqw; }
 .container-golden-ball, .container-historic-winner, .container-special-edge, .container-trophy-top, .container-trophy-bottom, .container-special-fill { background: linear-gradient(135deg, #bf953f 0%, #fcf6ba 25%, #b38728 50%, #fbf5b7 75%, #aa771c 100%) !important; }
-.container-special-fill .special-sticker-inner { background-color: transparent; top: 0; bottom: 0; left: 0; right: 0; } .container-special-fill .special-sticker-img { width: calc(100% - 4px); margin: 0 auto; }
-.special-flag-wrapper { position: absolute; width: 15cqw; height: 15cqw; padding: 0.8cqw; border-radius: 50%; z-index: 10; display: flex; align-items: center; justify-content: center; pointer-events: none; }
-.special-flag-wrapper img { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; border: 1px solid rgba(0,0,0,0.5); display: block; pointer-events: none; }
-.gold-bg { background: linear-gradient(135deg, #bf953f 0%, #fcf6ba 25%, #b38728 50%, #fbf5b7 75%, #aa771c 100%); box-shadow: 0 1px 3px rgba(0,0,0,0.5); }
-.silver-bg { background: linear-gradient(135deg, #e0e0e0 0%, #ffffff 25%, #a0a0a0 50%, #f8f8f8 75%, #c0c0c0 100%); box-shadow: 0 1px 3px rgba(0,0,0,0.5); }
+.container-special-fill .special-sticker-inner { background-color: transparent; top: 0; bottom: 0; left: 0; right: 0; } .container-special-fill .special-sticker-img { width: calc(100% - 1.2cqw); margin: 0 auto; }
+.special-flag-wrapper { position: absolute; width: 15cqw; height: 15cqw; padding: 0.8cqw; border-radius: 50%; z-index: 10; display: flex; align-items: center; justify-content: center; }
+.special-flag-wrapper img { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; border: 0.3cqw solid rgba(0,0,0,0.5); display: block; }
+.gold-bg { background: linear-gradient(135deg, #bf953f 0%, #fcf6ba 25%, #b38728 50%, #fbf5b7 75%, #aa771c 100%); box-shadow: 0 0.3cqw 0.9cqw rgba(0,0,0,0.5); }
+.silver-bg { background: linear-gradient(135deg, #e0e0e0 0%, #ffffff 25%, #a0a0a0 50%, #f8f8f8 75%, #c0c0c0 100%); box-shadow: 0 0.3cqw 0.9cqw rgba(0,0,0,0.5); }
 .pos-top-right { top: 0; right: 0; } .pos-bottom-right { bottom: 0; right: 0; } .pos-bottom-left-rot { bottom: 0; left: 0; transform: rotate(90deg); }
-.special-icon { position: absolute; bottom: 0; right: 0; width: 15cqw; height: 15cqw; object-fit: contain; z-index: 10; pointer-events: none; }
-.special-name-box { position: absolute; background: #ffffff; border: 1px solid #000000; border-radius: 4px; font-weight: bold; color: #000000; font-size: 6.5cqw; height: auto !important; padding: 2.5cqw 4.0cqw; display: flex; align-items: center; justify-content: center; white-space: nowrap; z-index: 10; box-shadow: 0 1px 3px rgba(0,0,0,0.3); pointer-events: none; font-family: Arial, sans-serif; }
-.pos-bottom-center { bottom: 2.5cqw; left: 50%; transform: translateX(-50%); }
-.name-wrapper-rot { position: absolute; left: calc(3.0cqw + 5.625cqw); top: 50%; transform: translate(-50%, -50%) rotate(90deg); z-index: 10; pointer-events: none; }
+.special-icon { position: absolute; bottom: 0; right: 0; width: 15cqw; height: 15cqw; object-fit: contain; z-index: 10; }
+.special-name-box { position: absolute; background: #ffffff; border: 0.15cqw solid #000000; border-radius: 5cqw; font-weight: bold; color: #000000; font-size: 6.5cqw; height: 11.25cqw; display: flex; align-items: center; justify-content: center; height: auto !important; padding: 1.8cqw 1.8cqw; white-space: nowrap; z-index: 10; box-shadow: 0 0.3cqw 0.9cqw rgba(0,0,0,0.3); font-family: Arial, sans-serif; }
+.pos-bottom-center { bottom: 1cqw; left: 50%; transform: translateX(-50%); }
+.name-wrapper-rot { position: absolute; left: calc(1.5cqw + 5.625cqw); top: 50%; transform: translate(-50%, -50%) rotate(90deg); z-index: 10; }
 .name-wrapper-rot .special-name-box { position: relative; bottom: auto; left: auto; transform: none; }
 
 .debug-text { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 80%; text-align: center; color: #555; font-family: Arial, sans-serif; font-size: 12px; line-height: 1.4; }
@@ -406,28 +404,20 @@ const db = firebase.firestore();
 /* =========================================================================
    DATENBANK & STICKER RENDERING
    ========================================================================= */
-let globalStickerDatabase = null; // Auf NULL lassen zum prüfen
+let globalStickerDatabase = null;
 let currentUserData = null;
 let bookInitialized = false;
 let globalIndexEntries = [];
 let pendingOffersCount = 0;
 
-// LÄDT BEIDE DATENBANKEN GLEICHZEITIG (Sticker + Info) UND FÜHRT SIE ZUSAMMEN
-Promise.all([
-    fetch("./data/sticker_database.json").then(r => r.json()).catch(() => ({})),
-    fetch("./photos/info.json").then(r => r.json()).catch(e => { console.warn("info.json nicht gefunden", e); return {}; })
-])
-.then(([mainData, infoData]) => {
-    globalStickerDatabase = { ...mainData, ...infoData };
-    initBook(); 
-    // Sicherstellen, dass das Album nicht leer bleibt, wenn DB lädt:
-    if (currentUserData) {
+fetch("./data/sticker_database.json")
+    .then(r => r.json())
+    .then(data => {
+        globalStickerDatabase = data;
         renderStapel();
         renderPastedStickers();
-    }
-})
-.catch(err => console.error("Datenbank konnte nicht geladen werden:", err));
-
+    })
+    .catch(err => console.error("Datenbank konnte nicht geladen werden:", err));
 
 function getPageTextColor(hexColor) {
     if (!hexColor) return '#1a1a1a';
@@ -526,10 +516,10 @@ function createStickerHTML(sticker) {
             specialHTML += `<img src="photos/golden_ball/golden_ball.png" class="special-icon pos-bottom-right" onerror="this.style.display='none'">`;
             if(sName) specialHTML += `<div class="special-name-box pos-bottom-center">${sName}</div>`;
         } else if (sticker.type === 'historic_winner') {
-            if(sFlag) specialHTML += `<div class="special-flag-wrapper gold-bg pos-bottom-left" style="position: absolute; bottom: 0; left: 0;"><img src="${sFlag}" onerror="this.style.display='none'"></div>`;
-            if(sName) specialHTML += `<div class="special-name-box pos-bottom-center">${sName}</div>`;
+            if(sFlag) specialHTML += `<div class="special-flag-wrapper gold-bg pos-bottom-left-rot"><img src="${sFlag}" onerror="this.style.display='none'"></div>`;
+            if(sName) specialHTML += `<div class="name-wrapper-rot"><div class="special-name-box">${sName}</div></div>`;
         } else if (sticker.type === 'team_photo') {
-            if(sFlag) specialHTML += `<div class="special-flag-wrapper pos-bottom-left" style="position: absolute; bottom: 0; left: 0; background: #ffffff; border: 1.5px solid #cccccc;"><img src="${sFlag}" onerror="this.style.display='none'"></div>`;
+            if(sFlag) specialHTML += `<div class="special-flag-wrapper pos-bottom-left-rot" style="background: #ffffff; border: 1.5px solid #cccccc;"><img src="${sFlag}" onerror="this.style.display='none'"></div>`;
         }
         innerHTML = `<div class="special-sticker-inner">${specialHTML}</div>`;
     }
@@ -539,16 +529,6 @@ function createStickerHTML(sticker) {
 function renderStapel() {
     if (!globalStickerDatabase || !currentUserData) return;
     const stapel = currentUserData.stapel || [];
-    
-    // NEU: Verstecke den kompletten Container, wenn leer!
-    const stackContainer = document.getElementById('stickerStack');
-    if (stapel.length === 0) {
-        stackContainer.style.display = 'none';
-        return; // Nichts zu rendern
-    } else {
-        stackContainer.style.display = 'block';
-    }
-
     document.getElementById('stackCounter').innerText = stapel.length;
     
     const numDisplay = document.getElementById('stackCurrentNumber');
@@ -559,10 +539,12 @@ function renderStapel() {
         document.getElementById('stackCard3')
     ];
 
-    const sticker = globalStickerDatabase[stapel[0]];
-    if (sticker) {
-        numDisplay.innerText = sticker.albumNumber;
-        numDisplay.style.display = 'flex';
+    if (stapel.length > 0) {
+        const sticker = globalStickerDatabase[stapel[0]];
+        if (sticker) {
+            numDisplay.innerText = sticker.albumNumber;
+            numDisplay.style.display = 'flex';
+        }
     } else {
         numDisplay.style.display = 'none';
     }
@@ -570,11 +552,11 @@ function renderStapel() {
     for (let i = 0; i < 3; i++) {
         const card = cards[i];
         if (stapel.length > i) {
-            const st = globalStickerDatabase[stapel[i]];
-            if (st) { 
+            const sticker = globalStickerDatabase[stapel[i]];
+            if (sticker) { 
                 card.innerHTML = `<div class="stack-card-inner">
-                                    <div class="stack-front">${createStickerHTML(st)}</div>
-                                    <div class="stack-back">${st.albumNumber}</div>
+                                    <div class="stack-front">${createStickerHTML(sticker)}</div>
+                                    <div class="stack-back">${sticker.albumNumber}</div>
                                   </div>`;
                 card.classList.remove('is-flipped');
                 card.style.display = "flex"; 
@@ -582,7 +564,12 @@ function renderStapel() {
                 card.style.display = "none"; 
             }
         } else {
-            card.style.display = "none"; 
+            if(i === 0 && stapel.length === 0) {
+               card.innerHTML = '<div class="stack-dummy"><span class="stack-placeholder-text">LEER</span></div>'; 
+               card.style.display = "flex"; 
+            } else {
+               card.style.display = "none"; 
+            }
         }
     }
 }
@@ -819,121 +806,29 @@ function buildStadiumPage(bp) {
     return html;
 }
 
-function buildGenericGrid(bp, rotateAll = false, isLeftPage) {
-    let rainbowClass = " rainbow-border-page";
-    let html = `<div class="page-wrapper dark-page${rainbowClass}" style="padding: 4cqw; position: relative; z-index: 1; display: flex; flex-direction: column;">`;
+function buildGenericGrid(bp, rotateAll = false) {
+    let isRainbow = (bp.type === 'golden_boots' || bp.type === 'golden_ball' || bp.type === 'winning_teams');
+    let rainbowClass = isRainbow ? " rainbow-border-page" : "";
+    let html = `<div class="page-wrapper dark-page${rainbowClass}">`;
     
-    // 1. ÜBERSCHRIFTEN & UNTERTITEL (Nur auf der linken Startseite)
-    let titleHtml = "";
-    if (isLeftPage) {
-        let mainTitle = "";
-        let subTitle = "";
-        let shinyClass = "shiny-text-gold";
-        if (bp.type === 'golden_boots' && bp.startId === 'GBO001') {
-            mainTitle = "GOLDEN BOOT";
-            subTitle = "Best Goalscorer";
-            shinyClass = "shiny-text-silver";
-        } else if (bp.type === 'golden_ball' && bp.startId === 'GBA001') {
-            mainTitle = "GOLDEN BALL";
-            subTitle = "Player of the Tournament";
-        } else if (bp.type === 'winning_teams' && bp.startId === 'WIN001') {
-            mainTitle = "WINNING TEAMS";
-            subTitle = "Winner of the Tournament";
-        }
-        if (mainTitle) {
-            titleHtml = `<div style="text-align: center; margin-bottom: 3cqw; margin-top: 1cqw;">
-                            <h2 class="special-title ${shinyClass}" style="margin: 0; line-height: 1;">${mainTitle}</h2>
-                            <div style="font-family: 'FWC2026', Arial, sans-serif; color: white; font-size: 3.2cqw; letter-spacing: 1px; margin-top: 0.5cqw;">${subTitle}</div>
-                         </div>`;
-        }
-    }
+    if (bp.type === 'golden_boots' && bp.startId === 'GBO001') html += `<h2 class="special-title">Golden Boots</h2>`;
+    if (bp.type === 'golden_ball' && bp.startId === 'GBA001') html += `<h2 class="special-title">Golden Ball</h2>`;
+    if (bp.type === 'winning_teams' && bp.startId === 'WIN001') html += `<h2 class="special-title">Winning Teams</h2>`;
     
-    html += titleHtml;
-    
-    // Container für die vertikale Verteilung (position: relative verhindert Overflow!)
-    html += `<div style="position: relative; flex-grow: 1; width: 100%;">`;
-    
+    html += '<div class="special-grid">';
     let currentAlbumNum = bp.startAlbumNumber;
     let sIdx = parseInt(bp.startId.replace(/\D/g, ''), 10);
     let eIdx = parseInt(bp.endId.replace(/\D/g, ''), 10);
     let prefix = bp.startId.replace(/[0-9]/g, '');
-    
-    let numItems = eIdx - sIdx + 1;
-    let itemIndex = 0;
-    const infoColors = ['#450B0B','#39008E','#10164B','#002E26','#800000','#6B5199','#1D3099','#007732','#992500','#6F3F76','#145A91','#6A8C00','#995F4E','#8B1339','#3B9881','#8E9929'];
-    
-    let isGold = (bp.type === 'golden_ball' || bp.type === 'winning_teams');
-    let borderColorHex = isGold ? '#FFD700' : '#C0C0C0';
-
     for(let i = sIdx; i <= eIdx; i++) {
         let sid = prefix + String(i).padStart(3, '0');
-        let isLeft = (itemIndex % 2 === 0); 
-        
-        let sData = globalStickerDatabase ? globalStickerDatabase[sid] : null;
-        let sName = sData ? sData.name : "Unknown";
-        let sYear = sData ? sData.year : "----";
-        let sFlag = sData ? sData.flag : "assets/Icon.png";
-        
-        let colorIdx = i % infoColors.length;
-        let bgColor = infoColors[colorIdx];
-
-        let rowDirection = isLeft ? 'row' : 'row-reverse';
-        let outerRadius = isLeft ? '0 3.5cqw 3.5cqw 0' : '3.5cqw 0 0 3.5cqw';
-        let alignClass = isLeft ? 'left: 0;' : 'right: 0;';
-        let borderSide = isLeft ? 'border-left: none;' : 'border-right: none;';
-        
-        // Verhindere Overflow durch exakte prozentuale Verteilung von 15% bis 80% (Zentren)
-        // Dadurch ragt die unterste Box nie über die Seitenzahlen.
-        let percent = numItems > 1 ? 5 + (itemIndex / (numItems - 1)) * 80 : 50;
-
-        let stickerWidth = rotateAll ? 'var(--col-h)' : 'var(--col-w)';
-        let stickerHeight = rotateAll ? 'var(--col-w)' : 'var(--col-h)';
-        let infoWidth = rotateAll ? '35cqw' : '18cqw'; // Landscape wesentlich breiter
-        let infoHeight = stickerHeight; // Exakt gleiche Höhe wie die Stickerbox!
-
-        // Leere Boxen haben keinen künstlichen Glitzer-Hintergrund mehr, nur den Rahmen.
-        let stickerSlotHtml = rotateAll ? 
-            `<div class="rotated-slot-wrapper" style="width: var(--col-h); height: var(--col-w);">
-                <div class="sticker-slot rotated-slot" id="slot-${sid}" data-id="${sid}" style="border: 1px solid ${borderColorHex};">
-                    <div class="slot-circle" style="color: ${borderColorHex}; border-color: ${borderColorHex}; transform: rotate(90deg);">${currentAlbumNum}</div>
-                </div>
-             </div>` : 
-            `<div class="sticker-slot" id="slot-${sid}" data-id="${sid}" style="width: 100%; height: 100%; border: 1.5px solid ${borderColorHex};">
-                <div class="slot-circle" style="color: ${borderColorHex}; border-color: ${borderColorHex};">${currentAlbumNum}</div>
-             </div>`;
-
-        // Die Schriftgrößen wurden auf ~80% verkleinert
-        let innerInfoContent = rotateAll ? 
-            `<div style="display: flex; flex-direction: row; align-items: center; justify-content: center; height: 100%; width: 100%; gap: 2cqw; padding: 0 1.5cqw;">
-                <img src="${sFlag}" style="width: 7.5cqw; height: 7.5cqw; border-radius: 50%; border: 0.3cqw solid rgba(255,255,255,0.8); object-fit: cover; flex-shrink: 0;" onerror="this.style.display='none'">
-                <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; flex-grow: 1;">
-                    <span style="font-family: 'FWC2026', Arial, sans-serif; color: white; font-size: 2.4cqw; text-align: center; line-height: 1.1;">${sName}</span>
-                    <span style="font-family: 'FWC2026', Arial, sans-serif; color: white; font-size: 2.0cqw; text-align: center; margin-top: 0.5cqw;">${sYear}</span>
-                </div>
-             </div>` :
-            `<div style="display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100%; gap: 1cqw;">
-                <img src="${sFlag}" style="width: 7cqw; height: 7cqw; border-radius: 50%; border: 0.3cqw solid rgba(255,255,255,0.8); object-fit: cover;" onerror="this.style.display='none'">
-                <span style="font-family: 'FWC2026', Arial, sans-serif; color: white; font-size: 2.1cqw; text-align: center; line-height: 1.1;">${sName}</span>
-                <span style="font-family: 'FWC2026', Arial, sans-serif; color: white; font-size: 1.8cqw; text-align: center;">${sYear}</span>
-             </div>`;
-
-        html += `
-            <div style="position: absolute; ${alignClass} top: ${percent}%; transform: translateY(-50%); display: flex; flex-direction: ${rowDirection}; align-items: center; z-index: ${10 + itemIndex};">
-                
-                <div style="position: relative; width: ${stickerWidth}; height: ${stickerHeight}; z-index: 2;">
-                    ${stickerSlotHtml}
-                </div>
-                
-                <div style="height: ${infoHeight}; width: ${infoWidth}; background-color: ${bgColor}; border-radius: ${outerRadius}; box-shadow: 0 4px 8px rgba(0,0,0,0.5); z-index: 1; border: 1px solid ${borderColorHex}; ${borderSide}">
-                    ${innerInfoContent}
-                </div>
-
-            </div>
-        `;
+        if(rotateAll) {
+            html += `<div class="rotated-slot-wrapper">${buildSlotHTML(sid, currentAlbumNum, 'rotated-slot')}</div>`;
+        } else {
+            html += buildSlotHTML(sid, currentAlbumNum);
+        }
         currentAlbumNum++;
-        itemIndex++;
     }
-    
     html += '</div></div>';
     return html;
 }
@@ -1110,7 +1005,7 @@ function buildPageHTML(bp, isLeftPage) {
 
     if (bp.type === 'stadiums') return buildStadiumPage(bp);
 
-    if (bp.type === 'golden_boots' || bp.type === 'golden_ball' || bp.type === 'winning_teams') return buildGenericGrid(bp, bp.type === 'winning_teams', isLeftPage);
+    if (bp.type === 'golden_boots' || bp.type === 'golden_ball' || bp.type === 'winning_teams') return buildGenericGrid(bp, bp.type === 'winning_teams');
     
     return `<div class="debug-text"><span>${bp.type}</span></div>`;
 }
@@ -1410,6 +1305,9 @@ function handleSwipe() {
     }
 }
 
+// Init
+initBook();
+
 pendingOffersCount = 0;
 
 function updateAlbumBadges(offersCount = null) {
@@ -1440,11 +1338,11 @@ firebase.auth().onAuthStateChanged((user) => {
         db.collection("users").doc(user.uid).onSnapshot((doc) => {
             if (doc.exists) {
                 currentUserData = doc.data();
-                // Verhindert das "leere" Album, wenn Datenbank neu lädt
-                if (globalStickerDatabase) {
+                if (!bookInitialized) {
                     renderPastedStickers();
-                    renderStapel();
+                    bookInitialized = true;
                 }
+                renderStapel();
                 updateAlbumBadges();
             }
         });
