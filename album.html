@@ -406,7 +406,7 @@ const db = firebase.firestore();
 /* =========================================================================
    DATENBANK & STICKER RENDERING
    ========================================================================= */
-let globalStickerDatabase = {};
+let globalStickerDatabase = null; // Auf NULL lassen zum prüfen
 let currentUserData = null;
 let bookInitialized = false;
 let globalIndexEntries = [];
@@ -420,8 +420,11 @@ Promise.all([
 .then(([mainData, infoData]) => {
     globalStickerDatabase = { ...mainData, ...infoData };
     initBook(); 
-    renderStapel();
-    renderPastedStickers();
+    // Sicherstellen, dass das Album nicht leer bleibt, wenn DB lädt:
+    if (currentUserData) {
+        renderStapel();
+        renderPastedStickers();
+    }
 })
 .catch(err => console.error("Datenbank konnte nicht geladen werden:", err));
 
@@ -536,6 +539,16 @@ function createStickerHTML(sticker) {
 function renderStapel() {
     if (!globalStickerDatabase || !currentUserData) return;
     const stapel = currentUserData.stapel || [];
+    
+    // NEU: Verstecke den kompletten Container, wenn leer!
+    const stackContainer = document.getElementById('stickerStack');
+    if (stapel.length === 0) {
+        stackContainer.style.display = 'none';
+        return; // Nichts zu rendern
+    } else {
+        stackContainer.style.display = 'block';
+    }
+
     document.getElementById('stackCounter').innerText = stapel.length;
     
     const numDisplay = document.getElementById('stackCurrentNumber');
@@ -546,12 +559,10 @@ function renderStapel() {
         document.getElementById('stackCard3')
     ];
 
-    if (stapel.length > 0) {
-        const sticker = globalStickerDatabase[stapel[0]];
-        if (sticker) {
-            numDisplay.innerText = sticker.albumNumber;
-            numDisplay.style.display = 'flex';
-        }
+    const sticker = globalStickerDatabase[stapel[0]];
+    if (sticker) {
+        numDisplay.innerText = sticker.albumNumber;
+        numDisplay.style.display = 'flex';
     } else {
         numDisplay.style.display = 'none';
     }
@@ -559,11 +570,11 @@ function renderStapel() {
     for (let i = 0; i < 3; i++) {
         const card = cards[i];
         if (stapel.length > i) {
-            const sticker = globalStickerDatabase[stapel[i]];
-            if (sticker) { 
+            const st = globalStickerDatabase[stapel[i]];
+            if (st) { 
                 card.innerHTML = `<div class="stack-card-inner">
-                                    <div class="stack-front">${createStickerHTML(sticker)}</div>
-                                    <div class="stack-back">${sticker.albumNumber}</div>
+                                    <div class="stack-front">${createStickerHTML(st)}</div>
+                                    <div class="stack-back">${st.albumNumber}</div>
                                   </div>`;
                 card.classList.remove('is-flipped');
                 card.style.display = "flex"; 
@@ -571,12 +582,7 @@ function renderStapel() {
                 card.style.display = "none"; 
             }
         } else {
-            if(i === 0 && stapel.length === 0) {
-               card.innerHTML = '<div class="stack-dummy"><span class="stack-placeholder-text">LEER</span></div>'; 
-               card.style.display = "flex"; 
-            } else {
-               card.style.display = "none"; 
-            }
+            card.style.display = "none"; 
         }
     }
 }
@@ -1434,11 +1440,11 @@ firebase.auth().onAuthStateChanged((user) => {
         db.collection("users").doc(user.uid).onSnapshot((doc) => {
             if (doc.exists) {
                 currentUserData = doc.data();
-                if (!bookInitialized) {
-                    // renderPastedStickers(); wird nun oben nach dem JSON-Fetch aufgerufen
-                    bookInitialized = true;
+                // Verhindert das "leere" Album, wenn Datenbank neu lädt
+                if (globalStickerDatabase) {
+                    renderPastedStickers();
+                    renderStapel();
                 }
-                renderStapel();
                 updateAlbumBadges();
             }
         });
