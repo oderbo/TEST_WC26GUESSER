@@ -89,7 +89,6 @@ h1 { margin: 0; font-size: 24px; font-family: 'FWC2026', Arial, sans-serif; text
     border: 2px solid #fff; box-shadow: 0 2px 4px rgba(0,0,0,0.3); z-index: 5;
 }
 
-/* NEU: INFO BADGE (Blaues "i" oben links) */
 .info-badge {
     position: absolute; top: -6px; left: -6px; background-color: #3f57f5; color: #ffffff;
     font-family: Arial, sans-serif; font-size: 14px; font-weight: bold; font-style: italic;
@@ -124,26 +123,21 @@ h1 { margin: 0; font-size: 24px; font-family: 'FWC2026', Arial, sans-serif; text
     display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; padding-bottom: 40px;
 }
 
-/* --- FORTSCHRITT MODAL (NEU) --- */
+/* --- FORTSCHRITT MODAL --- */
 #progressModal { z-index: 3000; }
 .progress-name { color: white; font-size: 18px; font-weight: bold; margin-bottom: 25px; text-align: center; font-family: Arial, sans-serif; }
 
-/* Großer Ring (Gesamtfortschritt) */
 .main-progress-wrapper {
     position: relative; width: 140px; height: 140px; margin: 0 auto;
     border-radius: 50%; background: #222; box-shadow: 0 4px 10px rgba(0,0,0,0.5);
 }
 .ring-track { position: absolute; inset: 0; border-radius: 50%; background: rgba(255,255,255,0.1); }
-
-/* Glitzer-Grün (Prozentualer Mask-Effekt) */
 .ring-fill {
     position: absolute; inset: 0; border-radius: 50%;
-    /* Der repeating-conic-gradient erzeugt den leichten Facetten/Glitzer-Effekt ohne Glow */
     background: repeating-conic-gradient(from 0deg, #00cc44 0deg 10deg, #33ff77 10deg 20deg, #009933 20deg 30deg);
     mask: conic-gradient(#fff var(--p, 0%), transparent var(--p, 0%));
     -webkit-mask: conic-gradient(#fff var(--p, 0%), transparent var(--p, 0%));
 }
-
 .ring-inner {
     position: absolute; inset: 6px; border-radius: 50%; background: #ffffff;
     display: flex; align-items: center; justify-content: center;
@@ -153,7 +147,6 @@ h1 { margin: 0; font-size: 24px; font-family: 'FWC2026', Arial, sans-serif; text
 .main-progress-text { font-size: 22px; font-weight: bold; color: #111; font-family: Arial, sans-serif; }
 .main-progress-label { font-size: 10px; color: #666; text-transform: uppercase; font-weight: bold; margin-top: 2px; }
 
-/* Grid für die kleinen Flaggen/Ringe */
 .progress-grid {
     display: grid; grid-template-columns: repeat(auto-fill, minmax(50px, 1fr)); gap: 15px;
     justify-items: center; padding-bottom: 30px;
@@ -162,7 +155,7 @@ h1 { margin: 0; font-size: 24px; font-family: 'FWC2026', Arial, sans-serif; text
     position: relative; width: 50px; height: 50px; border-radius: 50%;
     background: #222; box-shadow: 0 2px 5px rgba(0,0,0,0.4);
 }
-.dot-wrapper .ring-inner { inset: 4px; padding: 2px; }
+.dot-wrapper .ring-inner { inset: 4px; padding: 0px; }
 .dot-content-img { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; }
 .dot-content-text { font-weight: bold; font-size: 24px; color: #111; font-family: 'FWC2026', Arial, sans-serif; }
 
@@ -360,18 +353,15 @@ let currentUserData = null;
 let currentMyOwnedSet = new Set();
 let myMarketStickers = [];
 
-// Globale Variablen für Profil/Fortschritt
 let marketUsersData = {}; 
 let albumStructure = [];
 let totalStickersDb = 0;
 
-// Trade Variablen (Senden / User 1)
 let tradeTargetUser = null;
 let tradeAvailableItems = [];
 let tradeSelectedItems = [];
 let tradeMaxSelection = 0;
 
-// Trade Variablen (Empfangen / User 2 oder Reduziert / User 1)
 let pendingOffers = [];
 let currentActiveOffer = null;
 let answerAvailableItems = [];
@@ -388,13 +378,11 @@ fetch("./data/sticker_database.json")
         initMarketAuth();
     });
 
-// --- NEU: DATENBANK-STRUKTUR FÜR DEN FORTSCHRITT EINMALIG AUFBAUEN ---
 function initAlbumStructure() {
     if (albumStructure.length > 0) return;
     let sections = {};
     for (let id in globalStickerDatabase) {
         let sticker = globalStickerDatabase[id];
-        // Präfix extrahieren (z.B. "SPC", "ARG", "WIN")
         let prefixMatch = id.match(/^[a-zA-Z]+/);
         if (!prefixMatch) continue;
         let prefix = prefixMatch[0];
@@ -404,18 +392,18 @@ function initAlbumStructure() {
                 prefix: prefix, 
                 flag: null, 
                 total: 0, 
-                firstAlbumNumber: parseInt(sticker.albumNumber) || 9999 
+                firstAlbumNumber: parseInt(sticker.albumNumber) || 0 
             };
         }
         sections[prefix].total++;
         totalStickersDb++;
         
-        // Flagge zuweisen, falls vorhanden
         if (!sections[prefix].flag && sticker.flag) {
             sections[prefix].flag = sticker.flag;
         }
     }
-    // Sortieren nach Album-Nummer
+    // Durch das Sortieren der Album Number (SPC hat 00, STD hat 7 etc.) 
+    // ist die Reihenfolge 100% identisch mit der Index-Seite!
     albumStructure = Object.values(sections).sort((a,b) => a.firstAlbumNumber - b.firstAlbumNumber);
 }
 
@@ -436,7 +424,6 @@ function initMarketAuth() {
                 }
             });
 
-            // Listener für eingehende oder zurückgewiesene Offers
             let incomingPending = [];
             let incomingReduced = [];
 
@@ -501,7 +488,6 @@ async function handleExpiredTrade(trade) {
     await batch.commit();
 }
 
-/* --- MARKT LOGIK --- */
 function loadMarketUsers() {
     const uid = firebase.auth().currentUser.uid;
     const grid = document.getElementById("market-content");
@@ -536,7 +522,7 @@ function loadMarketUsers() {
 
         let marketInventory = {};
         myMarketStickers = []; 
-        marketUsersData = {}; // Cache leeren für Profile
+        marketUsersData = {}; 
         
         marketSnap.forEach(doc => {
             const data = doc.data();
@@ -548,7 +534,7 @@ function loadMarketUsers() {
 
         grid.innerHTML = ''; 
 
-        // 1. EIGENE KARTE IMMER ZUERST ERZEUGEN
+        // 1. EIGENE KARTE
         const myDoc = usersSnap.docs.find(d => d.id === uid);
         if (myDoc) {
             const myData = myDoc.data();
@@ -557,7 +543,6 @@ function loadMarketUsers() {
             const myCard = document.createElement('div');
             myCard.className = 'user-card';
             myCard.onclick = () => openProgressModal(uid);
-            // Keine Match-Badge, kein i-Icon, man klickt einfach auf die Karte!
             myCard.innerHTML = `
                 <div class="user-icon" style="background:#3f57f5; color:white;">${myName.charAt(0).toUpperCase()}</div>
                 <div class="user-name" style="color:#3f57f5;">${myName} (Du)</div>
@@ -565,14 +550,13 @@ function loadMarketUsers() {
             grid.appendChild(myCard);
         }
 
-        // 2. ANDERE SPIELER ERZEUGEN
+        // 2. ANDERE SPIELER
         usersSnap.forEach((userDoc) => {
             if (userDoc.id === uid) return;
             const otherUid = userDoc.id;
             const userB = userDoc.data();
             const displayName = userB.username || userB.name || "Spieler";
             
-            // Profil-Daten für das Pop-up abspeichern
             marketUsersData[otherUid] = { name: displayName, album: userB.album || {} };
             
             const theirOwned = new Set([ ...(userB.stapel||[]), ...Object.keys(userB.album||{}).filter(k=>userB.album[k]==="pasted"), ...(userB.traded_stickers||[]) ]);
@@ -598,7 +582,6 @@ function loadMarketUsers() {
                 card.onclick = () => openTradeModal(otherUid, displayName, uniqueWhatTheyNeed.length, whatINeed);
             }
             
-            // NEU: info-badge hinzugefügt für das Pop-Up!
             card.innerHTML = `
                 <div class="info-badge" onclick="event.stopPropagation(); openProgressModal('${otherUid}')">i</div>
                 <div class="match-badge">${whatINeed.length}</div>
@@ -610,11 +593,10 @@ function loadMarketUsers() {
     });
 }
 
-/* --- FORTSCHRITT POP-UP LOGIK (NEU) --- */
+/* --- FORTSCHRITT POP-UP LOGIK --- */
 function openProgressModal(targetUid) {
     initAlbumStructure();
     
-    // Daten holen (entweder eigene oder vom Cache aus loadMarketUsers)
     let userData = targetUid === firebase.auth().currentUser.uid ? currentUserData : marketUsersData[targetUid];
     let displayName = targetUid === firebase.auth().currentUser.uid ? (userData.username || "Ich") + " (Du)" : userData.name;
     
@@ -624,7 +606,6 @@ function openProgressModal(targetUid) {
     let pastedCount = 0;
     let prefixCounts = {};
     
-    // Zählen der fest eingeklebten Sticker ("pasted")
     for (let id in album) {
         if (album[id] === "pasted") {
             pastedCount++;
@@ -636,12 +617,10 @@ function openProgressModal(targetUid) {
         }
     }
     
-    // Haupt-Ring aktualisieren
     let mainPct = totalStickersDb > 0 ? (pastedCount / totalStickersDb) * 100 : 0;
     document.getElementById("mainProgressFill").style.setProperty('--p', `${mainPct}%`);
     document.getElementById("mainProgressText").innerText = `${pastedCount} / ${totalStickersDb}`;
     
-    // Grid für die kleinen Flaggen/Ringe befüllen
     const progressGrid = document.getElementById("progressGrid");
     progressGrid.innerHTML = '';
     
@@ -650,14 +629,22 @@ function openProgressModal(targetUid) {
         let pct = sec.total > 0 ? (count / sec.total) * 100 : 0;
         
         let innerContent = '';
+        
+        // HIER: Das perfekte Mapping aus deiner Index-Seite der album.html!
         if (sec.prefix === 'SPC') {
-            // Spezielle erste Seite bekommt nur ein "S" (wie gefordert)
             innerContent = `<span class="dot-content-text">S</span>`;
+        } else if (sec.prefix === 'STD') {
+            innerContent = `<img src="photos/stadiums/icon.png" class="dot-content-img" style="background-color: #ffffff; object-fit: contain; padding: 3px; box-sizing: border-box;" onerror="this.style.display='none'">`;
+        } else if (sec.prefix === 'GBO') {
+            innerContent = `<img src="photos/golden_boot/golden_boot.png" class="dot-content-img" style="background-color: #202020; object-fit: contain; padding: 3px; box-sizing: border-box;" onerror="this.style.display='none'">`;
+        } else if (sec.prefix === 'GBA') {
+            innerContent = `<img src="photos/golden_ball/golden_ball.png" class="dot-content-img" style="background-color: #202020; object-fit: contain; padding: 3px; box-sizing: border-box;" onerror="this.style.display='none'">`;
+        } else if (sec.prefix === 'WIN') {
+            innerContent = `<img src="photos/winning_teams/trophy.png" class="dot-content-img" style="background-color: #202020; object-fit: contain; padding: 3px; box-sizing: border-box;" onerror="this.style.display='none'">`;
         } else if (sec.flag) {
             let cleanFlag = sec.flag.startsWith('./') ? sec.flag.substring(2) : sec.flag;
             innerContent = `<img src="${cleanFlag}" class="dot-content-img" onerror="this.style.display='none'">`;
         } else {
-            // Falls mal keine Flagge da ist (z.B. bei einem fehlerhaften Pfad), nimm den Anfangsbuchstaben
             innerContent = `<span class="dot-content-text" style="font-size: 18px;">${sec.prefix.charAt(0)}</span>`;
         }
         
@@ -680,7 +667,6 @@ function closeProgressModal() {
     document.getElementById("progressModal").style.display = "none";
 }
 
-/* --- MODAL 1: SEND TRADE --- */
 function openTradeModal(targetUid, targetName, matchCount, availableItems) {
     tradeTargetUser = { uid: targetUid, name: targetName };
     tradeAvailableItems = availableItems;
@@ -777,7 +763,6 @@ async function sendTradeRequest() {
     loadMarketUsers(); 
 }
 
-/* --- MODAL 2: OFFERS LIST --- */
 function openOffersListModal() {
     const listContent = document.getElementById("offersListContent");
     listContent.innerHTML = '';
@@ -805,7 +790,6 @@ function openOffersListModal() {
 
 function closeOffersListModal() { document.getElementById("offersListModal").style.display = "none"; }
 
-/* --- MODAL 3: ANSWER OFFER --- */
 async function openAnswerOfferModal(offer) {
     const marketSnap = await db.collection("market").where("owner_uid", "==", offer.sender_uid).where("status", "==", "available").get();
     
@@ -937,7 +921,6 @@ async function confirmOffer() {
     }
 }
 
-/* --- MODAL 4: REDUCED OFFER --- */
 function openReducedOfferModal(offer) {
     currentActiveOffer = offer;
     const M = offer.sticker_ids_from_sender.length;
@@ -1022,7 +1005,6 @@ async function confirmReducedOffer() {
     openClaimModal(reducedSelectedItems.map(i=>i.stickerId));
 }
 
-/* --- MODAL 5: CLAIM MODAL --- */
 function openClaimModal(stickerArray) {
     const grid = document.getElementById("claimStickerGrid");
     grid.innerHTML = '';
@@ -1091,7 +1073,6 @@ function claimTradedStickers() {
     });
 }
 
-/* --- STICKER RENDER ENGINE --- */
 function getContrastColors(hexColor) {
     if (!hexColor) return { text: '#ffffff', stroke: '#000000' };
     let hex = hexColor.replace('#', '');
