@@ -3,6 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <link rel="icon" type="image/png" href="assets/favicon.png">
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
 <title>Market</title>
@@ -84,7 +86,15 @@ h1 { margin: 0; font-size: 24px; font-family: 'FWC2026', Arial, sans-serif; text
     position: absolute; top: -6px; right: -6px; background-color: #ff1145; color: #ffffff;
     font-family: Arial, sans-serif; font-size: 13px; font-weight: bold; width: 26px; height: 26px;
     border-radius: 50%; display: flex; align-items: center; justify-content: center;
-    border: 2px solid #fff; box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+    border: 2px solid #fff; box-shadow: 0 2px 4px rgba(0,0,0,0.3); z-index: 5;
+}
+
+/* NEU: INFO BADGE (Blaues "i" oben links) */
+.info-badge {
+    position: absolute; top: -6px; left: -6px; background-color: #3f57f5; color: #ffffff;
+    font-family: Arial, sans-serif; font-size: 14px; font-weight: bold; font-style: italic;
+    width: 26px; height: 26px; border-radius: 50%; display: flex; align-items: center; justify-content: center;
+    border: 2px solid #fff; box-shadow: 0 2px 4px rgba(0,0,0,0.3); z-index: 5;
 }
 
 /* --- MODALS (ALLGEMEIN) --- */
@@ -94,7 +104,7 @@ h1 { margin: 0; font-size: 24px; font-family: 'FWC2026', Arial, sans-serif; text
 }
 .modal-title { 
     font-size: 22px; color: white; margin: 0 0 15px 0; text-align: center; width: 100%; 
-    font-family: 'FWC2026', Arial, sans-serif; text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+    font-family: 'FWC2026', Arial, sans-serif; text-shadow: 0 2px 4px rgba(0,0,0,0.5); letter-spacing: 1px;
 }
 .modal-header {
     width: 100%; max-width: 600px; display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;
@@ -113,6 +123,48 @@ h1 { margin: 0; font-size: 24px; font-family: 'FWC2026', Arial, sans-serif; text
 .trade-grid {
     display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; padding-bottom: 40px;
 }
+
+/* --- FORTSCHRITT MODAL (NEU) --- */
+#progressModal { z-index: 3000; }
+.progress-name { color: white; font-size: 18px; font-weight: bold; margin-bottom: 25px; text-align: center; font-family: Arial, sans-serif; }
+
+/* Großer Ring (Gesamtfortschritt) */
+.main-progress-wrapper {
+    position: relative; width: 140px; height: 140px; margin: 0 auto;
+    border-radius: 50%; background: #222; box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+}
+.ring-track { position: absolute; inset: 0; border-radius: 50%; background: rgba(255,255,255,0.1); }
+
+/* Glitzer-Grün (Prozentualer Mask-Effekt) */
+.ring-fill {
+    position: absolute; inset: 0; border-radius: 50%;
+    /* Der repeating-conic-gradient erzeugt den leichten Facetten/Glitzer-Effekt ohne Glow */
+    background: repeating-conic-gradient(from 0deg, #00cc44 0deg 10deg, #33ff77 10deg 20deg, #009933 20deg 30deg);
+    mask: conic-gradient(#fff var(--p, 0%), transparent var(--p, 0%));
+    -webkit-mask: conic-gradient(#fff var(--p, 0%), transparent var(--p, 0%));
+}
+
+.ring-inner {
+    position: absolute; inset: 6px; border-radius: 50%; background: #ffffff;
+    display: flex; align-items: center; justify-content: center;
+    box-shadow: inset 0 2px 5px rgba(0,0,0,0.3); overflow: hidden;
+}
+.main-inner { flex-direction: column; }
+.main-progress-text { font-size: 22px; font-weight: bold; color: #111; font-family: Arial, sans-serif; }
+.main-progress-label { font-size: 10px; color: #666; text-transform: uppercase; font-weight: bold; margin-top: 2px; }
+
+/* Grid für die kleinen Flaggen/Ringe */
+.progress-grid {
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(50px, 1fr)); gap: 15px;
+    justify-items: center; padding-bottom: 30px;
+}
+.dot-wrapper {
+    position: relative; width: 50px; height: 50px; border-radius: 50%;
+    background: #222; box-shadow: 0 2px 5px rgba(0,0,0,0.4);
+}
+.dot-wrapper .ring-inner { inset: 4px; padding: 2px; }
+.dot-content-img { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; }
+.dot-content-text { font-weight: bold; font-size: 24px; color: #111; font-family: 'FWC2026', Arial, sans-serif; }
 
 /* --- ANGEBOTE LISTE MODAL --- */
 .offer-list-card {
@@ -184,7 +236,7 @@ h1 { margin: 0; font-size: 24px; font-family: 'FWC2026', Arial, sans-serif; text
 <body>
 
 <div class="header-container">
-    <a href="album.html" class="btn-back">&lt;</a>
+    <div onclick="window.location.href='album.html'" class="btn-back" style="cursor: pointer;">&lt;</div>
     <h1>Marktplatz</h1>
 </div>
 
@@ -196,6 +248,29 @@ h1 { margin: 0; font-size: 24px; font-family: 'FWC2026', Arial, sans-serif; text
 
 <div id="market-content" class="market-grid">
     <div style="color:white; grid-column: 1 / -1; text-align: center; font-size: 18px;">Lade Markt...</div>
+</div>
+
+<div id="progressModal" class="modal-overlay">
+    <div class="modal-header" style="justify-content: center; position: relative;">
+        <button class="btn-action btn-close" style="position: absolute; left: 0;" onclick="closeProgressModal()">Zurück</button>
+        <h2 class="modal-title" style="margin: 0;">FWC2026</h2>
+    </div>
+    
+    <div class="progress-name" id="progressUsername">Spieler Name</div>
+
+    <div class="main-progress-wrapper">
+        <div class="ring-track"></div>
+        <div class="ring-fill" id="mainProgressFill" style="--p: 0%;"></div>
+        <div class="ring-inner main-inner">
+            <span class="main-progress-text" id="mainProgressText">0 / 0</span>
+            <span class="main-progress-label">Gesammelt</span>
+        </div>
+    </div>
+
+    <div class="grid-scroll-wrapper" style="margin-top: 25px;">
+        <div class="progress-grid" id="progressGrid">
+            </div>
+    </div>
 </div>
 
 <div id="tradeModal" class="modal-overlay">
@@ -285,6 +360,11 @@ let currentUserData = null;
 let currentMyOwnedSet = new Set();
 let myMarketStickers = [];
 
+// Globale Variablen für Profil/Fortschritt
+let marketUsersData = {}; 
+let albumStructure = [];
+let totalStickersDb = 0;
+
 // Trade Variablen (Senden / User 1)
 let tradeTargetUser = null;
 let tradeAvailableItems = [];
@@ -307,6 +387,37 @@ fetch("./data/sticker_database.json")
         globalStickerDatabase = data;
         initMarketAuth();
     });
+
+// --- NEU: DATENBANK-STRUKTUR FÜR DEN FORTSCHRITT EINMALIG AUFBAUEN ---
+function initAlbumStructure() {
+    if (albumStructure.length > 0) return;
+    let sections = {};
+    for (let id in globalStickerDatabase) {
+        let sticker = globalStickerDatabase[id];
+        // Präfix extrahieren (z.B. "SPC", "ARG", "WIN")
+        let prefixMatch = id.match(/^[a-zA-Z]+/);
+        if (!prefixMatch) continue;
+        let prefix = prefixMatch[0];
+        
+        if (!sections[prefix]) {
+            sections[prefix] = { 
+                prefix: prefix, 
+                flag: null, 
+                total: 0, 
+                firstAlbumNumber: parseInt(sticker.albumNumber) || 9999 
+            };
+        }
+        sections[prefix].total++;
+        totalStickersDb++;
+        
+        // Flagge zuweisen, falls vorhanden
+        if (!sections[prefix].flag && sticker.flag) {
+            sections[prefix].flag = sticker.flag;
+        }
+    }
+    // Sortieren nach Album-Nummer
+    albumStructure = Object.values(sections).sort((a,b) => a.firstAlbumNumber - b.firstAlbumNumber);
+}
 
 function initMarketAuth() {
     firebase.auth().onAuthStateChanged((user) => {
@@ -378,10 +489,8 @@ function handleOffersClick() {
     }
 }
 
-/* --- HILFSFUNKTION FÜR ABGELAUFENE/ABGELEHNTE REQUESTS --- */
 async function handleExpiredTrade(trade) {
     const batch = db.batch();
-    // Locks auflösen
     (trade.locked_market_docs_from_receiver || []).forEach(docId => {
         batch.update(db.collection("market").doc(docId), { status: "available", locked_by: firebase.firestore.FieldValue.delete() });
     });
@@ -412,7 +521,6 @@ function loadMarketUsers() {
             if (expiresAt < now) {
                 expiredTrades.push({ id: doc.id, ...trade });
             } else {
-                // Berechnen, was ich gerade virtuell bekomme, um es nicht doppelt anzufragen
                 if (trade.sender_uid === uid) {
                     (trade.sticker_ids_from_receiver || []).forEach(id => myIncomingStickers.add(id));
                 }
@@ -424,11 +532,11 @@ function loadMarketUsers() {
 
         expiredTrades.forEach(trade => handleExpiredTrade(trade));
 
-        // Das besitze ich effektiv (Wirklichkeit + im Zulauf)
         const myEffectiveOwned = new Set([...currentMyOwnedSet, ...myIncomingStickers]);
 
         let marketInventory = {};
         myMarketStickers = []; 
+        marketUsersData = {}; // Cache leeren für Profile
         
         marketSnap.forEach(doc => {
             const data = doc.data();
@@ -440,11 +548,32 @@ function loadMarketUsers() {
 
         grid.innerHTML = ''; 
 
+        // 1. EIGENE KARTE IMMER ZUERST ERZEUGEN
+        const myDoc = usersSnap.docs.find(d => d.id === uid);
+        if (myDoc) {
+            const myData = myDoc.data();
+            const myName = myData.username || myData.name || "Ich";
+            
+            const myCard = document.createElement('div');
+            myCard.className = 'user-card';
+            myCard.onclick = () => openProgressModal(uid);
+            // Keine Match-Badge, kein i-Icon, man klickt einfach auf die Karte!
+            myCard.innerHTML = `
+                <div class="user-icon" style="background:#3f57f5; color:white;">${myName.charAt(0).toUpperCase()}</div>
+                <div class="user-name" style="color:#3f57f5;">${myName} (Du)</div>
+            `;
+            grid.appendChild(myCard);
+        }
+
+        // 2. ANDERE SPIELER ERZEUGEN
         usersSnap.forEach((userDoc) => {
             if (userDoc.id === uid) return;
             const otherUid = userDoc.id;
             const userB = userDoc.data();
             const displayName = userB.username || userB.name || "Spieler";
+            
+            // Profil-Daten für das Pop-up abspeichern
+            marketUsersData[otherUid] = { name: displayName, album: userB.album || {} };
             
             const theirOwned = new Set([ ...(userB.stapel||[]), ...Object.keys(userB.album||{}).filter(k=>userB.album[k]==="pasted"), ...(userB.traded_stickers||[]) ]);
 
@@ -469,13 +598,89 @@ function loadMarketUsers() {
                 card.onclick = () => openTradeModal(otherUid, displayName, uniqueWhatTheyNeed.length, whatINeed);
             }
             
-            card.innerHTML = `<div class="match-badge">${whatINeed.length}</div><div class="user-icon">${displayName.charAt(0).toUpperCase()}</div><div class="user-name">${displayName}</div>`;
+            // NEU: info-badge hinzugefügt für das Pop-Up!
+            card.innerHTML = `
+                <div class="info-badge" onclick="event.stopPropagation(); openProgressModal('${otherUid}')">i</div>
+                <div class="match-badge">${whatINeed.length}</div>
+                <div class="user-icon">${displayName.charAt(0).toUpperCase()}</div>
+                <div class="user-name">${displayName}</div>
+            `;
             grid.appendChild(card);
         });
     });
 }
 
-/* --- MODAL 1: SEND TRADE (User 1 wählt von User 2) --- */
+/* --- FORTSCHRITT POP-UP LOGIK (NEU) --- */
+function openProgressModal(targetUid) {
+    initAlbumStructure();
+    
+    // Daten holen (entweder eigene oder vom Cache aus loadMarketUsers)
+    let userData = targetUid === firebase.auth().currentUser.uid ? currentUserData : marketUsersData[targetUid];
+    let displayName = targetUid === firebase.auth().currentUser.uid ? (userData.username || "Ich") + " (Du)" : userData.name;
+    
+    document.getElementById("progressUsername").innerText = displayName;
+    
+    let album = userData.album || {};
+    let pastedCount = 0;
+    let prefixCounts = {};
+    
+    // Zählen der fest eingeklebten Sticker ("pasted")
+    for (let id in album) {
+        if (album[id] === "pasted") {
+            pastedCount++;
+            let prefixMatch = id.match(/^[a-zA-Z]+/);
+            if (prefixMatch) {
+                let prefix = prefixMatch[0];
+                prefixCounts[prefix] = (prefixCounts[prefix] || 0) + 1;
+            }
+        }
+    }
+    
+    // Haupt-Ring aktualisieren
+    let mainPct = totalStickersDb > 0 ? (pastedCount / totalStickersDb) * 100 : 0;
+    document.getElementById("mainProgressFill").style.setProperty('--p', `${mainPct}%`);
+    document.getElementById("mainProgressText").innerText = `${pastedCount} / ${totalStickersDb}`;
+    
+    // Grid für die kleinen Flaggen/Ringe befüllen
+    const progressGrid = document.getElementById("progressGrid");
+    progressGrid.innerHTML = '';
+    
+    albumStructure.forEach(sec => {
+        let count = prefixCounts[sec.prefix] || 0;
+        let pct = sec.total > 0 ? (count / sec.total) * 100 : 0;
+        
+        let innerContent = '';
+        if (sec.prefix === 'SPC') {
+            // Spezielle erste Seite bekommt nur ein "S" (wie gefordert)
+            innerContent = `<span class="dot-content-text">S</span>`;
+        } else if (sec.flag) {
+            let cleanFlag = sec.flag.startsWith('./') ? sec.flag.substring(2) : sec.flag;
+            innerContent = `<img src="${cleanFlag}" class="dot-content-img" onerror="this.style.display='none'">`;
+        } else {
+            // Falls mal keine Flagge da ist (z.B. bei einem fehlerhaften Pfad), nimm den Anfangsbuchstaben
+            innerContent = `<span class="dot-content-text" style="font-size: 18px;">${sec.prefix.charAt(0)}</span>`;
+        }
+        
+        const dotHTML = `
+            <div class="dot-wrapper">
+                <div class="ring-track"></div>
+                <div class="ring-fill" style="--p: ${pct}%"></div>
+                <div class="ring-inner">
+                    ${innerContent}
+                </div>
+            </div>
+        `;
+        progressGrid.insertAdjacentHTML('beforeend', dotHTML);
+    });
+    
+    document.getElementById("progressModal").style.display = "flex";
+}
+
+function closeProgressModal() {
+    document.getElementById("progressModal").style.display = "none";
+}
+
+/* --- MODAL 1: SEND TRADE --- */
 function openTradeModal(targetUid, targetName, matchCount, availableItems) {
     tradeTargetUser = { uid: targetUid, name: targetName };
     tradeAvailableItems = availableItems;
@@ -544,29 +749,26 @@ async function sendTradeRequest() {
         status: "pending",
         locked_market_docs_from_receiver: tradeSelectedItems.map(i => i.docId),
         sticker_ids_from_receiver: tradeSelectedItems.map(i => i.stickerId),
-        created_at: firebase.firestore.FieldValue.serverTimestamp(),
+        created_at: firebase.firestore.FieldValue.serverTimestamp(), 
         expires_at: firebase.firestore.Timestamp.fromDate(expiryDate)
     });
 
     await batch.commit();
 
-    // Push-Benachrichtigung an den Empfänger
     try {
-        await fetch('https://onesignal.com/api/v1/notifications', {
+        await fetch('https://hook.eu1.make.com/xj7pv7y60pcu1yaplx0xlkpsfdxq8343', {
             method: 'POST',
             headers: {
-                'Content-Type': 'application/json',
-                'Authorization': 'Basic os_v2_app_f6phyzerzrcrnav4jkcdwpd6blxzxgdt7z4esfuzz3w4i7z74pak7o425xhetycdunhemuiu7lrt7jaqtit44ocluwnhvizesbxls6a'
+                'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                app_id: '2f9e7c64-91cc-4516-82bc-4a843b3c7e0a',
-                include_external_user_ids: [tradeTargetUser.uid],
-                contents: { 'en': `${myName} möchte Sticker mit dir tauschen!` },
-                url: 'https://oderbo.github.io/WC26Guesser/market.html'
+                targetUid: tradeTargetUser.uid,
+                senderName: myName,
+                stickerCount: tradeSelectedItems.length
             })
         });
     } catch (e) {
-        console.error("Push-Fehler:", e);
+        console.error("Webhook-Fehler:", e);
     }
 
     closeTradeModal();
@@ -603,9 +805,8 @@ function openOffersListModal() {
 
 function closeOffersListModal() { document.getElementById("offersListModal").style.display = "none"; }
 
-/* --- MODAL 3: ANSWER OFFER (User 2 wählt von User 1) --- */
+/* --- MODAL 3: ANSWER OFFER --- */
 async function openAnswerOfferModal(offer) {
-    // Hole den AKTUELLEN Markt von User 1 (Sender)
     const marketSnap = await db.collection("market").where("owner_uid", "==", offer.sender_uid).where("status", "==", "available").get();
     
     let uniqueNeededFromSender = [];
@@ -700,7 +901,6 @@ async function confirmOffer() {
     const requestRef = db.collection("trade_requests").doc(currentActiveOffer.id);
 
     if (M === N) {
-        // Fall A: Sofortiger Tausch!
         currentActiveOffer.locked_market_docs_from_receiver.forEach(docId => batch.update(db.collection("market").doc(docId), { status: "traded" }));
         answerSelectedItems.forEach(item => batch.update(db.collection("market").doc(item.docId), { status: "traded", locked_by: requestRef.id }));
 
@@ -717,7 +917,6 @@ async function confirmOffer() {
         btn.innerText = "Bestätigen"; btn.disabled = false;
         openClaimModal(answerSelectedItems.map(i=>i.stickerId));
     } else {
-        // Fall B: Reduziert! Geht zurück an User 1
         answerSelectedItems.forEach(item => batch.update(db.collection("market").doc(item.docId), { status: "locked", locked_by: requestRef.id }));
 
         const expiryDate = new Date();
@@ -738,14 +937,13 @@ async function confirmOffer() {
     }
 }
 
-/* --- MODAL 4: REDUCED OFFER (User 1 bestätigt Reduktion) --- */
+/* --- MODAL 4: REDUCED OFFER --- */
 function openReducedOfferModal(offer) {
     currentActiveOffer = offer;
     const M = offer.sticker_ids_from_sender.length;
     reducedRequiredCount = M;
     reducedSelectedItems = [];
 
-    // Die N Sticker, die User 1 ursprünglich wollte:
     const N_items = offer.sticker_ids_from_receiver.map((sId, idx) => ({
         stickerId: sId,
         docId: offer.locked_market_docs_from_receiver[idx]
@@ -805,11 +1003,9 @@ async function confirmReducedOffer() {
     const acceptedDocsFromReceiver = reducedSelectedItems.map(i => i.docId);
     const rejectedDocsFromReceiver = currentActiveOffer.locked_market_docs_from_receiver.filter(d => !acceptedDocsFromReceiver.includes(d));
 
-    // Ausgewählte als "traded" markieren, Abgelehnte wieder freigeben
     acceptedDocsFromReceiver.forEach(docId => batch.update(db.collection("market").doc(docId), { status: "traded" }));
     rejectedDocsFromReceiver.forEach(docId => batch.update(db.collection("market").doc(docId), { status: "available", locked_by: firebase.firestore.FieldValue.delete() }));
     
-    // Die von User 2 angebotenen Sticker als "traded" markieren
     (currentActiveOffer.locked_market_docs_from_sender || []).forEach(docId => batch.update(db.collection("market").doc(docId), { status: "traded" }));
 
     const myRef = db.collection("users").doc(firebase.auth().currentUser.uid);
@@ -826,7 +1022,7 @@ async function confirmReducedOffer() {
     openClaimModal(reducedSelectedItems.map(i=>i.stickerId));
 }
 
-/* --- MODAL 5: CLAIM MODAL (Traded Stickers abholen) --- */
+/* --- MODAL 5: CLAIM MODAL --- */
 function openClaimModal(stickerArray) {
     const grid = document.getElementById("claimStickerGrid");
     grid.innerHTML = '';
@@ -861,10 +1057,8 @@ function claimTradedStickers() {
         const inStapel = currentUserData.stapel && currentUserData.stapel.includes(stickerId);
 
         if (inAlbum || inStapel) {
-            // WORKAROUND: Sticker wird doch nicht mehr gebraucht -> Direkt auf den Markt!
             toMarket.push(stickerId);
         } else {
-            // Sticker wird gebraucht -> In den Stapel!
             toStapel.push(stickerId);
         }
     });
@@ -875,7 +1069,6 @@ function claimTradedStickers() {
         traded_stickers: []
     });
 
-    // Überschüssige Sticker direkt wieder als neues Dokument auf den Markt werfen
     toMarket.forEach(sId => {
         const marketRef = db.collection("market").doc();
         batch.set(marketRef, {
@@ -898,7 +1091,7 @@ function claimTradedStickers() {
     });
 }
 
-/* --- STICKER RENDER ENGINE HILFSFUNKTIONEN (Unverändert) --- */
+/* --- STICKER RENDER ENGINE --- */
 function getContrastColors(hexColor) {
     if (!hexColor) return { text: '#ffffff', stroke: '#000000' };
     let hex = hexColor.replace('#', '');
