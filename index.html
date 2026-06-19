@@ -620,7 +620,16 @@ body {
 .btn-market-round { border: 2px solid #ffbb04; }
 .btn-send-album-round { border: 2px solid #28a745; }
 </style>
-</head>
+<!-- OneSignal SDK -->
+<script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer></script>
+<script>
+  window.OneSignalDeferred = window.OneSignalDeferred || [];
+  OneSignalDeferred.push(async function(OneSignal) {
+    await OneSignal.init({
+      appId: "2f9e7c64-91cc-4516-82bc-4a843b3c7e0a",
+    });
+  });
+</script>
 <body>
 
 <div class="center-bg-icon-desktop"></div>
@@ -773,6 +782,12 @@ firebase.auth().onAuthStateChanged((user) => {
     const albumNavBtn = document.getElementById('navAlbumBtn');
 
     if (user) {
+        // ONESIGNAL USER-LOGIN
+        window.OneSignalDeferred = window.OneSignalDeferred || [];
+        OneSignalDeferred.push(function(OneSignal) {
+            OneSignal.login(user.uid);
+        });
+
         led.classList.add('online'); 
         const username = user.email.split('@')[0];
         const formattedName = username.charAt(0).toUpperCase() + username.slice(1);

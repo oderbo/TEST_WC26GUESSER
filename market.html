@@ -528,7 +528,6 @@ async function sendTradeRequest() {
     const batch = db.batch();
     const requestRef = db.collection("trade_requests").doc();
     
-    // Locks in der Datenbank setzen
     tradeSelectedItems.forEach(item => {
         const marketRef = db.collection("market").doc(item.docId);
         batch.update(marketRef, { status: "locked", locked_by: requestRef.id });
@@ -550,8 +549,29 @@ async function sendTradeRequest() {
     });
 
     await batch.commit();
+
+    // Push-Benachrichtigung an den Empfänger
+    try {
+        await fetch('https://onesignal.com/api/v1/notifications', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': 'Basic os_v2_app_f6phyzerzrcrnav4jkcdwpd6blxzxgdt7z4esfuzz3w4i7z74pak7o425xhetycdunhemuiu7lrt7jaqtit44ocluwnhvizesbxls6a'
+            },
+            body: JSON.stringify({
+                app_id: '2f9e7c64-91cc-4516-82bc-4a843b3c7e0a',
+                include_external_user_ids: [tradeTargetUser.uid],
+                contents: { 'en': `${myName} möchte Sticker mit dir tauschen!` },
+                url: 'https://oderbo.github.io/WC26Guesser/market.html'
+            })
+        });
+    } catch (e) {
+        console.error("Push-Fehler:", e);
+    }
+
     closeTradeModal();
     btn.innerText = "Senden";
+    btn.disabled = false;
     loadMarketUsers(); 
 }
 
