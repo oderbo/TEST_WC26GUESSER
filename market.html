@@ -32,11 +32,22 @@ body {
     align-items: center; min-height: 100dvh; width: 100%;
 }
 
-/* --- HEADER --- */
 .header-container { 
-    width: 100%; max-width: 600px; position: relative; display: flex; 
-    justify-content: center; align-items: center; margin-bottom: 20px; height: 50px; flex-shrink: 0; 
+    width: 100%; 
+    max-width: 1400px; 
+    position: relative; 
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    
+    /* NEU: Der magische Apple-Fix */
+    margin-top: calc(env(safe-area-inset-top, 10px) + 10px); 
+    
+    margin-bottom: 0px; 
+    height: 50px; 
+    flex-shrink: 0; 
 }
+
 h1 { margin: 0; font-size: 24px; font-family: 'FWC2026', Arial, sans-serif; text-transform: uppercase; text-shadow: 0 1px 3px rgba(0,0,0,0.4); letter-spacing: 1px; text-align: center; }
 
 .btn-back { 

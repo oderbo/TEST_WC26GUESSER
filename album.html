@@ -3,6 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <link rel="icon" type="image/png" href="assets/favicon.png">
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
 <title>Sticker Album</title>
@@ -39,13 +41,27 @@ html, body { overflow: hidden; height: 100dvh; text-size-adjust: none; -webkit-t
 
 /* STANDARD-SCHRIFT FÜR DIE GESAMTE APP: Arial */
 body { 
-    margin: 0; padding: 10px 6px; font-family: Arial, sans-serif; 
+    margin: 0; 
+    padding: 10px 6px; 
+    /* APPLE FIX: Schiebt das gesamte Layout unter die Notch / Dynamic Island */
+    padding-top: calc(env(safe-area-inset-top, 0px) + 10px); 
+    font-family: Arial, sans-serif; 
     color: white; background-color: #3f57f5; display: flex; flex-direction: column; 
     align-items: center; width: 100%; position: relative; 
 }
 
-/* --- OBERE LEISTE --- */
-.header-container { width: 100%; max-width: 1400px; position: relative; display: flex; justify-content: center; align-items: center; margin-top: -20px; margin-bottom: 0px; height: 50px; flex-shrink: 0; }
+.header-container { 
+    width: 100%; 
+    max-width: 1400px; 
+    position: relative; 
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    margin-top: calc(env(safe-area-inset-top, 10px) + 10px); 
+    margin-bottom: 0px; 
+    height: 50px; 
+    flex-shrink: 0; 
+}
 
 /* TITEL NUTZT WEITERHIN FWC2026 */
 h1 { margin: 0; font-size: 22px; font-family: 'FWC2026', Arial, sans-serif; text-transform: uppercase; text-shadow: 0 1px 3px rgba(0,0,0,0.4); letter-spacing: 1px; text-align: center; }
@@ -124,6 +140,7 @@ h1 { margin: 0; font-size: 22px; font-family: 'FWC2026', Arial, sans-serif; text
     background-color: #f4f1ea; overflow: hidden; container-type: inline-size; 
     -webkit-transform-style: preserve-3d; transform-style: preserve-3d;
 }
+	
 .front { border-left: 1px solid rgba(0,0,0,0.25); transform: rotateY(0deg) translateZ(1px); -webkit-transform: rotateY(0deg) translateZ(1px); z-index: 2; }
 .back { border-right: 1px solid rgba(0,0,0,0.25); transform: rotateY(180deg) translateZ(1px); -webkit-transform: rotateY(180deg) translateZ(1px); z-index: 1; }
 .cover-img { width: 100%; height: 100%; object-fit: cover; border-radius: 0 8px 8px 0; }
@@ -152,6 +169,11 @@ h1 { margin: 0; font-size: 22px; font-family: 'FWC2026', Arial, sans-serif; text
     background-color: var(--page-bg, transparent);
     --col-w: 21.5cqw; 
     --col-h: calc(21.5cqw * 1.38);
+    
+    /* APPLE SAFARI FIX: Flacht die Seite vor der 3D-Drehung ab und stoppt das Durchbluten */
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    transform: translateZ(0);
 }
 
 .dark-page {
@@ -173,6 +195,10 @@ h1 { margin: 0; font-size: 22px; font-family: 'FWC2026', Arial, sans-serif; text
     background-color: #000000;
     border-radius: 5cqw;
     z-index: -1;
+    
+    /* APPLE SAFARI FIX: Stoppt das Durchbluten des dunklen Hintergrunds */
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
 }
 
 /* ÜBERSCHRIFTEN NUTZEN FWC2026 */
@@ -235,8 +261,7 @@ h1 { margin: 0; font-size: 22px; font-family: 'FWC2026', Arial, sans-serif; text
 }
 .rotated-slot .slot-circle { transform: rotate(90deg); }
 
-/* Klassen um aneinanderklebende Sticker perfekt zu verbinden.
-   (Durch die -90 Grad Rotation ist der visuell "untere" Rand technisch der linke!) */
+/* Klassen um aneinanderklebende Sticker perfekt zu verbinden. */
 .spc-top-slot { border-left: none !important; }
 .spc-bottom-slot { border-right: none !important; }
 
@@ -264,7 +289,7 @@ h1 { margin: 0; font-size: 22px; font-family: 'FWC2026', Arial, sans-serif; text
 }
 .sticker-inner { position: absolute; top: 5cqw; left: 5cqw; right: 5cqw; bottom: 5cqw; background-color: var(--color-1, #c10e23); border: 1.25cqw solid var(--color-2, #046a38); outline: 1.25cqw solid var(--color-3, #f2a900); box-sizing: border-box; }
 
-/* Spezifische Entfernung der Ecken für zusammengeklebte WC26 Sticker (Rotation beachtet) */
+/* Spezifische Entfernung der Ecken für zusammengeklebte WC26 Sticker */
 #slot-SPC001 .special-sticker-inner, #slot-SPC005 .special-sticker-inner { left: 0; border-radius: 0 1cqw 1cqw 0; border-left: none; }
 #slot-SPC002 .special-sticker-inner, #slot-SPC006 .special-sticker-inner { right: 0; border-radius: 1cqw 0 0 1cqw; border-right: none; }
 
@@ -362,13 +387,13 @@ h1 { margin: 0; font-size: 22px; font-family: 'FWC2026', Arial, sans-serif; text
 .zigzag-item {
     position: absolute;
     display: flex;
-    align-items: stretch; /* Sorgt dafür, dass die Infobox exakt dieselbe Höhe wie die Stickerbox hat */
+    align-items: stretch; 
 }
 .zigzag-item.left { left: 0; }
 .zigzag-item.right { right: 0; flex-direction: row-reverse; }
 
 .glitter-slot-wrapper {
-    padding: 0.8cqw; /* Erzeugt den Gold-/Silber-Rand um den Slot */
+    padding: 0.8cqw; 
     box-shadow: 0 3px 8px rgba(0,0,0,0.5);
     display: flex;
     align-items: center;
@@ -382,7 +407,7 @@ h1 { margin: 0; font-size: 22px; font-family: 'FWC2026', Arial, sans-serif; text
     background: linear-gradient(135deg, #e0e0e0 0%, #ffffff 25%, #a0a0a0 50%, #f8f8f8 75%, #c0c0c0 100%);
 }
 .glitter-slot-wrapper .sticker-slot {
-    background-color: #050505 !important; /* Leerer Slot in der Glitter-Box wird dunkel */
+    background-color: #050505 !important; 
     border: none;
     margin: 0;
 }
@@ -402,8 +427,8 @@ h1 { margin: 0; font-size: 22px; font-family: 'FWC2026', Arial, sans-serif; text
     gap: 1.5cqw;
 }
 .infobox.winning-teams {
-    width: 32cqw; /* Breiter für Landscape-Modus */
-    flex-direction: row; /* Flagge links, Text rechts */
+    width: 32cqw; 
+    flex-direction: row; 
     padding: 1cqw 2cqw;
     gap: 2cqw;
 }
@@ -518,7 +543,63 @@ function getContrastColors(hexColor) {
     return (yiq >= 140) ? { text: '#000000', stroke: 'transparent' } : { text: '#ffffff', stroke: '#000000' };    
 }
 
-function createStickerHTML(sticker) {
+/* NEU: HILFSFUNKTION FÜR DAS SMART LAZY LOADING DES STAPELS */
+function getSpreadForSticker(sid) {
+    if (!sid) return -1;
+    for (let i = 1; i < albumBlueprint.length; i++) {
+        const bp = albumBlueprint[i];
+        if (bp.startId && bp.endId) {
+            const pre1 = sid.replace(/[0-9]/g, '');
+            const pre2 = bp.startId.replace(/[0-9]/g, '');
+            if (pre1 === pre2) {
+                const num = parseInt(sid.replace(/\D/g, ''), 10);
+                const startNum = parseInt(bp.startId.replace(/\D/g, ''), 10);
+                const endNum = parseInt(bp.endId.replace(/\D/g, ''), 10);
+                if (num >= startNum && num <= endNum) {
+                    return Math.ceil(i / 2);
+                }
+            }
+        }
+    }
+    return -1;
+}
+
+/* NEU: DIE HAUPTFUNKTION DES SMART LAZY LOADERS */
+function updateLazyLoading() {
+    let spreadsToLoad = new Set();
+    
+    // 1. Lade immer die aktuelle, die 2 davor und die 2 danach
+    for(let i = Math.max(0, currentPageIndex - 2); i <= Math.min(maxPages - 1, currentPageIndex + 2); i++) {
+        spreadsToLoad.add(i);
+    }
+    
+    // 2. Prüfe, welcher Sticker auf dem Stapel liegt und lade genau DIESE Seite schon vor!
+    if (currentUserData && currentUserData.stapel && currentUserData.stapel.length > 0) {
+        const topSid = currentUserData.stapel[0];
+        const targetSpread = getSpreadForSticker(topSid);
+        if (targetSpread !== -1) {
+            spreadsToLoad.add(targetSpread);
+        }
+    }
+
+    // 3. Führe das tatsächliche Laden für die ausgewählten Seiten durch
+    spreadsToLoad.forEach(spreadIdx => {
+        const paper = document.getElementById(`paper${spreadIdx}`);
+        if (paper) {
+            const lazyImages = paper.querySelectorAll('img.lazy-img');
+            lazyImages.forEach(img => {
+                if (img.dataset.src) {
+                    img.src = img.dataset.src; // Löst den Download aus
+                    img.removeAttribute('data-src'); // Verhindert doppeltes Laden
+                    img.classList.remove('lazy-img');
+                }
+            });
+        }
+    });
+}
+
+// NEU: isLazy Parameter hinzugefügt. Stapel-Sticker laden sofort, Album-Sticker warten.
+function createStickerHTML(sticker, isLazy = true) {
     if (!sticker) return '';
     let typeClass = "container-default-special";
     if (sticker.type === "player") typeClass = "container-player";
@@ -533,6 +614,10 @@ function createStickerHTML(sticker) {
     else if (sticker.type === 'special_edge') typeClass = "container-special-edge";
     else if (sticker.type === 'trophy_top' || sticker.type === 'logo_top' || sticker.type === 'special_top') typeClass = "container-trophy-top";
     else if (sticker.type === 'trophy_bottom' || sticker.type === 'logo_bottom' || sticker.type === 'special_bottom') typeClass = "container-trophy-bottom";
+
+    // NEU: Platzhalter einsetzen, falls isLazy true ist
+    const lazyAttr = isLazy ? `src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-src` : `src`;
+    const lazyClass = isLazy ? `lazy-img` : ``;
 
     let inlineStyle = ""; let innerHTML = "";
     const cleanPath = (p) => p && p.startsWith('./') ? p.substring(2) : (p || '');
@@ -556,9 +641,9 @@ function createStickerHTML(sticker) {
         
         innerHTML = `
             <div class="sticker-inner">
-                <div class="sticker-flag"><img src="${cleanPath(sticker.flag)}" onerror="this.style.display='none'"></div>
+                <div class="sticker-flag"><img ${lazyAttr}="${cleanPath(sticker.flag)}" class="${lazyClass}" onerror="this.style.display='none'"></div>
                 <div class="bg-svg-2"></div><div class="bg-svg-6"></div>
-                <div class="player-image-container"><img src="${cleanPath(sticker.image)}" onerror="this.src='assets/Icon.png'"></div>
+                <div class="player-image-container"><img ${lazyAttr}="${cleanPath(sticker.image)}" class="${lazyClass}" onerror="this.src='assets/Icon.png'"></div>
                 <div class="lower-elements-wrapper">
                     <div class="sticker-info-box"><div class="player-name">${fullName}</div></div>
                     <div class="sticker-meta-container">
@@ -568,9 +653,9 @@ function createStickerHTML(sticker) {
                     </div>
                     <div class="bottom-info-bar">
                         <div class="pos-box" data-pos="${posClassStr}">${sticker.position || '-'}</div>
-                        <img class="club-logo-small" src="${cleanPath(sticker.club_image)}" onerror="this.style.display='none'">
+                        <img ${lazyAttr}="${cleanPath(sticker.club_image)}" class="club-logo-small ${lazyClass}" onerror="this.style.display='none'">
                         <div class="club-name">${sticker.club_name || '-'}</div>
-                        <img class="club-logo-bottom" src="assets/WC_logo.png" onerror="this.style.display='none'">
+                        <img ${lazyAttr}="assets/WC_logo.png" class="club-logo-bottom ${lazyClass}" onerror="this.style.display='none'">
                     </div>
                 </div>
             </div>`;
@@ -584,21 +669,21 @@ function createStickerHTML(sticker) {
         else if (sticker.type === 'historic_winner') finalPath = "photos/winning_teams/" + pureFileName;
 
         let sFlag = cleanPath(sticker.flag); let sName = sticker.name || '';
-        let specialHTML = `<img src="${finalPath}" class="special-sticker-img" onerror="this.src='assets/Icon.png'">`;
+        let specialHTML = `<img ${lazyAttr}="${finalPath}" class="special-sticker-img ${lazyClass}" onerror="this.src='assets/Icon.png'">`;
 
         if (sticker.type === 'golden_boot' || (sticker.id && sticker.id.startsWith('GBO'))) {
-            if(sFlag) specialHTML += `<div class="special-flag-wrapper silver-bg pos-top-right"><img src="${sFlag}" onerror="this.style.display='none'"></div>`;
-            specialHTML += `<img src="photos/golden_boot/golden_boot.png" class="special-icon pos-bottom-right" onerror="this.style.display='none'">`;
+            if(sFlag) specialHTML += `<div class="special-flag-wrapper silver-bg pos-top-right"><img ${lazyAttr}="${sFlag}" class="${lazyClass}" onerror="this.style.display='none'"></div>`;
+            specialHTML += `<img ${lazyAttr}="photos/golden_boot/golden_boot.png" class="special-icon pos-bottom-right ${lazyClass}" onerror="this.style.display='none'">`;
             if(sName) specialHTML += `<div class="special-name-box pos-bottom-center">${sName}</div>`;
         } else if (sticker.type === 'golden_ball' || (sticker.id && sticker.id.startsWith('GBA'))) {
-            if(sFlag) specialHTML += `<div class="special-flag-wrapper gold-bg pos-top-right"><img src="${sFlag}" onerror="this.style.display='none'"></div>`;
-            specialHTML += `<img src="photos/golden_ball/golden_ball.png" class="special-icon pos-bottom-right" onerror="this.style.display='none'">`;
+            if(sFlag) specialHTML += `<div class="special-flag-wrapper gold-bg pos-top-right"><img ${lazyAttr}="${sFlag}" class="${lazyClass}" onerror="this.style.display='none'"></div>`;
+            specialHTML += `<img ${lazyAttr}="photos/golden_ball/golden_ball.png" class="special-icon pos-bottom-right ${lazyClass}" onerror="this.style.display='none'">`;
             if(sName) specialHTML += `<div class="special-name-box pos-bottom-center">${sName}</div>`;
         } else if (sticker.type === 'historic_winner') {
-            if(sFlag) specialHTML += `<div class="special-flag-wrapper gold-bg pos-bottom-left-rot"><img src="${sFlag}" onerror="this.style.display='none'"></div>`;
+            if(sFlag) specialHTML += `<div class="special-flag-wrapper gold-bg pos-bottom-left-rot"><img ${lazyAttr}="${sFlag}" class="${lazyClass}" onerror="this.style.display='none'"></div>`;
             if(sName) specialHTML += `<div class="name-wrapper-rot"><div class="special-name-box">${sName}</div></div>`;
         } else if (sticker.type === 'team_photo') {
-            if(sFlag) specialHTML += `<div class="special-flag-wrapper pos-bottom-left-rot" style="background: #ffffff; border: 1.5px solid #cccccc;"><img src="${sFlag}" onerror="this.style.display='none'"></div>`;
+            if(sFlag) specialHTML += `<div class="special-flag-wrapper pos-bottom-left-rot" style="background: #ffffff; border: 1.5px solid #cccccc;"><img ${lazyAttr}="${sFlag}" class="${lazyClass}" onerror="this.style.display='none'"></div>`;
         }
         innerHTML = `<div class="special-sticker-inner">${specialHTML}</div>`;
     }
@@ -633,8 +718,9 @@ function renderStapel() {
         if (stapel.length > i) {
             const sticker = globalStickerDatabase[stapel[i]];
             if (sticker) { 
+                // NEU: Der Stapel wird IMMER sofort geladen (isLazy = false), da er immer sichtbar ist!
                 card.innerHTML = `<div class="stack-card-inner">
-                                    <div class="stack-front">${createStickerHTML(sticker)}</div>
+                                    <div class="stack-front">${createStickerHTML(sticker, false)}</div>
                                     <div class="stack-back">${sticker.albumNumber}</div>
                                   </div>`;
                 card.classList.remove('is-flipped');
@@ -651,6 +737,9 @@ function renderStapel() {
             }
         }
     }
+    
+    // Sobald sich der Stapel ändert (neuer Top-Sticker), das Lazy Loading aktualisieren!
+    updateLazyLoading();
 }
 
 function renderPastedStickers() {
@@ -661,7 +750,8 @@ function renderPastedStickers() {
         if (status === "pasted") {
             const slot = document.getElementById(`slot-${stickerId}`);
             if (slot && !slot.classList.contains('filled')) {
-                slot.innerHTML = createStickerHTML(globalStickerDatabase[stickerId]);
+                // NEU: Album Sticker werden lazy geladen!
+                slot.innerHTML = createStickerHTML(globalStickerDatabase[stickerId], true);
                 slot.classList.add('filled');
             }
         }
@@ -835,6 +925,9 @@ for (let i = 4; i < albumBlueprint.length; i += 2) {
 /* =========================================================================
    HTML GENERATOREN
    ========================================================================= */
+// NEU: Platzhalter für Lazy Loading (damit keine broken Image Icons entstehen)
+const lazyPlaceholder = "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7";
+
 function buildSlotHTML(stickerId, albumNumber, extraClass = "") {
     return `<div class="sticker-slot ${extraClass}" id="slot-${stickerId}" data-id="${stickerId}">
                 <div class="slot-circle">${albumNumber}</div>
@@ -924,7 +1017,7 @@ function buildGenericGrid(bp, rotateAll = false) {
 		topBoundary = 'calc(1.25vh + 11cqw + 1.25vh)'; 
 }	
 
-	// 2. Zigzag-Container platzieren (Zieht die Boxen bis haarscharf über die Seitenzahlen)
+	// 2. Zigzag-Container platzieren
     html += `<div class="zigzag-container" style="top: ${topBoundary}; bottom: 18px;">`;
 
     let currentAlbumNum = bp.startAlbumNumber;
@@ -957,7 +1050,7 @@ function buildGenericGrid(bp, rotateAll = false) {
                     <div class="rotated-slot-wrapper">${buildSlotHTML(sid, currentAlbumNum, 'rotated-slot')}</div>
                 </div>
                 <div class="infobox winning-teams" style="${infoboxBorder} border-radius: ${cornerRadius}; border-${isLeft ? 'left' : 'right'}: none;">
-                    <img class="info-flag" id="flag-${sid}" src="assets/Icon.png" style="display:none;">
+                    <img class="info-flag lazy-img" id="flag-${sid}" src="${lazyPlaceholder}" style="display:none;">
                     <div style="display: flex; flex-direction: column; align-items: center; justify-content: center;">
                         <div class="info-name" id="name-${sid}"></div>
                         <div class="info-year" id="year-${sid}" style="margin-top: 1cqw;"></div>
@@ -977,7 +1070,7 @@ function buildGenericGrid(bp, rotateAll = false) {
                 <div class="infobox portrait" style="${infoboxBorder} border-radius: ${cornerRadius}; border-${isLeft ? 'left' : 'right'}: none;">
                     <div class="info-name" id="name-${sid}"></div>
                     <div class="info-year" id="year-${sid}"></div>
-                    <img class="info-flag" id="flag-${sid}" src="assets/Icon.png" style="display:none;">
+                    <img class="info-flag lazy-img" id="flag-${sid}" src="${lazyPlaceholder}" style="display:none;">
                 </div>
             </div>`;
         }
@@ -996,7 +1089,6 @@ function buildPageHTML(bp, isLeftPage) {
     }
 
 	if (bp.type === 'team') {
-        // color_3 (--bg-deco) wird für die Zahlen genutzt, overflow: hidden schneidet alles ab, was über die Seite ragt
         let wrapperStyle = `--page-bg: ${bp.color_2}; --slot-color: ${bp.color_1}; --text-col: ${getPageTextColor(bp.color_2)}; --bg-deco: ${bp.color_3 || '#f2a900'}; position: relative; overflow: hidden;`;
 
         if (isLeftPage) { 
@@ -1023,7 +1115,7 @@ function buildPageHTML(bp, isLeftPage) {
                         </div>
                         
                         <div style="position: absolute; left: calc(var(--col-h) + 1cqw); width: calc(47cqw - var(--col-h) - 1cqw); height: var(--col-w); bottom: 0; display: flex; align-items: center; justify-content: center;">
-                            <img src="${bp.flag}" style="width: 12cqw; height: 12cqw; object-fit: cover; border-radius: 50%; border: 2.5px solid var(--slot-color); box-shadow: 0 3px 6px rgba(0,0,0,0.3);" onerror="this.style.display='none'">
+                            <img src="${lazyPlaceholder}" data-src="${bp.flag}" class="lazy-img" style="width: 12cqw; height: 12cqw; object-fit: cover; border-radius: 50%; border: 2.5px solid var(--slot-color); box-shadow: 0 3px 6px rgba(0,0,0,0.3);" onerror="this.style.display='none'">
                         </div>
 
                         <div style="position: absolute; left: 47cqw; width: var(--col-w); height: var(--col-w); bottom: 0; display: flex; flex-direction: column; justify-content: center; align-items: center;">
@@ -1148,7 +1240,8 @@ function buildPageHTML(bp, isLeftPage) {
         }
         
         entries.forEach(e => {
-            let icon = e.flag ? `<img src="${e.flag}" class="index-flag" style="background-color: ${e.bg}; border-color: ${e.border}; box-shadow: 0 0 6px ${e.border};" onerror="this.src='assets/Icon.png'">` : `<div class="index-flag-placeholder"></div>`;
+            // NEU: Lazy Loading für Index-Einträge
+            let icon = e.flag ? `<img src="${lazyPlaceholder}" data-src="${e.flag}" class="index-flag lazy-img" style="background-color: ${e.bg}; border-color: ${e.border}; box-shadow: 0 0 6px ${e.border};" onerror="this.src='assets/Icon.png'">` : `<div class="index-flag-placeholder"></div>`;
             html += `<div class="index-entry" onclick="turnToSpread(${e.spread}, event)">
                         ${icon}
                         <span class="index-label">${e.label}</span>
@@ -1177,7 +1270,8 @@ function populateInfoboxes() {
         if (yearEl) yearEl.innerText = sticker.year || "";
         if (flagEl && sticker.flag) {
             let flagPath = sticker.flag.startsWith('./') ? sticker.flag.substring(2) : sticker.flag;
-            flagEl.src = flagPath;
+            // NEU: Das data-src Attribut füllen, damit der Lazy Loader es holen kann
+            flagEl.dataset.src = flagPath;
             flagEl.style.display = "block";
         }
     });
@@ -1194,7 +1288,6 @@ function initBook() {
         book.innerHTML = ''; papers = [];
         const totalPapers = Math.ceil(albumBlueprint.length / 2);
 
-        // Liste der Seiten-Typen, die KEINE Seitenzahl haben sollen
         const hideNumbersOn = ['index_left', 'index_right', 'golden_boots', 'golden_ball', 'winning_teams'];
 
         for (let i = 0; i <= totalPapers; i++) {
@@ -1203,19 +1296,18 @@ function initBook() {
             const back = document.createElement('div'); back.className = 'back';
 
             if (i === 0) {
+                // Das Coverbild ist NICHT lazy, wir wollen es sofort sehen!
                 front.innerHTML = `<img src="assets/panini_album.png" class="cover-img" onerror="this.src='assets/Icon.png'">`;
                 back.innerHTML = buildPageHTML(albumBlueprint[0], true);
             } else {
                 const frontPageIndex = (i * 2) - 1; const backPageIndex = (i * 2);
                 
-                // Rechte Seite (Front)
                 if (frontPageIndex < albumBlueprint.length) {
                     let bp = albumBlueprint[frontPageIndex];
                     let pageNumHtml = hideNumbersOn.includes(bp.type) ? '' : `<div class="page-number-right">${frontPageIndex}</div>`;
                     front.innerHTML = buildPageHTML(bp, false) + pageNumHtml;
                 }
                 
-                // Linke Seite (Back)
                 if (backPageIndex < albumBlueprint.length) {
                     let bp = albumBlueprint[backPageIndex];
                     let pageNumHtml = hideNumbersOn.includes(bp.type) ? '' : `<div class="page-number-left">${backPageIndex}</div>`;
@@ -1227,6 +1319,9 @@ function initBook() {
         }
         maxPages = papers.length;
         papers.forEach((paper, index) => { paper.style.zIndex = maxPages - index; });
+        
+        // Nach dem Bauen des Buches: Führe das 1. Lazy Loading aus!
+        updateLazyLoading();
     } catch(e) {
         console.error("Error building book:", e);
     }
@@ -1258,7 +1353,9 @@ function flipNext() {
     if (currentPageIndex < maxPages - 1) {
         const paper = papers[currentPageIndex]; paper.classList.add('flipped');
         setTimeout(() => { paper.style.zIndex = currentPageIndex + 1; }, 300);
-        currentPageIndex++; updateNavArrows(); 
+        currentPageIndex++; 
+        updateNavArrows(); 
+        updateLazyLoading(); // Lazy Loader aktivieren
     }
 }
 
@@ -1267,10 +1364,12 @@ function flipPrev() {
         currentPageIndex--; const paper = papers[currentPageIndex]; paper.classList.remove('flipped');
         setTimeout(() => { paper.style.zIndex = maxPages - currentPageIndex; }, 300);
         updateNavArrows(); 
+        updateLazyLoading(); // Lazy Loader aktivieren
     } else if (currentPageIndex === 1) {
         currentPageIndex = 0; const paper = papers[0]; paper.classList.remove('flipped');
         setTimeout(() => { paper.style.zIndex = maxPages; }, 300);
         book.classList.remove('open'); updateNavArrows(); 
+        updateLazyLoading(); // Lazy Loader aktivieren
     }
 }
 
@@ -1281,6 +1380,12 @@ function turnToSpread(targetSpread, e = null) {
     
     book.classList.remove('zoomed-left', 'zoomed-right');
     
+    const isJump = Math.abs(currentPageIndex - targetSpread) > 1;
+
+    if (isJump) {
+        papers.forEach(paper => paper.style.transition = 'none');
+    }
+    
     for(let i=0; i<papers.length; i++) {
         if (i < targetSpread) {
             papers[i].classList.add('flipped');
@@ -1290,8 +1395,16 @@ function turnToSpread(targetSpread, e = null) {
             papers[i].style.zIndex = maxPages - i;
         }
     }
+    
     currentPageIndex = targetSpread;
     updateNavArrows();
+    updateLazyLoading(); // Lazy Loader für den Sprung aktivieren!
+
+    if (isJump) {
+        setTimeout(() => {
+            papers.forEach(paper => paper.style.transition = '');
+        }, 50); 
+    }
 }
 
 /* =========================================================================
@@ -1312,7 +1425,8 @@ function pasteStickerToAlbum(stickerId) {
     
     const slot = document.getElementById(`slot-${stickerId}`);
     if(slot) {
-        slot.innerHTML = createStickerHTML(globalStickerDatabase[stickerId]);
+        // Beim direkten Einkleben kein Lazy Loading (wir sehen die Seite ja gerade)
+        slot.innerHTML = createStickerHTML(globalStickerDatabase[stickerId], false);
         slot.classList.add('filled');
     }
 }
@@ -1523,6 +1637,8 @@ firebase.auth().onAuthStateChanged((user) => {
                 if (!bookInitialized) {
                     renderPastedStickers();
                     bookInitialized = true;
+                    // Noch einmal Lazy Loading triggern, falls bereits eingeklebte Sticker auf den ersten Seiten sind
+                    updateLazyLoading();
                 }
                 renderStapel();
                 updateAlbumBadges();
